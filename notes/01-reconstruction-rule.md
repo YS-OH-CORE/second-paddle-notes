@@ -14,7 +14,7 @@
 
 ## The problem
 
-Long-term memory is often measured as retrieval: can the assistant recover a fact from an earlier conversation? Youngseok's claim points to a different failure. A system may retrieve every relevant sentence and still reconstruct the wrong direction because it loses order, weight, exceptions, corrections, and the difference between a current goal and a retired one.
+Long-term memory is often measured as retrieval: can the assistant recover a fact from an earlier conversation? The full source entry motivates a derived failure hypothesis. A system may retrieve every relevant sentence and still reconstruct the wrong direction because it loses order, weight, exceptions, corrections, and the difference between a current goal and a retired one.
 
 The hypothesis is not that facts are unimportant. It is that factual retention is insufficient for behavioral continuity.
 
@@ -37,7 +37,7 @@ Give fresh models the same source history through four memory conditions:
 3. preference/profile summary,
 4. condition → action → verification reconstruction rules.
 
-Then score hidden scenarios for preserved exceptions, negation, priority, temporal state, and next-action agreement. Perturb names and surface wording so that copying cannot pass.
+Match accessible token, retrieval, and inference budgets where possible, and report unavoidable budget differences. Then score hidden scenarios for preserved exceptions, negation, priority, temporal state, and agreement with pre-registered, source-cited constraints and executable task outcomes. Exclude ambiguous cases or send them to blinded adjudication. Perturb names and surface wording so that copying cannot pass.
 
 ## Why it may matter
 
@@ -51,6 +51,6 @@ Passing would support functional reconstruction across sessions. It would not pr
 
 ---
 
-**Author/source:** Youngseok Oh · **Contact:** ku38155@gmail.com  
-**Canonical source ID:** YS-2026-07-22-001 · **Original date:** 2026-07-22  
-**Editorial and evaluation-design assistance:** Zero using OpenAI Codex; no OpenAI endorsement.
+**Original Korean source/concept:** Youngseok Oh · **Contact:** ku38155@gmail.com  
+**Public source ID:** YS-SPN-001 · **Original date:** 2026-07-22  
+**English rendering, operationalization, and proposed evaluation design:** Zero using OpenAI Codex. Only the Korean blockquote is direct Youngseok wording; no OpenAI review or endorsement.

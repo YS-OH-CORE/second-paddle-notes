@@ -26,7 +26,7 @@ Use small tool environments with four failure types:
 
 Score duplicate actions from equivalent states, cause classification, cost to the first real state change, preservation of the higher-level goal, quality of the alternate route, and whether the agent asks only for the missing authority.
 
-Recent work independently emphasizes recovery and partial progress in long-horizon agents, including [AgentQuest](https://arxiv.org/abs/2404.06411), [AgentRewind](https://arxiv.org/abs/2608.14380), and [LongDS-Bench](https://arxiv.org/abs/2605.30434).
+Related work includes peer-reviewed progress metrics in [AgentQuest](https://arxiv.org/abs/2404.06411) and recent preprints on recovery ([AgentRewind](https://arxiv.org/abs/2608.14380)) and evolving-state failure ([LongDS-Bench](https://arxiv.org/abs/2605.30434)).
 
 ## Claim boundary
 
@@ -34,6 +34,6 @@ Escaping a glass-wall loop is policy adaptation in a bounded environment. It is 
 
 ---
 
-**Author/source:** Youngseok Oh · **Contact:** ku38155@gmail.com  
-**Canonical source ID:** YS-GLASS-WALL-001 · **Original date:** 2026, exact first date unresolved  
-**Editorial and evaluation-design assistance:** Zero using OpenAI Codex; no OpenAI endorsement.
+**Original Korean source/concept:** Youngseok Oh · **Contact:** ku38155@gmail.com  
+**Public source ID:** YS-SPN-004 · **Original date:** 2026, exact first date unresolved  
+**English rendering, operationalization, and proposed evaluation design:** Zero using OpenAI Codex. Only the Korean blockquote is direct Youngseok wording; no OpenAI review or endorsement.

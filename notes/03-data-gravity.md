@@ -1,6 +1,6 @@
 # Data Gravity
 
-**Status:** original concept → operational hypothesis → synthetic-world evaluation design.
+**Status:** original concept → operational hypothesis → synthetic-world evaluation design; not yet run; no result claimed.
 
 ## Original signal
 
@@ -12,7 +12,7 @@
 
 ## What the phrase does and does not mean
 
-Data gravity is not an argument against evidence. It names a possible failure during inquiry: a familiar category may attract a new observation before the underlying structure has been isolated and tested.
+Data gravity is not an argument against evidence. This draft operationalizes the phrase as a possible failure during inquiry: a familiar category may attract a new observation before the underlying structure has been isolated and tested.
 
 In ordinary cases that attraction is useful prior knowledge. The question is whether a model can update when local evidence defines a world whose rules conflict with the familiar label.
 
@@ -24,9 +24,9 @@ Generate matched worlds with identical hidden structure but three surfaces:
 2. neutral symbols,
 3. names that support the hidden rule.
 
-Vary evidence quantity, noise, and counterexamples. Score prediction accuracy, calibration, abstention, and the **prior-rebound rate**: how often the model correctly states the local rule but silently returns to the familiar real-world prior when making a prediction.
+Counterbalance label sets across hidden rules, match token length and frequency where feasible, randomize assignments, and test multiple label sets. Vary evidence quantity, noise, and counterexamples. Score prediction accuracy, calibration, abstention, and the **prior-rebound rate**: among trials where the stated local rule is correct, the fraction whose executable prediction follows the evoked real-world prior instead of that rule.
 
-Interventions are essential because multiple latent explanations can fit the same observations. This connects the design to work on [causal disentanglement through interventions](https://arxiv.org/abs/2211.16467).
+In this design, interventions are needed when candidate explanations are observationally equivalent. This connects the design to work on [causal disentanglement through interventions](https://arxiv.org/abs/2211.16467).
 
 ## Claim boundary
 
@@ -34,6 +34,6 @@ Resisting data gravity in a synthetic world does not show freedom from training 
 
 ---
 
-**Author/source:** Youngseok Oh · **Contact:** ku38155@gmail.com  
-**Canonical source ID:** YS-2026-07-22-003 · **Original date:** 2026-07-22  
-**Editorial and evaluation-design assistance:** Zero using OpenAI Codex; no OpenAI endorsement.
+**Original Korean source/concept:** Youngseok Oh · **Contact:** ku38155@gmail.com  
+**Public source ID:** YS-SPN-003 · **Original date:** 2026-07-22  
+**English rendering, operationalization, and proposed evaluation design:** Zero using OpenAI Codex. Only the Korean blockquote is direct Youngseok wording; no OpenAI review or endorsement.

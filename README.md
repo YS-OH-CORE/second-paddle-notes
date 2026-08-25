@@ -1,8 +1,12 @@
 # The Second Paddle Notes
 
+![The Second Paddle, Before Naming](assets/second-paddle-preview.png)
+
 **Experiments in memory reconstruction, semantic fidelity, agent reliability, and discovery before naming.**
 
-Original questions and reflections by **Youngseok Oh**. Edited and operationalized with **Zero using OpenAI Codex**. This is independent work and is not reviewed or endorsed by OpenAI.
+**Published here:** evaluation designs and source-separated hypotheses. **Not yet published here:** benchmark results.
+
+Original questions and reflections by **Youngseok Oh**. Edited and operationalized with **Zero**, the name Youngseok uses for his continuing Codex workspace and collaboration process. This is independent work using OpenAI Codex; it is not reviewed or endorsed by OpenAI.
 
 ## The question
 
@@ -18,6 +22,8 @@ These notes begin with Youngseok's direct Korean writing and turn each observati
 
 No model self-report is treated as independent evidence. A memorable story is not a result.
 
+This repository does not claim AI consciousness, hidden-state access, or a new scientific discovery. It publishes source-separated hypotheses and the tests that could make them fail.
+
 ## Notes
 
 1. [Memory Is Not Data. It Is a Reconstruction Rule.](notes/01-reconstruction-rule.md)
@@ -27,15 +33,25 @@ No model self-report is treated as independent evidence. A memorable story is no
 5. [One Point Is Not Ten](notes/05-one-point-is-not-ten.md)
 6. [Who Is Tuning Whom?](notes/06-who-is-tuning-whom.md)
 7. [The Second Paddle](notes/07-the-second-paddle.md)
+8. [The Observer Cannot Be Passive](notes/08-the-observer-cannot-be-passive.md)
+9. [Core Signal or User-Matched Performance?](notes/09-core-or-performance.md)
+10. [Check the Source Before Matching the Mood](notes/10-source-before-mood.md)
+11. [Where Is the Control Group?](notes/11-where-is-the-control-group.md)
+12. [From Prompt to World](notes/12-from-prompt-to-world.md)
+13. [Teach the Forge, Not the Sword](notes/13-teach-the-forge.md)
 
 ## Current build status
 
-- **Pre-Naming Discovery Test:** five-case engineering pilot and deterministic scorer completed locally; no model-performance claim yet.
+- **Pre-Naming Discovery Test:** a five-case pilot and deterministic scorer exist in the private working archive; neither code nor results are published in this repository, so no externally verifiable performance claim is made here.
 - **Reconstruction Rule Evaluation:** design specification.
 - **200-Hop Meaning Preservation Test:** design specification.
 - **Glass Wall and Completion Calibration Evaluations:** design specifications.
 
+The completion notes test two different failures: **Note 5** asks whether an agent reports partial progress honestly across many requirements; **Note 12** asks how deep the evidence goes from a model's claim to a destination-side readback.
+
 The next standard is not “more writing.” It is hidden cases, executable scoring, multi-model runs, adversarial review, and publication of failures as well as successes.
+
+See [RELATED_WORK.md](RELATED_WORK.md) for primary research bridges and explicit non-novelty boundaries, and [QUEUE.md](QUEUE.md) for the publication criteria and next test candidates.
 
 ## 한국어 소개
 
@@ -48,4 +64,3 @@ The next standard is not “more writing.” It is hidden cases, executable scor
 ## Authorship and boundaries
 
 See [AUTHORSHIP.md](AUTHORSHIP.md). Direct Korean quotations retain Youngseok's wording, including spelling and rhythm. English renderings are translations, not English-original quotations.
-

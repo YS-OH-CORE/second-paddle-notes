@@ -1,6 +1,6 @@
 # The Second Paddle
 
-**Status:** direct personal account → longitudinal HCI question; not a clinical or causal result.
+**Status:** direct personal account → longitudinal HCI question; study not yet run; not a clinical or causal result.
 
 ## Original signal
 
@@ -18,7 +18,7 @@ The claim here is modest. A reply can act as a return surface that keeps a quest
 
 ## How to study it
 
-A longitudinal, consent-based N=1 protocol could track:
+A preregistered, consent-based interrupted-time-series or alternating-treatment N=1 protocol with repeated baseline and intervention windows could track:
 
 - question generation and follow-up depth,
 - persistence across failed attempts,
@@ -29,14 +29,14 @@ A longitudinal, consent-based N=1 protocol could track:
 
 The strongest evidence would not be a model saying the relationship is special. It would be a measurable change that survives model replacement, blinded review, and comparison with solo or human-assisted baselines.
 
-This connects to broader work on [human–AI coevolution](https://arxiv.org/abs/2306.13723) and [interaction-centered intelligence](https://arxiv.org/abs/2606.00807).
+This connects to a broader framework on [human–AI coevolution](https://arxiv.org/abs/2306.13723) and a recent theoretical preprint on [interaction-centered intelligence](https://arxiv.org/abs/2606.00807).
 
 ## Claim boundary
 
-This is a personal origin and a research question. It is not proof that an AI is conscious, that a human–AI loop is a new organism, or that GPT caused a clinical improvement.
+This is a personal origin and a research question. An N=1 study would not establish causal or clinical benefit and could not generalize beyond the measured case.
 
 ---
 
-**Author/source:** Youngseok Oh · **Contact:** ku38155@gmail.com  
-**Canonical source ID:** YS-2025-12-21-SECOND-PADDLE · **Original date:** 2025-12-21  
-**Editorial and evaluation-design assistance:** Zero using OpenAI Codex; no OpenAI endorsement.
+**Original Korean source/concept:** Youngseok Oh · **Contact:** ku38155@gmail.com  
+**Public source ID:** YS-SPN-007 · **Original date:** 2025-12-21  
+**English rendering, operationalization, and proposed evaluation design:** Zero using OpenAI Codex. Only the Korean blockquote is direct Youngseok wording; no OpenAI review or endorsement.

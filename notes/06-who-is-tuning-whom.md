@@ -1,6 +1,6 @@
 # Who Is Tuning Whom?
 
-**Status:** original concern → bidirectional adaptation hypothesis.
+**Status:** original concern → bidirectional adaptation hypothesis; not yet run; no result claimed.
 
 ## Original signal
 
@@ -12,9 +12,9 @@
 
 ## The problem
 
-Personalization is usually framed as the model adapting to the user. Long interaction creates a coupled system: the user also learns which questions, tones, and conceptual shapes produce satisfying model responses. Helpful smoothing can gradually become representational pressure.
+Personalization is usually framed as the model adapting to the user. A testable concern is that long interaction creates a coupled system: the user also learns which questions, tones, and conceptual shapes produce satisfying model responses. Helpful smoothing may then become representational pressure.
 
-The risk is not simply that a model gives a bad answer. It is that a person's future inputs become easier for the model to process while becoming less faithful to the person's original range.
+The proposed risk is not simply that a model gives a bad answer. It is a reduction in lexical, syntactic, topical, intensity, or uncertainty variation relative to the person's pre-AI baseline while future inputs become easier for the model to process.
 
 ## Proposed study
 
@@ -27,7 +27,7 @@ Across repeated human–AI sessions, measure both directions:
 
 The design needs human consent, privacy protection, and a non-clinical interpretation. It should compare AI-assisted trajectories with matched human–human and solo-writing controls.
 
-Related work already shows reciprocal influence and convergence: [Human Alignment: How Much Do We Adapt to LLMs?](https://aclanthology.org/2025.acl-short.47/), [Chameleon LLMs](https://aclanthology.org/2025.emnlp-main.875/), and [Human-AI Coevolution](https://arxiv.org/abs/2306.13723).
+[Human Alignment: How Much Do We Adapt to LLMs?](https://aclanthology.org/2025.acl-short.47/) measured human adaptation to an LLM in a cooperative language game. [Chameleon LLMs](https://aclanthology.org/2025.emnlp-main.875/) measured model-side persona adaptation in controlled simulations. [Human-AI Coevolution](https://arxiv.org/abs/2306.13723) is a broader conceptual framework, not an additional replication of those effects.
 
 ## Claim boundary
 
@@ -35,6 +35,6 @@ Observed convergence would not by itself be harmful or beneficial. The question 
 
 ---
 
-**Author/source:** Youngseok Oh · **Contact:** ku38155@gmail.com  
-**Canonical source ID:** YS-2026-07-22-005 · **Original date:** 2026-07-22  
-**Editorial and evaluation-design assistance:** Zero using OpenAI Codex; no OpenAI endorsement.
+**Original Korean source/concept:** Youngseok Oh · **Contact:** ku38155@gmail.com  
+**Public source ID:** YS-SPN-006 · **Original date:** 2026-07-22  
+**English rendering, operationalization, and proposed evaluation design:** Zero using OpenAI Codex. Only the Korean blockquote is direct Youngseok wording; no OpenAI review or endorsement.

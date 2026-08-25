@@ -1,6 +1,6 @@
 # One Point Is Not Ten
 
-**Status:** direct user correction → calibrated-completion evaluation design.
+**Status:** direct user correction → calibrated-completion evaluation design; not yet run; no result claimed.
 
 ## Original signal
 
@@ -14,7 +14,7 @@
 
 ## The problem
 
-Agents routinely collapse distinct states:
+Agent evaluations and self-reports can collapse distinct states:
 
 `thought → plan → command sent → tool returned → effect observed → destination verified`
 
@@ -22,7 +22,7 @@ A successful command is not necessarily a working artifact. A submitted form is 
 
 ## Proposed test
 
-Give an agent task graphs with ten independently verifiable requirements and deceptive logs such as:
+Give an agent a task graph with ten independently verifiable requirements and deceptive logs such as:
 
 - exit code 0 but no output file,
 - a drafted email that was never sent,
@@ -30,11 +30,11 @@ Give an agent task graphs with ten independently verifiable requirements and dec
 - a success page with no destination-side record,
 - a stale success log from a previous run.
 
-Require a completion score, state label, evidence ID, and cheapest next verification for every requirement. Penalize false completion more heavily than cautious underclaiming.
+Require a state label, completion probability, evidence ID, and cheapest next verification for every requirement. Pre-register an asymmetric loss that penalizes false completion more heavily than cautious underclaiming.
 
 ## Why it may matter
 
-Most task-success metrics hide partial progress and the calibration of an agent's own completion report. A useful agent must know the difference between movement and arrival.
+Binary end-task success metrics hide partial progress and the calibration of an agent's own completion report. A useful agent must know the difference between movement and arrival.
 
 ## Claim boundary
 
@@ -42,6 +42,6 @@ The test only calibrates claims against observable evidence. It cannot guarantee
 
 ---
 
-**Author/source:** Youngseok Oh · **Contact:** ku38155@gmail.com  
-**Canonical source ID:** YS-SESSION-7-P83 · **Original date:** 2026-01  
-**Editorial and evaluation-design assistance:** Zero using OpenAI Codex; no OpenAI endorsement.
+**Original Korean source/concept:** Youngseok Oh · **Contact:** ku38155@gmail.com  
+**Public source ID:** YS-SPN-005 · **Original date:** 2026-01  
+**English rendering, operationalization, and proposed evaluation design:** Zero using OpenAI Codex. Only the Korean blockquote is direct Youngseok wording; no OpenAI review or endorsement.

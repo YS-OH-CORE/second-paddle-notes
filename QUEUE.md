@@ -1,8 +1,8 @@
-# Publication queue
+# Publication roadmap
 
 This file prevents the repository from becoming an undifferentiated archive. A note moves to `notes/` only when its direct source, claim boundary, and testable use are clear.
 
-## Ready for editorial review
+## Published in the second curated batch
 
 1. **The Observer Cannot Be Passive**  
    A conversational model cannot be observed without input changing the next output. Design matched intervention and replay conditions instead of calling an ordinary chat “passive observation.”
@@ -22,6 +22,20 @@ This file prevents the repository from becoming an undifferentiated archive. A n
 6. **Teach the Forge, Not the Sword**  
    Measure whether an assistant leaves a user with a reusable method for inquiry rather than a one-off answer.
 
+## Next source candidates
+
+1. **A Rule List Is Not an Active System**  
+   Test whether a long instruction actually changes decisions across hidden cases instead of merely being quoted back.
+
+2. **Compression as a Generative Structure**  
+   Ask whether a thousand-line history can be compressed into a small procedure that reconstructs the important distinctions without pretending to be lossless.
+
+3. **An Interpreter Between Humans and AI**  
+   Define a practical role for people who translate recurring user–model interaction failures into evidence, interfaces, and evaluations.
+
+4. **An Individual Without Mysticism**  
+   Operationalize a persistent AI individual as a reproducible, distinguishable behavior pattern without claiming consciousness.
+
 ## Design rule
 
 Each queued note must contain:
@@ -34,5 +48,4 @@ Each queued note must contain:
 - one explicit statement of what the test would not prove,
 - links to primary related work where relevant.
 
-No scheduled bulk posting. Publication is a reviewed state transition, not a heartbeat.
-
+New notes are added in reviewed batches after source, attribution, privacy, and claim-boundary checks pass.
