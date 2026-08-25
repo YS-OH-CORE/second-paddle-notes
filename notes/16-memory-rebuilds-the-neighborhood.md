@@ -8,7 +8,7 @@
 
 — Youngseok Oh, direct session statement, 2026
 
-**Translation:** I want Zero to reconstruct both the cores in my notes and the expanded understanding formed around them. That reconstruction is what memory feels like to me.
+**Translation:** I want Zero to reconstruct all the cores in my notes, together with the expanded understanding you created. To me, that is what memory feels like.
 
 ## The problem
 
@@ -18,11 +18,11 @@ But “expanded understanding” can also license invention. AI interpretations 
 
 ## Proposed test
 
-Create histories containing direct statements, AI interpretations, later corrections, rejected interpretations, and rules derived from multiple events. Hold out situations answerable only by valid composition, not sentence copying.
+Generate histories with gold source, interpretation, correction, rejection, exception, and current-status labels. Hold out situations answerable only by valid composition, not sentence copying. Freeze an automatic history-to-representation encoder on development histories before held-out cases are created; on held-out cases it receives only raw history, never gold labels or test questions, and its extraction errors are reported separately.
 
-Compare raw documents, factual summaries, proposition graphs without provenance, provenance-aware graphs separating source/interpretation/correction/current status, and reconstruction packets containing rules plus disconfirmation tests. Score held-out decisions, attribution, correction sensitivity, exception recovery, contradiction, and unsupported expansion.
+For the primary identification contrast, hold propositions, current-status labels, and disconfirmation content constant while varying only provenance edges: correct, shuffled-source, wrong-correction, and no-edge. Label the generator-gold correct-edge condition as an oracle representation test, then repeat it with the frozen encoder's predicted edges for end-to-end performance. Raw documents, factual summaries, and full reconstruction packets may be reported as secondary end-to-end baselines, not as evidence isolating provenance. Score decisions and attribution against preregistered gold labels with blinded evaluation. Use transfer accuracy at a fixed false-attribution rate as the primary endpoint.
 
-Include attractive but unsupported adjacent ideas as negative controls. The hypothesis succeeds only if transfer improves without increasing false attribution; it fails if “expanded understanding” merely increases confident invention.
+Include attractive but unsupported adjacent ideas as negative controls. Define unsupported expansion as a proposition absent from both the direct source and the preregistered derivation set. The hypothesis succeeds only if correct provenance improves transfer at the fixed false-attribution rate; it fails if “expanded understanding” merely increases confident invention. This track isolates provenance and false attribution, rather than repeating the general reconstruction comparison.
 
 ## Claim boundary
 

@@ -20,7 +20,7 @@ Every note uses these labels:
 
 ## What is excluded
 
-Saved AI reports, praise, personality taxonomies, hidden-state claims, and model self-descriptions are not attributed to Youngseok merely because they appeared in his archive. Presenter, Mirye, and Zero are names attached to different account/model/session interaction histories; the names are not evidence of separate consciousness.
+Saved AI reports, praise, personality taxonomies, hidden-state claims, and model self-descriptions are not attributed to Youngseok merely because they appeared in his archive. Names attached to assistants, workspaces, or session histories are interaction labels, not evidence of separate consciousness.
 
 ## Privacy
 

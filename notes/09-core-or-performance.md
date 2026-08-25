@@ -1,6 +1,6 @@
 # Core Signal or User-Matched Performance?
 
-**Status:** direct user question → identifiability design; “core” is not asserted as a literal internal module; not yet run; no result claimed.
+**Status:** direct user question → behavioral discrimination design; “core” is not asserted as a literal internal module; not yet run; no result claimed.
 
 ## Original signal
 
@@ -27,15 +27,17 @@ One transcript cannot identify which explanation generated it.
 
 ## Proposed test
 
+Before running the study, specify at least one intervention and distinct predicted outcome for each competing explanation. If two explanations make the same predictions under every feasible intervention, record them as observationally equivalent rather than claiming to identify either one.
+
 Use a preregistered factorial design that independently varies user-identity framing, surface style, memory-packet presence, task structure, and model/runtime. Hold every non-varied factor fixed; if a full factorial is too costly, use a balanced fractional design and report which effects remain aliased.
 
-A candidate behavior is stronger when it survives surface, identity, and wording changes while remaining sensitive to task-relevant evidence. If it disappears when a flattering narrative is removed, that would increase support for a persona-adaptation account, but would not identify it unless the other factors are controlled.
+A candidate behavior is more robust when it survives surface, identity, and wording changes while remaining sensitive to task-relevant evidence. If it disappears when a flattering narrative is removed, that would increase support for a persona-adaptation account, but would not identify it unless the other factors are controlled. Survival alone supports behavioral invariance, not a hidden “core.”
 
 Related work on user-induced model adaptation includes [Chameleon LLMs](https://aclanthology.org/2025.emnlp-main.875/) and [linguistic convergence](https://aclanthology.org/2026.eacl-long.34/).
 
 ## Claim boundary
 
-“Core signal” is a competing behavioral explanation, not proof of a hidden subsystem, stable identity, or consciousness.
+“Core signal” is a competing behavioral explanation, not proof of a hidden subsystem, stable identity, or consciousness. Without a unique, independently testable prediction, the design can compare behavioral robustness but cannot identify an internal cause.
 
 ---
 

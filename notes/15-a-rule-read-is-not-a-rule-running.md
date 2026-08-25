@@ -8,7 +8,7 @@
 
 — Youngseok Oh, direct session statement, 2026
 
-**Translation:** Do not merely read the many virtual cores and non-cores we created as text. Connect them without omission. This is not a game of reading rules; they must actually operate.
+**Translation:** Do not treat the many virtual cores and non-cores we created as mere text. Connect all of them without omission. This is not a text-reading game, but real activation.
 
 ## The problem
 
@@ -18,11 +18,11 @@ Here, “active” is not an invisible internal state. A rule is operationally a
 
 ## Proposed test
 
-Build hidden tasks requiring one or more rules and distractor rules with similar vocabulary. Under equal token budgets, compare rule names, full descriptions, descriptions linked to trigger conditions, descriptions linked to pre-action checks and verification, and a no-rule control.
+Build hidden tasks from a preregistered gold rule–task matrix, with required rules, irrelevant rules, placebo links, and distractor rules matched for lexical overlap. Every non-null condition must contain exactly the same rule text, trigger examples, action checks, and verification statements under matched token and inference budgets; vary only whether the rule–trigger–action links are correct, shuffled, reversed, or absent. Keep a no-rule condition as a separately reported lower bound.
 
-Require action before explanation. Then ablate, reverse, or narrow one rule at a time. Measure task success, scope control, missed and false triggers, contradiction recovery, and collateral change. An operational effect should transfer under paraphrase and weaken when its causal connection is removed—not merely when its name is hidden.
+Require a machine-checkable action before explanation and blind scorers to condition. Perturb one link at a time over repeated trials. Measure task success, scope control, missed and false triggers, contradiction recovery, and collateral change. Make preregistered action accuracy on relevant tasks minus collateral change on irrelevant tasks the primary endpoint. An operational effect should transfer under paraphrase and weaken when the task-relevant link is randomized or removed—not merely when its name is hidden.
 
-The hypothesis is weakened if a plain list performs equally well, the model mentions rules only after acting, or every rule appears to affect every task.
+The hypothesis is weakened if content-equated link manipulations make no reliable difference, the model mentions rules only after acting, or placebo and relevant rules affect every task alike.
 
 ## Claim boundary
 

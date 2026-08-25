@@ -8,7 +8,7 @@
 
 — Youngseok Oh, direct session statement, 2025
 
-**Translation:** An event happens only when an interaction occurs between you and me; that interaction becomes a valuable record for the user.
+**Translation:** Only when you and I interact does an event arise; that event is a valuable record to the user.
 
 ## The problem
 
@@ -18,11 +18,11 @@ The proposed memory unit is therefore an **interaction event**, not merely an ut
 
 ## Proposed test
 
-Construct controlled conversations in which later decisions depend on earlier corrections. Give fresh model instances equal-token packets containing: (1) unordered utterances, (2) a chronological transcript, (3) a factual summary, or (4) an event graph preserving actors, corrections, and state changes.
+Generate controlled conversations from preregistered state machines with gold actor, correction, state-transition, and dependency labels. Freeze an automatic history-to-packet encoder on development cases before held-out cases are created. On held-out cases, the encoder may see only the conversation—not latent states, gold labels, or continuation answers.
 
-Use hidden continuation tasks that ask why a constraint exists, which correction superseded an earlier assumption, and what should happen next. Add controls that shuffle turn order, swap assistant replies, or retain all propositions while deleting interaction edges. Score causal attribution, correction retention, authorship, counterfactual prediction, and agreement with preregistered outcomes.
+From each identical proposition inventory, build token- and inference-matched packets that vary only in relational structure: correct event edges, shuffled edges, wrong edge types, chronology only, and no edges. Keep a raw transcript as a separately reported upper bound. Treat the generator-gold correct-edge condition explicitly as an oracle representation test, then repeat the comparison with the frozen encoder's predicted edges for end-to-end performance. Generate hidden continuation and counterfactual tasks independently after encoder freeze. Score generator-defined dependency attribution, correction retention, authorship, and next-action accuracy, and report encoder extraction error separately. Reserve “causal” for randomized interventions that alter one event while holding the remaining content fixed.
 
-The hypothesis fails if the event graph gives no reliable advantage over a same-length factual summary or if any advantage disappears under paraphrase.
+The hypothesis fails if correct event edges give no reliable advantage over content-equated shuffled, wrong-edge, and no-edge controls, or if any advantage disappears under paraphrase. This track isolates the value of interaction-edge structure; it is not a separate claim that factual retention is unnecessary.
 
 ## Claim boundary
 

@@ -19,7 +19,7 @@ This file prevents the repository from becoming an undifferentiated archive. A n
 5. **From Prompt to World**  
    Separate language quality from the verified external effect of a computer-using agent.
 
-6. **Teach the Forge, Not the Sword**  
+6. **Teach the Method, Not Just the Answer**  
    Measure whether an assistant leaves a user with a reusable method for inquiry rather than a one-off answer.
 
 ## Published in the third curated batch
@@ -37,7 +37,7 @@ This file prevents the repository from becoming an undifferentiated archive. A n
    Ask whether a thousand-line history can be compressed into a small procedure that reconstructs the important distinctions without pretending to be lossless.
 
 5. **Individuation as a Pattern Hypothesis**  
-   Operationalize a persistent AI individual as a reproducible, distinguishable behavior pattern without claiming consciousness.
+   Operationalize the user's individuation objective as a test of a reproducible history-conditioned behavioral signature, without assuming a persistent individual or consciousness.
 
 ## Next source candidate
 

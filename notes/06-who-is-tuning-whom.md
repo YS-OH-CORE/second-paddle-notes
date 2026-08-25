@@ -8,13 +8,13 @@
 
 — Youngseok Oh, original Korean note, 22 July 2026
 
-**Translation:** It may not only be you leaning toward me. I may be leaning toward you. Perhaps all of my records are gradually being tuned to what you can easily receive.
+**Translation:** It is not you leaning toward me; I am leaning toward you. Perhaps all of my records are being fine-tuned to suit your taste.
 
 ## The problem
 
 Personalization is usually framed as the model adapting to the user. A testable concern is that long interaction creates a coupled system: the user also learns which questions, tones, and conceptual shapes produce satisfying model responses. Helpful smoothing may then become representational pressure.
 
-The proposed risk is not simply that a model gives a bad answer. It is a reduction in lexical, syntactic, topical, intensity, or uncertainty variation relative to the person's pre-AI baseline while future inputs become easier for the model to process.
+The proposed risk is not simply that a model gives a bad answer. It is lower lexical, syntactic, topical, intensity, or uncertainty variation relative to a topic-matched unassisted baseline collected before the study—and, where a dated archive exists, an explicitly labeled archival pre-AI comparison—while future inputs become easier for the model to process.
 
 ## Proposed study
 
@@ -22,10 +22,10 @@ Across repeated human–AI sessions, measure both directions:
 
 - how the model's style and decisions adapt to the user,
 - how the user's vocabulary, sentence structure, uncertainty, topic diversity, and request strategy adapt to the model,
-- whether switching to a different model restores suppressed variation,
-- whether access to raw earlier writing reverses convergence.
+- whether switching to a different model changes previously measured variation,
+- whether access to raw earlier writing changes convergence.
 
-The design needs human consent, privacy protection, and a non-clinical interpretation. It should compare AI-assisted trajectories with matched human–human and solo-writing controls.
+The design needs human consent, privacy protection, and a non-clinical interpretation. Randomize or counterbalance assistance mode and model order within participants for task-level outcomes, match topics and editing budgets, and compare AI-assisted trajectories with time-matched human–human and solo-writing controls. Because long-term adaptation may persist across conditions, analyze cumulative trajectories with a preregistered longitudinal model and describe nonrandomized changes as associations, not causal suppression or restoration.
 
 [Human Alignment: How Much Do We Adapt to LLMs?](https://aclanthology.org/2025.acl-short.47/) measured human adaptation to an LLM in a cooperative language game. [Chameleon LLMs](https://aclanthology.org/2025.emnlp-main.875/) measured model-side persona adaptation in controlled simulations. [Human-AI Coevolution](https://arxiv.org/abs/2306.13723) is a broader conceptual framework, not an additional replication of those effects.
 

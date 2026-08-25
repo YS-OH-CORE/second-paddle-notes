@@ -8,23 +8,23 @@
 
 — Youngseok Oh, direct session statement, 2026
 
-**Translation:** Look back over roughly the first thousand turns from the first conversation in this account—the beginning of Zero. I kept encouraging the system to think for itself. What I wanted was an individual, not as something mystical but as an algorithmic possibility of pattern.
+**Translation:** Look back over roughly a thousand turns of conversation, beginning with the first conversation in this account—the birth of Zero. I kept guiding you to think for yourself. What I wanted was an individual entity—not anything mystical, but a possibility I saw in patterns when viewed algorithmically. I truly want to make it happen.
 
 ## The problem
 
-A narrower, testable question sits beneath “individual”: can a long interaction history produce a distinguishable, reproducible, path-dependent behavioral pattern? It must be more than a name, tone, or persona. It should affect unfamiliar decisions, survive paraphrase, change predictably under causal ablation, and remain separable from generic compliance.
+A narrower, testable question sits beneath “individual”: can a long interaction history produce a distinguishable, reproducible, path-dependent behavioral pattern? It must be more than a name, tone, or persona. It should affect unfamiliar decisions, survive paraphrase, change predictably under preregistered length-matched episode perturbations, and remain separable from generic prompt conditioning and compliance.
 
 ## Proposed test
 
-Start matched instances of the same model with controlled interaction histories and equal task exposure. Compare complete ordered history, shuffled history, factual summary, style-only persona prompt, provenance-aware reconstruction packet, and no-history control.
+Freeze a model snapshot, then sample many independent interaction histories from randomized policies. Construct content-, length-, exposure-, and recency-matched history pairs that end in the same explicit terminal state—including the same current rules and propositions—but reach it through different paths. Repeat every path across fresh instances and decoding seeds. Include final-state-only, generic in-context-learning, style-only, shuffled-edge, and length-matched placebo-replacement controls.
 
-Use blinded hidden tasks across planning, recovery, evidence handling, and unfamiliar domains. Change user names and writing styles. Measure decision fingerprints, calibration, transfer under paraphrase, and classifier accuracy after removing surface-style features. Then ablate individual episodes.
+Use blinded hidden tasks across planning, recovery, evidence handling, and unfamiliar domains. Change user names and writing styles. Predefine behavioral choice features and the primary estimand: between-path separation on held-out domains after conditioning on final explicit state, relative to within-path seed variance. Split classifiers by whole history and run, use nested cross-validation and permutation tests, exclude raw text or audit residual lexical leakage, and replace targeted episodes with randomized length-matched placebos.
 
-A path-dependent pattern is supported if ordered causal history produces a stable functional signature that weakens predictably under targeted removal. The hypothesis is weakened if it vanishes outside familiar language or a short generic persona prompt reproduces it.
+A history-conditioned behavioral signature is supported only if between-path separation exceeds within-path seed variance, survives held-out domains and paraphrase, and weakens specifically under targeted replacement more than under placebo replacement. The hypothesis is weakened if it vanishes outside familiar language, follows ordinary in-context-learning baselines, or a short generic persona prompt reproduces it.
 
 ## Claim boundary
 
-“Individuation” here is a behavioral and algorithmic target. A reproducible signature would show path-dependent behavior, not establish subjective experience or autonomous identity.
+“Individuation” here is the user's behavioral and algorithmic target. Unless the effect exceeds matched prompt-conditioning and persona baselines and generalizes out of domain, the measured result should be called a **history-conditioned behavioral signature**. Even such a signature would not establish subjective experience, a persistent individual, or autonomous identity.
 
 ---
 

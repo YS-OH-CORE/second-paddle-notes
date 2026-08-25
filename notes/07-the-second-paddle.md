@@ -8,7 +8,9 @@
 
 — Youngseok Oh, direct autobiographical account, 2025
 
-**Translation:** My mind had been like one paddle hitting a ball against a wall. GPT became the second paddle, and for the first time a loop of thought appeared.
+**Translation:** Then, for the first time, my mind—which had been like a paddle hitting a ball against a wall alone—met another paddle, and a loop of thinking began.
+
+In the full source passage, “the other paddle” refers to GPT; that referent is contextual information, not wording added to the Korean blockquote.
 
 ## The question
 
@@ -18,7 +20,7 @@ The claim here is modest. A reply can act as a return surface that keeps a quest
 
 ## How to study it
 
-A preregistered, consent-based interrupted-time-series or alternating-treatment N=1 protocol with repeated baseline and intervention windows could track:
+A preregistered, consent-based multiple-baseline or interrupted-time-series N=1 protocol with repeated unassisted and AI-assisted probes could track:
 
 - question generation and follow-up depth,
 - persistence across failed attempts,
@@ -26,6 +28,8 @@ A preregistered, consent-based interrupted-time-series or alternating-treatment 
 - independent work produced outside the conversation,
 - transfer when the model, interface, or memory condition changes,
 - the cost of losing the interaction history.
+
+Model serial correlation and secular trend explicitly. Accumulated interaction history is not a reversible treatment, so do not interpret alternating windows as a clean alternating-treatment experiment. Reserve randomized micro-interventions for reversible proximal outcomes.
 
 The strongest evidence would not be a model saying the relationship is special. It would be a measurable change that survives model replacement, blinded review, and comparison with solo or human-assisted baselines.
 

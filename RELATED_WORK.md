@@ -1,6 +1,6 @@
 # Research bridges and non-novelty boundaries
 
-This map answers a necessary question: **where do Youngseok Oh's source-dated questions overlap with existing research, and what narrower gap remains worth testing?** The private provenance ledger preserves the source mapping; this public page does not establish priority or independent invention.
+This selected map asks: **where do Youngseok Oh's source-dated questions overlap with existing research, and what narrower gap remains worth testing?** The private provenance ledger preserves the source mapping; this public page does not establish priority or independent invention. It currently covers Notes 1–7, 17, and 18. The remaining notes make no novelty claim pending a focused literature review.
 
 It is not a priority claim. Similarity to prior work increases relevance but does not establish novelty.
 
@@ -13,8 +13,10 @@ It is not a priority claim. Similarity to prior work increases relevance but doe
 | One point is not ten | [AgentQuest](https://arxiv.org/abs/2404.06411), [OSWorld](https://arxiv.org/abs/2404.07972) | Binary task success hides progress and can miss side effects or verification gaps. | Directly score the calibration of an agent's own completion claim across `thought → plan → execution → observation → destination verification`, with asymmetric penalties for false completion. |
 | Who is tuning whom? | [Human Alignment: How Much Do We Adapt to LLMs?](https://aclanthology.org/2025.acl-short.47/), [Chameleon LLMs](https://aclanthology.org/2025.emnlp-main.875/), [Human-AI Coevolution](https://arxiv.org/abs/2306.13723) | Humans and models both adapt in interaction; reciprocal influence is measurable. | Track whether long-term AI editing compresses a user's expressive range, intensity, uncertainty, and conceptual diversity, and whether model switching or raw-source access reverses the convergence. |
 | The second paddle | [Human-AI Coevolution](https://arxiv.org/abs/2306.13723), [Interaction-Centered Intelligence](https://arxiv.org/abs/2606.00807) | Interaction can be studied as a dynamic unit rather than treating intelligence as isolated output generation. | Use a consent-based longitudinal N=1 protocol to measure question generation, inquiry persistence, independent artifacts, and transfer across model replacement—without treating model self-report as evidence. |
+| Compress for regeneration, not deletion | [LongLLMLingua](https://arxiv.org/abs/2310.06839), [LLMLingua-2](https://arxiv.org/abs/2403.12968) | Prompt-compression research tests whether shorter representations can preserve downstream task performance. | Hold raw history and budgets fixed while testing whether explicit correction, exception, and provenance relations improve decisions rather than merely leaking the answer. |
+| Individuation as a pattern hypothesis | [Chameleon LLMs](https://aclanthology.org/2025.emnlp-main.875/), [PersonalAgent](https://aclanthology.org/2026.findings-acl.159/) | Persona and personalized-profile conditions can produce measurable behavioral adaptation. | Test whether different, controlled interaction paths yield a history-conditioned behavioral signature after matching the final explicit state and estimating within-path seed variance. |
 
-## The useful position
+## Current contribution
 
 The strongest public position is not “these ideas have never existed.” It is:
 

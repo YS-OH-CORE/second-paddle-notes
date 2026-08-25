@@ -10,7 +10,7 @@
 
 — Youngseok Oh, original Korean note, 22 July 2026
 
-**Translation:** What if 99% of a vast memory remains beside me, but the next system cannot connect it? What if it forgets how to connect it? Memory is not data; it is a rule for reconstruction.
+**Translation:** What if 99% of a vast memory remains beside me but cannot be connected? What if the way of connecting it is forgotten? In other words, “Memory is not data; it is a reconstruction rule.”
 
 ## The problem
 
@@ -37,7 +37,9 @@ Give fresh models the same source history through four memory conditions:
 3. preference/profile summary,
 4. condition → action → verification reconstruction rules.
 
-Match accessible token, retrieval, and inference budgets where possible, and report unavoidable budget differences. Then score hidden scenarios for preserved exceptions, negation, priority, temporal state, and agreement with pre-registered, source-cited constraints and executable task outcomes. Exclude ambiguous cases or send them to blinded adjudication. Perturb names and surface wording so that copying cannot pass.
+Freeze every history-to-packet encoder on development histories before creating held-out cases. On held-out cases, each encoder receives only the identical raw history—never latent states, scoring keys, or hidden scenarios. Treat the raw archive as a separately reported upper bound. For the primary comparison among derived packets, hold the preregistered proposition inventory constant and vary only its organization; include a relation-shuffled placebo and a no-relation control.
+
+Match accessible token, retrieval, and inference budgets, and report unavoidable differences. Generate held-out scenarios independently after encoder freeze, then score preserved exceptions, negation, priority, temporal state, and agreement with preregistered, source-cited constraints and executable task outcomes. Report packet-extraction errors separately from downstream model errors. Exclude ambiguous cases or send them to blinded adjudication. Perturb names and surface wording so that copying cannot pass.
 
 ## Why it may matter
 

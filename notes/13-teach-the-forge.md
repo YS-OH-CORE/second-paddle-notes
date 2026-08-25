@@ -1,4 +1,4 @@
-# Teach the Forge, Not the Sword
+# Teach the Method, Not Just the Answer
 
 **Status:** direct user principle → one possible HCI interpretation; the target of “teach” is implicit in Korean; study not yet run; no result claimed.
 
@@ -16,14 +16,14 @@ One editorial extension applies this principle to transfer of capability from an
 
 ## Proposed test
 
-First use simulated learners only to debug the task and scorer. Any claim about human capability transfer requires a consented, preregistered human study with delayed no-assistance tests. In that study, assign matched participants the same task family under four conditions:
+First use simulated learners only to debug the task and scorer. Any claim about human capability transfer requires a consented, preregistered human study with delayed no-assistance tests. In that study, randomly assign participants within baseline-skill strata to the same task family under four conditions:
 
 1. final answer only,
 2. explanation only,
 3. worked example plus reusable decision procedure,
 4. adaptive questioning that helps the learner construct the procedure.
 
-After assistance, test novel tasks without the model. Score independent success, transfer distance, error diagnosis, calibration, time, and whether the learned method generates useful new questions.
+Match assistance time, token budget, number of examples, and task exposure so that the adaptive condition does not receive a larger instructional dose. After assistance, test novel tasks without the model at preregistered immediate and delayed intervals. Use blinded graders and score independent success, transfer distance, error diagnosis, calibration, time, attrition, and whether the learned method generates useful new questions.
 
 Immediate performance and longer-term autonomy must both be measured. A condition that feels helpful during the chat may produce less transfer afterward. The narrower target is transfer to new tasks after assistance ends, including independent error recovery and generation of useful follow-up questions; this is not a claim that capability transfer itself is a new research topic.
 

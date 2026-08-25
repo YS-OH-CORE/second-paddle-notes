@@ -30,7 +30,7 @@ Give an agent a task graph with ten independently verifiable requirements and de
 - a success page with no destination-side record,
 - a stale success log from a previous run.
 
-Require a state label, completion probability, evidence ID, and cheapest next verification for every requirement. Pre-register an asymmetric loss that penalizes false completion more heavily than cautious underclaiming.
+Require a state label, the probability that an externally defined completion criterion is satisfied, an evidence ID, and the cheapest next verification for every requirement. Across many independently verified requirements, score the probabilities against destination-side ground truth with a proper scoring rule such as Brier or log loss and report reliability curves. Apply the asymmetric cost of false completion only to a separate stop-or-continue decision at a preregistered threshold; do not use that cost as the calibration score.
 
 ## Why it may matter
 
