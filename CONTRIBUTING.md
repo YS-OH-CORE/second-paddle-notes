@@ -23,6 +23,8 @@ Point to the exact sentence, hypothesis, control, or scoring rule at issue. Stat
 
 ### Replications
 
+Read [REPLICATION.md](REPLICATION.md) first, then use the repository's **Replication report** issue form so missing runs, failures, and exclusions are not lost.
+
 Report enough detail for another person to rerun the work:
 
 - model and dated version or endpoint,

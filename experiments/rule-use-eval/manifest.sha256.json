@@ -2,9 +2,9 @@
   "algorithm": "sha256",
   "files": [
     {
-      "bytes": 890,
+      "bytes": 1257,
       "path": ".github/workflows/rule-use-eval.yml",
-      "sha256": "4fc4e4a9a7a120adf663dd7d235a682b5a200c0c62007088b7c25956aab8a08a"
+      "sha256": "138b380bfffb455867ae5fdf095f46938f31a5298026ba1c7fa73ffd01c99d4a"
     },
     {
       "bytes": 20,
@@ -12,9 +12,14 @@
       "sha256": "63eddd28d1afe2b03909e48eb4624f3767e0c986b61b901c50eeed802ed01ac6"
     },
     {
-      "bytes": 6089,
+      "bytes": 19807,
+      "path": "experiments/rule-use-eval/MODEL_EVALUATION_PROTOCOL.md",
+      "sha256": "12a39ae0f210c22e280f7e790d10b00df4a6c324318bca910140110539e82aba"
+    },
+    {
+      "bytes": 6951,
       "path": "experiments/rule-use-eval/README.md",
-      "sha256": "e9eb71e757e8e94fd38c39c771882820050032b2732c03ba6ef16355a3cce3b0"
+      "sha256": "2321bf98f03c72eeff7a6198aa4722c71376e7b8887f3cfe2526572e3fd7f98c"
     },
     {
       "bytes": 8343,
@@ -35,6 +40,81 @@
       "bytes": 1966,
       "path": "experiments/rule-use-eval/generate_manifest.py",
       "sha256": "2b706168f81b282b5f286f2d15f6ac9d176af76007f4357bdd6d25e2d3874c93"
+    },
+    {
+      "bytes": 23,
+      "path": "experiments/rule-use-eval/model_eval/.gitignore",
+      "sha256": "6feaded4e28ea86e001a6751b4e3d960e8b7c31b9616ff9936b79297086e809b"
+    },
+    {
+      "bytes": 6315,
+      "path": "experiments/rule-use-eval/model_eval/README.md",
+      "sha256": "d2f86e516d638cf3517b9fa17c099555b79b979660412ef57c45f0762aaf21aa"
+    },
+    {
+      "bytes": 1188,
+      "path": "experiments/rule-use-eval/model_eval/artifacts/public-smoke.bundle-manifest.json",
+      "sha256": "39b02faa919f46806bb64c59d7968bef2a8322dd5a3a898563da6193740a3a92"
+    },
+    {
+      "bytes": 9552,
+      "path": "experiments/rule-use-eval/model_eval/artifacts/public-smoke.evaluator-mapping.jsonl",
+      "sha256": "0b1fc7e71415a3f496f7755e7e7915f3c02bb4b84cb6ad62b8249b2f7da8e043"
+    },
+    {
+      "bytes": 66824,
+      "path": "experiments/rule-use-eval/model_eval/artifacts/public-smoke.requests.jsonl",
+      "sha256": "74fb58280901d59a95ee31e507a51f11b6d37e03ac20591be02218c4ddef4d86"
+    },
+    {
+      "bytes": 19036,
+      "path": "experiments/rule-use-eval/model_eval/build_bundle.py",
+      "sha256": "37f347b2622a145e7ae84f66f5a58eb9dd7e21a9d59228e49abaf468d6af60b6"
+    },
+    {
+      "bytes": 2793,
+      "path": "experiments/rule-use-eval/model_eval/common.py",
+      "sha256": "b80ab6417d6a7d04f7ddc872d53e793804cc1dd943fe2f8d9a9adb6511f729d2"
+    },
+    {
+      "bytes": 4760,
+      "path": "experiments/rule-use-eval/model_eval/make_mock_responses.py",
+      "sha256": "0ab12b2abc1fe30a498393700e092ebbe411de17aa388b10e178d68b6e805884"
+    },
+    {
+      "bytes": 9004,
+      "path": "experiments/rule-use-eval/model_eval/parse_responses.py",
+      "sha256": "f899044e71afa453df06963c16097d085a8695904186ce3a1188ed3949ae1256"
+    },
+    {
+      "bytes": 3663,
+      "path": "experiments/rule-use-eval/model_eval/results/public-smoke-mock.metrics.json",
+      "sha256": "bc2e4979f687475c74427ef55d93d64547b785437aadbc406eab2cf4424c668a"
+    },
+    {
+      "bytes": 23272,
+      "path": "experiments/rule-use-eval/model_eval/results/public-smoke-mock.parsed.jsonl",
+      "sha256": "8ec586aab6e4dc68dfdd9a4cd387b7ba6161f122d5316f38912793480d2cbebf"
+    },
+    {
+      "bytes": 12916,
+      "path": "experiments/rule-use-eval/model_eval/results/public-smoke-mock.raw.jsonl",
+      "sha256": "9af91f1d2049a3331296ab54ce1a71fc008616eff1105946b1f40afee4142f1e"
+    },
+    {
+      "bytes": 3310,
+      "path": "experiments/rule-use-eval/model_eval/run_public_smoke_dry_run.py",
+      "sha256": "37a4ddb07c97312c16aaf584754de35a405d8daef7fe642b876a1f30e4171981"
+    },
+    {
+      "bytes": 17260,
+      "path": "experiments/rule-use-eval/model_eval/score_model_eval.py",
+      "sha256": "f0ab76623e22f8eef117bf01764e5948fd92b559251480be9c7ec6d4184b124b"
+    },
+    {
+      "bytes": 18984,
+      "path": "experiments/rule-use-eval/model_eval/tests/test_model_eval.py",
+      "sha256": "596c16ab196a8d4a3e5b7bfb2cb9ff27dc3f6e9fdedeccbc155cc0cff72c4288"
     },
     {
       "bytes": 1334,

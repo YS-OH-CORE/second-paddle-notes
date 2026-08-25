@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Read the replication guide
+    url: https://github.com/YS-OH-CORE/second-paddle-notes/blob/main/REPLICATION.md
+    about: Check the minimum evidence, privacy, and rights requirements before reporting a rerun.
+  - name: Read the contribution policy
+    url: https://github.com/YS-OH-CORE/second-paddle-notes/blob/main/CONTRIBUTING.md
+    about: Review source, authorship, evidence-label, and public-safety boundaries.

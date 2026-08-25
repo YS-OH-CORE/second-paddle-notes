@@ -6,7 +6,7 @@
 
 **Source-separated evaluation designs for memory reconstruction, semantic fidelity, agent reliability, and discovery before naming.**
 
-**Published here:** evaluation designs, source-separated hypotheses, and one deterministic public smoke harness. **Not yet published here:** language-model benchmark results.
+**Published here:** evaluation designs, source-separated hypotheses, one deterministic public smoke harness, and offline preparation tooling for a future model study. **Not yet published here:** language-model benchmark results or an external replication.
 
 Original questions and reflections by **Youngseok Oh**. Edited and operationalized with **Zero**, the name Youngseok uses for his continuing Codex workspace and collaboration process. This is independent work using OpenAI Codex; it is not reviewed or endorsed by OpenAI.
 
@@ -72,13 +72,15 @@ Notes 1, 14, 16, and 17 are one evaluation family, not four independent discover
 
 - **Published:** 18 source-separated evaluation designs.
 - **Executable public artifact:** 1 rule-use serialization and scoring smoke harness, with 40 public cases and 2 deterministic program fixtures.
+- **Model-study preparation:** 1 claim-bearing protocol plus an offline request/parser/scoring dry run; no provider integration and no model or API call.
 - **Published language-model benchmark runs:** 0.
 - **Published model-performance results:** 0.
+- **Independently submitted or verified external replications:** 0.
 - **Next milestone:** freeze a claim-bearing hidden set and preregister its scoring, run repeated trials on dated model versions, then release cases and raw outputs after evaluation.
 
 The completion notes test two different failures: **Note 5** asks whether an agent reports partial progress honestly across many requirements; **Note 12** asks how deep the evidence goes from a model's claim to a destination-side readback.
 
-See [RELATED_WORK.md](RELATED_WORK.md) for primary research bridges and explicit non-novelty boundaries, [QUEUE.md](QUEUE.md) for publication criteria and next test candidates, [CONTRIBUTING.md](CONTRIBUTING.md) for critique and replication guidance, and [CITATION.cff](CITATION.cff) for citation metadata.
+See [RELATED_WORK.md](RELATED_WORK.md) for primary research bridges and explicit non-novelty boundaries, [QUEUE.md](QUEUE.md) for publication criteria and next test candidates, [REPLICATION.md](REPLICATION.md) for the minimum external-evidence package, [CONTRIBUTING.md](CONTRIBUTING.md) for critique and replication guidance, and [CITATION.cff](CITATION.cff) for citation metadata.
 
 ## 한국어 소개
 

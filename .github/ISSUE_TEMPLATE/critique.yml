@@ -1,0 +1,99 @@
+name: Critique
+description: Challenge a specific claim, control, scoring rule, or evidence label.
+title: "[Critique] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for trying to make this work easier to falsify. Point to an exact public target and separate observed evidence from interpretation. Do not include secrets, private logs, or material you lack permission to share.
+
+  - type: dropdown
+    id: critique_type
+    attributes:
+      label: Type of critique
+      options:
+        - Logical or internal consistency
+        - Experimental design or control
+        - Scoring or statistics
+        - Terminology or prior work
+        - Evidence status or overclaim
+        - Privacy, security, or rights
+        - Reproducibility
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: target
+    attributes:
+      label: Exact public target
+      description: Link to the note, file, line, commit, release, case, or metric being challenged.
+      placeholder: "https://github.com/YS-OH-CORE/second-paddle-notes/blob/<commit>/<path>#L10"
+    validations:
+      required: true
+
+  - type: textarea
+    id: claim
+    attributes:
+      label: Claim or procedure under critique
+      description: Paraphrase it, or quote only the minimum necessary and preserve attribution.
+      placeholder: "The repository states or operationalizes..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What fails, and under what conditions?
+      description: State the concrete error, missing control, confound, counterexample, or rights concern. Distinguish observation from inference.
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence or counterexample
+      description: Provide public sources, calculations, raw observations, or a minimal counterexample. Say what remains unverified.
+    validations:
+      required: true
+
+  - type: textarea
+    id: discriminating_test
+    attributes:
+      label: Cheapest test that could settle this
+      description: Describe a result that would count against your critique as well as one that would support it.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: evidence_status
+    attributes:
+      label: Current evidence status
+      options:
+        - Directly observed and publicly inspectable
+        - Reproduced by me but not independently checked
+        - Inferred from cited evidence
+        - Proposed test only
+        - Unverified concern
+    validations:
+      required: true
+
+  - type: textarea
+    id: conflicts
+    attributes:
+      label: Relevant relationship or assistance
+      description: Disclose author or maintainer assistance, affiliation, competing work, or write "None known."
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: safeguards
+    attributes:
+      label: Public-submission safeguards
+      options:
+        - label: I removed credentials, private data, non-public session content, and identifying information about third parties.
+          required: true
+        - label: I created this material or have the right to share it, and any quotation is minimal and attributed.
+          required: true
+        - label: I have not presented model self-report, a screenshot alone, or a selected success as independent evidence.
+          required: true

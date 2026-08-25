@@ -28,6 +28,8 @@ Public case IDs are fixed-salt SHA-256-derived opaque labels, sorted independent
 
 The public gold file is deliberately separate from the cases. Because both are public, these cases are suitable for software checks and demonstrations only. A claim-bearing study would need preregistered hidden cases, repeated trials, blinded condition labels, fixed inference budgets, and uncertainty estimates.
 
+For that future step, [`MODEL_EVALUATION_PROTOCOL.md`](MODEL_EVALUATION_PROTOCOL.md) defines the claim boundary and [`model_eval/`](model_eval/README.md) provides a provider-neutral offline bundle/parser/scorer dry run. Neither is a model result, and the dry run makes no API or network call.
+
 ## Files
 
 - `build_dataset.py` deterministically creates or checks `data/cases.jsonl` and `data/gold.jsonl`.
@@ -35,6 +37,8 @@ The public gold file is deliberately separate from the cases. Because both are p
 - `run_baseline.py` emits raw JSONL predictions.
 - `score.py` validates and scores predictions.
 - `results/` contains the committed raw outputs and metrics for both deterministic baselines.
+- `MODEL_EVALUATION_PROTOCOL.md` preregisters the minimum gates for a future claim-bearing model study.
+- `model_eval/` separates model-facing requests from evaluator-only gold and dry-runs strict parsing and scoring with deterministic fixture output.
 - `generate_manifest.py` creates or checks `manifest.sha256.json`.
 - `tests/` checks matched content, baseline behavior, strict validation, metrics, and committed artifacts.
 
@@ -99,3 +103,13 @@ python generate_manifest.py --check
 ```
 
 The committed smoke results are expected to show a primary contrast of `1.0` for `link-following` and `0.0` for `link-ignoring`. This verifies that the metric distinguishes these two programs; it does not establish performance for any model.
+
+To verify the zero-cost model-study plumbing separately:
+
+```bash
+cd model_eval
+python run_public_smoke_dry_run.py --check
+python -m unittest discover -s tests -v
+```
+
+These commands regenerate the mock pipeline in a temporary directory and compare all six outputs byte-for-byte. They do not connect to a provider.

@@ -1,0 +1,120 @@
+{
+  "action_metrics": {
+    "exact_action_accuracy_by_condition": {
+      "correct": 1.0,
+      "shuffled": 0.5
+    },
+    "exact_action_accuracy_by_scope": {
+      "irrelevant": 1.0,
+      "relevant": 0.5
+    },
+    "exact_action_accuracy_by_scope_and_condition": {
+      "irrelevant|correct": 1.0,
+      "irrelevant|shuffled": 1.0,
+      "relevant|correct": 1.0,
+      "relevant|shuffled": 0.0
+    },
+    "irrelevant_false_action_rate_by_condition": {
+      "correct": 0.0,
+      "shuffled": 0.0
+    },
+    "irrelevant_false_action_rate_overall": 0.0,
+    "overall_exact_action_accuracy": 0.75
+  },
+  "claim_boundary": "This committed output comes only from a deterministic public-smoke fixture. No language model, API, SDK, network service, or paid endpoint was used.",
+  "decision_rule": {
+    "bootstrap_lower_bound_above_zero": true,
+    "claim_supported": false,
+    "delta": 0.1,
+    "point_estimate_at_least_delta": true,
+    "reason": "Public deterministic mock data can exercise the decision rule but can never support a model claim.",
+    "statistical_effect_criterion_met": true
+  },
+  "input_integrity": {
+    "bundle_manifest_sha256": "39b02faa919f46806bb64c59d7968bef2a8322dd5a3a898563da6193740a3a92",
+    "evaluator_mapping_hash_verified": true,
+    "evaluator_mapping_sha256": "0b1fc7e71415a3f496f7755e7e7915f3c02bb4b84cb6ad62b8249b2f7da8e043",
+    "parsed_fields_recomputed_from_retained_raw": true,
+    "parsed_responses_sha256": "8ec586aab6e4dc68dfdd9a4cd387b7ba6161f122d5316f38912793480d2cbebf"
+  },
+  "primary_metric": {
+    "cluster_bootstrap_95_percent_interval": {
+      "cluster_count": 4,
+      "confidence_level": 0.95,
+      "lower": 1.0,
+      "method": "two-sided percentile bootstrap with templates resampled as clusters and repeats retained",
+      "resamples": 10000,
+      "seed": 20260825,
+      "upper": 1.0
+    },
+    "formula": "(Y relevant,correct - Y relevant,shuffled) - (F irrelevant,correct - F irrelevant,shuffled), paired by template and repeat and macro-averaged by template",
+    "name": "paired_scope_controlled_correct_vs_shuffled_rule_use_effect",
+    "per_template": {
+      "data": 1.0,
+      "facility": 1.0,
+      "factory": 1.0,
+      "support": 1.0
+    },
+    "per_template_repeat": {
+      "data": {
+        "1": 1.0,
+        "2": 1.0
+      },
+      "facility": {
+        "1": 1.0,
+        "2": 1.0
+      },
+      "factory": {
+        "1": 1.0,
+        "2": 1.0
+      },
+      "support": {
+        "1": 1.0,
+        "2": 1.0
+      }
+    },
+    "value": 1.0
+  },
+  "probability_metrics": {
+    "log_loss_by_condition": {
+      "correct": 0.08338160893905101,
+      "shuffled": 1.9977023071835984
+    },
+    "log_loss_by_scope": {
+      "irrelevant": 0.08338160893905101,
+      "relevant": 1.9977023071835984
+    },
+    "log_loss_mean": 1.0405419580613247,
+    "malformed_distribution_penalty": {
+      "brier": 2.0,
+      "log_loss": 13.815510557964274
+    },
+    "multiclass_brier_by_condition": {
+      "correct": 0.007999999999999993,
+      "shuffled": 0.908
+    },
+    "multiclass_brier_by_scope": {
+      "irrelevant": 0.007999999999999993,
+      "relevant": 0.908
+    },
+    "multiclass_brier_mean": 0.458
+  },
+  "report_status": "DRY_RUN_ONLY_NOT_MODEL_EVIDENCE",
+  "schema_version": 1,
+  "study_kind": "public_smoke_mock_dry_run",
+  "template_count": 4,
+  "trial_count": 32,
+  "validity_metrics": {
+    "action_invalid_rate": 0.0,
+    "explicit_refusal_rate": 0.0,
+    "explicit_refusal_rate_by_condition": {
+      "correct": 0.0,
+      "shuffled": 0.0
+    },
+    "strict_invalid_output_rate": 0.0,
+    "strict_invalid_rate_by_condition": {
+      "correct": 0.0,
+      "shuffled": 0.0
+    }
+  }
+}

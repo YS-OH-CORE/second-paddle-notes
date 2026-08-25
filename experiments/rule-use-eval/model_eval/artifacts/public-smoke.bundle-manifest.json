@@ -1,0 +1,28 @@
+{
+  "artifact": "provider-neutral separated model-evaluation bundle",
+  "claim_boundary": "A study_kind label does not make a run claim-bearing. The frozen hidden-set, preregistration, leakage audit, model identity, raw-release, and stop-condition requirements in ../MODEL_EVALUATION_PROTOCOL.md still apply.",
+  "evaluator_bundle": {
+    "file": "public-smoke.evaluator-mapping.jsonl",
+    "runner_must_not_receive": true,
+    "sha256": "0b1fc7e71415a3f496f7755e7e7915f3c02bb4b84cb6ad62b8249b2f7da8e043"
+  },
+  "order_seed": 20260825,
+  "order_seed_sha256": "fb58a6f531bff246d99ef07d6688c7c8dcdc76ceb5d612e4e91f537458b14484",
+  "primary_conditions": [
+    "correct",
+    "shuffled"
+  ],
+  "repeats_per_cell": 2,
+  "runner_bundle": {
+    "contains_evaluator_metadata": false,
+    "file": "public-smoke.requests.jsonl",
+    "sha256": "74fb58280901d59a95ee31e507a51f11b6d37e03ac20591be02218c4ddef4d86"
+  },
+  "schema_version": 1,
+  "source": {
+    "cases_sha256": "0bc877906ec50cceda14d7f993b482f7f8de162c98e4193c8457f130decaa821",
+    "gold_sha256": "98d2db51340cd7ec6db2109be1430f4a9f70c3a6d51b7179520c199d6c45a098"
+  },
+  "study_kind": "public_smoke_mock_dry_run",
+  "trial_count": 32
+}
