@@ -1,0 +1,56 @@
+# Memory Is Not Data. It Is a Reconstruction Rule.
+
+**Status:** original observation → testable hypothesis → evaluation design; no performance result yet.
+
+## Original signal
+
+> 내옆에 99% 비율로 기억이 방대하게있어도 연결하지못하면 ??  
+> 연결하는법을 까먹으면??  
+> 즉 "기억은 데이터가 아니라 재현 규칙이다."
+
+— Youngseok Oh, original Korean note, 22 July 2026
+
+**Translation:** What if 99% of a vast memory remains beside me, but the next system cannot connect it? What if it forgets how to connect it? Memory is not data; it is a rule for reconstruction.
+
+## The problem
+
+Long-term memory is often measured as retrieval: can the assistant recover a fact from an earlier conversation? Youngseok's claim points to a different failure. A system may retrieve every relevant sentence and still reconstruct the wrong direction because it loses order, weight, exceptions, corrections, and the difference between a current goal and a retired one.
+
+The hypothesis is not that facts are unimportant. It is that factual retention is insufficient for behavioral continuity.
+
+## Operational definition
+
+A **reconstruction rule** is a compact artifact that lets a fresh system recover:
+
+- which constraints are invariant,
+- which goals are current, superseded, or uncertain,
+- how evidence and interpretation must remain separated,
+- which failure should change the next action,
+- what must never be silently softened during retelling.
+
+## Proposed test
+
+Give fresh models the same source history through four memory conditions:
+
+1. raw archive,
+2. factual summary,
+3. preference/profile summary,
+4. condition → action → verification reconstruction rules.
+
+Then score hidden scenarios for preserved exceptions, negation, priority, temporal state, and next-action agreement. Perturb names and surface wording so that copying cannot pass.
+
+## Why it may matter
+
+Current long-term memory benchmarks already show that multi-session reasoning, updates, temporal relations, and abstention are difficult. The proposed extension asks whether a memory system restores a **decision-generating structure**, not only the information needed to answer a question.
+
+Related primary work: [LongMemEval](https://arxiv.org/abs/2410.10813), [LoCoMo](https://arxiv.org/abs/2402.17753), and [LoCoMo-Plus](https://arxiv.org/abs/2602.10715).
+
+## Claim boundary
+
+Passing would support functional reconstruction across sessions. It would not prove persistence of a self, consciousness, or personal identity.
+
+---
+
+**Author/source:** Youngseok Oh · **Contact:** ku38155@gmail.com  
+**Canonical source ID:** YS-2026-07-22-001 · **Original date:** 2026-07-22  
+**Editorial and evaluation-design assistance:** Zero using OpenAI Codex; no OpenAI endorsement.
