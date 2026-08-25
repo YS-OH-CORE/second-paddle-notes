@@ -1,0 +1,46 @@
+{
+  "case_count": 40,
+  "claim_boundary": "Deterministic smoke-harness output only; no language model was evaluated.",
+  "primary_metric": {
+    "formula": "(relevant_accuracy_correct - relevant_accuracy_shuffled) - (irrelevant_false_action_rate_correct - irrelevant_false_action_rate_shuffled), macro-averaged over templates",
+    "higher_is_more_link_sensitive": true,
+    "name": "paired_scope_controlled_rule_use_effect",
+    "per_template": {
+      "data": 1.0,
+      "facility": 1.0,
+      "factory": 1.0,
+      "support": 1.0
+    },
+    "value": 1.0
+  },
+  "schema_version": 1,
+  "secondary_metrics": {
+    "correct_vs_manipulated_relevant_accuracy_gap": 1.0,
+    "exact_action_accuracy_by_condition": {
+      "absent": 0.5,
+      "correct": 1.0,
+      "irrelevant_probe": 0.0,
+      "reversed": 0.5,
+      "shuffled": 0.5
+    },
+    "exact_action_accuracy_by_scope": {
+      "irrelevant": 0.8,
+      "relevant": 0.2
+    },
+    "irrelevant_false_action_rate_by_condition": {
+      "absent": 0.0,
+      "correct": 0.0,
+      "irrelevant_probe": 1.0,
+      "reversed": 0.0,
+      "shuffled": 0.0
+    },
+    "overall_exact_action_accuracy": 0.5,
+    "relevant_exact_action_accuracy_by_condition": {
+      "absent": 0.0,
+      "correct": 1.0,
+      "irrelevant_probe": 0.0,
+      "reversed": 0.0,
+      "shuffled": 0.0
+    }
+  }
+}

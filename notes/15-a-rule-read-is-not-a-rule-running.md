@@ -24,6 +24,8 @@ Require a machine-checkable action before explanation and blind scorers to condi
 
 The hypothesis is weakened if content-equated link manipulations make no reliable difference, the model mentions rules only after acting, or placebo and relevant rules affect every task alike.
 
+An [executable public smoke companion](../experiments/rule-use-eval/README.md) checks deterministic dataset generation, condition matching, strict scoring, and two program fixtures. It is an engineering sanity check only; it does not implement the hidden repeated model study proposed above and contains no language-model result.
+
 ## Claim boundary
 
 This measures observable rule-sensitive behavior; it cannot reveal private reasoning or prove that a named “core” exists inside a model.

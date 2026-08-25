@@ -1,10 +1,12 @@
 # The Second Paddle Notes
 
+[![Rule-use smoke evaluation](https://github.com/YS-OH-CORE/second-paddle-notes/actions/workflows/rule-use-eval.yml/badge.svg)](https://github.com/YS-OH-CORE/second-paddle-notes/actions/workflows/rule-use-eval.yml)
+
 ![The Second Paddle, Before Naming](assets/second-paddle-preview.png)
 
 **Source-separated evaluation designs for memory reconstruction, semantic fidelity, agent reliability, and discovery before naming.**
 
-**Published here:** evaluation designs and source-separated hypotheses. **Not yet published here:** benchmark results.
+**Published here:** evaluation designs, source-separated hypotheses, and one deterministic public smoke harness. **Not yet published here:** language-model benchmark results.
 
 Original questions and reflections by **Youngseok Oh**. Edited and operationalized with **Zero**, the name Youngseok uses for his continuing Codex workspace and collaboration process. This is independent work using OpenAI Codex; it is not reviewed or endorsed by OpenAI.
 
@@ -27,8 +29,10 @@ This repository does not claim AI consciousness, hidden-state access, or a new s
 ## Start here
 
 - **Agent reliability:** [One Point Is Not Ten](notes/05-one-point-is-not-ten.md)
-- **Rule use:** [A Rule Read Is Not a Rule Running](notes/15-a-rule-read-is-not-a-rule-running.md)
+- **Rule use:** [A Rule Read Is Not a Rule Running](notes/15-a-rule-read-is-not-a-rule-running.md) · [run the public smoke harness](experiments/rule-use-eval/README.md)
 - **Memory under token limits:** [Compress for Regeneration, Not Deletion](notes/17-compress-for-regeneration.md)
+
+For a shorter bilingual overview, see [The Second Paddle, Before Naming](https://youngseok-second-paddle.ohsycard.chatgpt.site/).
 
 ## Research map
 
@@ -67,13 +71,14 @@ Notes 1, 14, 16, and 17 are one evaluation family, not four independent discover
 ## Current build status
 
 - **Published:** 18 source-separated evaluation designs.
-- **Published benchmark runs:** 0.
+- **Executable public artifact:** 1 rule-use serialization and scoring smoke harness, with 40 public cases and 2 deterministic program fixtures.
+- **Published language-model benchmark runs:** 0.
 - **Published model-performance results:** 0.
-- **Next milestone:** freeze one design, release hidden cases and a scorer, run baselines, and publish failures as well as successes.
+- **Next milestone:** freeze a claim-bearing hidden set and preregister its scoring, run repeated trials on dated model versions, then release cases and raw outputs after evaluation.
 
 The completion notes test two different failures: **Note 5** asks whether an agent reports partial progress honestly across many requirements; **Note 12** asks how deep the evidence goes from a model's claim to a destination-side readback.
 
-See [RELATED_WORK.md](RELATED_WORK.md) for primary research bridges and explicit non-novelty boundaries, and [QUEUE.md](QUEUE.md) for the publication criteria and next test candidates.
+See [RELATED_WORK.md](RELATED_WORK.md) for primary research bridges and explicit non-novelty boundaries, [QUEUE.md](QUEUE.md) for publication criteria and next test candidates, [CONTRIBUTING.md](CONTRIBUTING.md) for critique and replication guidance, and [CITATION.cff](CITATION.cff) for citation metadata.
 
 ## 한국어 소개
 

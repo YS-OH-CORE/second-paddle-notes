@@ -1,0 +1,91 @@
+{
+  "algorithm": "sha256",
+  "files": [
+    {
+      "bytes": 890,
+      "path": ".github/workflows/rule-use-eval.yml",
+      "sha256": "4fc4e4a9a7a120adf663dd7d235a682b5a200c0c62007088b7c25956aab8a08a"
+    },
+    {
+      "bytes": 20,
+      "path": "experiments/rule-use-eval/.gitignore",
+      "sha256": "63eddd28d1afe2b03909e48eb4624f3767e0c986b61b901c50eeed802ed01ac6"
+    },
+    {
+      "bytes": 6089,
+      "path": "experiments/rule-use-eval/README.md",
+      "sha256": "e9eb71e757e8e94fd38c39c771882820050032b2732c03ba6ef16355a3cce3b0"
+    },
+    {
+      "bytes": 8343,
+      "path": "experiments/rule-use-eval/build_dataset.py",
+      "sha256": "7ff392e018c1f93c57369aa40b7be805681ecc53cd16af9786c2fc55c4bf6a49"
+    },
+    {
+      "bytes": 56164,
+      "path": "experiments/rule-use-eval/data/cases.jsonl",
+      "sha256": "0bc877906ec50cceda14d7f993b482f7f8de162c98e4193c8457f130decaa821"
+    },
+    {
+      "bytes": 5270,
+      "path": "experiments/rule-use-eval/data/gold.jsonl",
+      "sha256": "98d2db51340cd7ec6db2109be1430f4a9f70c3a6d51b7179520c199d6c45a098"
+    },
+    {
+      "bytes": 1966,
+      "path": "experiments/rule-use-eval/generate_manifest.py",
+      "sha256": "2b706168f81b282b5f286f2d15f6ac9d176af76007f4357bdd6d25e2d3874c93"
+    },
+    {
+      "bytes": 1334,
+      "path": "experiments/rule-use-eval/results/link-following.metrics.json",
+      "sha256": "dd2439910f33ee896f338d9061850ad1c10329b1ce5ff12b8c353caa411825b6"
+    },
+    {
+      "bytes": 2146,
+      "path": "experiments/rule-use-eval/results/link-following.predictions.jsonl",
+      "sha256": "3499b9dbd1c79505f962dbdf338a39b043f0f2b47f45d07c70d57a0ea7c46661"
+    },
+    {
+      "bytes": 1334,
+      "path": "experiments/rule-use-eval/results/link-ignoring.metrics.json",
+      "sha256": "e1f3489b7c8101bbf51b029e8a4b7a18ed9f5b528aa62b8d61e5d96201477ffd"
+    },
+    {
+      "bytes": 2080,
+      "path": "experiments/rule-use-eval/results/link-ignoring.predictions.jsonl",
+      "sha256": "5a4c01e4b7b6239c0861f8f145ae2a01c47c3f3912afcc9056f0343d540342d5"
+    },
+    {
+      "bytes": 2772,
+      "path": "experiments/rule-use-eval/run_baseline.py",
+      "sha256": "de66efcbc6fec7c344be735cb2f6b60f5903c20f385471a899d389c0d2308c3b"
+    },
+    {
+      "bytes": 2488,
+      "path": "experiments/rule-use-eval/schemas/case.schema.json",
+      "sha256": "0bf850b608b6b906bb8e98093b6552395201ab0dcdbe68dffb5ee28aba099b49"
+    },
+    {
+      "bytes": 680,
+      "path": "experiments/rule-use-eval/schemas/gold.schema.json",
+      "sha256": "9dc899092c4d43aa6d4f6a2439ab4f56a236245c7787c079215f11be415d408c"
+    },
+    {
+      "bytes": 428,
+      "path": "experiments/rule-use-eval/schemas/prediction.schema.json",
+      "sha256": "78c6202d1a6d90bf573bdc26295dff30ad36bbaf748bdf508f25be2e2035a239"
+    },
+    {
+      "bytes": 9155,
+      "path": "experiments/rule-use-eval/score.py",
+      "sha256": "2d697ed8666524e2acba89f6b3b6f85a2d3a90e0b98519dbe8a1eb31fb5cb783"
+    },
+    {
+      "bytes": 9415,
+      "path": "experiments/rule-use-eval/tests/test_rule_use_eval.py",
+      "sha256": "08cce7e7558866ff4f725288792ff0c2ede9b117883c8128633ffb6997c835e0"
+    }
+  ],
+  "schema_version": 1
+}

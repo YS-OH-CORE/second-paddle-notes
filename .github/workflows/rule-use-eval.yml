@@ -1,0 +1,34 @@
+name: Rule-use smoke evaluation
+
+on:
+  push:
+    paths:
+      - "experiments/rule-use-eval/**"
+      - ".github/workflows/rule-use-eval.yml"
+  pull_request:
+    paths:
+      - "experiments/rule-use-eval/**"
+      - ".github/workflows/rule-use-eval.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check generated dataset
+        working-directory: experiments/rule-use-eval
+        run: python build_dataset.py --check
+      - name: Run unit tests
+        working-directory: experiments/rule-use-eval
+        run: python -m unittest discover -s tests -v
+      - name: Check SHA-256 manifest
+        working-directory: experiments/rule-use-eval
+        run: python generate_manifest.py --check
+
