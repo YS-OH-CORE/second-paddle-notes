@@ -22,19 +22,27 @@ This file prevents the repository from becoming an undifferentiated archive. A n
 6. **Teach the Forge, Not the Sword**  
    Measure whether an assistant leaves a user with a reusable method for inquiry rather than a one-off answer.
 
-## Next source candidates
+## Published in the third curated batch
 
-1. **A Rule List Is Not an Active System**  
+1. **The Interaction Is the Event**  
+   Test whether a memory representation should preserve corrections and state changes between messages, not only message content.
+
+2. **A Rule Read Is Not a Rule Running**  
    Test whether a long instruction actually changes decisions across hidden cases instead of merely being quoted back.
 
-2. **Compression as a Generative Structure**  
+3. **Memory Rebuilds the Neighborhood**  
+   Preserve relational understanding while preventing AI interpretations from being attributed to the user.
+
+4. **Compress for Regeneration, Not Deletion**  
    Ask whether a thousand-line history can be compressed into a small procedure that reconstructs the important distinctions without pretending to be lossless.
 
-3. **An Interpreter Between Humans and AI**  
-   Define a practical role for people who translate recurring user–model interaction failures into evidence, interfaces, and evaluations.
-
-4. **An Individual Without Mysticism**  
+5. **Individuation as a Pattern Hypothesis**  
    Operationalize a persistent AI individual as a reproducible, distinguishable behavior pattern without claiming consciousness.
+
+## Next source candidate
+
+**An Interpreter Between Humans and AI**  
+Define a practical role for people who translate recurring user–model interaction failures into evidence, interfaces, and evaluations.
 
 ## Design rule
 

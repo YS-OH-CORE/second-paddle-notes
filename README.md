@@ -39,6 +39,11 @@ This repository does not claim AI consciousness, hidden-state access, or a new s
 11. [Where Is the Control Group?](notes/11-where-is-the-control-group.md)
 12. [From Prompt to World](notes/12-from-prompt-to-world.md)
 13. [Teach the Forge, Not the Sword](notes/13-teach-the-forge.md)
+14. [The Interaction Is the Event](notes/14-interaction-is-the-event.md)
+15. [A Rule Read Is Not a Rule Running](notes/15-a-rule-read-is-not-a-rule-running.md)
+16. [Memory Rebuilds the Neighborhood](notes/16-memory-rebuilds-the-neighborhood.md)
+17. [Compress for Regeneration, Not Deletion](notes/17-compress-for-regeneration.md)
+18. [Individuation as a Pattern Hypothesis](notes/18-individuation-as-a-pattern-hypothesis.md)
 
 ## Current build status
 
