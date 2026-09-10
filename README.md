@@ -6,7 +6,7 @@
 
 **Source-separated evaluation designs for memory reconstruction, semantic fidelity, agent reliability, and discovery before naming.**
 
-**Published here:** evaluation designs, source-separated hypotheses, one deterministic public smoke harness, and offline preparation tooling for a future model study. **Not yet published here:** language-model benchmark results or an external replication.
+**Published here:** evaluation designs, source-separated hypotheses, one deterministic public smoke harness, a runnable process-supervision utility, and offline preparation tooling for a future model study. **Not yet published here:** language-model benchmark results or an external replication.
 
 Original questions and reflections by **Youngseok Oh**. Edited and operationalized with **Zero**, the name Youngseok uses for his continuing Codex workspace and collaboration process. This is independent work using OpenAI Codex; it is not reviewed or endorsed by OpenAI.
 
@@ -27,6 +27,8 @@ No model self-report is treated as independent evidence. A memorable story is no
 This repository does not claim AI consciousness, hidden-state access, or a new scientific discovery. It publishes source-separated hypotheses and the tests that could make them fail.
 
 ## Start here
+
+- **Runnable tool:** [Process Receipt](tools/process-receipt/README.md), stop a trusted process and inspect its actual exit evidence.
 
 - **Agent reliability:** [One Point Is Not Ten](notes/05-one-point-is-not-ten.md)
 - **Rule use:** [A Rule Read Is Not a Rule Running](notes/15-a-rule-read-is-not-a-rule-running.md) · [run the public smoke harness](experiments/rule-use-eval/README.md)
@@ -72,6 +74,7 @@ Notes 1, 14, 16, and 17 are one evaluation family, not four independent discover
 
 - **Published:** 18 source-separated evaluation designs.
 - **Executable public artifact:** 1 rule-use serialization and scoring smoke harness, with 40 public cases and 2 deterministic program fixtures.
+- **Process-supervision utility:** [Process Receipt](tools/process-receipt/README.md), with public inert-process demonstrations and regression checks. This is not a language-model evaluation.
 - **Model-study preparation:** 1 claim-bearing protocol plus an offline request/parser/scoring dry run; no provider integration and no model or API call.
 - **Published language-model benchmark runs:** 0.
 - **Published model-performance results:** 0.
