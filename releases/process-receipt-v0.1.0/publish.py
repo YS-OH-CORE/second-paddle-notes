@@ -125,49 +125,41 @@ def publish(out: Path) -> None:
     module = wheel_module((assets / WHEEL).read_bytes())
     checkout = Path(__file__).resolve().parents[2]
     require((checkout / 'tools/process-receipt/process_receipt.py').read_bytes() == module, 'Publication checkout has a different runtime')
-    # Canonical tag: an existing release is never edited, reuploaded or deleted.
-    existing = subprocess.run(['gh', 'api', f'repos/{REPO}/releases/tags/{TAG}'], capture_output=True, timeout=30)
-    if existing.returncode == 0:
-        release = json.loads(existing.stdout)
-        require(not release['draft'], 'Existing draft requires a separate inspection; left unchanged')
-        asset_metadata(release, assets)
-        dump(out / 'publication.json', dict(status='existing_release_left_unchanged', release_id=release['id'], url=release['html_url']))
-        return
-    try:
-        error = json.loads(existing.stdout)
-    except (json.JSONDecodeError, UnicodeDecodeError):
-        raise RuntimeError('Could not establish release absence') from None
-    require(error.get('status') in (404, '404'), 'Release lookup failed for a reason other than absence')
-    # Do not attach a release to an unrelated tag, or change a pre-existing tag.
-    tag_check = subprocess.run(['gh', 'api', f'repos/{REPO}/git/ref/tags/{TAG}'], capture_output=True, timeout=30)
-    require(tag_check.returncode != 0, 'Tag already exists without a release; inspect separately')
-    try:
-        tag_error = json.loads(tag_check.stdout)
-    except (json.JSONDecodeError, UnicodeDecodeError):
-        raise RuntimeError('Could not establish tag absence') from None
-    require(tag_error.get('status') in (404, '404'), 'Tag lookup failed unexpectedly')
-    require(api('git/ref/heads/main')['object']['sha'] == commit, 'Main changed before publication')
-    # The tag targets this publication commit, which leaves the tested runtime untouched.
-    notes = Path(__file__).with_name('NOTES.md')
-    gh('release', 'create', TAG, '--repo', REPO, '--draft', '--prerelease', '--latest=false',
-       '--target', commit, '--title', 'Process Receipt 0.1.0 (alpha)', '--notes-file', str(notes),
-       *(str(assets / n) for n in sorted(NAMES)))
-    draft = api(f'releases/tags/{TAG}')
-    require(draft['draft'] and draft['tag_name'] == TAG, 'Expected new draft')
+    # The first publication attempt created this exact draft, then used a
+    # published-tag-only endpoint to read it. Finish that inspected draft only.
+    # No further release/tag creation, asset overwrite, or deletion is allowed.
+    releases = api('releases?per_page=100')
+    require(len(releases) < 100, 'Incomplete release listing')
+    matches = [r for r in releases if r['tag_name'] == TAG]
+    require(len(matches) == 1, 'Expected exactly the inspected release')
+    draft = matches[0]
+    require(draft['id'] == 386679814, 'Not the inspected draft ID')
+    require(draft['target_commitish'] == '3e2d64f896fe6f9f11e3180914c1b5bc8cb2e15c', 'Draft target changed')
+    require(draft['author']['login'] == 'github-actions[bot]', 'Unexpected draft author')
+    require(draft['body'] == Path(__file__).with_name('NOTES.md').read_text(encoding='utf-8'), 'Draft notes changed')
     asset_metadata(draft, assets)
     returned = out / 'draft-readback'
     returned.mkdir()
-    gh('release', 'download', TAG, '--repo', REPO, '--dir', str(returned))
-    require({p.name for p in returned.iterdir()} == NAMES, 'Missing downloaded draft assets')
-    for name in NAMES:
-        require((returned / name).read_bytes() == (assets / name).read_bytes(), 'Draft bytes differ')
-    gh('release', 'edit', TAG, '--repo', REPO, '--draft=false', '--prerelease', '--latest=false')
-    final = api(f'releases/tags/{TAG}')
+    for item in draft['assets']:
+        data = gh('api', '-H', 'Accept: application/octet-stream',
+                  f"repos/{REPO}/releases/assets/{item['id']}").stdout
+        require(data == (assets / item['name']).read_bytes(), 'Remote asset bytes differ')
+        (returned / item['name']).write_bytes(data)
+    if not draft['draft']:
+        dump(out / 'publication.json', dict(status='existing_release_left_unchanged',
+            release_id=draft['id'], url=draft['html_url'], asset_bytes_verified=True))
+        return
+    require(api('git/ref/heads/main')['object']['sha'] == commit, 'Main changed before publication')
+    # PATCH the known ID, never infer that a tag endpoint's 404 means no draft.
+    gh('api', '--method', 'PATCH', f"repos/{REPO}/releases/{draft['id']}",
+       '-F', 'draft=false', '-F', 'prerelease=true', '-f', 'make_latest=false')
+    final = api(f"releases/{draft['id']}")
     require(not final['draft'] and final['prerelease'], 'Release not published as alpha')
     asset_metadata(final, assets)
     dump(out / 'publication.json', dict(status='published_and_authenticated_readback_verified',
         release_id=final['id'], tag=TAG, url=final['html_url'], source_commit=SOURCE,
-        publication_commit=commit, wheel_sha256=WHEEL_SHA,
+        publication_commit=final['target_commitish'], finalizer_commit=commit, wheel_sha256=WHEEL_SHA,
+        recovered_same_draft=True, assets_reuploaded=False,
         anonymous_download_verified=False, prior_release_not_modified=True))
     print(final['html_url'])
 
