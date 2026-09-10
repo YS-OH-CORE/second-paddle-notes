@@ -1,0 +1,1 @@
+include README.md LICENSE demo.py test_process_receipt.py verify_install.py

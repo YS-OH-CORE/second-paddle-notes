@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=77,<83"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "second-paddle-process-receipt"
+version = "0.1.0"
+description = "Run a trusted POSIX command and record observed process-exit evidence."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{name = "Youngseok Oh"}]
+keywords = ["process", "supervision", "receipt"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Operating System :: POSIX",
+    "Programming Language :: Python :: 3 :: Only",
+]
+dependencies = []
+
+[project.scripts]
+process-receipt = "process_receipt:main"
+
+[project.urls]
+Source = "https://github.com/YS-OH-CORE/second-paddle-notes/tree/main/tools/process-receipt"
+Issues = "https://github.com/YS-OH-CORE/second-paddle-notes/issues"
+
+[tool.setuptools]
+py-modules = ["process_receipt"]

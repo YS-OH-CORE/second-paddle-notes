@@ -13,6 +13,55 @@ AI-assisted implementation work for Youngseok Oh's public project, not a new
 Youngseok-authored quotation, a language-model benchmark, or an independent
 replication. It does not implement the previously prepared model-decision study.
 
+## Installable package (0.1.0)
+
+The same module is now packaged as `second-paddle-process-receipt`, exposing a
+`process-receipt` command. It has **no runtime dependencies** beyond Python
+3.10+ and a POSIX operating system. Installation does not run a task, create a
+service, or change another project's configuration. This distribution name is
+not a claim of publication or name reservation on PyPI.
+
+From a checkout of this repository, install into a dedicated environment:
+
+```sh
+python3 -m venv .process-env
+.process-env/bin/python -m pip install ./tools/process-receipt
+.process-env/bin/process-receipt --receipt result.json --timeout 30 -- python3 your_job.py
+```
+
+Building from source can download build tooling (`setuptools`). A previously
+built wheel can instead be installed without a package index or dependency
+resolution:
+
+```sh
+python3 -m pip install --no-index --no-deps second_paddle_process_receipt-0.1.0-py3-none-any.whl
+process-receipt --receipt result.json --timeout 30 -- python3 your_job.py
+```
+
+The wheel's pure-Python tag does not imply Windows support. POSIX restrictions
+remain unchanged. The original direct-script usage below remains available.
+
+The existing public workflow now builds a wheel, installs it into a second
+fresh virtual environment, verifies that imports come from that installation,
+and uses the installed command to run and score the repository's **existing
+40-case deterministic software fixture** from a different working directory.
+Both output files are compared byte-for-byte with the committed fixture, and
+pre-existing stop/receipt and nonzero-exit handling are checked. These are
+package integration checks, not new model results or another person's adoption.
+The `process-receipt-package` artifact contains the built wheel and actual
+verification files, not the virtual environments; its retention is 30 days.
+
+Build/check commands, with setuptools 77 through 82 installed for building:
+
+```sh
+python3 -m pip wheel --no-deps --no-build-isolation --wheel-dir dist ./tools/process-receipt
+python3 tools/process-receipt/verify_install.py --wheel dist/second_paddle_process_receipt-0.1.0-py3-none-any.whl --out fresh-install-check
+```
+
+The installation check does not modify the committed fixtures or contact a
+model. Check an actual workflow result rather than assuming these commands ran
+because this description exists. All previous scope limitations still apply.
+
 ## Use it
 
 With Python 3.10 or later, from this directory:
