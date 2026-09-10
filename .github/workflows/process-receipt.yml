@@ -24,6 +24,23 @@ jobs:
         run: python3 -m unittest discover -s tools/process-receipt -p 'test_*.py' -v
       - name: Produce and verify actual public-safe receipts
         run: python3 tools/process-receipt/demo.py --out "$RUNNER_TEMP/process-receipt-demo"
+      - name: Build installable wheel in a separate build environment
+        run: |
+          python3 -m venv "$RUNNER_TEMP/process-build-env"
+          "$RUNNER_TEMP/process-build-env/bin/python" -m pip --disable-pip-version-check install "setuptools==82.0.1"
+          "$RUNNER_TEMP/process-build-env/bin/python" -m pip --disable-pip-version-check wheel --no-index --no-deps --no-build-isolation --wheel-dir "$RUNNER_TEMP/process-package-dist" ./tools/process-receipt
+      - name: Install offline and run existing workload through the installed command
+        run: python3 tools/process-receipt/verify_install.py --wheel "$RUNNER_TEMP/process-package-dist/second_paddle_process_receipt-0.1.0-py3-none-any.whl" --out "$RUNNER_TEMP/process-install-check"
+      - name: Retain built package and actual installation evidence
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: process-receipt-package
+          path: |
+            ${{ runner.temp }}/process-package-dist/*.whl
+            ${{ runner.temp }}/process-install-check/results/
+          if-no-files-found: warn
+          retention-days: 30
       - name: Retain observed outputs
         if: ${{ always() }}
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
