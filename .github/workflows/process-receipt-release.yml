@@ -1,0 +1,56 @@
+name: Publish fixed Process Receipt 0.1.0
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'releases/process-receipt-v0.1.0/**'
+      - '.github/workflows/process-receipt-release.yml'
+  pull_request:
+    paths:
+      - 'releases/process-receipt-v0.1.0/**'
+      - '.github/workflows/process-receipt-release.yml'
+permissions:
+  contents: read
+concurrency:
+  group: process-receipt-0.1.0-publication
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Check the fixed publication script
+        run: python3 -m py_compile releases/process-receipt-v0.1.0/publish.py
+  publish:
+    needs: check
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && github.repository == 'YS-OH-CORE/second-paddle-notes'
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Promote only the existing verified wheel; no rebuild or asset overwrite
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 releases/process-receipt-v0.1.0/publish.py --publish --out "$RUNNER_TEMP/publication"
+      - name: Download without authorization and install as a consumer
+        run: python3 releases/process-receipt-v0.1.0/publish.py --verify-public --out "$RUNNER_TEMP/anonymous-check"
+      - name: Retain publication and consumer-path evidence, not credentials or environments
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: process-receipt-publication-check
+          path: |
+            ${{ runner.temp }}/publication/publication.json
+            ${{ runner.temp }}/anonymous-check/anonymous-verification.json
+            ${{ runner.temp }}/anonymous-check/install.txt
+            ${{ runner.temp }}/anonymous-check/help.txt
+          if-no-files-found: warn
+          retention-days: 30
