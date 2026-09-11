@@ -1,0 +1,48 @@
+name: Review model confirmation replacement
+on:
+  pull_request:
+    paths:
+      - 'contributions/hermes-model-confirmation/**'
+      - '.github/workflows/hermes-model-confirmation.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Read contribution
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          path: contribution
+          persist-credentials: false
+      - name: Read exact reviewed PR source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          repository: MestreY0d4-Uninter/hermes-agent
+          ref: addb69bc409dae7d1c0ae9f2dc571fd4a39d8fc8
+          path: upstream
+          persist-credentials: false
+          lfs: false
+          submodules: false
+      - name: Prepare isolated test dependencies
+        run: |
+          python3 -m venv "$RUNNER_TEMP/review-venv"
+          "$RUNNER_TEMP/review-venv/bin/python" -m pip install --disable-pip-version-check pytest==8.4.2 pytest-asyncio==1.2.0 python-dotenv==1.2.2 pyyaml==6.0.3 rich==14.3.3 openai==2.24.0 requests==2.33.0 tenacity==9.1.4 croniter==6.0.0 prompt_toolkit==3.0.52 fire==0.7.1 psutil==7.2.2
+      - name: Observe original routing and check narrow candidate
+        run: |
+          "$RUNNER_TEMP/review-venv/bin/python" contribution/contributions/hermes-model-confirmation/verify.py --upstream upstream --out "$RUNNER_TEMP/confirmation-evidence"
+      - name: Retain evidence without environment or credentials
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: hermes-model-confirmation-evidence
+          path: |
+            ${{ runner.temp }}/confirmation-evidence/*.json
+            ${{ runner.temp }}/confirmation-evidence/*.jsonl
+            ${{ runner.temp }}/confirmation-evidence/*.xml
+            ${{ runner.temp }}/confirmation-evidence/*.txt
+            ${{ runner.temp }}/confirmation-evidence/*.patch
+          if-no-files-found: warn
+          retention-days: 30
