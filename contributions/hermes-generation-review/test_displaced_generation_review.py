@@ -132,7 +132,7 @@ async def test_displaced_owner_releases_old_lock_not_successor_lock():
 
 
 @pytest.mark.asyncio
-async def test_cancelled_waiter_preserves_alias_owner_and_future_progress():
+async def test_rotation_alias_and_cancelled_waiter_progress():
     registry = SessionTurnLeaseRegistry(max_entries=1)
     owner = await registry.acquire('parent', owner_key='owner', generation=1, timeout=1)
     waiter = None
@@ -140,7 +140,11 @@ async def test_cancelled_waiter_preserves_alias_owner_and_future_progress():
     unrelated = None
     try:
         assert registry.rebind(owner, 'rotated')
-        lease = registry._leases['parent']
+        lease = registry._leases.get('parent')
+        alias_retained = lease is not None and lease is registry._leases.get('rotated')
+        if not alias_retained:
+            observe('rotation_alias_and_cancel', alias_retained=False, cancellation_probe_ran=False)
+        assert alias_retained, 'rotation removed the original held-lock alias before a waiter could use it'
         waiter = asyncio.create_task(registry.acquire('parent', owner_key='cancelled', generation=2, timeout=1))
         # Yield until the actual acquire reaches the lock; no monkeypatched lock/clock.
         async def pending():
@@ -155,7 +159,8 @@ async def test_cancelled_waiter_preserves_alias_owner_and_future_progress():
         assert registry._leases['parent'] is registry._leases['rotated'] is lease
         assert registry.release(owner)
         resumed = await registry.acquire('rotated', owner_key='resumed', generation=3, timeout=1)
-        observe('cancelled_alias_waiter', cancelled_waiter_done=waiter.done(),
+        observe('rotation_alias_and_cancel', alias_retained=True, cancellation_probe_ran=True,
+                cancelled_waiter_done=waiter.done(),
                 resumed_owner=resumed.owner_key, old_token_released=owner.released,
                 actual_lock_held=registry._leases['rotated'].lock.locked())
         assert resumed.owner_key == 'resumed'

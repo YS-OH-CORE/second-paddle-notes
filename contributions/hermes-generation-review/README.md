@@ -9,7 +9,7 @@ Target: https://github.com/NousResearch/hermes-agent/pull/107013
 
 ## Actual question
 
-Does delayed cleanup from an earlier generation preserve the successor's model choice and restore snapshot, while still releasing the old generation's own transcript lock? Does cancelling a queued lock waiter preserve a held alias and allow later progress?
+Does delayed cleanup from an earlier generation preserve the successor's model choice and restore snapshot, while still releasing the old generation's own transcript lock? Does rotation retain the old lock-domain alias, and can a queued waiter then be cancelled without breaking ownership or future progress?
 
 The displaced-lock case holds **two different real transcript leases at once**, then installs the successor in the same routing-key state. It tests old-lock release and successor preservation together, rather than merely releasing a single undisplaced token.
 
@@ -23,7 +23,13 @@ python verify.py --parent /path/to/parent --head /path/to/head --out /path/to/ne
 
 The verifier adds only the same new test file to each disposable checkout. It does not modify upstream implementation or the original author's test. It checks for source changes afterward. It records source hashes, assertion XML, stdout and eight per-case observation records. Only a completed verified report establishes the result; the presence of this directory does not.
 
-Expected comparison to be checked by CI: four supplemental cases give three assertion failures and one pass on the parent, four passes on the reviewed follow-up, and the ten existing author tests still pass. Import/setup errors or skipped tests do not satisfy this gate. These are selected regression cases, not observed production failure rates.
+The final comparison requires four deliberate assertion failures on the parent, four passes on the reviewed follow-up, and ten existing author tests passing. Import/setup errors or skipped tests do not satisfy the gate. These are selected regression cases, not observed production failure rates.
+
+## First attempt and corrected test precondition
+
+Run `34558532647` returned four parent failures, four follow-up passes and ten author-test passes. The verifier correctly refused completion because its original expected count was three parent failures and one pass. The fourth parent case raised `KeyError: parent` before running cancellation: the parent source's `rebind()` explicitly removed the old alias. That source was read and verified, not inferred from the failure alone.
+
+The test now records and asserts old-alias retention **before** trying to queue/cancel its waiter. A parent failure at this point is an alias failure; it is not evidence that a cancelled waiter damaged the owner. The follow-up continues through actual asyncio cancellation and reacquisition. Existing production code, the first three assertions and original author tests were not changed. The first run is retained as an incomplete review attempt, not represented as a successful final verification.
 
 ## Boundaries
 

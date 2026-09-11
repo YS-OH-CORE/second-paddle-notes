@@ -68,7 +68,7 @@ def main(parent: Path, head: Path, out: Path):
               'full_outer_finalizer_executed':False}
     (out/'summary.json').write_text(json.dumps(report, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
     # Final constraints describe the expected behavior comparison, not merely green CI.
-    assert results['parent_supplemental'] == dict(exit_code=1, tests=4, failures=3, errors=0, skipped=0), results
+    assert results['parent_supplemental'] == dict(exit_code=1, tests=4, failures=4, errors=0, skipped=0), results
     assert results['head_supplemental'] == dict(exit_code=0, tests=4, failures=0, errors=0, skipped=0), results
     assert results['head_author_tests'] == dict(exit_code=0, tests=10, failures=0, errors=0, skipped=0), results
     for label in ('parent_supplemental','head_supplemental'):
