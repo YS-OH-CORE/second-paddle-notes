@@ -49,21 +49,44 @@ account permissions, tool execution, or the Process Receipt package.
 It imports the real upstream classifier, message builder and replay sanitizer.
 No source-function stubs or AST extraction are used in that check. New tests must
 produce assertion failures on the original source, not import/collection errors;
-after applying the production change all 27 new cases and the existing replay
-test file must pass. Inputs are synthetic, and each pytest file runs in its own
-process with a clean environment and upstream conftest. This verification script
-uses direct per-file pytest, not the full canonical wrapper or the full suite.
+after applying the production change all 27 in-memory cases, the supplementary
+8 database-restart cases and the existing replay test file must pass. Inputs are
+synthetic. Each pytest file runs in its own process with a clean environment and
+upstream conftest. This uses direct per-file pytest, not the full canonical wrapper.
 
-The accompanying public workflow downloads pinned test dependencies and the
-pinned upstream source, then runs only those tests. It starts no model, gateway,
-user session or external account. Inspect an actual run and its returned
-`hermes-replay-status-evidence` artifact; the presence of the workflow is not a
-successful result. At initial publication, full-import CI results were pending.
+The original real-import verification is recorded in PR #4 and run 34546225656.
+It did not test database persistence. The supplementary test adds that distinct
+boundary without changing the already published production patch.
 
-Tests cover structured normal results quoting interrupt markers, exact versus
-substring status codes, genuine and legacy interrupt recovery, the real message
-constructor and replay output, input-list preservation and the next user turn.
-No SessionDB persistence or live resume behavior is established by these tests.
+### Supplementary database-restart regression
+
+`test_replay_cleanup_sessiondb_roundtrip.py` is offered as a separate test file.
+The verifier copies it into the disposable checkout's `tests/agent/` directory;
+it is not silently included in the older `replay_cleanup.patch`.
+
+For each of eight cases it constructs a real tool message, starts a Python process
+to save the synthetic history through `SessionDB.replace_messages`, closes the
+database and exits, then starts a DIFFERENT Python process. The second process
+reopens that database, loads the conversation through SessionDB, and runs the real
+replay sanitizer. It checks the next user's exact text, the original tool payload,
+the appropriate successful/interrupted behavior, and unchanged stored history.
+
+Case receipts record process IDs, actual module paths, expected/observed replay
+outcomes, row counts and preservation checks in `db-*-roundtrip.jsonl`. No private
+conversation is used. An unchanged database alone is not sufficient: the replay
+list is separately checked, because correct storage can still feed wrong context.
+
+To add the supplementary test to an already patched disposable checkout, copy
+this file to `tests/agent/test_replay_cleanup_sessiondb_roundtrip.py`, then run it
+with the upstream test runner. The existing production patch remains unchanged.
+This test does not boot the gateway or send the resulting context to any model.
+The presence of the test does not prove it passed; inspect an actual CI run.
+
+The accompanying read-only workflow downloads pinned test dependencies and the
+pinned source. It has no model/gateway, account credentials, periodic schedule or
+access to a user's Hermes directory. Its returned `hermes-replay-status-evidence`
+artifact contains the actual XML, stdout and per-case observations. Full live
+user-session behavior and provider-side decisions remain outside the test scope.
 
 ## Rights and scope
 
