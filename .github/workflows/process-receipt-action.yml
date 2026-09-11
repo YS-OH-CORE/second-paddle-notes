@@ -1,0 +1,107 @@
+name: Consume Process Receipt action outputs
+on:
+  pull_request:
+    paths:
+      - 'actions/process-receipt/**'
+      - '.github/workflows/process-receipt-action.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  consumer:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Prepare trusted worker arguments
+        id: prepare
+        shell: python
+        run: |
+          import runpy, sys
+          sys.argv = ['ci_check.py', 'prepare']
+          runpy.run_path('actions/process-receipt/ci_check.py', run_name='__main__')
+      - name: Successful command whose output mentions an error
+        id: normal
+        uses: ./actions/process-receipt
+        with:
+          command-json: ${{ steps.prepare.outputs.normal }}
+      - name: Actual nonzero exit
+        id: failed
+        continue-on-error: true
+        uses: ./actions/process-receipt
+        with:
+          command-json: ${{ steps.prepare.outputs.failed }}
+      - name: Pre-existing stop prevents execution
+        id: prestop
+        continue-on-error: true
+        uses: ./actions/process-receipt
+        with:
+          command-json: ${{ steps.prepare.outputs.forbidden }}
+          stop-file: ${{ steps.prepare.outputs.stop }}
+      - name: Old successful receipt cannot become a new successful result
+        id: collision
+        continue-on-error: true
+        uses: ./actions/process-receipt
+        with:
+          command-json: ${{ steps.prepare.outputs.forbidden }}
+          receipt-path: ${{ steps.normal.outputs.receipt-path }}
+      - name: Invalid JSON must not execute
+        id: invalid
+        continue-on-error: true
+        uses: ./actions/process-receipt
+        with:
+          command-json: 'not an argument vector'
+      - name: Deadline is not completion
+        id: deadline
+        continue-on-error: true
+        uses: ./actions/process-receipt
+        with:
+          command-json: ${{ steps.prepare.outputs.deadline }}
+          timeout: '0.2'
+      - name: Downstream consumer uses successful action output
+        id: downstream_success
+        if: steps.normal.outputs.action-status == 'completed'
+        shell: python
+        run: |
+          import os
+          from pathlib import Path
+          (Path(os.environ['RUNNER_TEMP'])/'receipt-action-fixture/downstream-success.txt').write_text('continued from observed completion')
+      - name: A failure must not reach this success-only consumer
+        id: downstream_failure
+        if: steps.failed.outputs.action-status == 'completed'
+        shell: python
+        run: raise RuntimeError('A failed command was incorrectly accepted as success')
+      - name: Check adapter API including injected final receipt error
+        shell: python
+        env:
+          NORMAL_SUMMARY: ${{ steps.normal.outputs.summary-path }}
+        run: |
+          import os, sys, runpy
+          from pathlib import Path
+          wheel = Path(os.environ['NORMAL_SUMMARY']).parent/'second_paddle_process_receipt-0.2.0a2-py3-none-any.whl'
+          sys.path.insert(0,str(Path('actions/process-receipt').resolve()))
+          sys.argv=['test_action.py','--wheel',str(wheel),'--out',str(Path(os.environ['RUNNER_TEMP'])/'action-evidence/adapter-tests.json')]
+          runpy.run_path('actions/process-receipt/test_action.py',run_name='__main__')
+      - name: Inspect actual composite outputs and destination effects
+        if: always()
+        shell: python
+        env:
+          CHECK_STEPS: ${{ toJSON(steps) }}
+        run: |
+          import runpy, sys
+          sys.argv=['ci_check.py','verify']
+          runpy.run_path('actions/process-receipt/ci_check.py',run_name='__main__')
+      - name: Retain only synthetic observations and receipts
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: process-receipt-action-${{ runner.os }}
+          path: ${{ runner.temp }}/action-evidence/
+          retention-days: 14
+          if-no-files-found: warn
