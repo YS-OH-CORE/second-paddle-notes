@@ -52,7 +52,6 @@ jobs:
     env:
       PYTHONDONTWRITEBYTECODE: "1"
       FIXTURE: ${{ matrix.baseline }}
-      EVIDENCE: ${{ runner.temp }}/rule-use-${{ matrix.baseline }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -66,7 +65,7 @@ jobs:
         run: |
           import json, os, sys
           from pathlib import Path
-          out = Path(os.environ['EVIDENCE'])
+          out = (Path(os.environ['RUNNER_TEMP'])/('rule-use-'+os.environ['FIXTURE']))
           out.mkdir(exist_ok=False)
           source = Path(os.environ['GITHUB_WORKSPACE']) / 'experiments/rule-use-eval'
           commands = {
@@ -85,7 +84,7 @@ jobs:
         uses: YS-OH-CORE/second-paddle-notes/actions/process-receipt@cbea6c9e98baf29e9cf9935b601d5049b4435947
         with:
           command-json: ${{ steps.args.outputs.predict }}
-          receipt-path: ${{ env.EVIDENCE }}/predict.receipt.json
+          receipt-path: ${{ runner.temp }}/rule-use-${{ matrix.baseline }}/predict.receipt.json
           timeout: '30'
       - name: Score only after observed successful generation
         id: score
@@ -99,7 +98,7 @@ jobs:
         uses: YS-OH-CORE/second-paddle-notes/actions/process-receipt@cbea6c9e98baf29e9cf9935b601d5049b4435947
         with:
           command-json: ${{ steps.args.outputs.score }}
-          receipt-path: ${{ env.EVIDENCE }}/score.receipt.json
+          receipt-path: ${{ runner.temp }}/rule-use-${{ matrix.baseline }}/score.receipt.json
           timeout: '30'
       - name: Prepare duplicate-case negative control without changing source data
         if: steps.score.outcome == 'success'
@@ -107,7 +106,7 @@ jobs:
         run: |
           import os
           from pathlib import Path
-          out = Path(os.environ['EVIDENCE'])
+          out = (Path(os.environ['RUNNER_TEMP'])/('rule-use-'+os.environ['FIXTURE']))
           raw = (out/'predictions.jsonl').read_bytes()
           with (out/'duplicate.predictions.jsonl').open('xb') as handle:
               handle.write(raw + raw.splitlines(keepends=True)[0])
@@ -118,7 +117,7 @@ jobs:
         uses: YS-OH-CORE/second-paddle-notes/actions/process-receipt@cbea6c9e98baf29e9cf9935b601d5049b4435947
         with:
           command-json: ${{ steps.args.outputs.reject }}
-          receipt-path: ${{ env.EVIDENCE }}/reject.receipt.json
+          receipt-path: ${{ runner.temp }}/rule-use-${{ matrix.baseline }}/reject.receipt.json
           timeout: '30'
       - name: Invalid data must never reach this success-only downstream step
         id: invalid_acceptance
@@ -129,7 +128,7 @@ jobs:
         run: |
           import os
           from pathlib import Path
-          (Path(os.environ['EVIDENCE'])/'INVALID_ACCEPTED').touch()
+          ((Path(os.environ['RUNNER_TEMP'])/('rule-use-'+os.environ['FIXTURE']))/'INVALID_ACCEPTED').touch()
       - name: Compare actual outcomes and output bytes with committed references
         if: always()
         shell: python
@@ -141,7 +140,7 @@ jobs:
         run: |
           import hashlib, json, os
           from pathlib import Path
-          out = Path(os.environ['EVIDENCE'])
+          out = (Path(os.environ['RUNNER_TEMP'])/('rule-use-'+os.environ['FIXTURE']))
           if not out.is_dir():
               raise SystemExit('Preparation did not create an evidence directory; no successful run is inferred.')
           source = Path(os.environ['GITHUB_WORKSPACE'])/'experiments/rule-use-eval'
@@ -209,6 +208,6 @@ jobs:
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: rule-use-receipts-${{ matrix.baseline }}
-          path: ${{ env.EVIDENCE }}/
+          path: ${{ runner.temp }}/rule-use-${{ matrix.baseline }}/
           if-no-files-found: warn
           retention-days: 14
