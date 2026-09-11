@@ -16,7 +16,7 @@ import time
 import venv
 import zipfile
 
-VERSION = '0.2.0a1'
+VERSION = '0.2.0a2'
 MODULES = ('process_receipt.py', 'process_receipt_cli.py', 'process_receipt_windows.py')
 
 

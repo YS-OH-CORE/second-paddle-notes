@@ -24,6 +24,14 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           persist-credentials: false
+      - name: Read the unchanged alpha baseline
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: 77066648841c441e6f10d53dbab612f596966d37
+          path: .receipt-baseline
+          persist-credentials: false
+      - name: Compare final receipt I/O failures with real owned-child effects
+        run: python tools/process-receipt/verify_persistence.py --baseline .receipt-baseline/tools/process-receipt --candidate tools/process-receipt --out "${{ runner.temp }}/receipt-io-evidence"
       - name: Preserve original POSIX regressions
         if: runner.os == 'Linux'
         run: python -m unittest discover -s tools/process-receipt -p test_process_receipt.py -v
@@ -41,5 +49,8 @@ jobs:
             ${{ runner.temp }}/process-native-build/dist/*.whl
             ${{ runner.temp }}/process-native-build/installation/results/
             ${{ runner.temp }}/process-receipt-demo/
+            ${{ runner.temp }}/receipt-io-evidence/*.json
+            ${{ runner.temp }}/receipt-io-evidence/*.jsonl
+            ${{ runner.temp }}/receipt-io-evidence/*.txt
           if-no-files-found: warn
           retention-days: 14
