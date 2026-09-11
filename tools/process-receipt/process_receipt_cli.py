@@ -5,6 +5,7 @@ import json
 import os
 from pathlib import Path
 import sys
+from process_receipt import ReceiptPersistenceError
 
 
 def main() -> int:
@@ -24,6 +25,9 @@ def main() -> int:
     try:
         result = run(command, args.receipt, stop_file=args.stop_file,
                      timeout=args.timeout, grace=args.grace)
+    except ReceiptPersistenceError as exc:
+        print(json.dumps(exc.summary, ensure_ascii=True), file=sys.stderr)
+        return 2
     except (OSError, ValueError, RuntimeError) as exc:
         # A final receipt write can fail AFTER execution; never say "not launched" here.
         print(f'Launch rejected or receipt unavailable: {type(exc).__name__}', file=sys.stderr)

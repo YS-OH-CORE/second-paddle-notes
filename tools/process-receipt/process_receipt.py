@@ -47,6 +47,46 @@ def exit_status(code: int | None) -> str:
     return 'completed' if code == 0 else 'failed'
 
 
+class ReceiptPersistenceError(OSError):
+    """Final receipt I/O failed; the observed execution outcome is still available.
+
+    ``summary`` contains no command arguments, environment values or exception
+    text. It does not say that the receipt is absent or that effects were undone.
+    """
+
+    def __init__(self, record: dict, failures: list[dict]) -> None:
+        super().__init__('Receipt finalization failed; execution may already have occurred')
+        keys = ('status', 'task_started', 'direct_child_exit_observed',
+                'child_exit_code', 'stop_reason')
+        self.summary = {
+            'status': 'receipt_persistence_failed',
+            'receipt_finalization_confirmed': False,
+            'execution': {key: record[key] for key in keys},
+            'receipt_errors': failures,
+            'retry_warning': 'Do not infer non-execution or retry automatically from a missing receipt.',
+        }
+
+
+def _finish_receipt(handle, save, record: dict, saved_handlers: dict) -> None:
+    """Restore caller handlers even when final save or close fails."""
+    failures = []
+    try:
+        try:
+            save()
+        except OSError as exc:
+            failures.append({'phase': 'write_flush_sync', 'error_type': type(exc).__name__})
+    finally:
+        try:
+            handle.close()
+        except OSError as exc:
+            failures.append({'phase': 'close', 'error_type': type(exc).__name__})
+        finally:
+            for sig, old in saved_handlers.items():
+                signal.signal(sig, old)
+    if failures:
+        raise ReceiptPersistenceError(record, failures)
+
+
 def run_with_receipt(command: Sequence[str], receipt_path: Path, *,
                      stop_file: Path | None = None, timeout: float = 60.0,
                      grace: float = 1.0, poll: float = 0.05) -> dict:
@@ -170,12 +210,7 @@ def run_with_receipt(command: Sequence[str], receipt_path: Path, *,
         record['parent_signal_received'] = flags[0] if flags else None
         record['finished_at'] = utc()
         record['elapsed_seconds'] = round(time.monotonic() - started, 6)
-        try:
-            save()
-        finally:
-            handle.close()
-            for sig, old in saved_handlers.items():
-                signal.signal(sig, old)
+        _finish_receipt(handle, save, record, saved_handlers)
     return record
 
 
@@ -191,8 +226,11 @@ def main() -> int:
     try:
         result = run_with_receipt(command, args.receipt, stop_file=args.stop_file,
                                   timeout=args.timeout, grace=args.grace)
+    except ReceiptPersistenceError as exc:
+        print(json.dumps(exc.summary, ensure_ascii=True), file=sys.stderr)
+        return 2
     except (OSError, ValueError, RuntimeError) as exc:
-        print(f'Process not launched: {type(exc).__name__}', file=sys.stderr)
+        print(f'Launch rejected or receipt unavailable: {type(exc).__name__}', file=sys.stderr)
         return 2
     print(json.dumps({key: result[key] for key in ('status', 'task_started', 'direct_child_exit_observed',
                                                  'child_exit_code', 'stop_reason')}))

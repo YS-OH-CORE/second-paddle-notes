@@ -15,7 +15,7 @@ import threading
 import time
 from typing import Sequence
 
-from process_receipt import positive, stop_exists, utc
+from process_receipt import positive, stop_exists, utc, _finish_receipt
 
 
 def run_windows_with_receipt(command: Sequence[str], receipt_path: Path, *,
@@ -139,10 +139,5 @@ def run_windows_with_receipt(command: Sequence[str], receipt_path: Path, *,
                 record['status'] = 'exit_unconfirmed'
         record.update(parent_signal_received=flags[0] if flags else None,
                       finished_at=utc(), elapsed_seconds=round(time.monotonic() - began, 6))
-        try:
-            save()
-        finally:
-            handle.close()
-            for sig, previous in previous_handlers.items():
-                signal.signal(sig, previous)
+        _finish_receipt(handle, save, record, previous_handlers)
     return record

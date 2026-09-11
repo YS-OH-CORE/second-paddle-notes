@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "second-paddle-process-receipt"
-version = "0.2.0a1"
+version = "0.2.0a2"
 description = "Run a trusted command and record observed direct-process exit evidence."
 readme = "README.md"
 requires-python = ">=3.10"
