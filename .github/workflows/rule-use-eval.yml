@@ -38,3 +38,176 @@ jobs:
       - name: Check SHA-256 manifest
         working-directory: experiments/rule-use-eval
         run: python generate_manifest.py --check
+
+  # Consume the published interface for this existing deterministic workload.
+  # Original checks above stay intact. No provider/model calls or new schedule.
+  receipt_pipeline:
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    strategy:
+      fail-fast: false
+      matrix:
+        baseline: [link-following, link-ignoring]
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+      FIXTURE: ${{ matrix.baseline }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+      - name: Prepare trusted arguments in a new output directory
+        id: args
+        shell: python
+        run: |
+          import json, os, sys
+          from pathlib import Path
+          out = (Path(os.environ['RUNNER_TEMP'])/('rule-use-'+os.environ['FIXTURE']))
+          out.mkdir(exist_ok=False)
+          source = Path(os.environ['GITHUB_WORKSPACE']) / 'experiments/rule-use-eval'
+          commands = {
+              'predict': [sys.executable, '-I', str(source/'run_baseline.py'), '--baseline',
+                          os.environ['FIXTURE'], '--output', str(out/'predictions.jsonl')],
+              'score': [sys.executable, '-I', str(source/'score.py'), '--predictions',
+                        str(out/'predictions.jsonl'), '--output', str(out/'metrics.json')],
+              'reject': [sys.executable, '-I', str(source/'score.py'), '--predictions',
+                         str(out/'duplicate.predictions.jsonl'), '--output', str(out/'invalid.metrics.json')],
+          }
+          with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as handle:
+              for key, command in commands.items():
+                  handle.write(key+'='+json.dumps(command)+'\n')
+      - name: Generate the existing fixture through the remote pinned action
+        id: predict
+        uses: YS-OH-CORE/second-paddle-notes/actions/process-receipt@cbea6c9e98baf29e9cf9935b601d5049b4435947
+        with:
+          command-json: ${{ steps.args.outputs.predict }}
+          receipt-path: ${{ runner.temp }}/rule-use-${{ matrix.baseline }}/predict.receipt.json
+          timeout: '30'
+      - name: Score only after observed successful generation
+        id: score
+        if: >-
+          ${{ steps.predict.outcome == 'success' &&
+              steps.predict.outputs.action-status == 'completed' &&
+              steps.predict.outputs.task-started == 'true' &&
+              steps.predict.outputs.exit-observed == 'true' &&
+              steps.predict.outputs.child-exit-code == '0' &&
+              steps.predict.outputs.receipt-state == 'finalized' }}
+        uses: YS-OH-CORE/second-paddle-notes/actions/process-receipt@cbea6c9e98baf29e9cf9935b601d5049b4435947
+        with:
+          command-json: ${{ steps.args.outputs.score }}
+          receipt-path: ${{ runner.temp }}/rule-use-${{ matrix.baseline }}/score.receipt.json
+          timeout: '30'
+      - name: Prepare duplicate-case negative control without changing source data
+        if: steps.score.outcome == 'success'
+        shell: python
+        run: |
+          import os
+          from pathlib import Path
+          out = (Path(os.environ['RUNNER_TEMP'])/('rule-use-'+os.environ['FIXTURE']))
+          raw = (out/'predictions.jsonl').read_bytes()
+          with (out/'duplicate.predictions.jsonl').open('xb') as handle:
+              handle.write(raw + raw.splitlines(keepends=True)[0])
+      - name: Existing strict scorer must reject duplicated predictions
+        id: reject
+        if: steps.score.outcome == 'success'
+        continue-on-error: true
+        uses: YS-OH-CORE/second-paddle-notes/actions/process-receipt@cbea6c9e98baf29e9cf9935b601d5049b4435947
+        with:
+          command-json: ${{ steps.args.outputs.reject }}
+          receipt-path: ${{ runner.temp }}/rule-use-${{ matrix.baseline }}/reject.receipt.json
+          timeout: '30'
+      - name: Invalid data must never reach this success-only downstream step
+        id: invalid_acceptance
+        if: >-
+          ${{ steps.reject.outcome == 'success' &&
+              steps.reject.outputs.action-status == 'completed' }}
+        shell: python
+        run: |
+          import os
+          from pathlib import Path
+          ((Path(os.environ['RUNNER_TEMP'])/('rule-use-'+os.environ['FIXTURE']))/'INVALID_ACCEPTED').touch()
+      - name: Compare actual outcomes and output bytes with committed references
+        if: always()
+        shell: python
+        env:
+          PREDICT_STEP: ${{ toJSON(steps.predict) }}
+          SCORE_STEP: ${{ toJSON(steps.score) }}
+          REJECT_STEP: ${{ toJSON(steps.reject) }}
+          INVALID_ACCEPTANCE_OUTCOME: ${{ steps.invalid_acceptance.outcome }}
+        run: |
+          import hashlib, json, os
+          from pathlib import Path
+          out = (Path(os.environ['RUNNER_TEMP'])/('rule-use-'+os.environ['FIXTURE']))
+          if not out.is_dir():
+              raise SystemExit('Preparation did not create an evidence directory; no successful run is inferred.')
+          source = Path(os.environ['GITHUB_WORKSPACE'])/'experiments/rule-use-eval'
+          fixture = os.environ['FIXTURE']
+          digest = lambda raw: hashlib.sha256(raw).hexdigest()
+          result = {'status': 'unverified', 'fixture': fixture, 'checks': {},
+                    'action_ref': 'YS-OH-CORE/second-paddle-notes/actions/process-receipt@cbea6c9e98baf29e9cf9935b601d5049b4435947',
+                    'run_id': os.environ['GITHUB_RUN_ID'], 'event': os.environ['GITHUB_EVENT_NAME'],
+                    'checkout_sha': os.environ['GITHUB_SHA'], 'model_calls': 0,
+                    'scope': 'Owned Linux workflow using remote action resolution; deterministic fixtures, not model evaluation or third-party adoption.'}
+          def check(label, condition):
+              result['checks'][label] = bool(condition)
+              if not condition:
+                  raise ValueError(label)
+          try:
+              for name, expected_exit in [('predict', '0'), ('score', '0'), ('reject', '1')]:
+                  step = json.loads(os.environ[name.upper()+'_STEP'])
+                  (out/(name+'.step.json')).write_text(json.dumps(step, indent=2)+'\n', encoding='utf-8')
+                  values = step.get('outputs', {})
+                  success = expected_exit == '0'
+                  expected = {'action-status': 'completed' if success else 'failed',
+                              'execution-status': 'completed' if success else 'failed',
+                              'task-started': 'true', 'exit-observed': 'true',
+                              'child-exit-code': expected_exit, 'receipt-state': 'finalized'}
+                  check(name+'_raw_outcome', step.get('outcome') == ('success' if success else 'failure'))
+                  check(name+'_outputs', all(values.get(k) == v for k, v in expected.items()))
+                  receipt = json.loads((out/(name+'.receipt.json')).read_bytes())
+                  check(name+'_receipt', receipt.get('finished_at') and receipt.get('task_started') is True
+                        and receipt.get('direct_child_exit_observed') is True
+                        and receipt.get('child_exit_code') == int(expected_exit)
+                        and receipt.get('status') == expected['execution-status'])
+                  check(name+'_receipt_path', Path(values['receipt-path']).resolve() == (out/(name+'.receipt.json')).resolve())
+                  summary_raw = Path(values['summary-path']).read_bytes()
+                  summary = json.loads(summary_raw)
+                  check(name+'_summary_agrees', summary['execution']['child_exit_code'] == int(expected_exit)
+                        and summary['action_status'] == expected['action-status']
+                        and summary['wheel_sha256'] == '69c96c6d1be62b4031e6e0f7d5ebf874bf551f15433f75b296c685b9ce2c907d')
+                  (out/(name+'.action.json')).write_bytes(summary_raw)
+              for actual, reference in [('predictions.jsonl', fixture+'.predictions.jsonl'), ('metrics.json', fixture+'.metrics.json')]:
+                  observed = (out/actual).read_bytes()
+                  committed = (source/'results'/reference).read_bytes()
+                  check(actual+'_byte_match', observed == committed)
+                  result[actual+'_sha256'] = digest(observed)
+              predictions = (out/'predictions.jsonl').read_bytes()
+              check('exact_duplicate_control', (out/'duplicate.predictions.jsonl').read_bytes()
+                    == predictions + predictions.splitlines(keepends=True)[0])
+              metrics = json.loads((out/'metrics.json').read_bytes())
+              check('case_count_matches', len(predictions.splitlines()) == metrics['case_count'] == 40)
+              check('invalid_metrics_absent', not (out/'invalid.metrics.json').exists())
+              check('invalid_downstream_skipped', os.environ.get('INVALID_ACCEPTANCE_OUTCOME') == 'skipped'
+                    and not (out/'INVALID_ACCEPTED').exists())
+              result.update(status='verified', case_count=metrics['case_count'],
+                            primary_contrast=metrics['primary_metric']['value'])
+          except Exception as exc:
+              result['error_type'] = type(exc).__name__
+              raise
+          finally:
+              (out/'verification.json').write_text(json.dumps(result, indent=2)+'\n', encoding='utf-8')
+          print(json.dumps(result, indent=2))
+      - name: Preserve the original dataset, scripts and reference results
+        if: always()
+        run: git diff --exit-code -- experiments/rule-use-eval
+      - name: Retain actual pipeline outputs and receipts
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: rule-use-receipts-${{ matrix.baseline }}
+          path: ${{ runner.temp }}/rule-use-${{ matrix.baseline }}/
+          if-no-files-found: warn
+          retention-days: 14
