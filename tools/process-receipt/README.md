@@ -1,174 +1,102 @@
 # Process Receipt
 
-**A runnable tool, not another declaration that cancellation works.**
+**0.2.0a1: an experimental Windows backend alongside the unchanged POSIX implementation.**
 
-Run one trusted command, request a stop by creating a file, and inspect whether the
-supervisor actually observed its direct child exit. Standard-library Python;
-POSIX only; developed and tested on Linux. No model, account, API key, service,
-extra package, or remote-control connection is required.
+Run one trusted executable, request a stop with a file, and inspect the actual
+observed direct-child result. This is process supervision, not an AI agent,
+credential sandbox, rollback facility or proof that a user goal was met.
 
-This utility is a practical companion to [From Prompt to World](../../notes/12-from-prompt-to-world.md)
-and [One Point Is Not Ten](../../notes/05-one-point-is-not-ten.md). It is new
-AI-assisted implementation work for Youngseok Oh's public project, not a new
-Youngseok-authored quotation, a language-model benchmark, or an independent
-replication. It does not implement the previously prepared model-decision study.
+## Install and run
 
-## Installable package (0.1.0)
-
-The same module is now packaged as `second-paddle-process-receipt`, exposing a
-`process-receipt` command. It has **no runtime dependencies** beyond Python
-3.10+ and a POSIX operating system. Installation does not run a task, create a
-service, or change another project's configuration. This distribution name is
-not a claim of publication or name reservation on PyPI.
-
-From a checkout of this repository, install into a dedicated environment:
+Python 3.10 or later is required. Install the alpha wheel without fetching any
+runtime dependency:
 
 ```sh
-python3 -m venv .process-env
-.process-env/bin/python -m pip install ./tools/process-receipt
-.process-env/bin/process-receipt --receipt result.json --timeout 30 -- python3 your_job.py
+python -m pip install --no-index --no-deps second_paddle_process_receipt-0.2.0a1-py3-none-any.whl
+process-receipt --receipt result.json --stop-file STOP --timeout 30 -- python your_job.py
 ```
 
-Building from source can download build tooling (`setuptools`). A previously
-built wheel can instead be installed without a package index or dependency
-resolution:
+Use a real trusted EXE on Windows, not a batch file or a launcher whose child you
+expect this utility to control. See [Windows details](WINDOWS.md). In a second
+terminal create `STOP` with `touch STOP` (POSIX) or
+`New-Item -ItemType File -Path STOP` (PowerShell).
 
-```sh
-python3 -m pip install --no-index --no-deps second_paddle_process_receipt-0.1.0-py3-none-any.whl
-process-receipt --receipt result.json --timeout 30 -- python3 your_job.py
-```
+Use new receipt/stop paths for a deliberately new run. Existing receipts are
+never overwritten. An already present stop prevents launch; it is never removed
+automatically. Arguments are passed without an implicit shell. Child environment
+and output streams are inherited, so do not run untrusted or sensitive commands
+in a public CI job.
 
-The wheel's pure-Python tag does not imply Windows support. POSIX restrictions
-remain unchanged. The original direct-script usage below remains available.
+The installed command and `python -m process_receipt_cli` select the platform.
+The historical `python -m process_receipt` and `run_with_receipt` Python API remain
+POSIX-only and unchanged. The Windows API is
+`process_receipt_windows.run_windows_with_receipt`.
 
-The existing public workflow now builds a wheel, installs it into a second
-fresh virtual environment, verifies that imports come from that installation,
-and uses the installed command to run and score the repository's **existing
-40-case deterministic software fixture** from a different working directory.
-Both output files are compared byte-for-byte with the committed fixture, and
-pre-existing stop/receipt and nonzero-exit handling are checked. These are
-package integration checks, not new model results or another person's adoption.
-The `process-receipt-package` artifact contains the built wheel and actual
-verification files, not the virtual environments; its retention is 30 days.
+## Read the observations
 
-Build/check commands, with setuptools 77 through 82 installed for building:
-
-```sh
-python3 -m pip wheel --no-deps --no-build-isolation --wheel-dir dist ./tools/process-receipt
-python3 tools/process-receipt/verify_install.py --wheel dist/second_paddle_process_receipt-0.1.0-py3-none-any.whl --out fresh-install-check
-```
-
-The installation check does not modify the committed fixtures or contact a
-model. Check an actual workflow result rather than assuming these commands ran
-because this description exists. All previous scope limitations still apply.
-
-## Use it
-
-With Python 3.10 or later, from this directory:
-
-```sh
-python3 process_receipt.py --receipt result.json --timeout 30 --stop-file STOP -- python3 your_job.py
-```
-
-In a second terminal in the same directory, request a stop:
-
-```sh
-touch STOP
-```
-
-Use a **new receipt filename** for each run. An existing receipt is never
-overwritten. An already existing STOP path prevents the command from starting;
-the tool never removes it or automatically resumes a task. Choose another stop
-path for a deliberately authorized new run, rather than assuming the old stop
-request has expired.
-
-Arguments after `--` are passed as an argument list, without a shell. The tool
-inherits the calling environment and streams the child's output to the caller.
-It is **not a credential sandbox**: only run commands you trust. The receipt does
-not serialize command arguments, environment values, stop-file contents, or
-child stdout/stderr. The underlying command can still print secrets; do not run
-sensitive commands in public CI.
-
-## Read the receipt, not just the wrapper's status
-
-| Status | What was observed |
+| Status | Meaning |
 |---|---|
-| `not_started` | A stop was already present before launch. |
-| `completed` | The direct child's exit code 0 was observed before the deadline. This is not proof its work is correct. |
-| `failed` | A nonzero direct-child exit was observed without a supervisor stop request. |
-| `interrupted` | The child was observed alive when stopping began; the supervisor requested a termination signal and observed a corresponding signal exit. |
-| `finished_after_stop_request` | The child exited after a stop was requested, but signal termination was not established, for example a cooperative exit code 0. |
-| `deadline_reached` | Timely completion was not confirmed by the deadline; termination was requested as necessary. |
-| `exit_unconfirmed` | The bounded termination attempts did not establish direct-child exit. |
-| `supervisor_error` | Preparation or supervision failed. Inspect `task_started` rather than assuming execution occurred. |
+| `not_started` | A stop prevented launch. Validation failures can instead raise before any receipt exists. |
+| `completed` | Direct-child exit 0 observed before the deadline, not output correctness. |
+| `failed` | Nonzero direct-child exit observed without a supervisor stop. |
+| `interrupted` | POSIX only: a matching signal exit observed after the stop request. |
+| `finished_after_stop_request` | Exit observed after a stop without certifying a POSIX signal exit. This is the Windows stop status. |
+| `deadline_reached` | Timely completion was not confirmed; termination requested as necessary. |
+| `exit_unconfirmed` | Direct-child exit could not be established within bounded attempts. |
+| `supervisor_error` | Supervision or launch failed; read `task_started`. |
 
-`stop_reason`, `alive_when_stop_observed`, `signals_requested`,
-`direct_child_exit_observed`, and `child_exit_code` are distinct observations.
-A signal request alone does not establish a stopped process. An external actor
-could also signal the process, so this is not an independently authenticated
-causal proof. A receipt still being written is a checkpoint; only a record with
-`finished_at` is final. Receipt writes are not atomic for concurrent readers.
+The CLI returns 0 for completed, 124 for deadline, 130 for an observed stop
+sequence, and 2 otherwise. On Windows, 130 is the wrapper's category, NOT a claim
+about the child's own exit code. Request, live-child observation, termination
+API return, child exit and POSIX signal evidence are separate receipt fields.
+A concurrent natural exit can still occur. A partial receipt is a checkpoint;
+`finished_at` marks finalization, not authenticated causality. Writes are not
+atomic for concurrent readers.
 
-The CLI returns 0 for `completed`, 130 for `interrupted`, 124 for a deadline,
-and 2 otherwise. It intentionally does not turn an unconfirmed outcome into
-success. After a stop it first requests SIGTERM, then SIGKILL after the grace
-period if the direct child is still running.
+POSIX requests SIGTERM, then SIGKILL if necessary; same-group descendant cleanup
+is best effort. Windows uses TerminateProcess on its owned direct-child handle,
+not process-tree enumeration; `grace` there is a wait after forcible termination,
+not a graceful phase. Descendants, detached/remote jobs and already-completed
+side effects are outside its scope. Killing the supervisor can leave work alive.
+No instant-stop, hostile-code isolation or all-platform guarantee is claimed.
 
-## Run the public demonstration
+## Verification and distribution
 
-```sh
-python3 -m unittest -v
-python3 demo.py --out fresh-demo-results
-```
+The public workflow builds separately on Linux and Windows, installs each wheel
+into a fresh environment without an index, checks installed/source identity,
+and invokes the installed command from outside the source tree. Native cases
+include exact Korean file bytes and a space-containing filename, a running
+heartbeat interrupted after readiness, prestop, failure, timeout, receipt
+collision and invalid inputs. Windows rejects implicit batch entry points.
+The worker is the base Python executable, not a venv launcher.
 
-The demonstration starts **real but inert Python processes** and writes three
-sets of receipts and heartbeat files: normal completion; interruption after a
-stop file; and SIGKILL fallback when a child ignores SIGTERM. It checks that an
-interrupted workload did not reach its natural-completion file. The output
-folder must be new. It has no external network calls or private inputs.
+Linux additionally retains the original eleven regression checks and three
+inert-process demos. The new installed-command verifier also executes the
+existing forty-case deterministic repository workload on Linux, comparing exact
+output bytes. These are software tests, not language-model benchmark runs.
 
-[Public CI runs](https://github.com/YS-OH-CORE/second-paddle-notes/actions/workflows/process-receipt.yml)
-run the same checks and retain their generated results. A workflow being present
-is not a successful run. Open an actual completed run and read its logs and
-`process-receipt-demo` artifact. The download interface may require a GitHub
-login; the code and public run logs can be inspected separately.
+Inspect a completed [public run](https://github.com/YS-OH-CORE/second-paddle-notes/actions/workflows/process-receipt.yml)
+and its platform-specific artifact. Source changes do not automatically publish
+a new GitHub Release or PyPI package. The previous 0.1.0 public release and its
+historical POSIX behavior remain unchanged. CI artifacts have finite retention.
 
-## Boundaries
+`verify_install.py` is the retained 0.1.0 verifier; the alpha workflow uses
+`build_native.py` and `verify_portable_install.py` instead. No original POSIX
+implementation or original test expectation was changed for Windows support.
 
-This is not an emergency-stop guarantee. Polling, scheduling, process startup,
-I/O, and termination can be delayed. The deadline concerns observation by the
-supervisor, not an exact timestamp of the child's final side effect. An exit
-first observed after the deadline is not certified as timely even if it actually
-happened earlier. SIGKILL of the supervisor itself cannot be handled.
+## Authorship
 
-Signals target the task's new process group. The receipt confirms only the
-direct child's exit; cleanup of same-group descendants is best effort. Detached
-sessions, remote jobs, kernel-blocked processes, and other machines are not
-covered. Completed side effects cannot be undone. The local stop file is a
-mechanism for its caller, not authentication of a particular human's will. Use a
-trusted local filesystem and do not mistake file existence or a receipt hash for
-semantic fidelity.
+Published for Youngseok Oh's Second Paddle Notes, authored with Zero (ChatGPT).
+Not reviewed or endorsed by OpenAI. The folder-scoped MIT license does not change
+the rights in the repository's pre-existing notes or user source quotations.
 
-This folder does not alter the project's source quotations, existing model-study
-criteria, other workflows, account permissions, or private workspace. It makes
-no claim about fixing all GitHub Actions cancellation or changing any AI model.
-
-## References and authorship
-
-- [Python subprocess: process groups and return codes](https://docs.python.org/3/library/subprocess.html)
-- [GitHub: workflow cancellation](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-cancellation)
-
-Published as a user-authorized contribution to **Youngseok Oh's Second Paddle
-Notes**. Code, tests, and this explanatory text were authored with **Zero
-(ChatGPT)**. Not reviewed or endorsed by OpenAI. The MIT license in this folder
-applies only to these newly authored utility files, not the repository's
-pre-existing notes or source material.
+References: [Python subprocess](https://docs.python.org/3/library/subprocess.html)
+and [GitHub workflow cancellation](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-cancellation).
 
 ## 한국어
 
-`취소 요청을 보냈다`, `화면에 취소됐다고 뜬다`, `실제 프로그램이 끝났다`를
-구분하는 실행 도구다. 새 기록 파일과 중단 파일 위치를 정해 프로그램을
-시작하고, 중단 파일을 만들면 종료를 요청한 뒤 실제 자식 프로세스의 종료를
-관측한다. 원문 보관이나 AI의 의미 이해를 검증하는 도구는 아니다. 사용자가
-매번 이 도구로 일을 관리해야 한다는 뜻도 아니다. 공개 실행 예제와 결과는
-다른 사람이 확인하고 개선할 수 있도록 제공한다.
+같은 설치 명령에 Windows 실행 경로를 추가한 실험판이다. Windows에서는 직접
+시작한 실행 파일 하나의 종료만 관측하며, 그 프로그램이 다시 실행한 자식들까지
+멈춘다고 보장하지 않는다. 원래 Linux 실행 코드와 공개 0.1.0 배포본은 그대로다.
+실제 플랫폼 실행 결과와 공개 코드 반영, 새 정식 배포, 다른 사람의 채택은 서로
+다른 단계다. 사용자의 PC나 설치를 이 저장소 변경만으로 수정하지 않는다.

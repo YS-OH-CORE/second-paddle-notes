@@ -14,38 +14,32 @@ permissions:
   contents: read
 jobs:
   verify:
-    runs-on: ubuntu-latest
-    timeout-minutes: 3
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           persist-credentials: false
-      - name: Run owned-process regression checks
-        run: python3 -m unittest discover -s tools/process-receipt -p 'test_*.py' -v
-      - name: Produce and verify actual public-safe receipts
-        run: python3 tools/process-receipt/demo.py --out "$RUNNER_TEMP/process-receipt-demo"
-      - name: Build installable wheel in a separate build environment
-        run: |
-          python3 -m venv "$RUNNER_TEMP/process-build-env"
-          "$RUNNER_TEMP/process-build-env/bin/python" -m pip --disable-pip-version-check install "setuptools==82.0.1"
-          "$RUNNER_TEMP/process-build-env/bin/python" -m pip --disable-pip-version-check wheel --no-index --no-deps --no-build-isolation --wheel-dir "$RUNNER_TEMP/process-package-dist" ./tools/process-receipt
-      - name: Install offline and run existing workload through the installed command
-        run: python3 tools/process-receipt/verify_install.py --wheel "$RUNNER_TEMP/process-package-dist/second_paddle_process_receipt-0.1.0-py3-none-any.whl" --out "$RUNNER_TEMP/process-install-check"
-      - name: Retain built package and actual installation evidence
+      - name: Preserve original POSIX regressions
+        if: runner.os == 'Linux'
+        run: python -m unittest discover -s tools/process-receipt -p test_process_receipt.py -v
+      - name: Preserve original POSIX inert-process demonstrations
+        if: runner.os == 'Linux'
+        run: python tools/process-receipt/demo.py --out "$RUNNER_TEMP/process-receipt-demo"
+      - name: Build and verify native offline installation outside source
+        run: python tools/process-receipt/build_native.py
+      - name: Retain platform-specific wheel and observed receipts
         if: ${{ always() }}
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: process-receipt-package
+          name: process-receipt-native-${{ runner.os }}
           path: |
-            ${{ runner.temp }}/process-package-dist/*.whl
-            ${{ runner.temp }}/process-install-check/results/
+            ${{ runner.temp }}/process-native-build/dist/*.whl
+            ${{ runner.temp }}/process-native-build/installation/results/
+            ${{ runner.temp }}/process-receipt-demo/
           if-no-files-found: warn
-          retention-days: 30
-      - name: Retain observed outputs
-        if: ${{ always() }}
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
-        with:
-          name: process-receipt-demo
-          path: ${{ runner.temp }}/process-receipt-demo/
-          if-no-files-found: warn
-          retention-days: 30
+          retention-days: 14
