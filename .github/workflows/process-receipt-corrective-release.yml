@@ -1,0 +1,115 @@
+name: Publish corrective Process Receipt 0.2.0a2
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'releases/process-receipt-v0.2.0a2/**'
+      - '.github/workflows/process-receipt-corrective-release.yml'
+  pull_request:
+    paths:
+      - 'releases/process-receipt-v0.2.0a2/**'
+      - '.github/workflows/process-receipt-corrective-release.yml'
+permissions:
+  contents: read
+concurrency:
+  group: process-receipt-corrective-a2-publication
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    permissions:
+      contents: read
+      actions: read
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Check publication and notice state without mutations
+        run: |
+          python3 -m py_compile releases/process-receipt-v0.2.0a2/publish.py releases/process-receipt-v0.2.0a2/consumer.py
+          python3 -m unittest discover -s releases/process-receipt-v0.2.0a2 -p 'test_*.py' -v
+      - name: Validate the existing tested artifact without publication
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 releases/process-receipt-v0.2.0a2/publish.py --prepare --out "$RUNNER_TEMP/a2-preflight"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: ${{ always() }}
+        with:
+          name: a2-preflight
+          path: ${{ runner.temp }}/a2-preflight/preflight.json
+          if-no-files-found: warn
+          retention-days: 14
+  publish:
+    needs: check
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && github.repository == 'YS-OH-CORE/second-paddle-notes'
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Publish only the already tested corrective wheel
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 releases/process-receipt-v0.2.0a2/publish.py --publish --out "$RUNNER_TEMP/a2-publication"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: ${{ always() }}
+        with:
+          name: a2-publication
+          path: |
+            ${{ runner.temp }}/a2-publication/publication.json
+            ${{ runner.temp }}/a2-publication/draft-checkpoint.json
+          if-no-files-found: warn
+          retention-days: 14
+  consumer:
+    needs: publish
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Anonymous download and installed a1-to-a2 fault-reporting upgrade
+        shell: bash
+        run: python releases/process-receipt-v0.2.0a2/consumer.py --out "$RUNNER_TEMP/a2-consumer"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: ${{ always() }}
+        with:
+          name: a2-upgrade-${{ runner.os }}
+          path: |
+            ${{ runner.temp }}/a2-consumer/*.json
+            ${{ runner.temp }}/a2-consumer/outside-source/*.json
+            ${{ runner.temp }}/a2-consumer/outside-source/*.marker
+            ${{ runner.temp }}/a2-consumer/outside-source/*.txt
+          if-no-files-found: warn
+          retention-days: 14
+  notices:
+    needs: consumer
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && github.repository == 'YS-OH-CORE/second-paddle-notes'
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Append dated correction to the two known older release descriptions
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 releases/process-receipt-v0.2.0a2/publish.py --notices --out "$RUNNER_TEMP/a2-notices"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: ${{ always() }}
+        with:
+          name: a2-notices
+          path: ${{ runner.temp }}/a2-notices/*.json
+          if-no-files-found: warn
+          retention-days: 14
