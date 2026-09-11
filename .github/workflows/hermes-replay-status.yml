@@ -40,6 +40,7 @@ jobs:
           name: hermes-replay-status-evidence
           path: |
             ${{ runner.temp }}/replay-evidence/*.json
+            ${{ runner.temp }}/replay-evidence/*.jsonl
             ${{ runner.temp }}/replay-evidence/*.xml
             ${{ runner.temp }}/replay-evidence/*.txt
           if-no-files-found: warn

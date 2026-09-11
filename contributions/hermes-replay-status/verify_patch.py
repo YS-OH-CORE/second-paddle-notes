@@ -18,6 +18,7 @@ REV = '6c3d4a4af70d76b7365bf19e9420ffdcbb9830ad'
 BLOB = '7af23b143e3f3c8bbc01d09c98b7be535f910961'
 TEST = 'tests/agent/test_replay_cleanup_structured_results.py'
 MODULE = 'agent/replay_cleanup.py'
+DB_TEST = 'tests/agent/test_replay_cleanup_sessiondb_roundtrip.py'
 
 
 def sha(data):
@@ -34,7 +35,7 @@ def verify(upstream, out):
         raise ValueError('Checkout is not the inspected upstream revision')
     original = (upstream/MODULE).read_bytes()
     actual_blob = hashlib.sha1(b'blob '+str(len(original)).encode()+b'\0'+original).hexdigest()
-    if actual_blob != BLOB or (upstream/TEST).exists():
+    if actual_blob != BLOB or (upstream/TEST).exists() or (upstream/DB_TEST).exists():
         raise ValueError('Source changed or proposed regression file already exists')
     if subprocess.check_output(['git','status','--porcelain'],cwd=upstream):
         raise ValueError('Use a clean disposable checkout')
@@ -47,7 +48,8 @@ def verify(upstream, out):
     def tests(label, file):
         report = out/(label+'.xml')
         command = [sys.executable,'-m','pytest','-o','addopts=', '-q',file,'--junitxml='+str(report)]
-        result = subprocess.run(command,cwd=upstream,env=env,capture_output=True,text=True,timeout=75)
+        test_env = dict(env, REPLAY_ROUNDTRIP_EVIDENCE=str(out/(label+'-roundtrip.jsonl')))
+        result = subprocess.run(command,cwd=upstream,env=test_env,capture_output=True,text=True,timeout=120)
         (out/(label+'.txt')).write_text(result.stdout+'\n'+result.stderr,encoding='utf-8')
         if not report.exists():
             raise RuntimeError(label+': no actual pytest report was returned')
@@ -66,10 +68,17 @@ def verify(upstream, out):
     before = tests('before',TEST)
     if before['exit_code'] != 1 or before['errors'] or before['skipped'] or before['tests'] != 27 or before['failures'] < 1:
         raise RuntimeError('Baseline did not demonstrate the expected assertion failures; inspect before.txt')
+    shutil.copyfile(Path(__file__).with_name(Path(DB_TEST).name), upstream/DB_TEST)
+    db_before = tests('db-before',DB_TEST)
+    if db_before['exit_code'] != 1 or db_before['errors'] or db_before['skipped'] or db_before['tests'] != 8 or db_before['failures'] < 1:
+        raise RuntimeError('DB baseline did not demonstrate assertion failures')
     subprocess.run(['git','apply','--include='+MODULE,str(patch)],cwd=upstream,check=True)
     after = tests('after',TEST)
     if after['exit_code'] or after['failures'] or after['errors'] or after['skipped'] or after['tests'] != 27:
         raise RuntimeError('Patched regression cases did not all pass')
+    db_after = tests('db-after',DB_TEST)
+    if db_after['exit_code'] or db_after['failures'] or db_after['errors'] or db_after['skipped'] or db_after['tests'] != 8:
+        raise RuntimeError('Patched DB restart tests did not pass')
     existing = tests('existing','tests/agent/test_replay_cleanup.py')
     if existing['exit_code'] or existing['failures'] or existing['errors'] or existing['skipped'] or not existing['tests']:
         raise RuntimeError('Existing replay cleanup tests did not pass')
@@ -87,9 +96,9 @@ def verify(upstream, out):
         raise RuntimeError('Imported a different message builder')
     summary = dict(status='verified', source_revision=REV, source_blob=BLOB,
         patch_sha256=sha(patch.read_bytes()), patched_module_sha256=sha((upstream/MODULE).read_bytes()),
-        before=before, after=after, existing=existing, real_imports=loaded,
+        before=before, after=after, db_before=db_before, db_after=db_after, existing=existing, real_imports=loaded,
         source_functions_stubbed=False, model_calls=0, gateway_started=False,
-        scope='Synthetic in-memory replay tests using actual upstream module imports and conftest. No SessionDB round-trip, model evaluation, or full user session.',
+        scope='Synthetic in-memory tests and real SessionDB persistence with separate writer/reader processes, then actual replay cleanup. No gateway restart, provider request or model evaluation.',
         residual='Legacy unstructured or wrapped text still uses the old heuristic. This patch does not authenticate interruption provenance.')
     (out/'summary.json').write_text(json.dumps(summary,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(summary,indent=2))
