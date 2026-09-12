@@ -28,6 +28,8 @@ This repository does not claim AI consciousness, hidden-state access, or a new s
 
 ## Start here
 
+- **Use the checks from an MCP host:** [Install Evidence Tools](packages/evidence-mcp/README.md) · [download the reviewed preview](https://github.com/YS-OH-CORE/second-paddle-notes/releases/tag/evidence-v0.1.0a1), with the original execution evidence and checksums.
+
 - **Was the approved request the one that ran?** [Approval Trace Check](tools/approval-trace-check/README.md), a small offline browser/CLI checker with editable examples. No account or upload.
 
 - **Runnable tool:** [Process Receipt](tools/process-receipt/README.md), stop a trusted process and inspect its actual exit evidence.
