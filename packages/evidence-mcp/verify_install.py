@@ -54,7 +54,8 @@ async def installed_client(command: str, output: Path) -> None:
         if event == 'socket.connect' and args[0].family in (socket.AF_INET,socket.AF_INET6):
             attempts.append(str(args[1])); raise RuntimeError('No external network belongs in the installed stdio exercise.')
         if event == 'subprocess.Popen':
-            spawns.append({'executable': str(args[0]), 'argv': [str(x) for x in args[1]]})
+            spawns.append({'executable': None if args[0] is None else str(args[0]),
+                           'argv': args[1] if isinstance(args[1], str) else [str(x) for x in args[1]]})
     checked=preflight()
     assert Path(second_paddle_evidence.__file__).is_relative_to(Path(sys.prefix))
     summary={'status':'incomplete','preflight':checked,'interpreter':sys.executable,'python':sys.version,
@@ -88,7 +89,15 @@ async def installed_client(command: str, output: Path) -> None:
             assert v['source']=='structured_content' and v['result']['content']==[{'type':'text','text':'{"result":[]}'}]
             v=await call('error_preserved','project_tool_result','result_json','{"content":[],"structuredContent":{"error":"synthetic"},"isError":true}',True)
             assert v['result']['isError'] is True
-        assert len(spawns)==1 and Path(spawns[0]['executable']).resolve()==Path(command).resolve()
+        assert len(spawns)==1
+        launch=spawns[0]
+        if os.name=='nt':
+            # Windows Popen's audit event can contain executable=None and a
+            # quoted command-line string. Preserve it rather than split characters.
+            assert launch['argv']==subprocess.list2cmdline([command])
+            assert launch['executable'] is None or Path(launch['executable']).resolve()==Path(command).resolve()
+        else:
+            assert launch['argv']==[command] and Path(launch['executable']).resolve()==Path(command).resolve()
         assert not attempts
         summary['status']='passed'
     except BaseException as exc:
