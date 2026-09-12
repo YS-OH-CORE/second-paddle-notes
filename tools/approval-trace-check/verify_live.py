@@ -9,7 +9,6 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
-from urllib.request import urlopen
 from playwright.sync_api import sync_playwright
 
 URL = 'https://rawcdn.githack.com/YS-OH-CORE/second-paddle-notes/b0fc912f4e8d957623c3df087cdadcaacba95c53/tools/approval-trace-check/index.html'
@@ -27,14 +26,14 @@ def verify(out: Path) -> None:
                'scope':'Live public URL, synthetic input, Linux browsers; not native iPhone Safari.',
                'hosting':'Third-party rawgit.hack; host sees ordinary page requests. No GitHub Pages configuration or uptime guarantee.'}
     try:
-        with urlopen(URL, timeout=35) as response:
-            data = response.read(100000)
-            summary['http'] = {'status':response.status, 'url':response.url,
-                'content_type':response.headers.get('Content-Type'), 'bytes':len(data), 'sha256':digest(data)}
-        assert summary['http']['status'] == 200
-        assert 'text/html' in summary['http']['content_type']
+        # The first machine GET returned 403 before any browser was launched.
+        # Test the intended, normal browser route once; keep that failure recorded.
+        # The independently pinned repository bytes remain the acceptance target.
+        data = Path(__file__).with_name('index.html').read_bytes()
         assert len(data) == 26813 and digest(data) == EXPECTED
-        (out/'downloaded.html').write_bytes(data)
+        summary['prior_attempt'] = {
+            'run_id':34698109087, 'method':'urllib GET', 'status':403,
+            'browser_started':False, 'reason_beyond_http_status':'unconfirmed'}
         with sync_playwright() as p:
             for name, mobile in [('chromium',False), ('webkit',True)]:
                 result = {'engine':name, 'mobile_size':mobile, 'checks':[], 'requests':[], 'page_errors':[]}
@@ -52,7 +51,11 @@ def verify(out: Path) -> None:
                 page.on('pageerror',lambda error:result['page_errors'].append(str(error)))
                 try:
                     doc = page.goto(URL, wait_until='domcontentloaded', timeout=45000)
-                    assert doc and doc.ok
+                    result['entry_http_status'] = doc.status if doc else None
+                    result['entry_title'] = page.title()
+                    if doc:
+                        result['entry_response_headers'] = {k:v for k,v in doc.headers.items() if k in ('content-type','server','x-githack-cache-status')}
+                    assert doc and doc.ok, 'Public browser entry denied; no bypass or retry'
                     button = page.get_by_role('button', name='Open the page', exact=True)
                     result['host_notice_shown'] = button.count() > 0
                     if result['host_notice_shown']:
@@ -63,7 +66,8 @@ def verify(out: Path) -> None:
                     assert doc and doc.ok and page.url == URL
                     actual = doc.body()
                     result['document_sha256'] = digest(actual)
-                    assert actual == data
+                    assert actual == data, 'Served document differs from the exact published source'
+                    (out/(name+'-served.html')).write_bytes(actual)
                     page.wait_for_selector('#trace')
                     assert page.title() == 'Approval Trace Check'
                     page.wait_for_load_state('networkidle')
