@@ -1,0 +1,44 @@
+name: Discover and call evidence tools through MCP
+on:
+  pull_request:
+    paths:
+      - 'tools/evidence-mcp/**'
+      - '.github/workflows/evidence-mcp.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  stdio:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Prepare the published SDK
+        run: |
+          python3 -m venv "$RUNNER_TEMP/evidence-venv"
+          "$RUNNER_TEMP/evidence-venv/bin/python" -m pip install --disable-pip-version-check -r tools/evidence-mcp/requirements.txt
+          "$RUNNER_TEMP/evidence-venv/bin/python" -m pip freeze > "$RUNNER_TEMP/evidence-dependencies.txt"
+          node --version > "$RUNNER_TEMP/evidence-node.txt"
+      - name: Check the read-only bridge
+        working-directory: tools/evidence-mcp
+        run: |
+          set -o pipefail
+          "$RUNNER_TEMP/evidence-venv/bin/python" -m unittest -v test_service 2>&1 | tee "$RUNNER_TEMP/evidence-unit.log"
+      - name: Discover and invoke actual stdio tools
+        run: |
+          set -o pipefail
+          "$RUNNER_TEMP/evidence-venv/bin/python" tools/evidence-mcp/test_stdio.py --out "$RUNNER_TEMP/evidence-mcp-results" 2>&1 | tee "$RUNNER_TEMP/evidence-integration.log"
+      - name: Retain synthetic observations
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: evidence-mcp-stdio
+          path: |
+            ${{ runner.temp }}/evidence-mcp-results/*.json
+            ${{ runner.temp }}/evidence-*.log
+            ${{ runner.temp }}/evidence-dependencies.txt
+            ${{ runner.temp }}/evidence-node.txt
+          if-no-files-found: warn
+          retention-days: 14
