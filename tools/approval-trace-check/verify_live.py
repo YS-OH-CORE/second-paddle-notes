@@ -8,8 +8,9 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 from pathlib import Path
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import sync_playwright, expect
 
 URL = 'https://rawcdn.githack.com/YS-OH-CORE/second-paddle-notes/b0fc912f4e8d957623c3df087cdadcaacba95c53/tools/approval-trace-check/index.html'
 EXPECTED = 'd27f2b213ff2e4b32ceb930bf361b6adef8d28c3d3ed61a10c346bdfca6877ae'
@@ -84,8 +85,8 @@ def verify(out: Path) -> None:
                         {'type':'execute','request_id':'synthetic-live','scope':'demo','payload':PAYLOAD}]}
                     encoded = json.dumps(trace,ensure_ascii=False).encode('utf-8')
                     page.set_input_files('#file',{'name':'synthetic.json','mimeType':'application/json','buffer':encoded})
-                    page.wait_for_function("document.getElementById('trace').value.includes('SYNTHETIC_ONLY_CANARY')")
-                    page.wait_for_function("document.getElementById('status').textContent === 'No violation observed'")
+                    expect(page.locator('#trace')).to_have_value(re.compile('SYNTHETIC_ONLY_CANARY'))
+                    expect(page.locator('#status')).to_have_text('No violation observed')
                     assert json.loads(page.locator('#trace').input_value()) == trace
                     result['checks'].append('real file import preserves exact synthetic Korean payload')
                     with page.expect_download() as pending:
