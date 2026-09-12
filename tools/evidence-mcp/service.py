@@ -9,10 +9,12 @@ from pathlib import Path
 import shutil
 import subprocess
 import sys
+from threading import Lock
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 LIMIT = 1_048_576
+_IMPORT_LOCK = Lock()
 EXPECTED = {
     'approval-trace-check/audit.js': '3bd85f4a1a0fa8131382755de845658b712966e1',
     'mcp-result-text/result_text.py': 'a795d0af7e86a27e779b05fd04ff0afb8e644096',
@@ -100,13 +102,15 @@ def project_result(data: dict[str, Any]) -> dict[str, Any]:
     # The server validates with the SDK before entering here. The original helper
     # remains byte-identical; this import uses a fixed repository path, not input.
     name = '_zero_result_text'
-    if name not in sys.modules:
-        spec = importlib.util.spec_from_file_location(name, ROOT / 'mcp-result-text/result_text.py')
-        if spec is None or spec.loader is None:
-            raise RuntimeError('Bundled helper unavailable.')
-        module = importlib.util.module_from_spec(spec)
-        sys.modules[name] = module
-        spec.loader.exec_module(module)
+    # Concurrent first calls must not see a partially initialized module.
+    with _IMPORT_LOCK:
+        if name not in sys.modules:
+            spec = importlib.util.spec_from_file_location(name, ROOT / 'mcp-result-text/result_text.py')
+            if spec is None or spec.loader is None:
+                raise RuntimeError('Bundled helper unavailable.')
+            module = importlib.util.module_from_spec(spec)
+            sys.modules[name] = module
+            spec.loader.exec_module(module)
     try:
         view = sys.modules[name].add_structured_fallback(data)
     except (TypeError, ValueError, RecursionError, OverflowError):
