@@ -1,0 +1,55 @@
+name: Reproduce external deferred result resumption
+on:
+  pull_request:
+    paths:
+      - 'contributions/pydantic-deferred-resume/**'
+      - '.github/workflows/pydantic-deferred-resume.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Prepare isolated published package
+        run: |
+          python3 -m venv "$RUNNER_TEMP/resume-venv"
+          "$RUNNER_TEMP/resume-venv/bin/python" -m pip install --disable-pip-version-check 'pydantic-ai-slim[ui]==2.43.0'
+          "$RUNNER_TEMP/resume-venv/bin/python" -m pip freeze > "$RUNNER_TEMP/resume-dependencies.txt"
+      - name: Verify imported production source identities
+        run: |
+          "$RUNNER_TEMP/resume-venv/bin/python" - <<'PY'
+          import hashlib, importlib, importlib.metadata, json, os, pathlib, sys
+          expected = {
+            'pydantic_ai.ui.vercel_ai._adapter':'fe190c565e2d00f488d505a94220e47afcc48f63',
+            'pydantic_ai.ui._adapter':'502eab5a7a8b7a8fbcd6058e75128d2b2aecce82',
+            'pydantic_ai.models.function':'32993c30ab9e32f4f63e61ebb352f044a755b01c',
+          }
+          report = {'python':sys.version,'package_version':importlib.metadata.version('pydantic-ai-slim'),'modules':{}}
+          for name, wanted in expected.items():
+              path = pathlib.Path(importlib.import_module(name).__file__)
+              data = path.read_bytes()
+              actual = hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
+              report['modules'][name] = {'path':str(path),'git_blob':actual,'expected_git_blob':wanted,'matches':actual==wanted}
+          pathlib.Path(os.environ['RUNNER_TEMP'],'resume-source.json').write_text(json.dumps(report,indent=2)+'\n')
+          assert report['package_version']=='2.43.0' and all(x['matches'] for x in report['modules'].values()), report
+          PY
+      - name: Run actual adapter across three fresh processes
+        run: |
+          "$RUNNER_TEMP/resume-venv/bin/python" contributions/pydantic-deferred-resume/reproduce.py --out "$RUNNER_TEMP/resume-evidence"
+      - name: Retain synthetic observations and installed source identity
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: pydantic-deferred-resume
+          path: |
+            ${{ runner.temp }}/resume-evidence/*.json
+            ${{ runner.temp }}/resume-evidence/*.log
+            ${{ runner.temp }}/resume-source.json
+            ${{ runner.temp }}/resume-dependencies.txt
+          if-no-files-found: warn
+          retention-days: 14
