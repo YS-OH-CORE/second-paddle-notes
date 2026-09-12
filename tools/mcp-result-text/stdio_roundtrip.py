@@ -3,7 +3,7 @@
 Runs published mcp==2.2.0 unchanged. Two fresh server processes negotiate auto
 and legacy respectively. All tool responses are synthetic. No network needed.
 """
-from __future__ import annotations
+# Keep runtime annotations for locally imported protocol result classes.
 
 import argparse
 import asyncio
