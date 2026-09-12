@@ -12,8 +12,8 @@ import re
 from pathlib import Path
 from playwright.sync_api import sync_playwright, expect
 
-URL = 'https://rawcdn.githack.com/YS-OH-CORE/second-paddle-notes/b0fc912f4e8d957623c3df087cdadcaacba95c53/tools/approval-trace-check/index.html'
-EXPECTED = 'd27f2b213ff2e4b32ceb930bf361b6adef8d28c3d3ed61a10c346bdfca6877ae'
+URL = 'https://rawcdn.githack.com/YS-OH-CORE/second-paddle-notes/a810f7384567da024fbd0b2c2167a4967f738561/tools/approval-trace-check/index.html'
+EXPECTED = '69640216e78d31b7265113455379f5bfcf7b8e9e685dd47b0aa78ae5a79ee5e6'
 PAYLOAD = 'SYNTHETIC_ONLY_CANARY_60912  한글\n    keep indentation\n'
 
 
@@ -24,14 +24,14 @@ def digest(data: bytes) -> str:
 def verify(out: Path) -> None:
     out.mkdir(parents=True, exist_ok=False)
     summary = {'status':'incomplete', 'url':URL, 'expected_sha256':EXPECTED, 'browsers':[],
-               'scope':'Live public URL, synthetic input, Linux browsers; not native iPhone Safari.',
+               'scope':'v0.1.1 live public URL including ambiguous raw JSON, synthetic input, Linux browsers; not native iPhone Safari.',
                'hosting':'Third-party rawgit.hack; host sees ordinary page requests. No GitHub Pages configuration or uptime guarantee.'}
     try:
-        # The first machine GET returned 403 before any browser was launched.
+        # The historical v0.1.0 machine GET returned 403 before any browser was launched.
         # Test the intended, normal browser route once; keep that failure recorded.
         # The independently pinned repository bytes remain the acceptance target.
         data = Path(__file__).with_name('index.html').read_bytes()
-        assert len(data) == 26813 and digest(data) == EXPECTED
+        assert len(data) == 29348 and digest(data) == EXPECTED
         summary['prior_attempt'] = {
             'run_id':34698109087, 'method':'urllib GET', 'status':403,
             'browser_started':False, 'reason_beyond_http_status':'unconfirmed'}
@@ -96,6 +96,27 @@ def verify(out: Path) -> None:
                     assert report['valid_execution_attempts'] == report['execution_attempts'] == 1
                     assert report['issues'] == [] and PAYLOAD not in json.dumps(report,ensure_ascii=False)
                     result['checks'].append('browser-generated download is valid and omits payload text')
+                    assert report['auditor_version'] == '0.1.1'
+                    raw_ambiguous = json.dumps(trace, ensure_ascii=False, indent=2).replace(
+                        '"type": "approve"', '"type": "cancel", "type": "approve"', 1)
+                    page.set_input_files('#file', {'name':'ambiguous.json',
+                        'mimeType':'application/json','buffer':raw_ambiguous.encode('utf-8')})
+                    expect(page.locator('#status')).to_have_text('Input not assessed')
+                    expect(page.locator('#export')).to_be_disabled()
+                    expect(page.locator('#detail')).to_contain_text('a field appears twice')
+                    assert page.locator('#trace').input_value() == raw_ambiguous
+                    assert page.locator('#events').inner_text() == '-'
+                    assert page.locator('#violations').inner_text() == '-'
+                    result['ambiguity'] = {'input_preserved':True,'export_disabled':True,
+                        'status':page.locator('#status').inner_text(),
+                        'detail_en':page.locator('#detail').inner_text()}
+                    result['checks'].append('raw duplicate cancel/approve rejected before assessment without rewriting source')
+                    page.click('#lang')
+                    expect(page.locator('#detail')).to_contain_text('같은 항목이 두 번')
+                    result['ambiguity']['detail_ko'] = page.locator('#detail').inner_text()
+                    page.screenshot(path=str(out/(name+'-ambiguous-ko.png')),full_page=True)
+                    page.click('#lang')
+                    result['checks'].append('ambiguous input explanation localizes and unassessed counts never look like zero findings')
                     trace['events'][2]['payload'] = 'Different synthetic task'
                     page.fill('#trace',json.dumps(trace,ensure_ascii=False))
                     assert page.locator('#export').is_disabled()

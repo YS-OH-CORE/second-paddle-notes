@@ -4,7 +4,15 @@ A small, dependency-free **approval trace checker**. Open an example, change its
 sequence, and see where approval and execution stop referring to the same request.
 You can also inspect your own logs after explicitly mapping them to the schema below.
 
-**[Try the public examples in a browser / 브라우저에서 예시 열기](https://rawcdn.githack.com/YS-OH-CORE/second-paddle-notes/b0fc912f4e8d957623c3df087cdadcaacba95c53/tools/approval-trace-check/index.html)**
+**v0.1.1 correction:** duplicate JSON member names are rejected before a trace is
+assessed. Previously, the native parser could keep only the last `type`, `payload`
+or `events` member and produce a misleading no-violation report. A new diagnostic
+identifies the second occurrence by line/column without rewriting the input.
+Old downloaded copies and the earlier fixed `b0fc912f` preview remain v0.1.0;
+replace a saved copy or use the updated preview link below. This is our tool's
+input-handling correction, not a newly discovered Hermes defect.
+
+**[Try v0.1.1 in a browser / 0.1.1 예시 열기](https://rawcdn.githack.com/YS-OH-CORE/second-paddle-notes/a810f7384567da024fbd0b2c2167a4967f738561/tools/approval-trace-check/index.html)**
 
 This optional, fixed-version preview is served by independent **rawgit.hack**,
 not GitHub Pages. On first entry, its external-content notice may ask you to
@@ -74,8 +82,24 @@ make a composite ID when a source system uses scope-local identifiers.
 
 Limits: 1 MiB UTF-8 input, 3,000 events, 256 UTF-16 code units per ID/scope. The
 comparison is JavaScript string equality, not a semantic judgment or verification
-of original transport bytes. The parsed JSON representation is what is audited;
-canonicalize at the producer and avoid duplicate JSON object member names.
+of original transport bytes. Raw JSON must have unique decoded member names in each object.
+Escape-equivalent names such as `type` and `t\u0079pe` are duplicates. Identical
+repeated values are also rejected; repeated names in different objects and JSON
+quoted inside a payload remain ordinary data. Unicode normalization is not added.
+
+The browser and CLI both use `parseAndAudit(text)`. `parseUniqueJSON(text)` exposes
+the input check, while the low-level `audit(doc)` accepts an already parsed object
+and cannot recover members discarded earlier by another parser. Feed original text
+to the raw-input API instead of reserializing a lossy parse. Duplicate-input errors
+have code `DUPLICATE_JSON_MEMBER`, 1-based line/column, and 0-based `offset` and
+`first_offset` in UTF-16 code units. They contain no raw member name or value. An
+unassessed input produces no success report; the CLI returns exit2 and the browser
+disables report export, preserving the input for inspection.
+
+This uniqueness contract is stricter than JSON grammar: [RFC8259 section4](https://www.rfc-editor.org/rfc/rfc8259.html#section-4)
+recommends unique object names and documents differing receiver behavior for
+repeated names. The check validates syntax with native parsing, then scans the
+original string with per-object name maps before any approval assessment.
 
 **“No violation observed” is intentionally not “safe.”** This tool checks a
 supplied account of events. It cannot authenticate the author, establish a human's
@@ -91,7 +115,7 @@ with content-security-policy script hashes and `connect-src 'none'`.
 
 ```sh
 python3 build.py --check
-node --test test.cjs
+node --test test.cjs test-unique-json.cjs
 ```
 
 After source edits, run `python3 build.py`, review the HTML diff, then run the
@@ -107,7 +131,7 @@ under that container's administrator policy; the successful browser checks used
 `set_content` without changing browser policy. Native Safari/mobile and a public
 hosted deployment were not tested at that stage. See the introducing PR for those results.
 
-### Public browser entry checked on 2026-09-12
+### Original v0.1.0 public browser entry checked on 2026-09-12
 
 [Run 34698645714](https://github.com/YS-OH-CORE/second-paddle-notes/actions/runs/34698645714)
 used normal public navigation in Chromium143 and WebKit26 with a390px mobile-size
@@ -126,6 +150,23 @@ page's content security policy. Locator assertions fixed the test harness; the
 tool HTML and its policy were not weakened. Both earlier failed runs are retained
 in [PR20](https://github.com/YS-OH-CORE/second-paddle-notes/pull/20).
 A successful preview check is a dated observation, not continuous hosting health.
+
+### v0.1.1 correction verified
+
+[PR21](https://github.com/YS-OH-CORE/second-paddle-notes/pull/21) preserves the
+five raw-input comparisons and the separate observed results. In
+[Node run34701239419](https://github.com/YS-OH-CORE/second-paddle-notes/actions/runs/34701239419),
+the unchanged24 tests plus16 added groups passed. One added group compares256
+synthetic documents with Python's duplicate-aware object-pairs reader. Those
+samples are not256 independent external replications.
+
+[Live run34701239468](https://github.com/YS-OH-CORE/second-paddle-notes/actions/runs/34701239468)
+navigated the corrected fixed-version URL in Chromium143 and mobile-size
+WebKit26. Both received the exact29348-byte HTML and passed11 interaction groups,
+including duplicate-file rejection, original-text preservation, disabled export,
+and English/Korean position diagnostics. These are synthetic software checks,
+not real-user incident counts or physical-phone tests. The old preview remains
+available at its original version; use the v0.1.1 link above for the correction.
 
 ## Origin
 
@@ -152,3 +193,13 @@ projects.
 페이지 안에서 처리합니다. 민감한 기록에는 기존 내려받기 방식의 오프라인 사본을
 사용하세요. 이번에는 실제 공개 주소와 휴대폰 크기의 WebKit 화면을 검사했으며,
 실제 아이폰에서 시험한 것은 아닙니다.
+
+### 0.1.1 입력 해석 교정
+
+같은 객체에서 항목 이름이 중복되면 어느 한쪽을 판정에 쓰지 않고 위치를 알려 줍니다.
+취소와 승인이 같은 항목에 함께 적힌 기록이 마지막 값만 남아 통과하던 경우를
+재현해 고쳤습니다. 입력은 그대로 유지하고 판정 전에는 결과 저장을 하지 않습니다.
+일반 문자열 안에서 중복 항목이 있는 JSON을 인용하는 것은 정상적으로 처리합니다.
+예전 파일과 예전 고정 주소는 자동 갱신되지 않으므로 위의 새 링크나 새 파일을
+사용하세요. 이미 다른 프로그램이 중복을 없앤 기록에서는 원래 중복을 복원하지
+못하므로 원본 텍스트를 넣어야 합니다.
