@@ -1,5 +1,7 @@
 # A response is not finished until its final send completes
 
+**Follow-up, 2026-09-13 KST:** [Actual MCP initialization and restart countercheck](MCP_BOUNDARY.md) shows that this final-send candidate **does not repair the tested MCP restart failure**. First connections succeed on both sources; stale shutdown state prevents second connections on both. The original experiment below is preserved with its original conditions and scope.
+
 A bounded investigation of `EventSourceResponse` in [sse-starlette](https://github.com/sysid/sse-starlette), prompted by the final-send hypothesis in [MCP Python SDK issue3494](https://github.com/modelcontextprotocol/python-sdk/issues/3494). The original issue is jonpspri's report. Skulitom's separate restart/global-state diagnosis is not reproduced or claimed as ours.
 
 ## Observed, not just inferred
