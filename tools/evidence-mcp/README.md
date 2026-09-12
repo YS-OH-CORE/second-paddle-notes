@@ -17,7 +17,7 @@ update, review and test the bridge before changing those pins.
 
 ## Start from a repository checkout
 
-Requirements: Python 3.10+ and Node.js (tested version will be in the run evidence).
+Tested environment: Python 3.12 and Node.js 22.23.2 on Linux.
 Create a disposable environment or use your application's managed environment:
 
 ```sh
@@ -79,10 +79,32 @@ modes. It records tool schemas, both text/structured responses, protocol error
 flags, and the two server launches. A malformed call must not poison the following
 valid call. The client blocks external socket connections during the test.
 
-At initial publication, local tests passed and hosted integration is pending.
-The introducing pull request records actual outcomes. An MCP client executes the
-checks; no claim is made that a language model selected these tools or that any
-external developer adopted them. AI-assisted by Zero (ChatGPT) for Youngseok Oh.
+### Observed on 2026-09-13 (Korea time)
+
+[PR26](https://github.com/YS-OH-CORE/second-paddle-notes/pull/26) and
+[run34708053757](https://github.com/YS-OH-CORE/second-paddle-notes/actions/runs/34708053757)
+record the executed result: 16 bridge unit tests passed, and two real stdio server
+launches each advertised both tools and completed 12 synthetic calls (24 total).
+The client started the exact server script from a separate working directory.
+Text and structured results agreed, errors remained errors, and a valid empty-result
+projection succeeded after invalid calls. Both existing helper files were unchanged.
+
+The returned artifact was downloaded and inspected: 10,870 bytes, SHA-256
+`fd3584dfdfd713a2fd76343a6e469eddf442f9099586835cd0cbf471eb6dd55f`.
+Per-mode files match the combined summary; all 24 responses, error flags, tool
+schemas and the two launch records were checked. Client network attempts were empty.
+This evidence inspection is not an additional independent execution.
+
+The initial run34707943257 also passed. Before publication, first-time helper loading
+was placed under a lock; the complete test sequence ran again on the final executable
+commit2bfc9a7f9b658d2134da0b7e7d8303cd90bd635f. These are the same selected cases,
+not a doubled performance sample or a general concurrency certification.
+
+A programmed MCP client executes these checks; no claim is made that a language
+model selected the tools, that a particular host app was configured, or that an
+external developer adopted them. New files in this folder are MIT-licensed; this
+does not relicense sibling tools or the SDK. AI-assisted by Zero (ChatGPT) for
+Youngseok Oh.
 
 Sources: [MCP tools/list and tools/call](https://modelcontextprotocol.io/specification/2025-11-25/server/tools),
 [SDK server entry at v2.2.0](https://github.com/modelcontextprotocol/python-sdk/blob/v2.2.0/src/mcp/server/mcpserver/server.py),
