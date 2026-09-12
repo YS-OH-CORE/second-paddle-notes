@@ -4,6 +4,17 @@ A small, dependency-free **approval trace checker**. Open an example, change its
 sequence, and see where approval and execution stop referring to the same request.
 You can also inspect your own logs after explicitly mapping them to the schema below.
 
+**[Try the public examples in a browser / 브라우저에서 예시 열기](https://rawcdn.githack.com/YS-OH-CORE/second-paddle-notes/b0fc912f4e8d957623c3df087cdadcaacba95c53/tools/approval-trace-check/index.html)**
+
+This optional, fixed-version preview is served by independent **rawgit.hack**,
+not GitHub Pages. On first entry, its external-content notice may ask you to
+choose **Open the page**. That host notice loads third-party advertising resources;
+ordinary visit metadata reaches the host and those providers. The checked tool
+itself performs input processing in memory without input uploads. Use synthetic
+examples for this hosted preview; prefer the downloaded offline copy for sensitive
+traces. Availability and the host's future behavior are outside this project's
+control. No sign-in is needed for the tested entry path.
+
 **[Download the standalone HTML](https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/main/tools/approval-trace-check/index.html)** and open the saved file in a browser. GitHub's file view displays source; it is not a hosted interactive site. The one HTML file contains its code and styles. No account, installation, model call, upload, external font, analytics or persistent input storage is used by the page. External source links navigate only when clicked. Browser/OS restrictions may limit local HTML execution or downloads.
 
 ## Try it
@@ -89,12 +100,32 @@ all six orderings of a single proposal/approval/attempt, and the 20 merges of tw
 independent ordered three-event scopes. These are software checks, not model
 benchmarks or production incident counts.
 
-Browser behavior was also exercised in container Chromium with supplied HTML,
+At initial publication, browser behavior was exercised in container Chromium with supplied HTML,
 including JSON import/export, stale-report invalidation, inert HTML-like input,
 Korean controls and a390px viewport. Direct `file://` navigation was unavailable
 under that container's administrator policy; the successful browser checks used
 `set_content` without changing browser policy. Native Safari/mobile and a public
-hosted deployment were not tested. See the introducing PR for observed results.
+hosted deployment were not tested at that stage. See the introducing PR for those results.
+
+### Public browser entry checked on 2026-09-12
+
+[Run 34698645714](https://github.com/YS-OH-CORE/second-paddle-notes/actions/runs/34698645714)
+used normal public navigation in Chromium143 and WebKit26 with a390px mobile-size
+viewport. Both followed the host notice through its visible button and received
+the exact26813-byte published HTML (SHA-256
+`d27f2b213ff2e4b32ceb930bf361b6adef8d28c3d3ed61a10c346bdfca6877ae`).
+The checks covered file import, report download, changed input, Korean rendering,
+computation after disconnecting the network, and no supplied trace restored on
+reload. There were zero HTTP(S) requests during the tested data interactions,
+separate from the host notice's advertising requests during entry. These were
+Linux-hosted browsers with synthetic input, not a physical iPhone or native Safari.
+
+The first machine GET returned403 before any browser ran. Normal browser entry
+then worked, but an inspection wait used by our test script conflicted with the
+page's content security policy. Locator assertions fixed the test harness; the
+tool HTML and its policy were not weakened. Both earlier failed runs are retained
+in [PR20](https://github.com/YS-OH-CORE/second-paddle-notes/pull/20).
+A successful preview check is a dated observation, not continuous hosting health.
 
 ## Origin
 
@@ -114,3 +145,10 @@ projects.
 계산하며 업로드하지 않습니다. 실제 앱에 붙이려면 로그 형식을 명시적으로
 연결해야 합니다. 기록에 없는 사실이나 사람의 진짜 동의까지 증명하지는
 않습니다. 결과 파일에는 요청 ID와 작업 공간이 남으므로 공유 전 확인하세요.
+
+브라우저 예시는 문서 위쪽 링크에서 바로 열 수 있습니다. 처음에는 외부 호스팅의
+안내에서 **Open the page**를 누릅니다. 안내 화면에는 제3자 광고 요청이 있으므로
+전체 방문 경로를 무추적이라고 부르지 않습니다. 도구가 열린 뒤 검사에 넣은 내용은
+페이지 안에서 처리합니다. 민감한 기록에는 기존 내려받기 방식의 오프라인 사본을
+사용하세요. 이번에는 실제 공개 주소와 휴대폰 크기의 WebKit 화면을 검사했으며,
+실제 아이폰에서 시험한 것은 아닙니다.
