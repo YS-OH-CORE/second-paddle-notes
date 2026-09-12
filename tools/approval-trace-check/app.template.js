@@ -7,8 +7,8 @@
   };
   const $ = id => document.getElementById(id);
   let lang = navigator.language.startsWith('ko') ? 'ko' : 'en';
-  let report = null, error = '', changed = false;
-  function invalidate(isChanged) { report=null; error=''; changed=isChanged; render(); }
+  let report = null, error = '', changed = false, inputEpoch = 0;
+  function invalidate(isChanged) { inputEpoch++; report=null; error=''; changed=isChanged; render(); }
   function render() {
     const t = strings[lang];
     document.documentElement.lang = lang;
@@ -38,7 +38,7 @@
     });
   }
   function run() {
-    report=null; error=''; changed=false;
+    inputEpoch++; report=null; error=''; changed=false;
     try { report=ApprovalTrace.parseAndAudit($('trace').value); }
     catch(e) { error=e.message; }
     render();
@@ -51,10 +51,11 @@
   $('clear').addEventListener('click',()=>{$('trace').value='';$('file').value='';invalidate(false);$('trace').focus();});
   $('file').addEventListener('change',async()=>{
     const file=$('file').files[0];if(!file)return;
+    $('file').value='';invalidate(true);const ticket=inputEpoch;
     try {if(file.size>ApprovalTrace.LIMIT)throw new Error('Input exceeds 1 MiB.');
-      $('trace').value=new TextDecoder('utf-8',{fatal:true}).decode(await file.arrayBuffer());run();
-    }catch(e){report=null;error=e.message;render();}
-    $('file').value='';
+      const bytes=await file.arrayBuffer();if(ticket!==inputEpoch)return;
+      $('trace').value=new TextDecoder('utf-8',{fatal:true}).decode(bytes);run();
+    }catch(e){if(ticket!==inputEpoch)return;report=null;error=e.message;render();}
   });
   $('export').addEventListener('click',()=>{
     if(!report)return;

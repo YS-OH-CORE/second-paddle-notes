@@ -28,13 +28,14 @@ This repository does not claim AI consciousness, hidden-state access, or a new s
 
 ## Start here
 
-- **Externally acknowledged contribution / 외부 적용 사례:** [Youngseok Oh × Zero: approval-to-request binding](WORK.md), with the recipient's confirmation, credited commit, and dated adoption status.
+- **Was the approved request the one that ran?** [Approval Trace Check](tools/approval-trace-check/README.md), a small offline browser/CLI checker with editable examples. No account or upload.
 
 - **Runnable tool:** [Process Receipt](tools/process-receipt/README.md), stop a trusted process and inspect its actual exit evidence.
 
 - **Agent reliability:** [One Point Is Not Ten](notes/05-one-point-is-not-ten.md)
 - **Rule use:** [A Rule Read Is Not a Rule Running](notes/15-a-rule-read-is-not-a-rule-running.md) · [run the public smoke harness](experiments/rule-use-eval/README.md)
 - **Memory under token limits:** [Compress for Regeneration, Not Deletion](notes/17-compress-for-regeneration.md)
+- **Case study and source trail:** [Approval-to-request binding](WORK.md), the reproduction, implementation, contributor roles and original follow-up.
 
 For a shorter bilingual overview, see [The Second Paddle, Before Naming](https://youngseok-second-paddle.ohsycard.chatgpt.site/).
 

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-FWrh4+t/7WKPOdkitzmBgdH6wNr14txSgAT8KMHjkBs=' 'sha256-6/UglxiMfqr4LH3ElJ1k2QO8SAn9vGTsZx/BAQ3BX4s='; style-src 'unsafe-inline'; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-FWrh4+t/7WKPOdkitzmBgdH6wNr14txSgAT8KMHjkBs=' 'sha256-O4tVsdplzZXHFwqx9yK9CSsSJjlEHiwbCdW/DkWJkR8='; style-src 'unsafe-inline'; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'">
 <meta name="referrer" content="no-referrer">
 <title>Approval Trace Check</title>
 <style>
@@ -155,8 +155,8 @@
   };
   const $ = id => document.getElementById(id);
   let lang = navigator.language.startsWith('ko') ? 'ko' : 'en';
-  let report = null, error = '', changed = false;
-  function invalidate(isChanged) { report=null; error=''; changed=isChanged; render(); }
+  let report = null, error = '', changed = false, inputEpoch = 0;
+  function invalidate(isChanged) { inputEpoch++; report=null; error=''; changed=isChanged; render(); }
   function render() {
     const t = strings[lang];
     document.documentElement.lang = lang;
@@ -186,7 +186,7 @@
     });
   }
   function run() {
-    report=null; error=''; changed=false;
+    inputEpoch++; report=null; error=''; changed=false;
     try { report=ApprovalTrace.parseAndAudit($('trace').value); }
     catch(e) { error=e.message; }
     render();
@@ -199,10 +199,11 @@
   $('clear').addEventListener('click',()=>{$('trace').value='';$('file').value='';invalidate(false);$('trace').focus();});
   $('file').addEventListener('change',async()=>{
     const file=$('file').files[0];if(!file)return;
+    $('file').value='';invalidate(true);const ticket=inputEpoch;
     try {if(file.size>ApprovalTrace.LIMIT)throw new Error('Input exceeds 1 MiB.');
-      $('trace').value=new TextDecoder('utf-8',{fatal:true}).decode(await file.arrayBuffer());run();
-    }catch(e){report=null;error=e.message;render();}
-    $('file').value='';
+      const bytes=await file.arrayBuffer();if(ticket!==inputEpoch)return;
+      $('trace').value=new TextDecoder('utf-8',{fatal:true}).decode(bytes);run();
+    }catch(e){if(ticket!==inputEpoch)return;report=null;error=e.message;render();}
   });
   $('export').addEventListener('click',()=>{
     if(!report)return;
