@@ -28,6 +28,8 @@ This repository does not claim AI consciousness, hidden-state access, or a new s
 
 ## Start here
 
+- **Externally acknowledged contribution / 외부 적용 사례:** [Youngseok Oh × Zero: approval-to-request binding](WORK.md), with the recipient's confirmation, credited commit, and dated adoption status.
+
 - **Runnable tool:** [Process Receipt](tools/process-receipt/README.md), stop a trusted process and inspect its actual exit evidence.
 
 - **Agent reliability:** [One Point Is Not Ten](notes/05-one-point-is-not-ten.md)
