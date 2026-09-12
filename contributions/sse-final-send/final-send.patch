@@ -1,0 +1,12 @@
+--- a/sse_starlette/sse.py
++++ b/sse_starlette/sse.py
+@@ -381,8 +381,8 @@
+                 raise
+ 
+         async with self._send_lock:
++            await send({"type": "http.response.body", "body": b"", "more_body": False})
+             self.active = False
+-            await send({"type": "http.response.body", "body": b"", "more_body": False})
+ 
+     async def _listen_for_disconnect(self, receive: Receive) -> None:
+         """Watch for a disconnect message from the client.
