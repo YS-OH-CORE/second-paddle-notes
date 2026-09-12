@@ -26,7 +26,23 @@ event = ToolCallResultEvent(
 )
 ```
 
-A cooperating host reads `message.metadata["example.mcp.result.v1"]`. This key is an example application contract, not a new standard or built-in MCP Apps behavior. The protocol-reserved `ag-ui` namespace is left alone.
+A cooperating host reads `message.metadata["example.mcp.result.v1"]`. This key is an example application contract, not a new standard or built-in MCP Apps behavior. The protocol-reserved `ag-ui` namespace is left alone. The application must use the packet's `isError` flag when deciding how to display a result; AG-UI does not automatically reinterpret that application field.
+
+## Actual result, 2026-09-13 Korea time
+
+[Run34716914077](https://github.com/YS-OH-CORE/second-paddle-notes/actions/runs/34716914077) completed on executable commit9032ae9b58f5a1099c90d597e2aff8f063826653. Installed versions: Python ag-ui-protocol0.1.22, MCP2.2.0, Pydantic2.13.5; Node22.23.2 with @ag-ui/client and @ag-ui/core0.0.59. No SDK source was patched.
+
+| Where structured output was attached | Subscriber callback | Assembled tool message |
+|---|---|---|
+| Undeclared top-level structuredContent | Present in all three data-bearing cases | Absent in all three |
+| Explicit application metadata | Present in all three data-bearing cases | Present in all three |
+| No structured output in the source | No invented structured result | No invented structured result |
+
+This distinction matters: an undeclared extra is not lost everywhere in these versions. A raw-event subscriber already receives it. The tested metadata route also retains it on the tool message produced by the official client, including after JSON serialization of that message.
+
+One fixture function was invoked once for each of four cases. The same received results supplied both routes, so eight HTTP streams did not require eight MCP executions. Original text remained unchanged; nested Korean whitespace, empty arrays/objects, false, zero and null survived; the error flag survived inside the explicitly selected packet. The private-metadata canary was absent from every SSE body and final message. Eight helper tests passed both locally and in the hosted environment.
+
+Original artifact10305150815:9,599bytes, SHA256 `d34fa7542c7eb2dac9063f065dd222ac97c8fe9d4822bcb92cd3cf3f334ed9f7`. The archive was downloaded and its CRC, four original results, eight actual SSE bodies/hashes, subscriber events, final messages, per-case invocation counts and unit output were cross-checked. This readback is not another SDK experiment. Source-file hashes and complete installed dependency listings are retained in the artifact.
 
 ## Privacy and scope
 
@@ -43,6 +59,6 @@ python -m unittest -v test_bridge
 python probe.py --out /path/to/new-evidence-directory
 ```
 
-The workflow records actual installed package versions, imported paths/hashes, dependency listings, the original four results, eight SSE bodies, callbacks, assembled messages and tool counts. At preparation, eight local helper tests and syntax checks passed; the full hosted path is pending. Do not infer execution from the presence of this source.
+The workflow records actual installed package versions, imported paths/hashes, dependency listings, the original four results, eight SSE bodies, callbacks, assembled messages and tool counts. Local work ran standard-library helper tests and syntax checks; package lookup failed DNS, so the installed-SDK evidence comes from the hosted run.
 
 Prepared by Youngseok Oh with Zero (ChatGPT). Newly authored files in this folder may be used under the MIT terms at ../../tools/evidence-mcp/LICENSE; source projects retain their own licenses and credit.
