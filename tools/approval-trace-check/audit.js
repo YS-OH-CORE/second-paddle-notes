@@ -1,4 +1,4 @@
-/* Approval Trace Check v0.1.0. User-supplied JSON is data, never code. */
+/* Approval Trace Check v0.1.1. User-supplied JSON is data, never code. */
 (function(root) {
   'use strict';
   const SCHEMA = 'approval-trace-v1';
@@ -94,7 +94,7 @@
       rows.push(row);
     });
     return {
-      schema:'approval-trace-report-v1', auditor_version:'0.1.0',
+      schema:'approval-trace-report-v1', auditor_version:'0.1.1',
       status: issues.length ? 'violations_observed' : attempts ? 'no_violation_observed' : 'no_execution_observed',
       policy:'single-live-request-per-scope; exact-payload; one-execution-attempt',
       event_count:doc.events.length, execution_attempts:attempts, valid_execution_attempts:validAttempts,
@@ -104,12 +104,55 @@
         'Payload comparison is exact JavaScript string equality, not original transport-byte verification.']
     };
   }
-  function parseAndAudit(text) {
+  function parseUniqueJSON(text) {
     if (typeof text !== 'string') throw new Error('Expected JSON text.');
     if (new TextEncoder().encode(text).length > LIMIT) throw new Error('Input exceeds 1 MiB.');
-    return audit(JSON.parse(text));
+    // Native parsing validates the grammar, but its value is NOT assessed until
+    // the original text has been checked for duplicate decoded member names.
+    // JSON.parse normally discards earlier members with the same name.
+    const doc = JSON.parse(text);
+    const stack = [];
+    for (let i = 0; i < text.length;) {
+      const c = text[i];
+      if (c === '{') { stack.push(new Map()); i++; }
+      else if (c === '[') { stack.push(null); i++; }
+      else if (c === '}' || c === ']') { stack.pop(); i++; }
+      else if (c === '"') {
+        const start = i++;
+        // Escapes are already grammar-checked. Skip complete escaped pairs so
+        // punctuation inside string values cannot create a false object/key.
+        while (text[i] !== '"') i += text[i] === '\\' ? 2 : 1;
+        i++;
+        let next = i;
+        while (next < text.length && ' \t\r\n'.includes(text[next])) next++;
+        if (text[next] !== ':') continue;
+        const key = JSON.parse(text.slice(start, i));
+        const names = stack[stack.length - 1];
+        if (names.has(key)) {
+          let line = 1, column = 1;
+          for (let j = 0; j < start; j++) {
+            if (text[j] === '\r') {
+              line++; column = 1;
+              if (text[j + 1] === '\n') j++;
+            } else if (text[j] === '\n') { line++; column = 1; }
+            else column++;
+          }
+          // Do not copy a potentially sensitive member name or value to output.
+          const error = new Error('Duplicate JSON object member at line '+line+
+            ', column '+column+'. Input not assessed; check the original record.');
+          Object.assign(error, {code:'DUPLICATE_JSON_MEMBER', line, column,
+            offset:start, first_offset:names.get(key), unit:'UTF-16 code unit'});
+          throw error;
+        }
+        names.set(key, start);
+      } else i++;
+    }
+    return doc;
   }
-  const api = Object.freeze({audit, parseAndAudit, messages, SCHEMA, LIMIT, MAX_EVENTS});
+  function parseAndAudit(text) {
+    return audit(parseUniqueJSON(text));
+  }
+  const api = Object.freeze({audit, parseAndAudit, parseUniqueJSON, messages, SCHEMA, LIMIT, MAX_EVENTS});
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.ApprovalTrace = api;
 })(globalThis);
