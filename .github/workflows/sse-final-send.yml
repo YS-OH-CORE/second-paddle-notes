@@ -1,0 +1,42 @@
+name: Check SSE final-send ordering
+on:
+  pull_request:
+    paths:
+      - 'contributions/sse-final-send/**'
+      - '.github/workflows/sse-final-send.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          path: contribution
+          persist-credentials: false
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          repository: sysid/sse-starlette
+          ref: 6754ef387da97cf6cfbcd1bd5c216b533937b304
+          path: upstream
+          persist-credentials: false
+      - name: Install isolated dependencies and record versions
+        run: |
+          python3 -m venv "$RUNNER_TEMP/sse-env"
+          "$RUNNER_TEMP/sse-env/bin/python" -m pip install --disable-pip-version-check 'sse-starlette==3.4.11' pytest pytest-asyncio asgi-lifespan 'httpx2>=2.12.0' 'httpx==0.28.1' 'uvicorn==0.52.4'
+          "$RUNNER_TEMP/sse-env/bin/python" -m pip freeze > "$RUNNER_TEMP/sse-dependencies.txt"
+      - name: Execute fresh-process cases and unchanged selected upstream tests
+        run: |
+          "$RUNNER_TEMP/sse-env/bin/python" contribution/contributions/sse-final-send/verify.py --base upstream --candidate "$RUNNER_TEMP/sse-candidate" --out "$RUNNER_TEMP/sse-evidence"
+      - name: Retain actual logs, observations and candidate diff
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: sse-final-send
+          path: |
+            ${{ runner.temp }}/sse-evidence/
+            ${{ runner.temp }}/sse-dependencies.txt
+          if-no-files-found: warn
+          retention-days: 14
