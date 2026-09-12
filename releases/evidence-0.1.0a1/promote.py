@@ -128,19 +128,31 @@ def publish(out: Path, notes: Path) -> None:
     require(len(existing) <= 1, 'Ambiguous release')
     if existing:
         release = existing[0]
-        require(not release['draft'], 'Existing draft requires explicit reconciliation; nothing overwritten')
+        if release['draft']:
+            # Run34714776471 uploaded all five assets, then its tag-based draft
+            # lookup returned404. The author inspected this exact draft by ID.
+            require(release['id'] == 387682815, 'Unrecognized existing draft; reconcile explicitly')
+            print('Reconcile inspected draft387682815; no recreation or asset replacement.')
     else:
         gh('release', 'create', TAG, '--repo', REPO, '--target', TARGET, '--draft', '--prerelease',
            '--latest=false', '--title', 'Evidence Tools 0.1.0a1: installable preview', '--notes-file', str(notes))
         gh('release', 'upload', TAG, *[str(out / n) for n in NAMES], '--repo', REPO)
-        draft = json.loads(gh('api', f'repos/{REPO}/releases/tags/{TAG}'))
-        require({a['name']: a.get('digest') for a in draft['assets']} ==
-                {n: 'sha256:' + h for n, h in hashes.items()}, 'Draft asset digest mismatch; left unpublished')
-        gh('release', 'edit', TAG, '--repo', REPO, '--draft=false', '--prerelease', '--latest=false')
-        release = json.loads(gh('api', f'repos/{REPO}/releases/tags/{TAG}'))
-    require(not release['draft'] and release['prerelease'] and release['target_commitish'] == TARGET, 'Release state mismatch')
+        pages = json.loads(gh('api', '--paginate', '--slurp', f'repos/{REPO}/releases?per_page=100'))
+        matches = [r for page in pages for r in page if r['tag_name'] == TAG]
+        require(len(matches) == 1, 'New draft is not uniquely identifiable')
+        release = matches[0]
+    # A draft may not resolve through releases/tags; its numeric ID does.
+    release = json.loads(gh('api', f'repos/{REPO}/releases/{release["id"]}'))
+    require(release['tag_name'] == TAG and release['prerelease'] and release['target_commitish'] == TARGET,
+            'Release identity mismatch')
     require({a['name']: a.get('digest') for a in release['assets']} ==
-            {n: 'sha256:' + h for n, h in hashes.items()}, 'Public metadata mismatch')
+            {n: 'sha256:' + h for n, h in hashes.items()}, 'Asset digest mismatch; nothing published or replaced')
+    require(all(a['state'] == 'uploaded' and a['size'] == (out/a['name']).stat().st_size
+                for a in release['assets']), 'Assets are not fully uploaded')
+    if release['draft']:
+        gh('release', 'edit', TAG, '--repo', REPO, '--draft=false', '--prerelease', '--latest=false')
+        release = json.loads(gh('api', f'repos/{REPO}/releases/{release["id"]}'))
+    require(not release['draft'], 'Release is still a draft')
     print(release['html_url'])
 
 
