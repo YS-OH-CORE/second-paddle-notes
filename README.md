@@ -28,7 +28,7 @@ This repository does not claim AI consciousness, hidden-state access, or a new s
 
 ## Start here
 
-- **Use the checks from an MCP host:** [Install Evidence Tools](packages/evidence-mcp/README.md) · [download the reviewed preview](https://github.com/YS-OH-CORE/second-paddle-notes/releases/tag/evidence-v0.1.0a1), with the original execution evidence and checksums.
+- **Use the checks from an MCP host:** [Install Evidence Tools](packages/evidence-mcp/README.md) · [download corrected preview 0.1.0a2](https://github.com/YS-OH-CORE/second-paddle-notes/releases/tag/evidence-v0.1.0a2), with original execution evidence and checksums. Version 0.1.0a1 is superseded for model-facing result projection; [read the input-selection boundary](packages/evidence-mcp/README.md#model-view-input-boundary) before use.
 
 - **Was the approved request the one that ran?** [Approval Trace Check](tools/approval-trace-check/README.md), a small offline browser/CLI checker with editable examples. No account or upload.
 
