@@ -1,6 +1,6 @@
 """Publish the already-executed visibility correction without replacing old assets."""
 from __future__ import annotations
-import argparse, base64, csv, hashlib, io, json, os, subprocess, zipfile
+import argparse, base64, csv, hashlib, io, json, os, re, subprocess, zipfile
 from pathlib import Path
 from urllib.request import urlopen
 
@@ -22,7 +22,11 @@ def sha(data):return hashlib.sha256(data).hexdigest()
 def gh(*args):return subprocess.check_output(['gh',*args],timeout=90)
 def patch_release(number,body):
  p=subprocess.run(['gh','api','--method','PATCH',f'repos/{REPO}/releases/{number}','--input','-'],
-   input=json.dumps(body).encode(),capture_output=True,timeout=40,check=True)
+   input=json.dumps(body).encode(),capture_output=True,timeout=40,check=False)
+ if p.returncode:
+  diagnostic=p.stderr.decode('utf-8','replace')[-2000:]
+  diagnostic=re.sub(r'(?:ghp_|github_pat_)[A-Za-z0-9_]+','[REDACTED]',diagnostic)
+  raise RuntimeError('RELEASE_UPDATE_FAILED: '+diagnostic)
  return json.loads(p.stdout)
 def releases():
  return [r for page in json.loads(gh('api','--paginate','--slurp',f'repos/{REPO}/releases?per_page=100')) for r in page]
@@ -93,7 +97,10 @@ def publish(out,notes,report_path):
   found=[r for r in releases() if r['tag_name']==TAG]
   require(len(found)<=1,'Ambiguous release')
   if found:
-   r=found[0];require(not r['draft'],'Existing draft needs explicit reconciliation; no asset replacement')
+   r=found[0]
+   if r['draft']:
+    require(r['id']==387844510,'Unrecognized draft; reconcile explicitly')
+    report['reconciled_draft']=r['id']
   else:
    gh('release','create',TAG,'--repo',REPO,'--target',TARGET,'--draft','--prerelease','--latest=false',
       '--title','Evidence Tools 0.1.0a2: model-view boundary correction','--notes-file',str(notes))
