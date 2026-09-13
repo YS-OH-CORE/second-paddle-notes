@@ -98,7 +98,57 @@ def parse_result(text: str) -> dict[str, Any]:
     return data
 
 
+# The MCP endpoint serializes its returned mapping into model-facing text.
+# The lower-level helper is a local copy utility; it intentionally retains fields
+# which must not be promoted into that text. Reject mixed envelopes, do not redact
+# the caller's original or recursively strip ordinary keys from structured data.
+_PUBLIC_BLOCK_FIELDS = {
+    'text': {'type', 'text', 'annotations'},
+    'image': {'type', 'data', 'mimeType', 'annotations'},
+    'audio': {'type', 'data', 'mimeType', 'annotations'},
+    'resource_link': {'type', 'uri', 'name', 'title', 'description', 'mimeType', 'size', 'annotations'},
+    'resource': {'type', 'resource', 'annotations'},
+}
+
+
+def _public_projection_input(data: dict[str, Any]) -> None:
+    """Allow only explicitly model-facing protocol fields at this endpoint.
+
+    This does not classify secrets in ordinary text or structuredContent. The
+    caller must select those before putting them in a model-visible argument.
+    """
+    def fields(value: Any, allowed: set[str]) -> None:
+        if not isinstance(value, dict):
+            raise InputProblem('INVALID_RESULT')
+        if '_meta' in value:
+            raise InputProblem('HOST_METADATA_NOT_PROJECTABLE')
+        if set(value) - allowed:
+            raise InputProblem('NON_CONTENT_FIELDS')
+
+    fields(data, {'content', 'structuredContent', 'isError'})
+    content = data.get('content')
+    if not isinstance(content, list):
+        raise InputProblem('INVALID_RESULT')
+    for block in content:
+        if not isinstance(block, dict) or not isinstance(block.get('type'), str):
+            raise InputProblem('INVALID_RESULT')
+        allowed = _PUBLIC_BLOCK_FIELDS.get(block['type'])
+        if allowed is None:
+            raise InputProblem('UNSUPPORTED_CONTENT_BLOCK')
+        fields(block, allowed)
+        annotations = block.get('annotations')
+        if annotations is not None:
+            fields(annotations, {'audience', 'priority', 'lastModified'})
+            if 'audience' in annotations:
+                audience = annotations['audience']
+                if not isinstance(audience, list) or 'assistant' not in audience:
+                    raise InputProblem('NON_MODEL_AUDIENCE')
+        if block['type'] == 'resource':
+            fields(block.get('resource'), {'uri', 'mimeType', 'text', 'blob'})
+
+
 def project_result(data: dict[str, Any]) -> dict[str, Any]:
+    _public_projection_input(data)
     # The server validates with the SDK before entering here. The original helper
     # remains byte-identical; this import uses a fixed repository path, not input.
     name = '_zero_result_text'
