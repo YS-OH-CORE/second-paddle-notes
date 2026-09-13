@@ -1,0 +1,49 @@
+name: Preserve MCP question state across reopened checkpoints
+on:
+  pull_request:
+    paths:
+      - 'contributions/preserved-mcp-rounds/**'
+      - '.github/workflows/preserved-mcp-rounds.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    env:
+      LANGSMITH_TRACING: 'false'
+      LANGCHAIN_TRACING_V2: 'false'
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Install fixed published packages
+        run: |
+          python -m venv "$RUNNER_TEMP/round-venv"
+          "$RUNNER_TEMP/round-venv/bin/python" -m pip install --disable-pip-version-check -r contributions/preserved-mcp-rounds/requirements.txt
+          "$RUNNER_TEMP/round-venv/bin/python" -m pip freeze > "$RUNNER_TEMP/round-dependencies.txt"
+      - name: Check answer correspondence
+        working-directory: contributions/preserved-mcp-rounds
+        run: |
+          set -o pipefail
+          "$RUNNER_TEMP/round-venv/bin/python" -m unittest -v test_answers 2>&1 | tee "$RUNNER_TEMP/round-unit.txt"
+      - name: Compare replay with checkpointed round state
+        run: |
+          set -o pipefail
+          "$RUNNER_TEMP/round-venv/bin/python" contributions/preserved-mcp-rounds/probe.py --out "$RUNNER_TEMP/round-evidence" 2>&1 | tee "$RUNNER_TEMP/round-run.txt"
+      - name: Retain only synthetic observations and execution logs
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: preserved-mcp-rounds
+          path: |
+            ${{ runner.temp }}/round-evidence/observations.json
+            ${{ runner.temp }}/round-dependencies.txt
+            ${{ runner.temp }}/round-unit.txt
+            ${{ runner.temp }}/round-run.txt
+          if-no-files-found: warn
+          retention-days: 14
