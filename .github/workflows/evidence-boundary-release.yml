@@ -1,0 +1,42 @@
+name: Publish the verified model-view boundary correction
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'releases/evidence-0.1.0a2/**'
+      - '.github/workflows/evidence-boundary-release.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  publish_verified:
+    if: github.repository == 'YS-OH-CORE/second-paddle-notes' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Copy and validate the exact previously tested artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 releases/evidence-0.1.0a2/publish.py prepare --out "$RUNNER_TEMP/evidence-a2-assets"
+      - name: Publish separate corrected assets and check public downloads
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 releases/evidence-0.1.0a2/publish.py publish --out "$RUNNER_TEMP/evidence-a2-assets" --notes releases/evidence-0.1.0a2/NOTES.md --report "$RUNNER_TEMP/evidence-a2-publication.json"
+      - name: Keep publication observations and exact assets
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: evidence-a2-publication
+          path: |
+            ${{ runner.temp }}/evidence-a2-assets/*
+            ${{ runner.temp }}/evidence-a2-publication.json
+          if-no-files-found: warn
+          retention-days: 14
