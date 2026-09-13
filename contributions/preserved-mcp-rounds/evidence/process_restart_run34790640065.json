@@ -1,0 +1,187 @@
+{
+  "status": "verified",
+  "phase_one_calls": [
+    {
+      "kind": "initial",
+      "name": "preview",
+      "arguments": {
+        "case": "restart"
+      }
+    }
+  ],
+  "shown": {
+    "type": "mcp_form_review",
+    "tool_name": "preview",
+    "round_index": 1,
+    "requests": [
+      {
+        "key": "confirm-process-A",
+        "mode": "form",
+        "message": "Keep the process-A question?",
+        "requested_schema": {
+          "type": "object",
+          "properties": {
+            "yes": {
+              "type": "boolean"
+            },
+            "note": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "yes",
+            "note"
+          ]
+        }
+      }
+    ]
+  },
+  "saved_frame": {
+    "kind": "input",
+    "value": {
+      "resultType": "input_required",
+      "inputRequests": {
+        "confirm-process-A": {
+          "method": "elicitation/create",
+          "params": {
+            "mode": "form",
+            "message": "Keep the process-A question?",
+            "requestedSchema": {
+              "type": "object",
+              "properties": {
+                "yes": {
+                  "type": "boolean"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "yes",
+                "note"
+              ]
+            }
+          }
+        }
+      },
+      "requestState": "opaque-process-A-state"
+    }
+  },
+  "phase_one": {
+    "pid": 2466,
+    "started_monotonic_ns": 591133665035,
+    "python": "3.12.14 (main, Aug 13 2026, 02:47:42) [GCC 13.3.0]",
+    "packages": {
+      "langchain": "1.4.0",
+      "langchain-core": "1.6.2",
+      "langgraph": "1.2.11",
+      "fastmcp": "4.0.1",
+      "mcp": "2.1.1",
+      "langgraph-checkpoint-sqlite": "3.1.1"
+    },
+    "source_sha256": {
+      "process_restart_probe.py": "7656c97e43da14d28a7f813ccbe33c6c7bd0e94959f6beba9054144e47eea9d8",
+      "round_graph.py": "b2ba821158b71401db0c52fa76c299c503208a0f7c76e30fd789c5eb5a2d29ce",
+      "requirements.txt": "9e83dfa560977bbf78692434b9cd1aa06a3ef31cd4db52a1e76a92804ed08b45"
+    },
+    "network_attempts": []
+  },
+  "phase_two_calls": [
+    {
+      "kind": "resume",
+      "name": "preview",
+      "arguments": {
+        "case": "restart"
+      },
+      "state": "opaque-process-A-state",
+      "keys": [
+        "confirm-process-A"
+      ],
+      "answer": {
+        "action": "accept",
+        "content": {
+          "yes": true,
+          "note": "answer after a fresh interpreter"
+        }
+      }
+    }
+  ],
+  "reopened_frame": {
+    "kind": "input",
+    "value": {
+      "resultType": "input_required",
+      "inputRequests": {
+        "confirm-process-A": {
+          "method": "elicitation/create",
+          "params": {
+            "mode": "form",
+            "message": "Keep the process-A question?",
+            "requestedSchema": {
+              "type": "object",
+              "properties": {
+                "yes": {
+                  "type": "boolean"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "yes",
+                "note"
+              ]
+            }
+          }
+        }
+      },
+      "requestState": "opaque-process-A-state"
+    }
+  },
+  "supplied_answer": {
+    "responses": {
+      "confirm-process-A": {
+        "action": "accept",
+        "content": {
+          "yes": true,
+          "note": "answer after a fresh interpreter"
+        }
+      }
+    }
+  },
+  "phase_two": {
+    "pid": 2471,
+    "started_monotonic_ns": 592899017404,
+    "python": "3.12.14 (main, Aug 13 2026, 02:47:42) [GCC 13.3.0]",
+    "packages": {
+      "langchain": "1.4.0",
+      "langchain-core": "1.6.2",
+      "langgraph": "1.2.11",
+      "fastmcp": "4.0.1",
+      "mcp": "2.1.1",
+      "langgraph-checkpoint-sqlite": "3.1.1"
+    },
+    "source_sha256": {
+      "process_restart_probe.py": "7656c97e43da14d28a7f813ccbe33c6c7bd0e94959f6beba9054144e47eea9d8",
+      "round_graph.py": "b2ba821158b71401db0c52fa76c299c503208a0f7c76e30fd789c5eb5a2d29ce",
+      "requirements.txt": "9e83dfa560977bbf78692434b9cd1aa06a3ef31cd4db52a1e76a92804ed08b45"
+    },
+    "network_attempts": []
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "completed-from-process-B"
+      }
+    ],
+    "isError": false,
+    "resultType": "complete"
+  },
+  "parent_pid": 2464,
+  "phase_one_exited_monotonic_ns": 592809348542,
+  "child_returncodes": [
+    0,
+    0
+  ],
+  "boundary": "Two distinct sequential Python processes; A exited cleanly before B started. The real SQLite saver reopened the exact saved frame. Deterministic session test doubles; no MCP transport/session recreation, OS crash, human authorization, remote effect, or exactly-once claim."
+}
