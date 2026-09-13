@@ -14,7 +14,7 @@ from pathlib import Path
 import zipfile
 
 NAME = 'second_paddle_evidence'
-VERSION = '0.1.0a1'
+VERSION = '0.1.0a2'
 FILENAME = f'{NAME}-{VERSION}-py3-none-any.whl'
 
 

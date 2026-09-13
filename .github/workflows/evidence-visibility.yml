@@ -1,0 +1,56 @@
+name: Check model-facing projection visibility
+on:
+  pull_request:
+    paths:
+      - 'tools/evidence-mcp/**'
+      - 'packages/evidence-mcp/**'
+      - '.github/workflows/evidence-visibility.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Prepare SDK and two separate wheel installations
+        run: |
+          python -m venv "$RUNNER_TEMP/visibility-env"
+          "$RUNNER_TEMP/visibility-env/bin/python" -m pip install --disable-pip-version-check mcp==2.2.0
+          python packages/evidence-mcp/build_wheel.py --out "$RUNNER_TEMP/visibility-dist"
+          python - <<'PY'
+          import hashlib, os, pathlib, urllib.request
+          out=pathlib.Path(os.environ['RUNNER_TEMP'])/'visibility-dist'
+          name='second_paddle_evidence-0.1.0a1-py3-none-any.whl'
+          url='https://github.com/YS-OH-CORE/second-paddle-notes/releases/download/evidence-v0.1.0a1/'+name
+          with urllib.request.urlopen(url,timeout=30) as r:
+              assert r.status==200
+              data=r.read(100000)
+          assert hashlib.sha256(data).hexdigest()=='0e509a17ee164189abea151996cb084de6fc55990ee0ce4d8a9a70bed5b984bd'
+          (out/name).write_bytes(data)
+          PY
+          "$RUNNER_TEMP/visibility-env/bin/python" -m pip install --no-deps --target "$RUNNER_TEMP/visibility-old" "$RUNNER_TEMP/visibility-dist/second_paddle_evidence-0.1.0a1-py3-none-any.whl"
+          "$RUNNER_TEMP/visibility-env/bin/python" -m pip install --no-deps --target "$RUNNER_TEMP/visibility-new" "$RUNNER_TEMP/visibility-dist/second_paddle_evidence-0.1.0a2-py3-none-any.whl"
+      - name: Keep old tests and exercise the new boundary
+        working-directory: tools/evidence-mcp
+        run: |
+          set -o pipefail
+          "$RUNNER_TEMP/visibility-env/bin/python" -m unittest -v test_service test_visibility 2>&1 | tee "$RUNNER_TEMP/visibility-unit.log"
+          "$RUNNER_TEMP/visibility-env/bin/python" probe_visibility.py --old "$RUNNER_TEMP/visibility-old" --new "$RUNNER_TEMP/visibility-new" --out "$RUNNER_TEMP/visibility-results"
+      - name: Keep synthetic responses and the exact wheels
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: evidence-visibility
+          path: |
+            ${{ runner.temp }}/visibility-results/*.json
+            ${{ runner.temp }}/visibility-dist/*.whl
+            ${{ runner.temp }}/visibility-unit.log
+          if-no-files-found: warn
+          retention-days: 14
