@@ -71,8 +71,46 @@ decline, cancel, a wrong answer key, and an explicit server error. Only syntheti
 preview labels are appended to an in-memory list. No LLM, live human decision,
 HTTP service, credential, paid API or production side effect is involved.
 
-Local standard-library answer tests and Python compilation passed at preparation.
-Hosted SDK behavior is pending; source presence is not execution evidence.
+## Observed on 2026-09-13
+
+[Run34758706876](https://github.com/YS-OH-CORE/second-paddle-notes/actions/runs/34758706876)
+executed commit `2cda1994e4584a4aa07eaebaa3a97695f0e10649` with the pinned packages.
+No SDK file was modified.
+
+| Path and case | Recorded result |
+|---|---|
+| Original adapter, stable key with a regenerated subject | The question exposed A; B completed and the tool returned success. |
+| Original adapter, fresh key with a regenerated subject | Missing-answer error; no preview completed. |
+| Application graph, unchanged/stable/fresh-key cases | A completed; only one initial tool request per operation. |
+| Application graph, two distinct review rounds | Two original questions were exposed in order; A completed after both answers. |
+| Application graph, decline or cancel | No preview completed. |
+| Application graph, wrong answer key | Rejected before another tool call. |
+| Application graph, server error | No preview completed; terminal error flag remained true. |
+
+Eight application cases reopened nine saved question frames; each frame matched
+its saved copy, and each state-bearing wire call used the immediately preceding
+response's exact opaque token. The database connection was closed and a new graph
+compiled for each continuation. There were 16 application tool calls and five
+baseline calls, not 21 independent trials or model-chosen actions.
+
+The original 8,553-byte artifact10318715472 has SHA-256
+`d5160caac243efa119f16e9e0a6860126fc2a19484d273c1b5c021995313b18e`.
+It was downloaded and checked against all ten case records, 21 server entries,
+nine saved/reopened pairs, visible questions, programmed answers, wire tokens,
+completed subjects and error flags. Eight answer tests passed locally and in the
+hosted run. No external socket attempts were recorded during the exercise.
+Inspection of returned files is not another SDK execution.
+
+The demonstration uses disk-backed SQLite checkpoints, but the MCP server and
+interpreter remain alive. It does not establish recovery after an OS-process
+crash, session recreation or remote-server restart. Invalid answers fail the
+current invocation; the host must define how it validates/corrects responses
+rather than assuming automatic recovery from an invalid resume value.
+
+Local work ran only the pure answer tests and syntax checks; package acquisition
+was unavailable there. The installed-SDK observations above came from the hosted
+run. The earlier fresh-key finding and replay mechanism remain credited to the
+original reporter; the new deliverable is this tested application-level route.
 
 ```sh
 python -m unittest -v test_answers
