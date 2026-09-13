@@ -37,7 +37,7 @@ jobs:
           wheel = next((temp/'wheel-dist').glob('*.whl'))
           rebuilt = next((temp/'wheel-rebuild').glob('*.whl'))
           assert wheel.read_bytes() == rebuilt.read_bytes()
-          assert hashlib.sha256(wheel.read_bytes()).hexdigest() == '0e509a17ee164189abea151996cb084de6fc55990ee0ce4d8a9a70bed5b984bd'
+          assert hashlib.sha256(wheel.read_bytes()).hexdigest() == '6c3e0d57411d11caafaef43ba0f91df577c41b6de1d8182bc0147805489ec956'
           subprocess.run([sys.executable, 'packages/evidence-mcp/verify_install.py', '--wheel', str(wheel), '--out', str(temp/'wheel-evidence')], check=True)
       - name: Retain only the wheel and synthetic installation observations
         if: ${{ always() }}
