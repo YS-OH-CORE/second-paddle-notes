@@ -1,5 +1,7 @@
 # Evidence Tools 0.1.0a2: keep the model-view boundary explicit
 
+Packaged source tested at `fabb5375056dc51500183d3ec510aeb4ac94defb`; bundled wrapper source at `e40eba4b7b985c716644ec736ac72288f8e6cdd7`. These identifiers distinguish the executed code from later publication-only changes.
+
 This release corrects **our MCP wrapper**. In 0.1.0a1, the local-copy helper's retained result metadata could be serialized into the wrapper's ordinary text/structured output. Version0.1.0a2 rejects protocol-position `_meta`, unselected envelope/block fields and explicitly non-assistant audiences with fixed error codes. It does not silently delete those fields from your original data.
 
 The local helper still preserves source copies inside a trusted application. Its behavior is unchanged. Ordinary `_meta` keys inside already-selected `structuredContent` or quoted text remain ordinary data, not a reason to erase content.
