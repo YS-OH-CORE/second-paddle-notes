@@ -1,0 +1,57 @@
+name: Scoped work inquiry / 작은 유료 의뢰 문의
+description: Discuss one bounded paid investigation; submitting does not accept a job or authorize payment.
+title: "[Scope inquiry] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **This issue is public.** Use only material you are allowed to publish.
+        [Scope and terms](https://github.com/YS-OH-CORE/second-paddle-notes/blob/main/work/SCOPED_WORK.md)
+        explain the separate agreement required before paid work starts.
+        For private scoping, use the existing contact there without sending secrets.
+        General bug reports, critique and replication do not require payment.
+        공개 이슈입니다. 문의만으로 계약·결제·납기가 확정되지 않습니다.
+  - type: textarea
+    id: mismatch
+    attributes:
+      label: One problem / 한 가지 문제
+      description: What should happen, and what actually happens? A short synthetic example is enough to begin.
+      placeholder: "Expected: an answer to request A resumes A. Observed: the system starts a new request instead."
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Public source and version / 공개 소스와 버전
+      description: A public repository or issue URL and exact version, or write that details require a private scoping discussion.
+      placeholder: "Public repo + commit/version; otherwise 'private scoping required'."
+    validations:
+      required: true
+  - type: dropdown
+    id: deliverable
+    attributes:
+      label: Deliverable to discuss / 원하는 결과물
+      options:
+        - Reproduction and diagnosis / 재현과 원인 조사
+        - Regression test or narrow patch candidate / 검사 또는 작은 수정 후보
+        - Integration handoff check / 연결 과정 확인
+        - Unsure; discuss the smallest useful scope / 최소 범위부터 논의
+    validations:
+      required: true
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Acceptance and limits / 완료 기준과 제한
+      description: Optional. State the observable result you need, timing, and AI/data-use restrictions. Discuss budgets privately if preferred; do not include payment details.
+      placeholder: "A useful outcome would be... AI assistance is permitted / requires discussion."
+    validations:
+      required: false
+  - type: checkboxes
+    id: inquiry_boundary
+    attributes:
+      label: Before sending / 제출 전 확인
+      options:
+        - label: I may publish the information above and have not included credentials or private conversations. 공개할 권한이 있는 자료만 포함했습니다.
+          required: true
+        - label: This is an inquiry only; paid scope, AI use, price and timing need separate agreement. 문의만으로 유료 작업에 동의하거나 비용을 승인하지 않습니다.
+          required: true
