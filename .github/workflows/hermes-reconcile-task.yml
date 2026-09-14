@@ -1,0 +1,62 @@
+name: Complete a read-only file check through Hermes skills and terminal
+'on':
+  pull_request:
+    paths:
+      - 'contributions/hermes-reconcile-task/**'
+      - '.github/workflows/hermes-reconcile-task.yml'
+permissions:
+  contents: read
+jobs:
+  host-task:
+    if: github.repository == 'YS-OH-CORE/second-paddle-notes' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          repository: NousResearch/hermes-agent
+          ref: 65a6b6831ef681da73955dd97a44f35794a2d4b9
+          path: upstream-hermes
+          persist-credentials: false
+          sparse-checkout: |
+            agent
+            tools
+            hermes_cli
+            gateway
+            plugins
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Install pinned loading and local-terminal dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m venv "$RUNNER_TEMP/task-venv"
+          "$RUNNER_TEMP/task-venv/bin/python" -m pip install --disable-pip-version-check PyYAML==6.0.3 python-dotenv==1.2.2 rich==14.3.3 prompt_toolkit==3.0.52 Jinja2==3.1.6 psutil==7.2.2 requests==2.33.0 httpx==0.28.1 tenacity==9.1.4 packaging==26.0
+          "$RUNNER_TEMP/task-venv/bin/python" -m pip freeze > "$RUNNER_TEMP/task-dependencies.txt"
+      - name: Execute actual host task and read-only controls
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          timeout 300s "$RUNNER_TEMP/task-venv/bin/python" -B contributions/hermes-reconcile-task/exercise.py --upstream "$GITHUB_WORKSPACE/upstream-hermes" --skill "$GITHUB_WORKSPACE/skills/github-write-reconcile" --out "$RUNNER_TEMP/task-evidence" 2>&1 | tee "$RUNNER_TEMP/task.log"
+      - name: Retain explicit results, not runtime profiles
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: hermes-reconcile-task
+          path: |
+            ${{ runner.temp }}/task-evidence/summary.json
+            ${{ runner.temp }}/task-evidence/*-intent.json
+            ${{ runner.temp }}/task-evidence/*.log
+            ${{ runner.temp }}/task-evidence/*/host.json
+            ${{ runner.temp }}/task-evidence/*/host.log
+            ${{ runner.temp }}/task-evidence/*/result.json
+            ${{ runner.temp }}/task-dependencies.txt
+            ${{ runner.temp }}/task.log
+          if-no-files-found: error
+          retention-days: 14
