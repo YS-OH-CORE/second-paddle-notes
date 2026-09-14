@@ -204,11 +204,29 @@ async def client_phase(root: Path, phase: str, case: str) -> None:
     save(root / ('client-' + phase + '.json'), observed)
 
 
+def compare_results(received: dict, handler_result: dict) -> None:
+    """Validate the SDK-added identity stamp, then compare every body field.
+
+    Handler observations precede the SDK runtime's serverInfo stamping. Keep
+    both originals in evidence; do not silently discard arbitrary metadata.
+    """
+    expected = {'io.modelcontextprotocol/serverInfo': {'name': 'stdio-round-restart-fixture', 'version': ''}}
+    assert '_meta' not in handler_result, 'UNEXPECTED_HANDLER_METADATA'
+    assert received.get('_meta') == expected, 'SERVER_IDENTITY_STAMP_DIFFER'
+    body = {key: value for key, value in received.items() if key != '_meta'}
+    assert body == handler_result, 'RESULT_BODY_DIFFER'
+
+
 def check_case(root: Path, case: str, exit_a: int, returncodes: list[int]) -> dict:
     a, b = [json.loads((root / ('client-' + p + '.json')).read_text(encoding='utf-8')) for p in ('a', 'b')]
     logs = [[json.loads(line) for line in (root / ('server-' + p + '.jsonl')).read_text(encoding='utf-8').splitlines()] for p in ('a', 'b')]
     assert a['pid'] != b['pid'] and a['monotonic_ns'] < exit_a < b['monotonic_ns']
-    assert logs[0][0]['pid'] != logs[1][0]['pid']
+    assert len({a['pid'], b['pid'], logs[0][0]['pid'], logs[1][0]['pid']}) == 4
+    for log in logs:
+        assert log[0]['event'] == 'start' and log[-1]['event'] == 'exit'
+        assert not log[-1]['network_attempts']
+    assert logs[0][-1]['monotonic_ns'] < exit_a
+    assert not a['network_attempts'] and not b['network_attempts']
     assert logs[1][0]['monotonic_ns'] > exit_a
     assert a['probe_sha256'] == b['probe_sha256'] == logs[0][0]['probe_sha256'] == logs[1][0]['probe_sha256']
     assert a['versions'] == b['versions'] == logs[0][0]['versions'] == logs[1][0]['versions'] == PINS
@@ -218,7 +236,8 @@ def check_case(root: Path, case: str, exit_a: int, returncodes: list[int]) -> di
     token = a['frame']['value']['requestState']
     calls = [x for log in logs for x in log if x['event'] == 'call']
     for client_call, server_call in zip(a['calls'] + b['calls'], calls, strict=True):
-        assert all(client_call[k] == server_call[k] for k in ('name', 'arguments', 'request_state', 'input_responses', 'result'))
+        assert all(client_call[k] == server_call[k] for k in ('name', 'arguments', 'request_state', 'input_responses')), 'REQUEST_FIELDS_DIFFER'
+        compare_results(client_call['result'], server_call['result'])
     text = b['result']['content'][0]['text']
     error = b['result'].get('isError', False)
     effects = calls[-1]['snapshot']['effects']
@@ -258,6 +277,7 @@ def run(root: Path):
                         stderr=subprocess.STDOUT, timeout=65, check=True)
                 codes.append(proc.returncode)
                 if phase == 'a': exit_a = time.monotonic_ns()
+            save(case_root / 'process-order.json', {'a_exited_monotonic_ns': exit_a, 'returncodes': codes})
             report['cases'].append(check_case(case_root, case, exit_a, codes))
         report['status'] = 'verified'
     except Exception as exc:
