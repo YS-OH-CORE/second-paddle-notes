@@ -121,8 +121,8 @@ def main():
     out = Path(os.environ['RELEASE_OUT'])
     out.mkdir(parents=True, exist_ok=False)
     journal = {'status': 'incomplete', 'tag': TAG, 'build_head': head, 'events': []}
-    def event(name, **fields):
-        journal['events'].append({'event': name, **fields})
+    def event(kind, **fields):
+        journal['events'].append({'event': kind, **fields})
         (out / 'publication.json').write_bytes(b.encode(journal))
     try:
         repo = api('', token)
