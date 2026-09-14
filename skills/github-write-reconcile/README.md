@@ -76,22 +76,24 @@ HTTP-outcome recovery, operation-uniqueness guarantee or general exactly-once cl
 ## Checks and live readback
 
 ```sh
-python -B -S -m unittest discover -s tests -p 'test_reconcile.py' -v
+python -B -S -m unittest discover -s tests -p 'test_*.py' -v
 ```
 
-23 offline unit tests passed during preparation. They use controlled records;
-they are not 23 external writes. Local DNS cannot reach GitHub in this session,
-so the separate bounded hosted read-only workflow checks the live CLI against:
+26 offline unit tests passed locally and in the hosted run. They use controlled
+records; they are not 26 external writes. Local DNS cannot reach GitHub in this
+session, so the bounded hosted read-only workflow checked the live CLI against:
 
 - the marker from PR44's earlier failed checker, using its current provider branch;
 - the successful retry marker at its immutable commit;
 - a deliberately wrong expected digest for that same existing file;
 - a nonexistent path in the same immutable tree.
 
-Each check is a fresh CLI process. The last two are read-only diagnostic controls,
-not newly created conflicting/missing provider objects. Hosted execution is not
-claimed until its returned records are inspected. Earlier loss experiments are
-not rerun. No model/API generation or new dependency is used.
+All four fresh CLI checks passed in run 34803598911 using twelve GET requests.
+The last two are read-only diagnostic controls, not new provider objects.
+The returned seven-member artifact was inspected, including the matching source
+hash. See [VERIFIED.md](VERIFIED.md) for IDs, exact outcomes, the retained initial
+configuration failure, and scope. Earlier loss experiments were not rerun.
+No model/API generation or new dependency was used.
 
 ## Sources and provenance
 
