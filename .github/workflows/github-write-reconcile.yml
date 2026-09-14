@@ -1,0 +1,43 @@
+name: Check the read-only GitHub reconciliation skill
+'on':
+  pull_request:
+    paths:
+      - 'skills/github-write-reconcile/**'
+      - '.github/workflows/github-write-reconcile.yml'
+permissions:
+  contents: read
+jobs:
+  readback:
+    if: github.repository == 'YS-OH-CORE/second-paddle-notes' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Run offline reader tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -S -m unittest discover -s skills/github-write-reconcile/tests -p 'test_*.py' -v 2>&1 | tee "$RUNNER_TEMP/reconcile-unit.log"
+      - name: Read existing provider state through four fresh CLI processes
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          timeout 180s python -B -S skills/github-write-reconcile/tests/live_readback.py --out "$RUNNER_TEMP/reconcile-readback" 2>&1 | tee "$RUNNER_TEMP/reconcile-live.log"
+      - name: Retain read-only diagnostic records
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: github-write-reconcile
+          path: |
+            ${{ runner.temp }}/reconcile-readback/*.json
+            ${{ runner.temp }}/reconcile-unit.log
+            ${{ runner.temp }}/reconcile-live.log
+          if-no-files-found: error
+          retention-days: 14
