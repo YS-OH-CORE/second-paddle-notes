@@ -28,6 +28,38 @@ This repository does not claim AI consciousness, hidden-state access, or a new s
 
 ## Start here
 
+### Check a GitHub file after a lost write response
+
+[Download GitHub Write Reconcile 0.1.0a1](https://github.com/YS-OH-CORE/second-paddle-notes/releases/tag/github-reconcile-v0.1.0a1)
+· [한국어 시작 안내](packages/reconcile-skill/START_HERE.ko.md)
+· [Skill source](skills/github-write-reconcile/SKILL.md)
+· [Publication evidence](packages/reconcile-skill/PUBLICATION.md)
+
+Use the **runtime ZIP** for the command and complete skill folder; the separate
+evidence ZIP holds original successful and failed records. This is not the
+Evidence Tools MCP wheel below. No installation is required for standalone use.
+
+Extract the runtime ZIP into a new directory. With Python 3.10 or newer, run:
+
+```sh
+python -B -S VERIFY.py
+python -B -S github-write-reconcile/scripts/reconcile.py --intent github-write-reconcile/examples/completed-retry.json
+```
+
+The first command checks local package files offline. The second reads an existing
+public GitHub record. For your own file, use the repository/ref/path and a SHA-256
+from the **intended bytes before the write**, not from the remote file being tested.
+A match, a conflict, absence at one snapshot and an unknown result stay distinct;
+none authorizes an automatic retry. [Input format and status codes](skills/github-write-reconcile/SKILL.md#verification).
+
+The [standalone command](skills/github-write-reconcile/VERIFIED.md),
+[Hermes skill loading](contributions/hermes-skill-load/README.md), and
+[Hermes terminal-to-GitHub task](contributions/hermes-reconcile-task/README.md)
+have separate execution records. Those tasks were selected by a test harness,
+not by a model. The user's live Hermes installation was not changed.
+
+### Other tools and research entry points
+
 - **Use the checks from an MCP host:** [Install Evidence Tools](packages/evidence-mcp/README.md) · [download corrected preview 0.1.0a2](https://github.com/YS-OH-CORE/second-paddle-notes/releases/tag/evidence-v0.1.0a2), with original execution evidence and checksums. Version 0.1.0a1 is superseded for model-facing result projection; [read the input-selection boundary](packages/evidence-mcp/README.md#model-view-input-boundary) before use.
 
 - **Was the approved request the one that ran?** [Approval Trace Check](tools/approval-trace-check/README.md), a small offline browser/CLI checker with editable examples. No account or upload.
@@ -77,6 +109,7 @@ Notes 1, 14, 16, and 17 are one evaluation family, not four independent discover
 
 ## Current build status
 
+- **Read-only recovery skill:** [GitHub Write Reconcile 0.1.0a1](skills/README.md), publicly packaged with original evidence. Runtime, host-loading and terminal-task checks are not language-model benchmark results.
 - **Published:** 18 source-separated evaluation designs.
 - **Executable public artifact:** 1 rule-use serialization and scoring smoke harness, with 40 public cases and 2 deterministic program fixtures.
 - **Process-supervision utility:** [Process Receipt](tools/process-receipt/README.md), with public inert-process demonstrations and regression checks. This is not a language-model evaluation.
@@ -91,6 +124,10 @@ The completion notes test two different failures: **Note 5** asks whether an age
 See [RELATED_WORK.md](RELATED_WORK.md) for primary research bridges and explicit non-novelty boundaries, [QUEUE.md](QUEUE.md) for publication criteria and next test candidates, [REPLICATION.md](REPLICATION.md) for the minimum external-evidence package, [CONTRIBUTING.md](CONTRIBUTING.md) for critique and replication guidance, and [CITATION.cff](CITATION.cff) for citation metadata.
 
 ## 한국어 소개
+
+**지금 도구를 써보려면:** [한국어 시작 안내](packages/reconcile-skill/START_HERE.ko.md)에서
+GitHub 저장 확인 도구를 시작할 수 있다. 연구 노트 전체를 먼저 읽거나 Hermes를 설치할
+필요는 없다. 공개 파일 조회는 읽기 전용이며, 확인 불가를 저장 실패로 단정하지 않는다.
 
 이곳은 영석의 독백을 멋있는 문장으로 포장하는 곳이 아니다. 직접 원문에서 시작해, AI의 해석과 영석의 뜻을 분리하고, 틀릴 수 있는 가설과 실행 가능한 평가로 바꾸는 공개 연구 노트다. 개인과 AI 사이에서 시작된 질문이 다른 사람도 깨뜨리고 개선할 수 있는 측정법으로 남는지를 시험한다.
 
