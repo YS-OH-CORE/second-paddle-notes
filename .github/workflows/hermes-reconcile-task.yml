@@ -39,8 +39,6 @@ jobs:
           "$RUNNER_TEMP/task-venv/bin/python" -m pip freeze > "$RUNNER_TEMP/task-dependencies.txt"
       - name: Execute actual host task and read-only controls
         shell: bash
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           timeout 300s "$RUNNER_TEMP/task-venv/bin/python" -B contributions/hermes-reconcile-task/exercise.py --upstream "$GITHUB_WORKSPACE/upstream-hermes" --skill "$GITHUB_WORKSPACE/skills/github-write-reconcile" --out "$RUNNER_TEMP/task-evidence" 2>&1 | tee "$RUNNER_TEMP/task.log"

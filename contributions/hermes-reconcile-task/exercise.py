@@ -31,7 +31,7 @@ def main():
             out = a.out / name
             proc = subprocess.run([sys.executable, '-B', str(Path(bridge.__file__).resolve()),
                 '--upstream', str(a.upstream.resolve()), '--skill', str(a.skill.resolve()),
-                '--intent', str(intent_path.resolve()), '--out', str(out.resolve()), '--use-github-token'],
+                '--intent', str(intent_path.resolve()), '--out', str(out.resolve())],
                 capture_output=True, text=True, timeout=95)
             (a.out / (name + '.log')).write_text(proc.stdout + proc.stderr)
             bridge.need(proc.returncode == bridge.EXIT[expected], 'BRIDGE_EXIT_' + name)
