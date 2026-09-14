@@ -26,7 +26,7 @@ def terminal(text: str, error: bool = False) -> dict:
 
 class ReceiptStore:
     def __init__(self, path: Path, mode: str):
-        if mode not MODES:
+        if mode not in MODES:
             raise ValueError('UNKNOWN_MODE')
         self.path, self.mode = path, mode
         with closing(sqlite3.connect(path)) as db, db:
