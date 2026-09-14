@@ -22,13 +22,26 @@ SIGKILL at an arbitrary instruction, power failure, or machine reboot. Only thes
 new test processes and their disposable files are affected. Exceptional cleanup
 kills only a process group that this harness created.
 
-## Three server policies to compare
+## Observed on 2026-09-14
 
-| Policy | Expected result to check, not an observed result until execution |
-| --- | --- |
-| Deliberately naive repeat | Reapplying the same original request creates a second label and a different effect ID. |
-| Closed-round guard | No second label, but recovery receives ROUND_ALREADY_CLOSED rather than the original success. |
-| Durable bound receipt | Return the original result without another label. Reject a subsequently changed answer under the same token. |
+[Run 34794857975](https://github.com/YS-OH-CORE/second-paddle-notes/actions/runs/34794857975)
+completed with executable head `cf8183efb1f242a9e6c0e17f31f1fcbd2d00565b`.
+All three deliberately injected client exits returned code 73. Before recovery,
+each server had one committed label while the client checkpoint had the original
+form and answer, status `answered`, pending `continue_original_round`, and no
+terminal result. Fresh processes resumed that pending node over actual MCP stdio.
+
+| Policy | Labels before / after recovery | Returned result |
+| --- | --- | --- |
+| Deliberately naive repeat | 1 / 2 | Success text repeated, but effect ID changed from 1 to 2. |
+| Closed-round guard | 1 / 1 | ROUND_ALREADY_CLOSED with isError=true; original success not recovered. |
+| Durable bound receipt | 1 / 1 | The complete original result, including effect ID 1, was returned unchanged. |
+
+The receipt case then submitted a syntactically valid changed note under the same
+token. It returned REQUEST_BINDING_DIFFER with isError=true; the server's entire
+record stayed unchanged. There were 10 tools/call requests across nine client and
+nine server processes: three new scenarios, not 10 deployments or human approvals.
+The three server policies are programmed controls, not prevalence estimates.
 
 The receipt fixture stores the label, canonical request binding, and original
 result in one SQLite transaction. It uses existing database facilities, not a
@@ -50,12 +63,32 @@ LANGSMITH_TRACING=false LANGCHAIN_TRACING_V2=false \
 ```
 
 Use a new output directory and leave probe assertions enabled. Linux is the
-intended fault-harness platform. Sixteen local standard-library store tests passed;
-these are not SDK crash experiments. Full installed-SDK execution is pending at
-preparation. Local package acquisition failed DNS, so the hosted workflow will
-perform that part. Its read-only public Ubuntu job has a six-minute cap, and the
-probe has a three-minute ceiling. It retains only synthetic JSON/logs, not databases.
+intended fault-harness platform. Sixteen standard-library store tests passed both
+locally and in the hosted run; they are not 16 SDK crash experiments. Local package
+acquisition failed DNS, so the full installed-SDK run occurred in hosted CI.
+Its read-only public Ubuntu job has a six-minute cap, and the probe has a
+three-minute ceiling. It retains only synthetic JSON/logs, not databases.
 Top-level dependency pins match PR35; the full resolved environment is recorded.
+
+## Returned evidence checked
+
+Original artifact `10329531143`: 39,466 bytes, 58 synthetic JSON/log members,
+SHA-256 `1faa187020082c5425a85d006ecdede14af0d2a4afe33a20dd7b6bce2635ba0c`.
+The returned ZIP was opened and its digest, CRC, separate wire/server records,
+process ordering, abnormal exit markers, pre-recovery checkpoint and server state,
+post-recovery result/effect IDs, and changed-answer rejection were checked with a
+separate standard-library reader. This readback is not another SDK execution.
+The original ZIP, reader and matching source snapshot are delivered together in
+the conversation bundle. Hosted artifact retention is 14 days.
+
+Both client and server source records match the prepared probe SHA-256
+`335ff054beaa34941861246d810d840c166bc030e63c71d00ce52ec60fa7001b`
+and receipt-store SHA-256
+`4150a6e32b72cfcb1897fe9d3e3a86760f5b29039e7a00c79e575685881a1ad5`.
+The unchanged graph and requirements bytes were checked too. The later README
+completion edit does not change the executed code. A transfer typo in the first
+receipt-store upload was caught by readback and corrected before the PR run;
+the actual integration run completed on its first attempt.
 
 ## Evidence and limits
 
