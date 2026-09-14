@@ -33,6 +33,13 @@ def canonical(value: object) -> bytes:
     return (json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"), allow_nan=False) + "\n").encode("utf-8")
 
 
+def decode_github_content(value: str) -> bytes:
+    """Decode Contents API base64 after removing only ASCII whitespace."""
+    need(isinstance(value, str), "CONTENT_NOT_TEXT")
+    compact = "".join(value.split())
+    return base64.b64decode(compact, validate=True)
+
+
 def request_json(method: str, api_path: str, token: str, body: object | None = None):
     raw = canonical(body) if body is not None else None
     req = urllib.request.Request(
@@ -142,7 +149,7 @@ def recover(repo: str, branch: str, marker_path: str, marker: bytes, token: str,
             time.sleep(0.25)
     need(found is not None, "MARKER_NOT_RECOVERED")
     need(found["sha"] == expected_blob, "REMOTE_BLOB_DIFFER")
-    remote = base64.b64decode(found["content"], validate=True)
+    remote = decode_github_content(found["content"])
     need(remote == marker, "REMOTE_CONTENT_DIFFER")
 
     ref_status, ref = fetch_branch(repo, branch, token)
