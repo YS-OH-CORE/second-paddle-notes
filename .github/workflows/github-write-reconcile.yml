@@ -22,7 +22,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python -B -S -m unittest discover -s skills/github-write-reconcile/tests -p test_reconcile.py -v 2>&1 | tee "$RUNNER_TEMP/reconcile-unit.log"
+          python -B -S -m unittest discover -s skills/github-write-reconcile/tests -p 'test_*.py' -v 2>&1 | tee "$RUNNER_TEMP/reconcile-unit.log"
       - name: Read existing provider state through four fresh CLI processes
         shell: bash
         env:
