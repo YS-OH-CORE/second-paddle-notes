@@ -111,3 +111,21 @@ storage redirect. The helper is a network/publication utility, unlike the offlin
 This job has `actions: read` and `contents: write` for the guarded one-file repair.
 No account/admin setting, credential, billing setting, release, private checkpoint
 or recurring schedule is changed. Existing PR35 workflows remain untouched.
+
+## Hosted completion and remote readback
+
+[Retention run 34793303112](https://github.com/YS-OH-CORE/second-paddle-notes/actions/runs/34793303112)
+completed successfully at source head `9e12b38f3a1f365403fecef236c5f55bea1d753b`.
+It downloaded the two pinned originals, passed all 33 verifier tests, repaired
+only the known bad capsule, and compared the remote bytes with the assembled
+candidate. The repair commit is `98fca7707a4e90ba61a787cc3ddcde53c252714b`.
+A separate connector readback confirmed the correct capsule blob
+`1b11c7cd2faced0bc11a1355074de23a04bd05e2`.
+
+The returned inspection-log artifact `10329220341` is 875 bytes, SHA-256
+`02c0346f0b5b22f91b1c34a2752c1d5a691ced77aa752fb9cd3b4e29756c467a`.
+Its ZIP CRC and sole `retention.log` member were inspected. The log records
+`Ran 33 tests`, `OK`, and `repaired_known_copy` with 42 retained members and five
+checked source files. This was a retention/verification run, not another MCP
+integration execution. The correct capsule is now a repository file; the
+initial transfer error remains visible in the branch history.
