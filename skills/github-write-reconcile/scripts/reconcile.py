@@ -71,7 +71,7 @@ class NoRedirect(urllib.request.HTTPRedirectHandler):
 class GitHubReadOnly:
     """GET only, fixed host, bounded response, redirects refused."""
     def __init__(self, token: str = ''):
-        need(not token or bool(re.fullmatch(r'[A-Za-z0-9_]+', token)), 'TOKEN_FORMAT')
+        need(len(token) <= 8192 and all(33 <= ord(c) <= 126 for c in token), 'TOKEN_FORMAT')
         self.token = token
         self.opener = urllib.request.build_opener(NoRedirect)
         self.calls = 0
@@ -187,6 +187,8 @@ def main(argv=None) -> int:
         get = GitHubReadOnly(token)
         result = reconcile(intent, get)
         result['get_requests'] = get.calls
+    except CheckError as exc:
+        result = {'version': 1, 'status': 'unknown', 'reason': str(exc), 'retry_authorized': False}
     except (OSError, ValueError, RecursionError):
         result = {'version': 1, 'status': 'unknown', 'reason': 'LOCAL_INPUT_OR_CONFIGURATION', 'retry_authorized': False}
     result['reader_sha256'] = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
