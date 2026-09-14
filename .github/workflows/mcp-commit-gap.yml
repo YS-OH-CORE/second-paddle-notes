@@ -1,0 +1,57 @@
+name: Test abrupt client exit between MCP result and checkpoint
+'on':
+  pull_request:
+    paths:
+      - 'contributions/mcp-commit-gap/**'
+      - 'contributions/preserved-mcp-rounds/round_graph.py'
+      - 'contributions/preserved-mcp-rounds/requirements.txt'
+      - '.github/workflows/mcp-commit-gap.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+defaults:
+  run:
+    shell: bash
+jobs:
+  commit-gap:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    env:
+      LANGSMITH_TRACING: 'false'
+      LANGCHAIN_TRACING_V2: 'false'
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Install the existing fixed SDK versions
+        run: |
+          python -m venv "$RUNNER_TEMP/gap-venv"
+          "$RUNNER_TEMP/gap-venv/bin/python" -m pip install --disable-pip-version-check -r contributions/preserved-mcp-rounds/requirements.txt
+          "$RUNNER_TEMP/gap-venv/bin/python" -m pip freeze > "$RUNNER_TEMP/gap-dependencies.txt"
+      - name: Compile and check the receipt fixture
+        run: |
+          set -euo pipefail
+          "$RUNNER_TEMP/gap-venv/bin/python" -m py_compile contributions/mcp-commit-gap/*.py
+          (cd contributions/mcp-commit-gap && "$RUNNER_TEMP/gap-venv/bin/python" -S -m unittest -v test_receipts) 2>&1 | tee "$RUNNER_TEMP/gap-unit.log"
+      - name: Inject three abrupt client exits and recover through actual stdio
+        run: |
+          set -euo pipefail
+          timeout 180s "$RUNNER_TEMP/gap-venv/bin/python" contributions/mcp-commit-gap/probe.py --root "$RUNNER_TEMP/gap-evidence" 2>&1 | tee "$RUNNER_TEMP/gap-probe.log"
+      - name: Retain only synthetic JSON and logs, not databases
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: mcp-commit-gap
+          path: |
+            ${{ runner.temp }}/gap-evidence/observations.json
+            ${{ runner.temp }}/gap-evidence/*/*.json
+            ${{ runner.temp }}/gap-evidence/*/*.jsonl
+            ${{ runner.temp }}/gap-evidence/*/*.log
+            ${{ runner.temp }}/gap-dependencies.txt
+            ${{ runner.temp }}/gap-unit.log
+            ${{ runner.temp }}/gap-probe.log
+          if-no-files-found: error
+          retention-days: 14
