@@ -5,18 +5,12 @@ name: Recover a lost GitHub Contents API response from provider state
       - zero/github-response-loss-20260914
     paths:
       - 'contributions/github-response-loss/README.md'
-  pull_request:
-    paths:
-      - 'contributions/github-response-loss/probe.py'
-      - 'contributions/github-response-loss/test_probe.py'
-      - 'contributions/github-response-loss/README.md'
-      - '.github/workflows/github-response-loss.yml'
   workflow_dispatch:
 permissions:
   contents: read
 jobs:
   provider-response-loss:
-    if: github.repository == 'YS-OH-CORE/second-paddle-notes' && (github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref_name == 'zero/github-response-loss-20260914') || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.head.ref == 'zero/github-response-loss-20260914'))
+    if: ${{ github.repository == 'YS-OH-CORE/second-paddle-notes' }}
     runs-on: ubuntu-latest
     timeout-minutes: 4
     permissions:
@@ -28,7 +22,7 @@ jobs:
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
-          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          ref: ${{ github.sha }}
           persist-credentials: false
       - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
         with:
