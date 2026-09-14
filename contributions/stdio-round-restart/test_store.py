@@ -3,7 +3,7 @@ from copy import deepcopy
 from pathlib import Path
 from tempfile import TemporaryDirectory
 import unittest
-from stdio_restart_probe import KEY, NOTE, RoundStore
+from stdio_restart_probe import KEY, NOTE, RoundStore, compare_results
 
 class StoreTests(unittest.TestCase):
     def setUp(self):
@@ -53,5 +53,32 @@ class StoreTests(unittest.TestCase):
         self.assertEqual(self.store.answer(self.token, answer), ('CONTENT_WITHOUT_ACCEPT', True))
     def test_invalid_action(self):
         self.assertEqual(self.store.answer(self.token, {KEY: {'action': 'unknown'}}), ('ANSWER_ACTION', True))
+
+class ResultComparisonTests(unittest.TestCase):
+    def setUp(self):
+        self.body = {'resultType': 'input_required', 'requestState': 'fixture-token', 'inputRequests': {}}
+        self.received = dict(self.body, _meta={'io.modelcontextprotocol/serverInfo': {'name': 'stdio-round-restart-fixture', 'version': ''}})
+    def test_known_runtime_stamp(self):
+        before = deepcopy(self.received)
+        compare_results(self.received, self.body)
+        self.assertEqual(before, self.received)
+    def test_extra_metadata_rejected(self):
+        self.received['_meta']['unknown'] = 'not silently ignored'
+        with self.assertRaises(AssertionError): compare_results(self.received, self.body)
+    def test_changed_identity_rejected(self):
+        self.received['_meta']['io.modelcontextprotocol/serverInfo']['name'] = 'other'
+        with self.assertRaises(AssertionError): compare_results(self.received, self.body)
+    def test_missing_stamp_rejected(self):
+        self.received.pop('_meta')
+        with self.assertRaises(AssertionError): compare_results(self.received, self.body)
+    def test_changed_token_rejected(self):
+        self.received['requestState'] = 'replacement'
+        with self.assertRaises(AssertionError): compare_results(self.received, self.body)
+    def test_extra_body_rejected(self):
+        self.received['hiddenExtra'] = 'different'
+        with self.assertRaises(AssertionError): compare_results(self.received, self.body)
+    def test_handler_metadata_not_silently_removed(self):
+        self.body['_meta'] = {}
+        with self.assertRaises(AssertionError): compare_results(self.received, self.body)
 
 if __name__ == '__main__': unittest.main()
