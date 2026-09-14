@@ -1,0 +1,39 @@
+name: Diagnose task identifiers and output demands after PR50
+'on':
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - 'contributions/correction-task-diagnostic/diagnose.py'
+      - '.github/workflows/correction-task-diagnostic.yml'
+permissions:
+  contents: read
+jobs:
+  diagnostic:
+    if: github.repository == 'YS-OH-CORE/second-paddle-notes' && github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.head.ref == 'zero/correction-task-diagnostic-20260914'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Run the twelve fixed diagnostics in fresh CPU model processes
+        shell: bash
+        run: |
+          set -euo pipefail
+          timeout 540s python -B -S contributions/correction-task-diagnostic/diagnose.py --out "$RUNNER_TEMP/task-results" --work "$RUNNER_TEMP/task-runtime" 2>&1 | tee "$RUNNER_TEMP/task-run.log"
+      - name: Retain only synthetic diagnostic evidence
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: correction-task-diagnostic
+          path: |
+            ${{ runner.temp }}/task-results/*.json
+            ${{ runner.temp }}/task-results/*.jsonl
+            ${{ runner.temp }}/task-results/*.log
+            ${{ runner.temp }}/task-run.log
+          if-no-files-found: error
+          retention-days: 1
