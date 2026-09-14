@@ -1,0 +1,80 @@
+name: Reconcile the actual README publication
+'on':
+  pull_request:
+    paths:
+      - 'README.md'
+      - '.github/readme-intent.json'
+      - '.github/workflows/readme-reconcile.yml'
+permissions:
+  contents: read
+jobs:
+  readback:
+    if: github.repository == 'YS-OH-CORE/second-paddle-notes' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Read the posted README with the unchanged published reader
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python -B -S - <<'PY'
+          import hashlib, json, os, re, subprocess, sys
+          from pathlib import Path
+          out = Path(os.environ['RUNNER_TEMP']) / 'readme-reconcile'
+          out.mkdir(exist_ok=False)
+          reader = Path('skills/github-write-reconcile/scripts/reconcile.py')
+          reader_hash = hashlib.sha256(reader.read_bytes()).hexdigest()
+          if reader_hash != 'a800e8a327d2d2b8531e9807ba9d42a8f6d20f611182a4c2a35c75ba1aac4349':
+              raise RuntimeError('PUBLISHED_READER_CHANGED')
+          # This digest was committed by the author from the intended bytes.
+          # Do not regenerate the expected digest from the remote readback.
+          intent = json.loads(Path('.github/readme-intent.json').read_text())
+          if set(intent) != {'version', 'repository', 'path', 'expected_sha256'}:
+              raise RuntimeError('INTENT_FIELDS')
+          if type(intent['version']) is not int or intent['version'] != 1:
+              raise RuntimeError('INTENT_VERSION')
+          if intent['repository'] != 'YS-OH-CORE/second-paddle-notes' or intent['path'] != 'README.md':
+              raise RuntimeError('INTENT_SCOPE')
+          if re.fullmatch('[0-9a-f]{64}', intent['expected_sha256']) is None:
+              raise RuntimeError('INTENT_DIGEST')
+          head = os.environ['EXPECTED_HEAD']
+          if re.fullmatch('[0-9a-f]{40}', head) is None:
+              raise RuntimeError('HEAD_FORMAT')
+          intent['ref'] = head
+          (out / 'intent.json').write_text(json.dumps(intent, indent=2) + '\n')
+          completed = subprocess.run(
+              [sys.executable, '-B', '-S', str(reader), '--intent', str(out / 'intent.json'), '--use-github-token'],
+              capture_output=True, text=True, timeout=45)
+          (out / 'result.json').write_text(completed.stdout)
+          (out / 'reader.stderr.log').write_text(completed.stderr)
+          result = json.loads(completed.stdout)
+          record = {'scope': 'Actual README content at the PR head; not a lost-response trial or independent attestation',
+                    'head': head, 'reader_sha256': reader_hash, 'exit_code': completed.returncode,
+                    'expected_sha256': intent['expected_sha256'], 'result': result}
+          (out / 'record.json').write_text(json.dumps(record, indent=2) + '\n')
+          if completed.returncode != 0 or result.get('status') != 'content_match':
+              raise RuntimeError('README_NOT_CONFIRMED')
+          if result.get('snapshot_commit') != head or result.get('retry_authorized') is not False:
+              raise RuntimeError('SNAPSHOT_OR_RETRY_DIFFER')
+          if result.get('reader_sha256') != reader_hash or result.get('observed_sha256') != intent['expected_sha256']:
+              raise RuntimeError('DIGEST_DIFFER')
+          print(json.dumps(record, indent=2))
+          PY
+      - name: Retain this publication readback
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: readme-reconcile
+          path: ${{ runner.temp }}/readme-reconcile/*
+          if-no-files-found: error
+          retention-days: 14
