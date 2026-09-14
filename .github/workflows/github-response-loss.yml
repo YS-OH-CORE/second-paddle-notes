@@ -17,7 +17,6 @@ jobs:
       contents: write
     env:
       TARGET_BRANCH: zero/github-response-loss-provider-20260914
-      LOSS_EVIDENCE_DIR: ${{ runner.temp }}/github-response-loss-evidence
       GH_RESPONSE_LOSS_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
@@ -37,6 +36,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          export LOSS_EVIDENCE_DIR="$RUNNER_TEMP/github-response-loss-evidence"
           mkdir -p "$LOSS_EVIDENCE_DIR"
           timeout 90s python contributions/github-response-loss/probe.py 2>&1 | tee "$RUNNER_TEMP/github-response-loss-probe.log"
       - name: Retain synthetic observations only
