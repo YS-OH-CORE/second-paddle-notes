@@ -50,6 +50,12 @@ It does not install MCP, LangGraph or other packages. Evidence files record the
 sender exit point, the provider lookups, the recovered remote blob and commit SHA,
 and whether a retry was needed. The token is never emitted to logs or artifacts.
 
+## Execution trigger
+
+The workflow definition now keeps `runner.temp` inside step scope. This README-only
+commit fires the one named push trigger after that correction. It changes no probe
+logic and must not be counted as separate evidence.
+
 ## Claim boundary
 
 A successful run establishes only this narrower statement: **after the client
