@@ -208,7 +208,9 @@ theorem mem_hitWithin (e : Fin 8 → ℝ) (B : ℝ) (n : ℕ)
           rw [suffix_append] at hk
           change B ≤ capital e (w * e (x (h.length + 0)))
             (tail (fun j => x (h.length + j))) k
-          simpa only [Nat.add_zero, hci.2] using hk
+          have hxi : x h.length = i := hci.2
+          rw [← hxi] at hk
+          simpa only [Nat.add_zero] using hk
         · rintro ⟨hh, k, hkn, hk⟩
           cases k with
           | zero => exact False.elim (hb hk)

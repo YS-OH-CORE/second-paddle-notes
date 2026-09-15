@@ -3,3 +3,4 @@ import ZeroAudit.Concrete
 import ZeroAudit.Process
 import ZeroAudit.Stream
 import ZeroAudit.Directions
+import ZeroAudit.Completion
