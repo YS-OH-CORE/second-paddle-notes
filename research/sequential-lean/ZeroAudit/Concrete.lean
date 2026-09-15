@@ -11,6 +11,8 @@ The bound below is evaluated by kernel reduction, not native evaluation.
 -/
 namespace ZeroAudit
 open scoped BigOperators
+set_option maxRecDepth 1000000
+set_option maxHeartbeats 0
 
 abbrev LastPlan := Bool
 abbrev MiddlePlan := Option (LastPlan × LastPlan)
@@ -41,15 +43,13 @@ def numerator : Fin 8 → ℕ :=
     2800726181771964618, 3213631576243997040, 2778348778954729878,
     2887169478277046670, 0]
 
-def multiplier (i : Fin 8) : ℝ := (numerator i : ℝ) / denominator
+noncomputable def multiplier (i : Fin 8) : ℝ := (numerator i : ℝ) / denominator
 
 def unsafeCost (p : Plan) (extreme : Bool) : ℕ :=
   if extreme then 6 * numerator (output p 7)
   else 3 * numerator (output p 7) + numerator (output p 6) +
        numerator (output p 5) + numerator (output p 3)
 
-set_option maxRecDepth 1000000 in
-set_option maxHeartbeats 0 in
 theorem all_causal_integer_bounds :
     ∀ (p : Plan) (extreme : Bool), unsafeCost p extreme ≤ 6 * denominator := by
   decide +kernel
@@ -58,7 +58,7 @@ theorem policy_count : Fintype.card Plan = 676 := by decide +kernel
 
 def pointMass (z i : Fin 8) : ℝ := if i = z then 1 else 0
 
-def nullLaw (p : Plan) (extreme : Bool) (i : Fin 8) : ℝ :=
+noncomputable def nullLaw (p : Plan) (extreme : Bool) (i : Fin 8) : ℝ :=
   if extreme then pointMass (output p 7) i
   else (3 * pointMass (output p 7) i + pointMass (output p 6) i +
         pointMass (output p 5) i + pointMass (output p 3) i) / 6
@@ -78,9 +78,8 @@ theorem null_expectation (p : Plan) (extreme : Bool) :
         pointMass (output p 5) i + pointMass (output p 3) i) / 6 * multiplier i) =
         (3 * multiplier (output p 7) + multiplier (output p 6) +
          multiplier (output p 5) + multiplier (output p 3)) / 6 := by
-          simp_rw [div_mul_eq_mul_div, add_mul, Finset.sum_div,
-            Finset.sum_add_distrib, mul_assoc, ← Finset.mul_sum]
-          rw [point_mean, point_mean, point_mean, point_mean]
+          simp only [div_mul_eq_mul_div, add_mul, Finset.sum_div,
+            Finset.sum_add_distrib, mul_assoc, ← Finset.mul_sum, point_mean]
       _ = _ := by push_cast; unfold multiplier; ring
   | true =>
       simp only [nullLaw, ↓reduceIte, unsafeCost, point_mean]
