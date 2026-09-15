@@ -33,7 +33,7 @@ theorem law_nonneg (p : Plan) (b : Bool) (i : Fin 8) : 0 ≤ nullLaw p b i := by
 theorem law_total (p : Plan) (b : Bool) : (∑ i, nullLaw p b i) = 1 := by
   cases b <;>
     simp [nullLaw, ← Finset.sum_div, Finset.sum_add_distrib,
-      ← Finset.mul_sum, point_total]
+      ← Finset.mul_sum, point_total] <;> norm_num
 
 theorem mix_nonneg (a : MixtureIndex → ℝ) (ha : ∀ j, 0 ≤ a j) (i : Fin 8) :
     0 ≤ mixLaw a i :=
