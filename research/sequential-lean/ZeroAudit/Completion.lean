@@ -25,6 +25,7 @@ theorem some_alarm_iff (e : Fin 8 → ℝ) (z : Fin 8) (x : Stream) :
 
 theorem decision_union : acceptsSafe ∪ acceptsUnsafe =
     (everHit multiplier 20 ∪ occurs 0) ∪ (everHit reverseMultiplier 20 ∪ occurs 7) := by
+  classical
   apply Set.Subset.antisymm
   · exact union_subset_union safeDecision_subset unsafeDecision_subset
   · intro x hx

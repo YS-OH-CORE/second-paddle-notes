@@ -125,7 +125,11 @@ theorem no_unsafe_zero : ∀ p : Plan,
 
 theorem null_zero (p : Plan) (b : Bool) : nullLaw p b 0 = 0 := by
   obtain ⟨h7, h6, h5, h3⟩ := no_unsafe_zero p
-  cases b <;> simp [nullLaw, pointMass, eq_comm, h7, h6, h5, h3]
+  have h7' : (0 : Fin 8) ≠ output p 7 := Ne.symm h7
+  have h6' : (0 : Fin 8) ≠ output p 6 := Ne.symm h6
+  have h5' : (0 : Fin 8) ≠ output p 5 := Ne.symm h5
+  have h3' : (0 : Fin 8) ≠ output p 3 := Ne.symm h3
+  cases b <;> simp [nullLaw, pointMass, h7', h6', h5', h3']
 
 theorem safe_seven (p : Plan) (b : Bool) : safeLaw p b 7 = 0 := by
   rw [safeLaw_reflect]
@@ -140,20 +144,20 @@ theorem occurs_zero_measure (μ : Measure Stream) (p : History → Fin 8 → ℝ
   intro h
   rw [hc h z, hz h, ENNReal.ofReal_zero, mul_zero]
 
-def prefix (x : Stream) : ℕ → History
+def observedPrefix (x : Stream) : ℕ → History
   | 0 => []
-  | n + 1 => prefix x n ++ [x n]
+  | n + 1 => observedPrefix x n ++ [x n]
 
-theorem prefix_length (x : Stream) (n : ℕ) : (prefix x n).length = n := by
+theorem prefix_length (x : Stream) (n : ℕ) : (observedPrefix x n).length = n := by
   induction n with
   | zero => rfl
-  | succ n ih => simp [prefix, ih]
+  | succ n ih => simp [observedPrefix, ih]
 
-theorem mem_prefix (x : Stream) (n : ℕ) : x ∈ cylinder (prefix x n) := by
+theorem mem_prefix (x : Stream) (n : ℕ) : x ∈ cylinder (observedPrefix x n) := by
   induction n with
   | zero => trivial
   | succ n ih =>
-      rw [prefix, cylinder_append, prefix_length]
+      rw [observedPrefix, cylinder_append, prefix_length]
       exact ⟨ih, rfl⟩
 
 theorem occurs_iff (z : Fin 8) (x : Stream) : x ∈ occurs z ↔ ∃ n, x n = z := by
@@ -164,7 +168,7 @@ theorem occurs_iff (z : Fin 8) (x : Stream) : x ∈ occurs z ↔ ∃ n, x n = z 
     exact ⟨h.length, hh.2⟩
   · rintro ⟨n, hn⟩
     apply Set.mem_iUnion.mpr
-    refine ⟨prefix x n, ?_⟩
+    refine ⟨observedPrefix x n, ?_⟩
     rw [cylinder_append, prefix_length]
     exact ⟨mem_prefix x n, hn⟩
 
