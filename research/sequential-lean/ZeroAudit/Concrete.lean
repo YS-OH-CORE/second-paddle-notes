@@ -78,8 +78,11 @@ theorem null_expectation (p : Plan) (extreme : Bool) :
         pointMass (output p 5) i + pointMass (output p 3) i) / 6 * multiplier i) =
         (3 * multiplier (output p 7) + multiplier (output p 6) +
          multiplier (output p 5) + multiplier (output p 3)) / 6 := by
-          simp only [div_mul_eq_mul_div, add_mul, Finset.sum_div,
-            Finset.sum_add_distrib, mul_assoc, ← Finset.mul_sum, point_mean]
+          simp only [div_mul_eq_mul_div]
+          rw [← Finset.sum_div]
+          congr 1
+          simp only [add_mul, mul_assoc, Finset.sum_add_distrib,
+            ← Finset.mul_sum, point_mean]
       _ = _ := by push_cast; unfold multiplier; ring
   | true =>
       simp only [nullLaw, ↓reduceIte, unsafeCost, point_mean]
@@ -99,7 +102,7 @@ theorem every_policy_support (p : Plan) (extreme : Bool) :
 theorem concrete_mixture_support (a : (Plan × Bool) → ℝ)
     (ha : ∀ j, 0 ≤ a j) (hn : (∑ j, a j) = 1) :
     (∑ i, (∑ j, a j * nullLaw j.1 j.2 i) * multiplier i) ≤ 1 := by
-  exact mixture_support (fun j => nullLaw j.1 j.2) multiplier a ha hn
+  exact mixture_support (J := Plan × Bool) (fun j => nullLaw j.1 j.2) multiplier a ha hn
     (fun j => every_policy_support j.1 j.2)
 
 /-- This is the local capital inequality needed at every adaptive node. -/
