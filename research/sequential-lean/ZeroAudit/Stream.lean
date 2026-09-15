@@ -177,6 +177,13 @@ noncomputable def capital (e : Fin 8 → ℝ) : ℝ → Stream → ℕ → ℝ
   | w, _, 0 => w
   | w, x, n + 1 => capital e (w * e (x 0)) (tail x) n
 
+theorem suffix_append (x : Stream) (h : History) (i : Fin 8) :
+    (fun j => x ((h ++ [i]).length + j)) = tail (fun j => x (h.length + j)) := by
+  funext j
+  simp only [List.length_append, List.length_singleton, tail]
+  congr 1
+  omega
+
 /-- The recursive event really is a product-capital crossing on the stream. -/
 theorem mem_hitWithin (e : Fin 8 → ℝ) (B : ℝ) (n : ℕ)
     (h : History) (w : ℝ) (x : Stream) :
@@ -184,7 +191,7 @@ theorem mem_hitWithin (e : Fin 8 → ℝ) (B : ℝ) (n : ℕ)
       x ∈ cylinder h ∧ ∃ k ≤ n,
         B ≤ capital e w (fun j => x (h.length + j)) k := by
   induction n generalizing h w with
-  | zero => simp [hitWithin, capital]
+  | zero => simp [hitWithin, capital, and_comm]
   | succ n ih =>
       by_cases hb : B ≤ w
       · simp only [hitWithin, hb, ↓reduceIte]
@@ -198,7 +205,10 @@ theorem mem_hitWithin (e : Fin 8 → ℝ) (B : ℝ) (n : ℕ)
           obtain ⟨hci, k, hkn, hk⟩ := (ih (h ++ [i]) (w * e i)).mp hi
           rw [cylinder_append] at hci
           refine ⟨hci.1, k + 1, Nat.succ_le_succ hkn, ?_⟩
-          simpa [capital, tail, hci.2, Nat.add_assoc, Nat.add_comm, Nat.add_left_comm] using hk
+          rw [suffix_append] at hk
+          change B ≤ capital e (w * e (x (h.length + 0)))
+            (tail (fun j => x (h.length + j))) k
+          simpa only [Nat.add_zero, hci.2] using hk
         · rintro ⟨hh, k, hkn, hk⟩
           cases k with
           | zero => exact False.elim (hb hk)
@@ -207,7 +217,8 @@ theorem mem_hitWithin (e : Fin 8 → ℝ) (B : ℝ) (n : ℕ)
               refine ⟨?_, k, Nat.le_of_succ_le_succ hkn, ?_⟩
               · rw [cylinder_append]
                 exact ⟨hh, rfl⟩
-              · simpa [capital, tail, Nat.add_assoc, Nat.add_comm, Nat.add_left_comm] using hk
+              · rw [suffix_append]
+                simpa only [capital, Nat.add_zero] using hk
 
 noncomputable def everHit (e : Fin 8 → ℝ) (B : ℝ) : Set Stream :=
   ⋃ n : ℕ, hitWithin e B n [] 1
@@ -242,7 +253,12 @@ theorem stream_five_percent (μ : Measure Stream) [IsProbabilityMeasure μ]
   have ht := anytime_five_percent (scoreTree e p n [] 1)
     (scoreTree_valid e p he hp hn hs n [] 1 (by norm_num))
     (scoreTree_value e p n [] 1)
-  convert ENNReal.ofReal_le_ofReal ht using 1 <;> norm_num
+  calc
+    ENNReal.ofReal (hitMass 20 (scoreTree e p n [] 1)) ≤ ENNReal.ofReal ((1 : ℝ) / 20) :=
+      ENNReal.ofReal_le_ofReal ht
+    _ = (1 : ℝ≥0∞) / 20 := by
+      rw [ENNReal.ofReal_div_of_pos (by norm_num : (0 : ℝ) < 20)]
+      norm_num
 
 end ZeroAudit
 
