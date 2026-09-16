@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "Please cite the dated review edition. Mathematical development and computation were substantially assisted by Zero (ChatGPT); this is not peer-reviewed."
+type: software
+title: "Reporting alphabets and random-bit budgets in a finite causal audit"
+authors:
+  - family-names: Oh
+    given-names: Youngseok
+version: 0.1.0
+date-released: 2026-09-16
+repository-code: "https://github.com/YS-OH-CORE/second-paddle-notes"
+abstract: "A self-contained mathematical working note and exact finite checker for a causal reporting model. Includes a deterministic alphabet threshold, hard fair-bit threshold, conditional mean threshold, and distinct amortized contracts. No historical priority or empirical AI-memory performance is asserted."
