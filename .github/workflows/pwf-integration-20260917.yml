@@ -1,0 +1,46 @@
+name: PWF integration comparison 20260917
+on:
+  push:
+    branches: [verify/pwf-integration-20260917]
+    paths:
+      - .github/workflows/pwf-integration-20260917.yml
+      - contributions/pwf-integration-20260917/**
+permissions:
+  contents: read
+jobs:
+  comparison:
+    name: PWF baseline and candidate (${{ matrix.suite }})
+    strategy:
+      fail-fast: false
+      matrix:
+        suite: [python, pi, opencode]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Fetch pinned public upstream without persistent credentials
+        shell: bash
+        run: |
+          set -euo pipefail
+          git -c core.hooksPath=/dev/null init upstream
+          git -C upstream -c credential.helper= -c core.hooksPath=/dev/null fetch --depth=1 https://github.com/OthmanAdi/planning-with-files.git 746f57a7c51797bee512edd3e0ded277916f8cb3
+          git -C upstream -c core.hooksPath=/dev/null checkout --detach FETCH_HEAD
+          test "$(git -C upstream rev-parse HEAD)" = 746f57a7c51797bee512edd3e0ded277916f8cb3
+      - name: Install upstream test dependencies
+        run: |
+          python -m pip install pytest pyyaml
+          python --version
+          python -m pip show pytest PyYAML
+          node --version
+          npm --version
+          python -c "import shutil; assert shutil.which('sh')"
+      - name: Execute unchanged baseline then synchronized candidate
+        run: python contributions/pwf-integration-20260917/integration.py upstream '${{ matrix.suite }}' '${{ runner.temp }}/pwf-results-${{ matrix.suite }}'
