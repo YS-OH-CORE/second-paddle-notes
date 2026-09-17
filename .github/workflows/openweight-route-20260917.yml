@@ -1,0 +1,28 @@
+name: Pinned open-weight execution smoke 20260917
+'on':
+  push:
+    branches: ['verify/openweight-route-20260917']
+    paths:
+      - 'contributions/openweight-route-20260917/smoke.py'
+      - '.github/workflows/openweight-route-20260917.yml'
+permissions:
+  contents: read
+jobs:
+  smoke:
+    if: github.repository == 'YS-OH-CORE/second-paddle-notes'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          sparse-checkout: contributions/openweight-route-20260917
+      - name: Test local driver without inference
+        working-directory: contributions/openweight-route-20260917
+        run: python3 -B -m unittest -v test_smoke
+      - name: Run at most nine synthetic generations in a temporary local server
+        working-directory: contributions/openweight-route-20260917
+        shell: bash
+        run: |
+          set -euo pipefail
+          timeout 1050s python3 -B smoke.py --out "$RUNNER_TEMP/zero-openweight-smoke"
