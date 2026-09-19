@@ -1,0 +1,23 @@
+name: Public funding path (one shot)
+'on':
+  push:
+    branches: [ops/public-form-read-20260919]
+    paths: [ops/funding-path.request.json]
+permissions: {}
+concurrency:
+  group: zero-public-funding-path-20260919
+  cancel-in-progress: false
+jobs:
+  read-public-pages:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Install pinned driver in disposable runner
+        run: python -m pip install --disable-pip-version-check --no-cache-dir playwright==1.51.0
+      - name: Read exact public source
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          curl --fail --location --max-time 30 "https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/${SOURCE_SHA}/inspect_funding_path.py" -o reader.py
+          echo '93ecfc3bddd7e4fbb1323169b4085dcd15977f35059c2e6d688bec77023ac6ff  reader.py' | sha256sum --check
+          python -B -u reader.py
