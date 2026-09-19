@@ -2,13 +2,15 @@ name: Existing binding contribution - tested port
 'on':
   push:
     branches: [ops/hermes-binding-current-main-20260919]
-    paths: [port-check.request.json]
+    paths: [port-check.request.json, .github/workflows/binding-port-check.yml]
 permissions: {}
 jobs:
   check:
     runs-on: ubuntu-24.04
     timeout-minutes: 8
     steps:
+      - name: Install the pinned resolver in this disposable runner
+        run: python -m pip install --disable-pip-version-check --no-cache-dir uv==0.12.13
       - name: Fetch exact verifier and tests
         env:
           SOURCE_SHA: ${{ github.sha }}
@@ -20,3 +22,15 @@ jobs:
           echo '07512fd7be0ff612df675bcc1f1bdcce279ed423930d8ee6e59dde765994188b  execute_port_check.py' | sha256sum --check
           echo '1c4ce8b20ed25fae4ebbcd7f8f02d534acf477ae84b4321352483d06be54c7c7  test_model_binding_reasoning_port.py' | sha256sum --check
           python -B -u execute_port_check.py
+      - name: Preserve the public candidate patch in the log without artifact storage
+        if: always()
+        run: |
+          python -B - <<'PY'
+          from pathlib import Path
+          import base64, gzip, hashlib, json
+          for name in ['current-main-port.patch', 'MANIFEST.json', 'UPSTREAM_LICENSE']:
+              path=Path('generated')/name
+              if path.is_file():
+                  data=path.read_bytes()
+                  print('PUBLIC_PORT_FILE '+json.dumps({'name':name,'sha256':hashlib.sha256(data).hexdigest(),'bytes':len(data),'encoding':'gzip+base64','content':base64.b64encode(gzip.compress(data,mtime=0)).decode()}))
+          PY
