@@ -1,0 +1,101 @@
+name: Public wellbeing grant source read (one shot)
+'on':
+  push:
+    branches: [ops/public-form-read-20260919]
+    paths: [.github/workflows/public-wellbeing-read.yml]
+permissions: {}
+concurrency:
+  group: zero-public-wellbeing-read-20260919
+  cancel-in-progress: false
+jobs:
+  read-public-call:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Install pinned browser driver in disposable runner
+        run: python -m pip install --disable-pip-version-check --no-cache-dir playwright==1.51.0
+      - name: Read official notice and public form without entering data
+        run: |
+          python -B -u - <<'PY'
+          """One bounded read of a public grant notice and its linked public form.
+          No login, user data, form input, POST, submission, secret, or persistent browser.
+          """
+          import hashlib
+          import json
+          import re
+          from urllib.parse import urljoin, urlparse
+          from playwright.sync_api import sync_playwright
+          
+          NOTICE = 'https://www.anthropic.com/news/wellbeing-research-grants'
+          CANDIDATE = 'https://docs.google.com/forms/d/e/1FAIpQLSfmUDtpfg-ztmQPkCbwx-VAe_urX48sthbqs8GmZUT9irRSDQ/viewform'
+          NAV_HOSTS = {'anthropic.com', 'www.anthropic.com', 'docs.google.com', 'forms.gle', 'www-cdn.anthropic.com', 'assets.anthropic.com'}
+          
+          def emit(kind, value):
+              print(kind + ' ' + json.dumps(value, ensure_ascii=False), flush=True)
+          
+          def safe_navigation(url):
+              p = urlparse(url)
+              return p.scheme == 'https' and p.hostname in NAV_HOSTS and not p.username and not p.password
+          
+          with sync_playwright() as p:
+              browser = p.chromium.launch(executable_path='/opt/google/chrome/chrome', headless=True)
+              context = browser.new_context(service_workers='block', accept_downloads=False)
+              denied = []
+              def route_request(route):
+                  req = route.request
+                  if req.method not in ('GET', 'HEAD'):
+                      denied.append({'method': req.method, 'host': urlparse(req.url).hostname})
+                      route.abort()
+                  elif req.is_navigation_request() and not safe_navigation(req.url):
+                      denied.append({'method': req.method, 'host': urlparse(req.url).hostname, 'reason': 'navigation host'})
+                      route.abort()
+                  else:
+                      route.continue_()
+              context.route('**/*', route_request)
+              page = context.new_page()
+              links = []
+              def read_page(url, label):
+                  if not safe_navigation(url):
+                      raise ValueError('Unapproved navigation')
+                  response = page.goto(url, wait_until='domcontentloaded', timeout=50000)
+                  page.wait_for_timeout(2500)
+                  body = page.locator('body').inner_text(timeout=10000)
+                  emit('PAGE', {'label': label, 'requested': url, 'final': page.url, 'status': response.status if response else None, 'title': page.title(), 'body_sha256': hashlib.sha256(body.encode()).hexdigest(), 'characters': len(body)})
+                  for offset in range(0, min(len(body), 75000), 4000):
+                      emit('BODY', {'label': label, 'start': offset, 'text': body[offset:offset+4000]})
+                  anchors = page.locator('a[href]').evaluate_all('(xs) => xs.map(a => ({text: a.innerText, href: a.href}))')
+                  emit('LINKS', {'label': label, 'items': [a for a in anchors if re.search(r'apply|application|guidance|grant|wellbeing|\.pdf|forms\.gle|docs\.google', a['text']+' '+a['href'], re.I)]})
+                  return response, anchors
+              try:
+                  _, links = read_page(NOTICE, 'official_notice')
+              except Exception as exc:
+                  emit('PAGE_ERROR', {'label': 'official_notice', 'error': str(exc)[:1200]})
+              forms = [a['href'] for a in links if urlparse(a['href']).hostname in ('docs.google.com','forms.gle') and re.search(r'form|appl',a['text']+' '+a['href'],re.I)]
+              form_url = forms[0] if forms else CANDIDATE
+              emit('FORM_PROVENANCE', {'url': form_url, 'linked_from_live_notice': bool(forms), 'candidate_only_if_false': not bool(forms)})
+              try:
+                  response, _ = read_page(form_url, 'public_form')
+                  original = response.text() if response else ''
+                  match = re.search(r'(?:var\s+)?FB_PUBLIC_LOAD_DATA_\s*=\s*(\[.*?\]);\s*</script>', original, re.S)
+                  if match:
+                      data = json.loads(match.group(1))
+                      emit('FORM_PUBLIC_SCHEMA', {'top_level_length': len(data), 'source': 'public initial-page embedded form definition, not a submission endpoint'})
+                      if len(data)>1 and isinstance(data[1],list) and len(data[1])>1:
+                          emit('FORM_DESCRIPTION', data[1][0])
+                          items = data[1][1]
+                          if isinstance(items,list):
+                              emit('FORM_ITEM_COUNT', len(items))
+                              for item in items[:100]:
+                                  emit('FORM_ITEM', item)
+                          else:
+                              emit('FORM_SCHEMA_NOTE','Question-array shape not recognized')
+                  else:
+                      emit('FORM_SCHEMA_NOTE','Embedded definition not found; body-only coverage')
+                  controls = page.locator('input,textarea,[role=radio],[role=checkbox],[role=button]').evaluate_all('(xs)=>xs.map(x=>({tag:x.tagName,type:x.type||null,label:x.getAttribute("aria-label"),required:x.required||x.getAttribute("aria-required"),text:(x.innerText||"").slice(0,150)}))')
+                  emit('FORM_CONTROLS', controls)
+              except Exception as exc:
+                  emit('PAGE_ERROR', {'label':'public_form','error':str(exc)[:1200]})
+              emit('SCOPE', {'blocked_nonread_requests':denied, 'form_values_entered':0, 'submissions':0, 'login':False, 'api_model_calls':0})
+              context.close()
+              browser.close()
+          PY
