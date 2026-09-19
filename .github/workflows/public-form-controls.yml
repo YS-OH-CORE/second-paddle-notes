@@ -1,0 +1,23 @@
+name: Public form controls (one shot)
+'on':
+  push:
+    branches: [ops/public-form-read-20260919]
+    paths: [ops/form-controls.request.json]
+permissions: {}
+concurrency:
+  group: zero-public-form-controls-20260919
+  cancel-in-progress: false
+jobs:
+  read-public-pages:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Install pinned driver in disposable runner
+        run: python -m pip install --disable-pip-version-check --no-cache-dir playwright==1.51.0
+      - name: Read exact public source
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          curl --fail --location --max-time 30 "https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/${SOURCE_SHA}/inspect_controls.py" -o reader.py
+          echo '2eb9e159c83c20b6e0802d36ae7283109cf5e739e44f2e535820c740351ed2ef  reader.py' | sha256sum --check
+          python -B -u reader.py
