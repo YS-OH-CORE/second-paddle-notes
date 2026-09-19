@@ -1,0 +1,35 @@
+name: Public wellbeing guidance read (one shot)
+'on':
+  push:
+    branches: [ops/public-form-read-20260919]
+    paths: [.github/workflows/public-wellbeing-guidance.yml]
+permissions: {}
+jobs:
+  read-public-guidance:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    steps:
+      - name: Install pinned PDF text reader in disposable runner
+        run: python -m pip install --disable-pip-version-check --no-cache-dir pypdf==5.9.0
+      - name: Read the exact public guidance PDF
+        run: |
+          python -B -u - <<'PY'
+          import base64, hashlib, io, json, urllib.request
+          from pypdf import PdfReader
+          url = 'https://www-cdn.anthropic.com/files/4zrzovbb/website/5ecb637cb206057cb93cf4a9e72e843fda5e9892.pdf'
+          request = urllib.request.Request(url, headers={'User-Agent':'Mozilla/5.0 public-source-reader'})
+          with urllib.request.urlopen(request, timeout=40) as response:
+              data = response.read(3000001)
+              if len(data)>3000000 or not data.startswith(b'%PDF-'):
+                  raise ValueError('Unexpected document type or size')
+              print('PDF_META '+json.dumps({'url':url,'final_url':response.url,'status':response.status,'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()}), flush=True)
+          reader = PdfReader(io.BytesIO(data))
+          print('PDF_PAGES '+str(len(reader.pages)), flush=True)
+          for number,page in enumerate(reader.pages,1):
+              print('PDF_PAGE '+json.dumps({'page':number,'text':page.extract_text(),'images':len(page.images)},ensure_ascii=False),flush=True)
+          if len(data)<=80000:
+              print('PDF_BYTES_BASE64 '+base64.b64encode(data).decode(),flush=True)
+          else:
+              print('PDF_BYTES_NOTE not mirrored in this log; text extraction only',flush=True)
+          print('READ_SCOPE '+json.dumps({'http_method':'GET','form_read':False,'form_input':False,'login':False,'submission':False,'model_calls':0,'artifact_upload':False}),flush=True)
+          PY
