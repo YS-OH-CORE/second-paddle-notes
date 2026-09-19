@@ -1,0 +1,18 @@
+name: Existing binding contribution - source diagnostic
+'on':
+  push:
+    branches: [ops/hermes-binding-current-main-20260919]
+    paths: [request.json]
+permissions: {}
+jobs:
+  diagnose:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Fetch and check the exact diagnostic source
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          curl --fail --location --max-time 30 "https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/${SOURCE_SHA}/diagnose_binding_port.py" -o diagnose.py
+          echo '32f6f6e369b858004abb16b8dc6eacdba4a95235a398119e1441b1c0e3677b2b  diagnose.py' | sha256sum --check
+          python -B -u diagnose.py
