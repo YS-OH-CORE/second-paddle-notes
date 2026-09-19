@@ -1,0 +1,19 @@
+name: Public funding details (one shot)
+'on':
+  push:
+    branches: [ops/public-form-read-20260919]
+    paths: [ops/funding-details.request.json]
+permissions: {}
+jobs:
+  read-public-pages:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - run: python -m pip install --disable-pip-version-check --no-cache-dir playwright==1.51.0
+      - name: Read exact public source
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          curl --fail --location --max-time 30 "https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/${SOURCE_SHA}/read_funding_details.py" -o reader.py
+          echo '560d9f3a41e24e73d1cb6669d8217f7373f876f2af8755a9a1773800a797180a  reader.py' | sha256sum --check
+          python -B -u reader.py

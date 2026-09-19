@@ -1,0 +1,1 @@
+{"request":"inspect-funding-yes-details","date":"2026-09-19","bounded_choice":"Are you requesting funding? Yes","personal_inputs":false,"consents":false,"submit":false,"reason":"Previous multi-select chip was outside the inspected combobox; inspect the independent funding question directly rather than repeating that selector."}
