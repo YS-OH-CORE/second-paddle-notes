@@ -1,0 +1,22 @@
+name: Existing binding contribution - tested port
+'on':
+  push:
+    branches: [ops/hermes-binding-current-main-20260919]
+    paths: [port-check.request.json]
+permissions: {}
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - name: Fetch exact verifier and tests
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          for file in prepare_port.py execute_port_check.py test_model_binding_reasoning_port.py; do
+            curl --fail --location --max-time 30 "https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/${SOURCE_SHA}/${file}" -o "$file"
+          done
+          echo 'e15c66e47cb914af07163b3d600d01fb1a1b80127ba644552f98728a02677a5f  prepare_port.py' | sha256sum --check
+          echo '07512fd7be0ff612df675bcc1f1bdcce279ed423930d8ee6e59dde765994188b  execute_port_check.py' | sha256sum --check
+          echo '1c4ce8b20ed25fae4ebbcd7f8f02d534acf477ae84b4321352483d06be54c7c7  test_model_binding_reasoning_port.py' | sha256sum --check
+          python -B -u execute_port_check.py

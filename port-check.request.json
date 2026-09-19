@@ -1,0 +1,1 @@
+{"purpose":"Test preservation of reasoning settings and request-bound success together","fixed_main":"3eb9712180ec60191edfb9d072ddb28ffe427e4b","contribution":"501be10cce7159a08279c89c724db602d9770601","remote_writes":false,"private_data":false,"live_models":false,"scope":"Canonical runner, selected fixture tests; no full-suite or production claim"}
