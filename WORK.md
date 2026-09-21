@@ -53,6 +53,16 @@ The author also reports unrelated or pre-existing full-suite failures. These sel
 
 This case documents **external contributor use and credit at the PR-branch stage**. It does not establish a merged release, paid engagement, or a blanket endorsement of other work. The date above is a snapshot; use the linked PR for later status.
 
+### Follow-through | 21 September 2026
+
+**Continued use after integration.** The PR author [reported applying our port guidance][port-followup] at head `8c0090dc9a`. During that port, the contributed binding tests exposed an interaction between newer switch locking and delayed confirmation display. The author separated confirmation registration from display and repaired the test environment. Those additional integration fixes and the reported validation are the author's work.
+
+The [binding-test file at that head][current-binding-tests] still has Git blob `98ec718af91f6ac5fc7cb4470f95dba56f858e30`, matching the earlier adopted file. This is a checked file-identity link, not a new execution of the tests for this page.
+
+**A separate finding remains under review.** Our [21 September follow-up][late-decline-review] supplies a controlled source-extraction reproducer and an atomic, request-ID-scoped cleanup candidate for a late declined prompt that can remove a newer confirmation. It is a submitted technical finding, not an adopted repair. Full gateway integration and reachability under the real connector's transport contract remain to be checked.
+
+**Status at this check:** PR #22982 is open and unmerged at the head above. The recipient explicitly leaves live Slack field validation outstanding. The original contribution, the recipient's later fixes, and the unconfirmed follow-up are separate evidence, not a single completed deployment.
+
 ## A useful starting point for collaboration
 
 A good first case is a public, reproducible agent behavior that differs from the user's actual request. Provide the exact code revision, a small synthetic example, the expected behavior, and the observed behavior. That makes it possible to decide whether the right next deliverable is a reproduction, a regression test, or a narrow patch.
@@ -79,6 +89,12 @@ Keep credentials, private conversations, and personal records out of public issu
 
 **직접 확인한 코드 흔적도 있습니다.** 우리가 제출한 검사 파일과 상대가 적용한 검사 파일의 Git 식별값이 같았습니다. 감사 인사만 있는 것이 아니라, 무엇이 적용됐는지 확인할 수 있는 파일과 커밋이 남았습니다. [제출한 검사][tests] · [적용된 검사][adopted-tests]
 
+### 2026년 9월 21일 후속 확인
+
+**기여한 검사가 이후 변경에서도 쓰였습니다.** 개발자는 우리의 최신 코드 이전 지침을 적용했으며, 그 과정에서 기존 바인딩 검사가 새 잠금 기능과 지연된 확인창 표시의 충돌을 드러냈다고 [보고했습니다][port-followup]. 추가 통합 수정과 보고된 검증은 그 개발자의 기여입니다. 새 head의 검사 파일도 이전과 같은 Git 식별값을 가지는지 확인했습니다. 이 페이지를 고치면서 검사를 새로 실행한 것은 아닙니다.
+
+별도로, 옛 확인창의 늦은 전송 거절이 새 승인 대기를 지우는 경우에 대해 [재현 코드와 수정 후보를 전달했습니다][late-decline-review]. 이 후속은 아직 실제 통합·통신 조건의 검토가 남아 있으며, 적용된 수정으로 소개하지 않습니다. 현재 PR은 열려 있고 아직 병합되지 않았습니다. 앞선 기여가 유지된 사실과 새 문제의 검토 대기를 나누어 남깁니다.
+
 ### 현재 단계와 다음 연결
 
 2026년 9월 12일 확인한 단계는 **외부 개발자의 적용과 기여 명시**입니다. 원프로젝트의 PR은 당시 아직 열려 있었습니다. 이후 병합이나 배포 상태는 [원 PR][pr]에서 확인할 수 있습니다.
@@ -93,3 +109,6 @@ Keep credentials, private conversations, and personal records out of public issu
 [design]: https://github.com/YS-OH-CORE/second-paddle-notes/blob/21cd675cf4ce8b3722354bd58f673e61c0eb7856/contributions/hermes-model-confirmation/BINDING.md
 [tests]: https://github.com/YS-OH-CORE/second-paddle-notes/blob/21cd675cf4ce8b3722354bd58f673e61c0eb7856/contributions/hermes-model-confirmation/test_model_confirmation_binding.py
 [adopted-tests]: https://github.com/MestreY0d4-Uninter/hermes-agent/blob/501be10cce7159a08279c89c724db602d9770601/tests/gateway/test_model_confirmation_binding.py
+[port-followup]: https://github.com/NousResearch/hermes-agent/pull/22982#issuecomment-5756049894
+[current-binding-tests]: https://github.com/MestreY0d4-Uninter/hermes-agent/blob/8c0090dc9adbddcebb5491559ad98e1cf90d5bb4/tests/gateway/test_model_confirmation_binding.py
+[late-decline-review]: https://github.com/NousResearch/hermes-agent/pull/22982#pullrequestreview-5266577738
