@@ -1,0 +1,39 @@
+name: Native workroom storage module (one shot)
+'on':
+  push:
+    branches: [ops/native-workroom-20260922]
+    paths: [.github/workflows/native-workroom-20260922.yml]
+permissions: {}
+concurrency:
+  group: zero-native-workroom-20260922
+  cancel-in-progress: false
+jobs:
+  native-storage:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - name: Install pinned browser driver in disposable virtual environment
+        run: |
+          python3 -m venv "$RUNNER_TEMP/zero-native-venv"
+          "$RUNNER_TEMP/zero-native-venv/bin/python" -m pip install --disable-pip-version-check --no-cache-dir playwright==1.51.0
+      - name: Read pinned neutral test files and run native storage-module checks
+        run: |
+          "$RUNNER_TEMP/zero-native-venv/bin/python" -B -u - <<'PY'
+          import ast, os, pathlib, subprocess, sys, urllib.request
+          root = pathlib.Path(os.environ['RUNNER_TEMP']) / 'zero-native-storage'
+          root.mkdir(exist_ok=False)
+          repo = os.environ['GITHUB_REPOSITORY']
+          sha = os.environ['GITHUB_SHA']
+          assert repo == 'YS-OH-CORE/second-paddle-notes'
+          assert len(sha) == 40 and all(c in '0123456789abcdef' for c in sha)
+          for name in ['store.js','native_store_check.py','neutral.part1.b64','neutral.part2.b64','neutral.part3.b64']:
+              url = f'https://raw.githubusercontent.com/{repo}/{sha}/checks/workroom-native-v3/{name}'
+              with urllib.request.urlopen(url,timeout=25) as response:
+                  data = response.read(150001)
+              if len(data)>150000:
+                  raise ValueError('Unexpected file size')
+              (root/name).write_bytes(data)
+          ast.parse((root/'native_store_check.py').read_text(encoding='utf-8'))
+          print('PINNED_RUN '+sha,flush=True)
+          subprocess.run([sys.executable,'-B','-u',str(root/'native_store_check.py')],check=True,timeout=180)
+          PY
