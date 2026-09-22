@@ -1,0 +1,34 @@
+name: PR84236 explicit-stop regression (uv parser fix)
+'on':
+  push:
+    branches: [ops/pr84236-stop-20260922]
+    paths: [.github/workflows/pr84236-stop-uv-fix-20260922.yml]
+permissions: {}
+concurrency:
+  group: zero-pr84236-stop-20260922
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - name: Install a pinned uv that understands the existing lockfile
+        run: |
+          python3 -m venv "$RUNNER_TEMP/zero-bootstrap"
+          "$RUNNER_TEMP/zero-bootstrap/bin/python" -m pip install --disable-pip-version-check --no-cache-dir uv==0.12.17
+      - name: Execute the unchanged pinned test orchestration from the first attempt
+        run: |
+          "$RUNNER_TEMP/zero-bootstrap/bin/python" -B -u - <<'PY'
+          import textwrap, urllib.request
+          # Exact original orchestration, not a branch-tip or arbitrary remote script.
+          # Only the bootstrap uv version changed; frozen upstream pins/quarantine remain.
+          url = 'https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/b2a60222386c2fb3b1c031431666b516f74ca8af/.github/workflows/pr84236-stop-20260922.yml'
+          with urllib.request.urlopen(url, timeout=20) as response:
+              text = response.read(20000).decode('utf-8')
+          start = text.index('          import ast, hashlib, json, os, pathlib, subprocess, sys, time, tomllib, urllib.request\n')
+          end = text.index('\n          PY', start)
+          code = textwrap.dedent(text[start:end])
+          assert "TARGET='5980f38701382930375739be54f7a21d36664dbb'" in code
+          assert "'sync','--frozen','--python','3.12'" in code
+          exec(compile(code, 'pinned_pr84236_orchestrator', 'exec'))
+          PY
