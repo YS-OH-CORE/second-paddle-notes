@@ -1,0 +1,105 @@
+name: PR84236 explicit-stop regression (one shot)
+'on':
+  push:
+    branches: [ops/pr84236-stop-20260922]
+    paths: [.github/workflows/pr84236-stop-20260922.yml]
+permissions: {}
+concurrency:
+  group: zero-pr84236-stop-20260922
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - name: Install pinned environment tool in disposable runner
+        run: |
+          python3 -m venv "$RUNNER_TEMP/zero-bootstrap"
+          "$RUNNER_TEMP/zero-bootstrap/bin/python" -m pip install --disable-pip-version-check --no-cache-dir uv==0.8.22
+      - name: Compare original and candidate with complete source imports and upstream fixtures
+        run: |
+          "$RUNNER_TEMP/zero-bootstrap/bin/python" -B -u - <<'PY'
+          import ast, hashlib, json, os, pathlib, subprocess, sys, time, tomllib, urllib.request
+          import xml.etree.ElementTree as ET
+          TARGET='5980f38701382930375739be54f7a21d36664dbb'
+          TEST_SHA='3afce7db986f31efa10a193660c2954f9f6b1e7959d4f4253ef7f8e214b21000'
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-pr84236'
+          root.mkdir(exist_ok=False)
+          home=root/'home';home.mkdir()
+          repo=root/'source';repo.mkdir()
+          report={'target':TARGET,'checks':[],'runs':[],
+                  'scope':'full source imports, upstream unit fixtures; no live platform/model',
+                  'upstream_edited':False,'candidate_in_disposable_checkout_only':True}
+          env={'PATH':os.environ['PATH'],'HOME':str(home),'LANG':'C.UTF-8','LC_ALL':'C.UTF-8',
+               'TZ':'UTC','PYTHONHASHSEED':'0','PYTHONDONTWRITEBYTECODE':'1',
+               'UV_CACHE_DIR':str(root/'uv-cache'),'UV_NO_PROGRESS':'1',
+               'UV_PYTHON_DOWNLOADS':'never','HERMES_HOME':str(home/'.hermes')}
+          def call(cmd,timeout=60,cwd=repo):
+              p=subprocess.run(cmd,cwd=cwd,env=env,text=True,capture_output=True,timeout=timeout)
+              print('COMMAND '+json.dumps({'argv':list(map(str,cmd)),'returncode':p.returncode}),flush=True)
+              print(p.stdout[-16000:],flush=True);print(p.stderr[-6000:],flush=True)
+              if p.returncode: raise RuntimeError('Command failed: '+str(cmd))
+              return p.stdout
+          def digest(path):return hashlib.sha256(path.read_bytes()).hexdigest()
+          def checks(name,ok):
+              report['checks'].append({'name':name,'passed':bool(ok)})
+              if not ok:raise AssertionError(name)
+          try:
+              call(['git','init','-q'])
+              call(['git','fetch','--depth=1','https://github.com/Halldrix/hermes-agent.git',TARGET],90)
+              call(['git','checkout','--detach','FETCH_HEAD'])
+              checks('head_pin',call(['git','rev-parse','HEAD']).strip()==TARGET)
+              uv=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-bootstrap/bin/uv'
+              config=tomllib.loads((repo/'pyproject.toml').read_text())
+              dev=['--extra','dev'] if 'dev' in config.get('project',{}).get('optional-dependencies',{}) else ['--group','dev']
+              call([str(uv),'sync','--frozen','--python','3.12',*dev],240)
+              own=os.environ['GITHUB_SHA']
+              url=f'https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/{own}/checks/pr84236-stop/test_zero_stop_reason_84236.py'
+              with urllib.request.urlopen(url,timeout=20) as r:raw=r.read(12000)
+              checks('test_pin',hashlib.sha256(raw).hexdigest()==TEST_SHA)
+              ast.parse(raw)
+              added=repo/'tests/agent/test_zero_stop_reason_84236.py';added.write_bytes(raw)
+              source=repo/'agent/turn_finalizer.py';before=source.read_bytes()
+              report['original_finalizer_sha256']=digest(source)
+              files=['tests/agent/test_turn_finalizer_interrupted_fallback.py',
+                     'tests/agent/test_replay_cleanup_stop_kind.py',
+                     'tests/agent/test_stop_kind_sessiondb_roundtrip.py',
+                     'tests/agent/test_zero_stop_reason_84236.py']
+              def test_one(phase,path):
+                  xml=root/(phase+'-'+pathlib.Path(path).stem+'.xml')
+                  argv=[str(repo/'.venv/bin/python'),'-B','-m','pytest','-o','addopts=',
+                        path,'-q','--tb=short','--junitxml='+str(xml)]
+                  p=subprocess.run(argv,cwd=repo,env=env,text=True,capture_output=True,timeout=75)
+                  print('PYTEST '+phase+' '+path+'\n'+p.stdout+'\n'+p.stderr,flush=True)
+                  if not xml.exists():raise RuntimeError('No junit result')
+                  cases=ET.parse(xml).getroot().findall('.//testcase')
+                  failures=[c.attrib.get('name') for c in cases if c.find('failure') is not None]
+                  errors=[c.attrib.get('name') for c in cases if c.find('error') is not None]
+                  skipped=[c.attrib.get('name') for c in cases if c.find('skipped') is not None]
+                  row={'phase':phase,'path':path,'returncode':p.returncode,'tests':len(cases),
+                       'failures':failures,'errors':errors,'skipped':skipped,
+                       'passed':len(cases)-len(failures)-len(errors)-len(skipped),
+                       'junit_sha256':digest(xml)}
+                  report['runs'].append(row);return row
+              originals=[test_one('original',f) for f in files]
+              checks('upstream_baseline_passes',all(r['returncode']==0 and r['tests']>0 and not r['errors'] and not r['skipped'] for r in originals[:-1]))
+              probe=originals[-1]
+              expected={'test_explicit_stop_is_not_redirect[explicit-keyboard-reason]',
+                        'test_explicit_stop_is_not_redirect[explicit-stop-reason]'}
+              checks('original_two_specific_regressions',probe['returncode']==1 and set(probe['failures'])==expected and probe['tests']==8 and not probe['errors'] and not probe['skipped'])
+              needle=b'        elif getattr(agent, "_interrupt_message", None):'
+              replacement=b'        elif (getattr(agent, "_interrupt_message", None)\n              and getattr(agent, "_interrupt_stop_kind", None) != "user_stop"):'
+              checks('single_narrow_candidate',before.count(needle)==1)
+              source.write_bytes(before.replace(needle,replacement))
+              ast.parse(source.read_text())
+              report['candidate_finalizer_sha256']=digest(source)
+              print('CANDIDATE_DIFF\n'+call(['git','diff','--','agent/turn_finalizer.py']),flush=True)
+              candidates=[test_one('candidate',f) for f in files]
+              checks('candidate_all_selected_tests_pass',all(r['returncode']==0 and r['tests']>0 and not r['errors'] and not r['skipped'] for r in candidates))
+              report['success']=True
+          except Exception as e:
+              report['success']=False;report['error']=type(e).__name__+': '+str(e)
+          finally:
+              print('ZERO_PR84236_RESULT '+json.dumps(report,ensure_ascii=False),flush=True)
+          if not report.get('success'):sys.exit(1)
+          PY
