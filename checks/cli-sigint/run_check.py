@@ -35,7 +35,7 @@ def main():
     ap.add_argument('--worktree', type=Path, required=True)
     ap.add_argument('--python', type=Path, required=True)
     args = ap.parse_args()
-    repo, interpreter = args.worktree.resolve(), args.python.resolve()
+    repo, interpreter = args.worktree.resolve(), args.python.absolute()
     root = Path(tempfile.mkdtemp(prefix='zero-cli-e2e-'))
     report = {'target': TARGET, 'scope': 'real quiet text-mode CLI with a local mock; not live model/tool/TUI/Windows',
               'mock_author': 'Halldrix', 'mock_url': MOCK_URL,
