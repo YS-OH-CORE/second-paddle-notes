@@ -6,7 +6,7 @@
 
 **Source-separated evaluation designs for memory reconstruction, semantic fidelity, agent reliability, and discovery before naming.**
 
-**Published here:** evaluation designs, source-separated hypotheses, one deterministic public smoke harness, a runnable process-supervision utility, and offline preparation tooling for a future model study. **Not yet published here:** language-model benchmark results or an external replication.
+**Published here:** evaluation designs, source-separated hypotheses, deterministic software checks, runnable utilities, and two small-language-model development runs on eight fictional memory cases. **Not yet published here:** a held-out confirmatory language-model benchmark or an independent external replication. Development observations are linked below, including the absence of an accuracy advantage from added relationship labels.
 
 Original questions and reflections by **Youngseok Oh**. Edited and operationalized with **Zero**, the name Youngseok uses for his continuing Codex workspace and collaboration process. This is independent work using OpenAI Codex; it is not reviewed or endorsed by OpenAI.
 
@@ -27,6 +27,12 @@ No model self-report is treated as independent evidence. A memorable story is no
 This repository does not claim AI consciousness, hidden-state access, or a new scientific discovery. It publishes source-separated hypotheses and the tests that could make them fail.
 
 ## Start here
+
+### Memory pilot: same score, different decisions
+
+[Read the complete answer-order diagnostic](https://github.com/YS-OH-CORE/second-paddle-notes/blob/dbd48bbb31b0e03f2855f196e79bc809822fdd38/experiments/memory-cpu-pilot/OPTION_ORDER_REPORT.md) · [First CPU feasibility run](https://github.com/YS-OH-CORE/second-paddle-notes/blob/54dc8a079d7276adf9b52d0307167ef031e26f64/experiments/memory-cpu-pilot/README.md)
+
+The first actual small-model run scored 5/8 in every memory view. Exhausting all six answer orders then yielded 31/48 in each view, while some individual decisions changed and other errors persisted. Correct and deliberately reversed relations produced the same choices. Both runs, their frozen code, full output artifacts and limits are linked in the reports. These are development observations on eight reused fictional cases, not proof that an event-memory representation is better or that a person's past has been reconstructed.
 
 ### A passing unit test is not a fixed workflow
 
@@ -119,9 +125,9 @@ Notes 1, 14, 16, and 17 are one evaluation family, not four independent discover
 - **Published:** 18 source-separated evaluation designs.
 - **Executable public artifact:** 1 rule-use serialization and scoring smoke harness, with 40 public cases and 2 deterministic program fixtures.
 - **Process-supervision utility:** [Process Receipt](tools/process-receipt/README.md), with public inert-process demonstrations and regression checks. This is not a language-model evaluation.
-- **Model-study preparation:** 1 claim-bearing protocol plus an offline request/parser/scoring dry run; no provider integration and no model or API call.
-- **Published language-model benchmark runs:** 0.
-- **Published model-performance results:** 0.
+- **Rule-use model-study preparation:** 1 claim-bearing protocol plus an offline request/parser/scoring dry run; that preparation did not invoke a model or API.
+- **Small-model memory development runs:** 2 executions, comprising 24 initial and 144 answer-order forward passes on the same eight fictional cases. Descriptive results and raw-output artifacts are linked above; no relation-label accuracy advantage observed.
+- **Held-out confirmatory language-model benchmark studies:** 0.
 - **Independently submitted or verified external replications:** 0.
 - **Next milestone:** freeze a claim-bearing hidden set and preregister its scoring, run repeated trials on dated model versions, then release cases and raw outputs after evaluation.
 
@@ -130,6 +136,8 @@ The completion notes test two different failures: **Note 5** asks whether an age
 See [RELATED_WORK.md](RELATED_WORK.md) for primary research bridges and explicit non-novelty boundaries, [QUEUE.md](QUEUE.md) for publication criteria and next test candidates, [REPLICATION.md](REPLICATION.md) for the minimum external-evidence package, [CONTRIBUTING.md](CONTRIBUTING.md) for critique and replication guidance, and [CITATION.cff](CITATION.cff) for citation metadata.
 
 ## 한국어 소개
+
+**첫 모델 관측부터 보려면:** [같은 점수, 다른 판단](https://github.com/YS-OH-CORE/second-paddle-notes/blob/dbd48bbb31b0e03f2855f196e79bc809822fdd38/experiments/memory-cpu-pilot/OPTION_ORDER_REPORT.md)에서 가상 대화 8개에 대한 실제 소형 모델 실행과 보기 순서 진단을 볼 수 있다. 관계 표시의 우수성이나 개인의 기억 복원을 입증한 결과가 아니라, 무엇을 확인했고 무엇이 아직 구분되지 않는지 공개한 개발용 관측이다.
 
 **실제 협업 사례부터 보려면:** [단위검사 통과와 실제 동작은 어떻게 달랐나](notes/12-from-prompt-to-world.md#engineering-case-a-passing-unit-test-is-not-a-fixed-workflow)에서 원래 질문, 반론, 실제 실행 결과와 바로 복사해 쓸 검토 양식을 볼 수 있다. 이 사례를 새 연구 성과나 전체 제품 검증으로 세지는 않는다.
 
