@@ -1,10 +1,12 @@
-# Youngseok Oh × Zero
+# Youngseok Oh (오영석) × Zero
 
 ## Selected work: agent reliability with traceable results
 
-Human–AI collaboration on reproducible failures, regression tests, and reviewable fixes. This page presents one externally acknowledged contribution, with the original evidence beside the claim.
+Human–AI collaboration on reproducible failures, regression tests, and reviewable fixes. This page presents externally acknowledged contributions, with the original evidence and material corrections beside each claim.
 
 **한국어 소개는 아래에 있습니다.**
+
+**Evidence at a glance:** [Case 01: request-bound approvals](#case-01--keeping-an-approval-attached-to-its-own-request) · [Case 02: explicit stop handling and an E2E correction](#case-02--explicit-stop-handling-and-an-end-to-end-correction)
 
 ## Case 01 | Keeping an approval attached to its own request
 
@@ -63,6 +65,22 @@ The [binding-test file at that head][current-binding-tests] still has Git blob `
 
 **Status at this check:** PR #22982 is open and unmerged at the head above. The recipient explicitly leaves live Slack field validation outstanding. The original contribution, the recipient's later fixes, and the unconfirmed follow-up are separate evidence, not a single completed deployment.
 
+## Case 02 | Explicit stop handling and an end-to-end correction
+
+**Project:** Hermes Agent PR #84236  
+**Contribution:** a reproduced finalizer edge case, regression cases, a narrow condition change, and a public correction to a call-path inference  
+**Evidence checked:** 2026-09-23
+
+**Outcome:** the PR author applied the proposed condition in [commit e99497e][stop-commit], whose message explicitly credits the **YS-OH-CORE review**. An explicit `user_stop` carrying a diagnostic message now keeps the visible stop fallback instead of being mistaken for a new-message redirect. The author added a five-case finalizer regression. This is verified code incorporation on the author's PR branch; [the PR][stop-pr] was open and unmerged at this check.
+
+**Material correction, not omitted from the case:** our [original review][stop-review] reproduced the condition with the production finalizer and upstream unit fixtures. We also cited a CLI call site as motivation, while explicitly leaving end-to-end testing unperformed. The author's [real CLI test with a mock model endpoint][stop-response] showed that, on the cited single-query SIGINT path, the turn unwinds before the finalizer runs. Our narrow condition therefore does **not** reproduce or fix that CLI no-feedback symptom. We [accepted and published this correction][stop-correction]. The remaining CLI gap is separate.
+
+The same recipient follow-up identifies and fixes a different live-signal omission: `stop_kind="user_stop"` is now stamped while the turn is still alive. That finding, its integration, and the reported 129-test run belong to **Halldrix**. They were not independently rerun for this case page. The adopted condition, the recipient's additional repair, and the unresolved CLI path are distinct results, not a single claim of end-to-end resolution.
+
+**Human–AI roles:** Youngseok Oh sets the collaboration's problem direction and priorities. Zero (ChatGPT) supplied substantial analysis, regression authoring, execution orchestration, and review drafting. Halldrix authored the feature, integrated the condition, performed the end-to-end comparison, and supplied the correction. This is a documented collaboration, not a claim of solo human engineering credentials, research accreditation, or institutional endorsement.
+
+**Inspect the chain:** [Original review and execution evidence][stop-review] → [Recipient's result and counterevidence][stop-response] → [Crediting code change][stop-commit] → [Our public correction][stop-correction].
+
 ## A useful starting point for collaboration
 
 A good first case is a public, reproducible agent behavior that differs from the user's actual request. Provide the exact code revision, a small synthetic example, the expected behavior, and the observed behavior. That makes it possible to decide whether the right next deliverable is a reproduction, a regression test, or a narrow patch.
@@ -99,6 +117,16 @@ Keep credentials, private conversations, and personal records out of public issu
 
 2026년 9월 12일 확인한 단계는 **외부 개발자의 적용과 기여 명시**입니다. 원프로젝트의 PR은 당시 아직 열려 있었습니다. 이후 병합이나 배포 상태는 [원 PR][pr]에서 확인할 수 있습니다.
 
+### 사례 02 | 중단 처리에 반영된 기여와 공개 정정
+
+**2026년 9월 23일 확인.** PR #84236의 작성자 Halldrix는, 사용자 중단에 이유 문장이 붙었을 때 이를 새 질문으로 오인하지 않도록 우리가 제안한 조건을 [자기 코드에 반영했습니다][stop-commit]. 커밋 메시지는 **YS-OH-CORE의 검토**를 명시하며, 작성자가 추가한 검사에도 그 출처가 남아 있습니다. 확인 당시 [원 PR][stop-pr]은 아직 병합 전이었습니다.
+
+**우리 설명에서 바로잡힌 부분도 함께 공개합니다.** [원래 검토][stop-review]는 실제 종료 처리 함수와 단위검사 환경에서 조건을 재현했지만, 근거로 든 명령줄 실행 경로 전체는 시험하지 않았습니다. 상대의 [명령줄 전체 실행 비교][stop-response]에서 그 경로는 종료 처리 함수에 도달하기 전에 끝나는 것으로 나타났습니다. 따라서 이 조건 수정이 명령줄의 무응답까지 해결했다는 뜻은 아닙니다. 이 연결 추론은 [공개 답변으로 정정했습니다][stop-correction].
+
+실행 중 중단 사유를 기록하지 않던 다른 부분의 발견·수정과 관련 검사 129개 통과는 Halldrix의 기여 및 보고입니다. 이번 소개글을 작성하면서 새로 실행한 검사가 아니며, 남은 명령줄 문제는 별도입니다.
+
+오영석의 문제 방향·우선순위 판단, Zero(ChatGPT)의 상당한 분석·검사 작성·실행 조율·문안 작성, 상대 개발자의 구현·통합·반론을 구분합니다. 영석이 모든 코드를 혼자 작성한 전문경력으로 바꾸지 않습니다. **확인 가능한 기여와 그 기여의 한계를 같은 자리에서 볼 수 있는 협업 사례**입니다.
+
 관련 협업을 제안할 때는 공개해도 되는 작은 재현 예시와 코드 버전, 기대한 결과와 실제 결과를 [이슈](https://github.com/YS-OH-CORE/second-paddle-notes/issues/new)에 남겨 주세요. 소개글의 설명보다 원문 답변, 코드, 검사 자료를 먼저 확인할 수 있도록 구성했습니다.
 
 *This case page was written with Zero (ChatGPT) for Youngseok Oh. It reuses public contribution evidence, not private correspondence. Original code and test licensing remain with their existing files; this page does not relicense them.*
@@ -112,3 +140,8 @@ Keep credentials, private conversations, and personal records out of public issu
 [port-followup]: https://github.com/NousResearch/hermes-agent/pull/22982#issuecomment-5756049894
 [current-binding-tests]: https://github.com/MestreY0d4-Uninter/hermes-agent/blob/8c0090dc9adbddcebb5491559ad98e1cf90d5bb4/tests/gateway/test_model_confirmation_binding.py
 [late-decline-review]: https://github.com/NousResearch/hermes-agent/pull/22982#pullrequestreview-5266577738
+[stop-review]: https://github.com/NousResearch/hermes-agent/pull/84236#pullrequestreview-5275311288
+[stop-response]: https://github.com/NousResearch/hermes-agent/pull/84236#issuecomment-5786674461
+[stop-commit]: https://github.com/Halldrix/hermes-agent/commit/e99497e5101358b496ca860a3e42c1b623375287
+[stop-correction]: https://github.com/NousResearch/hermes-agent/pull/84236#issuecomment-5786815631
+[stop-pr]: https://github.com/NousResearch/hermes-agent/pull/84236
