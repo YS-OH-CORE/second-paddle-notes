@@ -28,6 +28,12 @@ This repository does not claim AI consciousness, hidden-state access, or a new s
 
 ## Start here
 
+### A passing unit test is not a fixed workflow
+
+[Read the worked case and copy the six-field review template](notes/12-from-prompt-to-world.md#engineering-case-a-passing-unit-test-is-not-a-fixed-workflow) · [기존 질문에서 실제 검토 방법으로](notes/12-from-prompt-to-world.md#한국어-형의-질문에서-실제-검토-방법으로)
+
+A finalizer fix passed its unit checks, but a real quiet CLI interruption needed a different delivery path. Follow the original review, the other developer's counterexample and corrected thread explanation, and the four-process comparison. Use the template to separate the user-visible claim, tested path, test doubles, observations, and remaining unknowns. This is an observed software case and an unevaluated review aid, not a new model benchmark. [Public contribution and attribution trail](WORK.md).
+
 ### Check a GitHub file after a lost write response
 
 [Download GitHub Write Reconcile 0.1.0a1](https://github.com/YS-OH-CORE/second-paddle-notes/releases/tag/github-reconcile-v0.1.0a1)
@@ -69,7 +75,7 @@ not by a model. The user's live Hermes installation was not changed.
 - **Agent reliability:** [One Point Is Not Ten](notes/05-one-point-is-not-ten.md)
 - **Rule use:** [A Rule Read Is Not a Rule Running](notes/15-a-rule-read-is-not-a-rule-running.md) · [run the public smoke harness](experiments/rule-use-eval/README.md)
 - **Memory under token limits:** [Compress for Regeneration, Not Deletion](notes/17-compress-for-regeneration.md)
-- **Case study and source trail:** [Approval-to-request binding](WORK.md), the reproduction, implementation, contributor roles and original follow-up.
+- **Case studies and source trails:** [Request-bound approvals and explicit-stop handling](WORK.md), with code incorporation, contributor roles, counterevidence and public corrections.
 
 For a shorter bilingual overview, see [The Second Paddle, Before Naming](https://youngseok-second-paddle.ohsycard.chatgpt.site/).
 
@@ -124,6 +130,8 @@ The completion notes test two different failures: **Note 5** asks whether an age
 See [RELATED_WORK.md](RELATED_WORK.md) for primary research bridges and explicit non-novelty boundaries, [QUEUE.md](QUEUE.md) for publication criteria and next test candidates, [REPLICATION.md](REPLICATION.md) for the minimum external-evidence package, [CONTRIBUTING.md](CONTRIBUTING.md) for critique and replication guidance, and [CITATION.cff](CITATION.cff) for citation metadata.
 
 ## 한국어 소개
+
+**실제 협업 사례부터 보려면:** [단위검사 통과와 실제 동작은 어떻게 달랐나](notes/12-from-prompt-to-world.md#engineering-case-a-passing-unit-test-is-not-a-fixed-workflow)에서 원래 질문, 반론, 실제 실행 결과와 바로 복사해 쓸 검토 양식을 볼 수 있다. 이 사례를 새 연구 성과나 전체 제품 검증으로 세지는 않는다.
 
 **지금 도구를 써보려면:** [한국어 시작 안내](packages/reconcile-skill/START_HERE.ko.md)에서
 GitHub 저장 확인 도구를 시작할 수 있다. 연구 노트 전체를 먼저 읽거나 Hermes를 설치할
