@@ -1,0 +1,67 @@
+name: Memory CPU development pilot (24 choices)
+'on':
+  push:
+    branches: [ops/memory-cpu-pilot-20260924]
+    paths: [.github/workflows/memory-cpu-pilot-20260924.yml]
+permissions: {}
+concurrency:
+  group: zero-memory-cpu-pilot-20260924
+  cancel-in-progress: false
+jobs:
+  pilot:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - name: Execute frozen fictional-memory pilot, CPU only, no inference API
+        run: |
+          python3 -B -u - <<'PY'
+          import hashlib, json, os, pathlib, shutil, subprocess, sys, urllib.request
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-memory-cpu'
+          root.mkdir(exist_ok=False)
+          out=root/'output';out.mkdir()
+          home=root/'home';home.mkdir()
+          env={'PATH':os.environ['PATH'],'HOME':str(home),'LANG':'C.UTF-8',
+               'PYTHONDONTWRITEBYTECODE':'1','HF_HOME':str(root/'hf-cache'),
+               'HF_HUB_DISABLE_TELEMETRY':'1','HF_HUB_DISABLE_IMPLICIT_TOKEN':'1',
+               'HF_HUB_DISABLE_XET':'1','TOKENIZERS_PARALLELISM':'false',
+               'OMP_NUM_THREADS':'2','MKL_NUM_THREADS':'2','CUDA_VISIBLE_DEVICES':''}
+          log=out/'execution.log'
+          def call(argv,timeout):
+              p=subprocess.run(list(map(str,argv)),cwd=root,env=env,text=True,capture_output=True,timeout=timeout)
+              with log.open('a',encoding='utf-8') as f:
+                  f.write('COMMAND '+str(argv)+'\nSTDOUT\n'+p.stdout+'\nSTDERR\n'+p.stderr+'\n')
+              for line in p.stdout.splitlines():
+                  if line.startswith('MEMORY_PILOT_ROW '):
+                      r=json.loads(line.split(' ',1)[1])
+                      print('CHOICE '+json.dumps({k:r[k] for k in ['ordinal','case','view','selected','expected','correct','elapsed_seconds']}),flush=True)
+                  elif line.startswith('MEMORY_PILOT_SUMMARY '):
+                      print(line,flush=True)
+              if p.returncode:
+                  print(p.stdout[-1500:]+'\n'+p.stderr[-3000:],flush=True)
+              p.check_returncode()
+              return p.stdout
+          url='https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/c713b8c8f46ccb249e8076d3989cae775e494009/experiments/memory-cpu-pilot/pilot.py'
+          with urllib.request.urlopen(url,timeout=20) as response:
+              raw=response.read(30000)
+          assert hashlib.sha256(raw).hexdigest()=='9f22d6f753eceef2847be49076fa6ae8f60a0e967ed48a8e631706f84f4514c4'
+          script=root/'pilot.py';script.write_bytes(raw)
+          (out/'pilot.py').write_bytes(raw)
+          (out/'run_metadata.json').write_text(json.dumps({'workflow_commit':os.environ['GITHUB_SHA'],'script_commit':'c713b8c8f46ccb249e8076d3989cae775e494009','runner':'ubuntu-24.04 standard GitHub hosted','github_run_id':os.environ['GITHUB_RUN_ID'],'cpu_threads':2},indent=2))
+          call(['python3','-B',script,'--selftest'],20)
+          call(['python3','-m','venv',root/'venv'],30)
+          python=root/'venv/bin/python'
+          call([python,'-m','pip','install','--disable-pip-version-check','--no-cache-dir','torch==2.6.0','--index-url','https://download.pytorch.org/whl/cpu'],180)
+          call([python,'-m','pip','install','--disable-pip-version-check','--no-cache-dir','transformers==4.51.3','huggingface-hub==0.30.2','tokenizers==0.21.1','safetensors==0.5.3','numpy==2.2.6'],120)
+          (out/'environment.txt').write_text(call([python,'-m','pip','freeze','--all'],30))
+          call([python,'-B','-u',script,'--out',out/'inference'],360)
+          print('PILOT_PROCESS_EXITED_SUCCESSFULLY',flush=True)
+          PY
+      - name: Retain original prompts, all observations, errors and environment
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: zero-memory-cpu-pilot-20260924
+          path: ${{ runner.temp }}/zero-memory-cpu/output/
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 6
