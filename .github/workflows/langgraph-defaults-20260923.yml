@@ -1,0 +1,50 @@
+name: LangGraph explicit initial defaults (one shot)
+'on':
+  push:
+    branches: [ops/langgraph-defaults-20260923]
+    paths: [.github/workflows/langgraph-defaults-20260923.yml]
+permissions: {}
+concurrency:
+  group: zero-langgraph-defaults-20260923
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 7
+    steps:
+      - name: Check pinned LangGraph source without a model or user workspace
+        run: |
+          python3 -B -u - <<'PY'
+          import ast, hashlib, os, pathlib, subprocess, urllib.request
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-langgraph-defaults'
+          root.mkdir(exist_ok=False)
+          source=root/'source'; source.mkdir()
+          home=root/'home'; home.mkdir()
+          env={'PATH':os.environ['PATH'],'HOME':str(home),'LANG':'C.UTF-8','LC_ALL':'C.UTF-8',
+               'TZ':'UTC','PYTHONDONTWRITEBYTECODE':'1','LANGSMITH_TRACING':'false',
+               'LANGCHAIN_TRACING_V2':'false','ZERO_SOURCE_DIR':str(source)}
+          def call(argv,timeout=90):
+              p=subprocess.run(list(map(str,argv)),cwd=source,env=env,text=True,capture_output=True,timeout=timeout)
+              print('COMMAND '+str(argv)+'\n'+p.stdout[-22000:]+'\n'+p.stderr[-8000:],flush=True)
+              p.check_returncode()
+              return p.stdout
+          target='1211af45b18cab9c0a7efe366ba12f51ad2a9996'
+          call(['git','init','-q'])
+          call(['git','fetch','--depth=1','https://github.com/langchain-ai/langgraph.git',target])
+          call(['git','checkout','--detach','FETCH_HEAD'])
+          assert call(['git','rev-parse','HEAD']).strip()==target
+          call(['python3','-m','venv',root/'venv'])
+          python=root/'venv/bin/python'
+          call([python,'-m','pip','install','--disable-pip-version-check','--no-cache-dir',
+                source/'libs/checkpoint',source/'libs/sdk-py',source/'libs/prebuilt',source/'libs/langgraph'],240)
+          call([python,'-m','pip','freeze','--all'])
+          url='https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/02f82e3d3d26178b48be2c8ab6e571910ecd5abf/checks/langgraph-defaults/check_defaults.py'
+          with urllib.request.urlopen(url,timeout=20) as r:
+              raw=r.read(15000)
+          assert hashlib.sha256(raw).hexdigest()=='1587e411b4e22dbb9e329fddcdbc23e78cfbef788f134417f8f853513ae69d3c'
+          ast.parse(raw)
+          script=root/'check_defaults.py';script.write_bytes(raw)
+          print('PINNED_WORKFLOW '+os.environ['GITHUB_SHA'],flush=True)
+          call([python,'-B','-u',script],60)
+          assert call(['git','status','--porcelain']).strip()==''
+          PY
