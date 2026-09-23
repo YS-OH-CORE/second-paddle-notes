@@ -30,7 +30,7 @@ jobs:
                'UV_CACHE_DIR':str(root/'uv-cache'),'UV_PYTHON_DOWNLOADS':'never'}
           def call(argv, timeout=60):
               result=subprocess.run(list(map(str,argv)),cwd=repo,env=env,text=True,capture_output=True,timeout=timeout)
-              print('COMMAND '+str(argv)+'\n'+result.stdout[-14000:]+'\n'+result.stderr[-5000:],flush=True)
+              print('COMMAND '+str(argv)+'\n'+result.stdout[-24000:]+'\n'+result.stderr[-5000:],flush=True)
               result.check_returncode()
           call(['git','init','-q'])
           call(['git','fetch','--depth=1','https://github.com/Halldrix/hermes-agent.git',target],90)
@@ -39,12 +39,12 @@ jobs:
           config=tomllib.loads((repo/'pyproject.toml').read_text())
           dev=['--extra','dev'] if 'dev' in config.get('project',{}).get('optional-dependencies',{}) else ['--group','dev']
           call([uv,'sync','--frozen','--python','3.12',*dev],240)
-          url='https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/0928493b2e1ce777fcf38866ce3cc69174270eb1/checks/cli-sigint/run_check.py'
+          url='https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/73c095a8105c032c3cc2174d95573402048d2c48/checks/cli-sigint/run_check_v2.py'
           with urllib.request.urlopen(url,timeout=20) as r:
               raw=r.read(15000)
-          assert hashlib.sha256(raw).hexdigest()=='bc91ca921c29c4bd422ce4f06e99546a624fe5a8204c7369fb258472afedb052'
+          assert hashlib.sha256(raw).hexdigest()=='9e6942f459910ccc56d6e1eb7d9ff9b755882340f05fd229ba4237855601c9ff'
           ast.parse(raw)
-          runner=root/'run_check.py';runner.write_bytes(raw)
+          runner=root/'run_check_v2.py';runner.write_bytes(raw)
           print('PINNED_RUN '+os.environ['GITHUB_SHA'],flush=True)
-          call([sys.executable,'-B','-u',runner,'--worktree',repo,'--python',repo/'.venv/bin/python'],240)
+          call([sys.executable,'-B','-u',runner,'--worktree',repo,'--python',repo/'.venv/bin/python'],300)
           PY
