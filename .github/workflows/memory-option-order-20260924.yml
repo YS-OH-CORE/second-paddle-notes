@@ -1,0 +1,71 @@
+name: Memory option-order diagnostic (144 choices)
+'on':
+  push:
+    branches: [ops/memory-cpu-pilot-20260924]
+    paths: [.github/workflows/memory-option-order-20260924.yml]
+permissions: {}
+concurrency:
+  group: zero-memory-order-20260924
+  cancel-in-progress: false
+jobs:
+  diagnostic:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Run frozen complete-order diagnostic with no inference API
+        run: |
+          python3 -B -u - <<'PY'
+          import hashlib, json, os, pathlib, subprocess, urllib.request
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-memory-order'
+          root.mkdir(exist_ok=False)
+          out=root/'output';out.mkdir()
+          home=root/'home';home.mkdir()
+          env={'PATH':os.environ['PATH'],'HOME':str(home),'LANG':'C.UTF-8',
+               'PYTHONDONTWRITEBYTECODE':'1','HF_HOME':str(root/'hf-cache'),
+               'HF_HUB_DISABLE_TELEMETRY':'1','HF_HUB_DISABLE_IMPLICIT_TOKEN':'1',
+               'HF_HUB_DISABLE_XET':'1','TOKENIZERS_PARALLELISM':'false',
+               'OMP_NUM_THREADS':'2','MKL_NUM_THREADS':'2','CUDA_VISIBLE_DEVICES':''}
+          def call(argv,timeout):
+              try:
+                  p=subprocess.run(list(map(str,argv)),cwd=root,env=env,text=True,capture_output=True,timeout=timeout)
+              except subprocess.TimeoutExpired as exc:
+                  (out/'timeout.txt').write_text(str(exc),encoding='utf-8')
+                  raise
+              with (out/'execution.log').open('a',encoding='utf-8') as f:
+                  f.write('COMMAND '+str(argv)+'\nSTDOUT\n'+p.stdout+'\nSTDERR\n'+p.stderr+'\n')
+              for line in p.stdout.splitlines():
+                  if line.startswith(('ORDER_ROW ','ORDER_SUMMARY ','ORDER_FIXTURE_')):
+                      print(line,flush=True)
+              if p.returncode:
+                  print(p.stdout[-2000:]+'\n'+p.stderr[-3000:],flush=True)
+              p.check_returncode()
+              return p.stdout
+          sources=[
+              ('pilot.py','c713b8c8f46ccb249e8076d3989cae775e494009','9f22d6f753eceef2847be49076fa6ae8f60a0e967ed48a8e631706f84f4514c4'),
+              ('option_order.py','6d8ae732bc53da3874a2fc10c66582fb5c1de8f6','559369a3e9c652898d6ee9f99b7951c04461fa71998988664fc02171af924a0e')]
+          for name,commit,sha in sources:
+              url=f'https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/{commit}/experiments/memory-cpu-pilot/{name}'
+              with urllib.request.urlopen(url,timeout=20) as response:
+                  data=response.read(40000)
+              assert hashlib.sha256(data).hexdigest()==sha, name
+              (out/name).write_bytes(data)
+          (out/'run_metadata.json').write_text(json.dumps({'workflow_commit':os.environ['GITHUB_SHA'],
+              'script_commit':'6d8ae732bc53da3874a2fc10c66582fb5c1de8f6','github_run_id':os.environ['GITHUB_RUN_ID'],
+              'runner':'ubuntu-24.04 standard GitHub hosted','cpu_threads':2},indent=2),encoding='utf-8')
+          call(['python3','-B',out/'option_order.py','--base',out/'pilot.py','--selftest'],20)
+          call(['python3','-m','venv',root/'venv'],30)
+          python=root/'venv/bin/python'
+          call([python,'-m','pip','install','--disable-pip-version-check','--no-cache-dir','torch==2.6.0','--index-url','https://download.pytorch.org/whl/cpu'],180)
+          call([python,'-m','pip','install','--disable-pip-version-check','--no-cache-dir','transformers==4.51.3','huggingface-hub==0.30.2','tokenizers==0.21.1','safetensors==0.5.3','numpy==2.2.6'],120)
+          (out/'environment.txt').write_text(call([python,'-m','pip','freeze','--all'],30),encoding='utf-8')
+          call([python,'-B','-u',out/'option_order.py','--base',out/'pilot.py','--out',out/'inference'],300)
+          PY
+      - name: Preserve all observed choices and complete prompts
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: zero-memory-order-diagnostic-20260924
+          path: ${{ runner.temp }}/zero-memory-order/output/
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 6
