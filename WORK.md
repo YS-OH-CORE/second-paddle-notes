@@ -73,13 +73,15 @@ The [binding-test file at that head][current-binding-tests] still has Git blob `
 
 **Outcome:** the PR author applied the proposed condition in [commit e99497e][stop-commit], whose message explicitly credits the **YS-OH-CORE review**. An explicit `user_stop` carrying a diagnostic message now keeps the visible stop fallback instead of being mistaken for a new-message redirect. The author added a five-case finalizer regression. This is verified code incorporation on the author's PR branch; [the PR][stop-pr] was open and unmerged at this check.
 
-**Material correction, not omitted from the case:** our [original review][stop-review] reproduced the condition with the production finalizer and upstream unit fixtures. We also cited a CLI call site as motivation, while explicitly leaving end-to-end testing unperformed. The author's [real CLI test with a mock model endpoint][stop-response] showed that, on the cited single-query SIGINT path, the turn unwinds before the finalizer runs. Our narrow condition therefore does **not** reproduce or fix that CLI no-feedback symptom. We [accepted and published this correction][stop-correction]. The remaining CLI gap is separate.
+**Material correction, not omitted from the case:** our [original review][stop-review] reproduced the condition with the production finalizer and upstream unit fixtures. We also cited a CLI call site as motivation, while explicitly leaving end-to-end testing unperformed. The author's [real CLI comparison with a mock model endpoint][stop-response] showed no visible improvement on the cited single-query SIGINT path. His [subsequent mechanism correction][stop-topology] clarified that the main thread's wait unwinds while the turn runs on a worker abandoned during process teardown; `run_conversation` itself is not unwound by that main-thread exception. The quiet exception path prints no turn result. Our finalizer condition therefore does **not** fix that CLI no-feedback symptom. We [published the first correction][stop-correction] and [accepted the refined topology][cli-followup]. The absent log line is not, by itself, proof of the whole worker lifecycle.
 
 The same recipient follow-up identifies and fixes a different live-signal omission: `stop_kind="user_stop"` is now stamped while the turn is still alive. That finding, its integration, and the reported 129-test run belong to **Halldrix**. They were not independently rerun for this case page. The adopted condition, the recipient's additional repair, and the unresolved CLI path are distinct results, not a single claim of end-to-end resolution.
 
+**Separate tested option, not adopted work:** using Halldrix's pinned mock-server function, Zero ran a [four-process real-CLI comparison][cli-run] and submitted a narrow exception-path candidate. It added one interruption notice on stderr, retained exit 130 and preserved stdout in that text-mode fixture. It did not prove worker finalization or tool cleanup. The initial checker's failure and remaining untested paths are [preserved with the reproduction][cli-details]. Submission is not evidence of upstream acceptance. [Worked example and reusable review template](notes/12-from-prompt-to-world.md#engineering-case-a-passing-unit-test-is-not-a-fixed-workflow).
+
 **Human–AI roles:** Youngseok Oh sets the collaboration's problem direction and priorities. Zero (ChatGPT) supplied substantial analysis, regression authoring, execution orchestration, and review drafting. Halldrix authored the feature, integrated the condition, performed the end-to-end comparison, and supplied the correction. This is a documented collaboration, not a claim of solo human engineering credentials, research accreditation, or institutional endorsement.
 
-**Inspect the chain:** [Original review and execution evidence][stop-review] → [Recipient's result and counterevidence][stop-response] → [Crediting code change][stop-commit] → [Our public correction][stop-correction].
+**Inspect the chain:** [Original review and execution evidence][stop-review] → [Recipient's result and counterevidence][stop-response] → [Crediting code change][stop-commit] → [Our public correction][stop-correction] → [Corrected thread explanation][stop-topology] → [Separate tested CLI candidate][cli-followup].
 
 ## A useful starting point for collaboration
 
@@ -121,9 +123,11 @@ Keep credentials, private conversations, and personal records out of public issu
 
 **2026년 9월 23일 확인.** PR #84236의 작성자 Halldrix는, 사용자 중단에 이유 문장이 붙었을 때 이를 새 질문으로 오인하지 않도록 우리가 제안한 조건을 [자기 코드에 반영했습니다][stop-commit]. 커밋 메시지는 **YS-OH-CORE의 검토**를 명시하며, 작성자가 추가한 검사에도 그 출처가 남아 있습니다. 확인 당시 [원 PR][stop-pr]은 아직 병합 전이었습니다.
 
-**우리 설명에서 바로잡힌 부분도 함께 공개합니다.** [원래 검토][stop-review]는 실제 종료 처리 함수와 단위검사 환경에서 조건을 재현했지만, 근거로 든 명령줄 실행 경로 전체는 시험하지 않았습니다. 상대의 [명령줄 전체 실행 비교][stop-response]에서 그 경로는 종료 처리 함수에 도달하기 전에 끝나는 것으로 나타났습니다. 따라서 이 조건 수정이 명령줄의 무응답까지 해결했다는 뜻은 아닙니다. 이 연결 추론은 [공개 답변으로 정정했습니다][stop-correction].
+**우리 설명에서 바로잡힌 부분도 함께 공개합니다.** [원래 검토][stop-review]는 실제 종료 처리 함수와 단위검사 환경에서 조건을 재현했지만, 근거로 든 명령줄 실행 경로 전체는 시험하지 않았습니다. 상대의 [전체 실행 비교][stop-response]에서는 그 수정으로 중단 안내가 생기지 않았습니다. 이후 상대는 [원인 설명도 정정했습니다][stop-topology]. 예외가 메인 스레드의 대기를 풀고, 별도 스레드에서 돌던 대화 작업은 프로세스 종료로 남겨지는 구조이지, `run_conversation` 자체가 그 예외로 풀리는 것은 아닙니다. 따라서 종료 처리 함수의 조건 수정이 명령줄의 무응답까지 해결했다는 뜻은 아닙니다. 우리는 [첫 정정][stop-correction]에 이어 [수정된 실행 구조도 받아들였습니다][cli-followup]. 로그 한 줄이 없다는 사실만으로 전체 스레드 동작이 독립 입증되는 것은 아닙니다.
 
 실행 중 중단 사유를 기록하지 않던 다른 부분의 발견·수정과 관련 검사 129개 통과는 Halldrix의 기여 및 보고입니다. 이번 소개글을 작성하면서 새로 실행한 검사가 아니며, 남은 명령줄 문제는 별도입니다.
+
+**별도로 시험해 전달한 후보는 채택된 기여와 구분합니다.** 상대의 모의 서버를 사용한 [네 번의 실제 명령줄 비교][cli-run]에서는 예외 처리 위치에 안내를 넣는 후보가 차이를 만들었습니다. 이는 텍스트 모드의 중단 안내만 확인한 결과입니다. 작업 정리·저장·전체 프로그램 검증이나 상대의 채택을 뜻하지 않습니다. [실패한 첫 검사와 실행 범위][cli-details], [다른 검토자가 복사해 쓸 양식](notes/12-from-prompt-to-world.md#engineering-case-a-passing-unit-test-is-not-a-fixed-workflow)도 함께 연결합니다.
 
 오영석의 문제 방향·우선순위 판단, Zero(ChatGPT)의 상당한 분석·검사 작성·실행 조율·문안 작성, 상대 개발자의 구현·통합·반론을 구분합니다. 영석이 모든 코드를 혼자 작성한 전문경력으로 바꾸지 않습니다. **확인 가능한 기여와 그 기여의 한계를 같은 자리에서 볼 수 있는 협업 사례**입니다.
 
@@ -145,3 +149,7 @@ Keep credentials, private conversations, and personal records out of public issu
 [stop-commit]: https://github.com/Halldrix/hermes-agent/commit/e99497e5101358b496ca860a3e42c1b623375287
 [stop-correction]: https://github.com/NousResearch/hermes-agent/pull/84236#issuecomment-5786815631
 [stop-pr]: https://github.com/NousResearch/hermes-agent/pull/84236
+[stop-topology]: https://github.com/NousResearch/hermes-agent/pull/84236#issuecomment-5787022600
+[cli-run]: https://github.com/YS-OH-CORE/second-paddle-notes/actions/runs/35805467618
+[cli-details]: https://github.com/YS-OH-CORE/second-paddle-notes/blob/70a0b9c1510cdc96576a2572fd33277331d6bf9b/checks/cli-sigint/README.md
+[cli-followup]: https://github.com/NousResearch/hermes-agent/pull/84236#issuecomment-5787346383
