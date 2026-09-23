@@ -1,0 +1,50 @@
+name: Quiet CLI SIGINT four-case comparison
+'on':
+  push:
+    branches: [ops/cli-sigint-20260923]
+    paths: [.github/workflows/cli-sigint-20260923.yml]
+permissions: {}
+concurrency:
+  group: zero-cli-sigint-20260923
+  cancel-in-progress: false
+jobs:
+  compare:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Install pinned environment tool in disposable virtualenv
+        run: |
+          python3 -m venv "$RUNNER_TEMP/zero-bootstrap"
+          "$RUNNER_TEMP/zero-bootstrap/bin/python" -m pip install --disable-pip-version-check --no-cache-dir uv==0.12.17
+      - name: Fetch pinned source and execute real quiet CLI against local mock
+        run: |
+          "$RUNNER_TEMP/zero-bootstrap/bin/python" -B -u - <<'PY'
+          import ast, hashlib, os, pathlib, subprocess, sys, tomllib, urllib.request
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-cli-sigint'
+          root.mkdir(exist_ok=False)
+          repo=root/'source';repo.mkdir()
+          home=root/'bootstrap-home';home.mkdir()
+          target='e99497e5101358b496ca860a3e42c1b623375287'
+          env={'PATH':os.environ['PATH'],'HOME':str(home),'LANG':'C.UTF-8','LC_ALL':'C.UTF-8',
+               'TZ':'UTC','PYTHONDONTWRITEBYTECODE':'1','UV_NO_PROGRESS':'1',
+               'UV_CACHE_DIR':str(root/'uv-cache'),'UV_PYTHON_DOWNLOADS':'never'}
+          def call(argv, timeout=60):
+              result=subprocess.run(list(map(str,argv)),cwd=repo,env=env,text=True,capture_output=True,timeout=timeout)
+              print('COMMAND '+str(argv)+'\n'+result.stdout[-14000:]+'\n'+result.stderr[-5000:],flush=True)
+              result.check_returncode()
+          call(['git','init','-q'])
+          call(['git','fetch','--depth=1','https://github.com/Halldrix/hermes-agent.git',target],90)
+          call(['git','checkout','--detach','FETCH_HEAD'])
+          uv=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-bootstrap/bin/uv'
+          config=tomllib.loads((repo/'pyproject.toml').read_text())
+          dev=['--extra','dev'] if 'dev' in config.get('project',{}).get('optional-dependencies',{}) else ['--group','dev']
+          call([uv,'sync','--frozen','--python','3.12',*dev],240)
+          url='https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/0928493b2e1ce777fcf38866ce3cc69174270eb1/checks/cli-sigint/run_check.py'
+          with urllib.request.urlopen(url,timeout=20) as r:
+              raw=r.read(15000)
+          assert hashlib.sha256(raw).hexdigest()=='bc91ca921c29c4bd422ce4f06e99546a624fe5a8204c7369fb258472afedb052'
+          ast.parse(raw)
+          runner=root/'run_check.py';runner.write_bytes(raw)
+          print('PINNED_RUN '+os.environ['GITHUB_SHA'],flush=True)
+          call([sys.executable,'-B','-u',runner,'--worktree',repo,'--python',repo/'.venv/bin/python'],240)
+          PY
