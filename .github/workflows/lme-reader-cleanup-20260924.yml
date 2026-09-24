@@ -10,7 +10,7 @@ concurrency:
 jobs:
   check:
     runs-on: ubuntu-24.04
-    timeout-minutes: 5
+    timeout-minutes: 7
     steps:
       - name: Execute imported harness with a simulated HTTP transport
         run: |
@@ -19,7 +19,7 @@ jobs:
           root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-lme-reader'
           root.mkdir();out=root/'output';out.mkdir();src=root/'source';src.mkdir()
           home=root/'home';home.mkdir()
-          env={'PATH':os.environ['PATH'],'HOME':str(home),'LANG':'C.UTF-8','PYTHONDONTWRITEBYTECODE':'1'}
+          env={'PATH':os.environ['PATH'],'HOME':str(home),'LANG':'C.UTF-8','PYTHONDONTWRITEBYTECODE':'1','HF_HUB_DISABLE_IMPLICIT_TOKEN':'1','HF_HUB_DISABLE_TELEMETRY':'1','OTEL_SDK_DISABLED':'true'}
           def call(args, timeout=60):
               p=subprocess.run(list(map(str,args)),cwd=src,env=env,text=True,capture_output=True,timeout=timeout)
               with (out/'execution.log').open('a') as f: f.write(str(args)+'\n'+p.stdout+'\n'+p.stderr+'\n')
@@ -31,7 +31,11 @@ jobs:
           call(['git','checkout','--detach','FETCH_HEAD'])
           call(['python3','-m','venv',root/'venv'])
           python=root/'venv/bin/python'
-          call([python,'-m','pip','install','--disable-pip-version-check','--no-cache-dir','openai==1.109.1','httpx==0.28.1','tqdm==4.67.1'],120)
+          # First run stopped at an eager agents import before any observations.
+          # Install declared dependencies; cap the SDK to its HTTPX 1/2.x lane.
+          # No project modules are mocked or removed to make the harness import.
+          call([python,'-m','pip','install','--disable-pip-version-check','--no-cache-dir','torch==2.6.0','--index-url','https://download.pytorch.org/whl/cpu'],180)
+          call([python,'-m','pip','install','--disable-pip-version-check','--no-cache-dir','-r',src/'requirements.txt','openai<3','httpx==0.28.1','tqdm==4.67.1'],180)
           (out/'environment.txt').write_text(call([python,'-m','pip','freeze','--all']))
           url='https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/ac30f25c5c5433196f549e0ed76491f296fe814e/checks/lme-reader-cleanup/check_reader_failures.py'
           with urllib.request.urlopen(url,timeout=20) as r: b=r.read(20000)
