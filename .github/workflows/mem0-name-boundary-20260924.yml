@@ -1,0 +1,83 @@
+name: Mem0 Pinecone name boundary (no service calls)
+'on':
+  push:
+    branches: [ops/mem0-name-boundary-20260924]
+    paths: [.github/workflows/mem0-name-boundary-20260924.yml]
+permissions: {}
+concurrency:
+  group: zero-mem0-name-boundary-20260924
+  cancel-in-progress: false
+jobs:
+  characterize:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 2
+    steps:
+      - name: Execute only the pinned pure Python naming helper against the documented contract
+        run: |
+          python3 -B -S -u - <<'PY'
+          """Supplemental evidence for mem0ai/mem0#7432 and PR #7433.
+          Executes the AST-extracted pure naming helper, not the full Mem0 SDK.
+          No provider request, memory write, external model, installation, or
+          TypeScript execution. The validator is our transcription of Pinecone's
+          published name contract, not the Pinecone service/SDK validator.
+          Original bug report: EdenYavin; separator patch: chelsealong.
+          This characterization: Zero (AI assistant), for Youngseok Oh.
+          """
+          import ast, hashlib, json, re, sys, urllib.request
+          DOC='https://docs.pinecone.io/reference/api/2025-10/control-plane/configure_index'
+          SPECS=[
+              ('base','mem0ai/mem0','47a69e1e72dc562b6fdd49a9ef892229afc7508a','a8b159f140cb72ed13f627d473e0b33ba15abd45'),
+              ('pr7433','chelsealong/mem0','42108b2e2a9b67770a9f18ec547220ebe5525847','488b1b329da8a4d70a647f9e73dac1b1916654ad'),
+          ]
+          def valid(name):
+              return 1 <= len(name) <= 45 and re.fullmatch(r'[a-z0-9](?:[a-z0-9-]*[a-z0-9])?',name) is not None
+          assert all(valid(s) for s in ('a','0','a-b','a'*45))
+          assert all(not valid(s) for s in ('','A','a_b','-a','a-','a'*46))
+          report={'scope':'source-extracted Python helper; documented-contract check, not full SDK or live Pinecone',
+                  'contract_source':DOC,'python':sys.version,'sources':{},'rows':[],
+                  'model_calls':0,'provider_calls':0,'typescript_executed':False}
+          for phase,repo,revision,expected_blob in SPECS:
+              url=f'https://raw.githubusercontent.com/{repo}/{revision}/mem0/memory/main.py'
+              with urllib.request.urlopen(url,timeout=20) as r:
+                  raw=r.read(1000001)
+              assert len(raw)<=1000000
+              blob=hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()
+              assert blob==expected_blob, 'Source blob mismatch'
+              text=raw.decode('utf-8')
+              found=[n for n in ast.parse(text).body if isinstance(n,ast.FunctionDef) and n.name=='_entity_collection_name']
+              assert len(found)==1
+              node=found[0]
+              assert not node.decorator_list
+              assert not any(isinstance(n,(ast.Call,ast.Import,ast.ImportFrom,ast.Attribute)) for n in ast.walk(node))
+              expected_condition = 'provider == "s3_vectors"' if phase=='base' else 'provider in ("s3_vectors", "pinecone")'
+              expected='def _entity_collection_name(provider: str, collection_name: str) -> str:\n    separator = "-" if '+expected_condition+' else "_"\n    return f"{collection_name}{separator}entities"'
+              extracted=ast.get_source_segment(text,node)
+              assert extracted==expected, 'Reviewed helper changed'
+              ns={'__builtins__':{'str':str}}
+              exec(compile(ast.Module(body=[node],type_ignores=[]),url,'exec'),ns)
+              helper=ns['_entity_collection_name']
+              assert helper('s3_vectors','test-index')=='test-index-entities'
+              assert helper('qdrant','mem0')=='mem0_entities'
+              report['sources'][phase]={'url':url,'git_blob':blob,'file_sha256':hashlib.sha256(raw).hexdigest(),'executed_helper':extracted}
+              for n in (1,36,37,45):
+                  base='a'*n
+                  derived=helper('pinecone',base)
+                  assert valid(base)
+                  accepted=valid(derived)
+                  assert accepted == (phase=='pr7433' and n<=36)
+                  row={'phase':phase,'base_length':n,'base_valid':True,'derived_name':derived,
+                       'derived_length':len(derived),'derived_valid_under_documented_contract':accepted}
+                  report['rows'].append(row)
+                  print('NAME_BOUNDARY_CASE '+json.dumps(row),flush=True)
+              short=helper('pinecone','my-index')
+              assert valid(short)==(phase=='pr7433')
+          # A hypothetical truncation control, NOT behavior in the reviewed patch.
+          x='a'*36+'x';y='a'*36+'y'
+          assert x!=y and valid(x) and valid(y)
+          first=x[:36]+'-entities';second=y[:36]+'-entities'
+          assert valid(first) and first==second
+          report['hypothetical_naive_truncation']={'distinct_bases':[x,y],'same_derived_name':first,
+              'not_part_of_reviewed_patch':True,'demonstrates':'plain truncation can collapse distinct names; no actual data collision observed'}
+          report['completed']=True
+          print('MEM0_NAME_BOUNDARY_RESULT '+json.dumps(report,ensure_ascii=False,sort_keys=True),flush=True)
+          PY
