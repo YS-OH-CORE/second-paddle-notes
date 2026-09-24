@@ -1,0 +1,100 @@
+name: Publish memory evidence snapshot (no inference)
+'on':
+  push:
+    branches: [ops/memory-cpu-pilot-20260924]
+    paths: [.github/workflows/memory-evidence-release-20260924.yml]
+permissions: {}
+concurrency:
+  group: zero-memory-evidence-release-20260924
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.repository == 'YS-OH-CORE/second-paddle-notes'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      actions: read
+      contents: write
+    steps:
+      - name: Verify original public artifacts before publishing one prerelease
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 -B -u - <<'PY'
+          import hashlib, json, os, pathlib, subprocess, urllib.request, urllib.parse
+          REPO='YS-OH-CORE/second-paddle-notes'
+          TAG='memory-evidence-20260924-v1'
+          SOURCE='2cb5c7bd5853899539d7641255f7e0d118832f27'
+          assert os.environ['GITHUB_REPOSITORY']==REPO
+          assert os.environ['GITHUB_REF']=='refs/heads/ops/memory-cpu-pilot-20260924'
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-evidence-publication'
+          root.mkdir(exist_ok=False)
+          def sha(data): return hashlib.sha256(data).hexdigest()
+          def gh(args, payload=None, allow_error=False):
+              p=subprocess.run(['gh',*args],input=None if payload is None else json.dumps(payload).encode(),
+                  stdout=subprocess.PIPE,stderr=subprocess.PIPE,timeout=90)
+              if not allow_error and p.returncode:
+                  raise RuntimeError('GitHub operation failed: '+p.stderr.decode(errors='replace')[:1000])
+              return p
+          existing=gh(['api',f'repos/{REPO}/releases/tags/{TAG}'],allow_error=True)
+          if existing.returncode==0:
+              raise RuntimeError('Release tag already exists; inspect it rather than overwrite or republish')
+          assert b'404' in existing.stderr, 'Cannot establish release absence'
+          files={
+              'verify_evidence.py':'856a1feaad65108be6f153cf0e1667937a7c2391ff239a445f832fc21233bee5',
+              'test_verifier.py':'638fb8084ee3b3d2e32e02f3632d3f1200ddda7c2ef27a3ef471eb8828298d4a',
+              'REVIEW_KIT.md':'6fa897c584474e3afdb3eeddfb0c468d7ea5789162f78638ce51267cbfcfd20b'}
+          for name,expected in files.items():
+              url=f'https://raw.githubusercontent.com/{REPO}/{SOURCE}/experiments/memory-cpu-pilot/evidence-review/{name}'
+              with urllib.request.urlopen(url,timeout=25) as response: raw=response.read(30000)
+              assert sha(raw)==expected, 'Review source hash mismatch: '+name
+              (root/name).write_bytes(raw)
+          for aid,name,expected in [
+              (10763690740,'ZERO_MEMORY_CPU_RAW_20260924.zip','c244093931b39b1b8082576b7961b87a5fd926439678b325ee25e9a9cbe864a9'),
+              (10766019830,'ZERO_MEMORY_ORDER_RAW_20260924.zip','e85d77194332280346d2e87b4a491e0a6bed5da902caea9a9c4167f1c889dee9')]:
+              raw=gh(['api',f'repos/{REPO}/actions/artifacts/{aid}/zip']).stdout
+              assert len(raw)<2000000 and sha(raw)==expected, 'Original artifact mismatch'
+              (root/name).write_bytes(raw)
+          # No credential is passed to the offline calculator or its negative controls.
+          clean={'PATH':os.environ['PATH'],'HOME':str(root),'LANG':'C.UTF-8','PYTHONDONTWRITEBYTECODE':'1'}
+          test=subprocess.run(['python3','-B','-S',str(root/'test_verifier.py')],cwd=root,env=clean,
+              text=True,capture_output=True,timeout=30)
+          print(test.stdout+test.stderr,flush=True)
+          test.check_returncode()
+          audit=subprocess.run(['python3','-B','-S',str(root/'verify_evidence.py')],cwd=root,env=clean,
+              text=True,capture_output=True,timeout=30)
+          audit.check_returncode()
+          result=json.loads(audit.stdout)
+          assert result['recorded_forward_passes']==168 and result['new_forward_passes']==0
+          (root/'AUDIT.json').write_text(audit.stdout,encoding='utf-8')
+          print('OFFLINE_AUDIT '+json.dumps(result),flush=True)
+          assets=sorted(p for p in root.iterdir() if p.is_file())
+          (root/'SHA256SUMS').write_text(''.join(sha(p.read_bytes())+'  '+p.name+'\n' for p in assets),encoding='utf-8')
+          assets.append(root/'SHA256SUMS')
+          expected={p.name:('sha256:'+sha(p.read_bytes()),p.stat().st_size) for p in assets}
+          assert len(expected)==7
+          body=(root/'REVIEW_KIT.md').read_text(encoding='utf-8')
+          release=json.loads(gh(['api','--method','POST',f'repos/{REPO}/releases','--input','-'],{
+              'tag_name':TAG,'target_commitish':SOURCE,'name':'Memory evidence review kit: original data and offline checks',
+              'body':body,'draft':True,'prerelease':True,'make_latest':'false'}).stdout)
+          rid=release['id']
+          print('DRAFT_CREATED '+json.dumps({'id':rid,'tag':TAG}),flush=True)
+          class NoRedirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self,*args,**kwargs): return None
+          uploader=urllib.request.build_opener(NoRedirect)
+          for p in assets:
+              url=f'https://uploads.github.com/repos/{REPO}/releases/{rid}/assets?'+urllib.parse.urlencode({'name':p.name})
+              request=urllib.request.Request(url,data=p.read_bytes(),method='POST',headers={
+                  'Authorization':'Bearer '+os.environ['GH_TOKEN'],
+                  'Accept':'application/vnd.github+json','Content-Type':'application/octet-stream'})
+              with uploader.open(request,timeout=60) as response: item=json.load(response)
+              assert item['state']=='uploaded' and item['size']==expected[p.name][1]
+              assert item.get('digest')==expected[p.name][0], 'Upload digest mismatch'
+          remote=json.loads(gh(['api',f'repos/{REPO}/releases/{rid}/assets?per_page=100']).stdout)
+          assert {a['name']:(a.get('digest'),a['size']) for a in remote}==expected
+          final=json.loads(gh(['api','--method','PATCH',f'repos/{REPO}/releases/{rid}','--input','-'],{
+              'draft':False,'prerelease':True,'make_latest':'false'}).stdout)
+          assert not final['draft'] and final['prerelease']
+          print('EVIDENCE_RELEASE_PUBLISHED '+json.dumps({'id':rid,'url':final['html_url'],
+              'tag':TAG,'source_commit':SOURCE,'assets':expected,'new_inferences':0}),flush=True)
+          PY
