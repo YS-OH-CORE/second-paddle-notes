@@ -48,9 +48,11 @@ jobs:
           assert comment['id']==5823398598 and comment['user']['login']=='ren2140eth'
           assert comment['updated_at']=='2026-09-24T22:39:03Z', 'Reviewed comment changed; stop'
           body=comment['body']
+          assert sha(body.encode())=='e5692e443a8cf8f66596065f62166f39d4d07e3758ad25ead1b13adfd6e95cfb'
           patches=re.findall(r'```diff\r?\n(.*?)\r?\n```',body,re.S)
           assert len(patches)==1
           patch=patches[0].replace('\r\n','\n')+'\n'
+          assert sha(patch.encode())=='cf65741f1f02f8703898229c98c3da4b53a6d97d96fac4987864c9d427f4aa20'
           paths=re.findall(r'^diff --git a/(\S+) b/(\S+)$',patch,re.M)
           expected=['gateway/platforms/signal.py','tests/gateway/test_signal_note_to_self.py']
           assert paths==[(p,p) for p in expected]
@@ -62,14 +64,26 @@ jobs:
           recipient=production.read_bytes()
           test=src/'tests/gateway/test_signal_note_to_self.py'
           testbytes=test.read_bytes()
-          assert blob(recipient).startswith('ac5b0b8465')
-          assert blob(testbytes).startswith('43c75e4b59')
+          # Verify exact reviewed production edits independently of the comment's advertised index.
+          # The first attempt stopped on that index mismatch; it ran no runtime tests.
+          expected_text=original.decode()
+          edits=[('from utils import TRUTHY_STRINGS\n','from utils import TRUTHY_STRINGS, is_truthy_value\n'),
+            ('        self.dm_allow_from = set(_parse_comma_list(_sig_secret("SIGNAL_ALLOWED_USERS", "*")))\n',
+             '        self.note_to_self = is_truthy_value(extra.get("note_to_self"), default=True)\n        self.dm_allow_from = set(_parse_comma_list(_sig_secret("SIGNAL_ALLOWED_USERS", "*")))\n'),
+            ('        if dest != self._account_normalized and not (sent_msg.get("groupInfo") or {}).get("groupId"):\n',
+             '        is_group_sync = bool((sent_msg.get("groupInfo") or {}).get("groupId"))\n        if not is_group_sync and not (dest == self._account_normalized and self.note_to_self):\n')]
+          for old,new in edits:
+              assert expected_text.count(old)==1
+              expected_text=expected_text.replace(old,new,1)
+          assert recipient==expected_text.encode(), 'Received patch includes unexpected source changes'
+          assert blob(testbytes)=='43c75e4b59d5b9d9125c5672b9eb9ffec7bbe270'
           (out/'test_signal_note_to_self.py').write_bytes(testbytes)
           (out/'recipient_signal.py').write_bytes(recipient)
-          # Record setup and exact source identity. Do not fetch another mutable branch.
           receipt={'source_commit':ref,'recipient_comment_id':comment['id'],'comment_body_sha256':sha(body.encode()),
             'patch_sha256':sha(patch.encode()),'recipient_code_blob':blob(recipient),'recipient_test_blob':blob(testbytes),
-            'recipient_test_sha256':sha(testbytes),'runs':{},'success':False}
+            'advertised_code_blob_prefix':'ac5b0b8465','advertised_code_blob_matches':blob(recipient).startswith('ac5b0b8465'),
+            'source_edits_exactly_match_reviewed_changes':True,'recipient_test_sha256':sha(testbytes),'runs':{},'success':False}
+          (out/'source_identity.json').write_text(json.dumps(receipt,indent=2)+'\n')
           call(['python3','-m','venv',root/'venv'])
           py=root/'venv/bin/python'
           needed={'openai','python-dotenv','httpx','rich','tenacity','pyyaml','ruamel.yaml','requests',
@@ -107,9 +121,9 @@ jobs:
               suites=tree.findall('.//testsuite')
               counts={k:sum(int(s.attrib.get(k,0)) for s in suites) for k in ['tests','failures','errors','skipped']}
               names=[n.attrib['name'] for n in tree.findall('.//testcase') if n.find('failure') is not None]
+              receipt['runs'][label]={'counts':counts,'failed_tests':names,'exit':p.returncode}
               assert counts=={'tests':11,'failures':failures,'errors':0,'skipped':0}, (label,counts)
               assert p.returncode==(1 if failures else 0), (label,p.returncode)
-              receipt['runs'][label]={'counts':counts,'failed_tests':names,'exit':p.returncode}
           try:
               production.write_bytes(original)
               contract('base')
@@ -125,7 +139,6 @@ jobs:
               receipt['success']=True
           finally:
               production.write_bytes(original)
-              # Only this exact new file created by applying the reviewed patch is removed.
               test.unlink()
               receipt['production_restored']=production.read_bytes()==original
               (out/'summary.json').write_text(json.dumps(receipt,indent=2)+'\n')
