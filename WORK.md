@@ -6,7 +6,7 @@ Human–AI collaboration on reproducible failures, regression tests, reviewable 
 
 **한국어 소개는 아래에 있습니다.**
 
-**Evidence at a glance:** [Case 01: request-bound approvals](#case-01--keeping-an-approval-attached-to-its-own-request) · [Case 02: explicit stop handling and an E2E correction](#case-02--explicit-stop-handling-and-an-end-to-end-correction) · [Case 03: adopted TAM evaluation-report review](#case-03--checking-the-numbers-and-narrowing-the-claim)
+**Evidence at a glance:** [Case 01: request-bound approvals](#case-01--keeping-an-approval-attached-to-its-own-request) · [Case 02: explicit stop handling and an E2E correction](#case-02--explicit-stop-handling-and-an-end-to-end-correction) · [Case 03: adopted TAM evaluation-report review](#case-03--checking-the-numbers-and-narrowing-the-claim) · [Case 04: recipient-confirmed Signal source review](#case-04--keeping-personal-notes-separate-from-agent-prompts)
 
 ## Case 01 | Keeping an approval attached to its own request
 
@@ -107,6 +107,21 @@ This contribution does not certify retrieval, answer generation, fresh judge dec
 
 **Inspect the chain:** [Public review request][tam-request] → [Saved-verdict calculation][tam-run] → [Author's reporting revision][tam-revision] → [Named human–AI attribution][tam-credit].
 
+## Case 04 | Keeping personal notes separate from agent prompts
+
+**Project:** Hermes Agent, Signal Note to Self configuration request  
+**Contribution:** source-level implementation guidance and validation plan  
+**Evidence checked:** 2026-09-25  
+**Evidence class:** recipient-confirmed source review, not an adopted implementation
+
+**Outcome:** requester **ren2140eth** publicly named **@YS-OH-CORE**, corrected the helper name in their follow-up, and reported checking the guidance against `749220ef`. They confirmed the existing YAML-to-adapter route and boolean parser, and said the required change was smaller than the original request suggested. [Our source review][signal-review] · [Recipient's verification][signal-ack]
+
+The request was to keep Signal's personal notepad from triggering the agent while retaining an authorized group conversation on the same account. The review located the existing configuration path, distinguished a false boolean/string from Python's truthy non-empty string, and proposed gating non-group self-messages without removing group policy or outbound-echo filtering. It also described an integration-test plan; those tests were **not executed as part of this source review**.
+
+**Roles and limits:** ren2140eth reported the use case, proposed the setting, and checked the guidance. Youngseok Oh set the collaboration direction; Zero, an AI assistant using ChatGPT, traced the public source and drafted the review. The evidence is the requester's public response, not a private testimonial. It does not establish a shipped option, a runtime-tested patch, a maintainer decision, or a repaired Signal account. No new code execution or recipient endorsement is implied by adding this case page.
+
+**Inspect the chain:** [Original request][signal-request] → [Source-level guidance][signal-review] → [Named verification and reduced implementation scope][signal-ack].
+
 ## A useful starting point for collaboration
 
 A good first case is a public, reproducible agent behavior that differs from the user's actual request, or a published evaluation claim with question-level results that can be checked. Provide the exact revision, a small synthetic example or public result file, the expected behavior or claim, and the observed result. That makes it possible to choose a reproduction, regression test, narrow patch, or saved-result audit.
@@ -163,6 +178,12 @@ Keep credentials, private conversations, and personal records out of public issu
 
 이 사례는 실제로 반영된 보고 개선과 공개 기여 표기입니다. 검색·답 생성·새 채점·제품 전체 성능을 독립 검증했다는 뜻은 아닙니다. 상대의 사적 메일이 아니라 [공개 보고서와 변경 기록][tam-report]으로 확인할 수 있습니다. 이 페이지를 갱신하면서 모델 실험을 추가하지 않았습니다.
 
+### 사례 04 | 개인 메모와 AI 호출을 구분하는 구현 경로
+
+**2026년 9월 25일 확인.** Signal의 개인 메모는 그대로 두면서 같은 계정의 단체방에서는 AI를 부르고 싶다는 요청에 대해, 기존 설정 전달 경로와 적용할 메시지 처리 위치를 [코드에서 찾아 안내했습니다][signal-review]. 요청자 **ren2140eth**는 **@YS-OH-CORE**를 직접 언급하고, 자신도 같은 판본의 코드를 확인했으며 안내가 맞다고 [공개 답변했습니다][signal-ack]. 새 설정 전달 장치를 만들 필요가 없고, 필요한 수정이 처음 예상보다 작아진다고 설명했습니다.
+
+이 사례의 확인 수준은 **상대가 검토 내용을 읽고 직접 소스를 대조한 뒤 유용성을 확인한 것**입니다. 실제 패치의 적용·배포나 사용자의 Signal 계정 복구까지 확인한 사례는 아닙니다. 원래 요청과 기능 제안은 상대의 기여이며, Zero는 소스 추적과 검토 문안 작성을 맡았습니다. 별도 실험이나 사적인 대화 공개 없이, 공개된 왕복 대화를 연결했습니다.
+
 관련 협업을 제안할 때는 공개해도 되는 작은 재현 예시와 코드 버전, 기대한 결과와 실제 결과를 [이슈](https://github.com/YS-OH-CORE/second-paddle-notes/issues/new)에 남겨 주세요. 소개글의 설명보다 원문 답변, 코드, 검사 자료를 먼저 확인할 수 있도록 구성했습니다.
 
 *This case page was written with Zero (ChatGPT) for Youngseok Oh. It reuses public contribution evidence, not private correspondence. Original code and test licensing remain with their existing files; this page does not relicense them.*
@@ -191,3 +212,7 @@ Keep credentials, private conversations, and personal records out of public issu
 [tam-revision]: https://github.com/vbcherepanov/total-agent-memory/commit/8b4065722d8c30942c0e6b718cf77cc55064ce45
 [tam-credit]: https://github.com/vbcherepanov/total-agent-memory/commit/55d0ab0124ca4fca81479a5bcafa262aaaf0e19e
 [tam-report]: https://github.com/vbcherepanov/total-agent-memory/blob/55d0ab0124ca4fca81479a5bcafa262aaaf0e19e/docs/benchmarks/head-to-head-v14/RESULTS.md#revisions
+
+[signal-request]: https://github.com/NousResearch/hermes-agent/issues/121970
+[signal-review]: https://github.com/NousResearch/hermes-agent/issues/121970#issuecomment-5822868222
+[signal-ack]: https://github.com/NousResearch/hermes-agent/issues/121970#issuecomment-5822952908
