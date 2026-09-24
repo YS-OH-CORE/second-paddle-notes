@@ -85,7 +85,7 @@ def child(repo: Path, output: Path, label: str) -> int:
 
     def envelope(kind: str = 'self', *, attachment: bool = False, mentioned: bool = True) -> dict:
         sent = {'destinationNumber': ACCOUNT, 'timestamp': 123456789,
-                'message': ('@' + ACCOUNT + ' ') if mentioned and kind == 'group' else 'synthetic note'}
+                'message': ('@' + ACCOUNT + ' synthetic request') if mentioned and kind == 'group' else 'synthetic note'}
         if kind in ('group', 'blocked_group'):
             sent['groupInfo'] = {'groupId': GROUP if kind == 'group' else 'blocked-fixture', 'groupName': 'fixture'}
         if kind == 'other_destination':
@@ -150,7 +150,8 @@ def child(repo: Path, output: Path, label: str) -> int:
     failed = {r['name'] for r in report['cases'] if not r['passed']}
     report['failed_cases'] = sorted(failed)
     report['expected_failure_set'] = sorted(CHANGED_CASES) if label == 'base' else []
-    report['success'] = failed == (CHANGED_CASES if label == 'base' else set())
+    report['success'] = (failed == (CHANGED_CASES if label == 'base' else set())
+                         and all(r.get('error_type') == 'AssertionError' for r in report['cases'] if not r['passed']))
     report['versions'] = {name: importlib.metadata.version(name) for name in ['PyYAML', 'httpx', 'pydantic']}
     (output / (label + '.json')).write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
     print('SIGNAL_CONTRACT_REPORT ' + json.dumps(report), flush=True)
