@@ -1,0 +1,65 @@
+name: Wrapper identity origin and explicit-setting controls
+'on':
+  push:
+    branches: [ops/pydantic-8728-identity-origin-20260925]
+    paths: [.github/workflows/pydantic-8728-identity-origin-20260925.yml]
+permissions: {}
+concurrency:
+  group: zero-wrapper-8728-origin-20260925
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - name: Compare real Agent request preparation across wrapper histories
+        run: |
+          python3 -B -u - <<'PY'
+          import ast,hashlib,json,os,pathlib,shutil,subprocess,urllib.request
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-wrapper-8728-origin'
+          root.mkdir(exist_ok=False)
+          src=root/'source';src.mkdir();out=root/'output';out.mkdir();home=root/'home';home.mkdir()
+          env={'PATH':os.environ['PATH'],'HOME':str(home),'LANG':'C.UTF-8','PYTHONDONTWRITEBYTECODE':'1',
+            'GIT_LFS_SKIP_SMUDGE':'1','PIP_DISABLE_PIP_VERSION_CHECK':'1','OTEL_SDK_DISABLED':'true',
+            'LOGFIRE_SEND_TO_LOGFIRE':'false'}
+          def call(args,timeout=60):
+              p=subprocess.run(list(map(str,args)),cwd=src,env=env,text=True,capture_output=True,timeout=timeout)
+              with (out/'execution.log').open('a',encoding='utf-8') as f:
+                  f.write('COMMAND '+str(args)+'\n'+p.stdout+'\n'+p.stderr+'\n')
+              print(p.stdout[-34000:]+p.stderr[-5000:],flush=True)
+              p.check_returncode()
+              return p.stdout
+          ref='8e333cef5811743584c645d3cbd84ab5bb809a3b'
+          call(['git','init','-q'])
+          call(['git','fetch','--depth=1','https://github.com/pydantic/pydantic-ai.git',ref],90)
+          call(['git','checkout','--detach','FETCH_HEAD'])
+          assert call(['git','rev-parse','HEAD']).strip()==ref
+          shutil.copyfile(src/'LICENSE',out/'PYDANTIC_LICENSE')
+          call(['python3','-m','venv',root/'venv'])
+          py=root/'venv/bin/python'
+          # Install release dependencies; the checker imports BOTH framework packages
+          # from the pinned checkout and records that distinction explicitly.
+          call([py,'-m','pip','install','--no-cache-dir','pydantic-ai-slim==2.49.0'],180)
+          (out/'environment.txt').write_text(call([py,'-m','pip','freeze','--all']),encoding='utf-8')
+          script_ref='ca02239e452510ac912d489801a4f35481d90cb6'
+          url=f'https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/{script_ref}/checks/pydantic-8728/check_wrapper_origin.py'
+          with urllib.request.urlopen(url,timeout=20) as r:raw=r.read(20000)
+          assert hashlib.sha256(raw).hexdigest()=='b22bf9ce17d8f2f081d57dc021f2a9799d246a5ffaeb4811a9a1804f2b885747'
+          ast.parse(raw)
+          script=out/'check_wrapper_origin.py';script.write_bytes(raw)
+          (out/'metadata.json').write_text(json.dumps({'run_id':os.environ['GITHUB_RUN_ID'],
+            'workflow_commit':os.environ['GITHUB_SHA'],'source_commit':ref,'script_commit':script_ref,
+            'script_sha256':hashlib.sha256(raw).hexdigest(),'dependencies_from':'pydantic-ai-slim==2.49.0',
+            'executed_packages_from':'pinned source checkout, not installed wheel'},indent=2),encoding='utf-8')
+          call([py,'-B','-u',script,'--repo',src,'--out',out/'results'],190)
+          assert call(['git','diff','--exit-code']).strip()==''
+          PY
+      - name: Retain exact variants and first-request observations
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: zero-wrapper-8728-origin-20260925
+          path: ${{ runner.temp }}/zero-wrapper-8728-origin/output/
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 6
