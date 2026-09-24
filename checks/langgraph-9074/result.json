@@ -1,0 +1,42 @@
+{
+  "source_commit": "7daa3ab49d678a5da75edb08baa87db4a2be52c3",
+  "proposal_by": "samintisar",
+  "issue": "https://github.com/langchain-ai/langgraph/issues/9074",
+  "source_sha256": {
+    "base": "7e1724b4442c0276738c6256c758ae575b89660972077f7e566f551bd3a1ec82",
+    "candidate": "b9085833bba7df771be79301f69d5be78a18aeadbb84330594146fa55299e40c"
+  },
+  "success": true,
+  "phases": {
+    "write": {
+      "exit": 0,
+      "storage_sha256": {
+        "sync.sqlite": "9ad262d20d9723ede1779556b298d6955dd6994d22bc16597eb7fb89aafb93af",
+        "async.sqlite": "944d15e499a51468bbe1992da522a22215b4b5ec29c903e7675ee84e1f15908a"
+      }
+    },
+    "base": {
+      "exit": 0,
+      "storage_sha256": {
+        "sync.sqlite": "9ad262d20d9723ede1779556b298d6955dd6994d22bc16597eb7fb89aafb93af",
+        "async.sqlite": "944d15e499a51468bbe1992da522a22215b4b5ec29c903e7675ee84e1f15908a"
+      }
+    },
+    "candidate": {
+      "exit": 0,
+      "storage_sha256": {
+        "sync.sqlite": "9ad262d20d9723ede1779556b298d6955dd6994d22bc16597eb7fb89aafb93af",
+        "async.sqlite": "944d15e499a51468bbe1992da522a22215b4b5ec29c903e7675ee84e1f15908a"
+      }
+    }
+  },
+  "changed_unicode_cases_per_backend": 6,
+  "scenarios_per_backend": 15,
+  "sqlite_backends": [
+    "sync",
+    "async"
+  ],
+  "writes_after_seeding": 0,
+  "claim": "Tested pre-existing rows become queryable without rewriting them; not a universal migration or semantic-JSON fix",
+  "source_restored": true
+}
