@@ -1,0 +1,30 @@
+--- a/evaluation/harness.py
++++ b/evaluation/harness.py
+@@ -940,14 +940,19 @@
+ 
+     tasks = [asyncio.create_task(run_one(row)) for row in prompt_rows]
+     outputs: dict[str, dict[str, Any]] = {}
+-    with tqdm(total=len(tasks), desc="Generating", unit="q") as progress:
+-        for task in asyncio.as_completed(tasks):
+-            question_id, output = await task
+-            outputs[question_id] = output
+-            progress.update(1)
+-
+-    await client.close()
+-    return outputs
++    try:
++        with tqdm(total=len(tasks), desc="Generating", unit="q") as progress:
++            for task in asyncio.as_completed(tasks):
++                question_id, output = await task
++                outputs[question_id] = output
++                progress.update(1)
++        return outputs
++    finally:
++        for task in tasks:
++            if not task.done():
++                task.cancel()
++        await asyncio.gather(*tasks, return_exceptions=True)
++        await client.close()
+ 
+ 
+ def category_from_question_type(question_type: str) -> str:
