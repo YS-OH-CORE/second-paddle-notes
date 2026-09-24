@@ -1,0 +1,68 @@
+name: Signal real-import inbound contract
+'on':
+  push:
+    branches: [ops/signal-real-import-contract-20260925]
+    paths: [.github/workflows/signal-real-import-contract-20260925.yml]
+permissions: {}
+concurrency:
+  group: zero-signal-real-import-contract-20260925
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - name: Load real modules with temporary homes and synthetic inbound envelopes
+        run: |
+          python3 -B -u - <<'PY'
+          import hashlib,json,os,pathlib,re,shutil,subprocess,tomllib,urllib.request
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-signal-real-import-contract'
+          root.mkdir(exist_ok=False)
+          src=root/'source';src.mkdir();out=root/'output';out.mkdir();home=root/'home';home.mkdir()
+          env={'PATH':os.environ['PATH'],'HOME':str(home),'LANG':'C.UTF-8',
+               'PYTHONDONTWRITEBYTECODE':'1','GIT_LFS_SKIP_SMUDGE':'1','PIP_DISABLE_PIP_VERSION_CHECK':'1'}
+          def call(args,timeout=90):
+              p=subprocess.run(list(map(str,args)),env=env,cwd=src,text=True,capture_output=True,timeout=timeout)
+              with (out/'setup.log').open('a',encoding='utf-8') as f:
+                  f.write('COMMAND '+str(args)+'\n'+p.stdout+'\n'+p.stderr+'\n')
+              print(p.stdout[-26000:]+p.stderr[-6000:],flush=True)
+              p.check_returncode()
+              return p.stdout
+          ref='749220ef0007f8d87bd1531f1c24b0fe93816385'
+          call(['git','init','-q'])
+          call(['git','fetch','--depth=1','https://github.com/NousResearch/hermes-agent.git',ref],90)
+          call(['git','checkout','--detach','FETCH_HEAD'],60)
+          assert call(['git','rev-parse','HEAD']).strip()==ref
+          shutil.copyfile(src/'LICENSE',out/'HERMES_LICENSE')
+          call(['python3','-m','venv',root/'venv'])
+          py=root/'venv/bin/python'
+          # Only the dependencies needed by these imported surfaces; no full Hermes installation.
+          needed={'openai','python-dotenv','httpx','rich','tenacity','pyyaml','ruamel.yaml','requests',
+                  'jinja2','pydantic','psutil','prompt_toolkit','packaging','croniter','websockets',
+                  'pathspec','fire','snowballstemmer','PyJWT','fastapi','python-multipart'}
+          metadata=tomllib.loads((src/'pyproject.toml').read_text())
+          requirements=[r for r in metadata['project']['dependencies'] if re.split(r'[\[<=>!; ]',r,1)[0] in needed]
+          assert len(requirements)==len(needed), 'Dependency names did not resolve exactly'
+          (out/'requested-requirements.txt').write_text('\n'.join(requirements)+'\n')
+          call([py,'-m','pip','install','--no-cache-dir',*requirements],240)
+          (out/'environment.txt').write_text(call([py,'-m','pip','freeze','--all']))
+          script_ref='fee8097bda33771c1f5ed0ec5b2c7a228ace3404'
+          url=f'https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/{script_ref}/checks/signal-real-import-contract/check_signal_contract.py'
+          with urllib.request.urlopen(url,timeout=25) as r: data=r.read(40000)
+          assert hashlib.sha256(data).hexdigest()=='0e1cf27b0f55414a486a36fac2244c17980af044c37d90e5282a048828111f29'
+          script=out/'check_signal_contract.py';script.write_bytes(data)
+          (out/'metadata.json').write_text(json.dumps({'run_id':os.environ['GITHUB_RUN_ID'],
+             'workflow_commit':os.environ['GITHUB_SHA'],'source_commit':ref,'script_commit':script_ref,
+             'script_sha256':hashlib.sha256(data).hexdigest()},indent=2))
+          call([py,'-B','-u',script,'--repo',src,'--out',out/'results'],200)
+          assert call(['git','diff','--exit-code']).strip()==''
+          PY
+      - name: Retain original outputs, scope and temporary inputs
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: zero-signal-real-import-contract-20260925
+          path: ${{ runner.temp }}/zero-signal-real-import-contract/output/
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 6
