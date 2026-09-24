@@ -1,12 +1,12 @@
 # Youngseok Oh (오영석) × Zero
 
-## Selected work: agent reliability with traceable results
+## Selected work: agent reliability and evaluation review with traceable results
 
-Human–AI collaboration on reproducible failures, regression tests, and reviewable fixes. This page presents externally acknowledged contributions, with the original evidence and material corrections beside each claim.
+Human–AI collaboration on reproducible failures, regression tests, reviewable fixes, and evaluation reporting. This page presents externally acknowledged contributions, with the original evidence and material corrections beside each claim.
 
 **한국어 소개는 아래에 있습니다.**
 
-**Evidence at a glance:** [Case 01: request-bound approvals](#case-01--keeping-an-approval-attached-to-its-own-request) · [Case 02: explicit stop handling and an E2E correction](#case-02--explicit-stop-handling-and-an-end-to-end-correction)
+**Evidence at a glance:** [Case 01: request-bound approvals](#case-01--keeping-an-approval-attached-to-its-own-request) · [Case 02: explicit stop handling and an E2E correction](#case-02--explicit-stop-handling-and-an-end-to-end-correction) · [Case 03: adopted TAM evaluation-report review](#case-03--checking-the-numbers-and-narrowing-the-claim)
 
 ## Case 01 | Keeping an approval attached to its own request
 
@@ -83,9 +83,33 @@ The same recipient follow-up identifies and fixes a different live-signal omissi
 
 **Inspect the chain:** [Original review and execution evidence][stop-review] → [Recipient's result and counterevidence][stop-response] → [Crediting code change][stop-commit] → [Our public correction][stop-correction] → [Corrected thread explanation][stop-topology] → [Separate tested CLI candidate][cli-followup].
 
+## Case 03 | Checking the numbers and narrowing the claim
+
+**Project:** Total Agent Memory (TAM), LongMemEval evaluation report  
+**Contribution:** saved-verdict recalculation and reporting feedback  
+**Evidence checked:** 2026-09-24
+
+**Outcome:** TAM's author incorporated the reporting changes and then added explicit credit to **Youngseok Oh (@YS-OH-CORE)** and **Zero (ChatGPT)** in the project's published report. These are changes in TAM's own report, not a pending patch in our repository. [Reporting revision][tam-revision] · [Attribution commit][tam-credit] · [Pinned report and scope][tam-report]
+
+### What changed
+
+The [public review invitation][tam-request] asked for a second pair of eyes before the results were quoted. Our [executed check][tam-run] recomputed six accuracy cells and four paired comparisons from 400 saved question-level verdicts. All checked counts, differences and exact sign-test p-values agreed with the published summary. The code and input identities are preserved in the [bounded calculation script][tam-script]. This is a saved-record check, not fresh judgments of whether the answers were correct.
+
+The report's introduction described one judge model and two prompts, while its LongMemEval metadata changed both model and rubric. The feedback distinguished a valid paired comparison **within** each grading configuration from an across-configuration change that cannot isolate a prompt effect. It also distinguished failure to detect a difference from demonstrated equivalence.
+
+The author's [revision][tam-revision] clarified those claims and published exact split lists, per-type denominators, tuning history, and the ingestion/context conditions. No score changed. The newly disclosed history says the reported split had been scored before the final configuration was frozen; we read that disclosure but did not independently audit the tuning process.
+
+### Roles and limits
+
+The [recipient's public credit][tam-credit] explicitly identifies the substantial AI technical assistance. Youngseok Oh supplied the collaboration's direction and public account; Zero supplied technical analysis, code, execution and drafting. Vitalii Cherepanov authored the TAM method and experiments and implemented the revisions. LongMemEval and the compared methods retain their respective authorship.
+
+This contribution does not certify retrieval, answer generation, fresh judge decisions, tuning independence, overall system quality or institutional endorsement. It does not establish an external replication of our own memory pilot. The evidence for this case is public repository history, not private correspondence. No additional model run was performed to add this case page.
+
+**Inspect the chain:** [Public review request][tam-request] → [Saved-verdict calculation][tam-run] → [Author's reporting revision][tam-revision] → [Named human–AI attribution][tam-credit].
+
 ## A useful starting point for collaboration
 
-A good first case is a public, reproducible agent behavior that differs from the user's actual request. Provide the exact code revision, a small synthetic example, the expected behavior, and the observed behavior. That makes it possible to decide whether the right next deliverable is a reproduction, a regression test, or a narrow patch.
+A good first case is a public, reproducible agent behavior that differs from the user's actual request, or a published evaluation claim with question-level results that can be checked. Provide the exact revision, a small synthetic example or public result file, the expected behavior or claim, and the observed result. That makes it possible to choose a reproduction, regression test, narrow patch, or saved-result audit.
 
 [Open a public issue](https://github.com/YS-OH-CORE/second-paddle-notes/issues/new) · [Contribution guidelines](CONTRIBUTING.md) · [Authorship and existing contact](AUTHORSHIP.md)
 
@@ -131,6 +155,14 @@ Keep credentials, private conversations, and personal records out of public issu
 
 오영석의 문제 방향·우선순위 판단, Zero(ChatGPT)의 상당한 분석·검사 작성·실행 조율·문안 작성, 상대 개발자의 구현·통합·반론을 구분합니다. 영석이 모든 코드를 혼자 작성한 전문경력으로 바꾸지 않습니다. **확인 가능한 기여와 그 기여의 한계를 같은 자리에서 볼 수 있는 협업 사례**입니다.
 
+### 사례 03 | 점수는 그대로, 해석과 기여 기록은 더 정확하게
+
+**2026년 9월 24일 확인.** TAM 개발자의 [공개 검토 요청][tam-request]에 대해, 저장된 400문항의 판정에서 정확도 여섯 칸과 문항별 비교 네 개를 다시 계산했습니다. [기존 실행][tam-run]에서 발표 수치와 일치함을 확인한 뒤, 채점 모델과 평가 기준이 함께 바뀌는 비교를 문구만의 효과로 읽지 않도록 제안했습니다. 통계적으로 차이를 검출하지 못한 것과 동등함을 입증한 것도 구분했습니다.
+
+개발자는 [보고서·소개글을 수정하고][tam-revision], 문제 분할 목록과 유형별 개수, 최종 설정 전에 보고용 문제의 점수를 이미 보았다는 이력을 공개했습니다. 점수는 바뀌지 않았습니다. 이후 [별도 기여 표기 커밋][tam-credit]으로 **Youngseok Oh (@YS-OH-CORE)**와 **Zero(ChatGPT)의 기술 분석·코드·실행 지원**을 공개 보고서에 함께 적었습니다.
+
+이 사례는 실제로 반영된 보고 개선과 공개 기여 표기입니다. 검색·답 생성·새 채점·제품 전체 성능을 독립 검증했다는 뜻은 아닙니다. 상대의 사적 메일이 아니라 [공개 보고서와 변경 기록][tam-report]으로 확인할 수 있습니다. 이 페이지를 갱신하면서 모델 실험을 추가하지 않았습니다.
+
 관련 협업을 제안할 때는 공개해도 되는 작은 재현 예시와 코드 버전, 기대한 결과와 실제 결과를 [이슈](https://github.com/YS-OH-CORE/second-paddle-notes/issues/new)에 남겨 주세요. 소개글의 설명보다 원문 답변, 코드, 검사 자료를 먼저 확인할 수 있도록 구성했습니다.
 
 *This case page was written with Zero (ChatGPT) for Youngseok Oh. It reuses public contribution evidence, not private correspondence. Original code and test licensing remain with their existing files; this page does not relicense them.*
@@ -153,3 +185,9 @@ Keep credentials, private conversations, and personal records out of public issu
 [cli-run]: https://github.com/YS-OH-CORE/second-paddle-notes/actions/runs/35805467618
 [cli-details]: https://github.com/YS-OH-CORE/second-paddle-notes/blob/70a0b9c1510cdc96576a2572fd33277331d6bf9b/checks/cli-sigint/README.md
 [cli-followup]: https://github.com/NousResearch/hermes-agent/pull/84236#issuecomment-5787346383
+[tam-request]: https://github.com/xiaowu0162/LongMemEval/issues/56
+[tam-run]: https://github.com/YS-OH-CORE/second-paddle-notes/actions/runs/35963638161
+[tam-script]: https://github.com/YS-OH-CORE/second-paddle-notes/blob/4db6eab3d6a33b98803492ed6d0deb77f97636bc/.github/workflows/lme-peer-review-20260924.yml
+[tam-revision]: https://github.com/vbcherepanov/total-agent-memory/commit/8b4065722d8c30942c0e6b718cf77cc55064ce45
+[tam-credit]: https://github.com/vbcherepanov/total-agent-memory/commit/55d0ab0124ca4fca81479a5bcafa262aaaf0e19e
+[tam-report]: https://github.com/vbcherepanov/total-agent-memory/blob/55d0ab0124ca4fca81479a5bcafa262aaaf0e19e/docs/benchmarks/head-to-head-v14/RESULTS.md#revisions
