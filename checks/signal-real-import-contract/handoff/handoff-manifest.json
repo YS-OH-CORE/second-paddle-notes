@@ -1,0 +1,66 @@
+{
+  "schema": "zero.signal-handoff.v1",
+  "prepared_date_kst": "2026-09-25",
+  "target_repository": "NousResearch/hermes-agent",
+  "target_issue": 121970,
+  "tested_base_commit": "749220ef0007f8d87bd1531f1c24b0fe93816385",
+  "original_implementation_and_tests_by": "ren2140eth",
+  "source_comment": "https://github.com/NousResearch/hermes-agent/issues/121970#issuecomment-5823398598",
+  "upstream_pr_handoff": {
+    "volunteer": "Halldrix",
+    "volunteer_comment": "https://github.com/NousResearch/hermes-agent/issues/121970#issuecomment-5823646302",
+    "author_permission_comment": "https://github.com/NousResearch/hermes-agent/issues/121970#issuecomment-5823724566",
+    "status": "permission_to_submit_reported; PR not yet observed"
+  },
+  "prior_execution": {
+    "run_id": 36069329777,
+    "url": "https://github.com/YS-OH-CORE/second-paddle-notes/actions/runs/36069329777",
+    "archive_sha256": "28f9f8a081f2ebc8bc9645cd8f6cd1a7c0ca4a0b433b8eef256e753126f9e9c8",
+    "summary_sha256": "596f4afe1e9847c2b1edb1a82a1b14fa51aae5260fef18f72c4f978a6e878f23",
+    "scope": "real YAML loader and adapter; mocked dispatch/attachment collection; no live Signal or full upstream suite"
+  },
+  "new_work": "production-file index-header correction only, exact file-content and git-apply checks; no new application runtime tests",
+  "production_blob_before": "f763db86f71d50a922d23b4f324da92ff6f5683e",
+  "production_blob_after": "3fa045195ab48f1ed2fc4987f9164123a70afc9e",
+  "recipient_test_blob": "43c75e4b59d5b9d9125c5672b9eb9ffec7bbe270",
+  "files": {
+    "HERMES_LICENSE": {
+      "bytes": 1070,
+      "sha256": "821556e6336796450ab852d375117b48a4887e71d255794fd6318d99982a5ab6",
+      "git_blob": "75410e73319c72cd3e991a501c5455eb78f38375"
+    },
+    "recipient.header-corrected.patch": {
+      "bytes": 7046,
+      "sha256": "8f102a28f67475e44ea84c5f1e0c08f4d7e396ada44ca1ebe332232a1c9e7c56",
+      "git_blob": "6083dc0343060c54a619d403c5a714311dcd89e0"
+    },
+    "recipient.original.patch": {
+      "bytes": 6986,
+      "sha256": "cf65741f1f02f8703898229c98c3da4b53a6d97d96fac4987864c9d427f4aa20",
+      "git_blob": "d7442db129cb1f1ddc186a12081223376c7faf8e"
+    },
+    "README.md": {
+      "bytes": 4267,
+      "sha256": "79212b21314698611a2bf6b3c1f45364c8eff44de1cb6ee68ea26faf39c252e7",
+      "git_blob": "ab2ec7a114f476b992b81b85b5719dde6e28f003"
+    }
+  },
+  "validation": {
+    "header_only_change": true,
+    "both_patches_apply_in_scratch": true,
+    "both_yield_previously_tested_bytes": true,
+    "runtime_tests_this_step": 0,
+    "user_pc_used": false
+  },
+  "roles": {
+    "Youngseok Oh": "collaboration direction and public account",
+    "Zero": "AI source review, separate tests, evidence check and handoff packaging",
+    "ren2140eth": "use case, production implementation and 11 supplied tests",
+    "Halldrix": "reported own 62-test reproduction and received permission to carry the PR"
+  },
+  "claim_limits": [
+    "Not a submitted PR or a merged release.",
+    "Halldrix 62/62 is his report, not a new run by Zero.",
+    "No proof of live Signal behavior or concurrent multiplex isolation in Zero tests."
+  ]
+}
