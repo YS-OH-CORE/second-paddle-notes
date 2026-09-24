@@ -1,0 +1,143 @@
+name: Signal exact recipient patch check
+'on':
+  push:
+    branches: [ops/signal-real-import-contract-20260925]
+    paths: [.github/workflows/signal-exact-recipient-20260925.yml]
+permissions: {}
+concurrency:
+  group: zero-signal-exact-recipient-20260925
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - name: Apply reviewed public diff and exercise actual modules without Signal service
+        run: |
+          python3 -B -u - <<'PY'
+          import hashlib,json,os,pathlib,re,shutil,subprocess,tomllib,urllib.request,xml.etree.ElementTree as ET
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-signal-exact-recipient'
+          root.mkdir(exist_ok=False)
+          src=root/'source';src.mkdir();out=root/'output';out.mkdir();home=root/'home';home.mkdir()
+          env={'PATH':os.environ['PATH'],'HOME':str(home),'LANG':'C.UTF-8',
+               'PYTHONDONTWRITEBYTECODE':'1','GIT_LFS_SKIP_SMUDGE':'1','PIP_DISABLE_PIP_VERSION_CHECK':'1'}
+          def call(args,timeout=90,custom_env=None,check=True,label='setup'):
+              p=subprocess.run(list(map(str,args)),env=custom_env or env,cwd=src,text=True,capture_output=True,timeout=timeout)
+              with (out/(label+'.log')).open('a',encoding='utf-8') as f:
+                  f.write('COMMAND '+str(args)+'\n'+p.stdout+'\n'+p.stderr+'\n')
+              print(p.stdout[-22000:]+p.stderr[-3000:],flush=True)
+              if check:p.check_returncode()
+              return p
+          def get(url,limit):
+              with urllib.request.urlopen(urllib.request.Request(url,headers={'User-Agent':'YS-OH-CORE-public-patch-check'}),timeout=25) as r:
+                  data=r.read(limit+1)
+              assert len(data)<=limit
+              return data
+          def sha(data):return hashlib.sha256(data).hexdigest()
+          def blob(data):return hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
+          ref='749220ef0007f8d87bd1531f1c24b0fe93816385'
+          call(['git','init','-q'])
+          call(['git','fetch','--depth=1','https://github.com/NousResearch/hermes-agent.git',ref])
+          call(['git','checkout','--detach','FETCH_HEAD'])
+          assert call(['git','rev-parse','HEAD']).stdout.strip()==ref
+          shutil.copyfile(src/'LICENSE',out/'HERMES_LICENSE')
+          production=src/'gateway/platforms/signal.py'
+          original=production.read_bytes()
+          assert blob(original)=='f763db86f71d50a922d23b4f324da92ff6f5683e'
+          comment=json.loads(get('https://api.github.com/repos/NousResearch/hermes-agent/issues/comments/5823398598',80000))
+          assert comment['id']==5823398598 and comment['user']['login']=='ren2140eth'
+          assert comment['updated_at']=='2026-09-24T22:39:03Z', 'Reviewed comment changed; stop'
+          body=comment['body']
+          patches=re.findall(r'```diff\r?\n(.*?)\r?\n```',body,re.S)
+          assert len(patches)==1
+          patch=patches[0].replace('\r\n','\n')+'\n'
+          paths=re.findall(r'^diff --git a/(\S+) b/(\S+)$',patch,re.M)
+          expected=['gateway/platforms/signal.py','tests/gateway/test_signal_note_to_self.py']
+          assert paths==[(p,p) for p in expected]
+          assert 'GIT binary patch' not in patch and 'new mode' not in patch and 'deleted file' not in patch
+          (out/'recipient-comment.md').write_text(body,encoding='utf-8')
+          patchfile=out/'recipient.patch';patchfile.write_text(patch,encoding='utf-8')
+          call(['git','apply','--check',patchfile])
+          call(['git','apply',patchfile])
+          recipient=production.read_bytes()
+          test=src/'tests/gateway/test_signal_note_to_self.py'
+          testbytes=test.read_bytes()
+          assert blob(recipient).startswith('ac5b0b8465')
+          assert blob(testbytes).startswith('43c75e4b59')
+          (out/'test_signal_note_to_self.py').write_bytes(testbytes)
+          (out/'recipient_signal.py').write_bytes(recipient)
+          # Record setup and exact source identity. Do not fetch another mutable branch.
+          receipt={'source_commit':ref,'recipient_comment_id':comment['id'],'comment_body_sha256':sha(body.encode()),
+            'patch_sha256':sha(patch.encode()),'recipient_code_blob':blob(recipient),'recipient_test_blob':blob(testbytes),
+            'recipient_test_sha256':sha(testbytes),'runs':{},'success':False}
+          call(['python3','-m','venv',root/'venv'])
+          py=root/'venv/bin/python'
+          needed={'openai','python-dotenv','httpx','rich','tenacity','pyyaml','ruamel.yaml','requests',
+                  'jinja2','pydantic','psutil','prompt_toolkit','packaging','croniter','websockets',
+                  'pathspec','fire','snowballstemmer','PyJWT','fastapi','python-multipart'}
+          metadata=tomllib.loads((src/'pyproject.toml').read_text())
+          requirements=[r for r in metadata['project']['dependencies'] if re.split(r'[\[<=>!; ]',r,1)[0] in needed]
+          assert len(requirements)==len(needed)
+          requirements+=['pytest==8.4.2','pytest-asyncio==1.2.0']
+          (out/'requested-requirements.txt').write_text('\n'.join(requirements)+'\n')
+          call([py,'-m','pip','install','--no-cache-dir',*requirements],240)
+          (out/'environment.txt').write_text(call([py,'-m','pip','freeze','--all']).stdout)
+          script_ref='fee8097bda33771c1f5ed0ec5b2c7a228ace3404'
+          data=get(f'https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/{script_ref}/checks/signal-real-import-contract/check_signal_contract.py',40000)
+          assert sha(data)=='0e1cf27b0f55414a486a36fac2244c17980af044c37d90e5282a048828111f29'
+          script=out/'check_signal_contract.py';script.write_bytes(data)
+          def clean_env(label):
+              h=out/(label+'-home');h.mkdir()
+              return {'PATH':env['PATH'],'HOME':str(h),'HERMES_HOME':str(h/'hermes'),'LANG':'C.UTF-8',
+                  'PYTHONPATH':str(src),'PYTHONDONTWRITEBYTECODE':'1','PYTEST_DISABLE_PLUGIN_AUTOLOAD':'1',
+                  'SIGNAL_ALLOWED_USERS':'+15550001111','SIGNAL_GROUP_ALLOWED_USERS':'synthetic-group',
+                  'SIGNAL_REQUIRE_MENTION':'false','LANGSMITH_TRACING':'false'}
+          def contract(label):
+              d=out/('contract-'+label);d.mkdir()
+              p=call([py,'-B',script,'--repo',src,'--out',d,'--child',label],custom_env=clean_env('contract-'+label),label='contract-'+label)
+              result=json.loads((d/(label+'.json')).read_text())
+              assert result['success']
+              receipt['runs']['contract_'+label]={'passed':sum(r['passed'] for r in result['cases']),
+                  'failed_cases':result['failed_cases'],'exit':p.returncode}
+          def recipient_tests(label,failures):
+              xml=out/(label+'.xml')
+              code="import socket\ndef deny(*a,**k): raise RuntimeError('Network is outside this test')\nsocket.socket.connect=socket.socket.connect_ex=deny\nimport pytest\nraise SystemExit(pytest.main("+repr(['-q','--noconftest','-p','asyncio','-o','addopts=','--junitxml='+str(xml),str(test)])+"))"
+              p=call([py,'-B','-c',code],custom_env=clean_env(label),check=False,label=label)
+              tree=ET.parse(xml)
+              suites=tree.findall('.//testsuite')
+              counts={k:sum(int(s.attrib.get(k,0)) for s in suites) for k in ['tests','failures','errors','skipped']}
+              names=[n.attrib['name'] for n in tree.findall('.//testcase') if n.find('failure') is not None]
+              assert counts=={'tests':11,'failures':failures,'errors':0,'skipped':0}, (label,counts)
+              assert p.returncode==(1 if failures else 0), (label,p.returncode)
+              receipt['runs'][label]={'counts':counts,'failed_tests':names,'exit':p.returncode}
+          try:
+              production.write_bytes(original)
+              contract('base')
+              recipient_tests('recipient_base',7)
+              production.write_bytes(recipient)
+              contract('candidate')
+              recipient_tests('recipient_candidate',0)
+              exact='self.note_to_self = is_truthy_value(extra.get("note_to_self"), default=True)'
+              assert recipient.decode().count(exact)==1
+              mutant=recipient.decode().replace(exact,'self.note_to_self = bool(extra.get("note_to_self", True))')
+              production.write_text(mutant,encoding='utf-8')
+              recipient_tests('recipient_bool_mutant',3)
+              receipt['success']=True
+          finally:
+              production.write_bytes(original)
+              # Only this exact new file created by applying the reviewed patch is removed.
+              test.unlink()
+              receipt['production_restored']=production.read_bytes()==original
+              (out/'summary.json').write_text(json.dumps(receipt,indent=2)+'\n')
+              print('EXACT_RECIPIENT_RESULT '+json.dumps(receipt),flush=True)
+          assert call(['git','diff','--exit-code']).stdout.strip()==''
+          PY
+      - name: Retain exact received patch, original tests and raw outcomes
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: zero-signal-exact-recipient-20260925
+          path: ${{ runner.temp }}/zero-signal-exact-recipient/output/
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 6
