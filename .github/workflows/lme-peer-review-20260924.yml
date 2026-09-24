@@ -1,0 +1,93 @@
+name: Requested LongMemEval saved-verdict review
+'on':
+  push:
+    branches: [ops/lme-peer-review-20260924]
+    paths: [.github/workflows/lme-peer-review-20260924.yml]
+permissions: {}
+concurrency:
+  group: zero-lme-peer-review-20260924
+  cancel-in-progress: false
+jobs:
+  review:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    steps:
+      - name: Read two public JSON files and recompute paired scores without a model
+        run: |
+          python3 -B -u - <<'PY'
+          """Review for xiaowu0162/LongMemEval#56, requested by its author.
+          Analyze published Boolean verdicts only. No code from the reviewed
+          project is executed; no model, package install, token or account data.
+          Scores are not independent judgments of the answer quality. Neither
+          retrieval nor answer generation nor the author's split was rerun.
+          Analysis prepared by Zero (ChatGPT) for Youngseok Oh / YS-OH-CORE.
+          """
+          from collections import Counter
+          import hashlib, json, math, urllib.request
+          REV='4e8c81a3598adb3bd7f5ad4b03a607b5ca88231e'
+          BASE=f'https://raw.githubusercontent.com/vbcherepanov/total-agent-memory/{REV}/docs/benchmarks/head-to-head-v14/raw/'
+          specs={
+              'crossgrade-lme-marks.jsonl':'fe8887f4ef7eb011a76d13ca2a847c81942a887e',
+              'crossgrade-lme.json':'d4f429afeece25b6428fd83e32a6d8d74ae44174'}
+          raw_files={}; provenance={}
+          for name,expected in specs.items():
+              with urllib.request.urlopen(BASE+name,timeout=25) as response:
+                  data=response.read(200001)
+              assert len(data)<200001, 'Bounded file size exceeded'
+              blob=hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
+              assert blob==expected, ('Source identity changed',name,blob)
+              raw_files[name]=data
+              provenance[name]={'git_blob':blob,'sha256':hashlib.sha256(data).hexdigest(),'bytes':len(data)}
+          rows=[json.loads(line) for line in raw_files['crossgrade-lme-marks.jsonl'].decode().splitlines() if line.strip()]
+          published=json.loads(raw_files['crossgrade-lme.json'])
+          systems=('mem0-platform','tam-default-4.1mini','tam-default-gpt5')
+          judges=('published','mem0')
+          fields={f'{s}|{j}' for s in systems for j in judges}
+          assert len(rows)==400 and len({r['key'] for r in rows})==400
+          assert all(set(r)==fields|{'key'} and isinstance(r['key'],str) for r in rows)
+          assert all(type(r[f]) is bool for r in rows for f in fields)
+          assert published['questions']==400
+          cells={(c['system'],c['judge']):c for c in published['cells']}
+          def exact_sign(wins,losses):
+              n=wins+losses
+              if not n: return 1.0
+              return min(1.0,2*sum(math.comb(n,k) for k in range(min(wins,losses)+1))/(2**n))
+          assert exact_sign(0,0)==1.0 and exact_sign(1,0)==1.0
+          assert abs(exact_sign(5,0)-0.0625)<1e-12
+          results={}
+          for judge in judges:
+              jresult={}
+              for system in systems:
+                  values=[r[f'{system}|{judge}'] for r in rows]
+                  correct=sum(values)
+                  assert round(100*correct/len(rows),2)==cells[(system,judge)]['accuracy']
+                  item={'correct':correct,'total':len(rows),'accuracy_percent':100*correct/len(rows)}
+                  if system!='mem0-platform':
+                      wins=sum(r[f'{system}|{judge}'] and not r[f'mem0-platform|{judge}'] for r in rows)
+                      losses=sum(not r[f'{system}|{judge}'] and r[f'mem0-platform|{judge}'] for r in rows)
+                      both=sum(r[f'{system}|{judge}'] and r[f'mem0-platform|{judge}'] for r in rows)
+                      neither=len(rows)-wins-losses-both
+                      p=exact_sign(wins,losses)
+                      pair=cells[(system,judge)]['vs_mem0']
+                      assert (wins,losses)==(pair['wins'],pair['losses'])
+                      assert round(p,4)==pair['sign_test_p']
+                      assert round(100*(wins-losses)/len(rows),2)==pair['difference']
+                      item.update(wins=wins,losses=losses,both_correct=both,both_incorrect=neither,
+                                  difference_percentage_points=100*(wins-losses)/len(rows),exact_sign_test_p=p)
+                  jresult[system]=item
+              results[judge]=jresult
+          changes={}
+          for system in systems:
+              transition=Counter((r[f'{system}|published'],r[f'{system}|mem0']) for r in rows)
+              changes[system]={'correct_to_incorrect':transition[(True,False)],
+                  'incorrect_to_correct':transition[(False,True)],
+                  'unchanged':transition[(True,True)]+transition[(False,False)]}
+          result={'status':'SAVED_VERDICTS_RECALCULATED','source_commit':REV,
+              'provenance':provenance,'unique_question_ids':400,
+              'judge_configurations_as_reported':published['judge_models'],
+              'results':results,'between_judge_configuration_changes':changes,
+              'scope':'External recalculation of saved verdicts; not a rerun or certification of retrieval, answering, LLM grading, train/test isolation, or equivalence.',
+              'new_model_calls':0,'software_installs':0,
+              'author':'Zero (ChatGPT), for Youngseok Oh / YS-OH-CORE'}
+          print('LME_PEER_REVIEW_RESULT '+json.dumps(result,ensure_ascii=False,sort_keys=True),flush=True)
+          PY
