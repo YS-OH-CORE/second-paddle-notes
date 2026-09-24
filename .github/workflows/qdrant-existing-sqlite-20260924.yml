@@ -1,0 +1,71 @@
+name: Qdrant existing-SQLite migration boundary
+'on':
+  push:
+    branches: [ops/qdrant-existing-sqlite-20260924]
+    paths: [.github/workflows/qdrant-existing-sqlite-20260924.yml]
+permissions: {}
+concurrency:
+  group: zero-qdrant-existing-sqlite-20260924
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Exercise reviewed persistence modules in isolated scratch storage
+        run: |
+          python3 -B -u - <<'PY'
+          import ast, hashlib, json, os, pathlib, shutil, subprocess, urllib.request
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-qdrant-existing-sqlite'
+          root.mkdir(exist_ok=False)
+          out=root/'output';out.mkdir();src=root/'source';src.mkdir();home=root/'home';home.mkdir()
+          env={'PATH':os.environ['PATH'],'HOME':str(home),'LANG':'C.UTF-8',
+               'PYTHONDONTWRITEBYTECODE':'1','OMP_NUM_THREADS':'1','OPENBLAS_NUM_THREADS':'1'}
+          def call(args,timeout=60):
+              p=subprocess.run(list(map(str,args)),cwd=src,env=env,text=True,capture_output=True,timeout=timeout)
+              with (out/'execution.log').open('a',encoding='utf-8') as f:
+                  f.write('COMMAND '+str(args)+'\n'+p.stdout+'\n'+p.stderr+'\n')
+              print(p.stdout[-22000:]+p.stderr[-4000:],flush=True)
+              p.check_returncode()
+              return p.stdout
+          target='d54a7f279872a6e65dc5954bbfdb4fd3705ae321'
+          call(['git','init','-q'])
+          call(['git','fetch','--depth=2','https://github.com/jiewaishengzhi/qdrant-client.git',target])
+          call(['git','checkout','--detach','FETCH_HEAD'])
+          assert call(['git','rev-parse','HEAD']).strip()==target
+          parent=call(['git','rev-parse','HEAD^']).strip()
+          rel='qdrant_client/local/persistence.py'
+          base=call(['git','show',f'{parent}:{rel}']).encode()
+          candidate=(src/rel).read_bytes()
+          def blob(data):return hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
+          assert blob(base)=='f40e261ff9edef058bf15162f32f617a13aee972', 'Reviewed baseline differs'
+          assert blob(candidate)=='a40b4a73053bdc14658441ecd0dd9b1223b931aa', 'Reviewed candidate differs'
+          (out/'base_persistence.py').write_bytes(base)
+          (out/'candidate_persistence.py').write_bytes(candidate)
+          if (src/'LICENSE').is_file():shutil.copyfile(src/'LICENSE',out/'QDRANT_LICENSE')
+          call(['python3','-m','venv',root/'venv'])
+          python=root/'venv/bin/python'
+          call([python,'-m','pip','install','--disable-pip-version-check','--no-cache-dir',src],180)
+          (out/'environment.txt').write_text(call([python,'-m','pip','freeze','--all']),encoding='utf-8')
+          url='https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/58714a42d817c099ce67837f191909e0d6063c71/checks/qdrant-existing-sqlite/check_existing_sqlite.py'
+          with urllib.request.urlopen(url,timeout=20) as r:raw=r.read(20000)
+          assert hashlib.sha256(raw).hexdigest()=='365218a731d92505ca50f515c5f8e0fb8c4de4a4465ce1ccc614ea18f9f12f51'
+          ast.parse(raw)
+          script=out/'check_existing_sqlite.py';script.write_bytes(raw)
+          (out/'metadata.json').write_text(json.dumps({'run_id':os.environ['GITHUB_RUN_ID'],
+              'workflow_commit':os.environ['GITHUB_SHA'],'candidate_commit':target,'baseline_commit':parent,
+              'script_commit':'58714a42d817c099ce67837f191909e0d6063c71',
+              'script_sha256':hashlib.sha256(raw).hexdigest()},indent=2),encoding='utf-8')
+          call([python,'-B','-u',script,'--base',out/'base_persistence.py',
+                '--candidate',out/'candidate_persistence.py','--out',out/'fixtures'],60)
+          assert call(['git','diff','--exit-code']).strip()==''
+          PY
+      - name: Keep synthetic storage, inputs and original observations
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: zero-qdrant-existing-sqlite-20260924
+          path: ${{ runner.temp }}/zero-qdrant-existing-sqlite/output/
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 6
