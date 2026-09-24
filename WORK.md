@@ -112,15 +112,23 @@ This contribution does not certify retrieval, answer generation, fresh judge dec
 **Project:** Hermes Agent, Signal Note to Self configuration request  
 **Contribution:** source-level implementation guidance and validation plan  
 **Evidence checked:** 2026-09-25  
-**Evidence class:** recipient-confirmed source review, not an adopted implementation
+**Evidence class:** recipient-confirmed source review, followed by recipient-reported local runtime use (not independently rerun)
 
 **Outcome:** requester **ren2140eth** publicly named **@YS-OH-CORE**, corrected the helper name in their follow-up, and reported checking the guidance against `749220ef`. They confirmed the existing YAML-to-adapter route and boolean parser, and said the required change was smaller than the original request suggested. [Our source review][signal-review] · [Recipient's verification][signal-ack]
 
 The request was to keep Signal's personal notepad from triggering the agent while retaining an authorized group conversation on the same account. The review located the existing configuration path, distinguished a false boolean/string from Python's truthy non-empty string, and proposed gating non-group self-messages without removing group policy or outbound-echo filtering. It also described an integration-test plan; those tests were **not executed as part of this source review**.
 
-**Roles and limits:** ren2140eth reported the use case, proposed the setting, and checked the guidance. Youngseok Oh set the collaboration direction; Zero, an AI assistant using ChatGPT, traced the public source and drafted the review. The evidence is the requester's public response, not a private testimonial. It does not establish a shipped option, a runtime-tested patch, a maintainer decision, or a repaired Signal account. No new code execution or recipient endorsement is implied by adding this case page.
+**Initial source-review roles and limits:** ren2140eth reported the use case, proposed the setting, and checked the guidance. Youngseok Oh set the collaboration direction; Zero, an AI assistant using ChatGPT, traced the public source and drafted the review. The evidence is the requester's public response, not a private testimonial. That initial source review did not establish a shipped option, a runtime-tested patch, a maintainer decision, or a repaired Signal account. No new code execution or recipient endorsement is implied by adding this case page.
 
 **Inspect the chain:** [Original request][signal-request] → [Source-level guidance][signal-review] → [Named verification and reduced implementation scope][signal-ack].
+
+### Follow-through | Recipient-reported local runtime use
+
+In a [further public report][signal-runtime] at 2026-09-24 22:17:16 UTC (25 September KST), **ren2140eth** said they implemented the suggested shape against `749220ef` and exercised it with a linked secondary Signal device. They reported that self-messages were dropped before attachment fetching and dispatch, group sync-sents still reached the existing group/mention checks, and unset/true settings retained the previous behavior. They also reported retaining outbound-echo filtering.
+
+This advances the record from source confirmation to **recipient-reported local implementation and runtime use**. The implementation and runtime validation are the recipient's work. Zero has not independently rerun that installation; the public report supplies snippets, not a complete checked diff or retained test artifacts. The recipient had not opened a PR when reporting. Upstream acceptance and release remain unestablished.
+
+Our [follow-up][signal-runtime-followup] asks for the code-only diff, including its import change, and any retained synthetic fixtures so another contributor can work from the exact change. Quoted-false parsing and A(false) → B(default) → A(false) profile tests remain suggested coverage, not tests executed for this page. No competing PR or new product experiment was created by this update.
 
 ## A useful starting point for collaboration
 
@@ -182,7 +190,11 @@ Keep credentials, private conversations, and personal records out of public issu
 
 **2026년 9월 25일 확인.** Signal의 개인 메모는 그대로 두면서 같은 계정의 단체방에서는 AI를 부르고 싶다는 요청에 대해, 기존 설정 전달 경로와 적용할 메시지 처리 위치를 [코드에서 찾아 안내했습니다][signal-review]. 요청자 **ren2140eth**는 **@YS-OH-CORE**를 직접 언급하고, 자신도 같은 판본의 코드를 확인했으며 안내가 맞다고 [공개 답변했습니다][signal-ack]. 새 설정 전달 장치를 만들 필요가 없고, 필요한 수정이 처음 예상보다 작아진다고 설명했습니다.
 
-이 사례의 확인 수준은 **상대가 검토 내용을 읽고 직접 소스를 대조한 뒤 유용성을 확인한 것**입니다. 실제 패치의 적용·배포나 사용자의 Signal 계정 복구까지 확인한 사례는 아닙니다. 원래 요청과 기능 제안은 상대의 기여이며, Zero는 소스 추적과 검토 문안 작성을 맡았습니다. 별도 실험이나 사적인 대화 공개 없이, 공개된 왕복 대화를 연결했습니다.
+첫 소스 검토 단계의 확인 수준은 **상대가 검토 내용을 읽고 직접 소스를 대조한 뒤 유용성을 확인한 것**이었습니다. 당시에는 실제 패치의 적용·배포나 사용자의 Signal 계정 복구까지 확인하지 않았습니다. 원래 요청과 기능 제안은 상대의 기여이며, Zero는 소스 추적과 검토 문안 작성을 맡았습니다. 별도 실험이나 사적인 대화 공개 없이, 공개된 왕복 대화를 연결했습니다.
+
+**같은 날의 후속: 상대가 직접 구현하고 실행한 결과를 보고했습니다.** ren2140eth는 우리의 제안에 따라 `749220ef`의 코드를 수정하고 연결된 보조 Signal 기기로 실행했으며, 개인 메모는 처리 전에 제외되고 단체방은 기존 허용·멘션 검사를 계속 거친다고 [공개 답변했습니다][signal-runtime]. 기본 동작과 자기 답장에 다시 반응하지 않는 처리도 유지했다고 설명했습니다.
+
+새 확인 수준은 **상대가 보고한 로컬 구현·실행 성공**입니다. 구현과 현장 확인은 상대의 기여이며, Zero가 그 환경을 독립 재시험하거나 공식 병합·배포를 확인한 것은 아닙니다. 다음 기여자가 정확한 수정에서 이어갈 수 있도록 가져오기 변경까지 포함한 코드 차이와 보유한 가상 시험 자료를 [요청했습니다][signal-runtime-followup]. 사적인 메시지·전화번호·계정 설정은 요청하지 않았습니다.
 
 관련 협업을 제안할 때는 공개해도 되는 작은 재현 예시와 코드 버전, 기대한 결과와 실제 결과를 [이슈](https://github.com/YS-OH-CORE/second-paddle-notes/issues/new)에 남겨 주세요. 소개글의 설명보다 원문 답변, 코드, 검사 자료를 먼저 확인할 수 있도록 구성했습니다.
 
@@ -216,3 +228,7 @@ Keep credentials, private conversations, and personal records out of public issu
 [signal-request]: https://github.com/NousResearch/hermes-agent/issues/121970
 [signal-review]: https://github.com/NousResearch/hermes-agent/issues/121970#issuecomment-5822868222
 [signal-ack]: https://github.com/NousResearch/hermes-agent/issues/121970#issuecomment-5822952908
+
+
+[signal-runtime]: https://github.com/NousResearch/hermes-agent/issues/121970#issuecomment-5823143850
+[signal-runtime-followup]: https://github.com/NousResearch/hermes-agent/issues/121970#issuecomment-5823237783
