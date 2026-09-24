@@ -1,0 +1,61 @@
+name: Checkpoint read-only recovery boundary
+'on':
+  push:
+    branches: [ops/langgraph-6970-read-boundary-20260924]
+    paths: [.github/workflows/langgraph-6970-read-boundary-20260924.yml]
+permissions: {}
+concurrency:
+  group: zero-checkpoint-read-boundary-20260924
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Test pinned saver in fresh processes, no model endpoint
+        run: |
+          python3 -B -u - <<'PY'
+          import ast, hashlib, json, os, pathlib, subprocess, urllib.request
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-checkpoint-read-boundary'
+          root.mkdir(exist_ok=False)
+          out=root/'output';out.mkdir();src=root/'source';src.mkdir();home=root/'home';home.mkdir()
+          env={'PATH':os.environ['PATH'],'HOME':str(home),'LANG':'C.UTF-8','PYTHONDONTWRITEBYTECODE':'1',
+               'LANGSMITH_TRACING':'false','LANGCHAIN_TRACING_V2':'false'}
+          def call(args, timeout=60):
+              p=subprocess.run(list(map(str,args)),cwd=src,env=env,text=True,capture_output=True,timeout=timeout)
+              with (out/'execution.log').open('a',encoding='utf-8') as f:
+                  f.write('COMMAND '+str(args)+'\n'+p.stdout+'\n'+p.stderr+'\n')
+              print(p.stdout[-24000:]+p.stderr[-5000:],flush=True)
+              p.check_returncode()
+              return p.stdout
+          target='7daa3ab49d678a5da75edb08baa87db4a2be52c3'
+          call(['git','init','-q'])
+          call(['git','fetch','--depth=1','https://github.com/langchain-ai/langgraph.git',target])
+          call(['git','checkout','--detach','FETCH_HEAD'])
+          assert call(['git','rev-parse','HEAD']).strip()==target
+          call(['python3','-m','venv',root/'venv'])
+          python=root/'venv/bin/python'
+          call([python,'-m','pip','install','--disable-pip-version-check','--no-cache-dir',
+                src/'libs/checkpoint',src/'libs/checkpoint-sqlite'],180)
+          (out/'environment.txt').write_text(call([python,'-m','pip','freeze','--all']),encoding='utf-8')
+          url='https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/d40627883062660a27e89e1640fe507d2d4c9afc/checks/langgraph-6970/read_boundary.py'
+          with urllib.request.urlopen(url,timeout=20) as r: raw=r.read(25000)
+          assert len(raw)<25000
+          ast.parse(raw)
+          script=out/'read_boundary.py';script.write_bytes(raw)
+          (out/'metadata.json').write_text(json.dumps({'run_id':os.environ['GITHUB_RUN_ID'],
+              'workflow_commit':os.environ['GITHUB_SHA'],'source_commit':target,
+              'script_commit':'d40627883062660a27e89e1640fe507d2d4c9afc',
+              'script_sha256':hashlib.sha256(raw).hexdigest()},indent=2),encoding='utf-8')
+          call([python,'-B','-u',script,'--repo',src,'--root',out/'fixture'],100)
+          assert call(['git','status','--porcelain']).strip()==''
+          PY
+      - name: Keep original fixture, observations and environment
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: zero-checkpoint-read-boundary-20260924
+          path: ${{ runner.temp }}/zero-checkpoint-read-boundary/output/
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 6
