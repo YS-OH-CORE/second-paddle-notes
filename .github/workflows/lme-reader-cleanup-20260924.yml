@@ -1,0 +1,50 @@
+name: LME reader failure boundary and cleanup
+'on':
+  push:
+    branches: [ops/lme-reader-cleanup-20260924]
+    paths: [.github/workflows/lme-reader-cleanup-20260924.yml]
+permissions: {}
+concurrency:
+  group: zero-lme-reader-cleanup-20260924
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Execute imported harness with a simulated HTTP transport
+        run: |
+          python3 -B -u - <<'PY'
+          import os, pathlib, subprocess, urllib.request, hashlib, json
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-lme-reader'
+          root.mkdir();out=root/'output';out.mkdir();src=root/'source';src.mkdir()
+          home=root/'home';home.mkdir()
+          env={'PATH':os.environ['PATH'],'HOME':str(home),'LANG':'C.UTF-8','PYTHONDONTWRITEBYTECODE':'1'}
+          def call(args, timeout=60):
+              p=subprocess.run(list(map(str,args)),cwd=src,env=env,text=True,capture_output=True,timeout=timeout)
+              with (out/'execution.log').open('a') as f: f.write(str(args)+'\n'+p.stdout+'\n'+p.stderr+'\n')
+              print(p.stdout[-30000:]+p.stderr[-4000:],flush=True)
+              p.check_returncode()
+              return p.stdout
+          call(['git','init','-q'])
+          call(['git','fetch','--depth=1','https://github.com/xiaowu0162/LongMemEval-V2.git','2cc8c540bdb87fe6761629b585e727e1c4704520'])
+          call(['git','checkout','--detach','FETCH_HEAD'])
+          call(['python3','-m','venv',root/'venv'])
+          python=root/'venv/bin/python'
+          call([python,'-m','pip','install','--disable-pip-version-check','--no-cache-dir','openai==1.109.1','httpx==0.28.1','tqdm==4.67.1'],120)
+          (out/'environment.txt').write_text(call([python,'-m','pip','freeze','--all']))
+          url='https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/ac30f25c5c5433196f549e0ed76491f296fe814e/checks/lme-reader-cleanup/check_reader_failures.py'
+          with urllib.request.urlopen(url,timeout=20) as r: b=r.read(20000)
+          assert hashlib.sha256(b).hexdigest()=='82564157af0e005c02e6a24f92c29f0cad672db0a02adb44d756f6af1c9cdcd2'
+          script=out/'check_reader_failures.py';script.write_bytes(b)
+          (out/'run_metadata.json').write_text(json.dumps({'run_id':os.environ['GITHUB_RUN_ID'],'workflow_commit':os.environ['GITHUB_SHA'],'source_commit':'2cc8c540bdb87fe6761629b585e727e1c4704520'},indent=2))
+          call([python,'-B','-u',script,'--repo',src,'--out',out],60)
+          PY
+      - name: Keep original observations and candidate patch
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: zero-lme-reader-cleanup-20260924
+          path: ${{ runner.temp }}/zero-lme-reader/output/
+          if-no-files-found: error
+          retention-days: 7
