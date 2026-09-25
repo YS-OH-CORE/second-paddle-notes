@@ -1,0 +1,61 @@
+{
+  "schema": "zero.peer-review-preservation.v1",
+  "prepared_date_kst": "2026-09-25",
+  "repository": "YS-OH-CORE/second-paddle-notes",
+  "release_tag": "peer-review-evidence-20260925-v1",
+  "kind": "preservation of existing outputs; no new runtime experiment",
+  "review_count": 3,
+  "archive_count": 5,
+  "archives": [
+    {
+      "file": "ZERO_SIGNAL_REAL_IMPORT_RAW_20260925.zip",
+      "bytes": 49334,
+      "sha256": "124cf3bff7453177585e1af01c2ad50e43f6b1d9b873986a0371394b6e97bc54",
+      "run_id": 36068670149,
+      "artifact_id": 10837665405,
+      "role": "Signal initial reconstruction; not the exact recipient patch"
+    },
+    {
+      "file": "ZERO_SIGNAL_RECEIVED_PATCH_FIRST_ATTEMPT_20260925.zip",
+      "bytes": 6702,
+      "sha256": "7e99b1fbaf9cdd0d4acc11adadf31626adf018655e1a90158e7322856a491cb0",
+      "run_id": 36069060300,
+      "artifact_id": 10837547402,
+      "role": "Signal failed identity assertion; no runtime tests ran"
+    },
+    {
+      "file": "ZERO_SIGNAL_EXACT_RECIPIENT_RAW_20260925.zip",
+      "bytes": 81767,
+      "sha256": "28f9f8a081f2ebc8bc9645cd8f6cd1a7c0ca4a0b433b8eef256e753126f9e9c8",
+      "run_id": 36069329777,
+      "artifact_id": 10837676506,
+      "role": "Signal exact posted-patch comparison, including baseline and parser-mutant failures",
+      "actions_expires_at_utc": "2026-10-01T22:48:17Z"
+    },
+    {
+      "file": "ZERO_LANGGRAPH_9074_UNICODE_RAW_20260925.zip",
+      "bytes": 23138,
+      "sha256": "b7c3c48282bfc82dc773d98d6f905ce28910aac3d1a51f7ed4586972e6323055",
+      "run_id": 36073744621,
+      "artifact_id": 10839760410,
+      "role": "LangGraph pre-existing Unicode metadata comparison",
+      "actions_expires_at_utc": "2026-10-01T23:38:48Z"
+    },
+    {
+      "file": "ZERO_PYDANTIC_8728_ORIGIN_RAW_20260925.zip",
+      "bytes": 15022,
+      "sha256": "54fcce26ed513a28fdbb98935b54a1feb753688502cfa34e556ab54c5a639063",
+      "run_id": 36075092356,
+      "artifact_id": 10839781554,
+      "role": "Pydantic AI inherited versus explicit wrapper-setting comparison",
+      "actions_expires_at_utc": "2026-10-01T23:55:35Z"
+    }
+  ],
+  "limits": [
+    "Archives are copied without modification, including prior failures and their limits.",
+    "Checksums verify bytes, not the truth of claims or an upstream acceptance decision.",
+    "No live model request, real Signal transport or new product test is performed for this edition.",
+    "This is a separate release copy, not permanent immutable or independently hosted storage.",
+    "Original contributor roles and license notices remain in the linked reports and archives."
+  ]
+}
