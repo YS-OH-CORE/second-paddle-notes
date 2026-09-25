@@ -1,0 +1,47 @@
+name: LangGraph ordered-write representation follow-up
+'on':
+  push:
+    branches: [checks/langgraph-9072-edge-20260925]
+    paths: [.github/workflows/langgraph-9072-edge-20260925.yml]
+permissions: {}
+concurrency:
+  group: zero-langgraph-9072-edge-20260925
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      LANGCHAIN_TRACING_V2: 'false'
+      LANGSMITH_TRACING: 'false'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - name: Run the pinned experiment and its expanded controls
+        run: |
+          python3 -u - <<'PY'
+          import hashlib,os,pathlib,subprocess,time,urllib.request
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-lg9072-edge'
+          root.mkdir(exist_ok=False)
+          bundle=root/'bundle'; bundle.mkdir()
+          base='https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/c4cecac937916af286717bf4ce066092c463091e/checks/langgraph-9072/'
+          files={
+              'edge_probe.py':('edge-followup/edge_probe.py','ce94a2042bd5d4ea8562696a44750df666a6f26f3b90e9d2608681b2a1ba4d1c'),
+              'run_edge.py':('edge-followup/run_edge.py','eec4d51aae536bbf58929d8ba0b13e0483ddc5daf40a15ca0bb3c4db2b1d5c20'),
+              'PROTOCOL.md':('edge-followup/PROTOCOL.md','f1fec0802776268fc0694981a349c6c2c2b00d5d091068eb4d240e264d4ba768'),
+              'baseline_probe.py':('probe.py','86b4a500e79568eae246894d70b6b59893e7a714477f800119627b99319b68c1')}
+          for name,(path,sha) in files.items():
+              with urllib.request.urlopen(base+path,timeout=30) as response:
+                  data=response.read(100001)
+              assert len(data)<=100000 and hashlib.sha256(data).hexdigest()==sha
+              (bundle/name).write_bytes(data)
+              time.sleep(2)
+          subprocess.run(['python3','-u',str(bundle/'run_edge.py'),'--root',str(root/'run'),'--bundle',str(bundle)],check=True,timeout=500)
+          PY
+      - name: Preserve sources, errors, expectations and graph results
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: zero-langgraph-9072-edge-20260925
+          path: ${{ runner.temp }}/zero-lg9072-edge/run/output/
+          if-no-files-found: error
+          retention-days: 30
