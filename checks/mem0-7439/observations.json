@@ -1,0 +1,30 @@
+{
+  "kind": "Derived summary of original runtime reports; not an additional execution",
+  "source_commit": "989c7da0fc8e4df6342dbb8c448af9816d60d24c",
+  "run_id": 36080153361,
+  "raw_archive_sha256": "ad0b34680ffac6332231e89f13b5598aa89ecdf9b9f80a9beab6faf3e016c4e9",
+  "versions": {"python": "3.12.3", "mem0ai": "2.2.0", "langchain-community": "0.4.2", "langchain-core": "1.6.5", "faiss-cpu": "1.15.1"},
+  "nonempty_fixture": {"alice_records": 6, "bob_records": 1, "all_records": 7},
+  "nonempty_results": {
+    "base": {"list": null, "get_all_error": "TypeError", "delete_all_error": "TypeError", "alice_after": 6, "all_after": 7},
+    "empty_fallback": {"list": [[]], "get_all": {"results": []}, "delete_all": {"message": "Memories deleted successfully!"}, "alice_after": 6, "all_after": 7},
+    "explicit_error": {"list_error": "NotImplementedError", "get_all_error": "NotImplementedError", "delete_all_error": "NotImplementedError", "alice_after": 6, "all_after": 7}
+  },
+  "controls": {
+    "real_empty_fixture": "The fallback returns the same empty/success responses with genuinely zero records; base and explicit-error variants still raise at public consumers.",
+    "targeted_delete": "In every nonempty source variant, real Memory.delete(known_alice_id) removes exactly one record; five Alice records and Bob remain.",
+    "similarity_search_empty_query": "Default k=4 returns four of the six matching Alice documents. It is not an exhaustive listing in this fixture.",
+    "before_after_documents_equal_before_targeted_control": true,
+    "nonempty_documents_sha256": "ff0b3d16842ee35d1f6064057529c6fd893d4dae4f798fe51ae1de6f0783a794"
+  },
+  "scope": {
+    "real": ["Memory construction and public get/get_all/delete_all/delete", "Langchain adapter", "LangChain FAISS", "temporary SQLite history"],
+    "test_doubles": ["unused model and embedder factories", "deterministic local embeddings", "product-notice callbacks"],
+    "not_tested": ["Chroma", "other LangChain backends", "Memory.add", "live model providers", "concurrency", "full upstream suite"],
+    "source_restored": true,
+    "user_pc_used": false,
+    "model_provider_requests": 0
+  },
+  "prior_setup_failure": {"run_id": 36080014505, "reason": "Hatch interpreted braces in an inline version-report command. Moved that command to a file; the behavior checker and source variants were unchanged.", "runtime_cases_executed": 0},
+  "upstream_implementation": "None submitted; empty fallback and explicit-error variant are review experiments, not adopted fixes."
+}
