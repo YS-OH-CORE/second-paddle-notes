@@ -1,0 +1,34 @@
+{
+  "run_id": "36137199855",
+  "artifact_sha256": "27f17ec57257e4784b0cfd7d49ce267a402021c382907113ec46ff623c5dedb4",
+  "completed": true,
+  "rows": [
+    {"variant":"base","group":"upstream","count":44,"passed":44,"failed":0,"errors":0,"skipped":0},
+    {"variant":"base","group":"regression","count":24,"passed":2,"failed":22,"errors":0,"skipped":0},
+    {"variant":"normalized_candidate","group":"upstream","count":44,"passed":43,"failed":1,"errors":0,"skipped":0},
+    {"variant":"normalized_candidate","group":"regression","count":24,"passed":24,"failed":0,"errors":0,"skipped":0},
+    {"variant":"compatibility_candidate","group":"upstream","count":44,"passed":44,"failed":0,"errors":0,"skipped":0},
+    {"variant":"compatibility_candidate","group":"regression","count":24,"passed":24,"failed":0,"errors":0,"skipped":0}
+  ],
+  "total_outcomes": 204,
+  "junit_names_statuses_counts_verified": true,
+  "guards_and_source_hashes_verified": true,
+  "same_collections_between_variants": true,
+  "original_upstream_test_blob_verified": true,
+  "prior_normalized_candidate_byte_identical": true,
+  "upstream_status_changes": [
+    {"id":"tests.test_tool_node::test_tool_node_parent_command_with_send","base":"passed","candidate":"failed"}
+  ],
+  "test_file_sha256": "72b32cafacefd2d2cb57ebf74df2151ee3f7983b090c824ae17212d473508ecc",
+  "reanalysis_not_independent_execution": true,
+  "absent_update_diagnostics": {
+    "base":{"update":null,"update_type":"NoneType","same_repr":true,"equal":true},
+    "normalized_candidate":{"update":[],"update_type":"list","same_repr":true,"equal":false},
+    "compatibility_candidate":{"update":null,"update_type":"NoneType","same_repr":true,"equal":true}
+  },
+  "compatibility_upstream_statuses_match_base": true,
+  "both_patches_apply_and_reproduce_tested_bytes": true,
+  "first_run": "36136696015",
+  "upstream_and_new_test_bytes_identical_across_runs": true,
+  "resolved_environment_identical_across_runs": true
+}
