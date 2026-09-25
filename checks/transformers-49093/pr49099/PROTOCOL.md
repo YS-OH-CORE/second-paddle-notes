@@ -28,3 +28,7 @@ Verify the original test file's Git blob and base/head implementation blobs. App
 Each variant uses a fresh Python process and its own checkout's source path. Assert the exact three testcase names, with no skips or collection errors; do not trust exit status alone because the repository conftest can turn zero-collected-tests exit code 5 into 0. Inspect the expected failures' reasons. Run Ruff check and format-check on the modified test file.
 
 No sampling, weights, paid model endpoint, real user history or model inference is involved. Hugging Face offline mode is enabled during tests. A setup failure is retained and may be corrected without changing the substantive test to obtain a pass. The actual run and its limits will be reported before a concise comment is delivered to the existing PR discussion.
+
+## Recorded setup correction
+
+First run https://github.com/YS-OH-CORE/second-paddle-notes/actions/runs/36100369760 passed source/patch checks and both Ruff checks, but repository conftest registered a `pytest_configure_node` hook through `NetworkDebugPlugin` without pytest-xdist installed. Pytest stopped with `PluginValidationError` before any of the selected tests executed. The retained artifact records that failure. Add `pytest-xdist` to the test environment; keep the exact same test patch and normal conftest. This is a setup correction, not a regression result or a change to the expected behavior.

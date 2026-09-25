@@ -102,7 +102,7 @@ def run(root, patch):
         call([py, "-m", "pip", "install", "--disable-pip-version-check", "torch==2.12.0",
               "--index-url", "https://download.pytorch.org/whl/cpu"], timeout=240)
         call([py, "-m", "pip", "install", "--disable-pip-version-check", head,
-              "pytest>=8,<9", "parameterized>=0.9", "accelerate>=1.1.0", "psutil", "pytest-env",
+              "pytest>=8,<9", "parameterized>=0.9", "accelerate>=1.1.0", "psutil", "pytest-env", "pytest-xdist",
               "ruff==0.14.10"], timeout=240)
         (out / "environment.txt").write_text(
             call([py, "-m", "pip", "freeze", "--all"]).stdout, encoding="utf-8")
