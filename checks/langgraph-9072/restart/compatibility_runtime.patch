@@ -1,0 +1,23 @@
+--- a/libs/prebuilt/langgraph/prebuilt/tool_node.py
++++ b/libs/prebuilt/langgraph/prebuilt/tool_node.py
+@@ -902,12 +902,19 @@
+                     and all(isinstance(send, Send) for send in output.goto)
+                 ):
+                     if parent_command:
++                        if output.update is None:
++                            merged_update = parent_command.update
++                        elif parent_command.update is None:
++                            merged_update = output.update
++                        else:
++                            merged_update = list(parent_command._update_as_tuples()) + list(output._update_as_tuples())
+                         parent_command = replace(
+                             parent_command,
+                             goto=cast("list[Send]", parent_command.goto) + output.goto,
++                            update=merged_update,
+                         )
+                     else:
+-                        parent_command = Command(graph=Command.PARENT, goto=output.goto)
++                        parent_command = output
+                 else:
+                     combined_outputs.append(output)
+             else:
