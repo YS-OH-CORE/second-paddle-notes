@@ -1,0 +1,37 @@
+{
+  "status": "POSTED_AND_READ_BACK",
+  "repository": "huggingface/smolagents",
+  "issue": 2833,
+  "comment_id": 5825312101,
+  "comment_url": "https://github.com/huggingface/smolagents/issues/2833#issuecomment-5825312101",
+  "author_account": "YS-OH-CORE",
+  "created_at_utc": "2026-09-25T01:44:46Z",
+  "responds_to_public_commit_notice": 5825225088,
+  "implementation_by": "BlueX888",
+  "implementation_commit": "e643060410cf98bfcea022295e1b83ae65c2a17b",
+  "parent_commit": "227ef5e49ddd82339295939072f0223249aa8d38",
+  "run_id": 36083116240,
+  "artifact_id": 10843221357,
+  "artifact_sha256": "1fc8bbe3a712a778f4513389ae05e52562c0384453f684abd9926f8f30967731",
+  "result": {
+    "parent_preserved_fixtures": 3,
+    "candidate_preserved_fixtures": 6,
+    "fixture_count": 6,
+    "two_restoration_paths_per_fixture": true,
+    "author_added_test_parent": "expected assertion failure",
+    "author_added_test_candidate": "passed",
+    "author_added_test_used_noconftest": true,
+    "runtime_source_edits": 0,
+    "guarded_network_connect_attempts": 0
+  },
+  "new_upstream_comments_this_step": 1,
+  "user_pc_used": false,
+  "competing_pr_opened": false,
+  "new_reply_or_acceptance_after_followup_confirmed": false,
+  "boundaries": [
+    "This tests the author's actual commit, not the earlier reviewer-authored removal variant.",
+    "The source commit existed before our initial comment; no causal claim about its creation is made.",
+    "No full upstream suite, Agent execution, Hub upload or live model was tested.",
+    "Previous old-export recovery observations were not repeated or counted again."
+  ]
+}
