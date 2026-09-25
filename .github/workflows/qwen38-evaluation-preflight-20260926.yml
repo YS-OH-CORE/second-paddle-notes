@@ -17,21 +17,26 @@ jobs:
       TOKENIZERS_PARALLELISM: 'false'
       PYTHONDONTWRITEBYTECODE: '1'
     steps:
-      - name: Fetch pinned probe and protocol
+      - name: Fetch pinned probe and apply API-return compatibility patch
         run: |
           python3 -u - <<'PY'
-          import hashlib,os,pathlib,time,urllib.request
+          import hashlib,os,pathlib,shutil,subprocess,time,urllib.request
           root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-qwen38-preflight'
           root.mkdir(exist_ok=False)
-          prefix='https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/5bdd5167670f7d8bcf749060cc9548230dba1319/checks/qwen38-evaluation-preflight/'
-          for name in ['probe.py','PROTOCOL.md']:
+          prefix='https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/dcda5fc9fdfdde1a3662bc940ac491c806c380fc/checks/qwen38-evaluation-preflight/'
+          expected={'probe.py':'90e5ef986b4cabc7c6965fef1ea04a6f1eade567','tokenizer_return_contract.patch':'80328d842be8d89cb79bf9c57dc54ad5c04b0f16'}
+          for name in ['probe.py','PROTOCOL.md','tokenizer_return_contract.patch']:
               with urllib.request.urlopen(prefix+name,timeout=30) as response:
                   data=response.read(100001)
               assert len(data)<=100000
-              if name=='probe.py':
-                  assert hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()=='90e5ef986b4cabc7c6965fef1ea04a6f1eade567'
+              if name in expected:
+                  assert hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()==expected[name]
               (root/name).write_bytes(data)
               time.sleep(2)
+          shutil.copyfile(root/'probe.py',root/'original_probe.py')
+          subprocess.run(['git','apply','--check',str(root/'tokenizer_return_contract.patch')],cwd=root,check=True)
+          subprocess.run(['git','apply',str(root/'tokenizer_return_contract.patch')],cwd=root,check=True)
+          assert hashlib.sha256((root/'probe.py').read_bytes()).hexdigest()=='3166f2e28a0fd9e8b1b845d7a449ebe17e01e0d23eba3e1ba08ed0d11c6d8e3e'
           PY
       - name: Install pinned tokenizer environment
         run: |
@@ -53,6 +58,8 @@ jobs:
           name: zero-qwen38-evaluation-preflight-20260926
           path: |
             ${{ runner.temp }}/zero-qwen38-preflight/probe.py
+            ${{ runner.temp }}/zero-qwen38-preflight/original_probe.py
+            ${{ runner.temp }}/zero-qwen38-preflight/tokenizer_return_contract.patch
             ${{ runner.temp }}/zero-qwen38-preflight/PROTOCOL.md
             ${{ runner.temp }}/zero-qwen38-preflight/environment.txt
             ${{ runner.temp }}/zero-qwen38-preflight/install.log
