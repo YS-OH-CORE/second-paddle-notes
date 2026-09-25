@@ -155,18 +155,54 @@ def main():
             original.splitlines(True), candidate.splitlines(True),
             fromfile="a/libs/prebuilt/langgraph/prebuilt/tool_node.py",
             tofile="b/libs/prebuilt/langgraph/prebuilt/tool_node.py")), encoding="utf-8")
+        prefix = "                    if parent_command:\n                        parent_command = replace("
+        replacement = "\n".join([
+            "                    if parent_command:",
+            "                        if output.update is None:",
+            "                            merged_update = parent_command.update",
+            "                        elif parent_command.update is None:",
+            "                            merged_update = output.update",
+            "                        else:",
+            "                            merged_update = list(parent_command._update_as_tuples()) + list(output._update_as_tuples())",
+            "                        parent_command = replace(",
+        ])
+        assert candidate.count(prefix) == 1
+        compatibility = candidate.replace(prefix, replacement).replace(
+            "update=list(parent_command._update_as_tuples()) + list(output._update_as_tuples()),",
+            "update=merged_update,",
+        )
+        ast.parse(compatibility)
+        report["compatibility_candidate_sha256"] = sha(compatibility.encode())
+        report["earlier_run"] = "36136696015"
+        (out / "compatibility_runtime.patch").write_text("".join(difflib.unified_diff(
+            original.splitlines(True), compatibility.splitlines(True),
+            fromfile="a/libs/prebuilt/langgraph/prebuilt/tool_node.py",
+            tofile="b/libs/prebuilt/langgraph/prebuilt/tool_node.py")), encoding="utf-8")
         env = dict(os.environ, PYTHONPATH=os.pathsep.join(map(str, [bundle, *libs])),
                    PYTHONDONTWRITEBYTECODE="1", LANGGRAPH_TEST_FAST="true",
                    LANGCHAIN_TRACING_V2="false", LANGSMITH_TRACING="false", ZERO_REPO_ROOT=str(repo))
         for key in list(env):
             if key.endswith("API_KEY"):
                 env.pop(key, None)
-        for variant, text in (("base", original), ("normalized_candidate", candidate)):
+        for variant, text in (("base", original), ("normalized_candidate", candidate),
+                              ("compatibility_candidate", compatibility)):
             source.write_text(text, encoding="utf-8")
             target = out / variant
             target.mkdir()
             shutil.copy2(source, target / "tool_node.py")
             env.update(ZERO_EXPECTED_SOURCE=str(source), ZERO_EXPECTED_SHA=sha(text.encode()))
+            diagnostic = "\n".join([
+                "import json, offline_guard",
+                "from langgraph.prebuilt import ToolNode",
+                "from langgraph.types import Command, Send",
+                "sends = [Send('worker', {'job': n}) for n in ('alpha', 'beta')]",
+                "inputs = [Command(graph=Command.PARENT, goto=[s]) for s in sends]",
+                "actual = ToolNode([])._combine_tool_outputs(inputs, 'dict')[0]",
+                "expected = Command(graph=Command.PARENT, goto=sends)",
+                "print(json.dumps({'update': actual.update, 'update_type': type(actual.update).__name__, 'same_repr': repr(actual)==repr(expected), 'equal': actual==expected}))",
+            ])
+            result = call([py, "-B", "-c", diagnostic], target / "absent_update.log", cwd=lib, env=env)
+            (target / "absent_update.json").write_text(result.stdout, encoding="utf-8")
             for group, path in (("upstream", upstream_test), ("regression", new_test)):
                 env["ZERO_GUARD_LOG"] = str(target / (group + "_guard.json"))
                 junit = target / (group + ".xml")
