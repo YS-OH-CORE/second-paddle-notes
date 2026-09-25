@@ -1,0 +1,39 @@
+{
+  "run_id": "36133731437",
+  "artifact_id": 10862342913,
+  "artifact_sha256": "d846b02cd482c810164fad459bf9423d92246375aaa46a889b64b82f4ac797a0",
+  "graph_invocations": 72,
+  "all_log_rows_equal_reports": true,
+  "sync_async_equivalent": true,
+  "prior_8_controls_reproduced_per_variant": true,
+  "prior_candidate_byte_identical": true,
+  "scripts_equal_preexecution_files": true,
+  "variants": [
+    {
+      "variant": "base",
+      "graph_invocations": 24,
+      "contracts_met": 2,
+      "source_sha256": "e13ea6317164c823eae8512f94eeaea28c43731cf0a7ed1d9de9fca4a95f1782",
+      "expected_conflict_errors": 0,
+      "unexpected_type_errors": 0
+    },
+    {
+      "variant": "prior_ordered",
+      "graph_invocations": 24,
+      "contracts_met": 12,
+      "source_sha256": "32ee5d28f4bff7b6af6694ba4ea6abb87dc1048ba5bbefd1a8314fa6efbe2dcd",
+      "expected_conflict_errors": 2,
+      "unexpected_type_errors": 12
+    },
+    {
+      "variant": "normalized_ordered",
+      "graph_invocations": 24,
+      "contracts_met": 24,
+      "source_sha256": "be4a47872cfd4764a3fcc3ae0e093295706a87f3b5d9960ab6dd6ebb8645ab8c",
+      "expected_conflict_errors": 2,
+      "unexpected_type_errors": 0
+    }
+  ],
+  "independent_external_replication": false,
+  "audit_is_reanalysis_not_new_execution": true
+}
