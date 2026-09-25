@@ -1,0 +1,30 @@
+{
+  "original_audit_exactly_reproduced": true,
+  "all_rows": 648,
+  "baseline_rows": 24,
+  "intervention_rows": 624,
+  "executed_probe_equals_local_prepared_source": true,
+  "execution_schedule_matches_all_logged_rows": true,
+  "prior_baseline_choices_all_reproduced": true,
+  "max_previous_baseline_choice_logit_error": 0.0,
+  "baseline_cached_tensors": 72,
+  "max_causal_prefix_activation_difference": 0.0,
+  "full_vocab_sample_deviations_recomputed": 52,
+  "mutation_checks": {
+    "missing_row": true,
+    "semantic_label": true,
+    "numeric_score": true
+  },
+  "original_audit": {
+    "rows_checked": 648,
+    "choice_logits_reconstructed_for_all_rows": true,
+    "max_float64_readout_error": 9.808092301000215e-06,
+    "full_vocab_rows_checked": 50,
+    "all_full_vocab_vectors_retained": false,
+    "plan_complete": true,
+    "control_assertions_pass": true,
+    "independent_external_replication": false
+  },
+  "new_model_inference_in_readback": 0,
+  "independent_external_replication": false
+}
