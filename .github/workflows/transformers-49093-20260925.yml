@@ -1,0 +1,56 @@
+name: Transformers sequence-bias boundary matrix
+'on':
+  push:
+    branches: [checks/transformers-49093-20260925]
+    paths: [.github/workflows/transformers-49093-20260925.yml]
+permissions: {}
+concurrency:
+  group: zero-transformers-49093-20260925
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    env:
+      HF_HUB_DISABLE_TELEMETRY: '1'
+      HF_HUB_DISABLE_IMPLICIT_TOKEN: '1'
+      TOKENIZERS_PARALLELISM: 'false'
+      OMP_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+    steps:
+      - name: Verify complete package against isolated source edits
+        run: |
+          python3 -u - <<'PY'
+          import hashlib,json,os,pathlib,subprocess,urllib.request
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-transformers-49093'
+          root.mkdir(exist_ok=False)
+          out=root/'output'; out.mkdir()
+          script=out/'check_sequence_bias.py'
+          url='https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/e4b0b94dee479dfdf2bc24008f11105652fbd089/checks/transformers-49093/check_sequence_bias.py'
+          with urllib.request.urlopen(url, timeout=30) as response:
+              data=response.read(100000)
+          assert hashlib.sha256(data).hexdigest()=='218e4dcb5b41b92d24396ec4dae527710af42a325c0f6f482463ab0254986d22'
+          script.write_bytes(data)
+          def call(argv, timeout):
+              p=subprocess.run(list(map(str,argv)),cwd=root,text=True,capture_output=True,timeout=timeout)
+              with (out/'execution.log').open('a',encoding='utf-8') as f:
+                  f.write('COMMAND '+str(argv)+'\nSTDOUT\n'+p.stdout+'\nSTDERR\n'+p.stderr+'\n')
+              print(p.stdout[-16000:]+p.stderr[-4000:], flush=True)
+              p.check_returncode()
+              return p.stdout
+          call(['python3','-m','venv',root/'venv'],30)
+          py=root/'venv/bin/python'
+          call([py,'-m','pip','install','--disable-pip-version-check','torch==2.6.0','--index-url','https://download.pytorch.org/whl/cpu'],210)
+          call([py,'-m','pip','install','--disable-pip-version-check','https://github.com/huggingface/transformers/archive/89b6b17574892ec0770551537a3fe69d6886703e.zip'],240)
+          (out/'environment.txt').write_text(call([py,'-m','pip','freeze','--all'],30),encoding='utf-8')
+          (out/'run_metadata.json').write_text(json.dumps({'run_id':os.environ['GITHUB_RUN_ID'],'workflow_commit':os.environ['GITHUB_SHA'],'checker_commit':'e4b0b94dee479dfdf2bc24008f11105652fbd089','checker_sha256':'218e4dcb5b41b92d24396ec4dae527710af42a325c0f6f482463ab0254986d22','upstream_commit':'89b6b17574892ec0770551537a3fe69d6886703e','source_blob':'7ff6a32c026efb139cc89996e07181f141cce971'},indent=2)+'\n',encoding='utf-8')
+          call([py,'-u',script,'--out',out/'checks'],90)
+          PY
+      - name: Preserve source variants, real score matrices and logs
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: zero-transformers-49093-20260925
+          path: ${{ runner.temp }}/zero-transformers-49093/output/
+          if-no-files-found: error
+          retention-days: 30
