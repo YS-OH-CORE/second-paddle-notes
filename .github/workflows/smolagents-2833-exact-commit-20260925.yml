@@ -1,0 +1,88 @@
+name: Smolagents exact author serialization commit
+'on':
+  push:
+    branches: [ops/smolagents-2833-serialization-20260925]
+    paths: [.github/workflows/smolagents-2833-exact-commit-20260925.yml]
+permissions: {}
+concurrency:
+  group: zero-smolagents-2833-exact-20260925
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Check real author and parent files without modifying either
+        run: |
+          python3 -B -u - <<'PY'
+          import hashlib,json,os,pathlib,shutil,subprocess,urllib.request
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-smolagents-2833-exact'
+          root.mkdir(exist_ok=False)
+          src=root/'candidate';src.mkdir();out=root/'output';out.mkdir();home=root/'home';home.mkdir()
+          env={'PATH':os.environ['PATH'],'HOME':str(home),'LANG':'C.UTF-8','PYTHONDONTWRITEBYTECODE':'1',
+               'GIT_LFS_SKIP_SMUDGE':'1','PIP_DISABLE_PIP_VERSION_CHECK':'1','HF_HUB_DISABLE_TELEMETRY':'1'}
+          def call(args,timeout=60,cwd=src,custom_env=None):
+              p=subprocess.run(list(map(str,args)),cwd=cwd,env=custom_env or env,text=True,capture_output=True,timeout=timeout)
+              with (out/'execution.log').open('a',encoding='utf-8') as f:
+                  f.write('COMMAND '+str(args)+'\n'+p.stdout+'\n'+p.stderr+'\n')
+              print(p.stdout[-26000:]+p.stderr[-4000:],flush=True)
+              p.check_returncode()
+              return p.stdout
+          head='e643060410cf98bfcea022295e1b83ae65c2a17b'
+          base='227ef5e49ddd82339295939072f0223249aa8d38'
+          call(['git','init','-q'])
+          call(['git','fetch','--depth=2','https://github.com/BlueX888/smolagents.git',head])
+          call(['git','checkout','--detach','FETCH_HEAD'])
+          assert call(['git','rev-parse','HEAD']).strip()==head
+          assert call(['git','rev-parse','HEAD^']).strip()==base
+          parent=root/'base'
+          call(['git','worktree','add','--detach',parent,base])
+          (out/'author-commit.patch').write_text(call(['git','diff',base,head]),encoding='utf-8')
+          shutil.copyfile(src/'LICENSE',out/'SMOLAGENTS_LICENSE')
+          shutil.copyfile(src/'tests/test_tools.py',out/'author_test_tools.py')
+          for mode,tree in [('base',parent),('candidate',src)]:
+              shutil.copyfile(tree/'src/smolagents/tools.py',out/(mode+'_tools.py'))
+          call(['python3','-m','venv',root/'venv'])
+          py=root/'venv/bin/python'
+          call([py,'-m','pip','install','--no-cache-dir',src,'pytest==8.4.2','numpy','mcp'],160)
+          (out/'environment.txt').write_text(call([py,'-m','pip','freeze','--all']),encoding='utf-8')
+          own='https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/'
+          inputs=[('fc7791d342e15bee3015c2a0e923b14017db8491','check_received_commit.py','5fcef3653c8bdbbaf4bee430bb5aecb805369f00ca2509922b9f14471591a002'),
+                  ('50598d1541939266f9c7d23d1f40312c0bbe89be','check_tool_roundtrip.py','62dd6a8a4f255817b3c9c198d75726b04d99a073ea00bc0d3b974bff4646f766')]
+          for ref,name,digest in inputs:
+              with urllib.request.urlopen(own+ref+'/checks/smolagents-2833/'+name,timeout=20) as r:data=r.read(30000)
+              assert hashlib.sha256(data).hexdigest()==digest
+              (out/name).write_bytes(data)
+          metadata={'run_id':os.environ['GITHUB_RUN_ID'],'workflow_commit':os.environ['GITHUB_SHA'],
+                    'author_repository':'BlueX888/smolagents','author_commit':head,'parent_commit':base,
+                    'input_scripts':[{'commit':r,'file':n,'sha256':d} for r,n,d in inputs]}
+          (out/'metadata.json').write_text(json.dumps(metadata,indent=2)+'\n',encoding='utf-8')
+          summary={'success':False,'runtime_source_edits':0,'new_model_requests':0,'modes':{}}
+          try:
+              for mode,tree in [('base',parent),('candidate',src)]:
+                  h=root/(mode+'-home');h.mkdir()
+                  clean={'PATH':env['PATH'],'HOME':str(h),'LANG':'C.UTF-8','PYTHONDONTWRITEBYTECODE':'1',
+                         'HF_HOME':str(h/'hf'),'HF_HUB_OFFLINE':'1','HF_HUB_DISABLE_TELEMETRY':'1',
+                         'PYTEST_DISABLE_PLUGIN_AUTOLOAD':'1'}
+                  call([py,'-B','-u',out/'check_received_commit.py','--repo',tree,'--candidate-repo',src,
+                        '--prior-checker',out/'check_tool_roundtrip.py','--out',out/mode,'--mode',mode],
+                        timeout=75,cwd=h,custom_env=clean)
+                  report=json.loads((out/mode/'report.json').read_text())
+                  assert report['success']
+                  summary['modes'][mode]={'preserved_cases':report['preserved_cases'],
+                                         'author_test':report['author_test'],'report_sha256':hashlib.sha256((out/mode/'report.json').read_bytes()).hexdigest()}
+                  assert call(['git','status','--porcelain'],cwd=tree).strip()==''
+              summary['success']=True
+          finally:
+              (out/'summary.json').write_text(json.dumps(summary,indent=2)+'\n',encoding='utf-8')
+              print('EXACT_AUTHOR_SUMMARY '+json.dumps(summary),flush=True)
+          PY
+      - name: Preserve author source and before-after observations
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: zero-smolagents-2833-exact-20260925
+          path: ${{ runner.temp }}/zero-smolagents-2833-exact/output/
+          if-no-files-found: error
+          retention-days: 30
+          compression-level: 6
