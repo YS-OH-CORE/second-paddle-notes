@@ -24,7 +24,7 @@ jobs:
           root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-lg9072-pytest'
           root.mkdir(exist_ok=False)
           bundle=root/'bundle';bundle.mkdir()
-          base='https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/f871ce58088b129b4c495c538edecc4a9407dd7a/checks/langgraph-9072/pytest-pack/'
+          base='https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/36d3b2f7b0789258bec8be74a4efc1188026caf9/checks/langgraph-9072/pytest-pack/'
           def fetch(name, expected):
               for attempt in range(3):
                   try:
@@ -44,7 +44,7 @@ jobs:
                           except ValueError: delay=max(delay,(email.utils.parsedate_to_datetime(raw)-datetime.datetime.now(datetime.timezone.utc)).total_seconds())
                       if delay>60: raise RuntimeError('Rate-limit wait exceeds bounded download budget') from exc
                       time.sleep(delay)
-          manifest=json.loads(fetch('MANIFEST.json','198d7a9c724a2908ed874a36342a990a6fca9a8951a6402ed38bfc6e3139d017'))
+          manifest=json.loads(fetch('MANIFEST.json','4bc1afdde8511d9e875496e1237ea5533429d9e846b79288007d62a111f81bdd'))
           for name,expected in manifest.items(): fetch(name,expected)
           subprocess.run(['python3','-u',str(bundle/'run_pack.py'),'--root',str(root/'run'),'--bundle',str(bundle)],check=True,timeout=650)
           PY
