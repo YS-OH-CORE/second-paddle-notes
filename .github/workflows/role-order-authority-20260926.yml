@@ -1,0 +1,64 @@
+name: Role order and declared authority
+'on':
+  push:
+    branches: [experiments/role-order-authority-20260926]
+    paths: [.github/workflows/role-order-authority-20260926.yml]
+permissions: {}
+concurrency:
+  group: zero-role-order-authority-20260926
+  cancel-in-progress: false
+jobs:
+  study:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      HF_HUB_DISABLE_TELEMETRY: '1'
+      HF_HUB_DISABLE_XET: '1'
+      TOKENIZERS_PARALLELISM: 'false'
+      OMP_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - name: Verify committed code and frozen inputs before inference
+        run: |
+          python3 -u - <<'PY'
+          import hashlib,json,os,pathlib,subprocess,time,urllib.request
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-role-order-authority'
+          root.mkdir(exist_ok=False)
+          out=root/'evidence';out.mkdir()
+          base='https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/18d506cf92652ca33867291a789a6745551f527b/experiments/role-order-authority/'
+          hashes={}
+          for name in ('study.py','PROTOCOL.md'):
+              with urllib.request.urlopen(base+name,timeout=30) as response:
+                  data=response.read(100001)
+              assert len(data)<=100000
+              hashes[name]=hashlib.sha256(data).hexdigest()
+              (out/name).write_bytes(data)
+              time.sleep(2)
+          assert hashes['study.py']=='a14c96265e3adea367256cda715f364a5b0797a290f2f489c110dcc7d5fb48cf'
+          subprocess.run(['python3',str(out/'study.py'),'prepare','--out',str(out/'prepared')],check=True,timeout=20)
+          assert hashlib.sha256((out/'prepared/inputs.json').read_bytes()).hexdigest()=='c337f12992602d99a6ae45f63c1d6b22072472634d70381f8b7d324aa14b39ad'
+          (out/'PROVENANCE.json').write_text(json.dumps({'run_id':os.environ['GITHUB_RUN_ID'],'workflow_commit':os.environ['GITHUB_SHA'],'code_commit':'18d506cf92652ca33867291a789a6745551f527b','hashes':hashes},indent=2)+'\n')
+          PY
+      - name: Install pinned CPU stack
+        run: |
+          set -o pipefail
+          root="$RUNNER_TEMP/zero-role-order-authority"
+          python3 -m venv "$root/venv"
+          "$root/venv/bin/python" -m pip install --disable-pip-version-check --index-url https://download.pytorch.org/whl/cpu torch==2.6.0 2>&1 | tee "$root/evidence/torch-install.log"
+          "$root/venv/bin/python" -m pip install --disable-pip-version-check transformers==4.51.3 huggingface-hub==0.30.2 tokenizers==0.21.1 safetensors==0.5.3 numpy==2.2.4 2>&1 | tee "$root/evidence/stack-install.log"
+          "$root/venv/bin/python" -m pip freeze --all > "$root/evidence/environment.txt"
+      - name: Execute frozen comparison and offline score audit
+        run: |
+          set -o pipefail
+          root="$RUNNER_TEMP/zero-role-order-authority"
+          export HF_HOME="$root/hf-cache"
+          "$root/venv/bin/python" -u "$root/evidence/study.py" run --out "$root/evidence/results" 2>&1 | tee "$root/evidence/execution.log"
+      - name: Preserve complete observations and partial errors without model weights
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: zero-role-order-authority-20260926
+          path: ${{ runner.temp }}/zero-role-order-authority/evidence/
+          if-no-files-found: error
+          retention-days: 30
