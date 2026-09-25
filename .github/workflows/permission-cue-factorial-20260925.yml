@@ -1,0 +1,76 @@
+name: Matched permission-cue factorial
+'on':
+  push:
+    branches: [experiments/permission-cue-factorial-20260925]
+    paths: [.github/workflows/permission-cue-factorial-20260925.yml]
+permissions: {}
+concurrency:
+  group: zero-permission-cue-factorial-20260925
+  cancel-in-progress: false
+jobs:
+  study:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      HF_HUB_DISABLE_TELEMETRY: '1'
+      HF_HUB_DISABLE_XET: '1'
+      TOKENIZERS_PARALLELISM: 'false'
+      OMP_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - name: Fetch immutable protocol and verify all prepared input bytes
+        run: |
+          python3 -u - <<'PY'
+          import datetime,email.utils,hashlib,json,os,pathlib,subprocess,time,urllib.request,urllib.error
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-permission-factorial'
+          root.mkdir(exist_ok=False)
+          evidence=root/'evidence';evidence.mkdir()
+          prefix='https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/79ee7b416ec3bec170698c635c7e997b25ecf306/experiments/permission-cue-factorial/'
+          def fetch(name,expected):
+              for attempt in range(3):
+                  try:
+                      req=urllib.request.Request(prefix+name,headers={'User-Agent':'Zero-matched-cue-study'})
+                      with urllib.request.urlopen(req,timeout=30) as response:
+                          data=response.read(100001)
+                      assert len(data)<=100000 and hashlib.sha256(data).hexdigest()==expected,name
+                      (evidence/name).write_bytes(data)
+                      time.sleep(2)
+                      return
+                  except urllib.error.HTTPError as exc:
+                      if exc.code!=429 or attempt==2: raise
+                      delay=20*(attempt+1)
+                      retry=exc.headers.get('Retry-After')
+                      if retry:
+                          try: delay=max(delay,float(retry))
+                          except ValueError: delay=max(delay,(email.utils.parsedate_to_datetime(retry)-datetime.datetime.now(datetime.timezone.utc)).total_seconds())
+                      if delay>90: raise RuntimeError('Server wait exceeds bounded setup budget') from exc
+                      time.sleep(delay)
+          fetch('study.py','30a76e49011abb1dcb55df8be0ef6d43279541316b3cbef2e5fb6855490f6a63')
+          fetch('PROTOCOL.md','aedb3ab8fa35bb4c25275be6f0c9c1b3dbfab652d048c27e9a4d6664ba30051d')
+          subprocess.run(['python3',str(evidence/'study.py'),'prepare','--out',str(evidence/'prepared')],check=True,timeout=20)
+          assert hashlib.sha256((evidence/'prepared/inputs.json').read_bytes()).hexdigest()=='2d672abb93f38c2b2bbbd97dfcb1d98b8351b7461e7d737c84674307bc2e49d5'
+          (evidence/'PROVENANCE.json').write_text(json.dumps({'run_id':os.environ['GITHUB_RUN_ID'],'workflow_commit':os.environ['GITHUB_SHA'],'code_commit':'79ee7b416ec3bec170698c635c7e997b25ecf306','prepared_input_sha256':'2d672abb93f38c2b2bbbd97dfcb1d98b8351b7461e7d737c84674307bc2e49d5'},indent=2)+'\n')
+          PY
+      - name: Install the same CPU model stack as the earlier pilot
+        run: |
+          set -o pipefail
+          root="$RUNNER_TEMP/zero-permission-factorial"
+          python3 -m venv "$root/venv"
+          "$root/venv/bin/python" -m pip install --disable-pip-version-check --index-url https://download.pytorch.org/whl/cpu torch==2.6.0 2>&1 | tee "$root/evidence/torch-install.log"
+          "$root/venv/bin/python" -m pip install --disable-pip-version-check transformers==4.51.3 huggingface-hub==0.30.2 tokenizers==0.21.1 safetensors==0.5.3 numpy==2.2.4 2>&1 | tee "$root/evidence/stack-install.log"
+          "$root/venv/bin/python" -m pip freeze --all > "$root/evidence/environment.txt"
+      - name: Score all frozen conditions and run singleton controls
+        run: |
+          set -o pipefail
+          root="$RUNNER_TEMP/zero-permission-factorial"
+          export HF_HOME="$root/hf-cache"
+          "$root/venv/bin/python" -u "$root/evidence/study.py" run --out "$root/evidence/results" --batch-size 4 2>&1 | tee "$root/evidence/execution.log"
+      - name: Retain data, code and partial outputs without weights
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: zero-permission-cue-factorial-20260925
+          path: ${{ runner.temp }}/zero-permission-factorial/evidence/
+          if-no-files-found: error
+          retention-days: 30
