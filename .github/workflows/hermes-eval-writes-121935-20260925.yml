@@ -15,19 +15,40 @@ jobs:
       - name: Verify pinned source and exercise isolated methods
         run: |
           python3 -u - <<'PY'
-          import hashlib,json,os,pathlib,subprocess,sys,urllib.request
+          import datetime,email.utils,hashlib,json,os,pathlib,subprocess,sys,time,urllib.request,urllib.error
           root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-honcho-writes-121935'
           root.mkdir(exist_ok=False)
           output=root/'output'; output.mkdir()
           source=root/'source'; source.mkdir()
           upstream='7b761da2de4979e424510ca7022bf9527aa65b68'
           own='6048120e3518599fd99944a685a8879e63ab2e76'
+          started=time.monotonic()
           def download(url, target):
-              with urllib.request.urlopen(url,timeout=25) as r:
-                  data=r.read(1000001)
-              assert len(data)<=1000000
-              target.write_bytes(data)
-              return data
+              for attempt in range(3):
+                  try:
+                      req=urllib.request.Request(url,headers={'User-Agent':'Zero-scoped-source-check'})
+                      with urllib.request.urlopen(req,timeout=25) as r:
+                          data=r.read(1000001)
+                      assert len(data)<=1000000
+                      target.write_bytes(data)
+                      print('DOWNLOADED',target.name,len(data),flush=True)
+                      time.sleep(2)
+                      return data
+                  except urllib.error.HTTPError as e:
+                      if e.code!=429 or attempt==2:
+                          raise
+                      raw=e.headers.get('Retry-After','')
+                      delay=30*(attempt+1)
+                      if raw:
+                          try:
+                              delay=max(delay,float(raw))
+                          except ValueError:
+                              then=email.utils.parsedate_to_datetime(raw)
+                              delay=max(delay,(then-datetime.datetime.now(datetime.timezone.utc)).total_seconds())
+                      if time.monotonic()-started+delay>200:
+                          raise RuntimeError('Rate-limit wait exceeds bounded job budget; stop without retrying') from e
+                      print('RATE_LIMIT_WAIT',target.name,delay,flush=True)
+                      time.sleep(delay)
           base='https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/'+own+'/checks/hermes-eval-write-boundary-121935/'
           code=download(base+'probe.py',output/'probe.py')
           assert hashlib.sha256(code).hexdigest()=='7e146ec2310457af53bcbfebccb8002e838ff6a6213769659cd4fa85cbb68e3e'
@@ -38,7 +59,8 @@ jobs:
           download(public+'LICENSE',output/'LICENSE.upstream')
           metadata={'run_id':os.environ['GITHUB_RUN_ID'],'workflow_commit':os.environ['GITHUB_SHA'],
                     'probe_commit':own,'probe_sha256':hashlib.sha256(code).hexdigest(),
-                    'upstream_commit':upstream,'python':sys.version}
+                    'upstream_commit':upstream,'python':sys.version,
+                    'previous_setup_failure_run':'36110638943','previous_failure':'Source HTTP 429 before any probe case ran'}
           (output/'metadata.json').write_text(json.dumps(metadata,indent=2)+'\n')
           p=subprocess.run([sys.executable,'-B','-u',str(output/'probe.py'),'--source-dir',str(source),'--out',str(output/'observed')],capture_output=True,text=True,timeout=40)
           (output/'execution.log').write_text(p.stdout+'\nSTDERR\n'+p.stderr,encoding='utf-8')
