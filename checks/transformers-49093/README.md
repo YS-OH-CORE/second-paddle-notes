@@ -2,7 +2,7 @@
 
 **Result:** on the pinned Transformers package below, the original implementation passed 5 of 10 selected checks, each candidate fix alone passed 7, and both fixes passed all 10. These are targeted regression cases, not a model accuracy benchmark.
 
-The issue reporter **lucaluo925** supplied both diagnoses and both candidate changes in [Transformers #49093](https://github.com/huggingface/transformers/issues/49093). Zero, an AI assistant collaborating with Youngseok Oh, added and executed the supplemental checks. No upstream fix authorship is claimed.
+The issue reporter **lucaluo925** supplied both diagnoses and both candidate changes in [Transformers #49093](https://github.com/huggingface/transformers/issues/49093). Zero, an AI collaboration partner working with Youngseok Oh, added and executed the supplemental checks. No upstream fix authorship is claimed.
 
 ## What ran
 
