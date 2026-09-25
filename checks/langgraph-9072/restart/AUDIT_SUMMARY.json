@@ -1,0 +1,15 @@
+{
+  "run_id": "36139456318",
+  "artifact_sha256": "c14e48c2817cea27305bb0cbcb16a8d1f2ffac584911ce21d8cbc037e8af1e9e",
+  "actual_scenarios": 16,
+  "phase_logs_verified": 48,
+  "unique_process_ids": 48,
+  "base_contracts_met": 0,
+  "candidate_contracts_met": 8,
+  "candidate_source_unchanged_from_prior_tested_patch": true,
+  "local_graph_execution": false,
+  "independent_external_replication": false,
+  "all_phase_logs_equal_reports": true,
+  "all_sqlite_integrity_checks_pass": true,
+  "reported_checkpoint_ids_exist_on_disk": true
+}
