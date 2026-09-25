@@ -1,0 +1,42 @@
+name: LangGraph parent handoff reducer matrix
+'on':
+  push:
+    branches: [checks/langgraph-9072-20260925]
+    paths: [.github/workflows/langgraph-9072-20260925.yml]
+permissions: {}
+concurrency:
+  group: zero-langgraph-9072-20260925
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      LANGCHAIN_TRACING_V2: 'false'
+      LANGSMITH_TRACING: 'false'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - name: Verify source and execute full-package graph probes
+        run: |
+          python3 -u - <<'PY'
+          import hashlib,os,pathlib,subprocess,time,urllib.request
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-langgraph-9072'
+          root.mkdir(exist_ok=False)
+          expected={'probe.py':'86b4a500e79568eae246894d70b6b59893e7a714477f800119627b99319b68c1','run.py':'bbf76738c97274cba5b2ad1c9502e5ea15cb2e4f68ae3bcbb7383d2fac61722a'}
+          for name,sha in expected.items():
+              url='https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/f8d4797189e44a8342b2e03feaefbdd85e19f308/checks/langgraph-9072/'+name
+              with urllib.request.urlopen(url,timeout=30) as response:
+                  data=response.read(100001)
+              assert len(data)<=100000 and hashlib.sha256(data).hexdigest()==sha
+              (root/name).write_bytes(data)
+              time.sleep(2)
+          subprocess.run(['python3','-u',str(root/'run.py'),'--root',str(root/'execution'),'--probe',str(root/'probe.py')],check=True,timeout=500)
+          PY
+      - name: Preserve every variant and real graph outcome
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: zero-langgraph-9072-20260925
+          path: ${{ runner.temp }}/zero-langgraph-9072/execution/output/
+          if-no-files-found: error
+          retention-days: 30
