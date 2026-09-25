@@ -1,0 +1,60 @@
+name: Tool serialization argument and method preservation
+'on':
+  push:
+    branches: [ops/smolagents-2833-serialization-20260925]
+    paths: [.github/workflows/smolagents-2833-serialization-20260925.yml]
+permissions: {}
+concurrency:
+  group: zero-smolagents-2833-20260925
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Compare original, count-one, and removed replacement on local tools
+        run: |
+          python3 -B -u - <<'PY'
+          import hashlib,json,os,pathlib,shutil,subprocess,urllib.request
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-smolagents-2833'
+          root.mkdir(exist_ok=False)
+          src=root/'source';src.mkdir();out=root/'output';out.mkdir();home=root/'home';home.mkdir()
+          env={'PATH':os.environ['PATH'],'HOME':str(home),'LANG':'C.UTF-8','PYTHONDONTWRITEBYTECODE':'1',
+            'GIT_LFS_SKIP_SMUDGE':'1','PIP_DISABLE_PIP_VERSION_CHECK':'1','HF_HUB_DISABLE_TELEMETRY':'1'}
+          def call(args,timeout=60):
+              p=subprocess.run(list(map(str,args)),cwd=src,env=env,text=True,capture_output=True,timeout=timeout)
+              with (out/'execution.log').open('a',encoding='utf-8') as f:
+                  f.write('COMMAND '+str(args)+'\n'+p.stdout+'\n'+p.stderr+'\n')
+              print(p.stdout[-24000:]+p.stderr[-5000:],flush=True)
+              p.check_returncode()
+              return p.stdout
+          ref='227ef5e49ddd82339295939072f0223249aa8d38'
+          call(['git','init','-q'])
+          call(['git','fetch','--depth=1','https://github.com/huggingface/smolagents.git',ref])
+          call(['git','checkout','--detach','FETCH_HEAD'])
+          assert call(['git','rev-parse','HEAD']).strip()==ref
+          shutil.copyfile(src/'LICENSE',out/'SMOLAGENTS_LICENSE')
+          call(['python3','-m','venv',root/'venv'])
+          py=root/'venv/bin/python'
+          call([py,'-m','pip','install','--no-cache-dir',src],150)
+          (out/'environment.txt').write_text(call([py,'-m','pip','freeze','--all']),encoding='utf-8')
+          script_ref='50598d1541939266f9c7d23d1f40312c0bbe89be'
+          url=f'https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/{script_ref}/checks/smolagents-2833/check_tool_roundtrip.py'
+          with urllib.request.urlopen(url,timeout=20) as r:data=r.read(20000)
+          assert hashlib.sha256(data).hexdigest()=='62dd6a8a4f255817b3c9c198d75726b04d99a073ea00bc0d3b974bff4646f766'
+          script=out/'check_tool_roundtrip.py';script.write_bytes(data)
+          (out/'metadata.json').write_text(json.dumps({'source_commit':ref,'script_commit':script_ref,
+            'run_id':os.environ['GITHUB_RUN_ID'],'workflow_commit':os.environ['GITHUB_SHA'],
+            'script_sha256':hashlib.sha256(data).hexdigest()},indent=2),encoding='utf-8')
+          call([py,'-B','-u',script,'--repo',src,'--out',out/'results'],100)
+          assert call(['git','diff','--exit-code']).strip()==''
+          PY
+      - name: Retain source variants, saved tools and original outcomes
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: zero-smolagents-2833-20260925
+          path: ${{ runner.temp }}/zero-smolagents-2833/output/
+          if-no-files-found: error
+          retention-days: 30
+          compression-level: 6
