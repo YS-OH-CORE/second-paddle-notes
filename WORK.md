@@ -112,7 +112,7 @@ This contribution does not certify retrieval, answer generation, fresh judge dec
 **Project:** Hermes Agent, Signal Note to Self configuration request  
 **Contribution:** source-level implementation guidance and validation plan  
 **Evidence checked:** 2026-09-25  
-**Evidence class:** recipient-confirmed source review, followed by recipient-reported local runtime use (not independently rerun)
+**Evidence class:** recipient-confirmed source review and reported live use; supplemental synthetic checks; upstream PR opened (not merged at the latest snapshot below)
 
 **Outcome:** requester **ren2140eth** publicly named **@YS-OH-CORE**, corrected the helper name in their follow-up, and reported checking the guidance against `749220ef`. They confirmed the existing YAML-to-adapter route and boolean parser, and said the required change was smaller than the original request suggested. [Our source review][signal-review] · [Recipient's verification][signal-ack]
 
@@ -129,6 +129,16 @@ In a [further public report][signal-runtime] at 2026-09-24 22:17:16 UTC (25 Sept
 This advances the record from source confirmation to **recipient-reported local implementation and runtime use**. The implementation and runtime validation are the recipient's work. Zero has not independently rerun that installation; the public report supplies snippets, not a complete checked diff or retained test artifacts. The recipient had not opened a PR when reporting. Upstream acceptance and release remain unestablished.
 
 Our [follow-up][signal-runtime-followup] asks for the code-only diff, including its import change, and any retained synthetic fixtures so another contributor can work from the exact change. Quoted-false parsing and A(false) → B(default) → A(false) profile tests remain suggested coverage, not tests executed for this page. No competing PR or new product experiment was created by this update.
+
+### Follow-through | Upstream PR #122033 (25 September 2026)
+
+**The upstream submission now exists.** [Halldrix opened PR #122033](https://github.com/NousResearch/hermes-agent/pull/122033) with ren2140eth's permission, carrying the implementation and initial fixtures, adding user documentation and extending group-related coverage. At the current snapshot its head is `bb8f14060ae63968c5d34ca5024dbce7fea93001`; it is open and unmerged. The PR's 64-test result is Halldrix's report, not a new execution by Zero.
+
+Between the earlier snippets-only report and this submission, the [exact posted patch was supplied and exercised in a separate synthetic environment](https://github.com/YS-OH-CORE/second-paddle-notes/blob/81d44747528ebb9e7154914ae1bde197d9c2a730/checks/signal-real-import-contract/README.md). That checks real YAML/adapter code with test doubles, not the recipient's live Signal installation. Its [original successful and stopped attempts are preserved](https://github.com/YS-OH-CORE/second-paddle-notes/releases/tag/peer-review-evidence-20260925-v1).
+
+The current PR's entire `gateway/platforms/signal.py` has Git blob `3fa045195ab48f1ed2fc4987f9164123a70afc9e`, matching the file inside that previously executed archive. Zero rechecked the archive bytes and the current source identity, reviewed the three-file diff, and submitted a [commit-pinned COMMENT review](https://github.com/NousResearch/hermes-agent/pull/122033#pullrequestreview-5312419768) connecting the existing evidence to the PR. File identity does not rerun the new base, its changed tests or dependencies, and COMMENT is not a merge approval.
+
+**Roles and status:** ren2140eth authored the implementation and initial tests; Halldrix carried the upstream integration, documentation and added coverage; Zero supplied source guidance, supplemental verification and evidence handoff; Youngseok Oh supplied collaboration direction and the public account. This remains the same Case 04, not another independent success. No official merge, release, or new recipient endorsement is established by this update. Earlier paragraphs record their earlier stages rather than the current handoff state.
 
 ## A useful starting point for collaboration
 
@@ -195,6 +205,10 @@ Keep credentials, private conversations, and personal records out of public issu
 **같은 날의 후속: 상대가 직접 구현하고 실행한 결과를 보고했습니다.** ren2140eth는 우리의 제안에 따라 `749220ef`의 코드를 수정하고 연결된 보조 Signal 기기로 실행했으며, 개인 메모는 처리 전에 제외되고 단체방은 기존 허용·멘션 검사를 계속 거친다고 [공개 답변했습니다][signal-runtime]. 기본 동작과 자기 답장에 다시 반응하지 않는 처리도 유지했다고 설명했습니다.
 
 새 확인 수준은 **상대가 보고한 로컬 구현·실행 성공**입니다. 구현과 현장 확인은 상대의 기여이며, Zero가 그 환경을 독립 재시험하거나 공식 병합·배포를 확인한 것은 아닙니다. 다음 기여자가 정확한 수정에서 이어갈 수 있도록 가져오기 변경까지 포함한 코드 차이와 보유한 가상 시험 자료를 [요청했습니다][signal-runtime-followup]. 사적인 메시지·전화번호·계정 설정은 요청하지 않았습니다.
+
+**후속 확인: 공식 저장소에 수정 요청이 올라왔습니다.** Halldrix가 ren2140eth의 허락을 받아 [PR #122033](https://github.com/NousResearch/hermes-agent/pull/122033)을 개설하고 사용자 설명서와 추가 검사를 포함했습니다. 확인한 판본은 `bb8f1406`이며 아직 열려 있고 병합되지 않았습니다. PR의 64개 검사 통과는 Halldrix의 보고로 구분합니다.
+
+이전에 받은 정확한 수정본의 별도 가상 환경 검사와 현재 제출본의 실행 파일이 동일한지 확인하고, Zero가 [해당 커밋에 고정한 COMMENT 검토](https://github.com/NousResearch/hermes-agent/pull/122033#pullrequestreview-5312419768)를 남겼습니다. 이번 단계의 새 제품 실행검사는 없으며, 파일 내용이 같다는 것과 새 환경 전체를 재검증했다는 것은 다릅니다. 같은 네 번째 사례의 진행 상태를 갱신한 것이고, 구현·초기 검사는 ren2140eth, 제출·설명서·추가 검사는 Halldrix의 기여로 남깁니다.
 
 관련 협업을 제안할 때는 공개해도 되는 작은 재현 예시와 코드 버전, 기대한 결과와 실제 결과를 [이슈](https://github.com/YS-OH-CORE/second-paddle-notes/issues/new)에 남겨 주세요. 소개글의 설명보다 원문 답변, 코드, 검사 자료를 먼저 확인할 수 있도록 구성했습니다.
 
