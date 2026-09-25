@@ -1,0 +1,57 @@
+name: LangGraph disk checkpoint process restart
+'on':
+  push:
+    branches: [checks/langgraph-9072-restart-20260925]
+    paths: [.github/workflows/langgraph-9072-restart-20260925.yml]
+permissions: {}
+concurrency:
+  group: zero-lg9072-restart-20260925
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    env:
+      LANGCHAIN_TRACING_V2: 'false'
+      LANGSMITH_TRACING: 'false'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - name: Verify the protocol and run separate-process continuation
+        run: |
+          python3 -u - <<'PY'
+          import datetime,email.utils,hashlib,json,os,pathlib,subprocess,time,urllib.error,urllib.request
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-lg9072-restart'
+          root.mkdir(exist_ok=False)
+          bundle=root/'bundle';bundle.mkdir()
+          base='https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/9bde1d3afc7173f77e64e3f011d023068ca03a74/checks/langgraph-9072/restart/'
+          def fetch(name, expected):
+              for attempt in range(3):
+                  try:
+                      req=urllib.request.Request(base+name,headers={'User-Agent':'Zero-checkpoint-regression'})
+                      with urllib.request.urlopen(req,timeout=30) as response:
+                          data=response.read(100001)
+                      assert len(data)<=100000 and hashlib.sha256(data).hexdigest()==expected,name
+                      (bundle/name).write_bytes(data)
+                      time.sleep(2)
+                      return data
+                  except urllib.error.HTTPError as exc:
+                      if exc.code!=429 or attempt==2: raise
+                      delay=20*(attempt+1)
+                      raw=exc.headers.get('Retry-After')
+                      if raw:
+                          try: delay=max(delay,float(raw))
+                          except ValueError: delay=max(delay,(email.utils.parsedate_to_datetime(raw)-datetime.datetime.now(datetime.timezone.utc)).total_seconds())
+                      if delay>60: raise RuntimeError('Rate-limit wait exceeds bounded budget') from exc
+                      time.sleep(delay)
+          manifest=json.loads(fetch('MANIFEST.json','0b687c0c4da4351bb081731028f7693ea4b39bed0fe5c602eff62b86b28fa9d5'))
+          for name,expected in manifest.items(): fetch(name,expected)
+          subprocess.run(['python3','-u',str(bundle/'run_restart.py'),'--root',str(root/'run'),'--bundle',str(bundle)],check=True,timeout=650)
+          PY
+      - name: Preserve synthetic databases and every process observation
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: zero-langgraph-9072-restart-20260925
+          path: ${{ runner.temp }}/zero-lg9072-restart/run/output/
+          if-no-files-found: error
+          retention-days: 30
