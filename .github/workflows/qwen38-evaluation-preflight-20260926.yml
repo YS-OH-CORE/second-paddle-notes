@@ -1,0 +1,62 @@
+name: Current Qwen evaluation template preflight
+'on':
+  push:
+    branches: [checks/qwen38-evaluation-preflight-20260926]
+    paths: [.github/workflows/qwen38-evaluation-preflight-20260926.yml]
+permissions: {}
+concurrency:
+  group: zero-qwen38-evaluation-preflight-20260926
+  cancel-in-progress: false
+jobs:
+  preflight:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    env:
+      HF_HUB_DISABLE_TELEMETRY: '1'
+      HF_HUB_DISABLE_XET: '1'
+      TOKENIZERS_PARALLELISM: 'false'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - name: Fetch pinned probe and protocol
+        run: |
+          python3 -u - <<'PY'
+          import hashlib,os,pathlib,time,urllib.request
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-qwen38-preflight'
+          root.mkdir(exist_ok=False)
+          prefix='https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/5bdd5167670f7d8bcf749060cc9548230dba1319/checks/qwen38-evaluation-preflight/'
+          for name in ['probe.py','PROTOCOL.md']:
+              with urllib.request.urlopen(prefix+name,timeout=30) as response:
+                  data=response.read(100001)
+              assert len(data)<=100000
+              if name=='probe.py':
+                  assert hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()=='90e5ef986b4cabc7c6965fef1ea04a6f1eade567'
+              (root/name).write_bytes(data)
+              time.sleep(2)
+          PY
+      - name: Install pinned tokenizer environment
+        run: |
+          set -o pipefail
+          root="$RUNNER_TEMP/zero-qwen38-preflight"
+          python3 -m venv "$root/venv"
+          "$root/venv/bin/python" -m pip install --disable-pip-version-check transformers==5.17.0 2>&1 | tee "$root/install.log"
+          "$root/venv/bin/python" -m pip freeze --all > "$root/environment.txt"
+      - name: Resolve official assets and render bounded synthetic histories
+        run: |
+          set -o pipefail
+          root="$RUNNER_TEMP/zero-qwen38-preflight"
+          export HF_HOME="$root/cache"
+          "$root/venv/bin/python" -u "$root/probe.py" run --out "$root/results" 2>&1 | tee "$root/execution.log"
+      - name: Preserve exact assets and render results, never model weights
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: zero-qwen38-evaluation-preflight-20260926
+          path: |
+            ${{ runner.temp }}/zero-qwen38-preflight/probe.py
+            ${{ runner.temp }}/zero-qwen38-preflight/PROTOCOL.md
+            ${{ runner.temp }}/zero-qwen38-preflight/environment.txt
+            ${{ runner.temp }}/zero-qwen38-preflight/install.log
+            ${{ runner.temp }}/zero-qwen38-preflight/execution.log
+            ${{ runner.temp }}/zero-qwen38-preflight/results/
+          if-no-files-found: error
+          retention-days: 30
