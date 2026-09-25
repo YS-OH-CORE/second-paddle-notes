@@ -1,0 +1,17 @@
+{
+  "status": "secondary descriptive analysis, not separately preregistered primary outcome",
+  "source_rows": 288,
+  "model_calls": 0,
+  "display_order_only": {
+    "groups": 96,
+    "variants_per_group": 3,
+    "groups_with_semantic_choice_changes": 76,
+    "mean_within_group_margin_range": 2.163279930750529
+  },
+  "label_names_only": {
+    "groups": 96,
+    "variants_per_group": 3,
+    "groups_with_semantic_choice_changes": 60,
+    "mean_within_group_margin_range": 1.8793124755223591
+  }
+}

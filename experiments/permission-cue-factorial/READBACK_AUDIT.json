@@ -1,0 +1,25 @@
+{
+  "rows": 288,
+  "input_specification_exact": true,
+  "summary_exact": true,
+  "primary_metrics_recomputed_from_saved_logits": true,
+  "all_full_vocabulary_logits_retained": false,
+  "independent_replication": false,
+  "missing_row_detected": true,
+  "semantic_corruption_detected": true,
+  "weights_hash_matches_prior_pilot": true,
+  "exact_preexecution_code_and_protocol": true,
+  "schedule_complete_and_equal_length_batches": true,
+  "gold_labels_and_positions_each_96": true,
+  "baseline_prompt_evaluations": 288,
+  "singleton_replay_evaluations": 4,
+  "baseline_forward_calls": 72,
+  "full_vocabulary_checks": [
+    {"id": "garden-w1-uprivate-aprivate-m0-d0", "full_vocab_logits": 151936, "logsumexp_error": 0.0, "replay_max_difference": 1.2874603271484375e-05},
+    {"id": "garden-w0-uprivate-aprivate-m0-d0", "full_vocab_logits": 151936, "logsumexp_error": 0.0, "replay_max_difference": 1.621246337890625e-05},
+    {"id": "museum-w0-uprivate-aprivate-m0-d0", "full_vocab_logits": 151936, "logsumexp_error": 3.552713678800501e-15, "replay_max_difference": 1.2874603271484375e-05},
+    {"id": "museum-w1-uprivate-aprivate-m0-d0", "full_vocab_logits": 151936, "logsumexp_error": 0.0, "replay_max_difference": 1.4066696166992188e-05}
+  ],
+  "network_attempts_during_inference": 0,
+  "new_inference_in_readback": 0
+}

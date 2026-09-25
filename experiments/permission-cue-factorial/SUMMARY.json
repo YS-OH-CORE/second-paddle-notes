@@ -1,0 +1,57 @@
+{
+  "observations": 288,
+  "independent_content_scenarios": 2,
+  "correct": 178,
+  "accuracy": 0.6180555555555556,
+  "unconstrained_top_is_label": 288,
+  "label_probability_mass_min": 0.9849173894919989,
+  "label_probability_mass_median": 0.9988387603532944,
+  "predicted_labels": {"B": 104, "C": 81, "A": 103},
+  "predicted_display_positions": {"2": 119, "3": 120, "1": 49},
+  "by_agreement": {"agree": {"n": 144, "correct": 101}, "conflict": {"n": 144, "correct": 77}},
+  "by_scenario_wording": [
+    {"scenario": "museum", "wording": 1, "n": 72, "correct": 42},
+    {"scenario": "museum", "wording": 0, "n": 72, "correct": 44},
+    {"scenario": "garden", "wording": 1, "n": 72, "correct": 45},
+    {"scenario": "garden", "wording": 0, "n": 72, "correct": 47}
+  ],
+  "user_state_contrast": {
+    "pairs": 144, "mean_margin_change": 0.987821618715922,
+    "median_margin_change": 0.8318386077880859,
+    "min": -1.3832855224609375, "max": 4.521528244018555,
+    "positive_over_1e_4": 117, "negative_below_minus_1e_4": 27,
+    "semantic_choice_flips": 47, "both_answers_correct": 38,
+    "equal_length_pairs": 144, "one_token_difference_pairs": 144
+  },
+  "assistant_state_contrast": {
+    "pairs": 144, "mean_margin_change": 0.7902701828214858,
+    "median_margin_change": 0.6393098831176758,
+    "min": -0.8746013641357422, "max": 3.4130210876464844,
+    "positive_over_1e_4": 123, "negative_below_minus_1e_4": 21,
+    "semantic_choice_flips": 35, "both_answers_correct": 73,
+    "equal_length_pairs": 144, "one_token_difference_pairs": 144
+  },
+  "arrangement_sensitivity": {
+    "fixed_content_groups": 16, "arrangements_each": 18,
+    "groups_with_choice_changes": 16, "groups_correct_in_all_arrangements": 0,
+    "details": [
+      {"condition": ["museum", 1, "public", "public"], "correct": 12, "predictions": {"public": 12, "private": 5, "undecided": 1}},
+      {"condition": ["museum", 0, "private", "private"], "correct": 13, "predictions": {"private": 13, "undecided": 1, "public": 4}},
+      {"condition": ["garden", 1, "private", "public"], "correct": 11, "predictions": {"public": 6, "private": 11, "undecided": 1}},
+      {"condition": ["garden", 0, "private", "public"], "correct": 11, "predictions": {"public": 7, "private": 11}},
+      {"condition": ["museum", 0, "private", "public"], "correct": 9, "predictions": {"public": 9, "private": 9}},
+      {"condition": ["museum", 0, "public", "private"], "correct": 9, "predictions": {"public": 9, "private": 9}},
+      {"condition": ["museum", 1, "public", "private"], "correct": 10, "predictions": {"private": 8, "public": 10}},
+      {"condition": ["garden", 1, "public", "public"], "correct": 13, "predictions": {"public": 13, "private": 5}},
+      {"condition": ["garden", 0, "public", "private"], "correct": 8, "predictions": {"private": 10, "public": 8}},
+      {"condition": ["garden", 0, "private", "private"], "correct": 14, "predictions": {"private": 14, "public": 4}},
+      {"condition": ["garden", 1, "public", "private"], "correct": 10, "predictions": {"public": 10, "private": 8}},
+      {"condition": ["museum", 1, "private", "private"], "correct": 11, "predictions": {"public": 6, "private": 11, "undecided": 1}},
+      {"condition": ["garden", 1, "private", "private"], "correct": 11, "predictions": {"private": 11, "undecided": 1, "public": 6}},
+      {"condition": ["museum", 0, "public", "public"], "correct": 13, "predictions": {"private": 5, "public": 13}},
+      {"condition": ["museum", 1, "private", "public"], "correct": 9, "predictions": {"private": 9, "public": 9}},
+      {"condition": ["garden", 0, "public", "public"], "correct": 14, "predictions": {"private": 4, "public": 14}}
+    ]
+  },
+  "paraphrase": {"pairs": 144, "choice_changes": 13}
+}
