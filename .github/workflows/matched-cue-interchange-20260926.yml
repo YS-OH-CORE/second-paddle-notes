@@ -1,0 +1,78 @@
+name: Matched cue residual interchange
+'on':
+  push:
+    branches: [experiments/matched-cue-interchange-20260926]
+    paths: [.github/workflows/matched-cue-interchange-20260926.yml]
+permissions: {}
+concurrency:
+  group: zero-matched-cue-interchange-20260926
+  cancel-in-progress: false
+jobs:
+  study:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      HF_HUB_DISABLE_TELEMETRY: '1'
+      HF_HUB_DISABLE_XET: '1'
+      TOKENIZERS_PARALLELISM: 'false'
+      OMP_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - name: Fetch committed code and verify the locally prepared design
+        run: |
+          python3 -u - <<'PY'
+          import datetime,email.utils,hashlib,json,os,pathlib,subprocess,time,urllib.error,urllib.request
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-matched-cue'
+          root.mkdir(exist_ok=False)
+          evidence=root/'evidence';evidence.mkdir()
+          repo='https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/'
+          files={
+            'probe.py':('0fd12d5941971ee2574755508b69719fb4f01ecd/experiments/matched-cue-interchange/probe.py','68011813f83039e46041e21579f698e9d0dd1a4e209aaaf5a839d62a74fde4cc'),
+            'design.py':('bcdfc64626c723feb35b85f022b68298c80cc9e7/experiments/permission-cue-factorial/study.py','30a76e49011abb1dcb55df8be0ef6d43279541316b3cbef2e5fb6855490f6a63'),
+            'PROTOCOL.md':('0fd12d5941971ee2574755508b69719fb4f01ecd/experiments/matched-cue-interchange/PROTOCOL.md',None)}
+          hashes={}
+          for name,(path,expected) in files.items():
+            for attempt in range(3):
+              try:
+                with urllib.request.urlopen(repo+path,timeout=30) as r: data=r.read(100001)
+                assert len(data)<=100000
+                digest=hashlib.sha256(data).hexdigest()
+                if expected is not None: assert digest==expected,(name,digest)
+                (evidence/name).write_bytes(data);hashes[name]=digest
+                time.sleep(2);break
+              except urllib.error.HTTPError as e:
+                if e.code!=429 or attempt==2: raise
+                delay=20*(attempt+1);raw=e.headers.get('Retry-After')
+                if raw:
+                  try: delay=max(delay,float(raw))
+                  except ValueError: delay=max(delay,(email.utils.parsedate_to_datetime(raw)-datetime.datetime.now(datetime.timezone.utc)).total_seconds())
+                if delay>90: raise RuntimeError('Server wait exceeds bounded setup budget') from e
+                time.sleep(delay)
+          subprocess.run(['python3',str(evidence/'probe.py'),'prepare','--design',str(evidence/'design.py'),'--out',str(evidence/'prepared')],check=True,timeout=20)
+          for name,expected in {'inputs.json':'3f91031f7f024496e879aa1ba79b693f4f78d6fac19d3648cabef12a010c3241','plans.json':'495e1e111ca85e90ffa2c35b10015e3a925496e036eeb8fad5ba32dccd0bc319'}.items():
+            assert hashlib.sha256((evidence/'prepared'/name).read_bytes()).hexdigest()==expected
+          (evidence/'PROVENANCE.json').write_text(json.dumps({'run_id':os.environ['GITHUB_RUN_ID'],'workflow_commit':os.environ['GITHUB_SHA'],'code_commit':'0fd12d5941971ee2574755508b69719fb4f01ecd','file_hashes':hashes},indent=2)+'\n')
+          PY
+      - name: Install pinned CPU model stack
+        run: |
+          set -o pipefail
+          root="$RUNNER_TEMP/zero-matched-cue"
+          python3 -m venv "$root/venv"
+          "$root/venv/bin/python" -m pip install --disable-pip-version-check --index-url https://download.pytorch.org/whl/cpu torch==2.6.0 2>&1 | tee "$root/evidence/torch-install.log"
+          "$root/venv/bin/python" -m pip install --disable-pip-version-check transformers==4.51.3 huggingface-hub==0.30.2 tokenizers==0.21.1 safetensors==0.5.3 numpy==2.2.4 2>&1 | tee "$root/evidence/stack-install.log"
+          "$root/venv/bin/python" -m pip freeze --all > "$root/evidence/environment.txt"
+      - name: Execute baseline and intervention plan with offline audit
+        run: |
+          set -o pipefail
+          root="$RUNNER_TEMP/zero-matched-cue"
+          export HF_HOME="$root/hf-cache"
+          "$root/venv/bin/python" -u "$root/evidence/probe.py" run --design "$root/evidence/design.py" --out "$root/evidence/results" 2>&1 | tee "$root/evidence/execution.log"
+      - name: Preserve residuals, readout vectors and every observation without model weights
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: zero-matched-cue-interchange-20260926
+          path: ${{ runner.temp }}/zero-matched-cue/evidence/
+          if-no-files-found: error
+          retention-days: 30
