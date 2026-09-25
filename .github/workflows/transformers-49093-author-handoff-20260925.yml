@@ -1,0 +1,44 @@
+name: Requested Transformers regression portability
+'on':
+  push:
+    branches: [checks/transformers-49093-author-handoff-20260925]
+    paths: [.github/workflows/transformers-49093-author-handoff-20260925.yml]
+permissions: {}
+concurrency:
+  group: zero-transformers-requested-test-portability-20260925
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Verify existing patch on three immutable source snapshots
+        run: |
+          python3 -u - <<'PY'
+          import hashlib,json,os,pathlib,subprocess,sys,urllib.request
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-tf-author-handoff'
+          root.mkdir(exist_ok=False)
+          source='https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/36573abbbe18f6e2de6f3ff6b5c1af2abe6a94d7/checks/transformers-49093/author-handoff/verify_portability.py'
+          with urllib.request.urlopen(source,timeout=25) as response:
+              data=response.read(100001)
+          assert hashlib.sha256(data).hexdigest()=='5649ca63212d9f0670c8c02f1ed3141941e5454396a4304c6785160c19056eb1'
+          script=root/'verify_portability.py';script.write_bytes(data)
+          output=root/'output'
+          result=subprocess.run([sys.executable,'-u',str(script),'--out',str(output)],capture_output=True,text=True,timeout=220)
+          output.mkdir(exist_ok=True)
+          (output/'verify_portability.py').write_bytes(data)
+          (output/'execution.log').write_text(result.stdout+'\nSTDERR\n'+result.stderr,encoding='utf-8')
+          (output/'RUN.json').write_text(json.dumps({'run_id':os.environ['GITHUB_RUN_ID'],'workflow_commit':os.environ['GITHUB_SHA'],'script_commit':'36573abbbe18f6e2de6f3ff6b5c1af2abe6a94d7','new_pytest_runs':0,'new_model_calls':0},indent=2)+'\n')
+          with urllib.request.urlopen('https://raw.githubusercontent.com/huggingface/transformers/6e4bcc5db795e369f900a00da304bfdeaeee5ac5/LICENSE',timeout=25) as response:
+              (output/'LICENSE.upstream').write_bytes(response.read(100001))
+          print(result.stdout+result.stderr,flush=True)
+          result.check_returncode()
+          PY
+      - name: Retain sources, patch and exact application results
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: zero-transformers-49093-author-handoff-20260925
+          path: ${{ runner.temp }}/zero-tf-author-handoff/output/
+          if-no-files-found: error
+          retention-days: 30
