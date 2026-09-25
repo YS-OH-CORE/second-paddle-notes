@@ -1,0 +1,15 @@
+{
+  "artifact_sha256": "eb4a3a31e96196750e55126cdbcbdb59d96bb08ebd5571d0156331e54c035e7c",
+  "artifact_bytes": 74082,
+  "log_equals_report": true,
+  "executed_script_equals_prepared_script": true,
+  "new_pytest_runs": 0,
+  "new_model_calls": 0,
+  "local_patch_application_rechecks": [
+    {"snapshot": "original_tested_base", "exact_byte_match": true},
+    {"snapshot": "closed_pr_snapshot", "exact_byte_match": true},
+    {"snapshot": "current_main_at_check", "exact_byte_match": true}
+  ],
+  "independent_runtime_replication": false,
+  "current_test_module_equals_original_tested_base": true
+}

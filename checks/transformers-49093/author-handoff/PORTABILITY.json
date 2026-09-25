@@ -1,0 +1,44 @@
+{
+  "created_utc": "2026-09-25T14:37:59.413155+00:00",
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "kind": "patch_application_and_AST_only",
+  "new_pytest_runs": 0,
+  "new_model_calls": 0,
+  "rows": [
+    {
+      "snapshot": "original_tested_base",
+      "commit": "89b6b17574892ec0770551537a3fe69d6886703e",
+      "original_blob": "baa9a5e5133f91fd9ec974d37b92df5af6071d56",
+      "patch_applies": true,
+      "added_method_ast_sha256": "b37ccd84ac76d052714007358a6d421645d865af049a5ef2c2cf41012b0d5556",
+      "only_requested_method_and_imports_added": true,
+      "patched_blob": "3d7a4b22563fb0219b056a1e8f325123a5c4c9a9",
+      "patched_sha256": "7023211fa9f9cf13dd18c2e1b14f065e87312b5b4b1ce83a18464e515f6f1119"
+    },
+    {
+      "snapshot": "closed_pr_snapshot",
+      "commit": "e435677fb9981b3f2bfc7abeaabcb394e47c29e2",
+      "original_blob": "baa9a5e5133f91fd9ec974d37b92df5af6071d56",
+      "patch_applies": true,
+      "added_method_ast_sha256": "b37ccd84ac76d052714007358a6d421645d865af049a5ef2c2cf41012b0d5556",
+      "only_requested_method_and_imports_added": true,
+      "patched_blob": "3d7a4b22563fb0219b056a1e8f325123a5c4c9a9",
+      "patched_sha256": "7023211fa9f9cf13dd18c2e1b14f065e87312b5b4b1ce83a18464e515f6f1119"
+    },
+    {
+      "snapshot": "current_main_at_check",
+      "commit": "6e4bcc5db795e369f900a00da304bfdeaeee5ac5",
+      "original_blob": "baa9a5e5133f91fd9ec974d37b92df5af6071d56",
+      "patch_applies": true,
+      "added_method_ast_sha256": "b37ccd84ac76d052714007358a6d421645d865af049a5ef2c2cf41012b0d5556",
+      "only_requested_method_and_imports_added": true,
+      "patched_blob": "3d7a4b22563fb0219b056a1e8f325123a5c4c9a9",
+      "patched_sha256": "7023211fa9f9cf13dd18c2e1b14f065e87312b5b4b1ce83a18464e515f6f1119"
+    }
+  ],
+  "completed": true,
+  "patch_blob": "1ea87d51267bfef91186ad94bbe702582b98de60",
+  "patch_sha256": "1538319d621789142fd1f0bb450e4dec4a573bbfe18036b25840ec191a7c11ff",
+  "all_patch_checks_pass": true,
+  "same_test_method_all_snapshots": true
+}
