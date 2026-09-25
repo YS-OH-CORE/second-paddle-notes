@@ -1,0 +1,58 @@
+name: LangGraph portable pytest regression pack
+'on':
+  push:
+    branches: [checks/langgraph-9072-pytest-20260925]
+    paths: [.github/workflows/langgraph-9072-pytest-20260925.yml]
+permissions: {}
+concurrency:
+  group: zero-lg9072-pytest-20260925
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    env:
+      LANGGRAPH_TEST_FAST: 'true'
+      LANGCHAIN_TRACING_V2: 'false'
+      LANGSMITH_TRACING: 'false'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - name: Verify bundle and run both unchanged and regression test files
+        run: |
+          python3 -u - <<'PY'
+          import datetime,email.utils,hashlib,json,os,pathlib,subprocess,time,urllib.request,urllib.error
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-lg9072-pytest'
+          root.mkdir(exist_ok=False)
+          bundle=root/'bundle';bundle.mkdir()
+          base='https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/f871ce58088b129b4c495c538edecc4a9407dd7a/checks/langgraph-9072/pytest-pack/'
+          def fetch(name, expected):
+              for attempt in range(3):
+                  try:
+                      req=urllib.request.Request(base+name,headers={'User-Agent':'Zero-regression-pack'})
+                      with urllib.request.urlopen(req,timeout=30) as response:
+                          data=response.read(100001)
+                      assert len(data)<=100000 and hashlib.sha256(data).hexdigest()==expected
+                      (bundle/name).write_bytes(data)
+                      time.sleep(2)
+                      return data
+                  except urllib.error.HTTPError as exc:
+                      if exc.code!=429 or attempt==2: raise
+                      delay=20*(attempt+1)
+                      raw=exc.headers.get('Retry-After')
+                      if raw:
+                          try: delay=max(delay,float(raw))
+                          except ValueError: delay=max(delay,(email.utils.parsedate_to_datetime(raw)-datetime.datetime.now(datetime.timezone.utc)).total_seconds())
+                      if delay>60: raise RuntimeError('Rate-limit wait exceeds bounded download budget') from exc
+                      time.sleep(delay)
+          manifest=json.loads(fetch('MANIFEST.json','198d7a9c724a2908ed874a36342a990a6fca9a8951a6402ed38bfc6e3139d017'))
+          for name,expected in manifest.items(): fetch(name,expected)
+          subprocess.run(['python3','-u',str(bundle/'run_pack.py'),'--root',str(root/'run'),'--bundle',str(bundle)],check=True,timeout=650)
+          PY
+      - name: Retain tested patch, full JUnit, failures and source identities
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: zero-langgraph-9072-pytest-20260925
+          path: ${{ runner.temp }}/zero-lg9072-pytest/run/output/
+          if-no-files-found: error
+          retention-days: 30
