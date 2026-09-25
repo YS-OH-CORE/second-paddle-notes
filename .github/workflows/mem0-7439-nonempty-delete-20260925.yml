@@ -1,0 +1,73 @@
+name: Nonempty listing and deletion contract
+'on':
+  push:
+    branches: [ops/mem0-7439-nonempty-delete-20260925]
+    paths: [.github/workflows/mem0-7439-nonempty-delete-20260925.yml]
+permissions: {}
+concurrency:
+  group: zero-mem0-7439-nonempty-20260925
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - name: Real FAISS nonempty and empty controls without model requests
+        run: |
+          python3 -B -u - <<'PY'
+          import hashlib,json,os,pathlib,shutil,subprocess,urllib.request
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-mem0-nonempty'
+          root.mkdir(exist_ok=False)
+          src=root/'source';src.mkdir();out=root/'output';out.mkdir();home=root/'home';home.mkdir()
+          env={'PATH':os.environ['PATH'],'HOME':str(home),'LANG':'C.UTF-8','PYTHONDONTWRITEBYTECODE':'1',
+            'HATCH_DATA_DIR':str(root/'hatch-data'),'MEM0_TELEMETRY':'False','PIP_DISABLE_PIP_VERSION_CHECK':'1',
+            'LANGSMITH_TRACING':'false','LANGCHAIN_TRACING_V2':'false','OMP_NUM_THREADS':'1'}
+          def call(args,timeout=60):
+              p=subprocess.run(list(map(str,args)),cwd=src,env=env,text=True,capture_output=True,timeout=timeout)
+              with (out/'execution.log').open('a',encoding='utf-8') as f:
+                  f.write('COMMAND '+str(args)+'\n'+p.stdout+'\n'+p.stderr+'\n')
+              print(p.stdout[-28000:]+p.stderr[-8000:],flush=True)
+              p.check_returncode()
+              return p.stdout
+          ref='989c7da0fc8e4df6342dbb8c448af9816d60d24c'
+          call(['git','init','-q'])
+          call(['git','fetch','--depth=1','https://github.com/mem0ai/mem0.git',ref],90)
+          call(['git','checkout','--detach','FETCH_HEAD'])
+          assert call(['git','rev-parse','HEAD']).strip()==ref
+          shutil.copyfile(src/'LICENSE',out/'MEM0_LICENSE')
+          # Bootstrap Hatch only; project and fixture dependencies are managed by Hatch.
+          call(['python3','-m','venv',root/'bootstrap'])
+          call([root/'bootstrap/bin/python','-m','pip','install','hatch'],90)
+          hatch=root/'bootstrap/bin/hatch'
+          (out/'hatch-version.txt').write_text(call([hatch,'--version']))
+          pyproject=src/'pyproject.toml';original=pyproject.read_bytes()
+          addition='\n[tool.hatch.envs.zero7439]\ntemplate = "zero7439"\ndependencies = ["langchain-community==0.4.2", "faiss-cpu==1.15.1"]\n'
+          assert b'[tool.hatch.envs.zero7439]' not in original
+          pyproject.write_bytes(original+addition.encode())
+          (out/'hatch-environment-added.toml').write_text(addition)
+          script_ref='ead3fb5725fea68bb1a6b086941c0fff41ed0da0'
+          url=f'https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/{script_ref}/checks/mem0-7439/check_nonempty_delete.py'
+          with urllib.request.urlopen(url,timeout=25) as r:data=r.read(30000)
+          assert hashlib.sha256(data).hexdigest()=='3807ea76eb37f7eba35881f48bdf36129149831eeb4ea257ad8c22df93764899'
+          script=out/'check_nonempty_delete.py';script.write_bytes(data)
+          (out/'metadata.json').write_text(json.dumps({'source_commit':ref,'run_id':os.environ['GITHUB_RUN_ID'],
+            'workflow_commit':os.environ['GITHUB_SHA'],'script_commit':script_ref,
+            'script_sha256':hashlib.sha256(data).hexdigest()},indent=2))
+          try:
+              call([hatch,'env','create','zero7439'],240)
+              versions="import importlib.metadata as m; print('\\n'.join(sorted(f'{d.metadata[\"Name\"]}=={d.version}' for d in m.distributions())))"
+              (out/'environment.txt').write_text(call([hatch,'run','zero7439:python','-c',versions]))
+              call([hatch,'run','zero7439:python','-B','-u',script,'--repo',src,'--out',out/'results'],190)
+          finally:
+              pyproject.write_bytes(original)
+          assert call(['git','diff','--exit-code']).strip()==''
+          PY
+      - name: Preserve code, variants, synthetic records and original output
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: zero-mem0-7439-nonempty-20260925
+          path: ${{ runner.temp }}/zero-mem0-nonempty/output/
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 6
