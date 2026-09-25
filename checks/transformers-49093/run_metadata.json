@@ -1,0 +1,8 @@
+{
+  "run_id": "36093567053",
+  "workflow_commit": "7b8aa10b6e1e28fee60a8a21615e546df5a3f41b",
+  "checker_commit": "e4b0b94dee479dfdf2bc24008f11105652fbd089",
+  "checker_sha256": "218e4dcb5b41b92d24396ec4dae527710af42a325c0f6f482463ab0254986d22",
+  "upstream_commit": "89b6b17574892ec0770551537a3fe69d6886703e",
+  "source_blob": "7ff6a32c026efb139cc89996e07181f141cce971"
+}

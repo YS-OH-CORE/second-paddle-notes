@@ -1,0 +1,2135 @@
+{
+  "source_commit": "89b6b17574892ec0770551537a3fe69d6886703e",
+  "source_git_blob": "7ff6a32c026efb139cc89996e07181f141cce971",
+  "source_sha256": "74401e23ae7c4124e1efd085153c0d555e78b99dd87e5afd087b5b2a94e4d369",
+  "checker_sha256": "218e4dcb5b41b92d24396ec4dae527710af42a325c0f6f482463ab0254986d22",
+  "issue": "https://github.com/huggingface/transformers/issues/49093",
+  "original_diagnosis_and_candidate_fixes": "lucaluo925",
+  "supplemental_checking": "Zero, AI assistant collaborating with Youngseok Oh",
+  "execution_kind": "complete actual package modules, actual CPU PyTorch; synthetic score fixtures",
+  "new_model_inference_passes": 0,
+  "network_attempts_during_checks": 0,
+  "python": "3.12.3",
+  "transformers": "5.18.0.dev0",
+  "versions": {
+    "torch": "2.6.0+cpu",
+    "transformers": "5.18.0.dev0",
+    "numpy": "2.5.3",
+    "huggingface-hub": "1.33.0",
+    "tokenizers": "0.23.2",
+    "safetensors": "0.8.0"
+  },
+  "direct_url": "{\"archive_info\": {\"hash\": \"sha256=df104ab38c9154d6129cfe8f36a2ba5b0cfcd1c455aada3d965b310b51a78c76\", \"hashes\": {\"sha256\": \"df104ab38c9154d6129cfe8f36a2ba5b0cfcd1c455aada3d965b310b51a78c76\"}}, \"url\": \"https://github.com/huggingface/transformers/archive/89b6b17574892ec0770551537a3fe69d6886703e.zip\"}",
+  "case_counts": {
+    "original": {
+      "passed": 5,
+      "total": 10
+    },
+    "zero_only": {
+      "passed": 7,
+      "total": 10
+    },
+    "prefix_only": {
+      "passed": 7,
+      "total": 10
+    },
+    "both": {
+      "passed": 10,
+      "total": 10
+    }
+  },
+  "all_outcomes_match_predicted_matrix": true,
+  "rows": [
+    {
+      "variant": "original",
+      "case": "zero_unigram_empty",
+      "requirement": "A",
+      "passed": false,
+      "error_type": "ValueError",
+      "error": "Each element in `sequence_bias` has to be a non-empty list of lists of positive integers and float, but is [[[0], -1.25]].",
+      "comparisons": [
+        {
+          "input_ids": [
+            [],
+            []
+          ],
+          "expected": [
+            [
+              -1.25,
+              0.25,
+              0.5,
+              0.75,
+              1.0,
+              1.25
+            ],
+            [
+              0.25,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ],
+          "actual": [
+            [
+              -1.25,
+              0.25,
+              0.5,
+              0.75,
+              1.0,
+              1.25
+            ],
+            [
+              0.25,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ]
+        }
+      ],
+      "expected_pass": false,
+      "matches_expected": true
+    },
+    {
+      "variant": "original",
+      "case": "zero_unigram_config",
+      "requirement": "A",
+      "passed": false,
+      "error_type": "ValueError",
+      "error": "Each element in `sequence_bias` has to be a non-empty list of lists of positive integers and float, but is [[[0], 0.75]].",
+      "round_trip_sequence_bias": [
+        [
+          [
+            0
+          ],
+          0.75
+        ]
+      ],
+      "expected_pass": false,
+      "matches_expected": true
+    },
+    {
+      "variant": "original",
+      "case": "complete_prefix_additive",
+      "requirement": "B",
+      "passed": false,
+      "error_type": "AssertionError",
+      "error": "full output tensor differs",
+      "comparisons": [
+        {
+          "input_ids": [
+            [
+              1,
+              3
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              3,
+              1
+            ]
+          ],
+          "expected": [
+            [
+              0.0,
+              0.25,
+              0.5,
+              0.75,
+              -0.25,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.0,
+              2.25,
+              3.25,
+              2.75
+            ],
+            [
+              3.0,
+              3.25,
+              3.5,
+              3.75,
+              4.25,
+              4.25
+            ]
+          ],
+          "actual": [
+            [
+              0.0,
+              0.25,
+              0.5,
+              0.75,
+              1.75,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.0,
+              2.25,
+              3.25,
+              2.75
+            ],
+            [
+              3.0,
+              3.25,
+              3.5,
+              3.75,
+              4.25,
+              4.25
+            ]
+          ]
+        }
+      ],
+      "expected_pass": false,
+      "matches_expected": true
+    },
+    {
+      "variant": "original",
+      "case": "complete_prefix_badwords_eos",
+      "requirement": "B",
+      "passed": false,
+      "error_type": "AssertionError",
+      "error": "full output tensor differs",
+      "comparisons": [
+        {
+          "input_ids": [
+            [
+              3
+            ],
+            [
+              2
+            ]
+          ],
+          "expected": [
+            [
+              0.0,
+              0.25,
+              0.5,
+              0.75,
+              "-inf",
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ],
+          "actual": [
+            [
+              0.0,
+              0.25,
+              0.5,
+              0.75,
+              1.0,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ]
+        }
+      ],
+      "expected_pass": false,
+      "matches_expected": true
+    },
+    {
+      "variant": "original",
+      "case": "zero_prefix_config_joint",
+      "requirement": "A+B",
+      "passed": false,
+      "error_type": "ValueError",
+      "error": "Each element in `sequence_bias` has to be a non-empty list of lists of positive integers and float, but is [[[0, 4], -2.5]].",
+      "round_trip_sequence_bias": [
+        [
+          [
+            0,
+            4
+          ],
+          -2.5
+        ]
+      ],
+      "expected_pass": false,
+      "matches_expected": true
+    },
+    {
+      "variant": "original",
+      "case": "insufficient_prefix_control",
+      "requirement": "control",
+      "passed": true,
+      "comparisons": [
+        {
+          "input_ids": [
+            [
+              3
+            ],
+            [
+              1
+            ]
+          ],
+          "expected": [
+            [
+              0.0,
+              0.25,
+              0.5,
+              0.75,
+              1.0,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ],
+          "actual": [
+            [
+              0.0,
+              0.25,
+              0.5,
+              0.75,
+              1.0,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ]
+        },
+        {
+          "input_ids": [
+            [],
+            []
+          ],
+          "expected": [
+            [
+              0.0,
+              0.25,
+              0.75,
+              0.75,
+              1.0,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.25,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ],
+          "actual": [
+            [
+              0.0,
+              0.25,
+              0.75,
+              0.75,
+              1.0,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.25,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ]
+        }
+      ],
+      "expected_pass": true,
+      "matches_expected": true
+    },
+    {
+      "variant": "original",
+      "case": "longer_context_control",
+      "requirement": "control",
+      "passed": true,
+      "comparisons": [
+        {
+          "input_ids": [
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              2
+            ]
+          ],
+          "expected": [
+            [
+              0.0,
+              0.25,
+              0.5,
+              0.75,
+              -1.5,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ],
+          "actual": [
+            [
+              0.0,
+              0.25,
+              0.5,
+              0.75,
+              -1.5,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ]
+        }
+      ],
+      "expected_pass": true,
+      "matches_expected": true
+    },
+    {
+      "variant": "original",
+      "case": "negative_id_control",
+      "requirement": "control",
+      "passed": true,
+      "expected_pass": true,
+      "matches_expected": true
+    },
+    {
+      "variant": "original",
+      "case": "out_of_vocabulary_control",
+      "requirement": "control",
+      "passed": true,
+      "expected_pass": true,
+      "matches_expected": true
+    },
+    {
+      "variant": "original",
+      "case": "nonzero_unigram_control",
+      "requirement": "control",
+      "passed": true,
+      "comparisons": [
+        {
+          "input_ids": [
+            [
+              3
+            ],
+            [
+              1
+            ]
+          ],
+          "expected": [
+            [
+              0.0,
+              0.25,
+              1.0,
+              0.75,
+              -0.25,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.5,
+              2.25,
+              1.25,
+              2.75
+            ]
+          ],
+          "actual": [
+            [
+              0.0,
+              0.25,
+              1.0,
+              0.75,
+              -0.25,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.5,
+              2.25,
+              1.25,
+              2.75
+            ]
+          ]
+        }
+      ],
+      "expected_pass": true,
+      "matches_expected": true
+    },
+    {
+      "variant": "zero_only",
+      "case": "zero_unigram_empty",
+      "requirement": "A",
+      "passed": true,
+      "comparisons": [
+        {
+          "input_ids": [
+            [],
+            []
+          ],
+          "expected": [
+            [
+              -1.25,
+              0.25,
+              0.5,
+              0.75,
+              1.0,
+              1.25
+            ],
+            [
+              0.25,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ],
+          "actual": [
+            [
+              -1.25,
+              0.25,
+              0.5,
+              0.75,
+              1.0,
+              1.25
+            ],
+            [
+              0.25,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ]
+        },
+        {
+          "input_ids": [
+            [],
+            []
+          ],
+          "expected": [
+            [
+              -1.25,
+              0.25,
+              0.5,
+              0.75,
+              1.0,
+              1.25
+            ],
+            [
+              0.25,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ],
+          "actual": [
+            [
+              -1.25,
+              0.25,
+              0.5,
+              0.75,
+              1.0,
+              1.25
+            ],
+            [
+              0.25,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ]
+        }
+      ],
+      "expected_pass": true,
+      "matches_expected": true
+    },
+    {
+      "variant": "zero_only",
+      "case": "zero_unigram_config",
+      "requirement": "A",
+      "passed": true,
+      "round_trip_sequence_bias": [
+        [
+          [
+            0
+          ],
+          0.75
+        ]
+      ],
+      "comparisons": [
+        {
+          "input_ids": [
+            [
+              1
+            ],
+            [
+              3
+            ]
+          ],
+          "expected": [
+            [
+              0.75,
+              0.25,
+              0.5,
+              0.75,
+              1.0,
+              1.25
+            ],
+            [
+              2.25,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ],
+          "actual": [
+            [
+              0.75,
+              0.25,
+              0.5,
+              0.75,
+              1.0,
+              1.25
+            ],
+            [
+              2.25,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ]
+        }
+      ],
+      "expected_pass": true,
+      "matches_expected": true
+    },
+    {
+      "variant": "zero_only",
+      "case": "complete_prefix_additive",
+      "requirement": "B",
+      "passed": false,
+      "error_type": "AssertionError",
+      "error": "full output tensor differs",
+      "comparisons": [
+        {
+          "input_ids": [
+            [
+              1,
+              3
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              3,
+              1
+            ]
+          ],
+          "expected": [
+            [
+              0.0,
+              0.25,
+              0.5,
+              0.75,
+              -0.25,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.0,
+              2.25,
+              3.25,
+              2.75
+            ],
+            [
+              3.0,
+              3.25,
+              3.5,
+              3.75,
+              4.25,
+              4.25
+            ]
+          ],
+          "actual": [
+            [
+              0.0,
+              0.25,
+              0.5,
+              0.75,
+              1.75,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.0,
+              2.25,
+              3.25,
+              2.75
+            ],
+            [
+              3.0,
+              3.25,
+              3.5,
+              3.75,
+              4.25,
+              4.25
+            ]
+          ]
+        }
+      ],
+      "expected_pass": false,
+      "matches_expected": true
+    },
+    {
+      "variant": "zero_only",
+      "case": "complete_prefix_badwords_eos",
+      "requirement": "B",
+      "passed": false,
+      "error_type": "AssertionError",
+      "error": "full output tensor differs",
+      "comparisons": [
+        {
+          "input_ids": [
+            [
+              3
+            ],
+            [
+              2
+            ]
+          ],
+          "expected": [
+            [
+              0.0,
+              0.25,
+              0.5,
+              0.75,
+              "-inf",
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ],
+          "actual": [
+            [
+              0.0,
+              0.25,
+              0.5,
+              0.75,
+              1.0,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ]
+        }
+      ],
+      "expected_pass": false,
+      "matches_expected": true
+    },
+    {
+      "variant": "zero_only",
+      "case": "zero_prefix_config_joint",
+      "requirement": "A+B",
+      "passed": false,
+      "error_type": "AssertionError",
+      "error": "full output tensor differs",
+      "round_trip_sequence_bias": [
+        [
+          [
+            0,
+            4
+          ],
+          -2.5
+        ]
+      ],
+      "comparisons": [
+        {
+          "input_ids": [
+            [
+              0
+            ],
+            [
+              3
+            ]
+          ],
+          "expected": [
+            [
+              0.0,
+              0.25,
+              0.5,
+              0.75,
+              -1.5,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ],
+          "actual": [
+            [
+              0.0,
+              0.25,
+              0.5,
+              0.75,
+              1.0,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ]
+        }
+      ],
+      "expected_pass": false,
+      "matches_expected": true
+    },
+    {
+      "variant": "zero_only",
+      "case": "insufficient_prefix_control",
+      "requirement": "control",
+      "passed": true,
+      "comparisons": [
+        {
+          "input_ids": [
+            [
+              3
+            ],
+            [
+              1
+            ]
+          ],
+          "expected": [
+            [
+              0.0,
+              0.25,
+              0.5,
+              0.75,
+              1.0,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ],
+          "actual": [
+            [
+              0.0,
+              0.25,
+              0.5,
+              0.75,
+              1.0,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ]
+        },
+        {
+          "input_ids": [
+            [],
+            []
+          ],
+          "expected": [
+            [
+              0.0,
+              0.25,
+              0.75,
+              0.75,
+              1.0,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.25,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ],
+          "actual": [
+            [
+              0.0,
+              0.25,
+              0.75,
+              0.75,
+              1.0,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.25,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ]
+        }
+      ],
+      "expected_pass": true,
+      "matches_expected": true
+    },
+    {
+      "variant": "zero_only",
+      "case": "longer_context_control",
+      "requirement": "control",
+      "passed": true,
+      "comparisons": [
+        {
+          "input_ids": [
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              2
+            ]
+          ],
+          "expected": [
+            [
+              0.0,
+              0.25,
+              0.5,
+              0.75,
+              -1.5,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ],
+          "actual": [
+            [
+              0.0,
+              0.25,
+              0.5,
+              0.75,
+              -1.5,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ]
+        }
+      ],
+      "expected_pass": true,
+      "matches_expected": true
+    },
+    {
+      "variant": "zero_only",
+      "case": "negative_id_control",
+      "requirement": "control",
+      "passed": true,
+      "expected_pass": true,
+      "matches_expected": true
+    },
+    {
+      "variant": "zero_only",
+      "case": "out_of_vocabulary_control",
+      "requirement": "control",
+      "passed": true,
+      "expected_pass": true,
+      "matches_expected": true
+    },
+    {
+      "variant": "zero_only",
+      "case": "nonzero_unigram_control",
+      "requirement": "control",
+      "passed": true,
+      "comparisons": [
+        {
+          "input_ids": [
+            [
+              3
+            ],
+            [
+              1
+            ]
+          ],
+          "expected": [
+            [
+              0.0,
+              0.25,
+              1.0,
+              0.75,
+              -0.25,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.5,
+              2.25,
+              1.25,
+              2.75
+            ]
+          ],
+          "actual": [
+            [
+              0.0,
+              0.25,
+              1.0,
+              0.75,
+              -0.25,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.5,
+              2.25,
+              1.25,
+              2.75
+            ]
+          ]
+        }
+      ],
+      "expected_pass": true,
+      "matches_expected": true
+    },
+    {
+      "variant": "prefix_only",
+      "case": "zero_unigram_empty",
+      "requirement": "A",
+      "passed": false,
+      "error_type": "ValueError",
+      "error": "Each element in `sequence_bias` has to be a non-empty list of lists of positive integers and float, but is [[[0], -1.25]].",
+      "comparisons": [
+        {
+          "input_ids": [
+            [],
+            []
+          ],
+          "expected": [
+            [
+              -1.25,
+              0.25,
+              0.5,
+              0.75,
+              1.0,
+              1.25
+            ],
+            [
+              0.25,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ],
+          "actual": [
+            [
+              -1.25,
+              0.25,
+              0.5,
+              0.75,
+              1.0,
+              1.25
+            ],
+            [
+              0.25,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ]
+        }
+      ],
+      "expected_pass": false,
+      "matches_expected": true
+    },
+    {
+      "variant": "prefix_only",
+      "case": "zero_unigram_config",
+      "requirement": "A",
+      "passed": false,
+      "error_type": "ValueError",
+      "error": "Each element in `sequence_bias` has to be a non-empty list of lists of positive integers and float, but is [[[0], 0.75]].",
+      "round_trip_sequence_bias": [
+        [
+          [
+            0
+          ],
+          0.75
+        ]
+      ],
+      "expected_pass": false,
+      "matches_expected": true
+    },
+    {
+      "variant": "prefix_only",
+      "case": "complete_prefix_additive",
+      "requirement": "B",
+      "passed": true,
+      "comparisons": [
+        {
+          "input_ids": [
+            [
+              1,
+              3
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              3,
+              1
+            ]
+          ],
+          "expected": [
+            [
+              0.0,
+              0.25,
+              0.5,
+              0.75,
+              -0.25,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.0,
+              2.25,
+              3.25,
+              2.75
+            ],
+            [
+              3.0,
+              3.25,
+              3.5,
+              3.75,
+              4.25,
+              4.25
+            ]
+          ],
+          "actual": [
+            [
+              0.0,
+              0.25,
+              0.5,
+              0.75,
+              -0.25,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.0,
+              2.25,
+              3.25,
+              2.75
+            ],
+            [
+              3.0,
+              3.25,
+              3.5,
+              3.75,
+              4.25,
+              4.25
+            ]
+          ]
+        }
+      ],
+      "expected_pass": true,
+      "matches_expected": true
+    },
+    {
+      "variant": "prefix_only",
+      "case": "complete_prefix_badwords_eos",
+      "requirement": "B",
+      "passed": true,
+      "comparisons": [
+        {
+          "input_ids": [
+            [
+              3
+            ],
+            [
+              2
+            ]
+          ],
+          "expected": [
+            [
+              0.0,
+              0.25,
+              0.5,
+              0.75,
+              "-inf",
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ],
+          "actual": [
+            [
+              0.0,
+              0.25,
+              0.5,
+              0.75,
+              "-inf",
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ]
+        }
+      ],
+      "expected_pass": true,
+      "matches_expected": true
+    },
+    {
+      "variant": "prefix_only",
+      "case": "zero_prefix_config_joint",
+      "requirement": "A+B",
+      "passed": false,
+      "error_type": "ValueError",
+      "error": "Each element in `sequence_bias` has to be a non-empty list of lists of positive integers and float, but is [[[0, 4], -2.5]].",
+      "round_trip_sequence_bias": [
+        [
+          [
+            0,
+            4
+          ],
+          -2.5
+        ]
+      ],
+      "expected_pass": false,
+      "matches_expected": true
+    },
+    {
+      "variant": "prefix_only",
+      "case": "insufficient_prefix_control",
+      "requirement": "control",
+      "passed": true,
+      "comparisons": [
+        {
+          "input_ids": [
+            [
+              3
+            ],
+            [
+              1
+            ]
+          ],
+          "expected": [
+            [
+              0.0,
+              0.25,
+              0.5,
+              0.75,
+              1.0,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ],
+          "actual": [
+            [
+              0.0,
+              0.25,
+              0.5,
+              0.75,
+              1.0,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ]
+        },
+        {
+          "input_ids": [
+            [],
+            []
+          ],
+          "expected": [
+            [
+              0.0,
+              0.25,
+              0.75,
+              0.75,
+              1.0,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.25,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ],
+          "actual": [
+            [
+              0.0,
+              0.25,
+              0.75,
+              0.75,
+              1.0,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.25,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ]
+        }
+      ],
+      "expected_pass": true,
+      "matches_expected": true
+    },
+    {
+      "variant": "prefix_only",
+      "case": "longer_context_control",
+      "requirement": "control",
+      "passed": true,
+      "comparisons": [
+        {
+          "input_ids": [
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              2
+            ]
+          ],
+          "expected": [
+            [
+              0.0,
+              0.25,
+              0.5,
+              0.75,
+              -1.5,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ],
+          "actual": [
+            [
+              0.0,
+              0.25,
+              0.5,
+              0.75,
+              -1.5,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ]
+        }
+      ],
+      "expected_pass": true,
+      "matches_expected": true
+    },
+    {
+      "variant": "prefix_only",
+      "case": "negative_id_control",
+      "requirement": "control",
+      "passed": true,
+      "expected_pass": true,
+      "matches_expected": true
+    },
+    {
+      "variant": "prefix_only",
+      "case": "out_of_vocabulary_control",
+      "requirement": "control",
+      "passed": true,
+      "expected_pass": true,
+      "matches_expected": true
+    },
+    {
+      "variant": "prefix_only",
+      "case": "nonzero_unigram_control",
+      "requirement": "control",
+      "passed": true,
+      "comparisons": [
+        {
+          "input_ids": [
+            [
+              3
+            ],
+            [
+              1
+            ]
+          ],
+          "expected": [
+            [
+              0.0,
+              0.25,
+              1.0,
+              0.75,
+              -0.25,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.5,
+              2.25,
+              1.25,
+              2.75
+            ]
+          ],
+          "actual": [
+            [
+              0.0,
+              0.25,
+              1.0,
+              0.75,
+              -0.25,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.5,
+              2.25,
+              1.25,
+              2.75
+            ]
+          ]
+        }
+      ],
+      "expected_pass": true,
+      "matches_expected": true
+    },
+    {
+      "variant": "both",
+      "case": "zero_unigram_empty",
+      "requirement": "A",
+      "passed": true,
+      "comparisons": [
+        {
+          "input_ids": [
+            [],
+            []
+          ],
+          "expected": [
+            [
+              -1.25,
+              0.25,
+              0.5,
+              0.75,
+              1.0,
+              1.25
+            ],
+            [
+              0.25,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ],
+          "actual": [
+            [
+              -1.25,
+              0.25,
+              0.5,
+              0.75,
+              1.0,
+              1.25
+            ],
+            [
+              0.25,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ]
+        },
+        {
+          "input_ids": [
+            [],
+            []
+          ],
+          "expected": [
+            [
+              -1.25,
+              0.25,
+              0.5,
+              0.75,
+              1.0,
+              1.25
+            ],
+            [
+              0.25,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ],
+          "actual": [
+            [
+              -1.25,
+              0.25,
+              0.5,
+              0.75,
+              1.0,
+              1.25
+            ],
+            [
+              0.25,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ]
+        }
+      ],
+      "expected_pass": true,
+      "matches_expected": true
+    },
+    {
+      "variant": "both",
+      "case": "zero_unigram_config",
+      "requirement": "A",
+      "passed": true,
+      "round_trip_sequence_bias": [
+        [
+          [
+            0
+          ],
+          0.75
+        ]
+      ],
+      "comparisons": [
+        {
+          "input_ids": [
+            [
+              1
+            ],
+            [
+              3
+            ]
+          ],
+          "expected": [
+            [
+              0.75,
+              0.25,
+              0.5,
+              0.75,
+              1.0,
+              1.25
+            ],
+            [
+              2.25,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ],
+          "actual": [
+            [
+              0.75,
+              0.25,
+              0.5,
+              0.75,
+              1.0,
+              1.25
+            ],
+            [
+              2.25,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ]
+        }
+      ],
+      "expected_pass": true,
+      "matches_expected": true
+    },
+    {
+      "variant": "both",
+      "case": "complete_prefix_additive",
+      "requirement": "B",
+      "passed": true,
+      "comparisons": [
+        {
+          "input_ids": [
+            [
+              1,
+              3
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              3,
+              1
+            ]
+          ],
+          "expected": [
+            [
+              0.0,
+              0.25,
+              0.5,
+              0.75,
+              -0.25,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.0,
+              2.25,
+              3.25,
+              2.75
+            ],
+            [
+              3.0,
+              3.25,
+              3.5,
+              3.75,
+              4.25,
+              4.25
+            ]
+          ],
+          "actual": [
+            [
+              0.0,
+              0.25,
+              0.5,
+              0.75,
+              -0.25,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.0,
+              2.25,
+              3.25,
+              2.75
+            ],
+            [
+              3.0,
+              3.25,
+              3.5,
+              3.75,
+              4.25,
+              4.25
+            ]
+          ]
+        }
+      ],
+      "expected_pass": true,
+      "matches_expected": true
+    },
+    {
+      "variant": "both",
+      "case": "complete_prefix_badwords_eos",
+      "requirement": "B",
+      "passed": true,
+      "comparisons": [
+        {
+          "input_ids": [
+            [
+              3
+            ],
+            [
+              2
+            ]
+          ],
+          "expected": [
+            [
+              0.0,
+              0.25,
+              0.5,
+              0.75,
+              "-inf",
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ],
+          "actual": [
+            [
+              0.0,
+              0.25,
+              0.5,
+              0.75,
+              "-inf",
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ]
+        }
+      ],
+      "expected_pass": true,
+      "matches_expected": true
+    },
+    {
+      "variant": "both",
+      "case": "zero_prefix_config_joint",
+      "requirement": "A+B",
+      "passed": true,
+      "round_trip_sequence_bias": [
+        [
+          [
+            0,
+            4
+          ],
+          -2.5
+        ]
+      ],
+      "comparisons": [
+        {
+          "input_ids": [
+            [
+              0
+            ],
+            [
+              3
+            ]
+          ],
+          "expected": [
+            [
+              0.0,
+              0.25,
+              0.5,
+              0.75,
+              -1.5,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ],
+          "actual": [
+            [
+              0.0,
+              0.25,
+              0.5,
+              0.75,
+              -1.5,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ]
+        }
+      ],
+      "expected_pass": true,
+      "matches_expected": true
+    },
+    {
+      "variant": "both",
+      "case": "insufficient_prefix_control",
+      "requirement": "control",
+      "passed": true,
+      "comparisons": [
+        {
+          "input_ids": [
+            [
+              3
+            ],
+            [
+              1
+            ]
+          ],
+          "expected": [
+            [
+              0.0,
+              0.25,
+              0.5,
+              0.75,
+              1.0,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ],
+          "actual": [
+            [
+              0.0,
+              0.25,
+              0.5,
+              0.75,
+              1.0,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ]
+        },
+        {
+          "input_ids": [
+            [],
+            []
+          ],
+          "expected": [
+            [
+              0.0,
+              0.25,
+              0.75,
+              0.75,
+              1.0,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.25,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ],
+          "actual": [
+            [
+              0.0,
+              0.25,
+              0.75,
+              0.75,
+              1.0,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.25,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ]
+        }
+      ],
+      "expected_pass": true,
+      "matches_expected": true
+    },
+    {
+      "variant": "both",
+      "case": "longer_context_control",
+      "requirement": "control",
+      "passed": true,
+      "comparisons": [
+        {
+          "input_ids": [
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              2
+            ]
+          ],
+          "expected": [
+            [
+              0.0,
+              0.25,
+              0.5,
+              0.75,
+              -1.5,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ],
+          "actual": [
+            [
+              0.0,
+              0.25,
+              0.5,
+              0.75,
+              -1.5,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.0,
+              2.25,
+              2.5,
+              2.75
+            ]
+          ]
+        }
+      ],
+      "expected_pass": true,
+      "matches_expected": true
+    },
+    {
+      "variant": "both",
+      "case": "negative_id_control",
+      "requirement": "control",
+      "passed": true,
+      "expected_pass": true,
+      "matches_expected": true
+    },
+    {
+      "variant": "both",
+      "case": "out_of_vocabulary_control",
+      "requirement": "control",
+      "passed": true,
+      "expected_pass": true,
+      "matches_expected": true
+    },
+    {
+      "variant": "both",
+      "case": "nonzero_unigram_control",
+      "requirement": "control",
+      "passed": true,
+      "comparisons": [
+        {
+          "input_ids": [
+            [
+              3
+            ],
+            [
+              1
+            ]
+          ],
+          "expected": [
+            [
+              0.0,
+              0.25,
+              1.0,
+              0.75,
+              -0.25,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.5,
+              2.25,
+              1.25,
+              2.75
+            ]
+          ],
+          "actual": [
+            [
+              0.0,
+              0.25,
+              1.0,
+              0.75,
+              -0.25,
+              1.25
+            ],
+            [
+              1.5,
+              1.75,
+              2.5,
+              2.25,
+              1.25,
+              2.75
+            ]
+          ]
+        }
+      ],
+      "expected_pass": true,
+      "matches_expected": true
+    }
+  ],
+  "limits": [
+    "Only logits processor CPU float32 fixtures; no full generate() or real model call.",
+    "Candidate edits are exactly the issue reporter's two source changes.",
+    "Not an upstream PR, accepted contribution, or external independent replication."
+  ]
+}
