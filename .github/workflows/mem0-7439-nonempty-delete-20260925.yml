@@ -55,8 +55,9 @@ jobs:
             'script_sha256':hashlib.sha256(data).hexdigest()},indent=2))
           try:
               call([hatch,'env','create','zero7439'],240)
-              versions="import importlib.metadata as m; print('\\n'.join(sorted(f'{d.metadata[\"Name\"]}=={d.version}' for d in m.distributions())))"
-              (out/'environment.txt').write_text(call([hatch,'run','zero7439:python','-c',versions]))
+              versions="import importlib.metadata as m; print('\\n'.join(sorted(d.metadata['Name']+'=='+d.version for d in m.distributions())))\n"
+              versions_file=out/'collect_versions.py';versions_file.write_text(versions)
+              (out/'environment.txt').write_text(call([hatch,'run','zero7439:python',versions_file]))
               call([hatch,'run','zero7439:python','-B','-u',script,'--repo',src,'--out',out/'results'],190)
           finally:
               pyproject.write_bytes(original)
