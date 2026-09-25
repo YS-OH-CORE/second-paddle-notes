@@ -1,0 +1,15 @@
+{
+  "render_cases": 54,
+  "render_hashes_and_markers_verified": true,
+  "summary_recomputed": true,
+  "model_inference_calls": 0,
+  "kind": "template artifact reanalysis, not model replication",
+  "downloaded_asset_hashes_verified": 23,
+  "locally_rerendered_prompts_exact": 54,
+  "visible_content_and_order_independently_rechecked": true,
+  "frozen_fixture_inputs_exact": true,
+  "modern_templates_byte_identical": true,
+  "tokenizer_ids_recomputed_locally": false,
+  "rendered_tokenization_crosscheck": "Performed in Actions; local environment re-renders text only.",
+  "raw_zip_sha256": "5319a4ea587dad0dca8e2d53432622e22530803f7fe39709f0a0a0e864eab896"
+}
