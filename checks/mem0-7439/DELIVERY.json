@@ -1,0 +1,19 @@
+{
+  "status": "POSTED_AND_READ_BACK",
+  "repository": "mem0ai/mem0",
+  "issue_number": 7439,
+  "comment_id": 5824943500,
+  "comment_url": "https://github.com/mem0ai/mem0/issues/7439#issuecomment-5824943500",
+  "created_at_utc": "2026-09-25T01:05:55Z",
+  "author": "YS-OH-CORE",
+  "body_sha256": "f5bde184e1f2c9d44719724125a96a657a8b0adf858df010cbf373845d476f53",
+  "initial_comment_route": {"tool": "GitHub connector", "status": 403, "message": "Resource not accessible by integration"},
+  "successful_route": "Existing authorized GitHub CLI through Desktop Commander on kaye",
+  "verification": {"active_account_checked": true, "duplicate_comment_checked_before_post": true, "posted_once": true, "body_read_back_and_matched": true, "separate_github_connector_readback": true},
+  "runtime_evidence": {"run_id": 36080153361, "source_commit": "989c7da0fc8e4df6342dbb8c448af9816d60d24c", "raw_archive_sha256": "ad0b34680ffac6332231e89f13b5598aa89ecdf9b9f80a9beab6faf3e016c4e9"},
+  "pc_scope": "Comment delivery only. No experiment, installation, screen interaction, or changes to existing user files.",
+  "pc_delivery_process": {"pid_at_execution": 50892, "exit_code": 0, "completed": true},
+  "upstream_pr_opened": false,
+  "reply_or_adoption_confirmed": false,
+  "claim": "A counterexample to a proposed fallback was delivered; no deployed repair or prevented incident is asserted."
+}
