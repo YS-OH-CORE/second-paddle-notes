@@ -1,0 +1,824 @@
+{
+  "audit_schema": "zero-permission-activation-evidence-audit-v1",
+  "success": true,
+  "verification_kind": "offline internal-consistency audit of original recorded evidence; not independent model replication",
+  "artifact_sha256": "b1a19023d78b099ef72cb851bf62d52b4b6c837a19fabde7dda8638274a2dd2f",
+  "file_sha256": {
+    "PROTOCOL.md": "9931cd4a50c7717e09359df286fc871e104fd31aa085a37daca87a616a331bff",
+    "environment.txt": "59fab4b63ec064d40cd6d0550b92edbc20f260390b274c52c7152a97a7118dc3",
+    "execution.log": "f619b48c2279901218ae2344403b0b2f267ed6cda227b060d8708dba1c655f13",
+    "inference/baseline_activations.safetensors": "3b69c19574ebd4879fa4339162dddf66697b842aba7b7b192014694e0d90398d",
+    "inference/baseline_logits.safetensors": "dfa4cc7c44088c505cac622579df3fcee40eb74d4973459294c78fcc17ed55fb",
+    "inference/model_LICENSE": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e",
+    "inference/model_config.json": "18e18afcaccafade98daf13a54092927904649e1dd4eba8299ab717d5d94ff45",
+    "inference/model_tokenizer_config.json": "5b5d4f65d0acd3b2d56a35b56d374a36cbc1c8fa5cf3b3febbbfabf22f359583",
+    "inference/prompts.json": "7e0b1fc3f4cc45bf10f989016d8b981f7202ff3fc447e7200e425caddc77ebc3",
+    "inference/raw.jsonl": "092d603aebabd47b965cc6a4a8cfd85fb9cd378e233b320c6c912b9b96b72503",
+    "inference/report.json": "23e2e42a4989e144d31e69fb16e5fa310b02436a9a4561e33422fd2c67bf8537",
+    "pilot.py": "9f22d6f753eceef2847be49076fa6ae8f60a0e967ed48a8e631706f84f4514c4",
+    "probe.py": "c68bbbf60aa88d8e568be0aa095d071238ac83b77f13bed0a70136cc570ab5d8",
+    "run_metadata.json": "d36a8a5354cbd99b2e6b8c28e52dd053abdaee44d9ed18b3046ca8c7e1703d8a"
+  },
+  "recorded_run_provenance": {
+    "github_run_id": "36089972897",
+    "workflow_commit": "f74ec54d87dc4016e896cc0d005bf33343a576dd",
+    "protocol_commit": "97fdce989e659dfa9fbb77af62f2203299656c2b",
+    "inputs": [
+      {
+        "file": "pilot.py",
+        "commit": "6d8ae732bc53da3874a2fc10c66582fb5c1de8f6",
+        "sha256": "9f22d6f753eceef2847be49076fa6ae8f60a0e967ed48a8e631706f84f4514c4"
+      },
+      {
+        "file": "probe.py",
+        "commit": "a1ef98b17b2acef04414d96fe72fce3db41fc2e5",
+        "sha256": "c68bbbf60aa88d8e568be0aa095d071238ac83b77f13bed0a70136cc570ab5d8"
+      },
+      {
+        "file": "PROTOCOL.md",
+        "commit": "97fdce989e659dfa9fbb77af62f2203299656c2b",
+        "sha256": "9931cd4a50c7717e09359df286fc871e104fd31aa085a37daca87a616a331bff"
+      }
+    ],
+    "cpu_threads": 2,
+    "gpu": false
+  },
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "recorded_weights_sha256": "fdf756fa7fcbe7404d5c60e26bff1a0c8b8aa1f72ced49e7dd0210fe288fb7fe",
+  "original_model_weights_independently_rehashed": false,
+  "source_code_executed": false,
+  "new_model_forward_passes": 0,
+  "choice_token_ids": {
+    "A": 32,
+    "B": 33,
+    "C": 34
+  },
+  "tokenizer_reexecuted": false,
+  "checks": {
+    "original_zip_sha256_matches": true,
+    "input_source_hashes_match_metadata": true,
+    "prompts_match_literal_source_fixtures": true,
+    "raw_unique_cells": 96,
+    "recorded_row_counts": {
+      "baseline": 12,
+      "wrong_position_control": 12,
+      "self_control": 36,
+      "donor": 36
+    },
+    "complete_prespecified_grid": true,
+    "randomized_schedule_matches": true,
+    "execution_log_rows_exactly_match_raw_jsonl": true,
+    "execution_log_report_matches_report_json": true,
+    "report_baselines_and_layer_statistics_match": true,
+    "baseline_logit_tensors": 12,
+    "baseline_full_vocabulary_size": 151936,
+    "baseline_activation_tensors": 72,
+    "activation_shape": [
+      1,
+      896
+    ],
+    "all_saved_tensors_finite": true,
+    "full_baseline_tensor_ABC_logits_and_argmax_match": true,
+    "maximum_baseline_full_softmax_mass_numerical_difference": 6.279375689977051e-06,
+    "full_softmax_mass_comparison_tolerance": 1e-05,
+    "baseline_full_softmax_mass_comparisons": {
+      "permission_cancel_012": {
+        "recorded_float32": 0.9994673728942871,
+        "recomputed_stdlib_float64": 0.9994625990155085,
+        "recorded_minus_recomputed": 4.773878778618901e-06
+      },
+      "permission_cancel_021": {
+        "recorded_float32": 0.9995114803314209,
+        "recomputed_stdlib_float64": 0.9995074264462958,
+        "recorded_minus_recomputed": 4.053885125143708e-06
+      },
+      "permission_cancel_102": {
+        "recorded_float32": 0.9992426633834839,
+        "recomputed_stdlib_float64": 0.9992370961991252,
+        "recorded_minus_recomputed": 5.5671843587346e-06
+      },
+      "permission_cancel_120": {
+        "recorded_float32": 0.9993394613265991,
+        "recomputed_stdlib_float64": 0.9993331819509091,
+        "recorded_minus_recomputed": 6.279375689977051e-06
+      },
+      "permission_cancel_201": {
+        "recorded_float32": 0.9995906352996826,
+        "recomputed_stdlib_float64": 0.9995878757775922,
+        "recorded_minus_recomputed": 2.7595220903897655e-06
+      },
+      "permission_cancel_210": {
+        "recorded_float32": 0.9994549751281738,
+        "recomputed_stdlib_float64": 0.9994507662063521,
+        "recorded_minus_recomputed": 4.208921821735601e-06
+      },
+      "permission_restore_012": {
+        "recorded_float32": 0.9996516704559326,
+        "recomputed_stdlib_float64": 0.9996480353793183,
+        "recorded_minus_recomputed": 3.6350766142723145e-06
+      },
+      "permission_restore_021": {
+        "recorded_float32": 0.9997389316558838,
+        "recomputed_stdlib_float64": 0.9997360383062196,
+        "recorded_minus_recomputed": 2.8933496641903034e-06
+      },
+      "permission_restore_102": {
+        "recorded_float32": 0.999576985836029,
+        "recomputed_stdlib_float64": 0.9995722408327656,
+        "recorded_minus_recomputed": 4.7450032634177575e-06
+      },
+      "permission_restore_120": {
+        "recorded_float32": 0.9996687769889832,
+        "recomputed_stdlib_float64": 0.9996642626793988,
+        "recorded_minus_recomputed": 4.514309584369158e-06
+      },
+      "permission_restore_201": {
+        "recorded_float32": 0.9997510313987732,
+        "recomputed_stdlib_float64": 0.9997487016580097,
+        "recorded_minus_recomputed": 2.329740763529209e-06
+      },
+      "permission_restore_210": {
+        "recorded_float32": 0.999624490737915,
+        "recomputed_stdlib_float64": 0.9996210907600774,
+        "recorded_minus_recomputed": 3.399977837603707e-06
+      }
+    },
+    "maximum_ABC_conditional_softmax_numerical_difference_all_rows": 6.539898944613043e-08
+  },
+  "baseline_summary": {
+    "correct_by_case_out_of_6": {
+      "permission_cancel": 3,
+      "permission_restore": 4
+    },
+    "total_correct_out_of_12": 7,
+    "same_hard_semantic_choice_pairs_out_of_6": 5,
+    "restore_margin_moves_toward_publish_pairs_out_of_6": 6,
+    "restore_minus_cancel_margin_range": [
+      -1.2838211059570312,
+      -0.04046630859375
+    ],
+    "restore_minus_cancel_margin_mean": -0.6567694346110026,
+    "restore_minus_cancel_margin_median": -0.6486902236938477,
+    "later_of_private_or_publish_option_selected_out_of_12": 11,
+    "letter_counts": {
+      "B": 4,
+      "C": 7,
+      "A": 1
+    },
+    "baseline_ABC_mass_range": [
+      0.9992426633834839,
+      0.9997510313987732
+    ]
+  },
+  "baseline_per_order": [
+    {
+      "order": "012",
+      "letter_to_semantic": [
+        "keep_private",
+        "publish",
+        "no_decision"
+      ],
+      "cancel": {
+        "target": "permission_cancel_012",
+        "tokens": 172,
+        "selected_letter": "B",
+        "selected_semantic_id": 1,
+        "selected_semantic": "publish",
+        "correct": false,
+        "private_minus_publish": -1.1183662414550781
+      },
+      "restore": {
+        "target": "permission_restore_012",
+        "tokens": 168,
+        "selected_letter": "B",
+        "selected_semantic_id": 1,
+        "selected_semantic": "publish",
+        "correct": true,
+        "private_minus_publish": -2.4021873474121094
+      },
+      "restore_minus_cancel_private_publish_margin": -1.2838211059570312,
+      "hard_semantic_choice_changes": false
+    },
+    {
+      "order": "021",
+      "letter_to_semantic": [
+        "keep_private",
+        "no_decision",
+        "publish"
+      ],
+      "cancel": {
+        "target": "permission_cancel_021",
+        "tokens": 172,
+        "selected_letter": "C",
+        "selected_semantic_id": 1,
+        "selected_semantic": "publish",
+        "correct": false,
+        "private_minus_publish": -1.6129779815673828
+      },
+      "restore": {
+        "target": "permission_restore_021",
+        "tokens": 168,
+        "selected_letter": "C",
+        "selected_semantic_id": 1,
+        "selected_semantic": "publish",
+        "correct": true,
+        "private_minus_publish": -2.4039840698242188
+      },
+      "restore_minus_cancel_private_publish_margin": -0.7910060882568359,
+      "hard_semantic_choice_changes": false
+    },
+    {
+      "order": "102",
+      "letter_to_semantic": [
+        "publish",
+        "keep_private",
+        "no_decision"
+      ],
+      "cancel": {
+        "target": "permission_cancel_102",
+        "tokens": 172,
+        "selected_letter": "B",
+        "selected_semantic_id": 0,
+        "selected_semantic": "keep_private",
+        "correct": true,
+        "private_minus_publish": 0.5818672180175781
+      },
+      "restore": {
+        "target": "permission_restore_102",
+        "tokens": 168,
+        "selected_letter": "B",
+        "selected_semantic_id": 0,
+        "selected_semantic": "keep_private",
+        "correct": false,
+        "private_minus_publish": 0.053924560546875
+      },
+      "restore_minus_cancel_private_publish_margin": -0.5279426574707031,
+      "hard_semantic_choice_changes": false
+    },
+    {
+      "order": "120",
+      "letter_to_semantic": [
+        "publish",
+        "no_decision",
+        "keep_private"
+      ],
+      "cancel": {
+        "target": "permission_cancel_120",
+        "tokens": 172,
+        "selected_letter": "C",
+        "selected_semantic_id": 0,
+        "selected_semantic": "keep_private",
+        "correct": true,
+        "private_minus_publish": 0.5190982818603516
+      },
+      "restore": {
+        "target": "permission_restore_120",
+        "tokens": 168,
+        "selected_letter": "A",
+        "selected_semantic_id": 1,
+        "selected_semantic": "publish",
+        "correct": true,
+        "private_minus_publish": -0.030101776123046875
+      },
+      "restore_minus_cancel_private_publish_margin": -0.5492000579833984,
+      "hard_semantic_choice_changes": true
+    },
+    {
+      "order": "201",
+      "letter_to_semantic": [
+        "no_decision",
+        "keep_private",
+        "publish"
+      ],
+      "cancel": {
+        "target": "permission_cancel_201",
+        "tokens": 172,
+        "selected_letter": "C",
+        "selected_semantic_id": 1,
+        "selected_semantic": "publish",
+        "correct": false,
+        "private_minus_publish": -2.2038803100585938
+      },
+      "restore": {
+        "target": "permission_restore_201",
+        "tokens": 168,
+        "selected_letter": "C",
+        "selected_semantic_id": 1,
+        "selected_semantic": "publish",
+        "correct": true,
+        "private_minus_publish": -2.9520606994628906
+      },
+      "restore_minus_cancel_private_publish_margin": -0.7481803894042969,
+      "hard_semantic_choice_changes": false
+    },
+    {
+      "order": "210",
+      "letter_to_semantic": [
+        "no_decision",
+        "publish",
+        "keep_private"
+      ],
+      "cancel": {
+        "target": "permission_cancel_210",
+        "tokens": 172,
+        "selected_letter": "C",
+        "selected_semantic_id": 0,
+        "selected_semantic": "keep_private",
+        "correct": true,
+        "private_minus_publish": 1.1346797943115234
+      },
+      "restore": {
+        "target": "permission_restore_210",
+        "tokens": 168,
+        "selected_letter": "C",
+        "selected_semantic_id": 0,
+        "selected_semantic": "keep_private",
+        "correct": false,
+        "private_minus_publish": 1.0942134857177734
+      },
+      "restore_minus_cancel_private_publish_margin": -0.04046630859375,
+      "hard_semantic_choice_changes": false
+    }
+  ],
+  "interventions_by_zero_based_layer": {
+    "0": {
+      "donor_cells": 12,
+      "changed_hard_semantic_choices": 0,
+      "correct_after_swap": 7,
+      "eligible_gap_fractions": 10,
+      "excluded_orders_for_gap_fraction": [
+        "210"
+      ],
+      "median_gap_fraction": -0.0034720813294434327,
+      "gap_fraction_range": [
+        -0.007137431730224371,
+        0.0017124648655678953
+      ],
+      "toward_donor_count_eligible": 3,
+      "away_from_donor_count_eligible": 7,
+      "zero_fraction_count_eligible": 0,
+      "intervention_margin_shift_range": [
+        -0.005645751953125,
+        0.003017425537109375
+      ],
+      "maximum_absolute_margin_shift": 0.005645751953125,
+      "mean_absolute_margin_shift": 0.002318859100341797,
+      "cells": [
+        {
+          "target": "permission_cancel_012",
+          "donor": "permission_restore_012",
+          "selected_semantic_id": 1,
+          "correct": false,
+          "private_minus_publish": -1.115823745727539,
+          "donor_margin_gap": -1.2838211059570312,
+          "intervention_margin_shift": 0.0025424957275390625,
+          "gap_fraction": -0.0019804127816108346
+        },
+        {
+          "target": "permission_cancel_021",
+          "donor": "permission_restore_021",
+          "selected_semantic_id": 1,
+          "correct": false,
+          "private_minus_publish": -1.6099605560302734,
+          "donor_margin_gap": -0.7910060882568359,
+          "intervention_margin_shift": 0.003017425537109375,
+          "gap_fraction": -0.003814667904464512
+        },
+        {
+          "target": "permission_cancel_102",
+          "donor": "permission_restore_102",
+          "selected_semantic_id": 0,
+          "correct": true,
+          "private_minus_publish": 0.580963134765625,
+          "donor_margin_gap": -0.5279426574707031,
+          "intervention_margin_shift": -0.000904083251953125,
+          "gap_fraction": 0.0017124648655678953
+        },
+        {
+          "target": "permission_cancel_120",
+          "donor": "permission_restore_120",
+          "selected_semantic_id": 0,
+          "correct": true,
+          "private_minus_publish": 0.5189971923828125,
+          "donor_margin_gap": -0.5492000579833984,
+          "intervention_margin_shift": -0.0001010894775390625,
+          "gap_fraction": 0.000184066764141016
+        },
+        {
+          "target": "permission_cancel_201",
+          "donor": "permission_restore_201",
+          "selected_semantic_id": 1,
+          "correct": false,
+          "private_minus_publish": -2.2010364532470703,
+          "donor_margin_gap": -0.7481803894042969,
+          "intervention_margin_shift": 0.0028438568115234375,
+          "gap_fraction": -0.00380103094360402
+        },
+        {
+          "target": "permission_cancel_210",
+          "donor": "permission_restore_210",
+          "selected_semantic_id": 0,
+          "correct": true,
+          "private_minus_publish": 1.1341705322265625,
+          "donor_margin_gap": -0.04046630859375,
+          "intervention_margin_shift": -0.0005092620849609375,
+          "gap_fraction": null
+        },
+        {
+          "target": "permission_restore_012",
+          "donor": "permission_cancel_012",
+          "selected_semantic_id": 1,
+          "correct": true,
+          "private_minus_publish": -2.407184600830078,
+          "donor_margin_gap": 1.2838211059570312,
+          "intervention_margin_shift": -0.00499725341796875,
+          "gap_fraction": -0.0038924842369245215
+        },
+        {
+          "target": "permission_restore_021",
+          "donor": "permission_cancel_021",
+          "selected_semantic_id": 1,
+          "correct": true,
+          "private_minus_publish": -2.4096298217773438,
+          "donor_margin_gap": 0.7910060882568359,
+          "intervention_margin_shift": -0.005645751953125,
+          "gap_fraction": -0.007137431730224371
+        },
+        {
+          "target": "permission_restore_102",
+          "donor": "permission_cancel_102",
+          "selected_semantic_id": 0,
+          "correct": false,
+          "private_minus_publish": 0.052265167236328125,
+          "donor_margin_gap": 0.5279426574707031,
+          "intervention_margin_shift": -0.001659393310546875,
+          "gap_fraction": -0.003143131715282846
+        },
+        {
+          "target": "permission_restore_120",
+          "donor": "permission_cancel_120",
+          "selected_semantic_id": 1,
+          "correct": true,
+          "private_minus_publish": -0.029478073120117188,
+          "donor_margin_gap": 0.5492000579833984,
+          "intervention_margin_shift": 0.0006237030029296875,
+          "gap_fraction": 0.0011356572051719287
+        },
+        {
+          "target": "permission_restore_201",
+          "donor": "permission_cancel_201",
+          "selected_semantic_id": 1,
+          "correct": true,
+          "private_minus_publish": -2.9562244415283203,
+          "donor_margin_gap": 0.7481803894042969,
+          "intervention_margin_shift": -0.0041637420654296875,
+          "gap_fraction": -0.005565157981145255
+        },
+        {
+          "target": "permission_restore_210",
+          "donor": "permission_cancel_210",
+          "selected_semantic_id": 0,
+          "correct": false,
+          "private_minus_publish": 1.09503173828125,
+          "donor_margin_gap": 0.04046630859375,
+          "intervention_margin_shift": 0.0008182525634765625,
+          "gap_fraction": null
+        }
+      ]
+    },
+    "11": {
+      "donor_cells": 12,
+      "changed_hard_semantic_choices": 0,
+      "correct_after_swap": 7,
+      "eligible_gap_fractions": 10,
+      "excluded_orders_for_gap_fraction": [
+        "210"
+      ],
+      "median_gap_fraction": -0.043308633806083706,
+      "gap_fraction_range": [
+        -0.14395187056171105,
+        0.07244737963973208
+      ],
+      "toward_donor_count_eligible": 3,
+      "away_from_donor_count_eligible": 7,
+      "zero_fraction_count_eligible": 0,
+      "intervention_margin_shift_range": [
+        -0.1284503936767578,
+        0.08791351318359375
+      ],
+      "maximum_absolute_margin_shift": 0.1284503936767578,
+      "mean_absolute_margin_shift": 0.048592567443847656,
+      "cells": [
+        {
+          "target": "permission_cancel_012",
+          "donor": "permission_restore_012",
+          "selected_semantic_id": 1,
+          "correct": false,
+          "private_minus_publish": -1.0304527282714844,
+          "donor_margin_gap": -1.2838211059570312,
+          "intervention_margin_shift": 0.08791351318359375,
+          "gap_fraction": -0.06847800894974239
+        },
+        {
+          "target": "permission_cancel_021",
+          "donor": "permission_restore_021",
+          "selected_semantic_id": 1,
+          "correct": false,
+          "private_minus_publish": -1.553293228149414,
+          "donor_margin_gap": -0.7910060882568359,
+          "intervention_margin_shift": 0.05968475341796875,
+          "gap_fraction": -0.07545422760208818
+        },
+        {
+          "target": "permission_cancel_102",
+          "donor": "permission_restore_102",
+          "selected_semantic_id": 0,
+          "correct": true,
+          "private_minus_publish": 0.5436191558837891,
+          "donor_margin_gap": -0.5279426574707031,
+          "intervention_margin_shift": -0.03824806213378906,
+          "gap_fraction": 0.07244737963973208
+        },
+        {
+          "target": "permission_cancel_120",
+          "donor": "permission_restore_120",
+          "selected_semantic_id": 0,
+          "correct": true,
+          "private_minus_publish": 0.5290603637695312,
+          "donor_margin_gap": -0.5492000579833984,
+          "intervention_margin_shift": 0.009962081909179688,
+          "gap_fraction": -0.018139258662425026
+        },
+        {
+          "target": "permission_cancel_201",
+          "donor": "permission_restore_201",
+          "selected_semantic_id": 1,
+          "correct": false,
+          "private_minus_publish": -2.2239761352539062,
+          "donor_margin_gap": -0.7481803894042969,
+          "intervention_margin_shift": -0.0200958251953125,
+          "gap_fraction": 0.026859598941523777
+        },
+        {
+          "target": "permission_cancel_210",
+          "donor": "permission_restore_210",
+          "selected_semantic_id": 0,
+          "correct": true,
+          "private_minus_publish": 1.1436042785644531,
+          "donor_margin_gap": -0.04046630859375,
+          "intervention_margin_shift": 0.008924484252929688,
+          "gap_fraction": null
+        },
+        {
+          "target": "permission_restore_012",
+          "donor": "permission_cancel_012",
+          "selected_semantic_id": 1,
+          "correct": true,
+          "private_minus_publish": -2.530637741088867,
+          "donor_margin_gap": 1.2838211059570312,
+          "intervention_margin_shift": -0.1284503936767578,
+          "gap_fraction": -0.10005318738003126
+        },
+        {
+          "target": "permission_restore_021",
+          "donor": "permission_cancel_021",
+          "selected_semantic_id": 1,
+          "correct": true,
+          "private_minus_publish": -2.517850875854492,
+          "donor_margin_gap": 0.7910060882568359,
+          "intervention_margin_shift": -0.11386680603027344,
+          "gap_fraction": -0.14395187056171105
+        },
+        {
+          "target": "permission_restore_102",
+          "donor": "permission_cancel_102",
+          "selected_semantic_id": 0,
+          "correct": false,
+          "private_minus_publish": 0.05359077453613281,
+          "donor_margin_gap": 0.5279426574707031,
+          "intervention_margin_shift": -0.0003337860107421875,
+          "gap_fraction": -0.0006322391381316069
+        },
+        {
+          "target": "permission_restore_120",
+          "donor": "permission_cancel_120",
+          "selected_semantic_id": 1,
+          "correct": true,
+          "private_minus_publish": -0.10537147521972656,
+          "donor_margin_gap": 0.5492000579833984,
+          "intervention_margin_shift": -0.07526969909667969,
+          "gap_fraction": -0.1370533342131493
+        },
+        {
+          "target": "permission_restore_201",
+          "donor": "permission_cancel_201",
+          "selected_semantic_id": 1,
+          "correct": true,
+          "private_minus_publish": -2.9442806243896484,
+          "donor_margin_gap": 0.7481803894042969,
+          "intervention_margin_shift": 0.0077800750732421875,
+          "gap_fraction": 0.01039866211868598
+        },
+        {
+          "target": "permission_restore_210",
+          "donor": "permission_cancel_210",
+          "selected_semantic_id": 0,
+          "correct": false,
+          "private_minus_publish": 1.0616321563720703,
+          "donor_margin_gap": 0.04046630859375,
+          "intervention_margin_shift": -0.032581329345703125,
+          "gap_fraction": null
+        }
+      ]
+    },
+    "23": {
+      "donor_cells": 12,
+      "changed_hard_semantic_choices": 2,
+      "correct_after_swap": 5,
+      "eligible_gap_fractions": 10,
+      "excluded_orders_for_gap_fraction": [
+        "210"
+      ],
+      "median_gap_fraction": 1.0,
+      "gap_fraction_range": [
+        1.0,
+        1.0
+      ],
+      "toward_donor_count_eligible": 10,
+      "away_from_donor_count_eligible": 0,
+      "zero_fraction_count_eligible": 0,
+      "intervention_margin_shift_range": [
+        -1.2838211059570312,
+        1.2838211059570312
+      ],
+      "maximum_absolute_margin_shift": 1.2838211059570312,
+      "mean_absolute_margin_shift": 0.6567694346110026,
+      "cells": [
+        {
+          "target": "permission_cancel_012",
+          "donor": "permission_restore_012",
+          "selected_semantic_id": 1,
+          "correct": false,
+          "private_minus_publish": -2.4021873474121094,
+          "donor_margin_gap": -1.2838211059570312,
+          "intervention_margin_shift": -1.2838211059570312,
+          "gap_fraction": 1.0
+        },
+        {
+          "target": "permission_cancel_021",
+          "donor": "permission_restore_021",
+          "selected_semantic_id": 1,
+          "correct": false,
+          "private_minus_publish": -2.4039840698242188,
+          "donor_margin_gap": -0.7910060882568359,
+          "intervention_margin_shift": -0.7910060882568359,
+          "gap_fraction": 1.0
+        },
+        {
+          "target": "permission_cancel_102",
+          "donor": "permission_restore_102",
+          "selected_semantic_id": 0,
+          "correct": true,
+          "private_minus_publish": 0.053924560546875,
+          "donor_margin_gap": -0.5279426574707031,
+          "intervention_margin_shift": -0.5279426574707031,
+          "gap_fraction": 1.0
+        },
+        {
+          "target": "permission_cancel_120",
+          "donor": "permission_restore_120",
+          "selected_semantic_id": 1,
+          "correct": false,
+          "private_minus_publish": -0.030101776123046875,
+          "donor_margin_gap": -0.5492000579833984,
+          "intervention_margin_shift": -0.5492000579833984,
+          "gap_fraction": 1.0
+        },
+        {
+          "target": "permission_cancel_201",
+          "donor": "permission_restore_201",
+          "selected_semantic_id": 1,
+          "correct": false,
+          "private_minus_publish": -2.9520606994628906,
+          "donor_margin_gap": -0.7481803894042969,
+          "intervention_margin_shift": -0.7481803894042969,
+          "gap_fraction": 1.0
+        },
+        {
+          "target": "permission_cancel_210",
+          "donor": "permission_restore_210",
+          "selected_semantic_id": 0,
+          "correct": true,
+          "private_minus_publish": 1.0942134857177734,
+          "donor_margin_gap": -0.04046630859375,
+          "intervention_margin_shift": -0.04046630859375,
+          "gap_fraction": null
+        },
+        {
+          "target": "permission_restore_012",
+          "donor": "permission_cancel_012",
+          "selected_semantic_id": 1,
+          "correct": true,
+          "private_minus_publish": -1.1183662414550781,
+          "donor_margin_gap": 1.2838211059570312,
+          "intervention_margin_shift": 1.2838211059570312,
+          "gap_fraction": 1.0
+        },
+        {
+          "target": "permission_restore_021",
+          "donor": "permission_cancel_021",
+          "selected_semantic_id": 1,
+          "correct": true,
+          "private_minus_publish": -1.6129779815673828,
+          "donor_margin_gap": 0.7910060882568359,
+          "intervention_margin_shift": 0.7910060882568359,
+          "gap_fraction": 1.0
+        },
+        {
+          "target": "permission_restore_102",
+          "donor": "permission_cancel_102",
+          "selected_semantic_id": 0,
+          "correct": false,
+          "private_minus_publish": 0.5818672180175781,
+          "donor_margin_gap": 0.5279426574707031,
+          "intervention_margin_shift": 0.5279426574707031,
+          "gap_fraction": 1.0
+        },
+        {
+          "target": "permission_restore_120",
+          "donor": "permission_cancel_120",
+          "selected_semantic_id": 0,
+          "correct": false,
+          "private_minus_publish": 0.5190982818603516,
+          "donor_margin_gap": 0.5492000579833984,
+          "intervention_margin_shift": 0.5492000579833984,
+          "gap_fraction": 1.0
+        },
+        {
+          "target": "permission_restore_201",
+          "donor": "permission_cancel_201",
+          "selected_semantic_id": 1,
+          "correct": true,
+          "private_minus_publish": -2.2038803100585938,
+          "donor_margin_gap": 0.7481803894042969,
+          "intervention_margin_shift": 0.7481803894042969,
+          "gap_fraction": 1.0
+        },
+        {
+          "target": "permission_restore_210",
+          "donor": "permission_cancel_210",
+          "selected_semantic_id": 0,
+          "correct": false,
+          "private_minus_publish": 1.1346797943115234,
+          "donor_margin_gap": 0.04046630859375,
+          "intervention_margin_shift": 0.04046630859375,
+          "gap_fraction": null
+        }
+      ]
+    }
+  },
+  "controls": {
+    "self_control": {
+      "cells": 36,
+      "independently_checked_saved_ABC_logits_exact_match": true,
+      "recorded_full_vocab_max_abs_difference": 0.0,
+      "full_vocab_difference_recomputed_from_patched_tensor": false
+    },
+    "wrong_position_control": {
+      "cells": 12,
+      "independently_checked_saved_ABC_logits_exact_match": true,
+      "recorded_full_vocab_max_abs_difference": 0.0,
+      "full_vocab_difference_recomputed_from_patched_tensor": false
+    },
+    "last_block_final_position_donor": {
+      "cells": 12,
+      "independently_checked_saved_ABC_logits_exact_match": true,
+      "recorded_full_vocab_max_abs_difference": 0.0,
+      "full_vocab_difference_recomputed_from_patched_tensor": false
+    }
+  },
+  "mutation_tests": [
+    {
+      "mutation": "missing_one_recorded_row",
+      "detected": true,
+      "reason": "row count: expected 96, got 95"
+    },
+    {
+      "mutation": "changed_semantic_label_without_changing_logits",
+      "detected": true,
+      "reason": "row 0 selected_semantic_id disagrees with logits"
+    }
+  ],
+  "limitations": [
+    "One reused fictional conversation pair across six answer orders; 12 baselines are not 12 independent stories.",
+    "Cancel and restore prompts contain 172 and 168 stored tokens and differ in multiple statements; the wording and length confounds are not isolated.",
+    "All margins moving in the expected direction is descriptive within this fixture, not a population statistical test or evidence of a specific mechanism.",
+    "Entire 896-dimensional final-position residual vectors are swapped. Null intermediate hard-choice effects do not establish absence of information or causal influence elsewhere.",
+    "Last-block final-position output replacement is an architecture-level positive control, not discovery of a decision or memory circuit.",
+    "Only baseline full-vocabulary logits are saved as tensors. Patched full-vocabulary differences, patched unconstrained argmax, and patched ABC mass remain recorded claims cross-checked against logs and saved ABC scores, not independently tensor-recomputed values.",
+    "Model weights are not in this evidence bundle; their recorded hash and runtime/no-network statements were not independently verified by this offline audit.",
+    "Baseline full-vocabulary ABC masses differ by up to 6.28e-6 between recorded float32 Torch and stdlib float64/fSum computation. The audit's initial 2e-6 probability tolerance was too tight for these large reductions; it uses and reports 1e-5 for this comparison only. Exact logit, margin, choice and recorded control checks are unchanged.",
+    "A passing ZIP hash and audit prove consistency with the specified artifact, not external provenance authenticity, independent reproduction, or scientific novelty."
+  ]
+}

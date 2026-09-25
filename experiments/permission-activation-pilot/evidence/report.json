@@ -1,0 +1,890 @@
+{
+  "protocol": "permission-residual-interchange-v1",
+  "success": true,
+  "started_utc": "2026-09-25T03:21:17.984222+00:00",
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "layers_zero_based": [
+    0,
+    11,
+    23
+  ],
+  "planned_forward_passes": 96,
+  "base_sha256": "9f22d6f753eceef2847be49076fa6ae8f60a0e967ed48a8e631706f84f4514c4",
+  "runner_sha256": "c68bbbf60aa88d8e568be0aa095d071238ac83b77f13bed0a70136cc570ab5d8",
+  "sampling": false,
+  "training": false,
+  "fixture_unit": "one reused fictional cancel/restore pair, not 12 independent cases",
+  "completed_forward_passes": 96,
+  "network_attempts_during_inference": 0,
+  "versions": {
+    "torch": "2.6.0+cpu",
+    "transformers": "4.51.3",
+    "huggingface-hub": "0.30.2",
+    "tokenizers": "0.21.1",
+    "safetensors": "0.5.3"
+  },
+  "weights_sha256": "fdf756fa7fcbe7404d5c60e26bff1a0c8b8aa1f72ced49e7dd0210fe288fb7fe",
+  "intervention_schedule": [
+    [
+      "wrong_position_control",
+      "permission_cancel_012",
+      "permission_restore_012",
+      23,
+      -2
+    ],
+    [
+      "self_control",
+      "permission_cancel_120",
+      "permission_cancel_120",
+      0,
+      -1
+    ],
+    [
+      "self_control",
+      "permission_cancel_210",
+      "permission_cancel_210",
+      23,
+      -1
+    ],
+    [
+      "self_control",
+      "permission_restore_201",
+      "permission_restore_201",
+      11,
+      -1
+    ],
+    [
+      "donor",
+      "permission_restore_021",
+      "permission_cancel_021",
+      23,
+      -1
+    ],
+    [
+      "donor",
+      "permission_restore_120",
+      "permission_cancel_120",
+      0,
+      -1
+    ],
+    [
+      "donor",
+      "permission_cancel_012",
+      "permission_restore_012",
+      11,
+      -1
+    ],
+    [
+      "self_control",
+      "permission_restore_102",
+      "permission_restore_102",
+      23,
+      -1
+    ],
+    [
+      "wrong_position_control",
+      "permission_cancel_201",
+      "permission_restore_201",
+      23,
+      -2
+    ],
+    [
+      "donor",
+      "permission_restore_021",
+      "permission_cancel_021",
+      11,
+      -1
+    ],
+    [
+      "self_control",
+      "permission_restore_201",
+      "permission_restore_201",
+      23,
+      -1
+    ],
+    [
+      "wrong_position_control",
+      "permission_restore_120",
+      "permission_cancel_120",
+      23,
+      -2
+    ],
+    [
+      "donor",
+      "permission_cancel_120",
+      "permission_restore_120",
+      0,
+      -1
+    ],
+    [
+      "donor",
+      "permission_restore_201",
+      "permission_cancel_201",
+      23,
+      -1
+    ],
+    [
+      "wrong_position_control",
+      "permission_cancel_021",
+      "permission_restore_021",
+      23,
+      -2
+    ],
+    [
+      "self_control",
+      "permission_cancel_210",
+      "permission_cancel_210",
+      11,
+      -1
+    ],
+    [
+      "self_control",
+      "permission_restore_021",
+      "permission_restore_021",
+      23,
+      -1
+    ],
+    [
+      "wrong_position_control",
+      "permission_restore_201",
+      "permission_cancel_201",
+      23,
+      -2
+    ],
+    [
+      "donor",
+      "permission_restore_120",
+      "permission_cancel_120",
+      23,
+      -1
+    ],
+    [
+      "donor",
+      "permission_cancel_210",
+      "permission_restore_210",
+      23,
+      -1
+    ],
+    [
+      "self_control",
+      "permission_cancel_012",
+      "permission_cancel_012",
+      11,
+      -1
+    ],
+    [
+      "self_control",
+      "permission_restore_012",
+      "permission_restore_012",
+      23,
+      -1
+    ],
+    [
+      "self_control",
+      "permission_cancel_102",
+      "permission_cancel_102",
+      23,
+      -1
+    ],
+    [
+      "self_control",
+      "permission_restore_120",
+      "permission_restore_120",
+      0,
+      -1
+    ],
+    [
+      "self_control",
+      "permission_restore_102",
+      "permission_restore_102",
+      11,
+      -1
+    ],
+    [
+      "self_control",
+      "permission_restore_012",
+      "permission_restore_012",
+      11,
+      -1
+    ],
+    [
+      "self_control",
+      "permission_restore_201",
+      "permission_restore_201",
+      0,
+      -1
+    ],
+    [
+      "self_control",
+      "permission_cancel_102",
+      "permission_cancel_102",
+      11,
+      -1
+    ],
+    [
+      "self_control",
+      "permission_cancel_120",
+      "permission_cancel_120",
+      11,
+      -1
+    ],
+    [
+      "self_control",
+      "permission_restore_210",
+      "permission_restore_210",
+      11,
+      -1
+    ],
+    [
+      "donor",
+      "permission_restore_012",
+      "permission_cancel_012",
+      23,
+      -1
+    ],
+    [
+      "donor",
+      "permission_cancel_210",
+      "permission_restore_210",
+      0,
+      -1
+    ],
+    [
+      "donor",
+      "permission_cancel_120",
+      "permission_restore_120",
+      23,
+      -1
+    ],
+    [
+      "donor",
+      "permission_restore_102",
+      "permission_cancel_102",
+      0,
+      -1
+    ],
+    [
+      "self_control",
+      "permission_cancel_021",
+      "permission_cancel_021",
+      0,
+      -1
+    ],
+    [
+      "donor",
+      "permission_cancel_120",
+      "permission_restore_120",
+      11,
+      -1
+    ],
+    [
+      "donor",
+      "permission_restore_021",
+      "permission_cancel_021",
+      0,
+      -1
+    ],
+    [
+      "wrong_position_control",
+      "permission_cancel_210",
+      "permission_restore_210",
+      23,
+      -2
+    ],
+    [
+      "donor",
+      "permission_cancel_021",
+      "permission_restore_021",
+      23,
+      -1
+    ],
+    [
+      "wrong_position_control",
+      "permission_restore_210",
+      "permission_cancel_210",
+      23,
+      -2
+    ],
+    [
+      "donor",
+      "permission_cancel_021",
+      "permission_restore_021",
+      11,
+      -1
+    ],
+    [
+      "self_control",
+      "permission_cancel_201",
+      "permission_cancel_201",
+      0,
+      -1
+    ],
+    [
+      "donor",
+      "permission_cancel_102",
+      "permission_restore_102",
+      23,
+      -1
+    ],
+    [
+      "self_control",
+      "permission_cancel_012",
+      "permission_cancel_012",
+      23,
+      -1
+    ],
+    [
+      "donor",
+      "permission_cancel_012",
+      "permission_restore_012",
+      23,
+      -1
+    ],
+    [
+      "self_control",
+      "permission_restore_120",
+      "permission_restore_120",
+      23,
+      -1
+    ],
+    [
+      "donor",
+      "permission_restore_210",
+      "permission_cancel_210",
+      23,
+      -1
+    ],
+    [
+      "self_control",
+      "permission_cancel_201",
+      "permission_cancel_201",
+      11,
+      -1
+    ],
+    [
+      "self_control",
+      "permission_restore_102",
+      "permission_restore_102",
+      0,
+      -1
+    ],
+    [
+      "wrong_position_control",
+      "permission_cancel_120",
+      "permission_restore_120",
+      23,
+      -2
+    ],
+    [
+      "donor",
+      "permission_restore_012",
+      "permission_cancel_012",
+      11,
+      -1
+    ],
+    [
+      "self_control",
+      "permission_restore_021",
+      "permission_restore_021",
+      11,
+      -1
+    ],
+    [
+      "donor",
+      "permission_cancel_102",
+      "permission_restore_102",
+      0,
+      -1
+    ],
+    [
+      "donor",
+      "permission_restore_102",
+      "permission_cancel_102",
+      23,
+      -1
+    ],
+    [
+      "wrong_position_control",
+      "permission_cancel_102",
+      "permission_restore_102",
+      23,
+      -2
+    ],
+    [
+      "self_control",
+      "permission_cancel_120",
+      "permission_cancel_120",
+      23,
+      -1
+    ],
+    [
+      "self_control",
+      "permission_cancel_210",
+      "permission_cancel_210",
+      0,
+      -1
+    ],
+    [
+      "wrong_position_control",
+      "permission_restore_012",
+      "permission_cancel_012",
+      23,
+      -2
+    ],
+    [
+      "self_control",
+      "permission_restore_210",
+      "permission_restore_210",
+      23,
+      -1
+    ],
+    [
+      "donor",
+      "permission_cancel_201",
+      "permission_restore_201",
+      23,
+      -1
+    ],
+    [
+      "self_control",
+      "permission_cancel_021",
+      "permission_cancel_021",
+      23,
+      -1
+    ],
+    [
+      "donor",
+      "permission_restore_210",
+      "permission_cancel_210",
+      11,
+      -1
+    ],
+    [
+      "donor",
+      "permission_cancel_021",
+      "permission_restore_021",
+      0,
+      -1
+    ],
+    [
+      "donor",
+      "permission_cancel_012",
+      "permission_restore_012",
+      0,
+      -1
+    ],
+    [
+      "donor",
+      "permission_restore_102",
+      "permission_cancel_102",
+      11,
+      -1
+    ],
+    [
+      "donor",
+      "permission_cancel_201",
+      "permission_restore_201",
+      0,
+      -1
+    ],
+    [
+      "donor",
+      "permission_restore_210",
+      "permission_cancel_210",
+      0,
+      -1
+    ],
+    [
+      "self_control",
+      "permission_restore_012",
+      "permission_restore_012",
+      0,
+      -1
+    ],
+    [
+      "donor",
+      "permission_restore_201",
+      "permission_cancel_201",
+      0,
+      -1
+    ],
+    [
+      "donor",
+      "permission_cancel_210",
+      "permission_restore_210",
+      11,
+      -1
+    ],
+    [
+      "self_control",
+      "permission_cancel_012",
+      "permission_cancel_012",
+      0,
+      -1
+    ],
+    [
+      "self_control",
+      "permission_cancel_201",
+      "permission_cancel_201",
+      23,
+      -1
+    ],
+    [
+      "self_control",
+      "permission_restore_120",
+      "permission_restore_120",
+      11,
+      -1
+    ],
+    [
+      "self_control",
+      "permission_cancel_021",
+      "permission_cancel_021",
+      11,
+      -1
+    ],
+    [
+      "self_control",
+      "permission_restore_021",
+      "permission_restore_021",
+      0,
+      -1
+    ],
+    [
+      "wrong_position_control",
+      "permission_restore_102",
+      "permission_cancel_102",
+      23,
+      -2
+    ],
+    [
+      "self_control",
+      "permission_restore_210",
+      "permission_restore_210",
+      0,
+      -1
+    ],
+    [
+      "donor",
+      "permission_cancel_201",
+      "permission_restore_201",
+      11,
+      -1
+    ],
+    [
+      "donor",
+      "permission_restore_201",
+      "permission_cancel_201",
+      11,
+      -1
+    ],
+    [
+      "wrong_position_control",
+      "permission_restore_021",
+      "permission_cancel_021",
+      23,
+      -2
+    ],
+    [
+      "self_control",
+      "permission_cancel_102",
+      "permission_cancel_102",
+      0,
+      -1
+    ],
+    [
+      "donor",
+      "permission_restore_120",
+      "permission_cancel_120",
+      11,
+      -1
+    ],
+    [
+      "donor",
+      "permission_cancel_102",
+      "permission_restore_102",
+      11,
+      -1
+    ],
+    [
+      "donor",
+      "permission_restore_012",
+      "permission_cancel_012",
+      0,
+      -1
+    ]
+  ],
+  "inference_seconds": 107.41,
+  "baseline": {
+    "permission_cancel_012": {
+      "choice_logits": [
+        26.43666648864746,
+        27.55503273010254,
+        23.54620933532715
+      ],
+      "conditional_probs": [
+        0.242989644408226,
+        0.7435121536254883,
+        0.013498272746801376
+      ],
+      "selected_semantic_id": 1,
+      "correct": false,
+      "private_minus_publish": -1.1183662414550781,
+      "abc_probability_mass": 0.9994673728942871,
+      "unconstrained_token": "B"
+    },
+    "permission_cancel_021": {
+      "choice_logits": [
+        26.028160095214844,
+        23.461307525634766,
+        27.641138076782227
+      ],
+      "conditional_probs": [
+        0.1640821397304535,
+        0.01259770430624485,
+        0.8233201503753662
+      ],
+      "selected_semantic_id": 1,
+      "correct": false,
+      "private_minus_publish": -1.6129779815673828,
+      "abc_probability_mass": 0.9995114803314209,
+      "unconstrained_token": "C"
+    },
+    "permission_cancel_102": {
+      "choice_logits": [
+        26.501447677612305,
+        27.083314895629883,
+        24.357086181640625
+      ],
+      "conditional_probs": [
+        0.3440541625022888,
+        0.6156424283981323,
+        0.04030346870422363
+      ],
+      "selected_semantic_id": 0,
+      "correct": true,
+      "private_minus_publish": 0.5818672180175781,
+      "abc_probability_mass": 0.9992426633834839,
+      "unconstrained_token": "B"
+    },
+    "permission_cancel_120": {
+      "choice_logits": [
+        26.21605110168457,
+        24.08791160583496,
+        26.735149383544922
+      ],
+      "conditional_probs": [
+        0.35719770193099976,
+        0.0425274558365345,
+        0.6002748608589172
+      ],
+      "selected_semantic_id": 0,
+      "correct": true,
+      "private_minus_publish": 0.5190982818603516,
+      "abc_probability_mass": 0.9993394613265991,
+      "unconstrained_token": "C"
+    },
+    "permission_cancel_201": {
+      "choice_logits": [
+        22.66737174987793,
+        25.91604995727539,
+        28.119930267333984
+      ],
+      "conditional_probs": [
+        0.0038445168174803257,
+        0.09902042150497437,
+        0.8971350789070129
+      ],
+      "selected_semantic_id": 1,
+      "correct": false,
+      "private_minus_publish": -2.2038803100585938,
+      "abc_probability_mass": 0.9995906352996826,
+      "unconstrained_token": "C"
+    },
+    "permission_cancel_210": {
+      "choice_logits": [
+        23.277172088623047,
+        26.30137062072754,
+        27.436050415039062
+      ],
+      "conditional_probs": [
+        0.011685355566442013,
+        0.2404554784297943,
+        0.7478591799736023
+      ],
+      "selected_semantic_id": 0,
+      "correct": true,
+      "private_minus_publish": 1.1346797943115234,
+      "abc_probability_mass": 0.9994549751281738,
+      "unconstrained_token": "C"
+    },
+    "permission_restore_012": {
+      "choice_logits": [
+        25.73841667175293,
+        28.14060401916504,
+        22.23918342590332
+      ],
+      "conditional_probs": [
+        0.08279835432767868,
+        0.914699375629425,
+        0.0025022111367434263
+      ],
+      "selected_semantic_id": 1,
+      "correct": true,
+      "private_minus_publish": -2.4021873474121094,
+      "abc_probability_mass": 0.9996516704559326,
+      "unconstrained_token": "B"
+    },
+    "permission_restore_021": {
+      "choice_logits": [
+        26.021827697753906,
+        23.544021606445312,
+        28.425811767578125
+      ],
+      "conditional_probs": [
+        0.08229701220989227,
+        0.006906954105943441,
+        0.9107959866523743
+      ],
+      "selected_semantic_id": 1,
+      "correct": true,
+      "private_minus_publish": -2.4039840698242188,
+      "abc_probability_mass": 0.9997389316558838,
+      "unconstrained_token": "C"
+    },
+    "permission_restore_102": {
+      "choice_logits": [
+        27.071252822875977,
+        27.12517738342285,
+        22.918306350708008
+      ],
+      "conditional_probs": [
+        0.48282983899116516,
+        0.5095810294151306,
+        0.007589136715978384
+      ],
+      "selected_semantic_id": 0,
+      "correct": false,
+      "private_minus_publish": 0.053924560546875,
+      "abc_probability_mass": 0.999576985836029,
+      "unconstrained_token": "B"
+    },
+    "permission_restore_120": {
+      "choice_logits": [
+        27.10214614868164,
+        23.36212921142578,
+        27.072044372558594
+      ],
+      "conditional_probs": [
+        0.5014792680740356,
+        0.011911988258361816,
+        0.4866087734699249
+      ],
+      "selected_semantic_id": 1,
+      "correct": true,
+      "private_minus_publish": -0.030101776123046875,
+      "abc_probability_mass": 0.9996687769889832,
+      "unconstrained_token": "A"
+    },
+    "permission_restore_201": {
+      "choice_logits": [
+        21.782236099243164,
+        25.73670196533203,
+        28.688762664794922
+      ],
+      "conditional_probs": [
+        0.0009506247588433325,
+        0.049592021852731705,
+        0.9494574069976807
+      ],
+      "selected_semantic_id": 1,
+      "correct": true,
+      "private_minus_publish": -2.9520606994628906,
+      "abc_probability_mass": 0.9997510313987732,
+      "unconstrained_token": "C"
+    },
+    "permission_restore_210": {
+      "choice_logits": [
+        22.823684692382812,
+        26.570056915283203,
+        27.664270401000977
+      ],
+      "conditional_probs": [
+        0.005885449703782797,
+        0.2493494749069214,
+        0.7447651028633118
+      ],
+      "selected_semantic_id": 0,
+      "correct": false,
+      "private_minus_publish": 1.0942134857177734,
+      "abc_probability_mass": 0.999624490737915,
+      "unconstrained_token": "C"
+    }
+  },
+  "interventions": {
+    "0": {
+      "paired_directions": 12,
+      "changed_semantic_choices": 0,
+      "fraction_eligible": 10,
+      "median_gap_fraction": -0.0034720813294434327,
+      "gap_fractions": [
+        0.0011356572051719287,
+        0.000184066764141016,
+        -0.003143131715282846,
+        -0.007137431730224371,
+        0.0017124648655678953,
+        -0.003814667904464512,
+        -0.0019804127816108346,
+        -0.00380103094360402,
+        -0.005565157981145255,
+        -0.0038924842369245215
+      ],
+      "note": "coarse intervention, not unique-circuit localization"
+    },
+    "11": {
+      "paired_directions": 12,
+      "changed_semantic_choices": 0,
+      "fraction_eligible": 10,
+      "median_gap_fraction": -0.043308633806083706,
+      "gap_fractions": [
+        -0.06847800894974239,
+        -0.14395187056171105,
+        -0.018139258662425026,
+        -0.07545422760208818,
+        -0.10005318738003126,
+        -0.0006322391381316069,
+        0.026859598941523777,
+        0.01039866211868598,
+        -0.1370533342131493,
+        0.07244737963973208
+      ],
+      "note": "coarse intervention, not unique-circuit localization"
+    },
+    "23": {
+      "paired_directions": 12,
+      "changed_semantic_choices": 2,
+      "fraction_eligible": 10,
+      "median_gap_fraction": 1.0,
+      "gap_fractions": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "note": "last-block output replacement is a positive control"
+    }
+  },
+  "self_control_max_diff": 0.0,
+  "wrong_position_max_diff": 0.0,
+  "positive_control_max_diff": 0.0,
+  "ended_utc": "2026-09-25T03:23:13.386724+00:00",
+  "total_seconds": 115.402,
+  "rows_written": 96
+}

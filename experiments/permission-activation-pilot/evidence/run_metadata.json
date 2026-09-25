@@ -1,0 +1,24 @@
+{
+  "github_run_id": "36089972897",
+  "workflow_commit": "f74ec54d87dc4016e896cc0d005bf33343a576dd",
+  "protocol_commit": "97fdce989e659dfa9fbb77af62f2203299656c2b",
+  "inputs": [
+    {
+      "file": "pilot.py",
+      "commit": "6d8ae732bc53da3874a2fc10c66582fb5c1de8f6",
+      "sha256": "9f22d6f753eceef2847be49076fa6ae8f60a0e967ed48a8e631706f84f4514c4"
+    },
+    {
+      "file": "probe.py",
+      "commit": "a1ef98b17b2acef04414d96fe72fce3db41fc2e5",
+      "sha256": "c68bbbf60aa88d8e568be0aa095d071238ac83b77f13bed0a70136cc570ab5d8"
+    },
+    {
+      "file": "PROTOCOL.md",
+      "commit": "97fdce989e659dfa9fbb77af62f2203299656c2b",
+      "sha256": "9931cd4a50c7717e09359df286fc871e104fd31aa085a37daca87a616a331bff"
+    }
+  ],
+  "cpu_threads": 2,
+  "gpu": false
+}
