@@ -25,9 +25,9 @@ jobs:
           root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-transformers-pr49099'
           root.mkdir(exist_ok=False)
           bundle=root/'bundle'; bundle.mkdir()
-          expected={"run_pr_regression.py":"d78741a32ee8abf91aaa6111f21918fb0dd700933377697087e89c38abc10405","roundtrip.patch":"1538319d621789142fd1f0bb450e4dec4a573bbfe18036b25840ec191a7c11ff","PROTOCOL.md":"a1d9e305a8ee6d8abaf992b13a6bb32aab42de5f13a99a9b2b5bbb73aa2cc7b3"}
+          expected={"run_pr_regression.py":"c629876a6b7be7262d6aaff45465c99c7da2a4b3dba573e6e8f90cf299c65528","roundtrip.patch":"1538319d621789142fd1f0bb450e4dec4a573bbfe18036b25840ec191a7c11ff","PROTOCOL.md":"21662d8faf38a4ee9d15ee97b0571badb6fd23be453d2b96ea51e20efd845ae4"}
           for name, digest in expected.items():
-              url='https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/fe1b6fb1cb534a4ff48ad0d2fb7fbfac04eda683/checks/transformers-49093/pr49099/'+name
+              url='https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/185b36ab556ba302fd8c98a3e6773059deed24fe/checks/transformers-49093/pr49099/'+name
               with urllib.request.urlopen(url,timeout=30) as response:
                   data=response.read(100000)
               assert hashlib.sha256(data).hexdigest()==digest
