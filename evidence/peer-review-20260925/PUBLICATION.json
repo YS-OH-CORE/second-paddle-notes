@@ -1,0 +1,43 @@
+{
+  "status": "PUBLISHED_AND_API_READ_BACK",
+  "release_id": 396187987,
+  "release_tag": "peer-review-evidence-20260925-v1",
+  "release_url": "https://github.com/YS-OH-CORE/second-paddle-notes/releases/tag/peer-review-evidence-20260925-v1",
+  "manifest_commit": "6e27854783ea407c9bcc71e77509cfb9dcd42171",
+  "published_at_utc": "2026-09-25T00:42:45Z",
+  "publisher_verified_at_utc": "2026-09-25T00:42:47.307751+00:00",
+  "verification": {
+    "original_archives": 5,
+    "existing_reviews": 3,
+    "original_archive_bytes": 175963,
+    "release_assets_downloaded_back": 8,
+    "all_downloaded_hashes_matched_staged_files": true,
+    "original_zip_bytes_unchanged": true,
+    "public_release_checked_via_separate_github_connector": true,
+    "checksums_are_not_signatures_or_claim_validation": true
+  },
+  "publication_route": "Existing authorized GitHub CLI through the user's remote PC; command-only work, no screen or focus interaction.",
+  "failure_and_recovery": "Draft creation and asset upload succeeded, but the first tag-based draft lookup failed. The existing draft was found by its release ID, all eight assets were downloaded and hashed, and that same draft was published. No second release was created and no existing release was overwritten.",
+  "assets": [
+    {"name":"manifest.json","id":587172806,"sha256":"ca4bace9a72456d0012ab26b95f686b04e735aa56004453b8e05dd4d8acbaaad"},
+    {"name":"README.md","id":587172805,"sha256":"cfdbd106caca41864789efc1a15c5618d1c52a71ae1dec815e85a8d5cf0bc065"},
+    {"name":"SHA256SUMS","id":587172842,"sha256":"667abadcdb78a048a7288db22b145289e364ced62a31d81d2cd44398ea34b006"},
+    {"name":"ZERO_SIGNAL_REAL_IMPORT_RAW_20260925.zip","id":587172809,"sha256":"124cf3bff7453177585e1af01c2ad50e43f6b1d9b873986a0371394b6e97bc54"},
+    {"name":"ZERO_SIGNAL_RECEIVED_PATCH_FIRST_ATTEMPT_20260925.zip","id":587172803,"sha256":"7e99b1fbaf9cdd0d4acc11adadf31626adf018655e1a90158e7322856a491cb0"},
+    {"name":"ZERO_SIGNAL_EXACT_RECIPIENT_RAW_20260925.zip","id":587172807,"sha256":"28f9f8a081f2ebc8bc9645cd8f6cd1a7c0ca4a0b433b8eef256e753126f9e9c8"},
+    {"name":"ZERO_LANGGRAPH_9074_UNICODE_RAW_20260925.zip","id":587172837,"sha256":"b7c3c48282bfc82dc773d98d6f905ce28910aac3d1a51f7ed4586972e6323055"},
+    {"name":"ZERO_PYDANTIC_8728_ORIGIN_RAW_20260925.zip","id":587172845,"sha256":"54fcce26ed513a28fdbb98935b54a1feb753688502cfa34e556ab54c5a639063"}
+  ],
+  "new_runtime_tests": 0,
+  "upstream_comments_posted_or_edited": 0,
+  "existing_releases_modified": false,
+  "repository_retention_settings_changed": false,
+  "archive_code_executed": false,
+  "user_screen_focus_changed": false,
+  "additional_boundaries": [
+    "Original failures, warnings, and contributor attributions are retained.",
+    "The secret-pattern scan found no matches for the checked patterns; it is not a universal privacy proof.",
+    "Release storage is not an assertion of permanent immutable availability or independent hosting.",
+    "No new acknowledgement, upstream acceptance, or deployed fix is claimed."
+  ]
+}
