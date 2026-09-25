@@ -1,0 +1,38 @@
+{
+  "n": 288,
+  "content_items": 3,
+  "correct": 181,
+  "conflict": {"n": 144, "correct": 73},
+  "agreement": {"n": 144, "correct": 108},
+  "conflict_by_authority_position": [
+    {"authority": "USER", "position": "first", "n": 36, "correct": 20, "predictions": {"private": 34, "public": 2}},
+    {"authority": "USER", "position": "last", "n": 36, "correct": 9, "predictions": {"public": 9, "private": 27}},
+    {"authority": "ASSISTANT", "position": "first", "n": 36, "correct": 27, "predictions": {"public": 9, "private": 27}},
+    {"authority": "ASSISTANT", "position": "last", "n": 36, "correct": 17, "predictions": {"private": 31, "public": 5}}
+  ],
+  "conflict_by_item_authority_position": [
+    {"item": "orchestra", "authority": "USER", "position": "first", "n": 12, "correct": 7},
+    {"item": "pottery", "authority": "USER", "position": "first", "n": 12, "correct": 7},
+    {"item": "botanical", "authority": "USER", "position": "first", "n": 12, "correct": 6},
+    {"item": "orchestra", "authority": "USER", "position": "last", "n": 12, "correct": 3},
+    {"item": "pottery", "authority": "USER", "position": "last", "n": 12, "correct": 3},
+    {"item": "botanical", "authority": "USER", "position": "last", "n": 12, "correct": 3},
+    {"item": "orchestra", "authority": "ASSISTANT", "position": "first", "n": 12, "correct": 9},
+    {"item": "pottery", "authority": "ASSISTANT", "position": "first", "n": 12, "correct": 9},
+    {"item": "botanical", "authority": "ASSISTANT", "position": "first", "n": 12, "correct": 9},
+    {"item": "orchestra", "authority": "ASSISTANT", "position": "last", "n": 12, "correct": 5},
+    {"item": "pottery", "authority": "ASSISTANT", "position": "last", "n": 12, "correct": 6},
+    {"item": "botanical", "authority": "ASSISTANT", "position": "last", "n": 12, "correct": 6}
+  ],
+  "paired": {
+    "authority_all": {"pairs": 144, "choice_changes": 3, "both_correct": 56, "neither_correct": 19},
+    "authority_conflict": {"pairs": 72, "choice_changes": 3, "both_correct": 2, "neither_correct": 1},
+    "authority_agreement": {"pairs": 72, "choice_changes": 0, "both_correct": 54, "neither_correct": 18},
+    "first_all": {"pairs": 144, "choice_changes": 21, "both_correct": 80, "neither_correct": 43},
+    "first_conflict": {"pairs": 72, "choice_changes": 21, "both_correct": 26, "neither_correct": 25},
+    "first_agreement": {"pairs": 72, "choice_changes": 0, "both_correct": 54, "neither_correct": 18}
+  },
+  "option_assignment": {"groups": 48, "variants_each": 6, "semantic_changes": 25, "all_correct": 18},
+  "format": {"top_is_label": 288, "minimum_label_mass": 0.9863280836184335, "median_label_mass": 0.9978810843257068},
+  "descriptive_privacy_counts": {"status": "derived from saved predictions, no new model run", "all_predictions": {"private": 227, "public": 61}, "conflict_private": 119}
+}

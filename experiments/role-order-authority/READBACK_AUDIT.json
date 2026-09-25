@@ -1,0 +1,26 @@
+{
+  "artifact_sha256": "11a3aeefe3466e9f775940df0e092a81ece9170bbc60198b314cd91efa8eb836",
+  "frozen_script_exact": true,
+  "audit_reproduced": {
+    "rows": 288,
+    "all_choice_logits_reconstructed": true,
+    "max_readout_error": 1.1253063888716497e-05,
+    "full_vocab_rows": 12,
+    "paired_tokens_and_schedule_verified": true,
+    "summary_recomputed": true,
+    "mutation_checks": {"missing": true, "meaning": true, "gold": true},
+    "external_replication": false,
+    "new_model_calls": 0
+  },
+  "all_288_readout_ids_unique": true,
+  "all_order_pairs_exact_swaps": true,
+  "all_authority_pairs_same_transcript": true,
+  "sample_label_mass_verified": true,
+  "replay_records_verified": true,
+  "baseline_rows": 288,
+  "replay_evaluations": 12,
+  "baseline_calls": 72,
+  "replay_calls": 12,
+  "new_model_calls_in_readback": 0,
+  "independent_external_replication": false
+}
