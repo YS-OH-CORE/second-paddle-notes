@@ -1,0 +1,58 @@
+name: Honcho eval write-boundary source probe
+'on':
+  push:
+    branches: [checks/hermes-eval-writes-121935-20260925]
+    paths: [.github/workflows/hermes-eval-writes-121935-20260925.yml]
+permissions: {}
+concurrency:
+  group: zero-honcho-write-boundary-121935-20260925
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Verify pinned source and exercise isolated methods
+        run: |
+          python3 -u - <<'PY'
+          import hashlib,json,os,pathlib,subprocess,sys,urllib.request
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-honcho-writes-121935'
+          root.mkdir(exist_ok=False)
+          output=root/'output'; output.mkdir()
+          source=root/'source'; source.mkdir()
+          upstream='7b761da2de4979e424510ca7022bf9527aa65b68'
+          own='6048120e3518599fd99944a685a8879e63ab2e76'
+          def download(url, target):
+              with urllib.request.urlopen(url,timeout=25) as r:
+                  data=r.read(1000001)
+              assert len(data)<=1000000
+              target.write_bytes(data)
+              return data
+          base='https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/'+own+'/checks/hermes-eval-write-boundary-121935/'
+          code=download(base+'probe.py',output/'probe.py')
+          assert hashlib.sha256(code).hexdigest()=='7e146ec2310457af53bcbfebccb8002e838ff6a6213769659cd4fa85cbb68e3e'
+          download(base+'PROTOCOL.md',output/'PROTOCOL.md')
+          public='https://raw.githubusercontent.com/NousResearch/hermes-agent/'+upstream+'/'
+          download(public+'plugins/memory/honcho/__init__.py',source/'provider.py')
+          download(public+'plugins/memory/honcho/session_migration.py',source/'migration.py')
+          download(public+'LICENSE',output/'LICENSE.upstream')
+          metadata={'run_id':os.environ['GITHUB_RUN_ID'],'workflow_commit':os.environ['GITHUB_SHA'],
+                    'probe_commit':own,'probe_sha256':hashlib.sha256(code).hexdigest(),
+                    'upstream_commit':upstream,'python':sys.version}
+          (output/'metadata.json').write_text(json.dumps(metadata,indent=2)+'\n')
+          p=subprocess.run([sys.executable,'-B','-u',str(output/'probe.py'),'--source-dir',str(source),'--out',str(output/'observed')],capture_output=True,text=True,timeout=40)
+          (output/'execution.log').write_text(p.stdout+'\nSTDERR\n'+p.stderr,encoding='utf-8')
+          print(p.stdout+p.stderr,flush=True)
+          p.check_returncode()
+          report=json.loads((output/'observed/report.json').read_text())
+          assert report['success'] and report['count']==28
+          print('VERIFIED: 28 source-selected observations; fake service only; no model inference')
+          PY
+      - name: Preserve source identities, fixtures and all observations
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: zero-honcho-write-boundary-121935-20260925
+          path: ${{ runner.temp }}/zero-honcho-writes-121935/output/
+          if-no-files-found: error
+          retention-days: 30
