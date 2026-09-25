@@ -1,0 +1,20 @@
+{
+  "status": "POSTED_AND_READ_BACK",
+  "repository": "huggingface/smolagents",
+  "issue": 2833,
+  "comment_id": 5825130804,
+  "comment_url": "https://github.com/huggingface/smolagents/issues/2833#issuecomment-5825130804",
+  "author": "YS-OH-CORE",
+  "created_at_utc": "2026-09-25T01:25:32Z",
+  "delivery_route": "GitHub connector",
+  "upstream_comments_posted": 1,
+  "competing_pr_opened": false,
+  "runtime_run_id": 36081728457,
+  "runtime_source_commit": "227ef5e49ddd82339295939072f0223249aa8d38",
+  "raw_archive_sha256": "3c0f8510868099e9543c12a11646d2b83af690327806f5ae620cf67a50c48de6",
+  "public_report_commit": "33c95c2f097b4b2669a29922330cae868ffa1e09",
+  "user_pc_used": false,
+  "live_model_calls": 0,
+  "new_reply_or_upstream_acceptance_confirmed": false,
+  "contribution": "Supplemental parameter-name and method-name-substring cases, count-one negative control, and prior-export recovery boundary. Original diagnosis and removal proposal remain BlueX888's."
+}
