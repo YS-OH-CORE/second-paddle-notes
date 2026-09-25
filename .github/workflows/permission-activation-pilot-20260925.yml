@@ -1,0 +1,69 @@
+name: Permission-pair activation interchange pilot
+'on':
+  push:
+    branches: [research/permission-activation-pilot-20260925]
+    paths: [.github/workflows/permission-activation-pilot-20260925.yml]
+permissions: {}
+concurrency:
+  group: zero-permission-activation-pilot-20260925
+  cancel-in-progress: false
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - name: Run prespecified residual swaps, shams and position controls
+        run: |
+          python3 -B -u - <<'PY'
+          import hashlib,json,os,pathlib,subprocess,urllib.request
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-permission-activation'
+          root.mkdir(exist_ok=False)
+          out=root/'output';out.mkdir();home=root/'home';home.mkdir()
+          env={'PATH':os.environ['PATH'],'HOME':str(home),'LANG':'C.UTF-8',
+               'PYTHONDONTWRITEBYTECODE':'1','HF_HOME':str(root/'hf-cache'),
+               'HF_HUB_DISABLE_TELEMETRY':'1','HF_HUB_DISABLE_IMPLICIT_TOKEN':'1',
+               'HF_HUB_DISABLE_XET':'1','TOKENIZERS_PARALLELISM':'false',
+               'OMP_NUM_THREADS':'2','MKL_NUM_THREADS':'2','CUDA_VISIBLE_DEVICES':''}
+          def call(argv,timeout):
+              try:
+                  p=subprocess.run(list(map(str,argv)),cwd=root,env=env,text=True,capture_output=True,timeout=timeout)
+              except subprocess.TimeoutExpired as exc:
+                  (out/'timeout.txt').write_text(str(exc),encoding='utf-8')
+                  raise
+              with (out/'execution.log').open('a',encoding='utf-8') as f:
+                  f.write('COMMAND '+str(argv)+'\nSTDOUT\n'+p.stdout+'\nSTDERR\n'+p.stderr+'\n')
+              print(p.stdout[-35000:]+p.stderr[-5000:],flush=True)
+              p.check_returncode()
+              return p.stdout
+          repo='https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/'
+          inputs=[
+            ('pilot.py','6d8ae732bc53da3874a2fc10c66582fb5c1de8f6','experiments/memory-cpu-pilot/pilot.py','9f22d6f753eceef2847be49076fa6ae8f60a0e967ed48a8e631706f84f4514c4'),
+            ('probe.py','a1ef98b17b2acef04414d96fe72fce3db41fc2e5','experiments/permission-activation-pilot/probe.py','c68bbbf60aa88d8e568be0aa095d071238ac83b77f13bed0a70136cc570ab5d8'),
+            ('PROTOCOL.md','97fdce989e659dfa9fbb77af62f2203299656c2b','experiments/permission-activation-pilot/PROTOCOL.md',None)]
+          receipt=[]
+          for name,ref,path,expected in inputs:
+              with urllib.request.urlopen(repo+ref+'/'+path,timeout=25) as r:data=r.read(80000)
+              digest=hashlib.sha256(data).hexdigest()
+              if expected:assert digest==expected, name
+              (out/name).write_bytes(data)
+              receipt.append({'file':name,'commit':ref,'sha256':digest})
+          (out/'run_metadata.json').write_text(json.dumps({'github_run_id':os.environ['GITHUB_RUN_ID'],
+            'workflow_commit':os.environ['GITHUB_SHA'],'protocol_commit':'97fdce989e659dfa9fbb77af62f2203299656c2b',
+            'inputs':receipt,'cpu_threads':2,'gpu':False},indent=2)+'\n',encoding='utf-8')
+          call(['python3','-B',out/'probe.py','--base',out/'pilot.py','--out',out/'unused','--plan-only'],20)
+          call(['python3','-m','venv',root/'venv'],30)
+          py=root/'venv/bin/python'
+          call([py,'-m','pip','install','--disable-pip-version-check','--no-cache-dir','torch==2.6.0','--index-url','https://download.pytorch.org/whl/cpu'],180)
+          call([py,'-m','pip','install','--disable-pip-version-check','--no-cache-dir','transformers==4.51.3','huggingface-hub==0.30.2','tokenizers==0.21.1','safetensors==0.5.3','numpy==2.2.6'],120)
+          (out/'environment.txt').write_text(call([py,'-m','pip','freeze','--all'],30),encoding='utf-8')
+          call([py,'-B','-u',out/'probe.py','--base',out/'pilot.py','--out',out/'inference'],420)
+          PY
+      - name: Retain protocol, actual activations, logits and all outcomes
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: zero-permission-activation-pilot-20260925
+          path: ${{ runner.temp }}/zero-permission-activation/output/
+          if-no-files-found: error
+          retention-days: 30
+          compression-level: 6
