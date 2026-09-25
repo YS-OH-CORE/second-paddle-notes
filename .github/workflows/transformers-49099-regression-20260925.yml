@@ -1,0 +1,44 @@
+name: Transformers requested PR regression
+'on':
+  push:
+    branches: [checks/transformers-49093-20260925]
+    paths: [.github/workflows/transformers-49099-regression-20260925.yml]
+permissions: {}
+concurrency:
+  group: zero-transformers-pr49099-20260925
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      HF_HUB_DISABLE_TELEMETRY: '1'
+      HF_HUB_DISABLE_IMPLICIT_TOKEN: '1'
+      TOKENIZERS_PARALLELISM: 'false'
+      OMP_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+    steps:
+      - name: Run requested test in exact upstream module and PR source
+        run: |
+          python3 -u - <<'PY'
+          import hashlib,os,pathlib,subprocess,urllib.request
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-transformers-pr49099'
+          root.mkdir(exist_ok=False)
+          bundle=root/'bundle'; bundle.mkdir()
+          expected={"run_pr_regression.py":"d78741a32ee8abf91aaa6111f21918fb0dd700933377697087e89c38abc10405","roundtrip.patch":"1538319d621789142fd1f0bb450e4dec4a573bbfe18036b25840ec191a7c11ff","PROTOCOL.md":"a1d9e305a8ee6d8abaf992b13a6bb32aab42de5f13a99a9b2b5bbb73aa2cc7b3"}
+          for name, digest in expected.items():
+              url='https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/fe1b6fb1cb534a4ff48ad0d2fb7fbfac04eda683/checks/transformers-49093/pr49099/'+name
+              with urllib.request.urlopen(url,timeout=30) as response:
+                  data=response.read(100000)
+              assert hashlib.sha256(data).hexdigest()==digest
+              (bundle/name).write_bytes(data)
+          subprocess.run(['python3','-u',str(bundle/'run_pr_regression.py'),'--root',str(root/'run'),'--patch',str(bundle/'roundtrip.patch')],check=True,timeout=780)
+          PY
+      - name: Preserve actual tests, source identities, JUnit and logs
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: zero-transformers-pr49099-regression-20260925
+          path: ${{ runner.temp }}/zero-transformers-pr49099/run/output/
+          if-no-files-found: error
+          retention-days: 30
