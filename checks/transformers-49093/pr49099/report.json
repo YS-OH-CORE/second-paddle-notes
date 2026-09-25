@@ -1,0 +1,150 @@
+{
+  "success": true,
+  "base_commit": "89b6b17574892ec0770551537a3fe69d6886703e",
+  "pr_head_commit": "e435677fb9981b3f2bfc7abeaabcb394e47c29e2",
+  "issue": "https://github.com/huggingface/transformers/issues/49093",
+  "request": "https://github.com/huggingface/transformers/issues/49093#issuecomment-5827315466",
+  "pr": "https://github.com/huggingface/transformers/pull/49099",
+  "patch_sha256": "1538319d621789142fd1f0bb450e4dec4a573bbfe18036b25840ec191a7c11ff",
+  "runner_sha256": "c629876a6b7be7262d6aaff45465c99c7da2a4b3dba573e6e8f90cf299c65528",
+  "run_id": "36100586013",
+  "workflow_commit": "baaf3859b9a21ebddc31eab0afde18ac12f46f7b",
+  "variants": [
+    {
+      "variant": "base",
+      "returncode": 1,
+      "identity": {
+        "package": "/home/runner/work/_temp/zero-transformers-pr49099/run/base/transformers-89b6b17574892ec0770551537a3fe69d6886703e/src/transformers/__init__.py",
+        "source": "/home/runner/work/_temp/zero-transformers-pr49099/run/base/transformers-89b6b17574892ec0770551537a3fe69d6886703e/src/transformers/generation/logits_process.py",
+        "torch": "2.12.0+cpu",
+        "transformers": "5.18.0.dev0"
+      },
+      "source_sha256": "74401e23ae7c4124e1efd085153c0d555e78b99dd87e5afd087b5b2a94e4d369",
+      "source_git_blob": "7ff6a32c026efb139cc89996e07181f141cce971",
+      "executed": 3,
+      "passed": 2,
+      "failed": 1,
+      "failure_text": "self = <tests.generation.test_logits_process.LogitsProcessorTest testMethod=test_bias_dist_processor_zero_token_roundtrip_full_prefix>\n\n    def test_bias_dist_processor_zero_token_roundtrip_full_prefix(self):\n        sequence_bias = [[[0, 4], -2.5]]\n        with tempfile.TemporaryDirectory() as tmp_dir:\n            GenerationConfig(sequence_bias=sequence_bias).save_pretrained(tmp_dir)\n            config = GenerationConfig.from_pretrained(tmp_dir, local_files_only=True)\n        self.assertEqual(config.sequence_bias, sequence_bias)\n    \n        input_ids = torch.tensor([[0], [3]], dtype=torch.long, device=torch_device)\n        scores = torch.tensor([[1, 2, 3, 4, 5, 6], [6, 5, 4, 3, 2, 1]], dtype=torch.float, device=torch_device)\n        original_scores = scores.clone()\n>       processor = SequenceBiasLogitsProcessor(sequence_bias=config.sequence_bias)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\ntests/generation/test_logits_process.py:809: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \nsrc/transformers/generation/logits_process.py:1292: in __init__\n    self._validate_arguments()\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <transformers.generation.logits_process.SequenceBiasLogitsProcessor object at 0x7f9dbb03fce0>\n\n    def _validate_arguments(self):\n        sequence_bias = self.sequence_bias\n        if not isinstance(sequence_bias, dict) and not isinstance(sequence_bias, list) or len(sequence_bias) == 0:\n            raise ValueError(\n                f\"`sequence_bias` has to be a non-empty dictionary, or non-empty list of lists but is {sequence_bias}.\"\n            )\n        if isinstance(sequence_bias, dict) and any(\n            not isinstance(sequence_ids, tuple) for sequence_ids in sequence_bias\n        ):\n            raise ValueError(f\"`sequence_bias` has to be a dict with tuples as keys, but is {sequence_bias}.\")\n        if isinstance(sequence_bias, dict) and any(\n            any((not isinstance(token_id, (int, np.integer)) or token_id < 0) for token_id in sequence_ids)\n            or len(sequence_ids) == 0\n            for sequence_ids in sequence_bias\n        ):\n            raise ValueError(\n                f\"Each key in `sequence_bias` has to be a non-empty tuple of positive integers, but is \"\n                f\"{sequence_bias}.\"\n            )\n    \n        def all_token_bias_pairs_are_valid(sequence):\n            return (\n                isinstance(sequence[0], list)\n                and all(isinstance(token_id, (int, np.integer)) and token_id > 0 for token_id in sequence[0])\n                and isinstance(sequence[1], float)\n            )\n    \n        if isinstance(sequence_bias, list) and any(\n            (not all_token_bias_pairs_are_valid(sequence)) or len(sequence) == 0 for sequence in sequence_bias\n        ):\n>           raise ValueError(\n                f\"Each element in `sequence_bias` has to be a non-empty list of lists of positive integers and float, but is \"\n                f\"{sequence_bias}.\"\n            )\nE           ValueError: Each element in `sequence_bias` has to be a non-empty list of lists of positive integers and float, but is [[[0, 4], -2.5]].\n\nsrc/transformers/generation/logits_process.py:1394: ValueError",
+      "tests": [
+        {
+          "name": "test_bias_dist_processor_zero_token_roundtrip_full_prefix",
+          "passed": false
+        },
+        {
+          "name": "test_bias_dist_processor",
+          "passed": true
+        },
+        {
+          "name": "test_no_bad_words_dist_processor",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "variant": "pr_head",
+      "returncode": 0,
+      "identity": {
+        "package": "/home/runner/work/_temp/zero-transformers-pr49099/run/head/transformers-e435677fb9981b3f2bfc7abeaabcb394e47c29e2/src/transformers/__init__.py",
+        "source": "/home/runner/work/_temp/zero-transformers-pr49099/run/head/transformers-e435677fb9981b3f2bfc7abeaabcb394e47c29e2/src/transformers/generation/logits_process.py",
+        "torch": "2.12.0+cpu",
+        "transformers": "5.18.0.dev0"
+      },
+      "source_sha256": "bad772e8fb618b442e0ba2eea6f77f37efd3b74a0bde6899555e51653cc51a9d",
+      "source_git_blob": "4638fce3a2dd880dacdab148f73de28cd4280987",
+      "executed": 3,
+      "passed": 3,
+      "failed": 0,
+      "failure_text": null,
+      "tests": [
+        {
+          "name": "test_bias_dist_processor_zero_token_roundtrip_full_prefix",
+          "passed": true
+        },
+        {
+          "name": "test_bias_dist_processor",
+          "passed": true
+        },
+        {
+          "name": "test_no_bad_words_dist_processor",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "variant": "pr_revert_zero",
+      "returncode": 1,
+      "identity": {
+        "package": "/home/runner/work/_temp/zero-transformers-pr49099/run/head/transformers-e435677fb9981b3f2bfc7abeaabcb394e47c29e2/src/transformers/__init__.py",
+        "source": "/home/runner/work/_temp/zero-transformers-pr49099/run/head/transformers-e435677fb9981b3f2bfc7abeaabcb394e47c29e2/src/transformers/generation/logits_process.py",
+        "torch": "2.12.0+cpu",
+        "transformers": "5.18.0.dev0"
+      },
+      "source_sha256": "5955582884823cc93b24555e7633856dd7b9710f8581dcfebc1dbebe2b0947fa",
+      "source_git_blob": "9b6a824f8be6b844fd8756e54a278410ceea2193",
+      "executed": 3,
+      "passed": 2,
+      "failed": 1,
+      "failure_text": "self = <tests.generation.test_logits_process.LogitsProcessorTest testMethod=test_bias_dist_processor_zero_token_roundtrip_full_prefix>\n\n    def test_bias_dist_processor_zero_token_roundtrip_full_prefix(self):\n        sequence_bias = [[[0, 4], -2.5]]\n        with tempfile.TemporaryDirectory() as tmp_dir:\n            GenerationConfig(sequence_bias=sequence_bias).save_pretrained(tmp_dir)\n            config = GenerationConfig.from_pretrained(tmp_dir, local_files_only=True)\n        self.assertEqual(config.sequence_bias, sequence_bias)\n    \n        input_ids = torch.tensor([[0], [3]], dtype=torch.long, device=torch_device)\n        scores = torch.tensor([[1, 2, 3, 4, 5, 6], [6, 5, 4, 3, 2, 1]], dtype=torch.float, device=torch_device)\n        original_scores = scores.clone()\n>       processor = SequenceBiasLogitsProcessor(sequence_bias=config.sequence_bias)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\ntests/generation/test_logits_process.py:809: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \nsrc/transformers/generation/logits_process.py:1292: in __init__\n    self._validate_arguments()\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <transformers.generation.logits_process.SequenceBiasLogitsProcessor object at 0x7f2b3a325760>\n\n    def _validate_arguments(self):\n        sequence_bias = self.sequence_bias\n        if not isinstance(sequence_bias, dict) and not isinstance(sequence_bias, list) or len(sequence_bias) == 0:\n            raise ValueError(\n                f\"`sequence_bias` has to be a non-empty dictionary, or non-empty list of lists but is {sequence_bias}.\"\n            )\n        if isinstance(sequence_bias, dict) and any(\n            not isinstance(sequence_ids, tuple) for sequence_ids in sequence_bias\n        ):\n            raise ValueError(f\"`sequence_bias` has to be a dict with tuples as keys, but is {sequence_bias}.\")\n        if isinstance(sequence_bias, dict) and any(\n            any((not isinstance(token_id, (int, np.integer)) or token_id < 0) for token_id in sequence_ids)\n            or len(sequence_ids) == 0\n            for sequence_ids in sequence_bias\n        ):\n            raise ValueError(\n                f\"Each key in `sequence_bias` has to be a non-empty tuple of positive integers, but is \"\n                f\"{sequence_bias}.\"\n            )\n    \n        def all_token_bias_pairs_are_valid(sequence):\n            return (\n                isinstance(sequence[0], list)\n                and all(isinstance(token_id, (int, np.integer)) and token_id > 0 for token_id in sequence[0])\n                and isinstance(sequence[1], float)\n            )\n    \n        if isinstance(sequence_bias, list) and any(\n            (not all_token_bias_pairs_are_valid(sequence)) or len(sequence) == 0 for sequence in sequence_bias\n        ):\n>           raise ValueError(\n                f\"Each element in `sequence_bias` has to be a non-empty list of lists of positive integers and float, but is \"\n                f\"{sequence_bias}.\"\n            )\nE           ValueError: Each element in `sequence_bias` has to be a non-empty list of lists of positive integers and float, but is [[[0, 4], -2.5]].\n\nsrc/transformers/generation/logits_process.py:1394: ValueError",
+      "tests": [
+        {
+          "name": "test_bias_dist_processor_zero_token_roundtrip_full_prefix",
+          "passed": false
+        },
+        {
+          "name": "test_bias_dist_processor",
+          "passed": true
+        },
+        {
+          "name": "test_no_bad_words_dist_processor",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "variant": "pr_revert_prefix",
+      "returncode": 1,
+      "identity": {
+        "package": "/home/runner/work/_temp/zero-transformers-pr49099/run/head/transformers-e435677fb9981b3f2bfc7abeaabcb394e47c29e2/src/transformers/__init__.py",
+        "source": "/home/runner/work/_temp/zero-transformers-pr49099/run/head/transformers-e435677fb9981b3f2bfc7abeaabcb394e47c29e2/src/transformers/generation/logits_process.py",
+        "torch": "2.12.0+cpu",
+        "transformers": "5.18.0.dev0"
+      },
+      "source_sha256": "d86af0fce26629e9a2cefe5e1ea499350800559412431c4959d16abe327aab41",
+      "source_git_blob": "9312e1097b30e4d3657adac420a50ad08c801e01",
+      "executed": 3,
+      "passed": 2,
+      "failed": 1,
+      "failure_text": "self = <tests.generation.test_logits_process.LogitsProcessorTest testMethod=test_bias_dist_processor_zero_token_roundtrip_full_prefix>\n\n    def test_bias_dist_processor_zero_token_roundtrip_full_prefix(self):\n        sequence_bias = [[[0, 4], -2.5]]\n        with tempfile.TemporaryDirectory() as tmp_dir:\n            GenerationConfig(sequence_bias=sequence_bias).save_pretrained(tmp_dir)\n            config = GenerationConfig.from_pretrained(tmp_dir, local_files_only=True)\n        self.assertEqual(config.sequence_bias, sequence_bias)\n    \n        input_ids = torch.tensor([[0], [3]], dtype=torch.long, device=torch_device)\n        scores = torch.tensor([[1, 2, 3, 4, 5, 6], [6, 5, 4, 3, 2, 1]], dtype=torch.float, device=torch_device)\n        original_scores = scores.clone()\n        processor = SequenceBiasLogitsProcessor(sequence_bias=config.sequence_bias)\n        actual = processor(input_ids, scores)\n        expected = torch.tensor([[1, 2, 3, 4, 2.5, 6], [6, 5, 4, 3, 2, 1]], dtype=torch.float, device=torch_device)\n>       torch.testing.assert_close(actual, expected, rtol=0, atol=0)\nE       AssertionError: Tensor-likes are not equal!\nE       \nE       Mismatched elements: 1 / 12 (8.3%)\nE       Greatest absolute difference: 2.5 at index (0, 4)\nE       Greatest relative difference: 1.0 at index (0, 4)\n\ntests/generation/test_logits_process.py:812: AssertionError",
+      "tests": [
+        {
+          "name": "test_bias_dist_processor_zero_token_roundtrip_full_prefix",
+          "passed": false
+        },
+        {
+          "name": "test_bias_dist_processor",
+          "passed": true
+        },
+        {
+          "name": "test_no_bad_words_dist_processor",
+          "passed": true
+        }
+      ]
+    }
+  ],
+  "archives": {
+    "base": {
+      "url": "https://github.com/huggingface/transformers/archive/89b6b17574892ec0770551537a3fe69d6886703e.zip",
+      "sha256": "df104ab38c9154d6129cfe8f36a2ba5b0cfcd1c455aada3d965b310b51a78c76"
+    },
+    "head": {
+      "url": "https://github.com/aniketkrs/transformers/archive/e435677fb9981b3f2bfc7abeaabcb394e47c29e2.zip",
+      "sha256": "f2a3453f6d683ca790894a636a341693b9778593922b6dad6afc522676b27aaa"
+    }
+  },
+  "target_file_ruff_check_and_format": "passed",
+  "executed_tests": 12,
+  "full_upstream_test_module": true,
+  "repository_conftest_enabled": true,
+  "model_calls": 0,
+  "scope": "three selected unittest methods; CPU; actual source base/head and two single-fix reversions"
+}

@@ -1,0 +1,28 @@
+{
+  "success": false,
+  "base_commit": "89b6b17574892ec0770551537a3fe69d6886703e",
+  "pr_head_commit": "e435677fb9981b3f2bfc7abeaabcb394e47c29e2",
+  "issue": "https://github.com/huggingface/transformers/issues/49093",
+  "request": "https://github.com/huggingface/transformers/issues/49093#issuecomment-5827315466",
+  "pr": "https://github.com/huggingface/transformers/pull/49099",
+  "patch_sha256": "1538319d621789142fd1f0bb450e4dec4a573bbfe18036b25840ec191a7c11ff",
+  "runner_sha256": "d78741a32ee8abf91aaa6111f21918fb0dd700933377697087e89c38abc10405",
+  "run_id": "36100369760",
+  "workflow_commit": "46960d362bbbac478aa23c77bf31094dafdd6ce2",
+  "variants": [],
+  "archives": {
+    "base": {
+      "url": "https://github.com/huggingface/transformers/archive/89b6b17574892ec0770551537a3fe69d6886703e.zip",
+      "sha256": "df104ab38c9154d6129cfe8f36a2ba5b0cfcd1c455aada3d965b310b51a78c76"
+    },
+    "head": {
+      "url": "https://github.com/aniketkrs/transformers/archive/e435677fb9981b3f2bfc7abeaabcb394e47c29e2.zip",
+      "sha256": "f2a3453f6d683ca790894a636a341693b9778593922b6dad6afc522676b27aaa"
+    }
+  },
+  "target_file_ruff_check_and_format": "passed",
+  "error": {
+    "type": "AssertionError",
+    "message": "Collection must execute exactly the three selected tests"
+  }
+}

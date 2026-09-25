@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="3" time="1.798" timestamp="2026-09-25T05:56:42.976545+00:00" hostname="runnervmtr4k5"><testcase classname="tests.generation.test_logits_process.LogitsProcessorTest" name="test_bias_dist_processor_zero_token_roundtrip_full_prefix" time="0.003"><failure message="ValueError: Each element in `sequence_bias` has to be a non-empty list of lists of positive integers and float, but is [[[0, 4], -2.5]].">self = &lt;tests.generation.test_logits_process.LogitsProcessorTest testMethod=test_bias_dist_processor_zero_token_roundtrip_full_prefix&gt;
+
+    def test_bias_dist_processor_zero_token_roundtrip_full_prefix(self):
+        sequence_bias = [[[0, 4], -2.5]]
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            GenerationConfig(sequence_bias=sequence_bias).save_pretrained(tmp_dir)
+            config = GenerationConfig.from_pretrained(tmp_dir, local_files_only=True)
+        self.assertEqual(config.sequence_bias, sequence_bias)
+    
+        input_ids = torch.tensor([[0], [3]], dtype=torch.long, device=torch_device)
+        scores = torch.tensor([[1, 2, 3, 4, 5, 6], [6, 5, 4, 3, 2, 1]], dtype=torch.float, device=torch_device)
+        original_scores = scores.clone()
+&gt;       processor = SequenceBiasLogitsProcessor(sequence_bias=config.sequence_bias)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/generation/test_logits_process.py:809: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/transformers/generation/logits_process.py:1292: in __init__
+    self._validate_arguments()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;transformers.generation.logits_process.SequenceBiasLogitsProcessor object at 0x7f2b3a325760&gt;
+
+    def _validate_arguments(self):
+        sequence_bias = self.sequence_bias
+        if not isinstance(sequence_bias, dict) and not isinstance(sequence_bias, list) or len(sequence_bias) == 0:
+            raise ValueError(
+                f"`sequence_bias` has to be a non-empty dictionary, or non-empty list of lists but is {sequence_bias}."
+            )
+        if isinstance(sequence_bias, dict) and any(
+            not isinstance(sequence_ids, tuple) for sequence_ids in sequence_bias
+        ):
+            raise ValueError(f"`sequence_bias` has to be a dict with tuples as keys, but is {sequence_bias}.")
+        if isinstance(sequence_bias, dict) and any(
+            any((not isinstance(token_id, (int, np.integer)) or token_id &lt; 0) for token_id in sequence_ids)
+            or len(sequence_ids) == 0
+            for sequence_ids in sequence_bias
+        ):
+            raise ValueError(
+                f"Each key in `sequence_bias` has to be a non-empty tuple of positive integers, but is "
+                f"{sequence_bias}."
+            )
+    
+        def all_token_bias_pairs_are_valid(sequence):
+            return (
+                isinstance(sequence[0], list)
+                and all(isinstance(token_id, (int, np.integer)) and token_id &gt; 0 for token_id in sequence[0])
+                and isinstance(sequence[1], float)
+            )
+    
+        if isinstance(sequence_bias, list) and any(
+            (not all_token_bias_pairs_are_valid(sequence)) or len(sequence) == 0 for sequence in sequence_bias
+        ):
+&gt;           raise ValueError(
+                f"Each element in `sequence_bias` has to be a non-empty list of lists of positive integers and float, but is "
+                f"{sequence_bias}."
+            )
+E           ValueError: Each element in `sequence_bias` has to be a non-empty list of lists of positive integers and float, but is [[[0, 4], -2.5]].
+
+src/transformers/generation/logits_process.py:1394: ValueError</failure></testcase><testcase classname="tests.generation.test_logits_process.LogitsProcessorTest" name="test_bias_dist_processor" time="0.001" /><testcase classname="tests.generation.test_logits_process.LogitsProcessorTest" name="test_no_bad_words_dist_processor" time="0.001" /></testsuite></testsuites>
