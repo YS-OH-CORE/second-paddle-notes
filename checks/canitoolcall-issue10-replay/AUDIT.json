@@ -1,0 +1,48 @@
+{
+  "source_commit": "5670805d5b140230a323536c5de9a89091ad02d2",
+  "successful_run": 36229333092,
+  "successful_artifact_sha256": "0ec1966d49d9df99e7bcf32cf5f79aa078916f6f0c299539b71dd8be4b2171e0",
+  "actual_fixture_replays": 9,
+  "real_parser_replay_sessions_in_completed_run": 162,
+  "measured_repetitions": 2,
+  "repeated_observations_identical": true,
+  "all_81_first_pass_parser_outputs_equal_committed_snapshot": true,
+  "local_score_recomputations": 18,
+  "all_local_recomputed_score_records_exact": true,
+  "all_18_case_log_rows_match_saved_replies": true,
+  "actual_engine_replay_in_local_readback": false,
+  "model_calls": 0,
+  "fixture_records_unmodified": true,
+  "published_parser_and_adapter_source_hashes_verified": true,
+  "exact_published_replay_script_verified": true,
+  "two_file_patch_applies_and_matches_candidate": true,
+  "runtime_code_or_recorded_engine_scores_changed_by_triage_patch": false,
+  "first_attempt": {
+    "run": 36229144949,
+    "failure": "Our result serialization used dataclasses.asdict on a frozenset. Replaced with upstream to_dict; parser/scoring inputs and rules unchanged.",
+    "reported_parser_sessions_before_failure": 9,
+    "completed_nine_case_result_set": false
+  },
+  "second_attempt": {
+    "run": 36229333092,
+    "completed": true,
+    "case_statuses": {"fail": 9}
+  },
+  "triage_patch": {
+    "files_changed": ["results/2026-09-25/triage.py", "results/2026-09-25/triage.jsonl"],
+    "nine_cases_reassigned_to_five_findings": true,
+    "proposed_policy_or_intended_classifications": 2,
+    "still_untriaged_by_policy": 7,
+    "new_engine_bugs_claimed": 0,
+    "all_other_published_findings_identical": true,
+    "all_five_engine_score_archives_unchanged": true,
+    "one_existing_manual_summary_carried_back_to_generator": true,
+    "generator_repeat_bytes_equal": true,
+    "unchanged_snapshot_assignment_test": {"passed": 1, "failed": 0, "errors": 0, "skipped": 0},
+    "patch_sha256": "417f42ec0984299f45bb9919a26d20b58e0fdc6a28acbf2ab05c79a05b7e68dd",
+    "patch_bytes": 20478
+  },
+  "independent_from_corpus_author_execution": true,
+  "independent_fixture_ground_truth_validation": false,
+  "scope": "Existing token sequences replayed through actual pinned vLLM parser code using the original CanIToolCall adapter. No new model output, HTTP server, GPU, real tool execution or upstream adoption. Proposed reporting changes do not alter conformance outcomes."
+}
