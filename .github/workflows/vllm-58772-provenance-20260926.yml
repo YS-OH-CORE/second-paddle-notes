@@ -1,0 +1,60 @@
+name: Draft inline-system provenance check
+'on':
+  push:
+    branches: [checks/vllm-58772-provenance-20260926]
+    paths: [.github/workflows/vllm-58772-provenance-20260926.yml]
+permissions: {}
+concurrency:
+  group: zero-pr58772-provenance-20260926
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 4
+    steps:
+      - name: Acquire immutable candidate and review script
+        run: |
+          python3 -u - <<'PY'
+          import hashlib,json,os,pathlib,time,urllib.request
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-pr58772-provenance'
+          root.mkdir(exist_ok=False)
+          evidence=root/'evidence';evidence.mkdir()
+          assets=evidence/'assets';assets.mkdir()
+          pin='a8c3bdb20f5dd558bbb813e1644b82830e63dcbb'
+          prefix='https://raw.githubusercontent.com/bbrowning/vllm/'+pin+'/'
+          files={
+            'inline_system.py':(prefix+'vllm/entrypoints/anthropic/inline_system.py','4be2221ed22b1909750cb4ebe0ce45e33f227fd9'),
+            'protocol.py':(prefix+'vllm/entrypoints/anthropic/protocol.py','513e30f429775482d005cd4a7e2580ff00b5de2a'),
+            'LICENSE':(prefix+'LICENSE',None)}
+          manifest={}
+          for name,(url,expected) in files.items():
+              with urllib.request.urlopen(url,timeout=25) as r:data=r.read(500001)
+              assert len(data)<=500000
+              blob=hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
+              if expected:assert blob==expected,(name,blob)
+              (assets/name).write_bytes(data)
+              manifest[name]={'url':url,'git_blob':blob,'sha256':hashlib.sha256(data).hexdigest()}
+              time.sleep(2)
+          url='https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/bb2721d0bb2929c210b769cc514b55ff8ee22c6b/checks/vllm-58772-provenance/check.py'
+          with urllib.request.urlopen(url,timeout=25) as r:data=r.read(100001)
+          assert hashlib.sha256(data).hexdigest()=='693816eeb2902fb5720c73c7ab9ea44c23afcd7e637d4e68bbf442feaee2e169'
+          (evidence/'check.py').write_bytes(data)
+          (evidence/'RUN.json').write_text(json.dumps({'run_id':os.environ['GITHUB_RUN_ID'],'workflow_commit':os.environ['GITHUB_SHA'],'candidate_commit':pin,'script_commit':'bb2721d0bb2929c210b769cc514b55ff8ee22c6b','files':manifest,'intended_calls':8,'model_calls':0,'scope':'isolated unchanged normalization functions; outer request is a SimpleNamespace'},indent=2)+'\n')
+          PY
+      - name: Execute existing normalization policy and exact pair comparisons
+        run: |
+          set -o pipefail
+          root="$RUNNER_TEMP/zero-pr58772-provenance"
+          python3 -m venv "$root/venv"
+          "$root/venv/bin/python" -m pip install --disable-pip-version-check pydantic==2.13.4 > "$root/evidence/install.log" 2>&1
+          "$root/venv/bin/python" -m pip freeze --all > "$root/evidence/environment.txt"
+          "$root/venv/bin/python" -u "$root/evidence/check.py" run --assets "$root/evidence/assets" --out "$root/evidence/results" 2>&1 | tee "$root/evidence/execution.log"
+          "$root/venv/bin/python" "$root/evidence/check.py" audit --out "$root/evidence/results" | tee "$root/evidence/audit.log"
+      - name: Preserve exact source, results and boundaries
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: zero-vllm-58772-provenance-20260926
+          path: ${{ runner.temp }}/zero-pr58772-provenance/evidence/
+          if-no-files-found: error
+          retention-days: 30
