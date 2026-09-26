@@ -1,0 +1,45 @@
+name: Qwen3.8 native-history continuation pilot
+'on':
+  push:
+    branches: [experiments/qwen38-native-continuation-20260926]
+    paths: [.github/workflows/qwen38-native-continuation-20260926.yml]
+permissions: {}
+concurrency:
+  group: zero-qwen38-native-continuation-20260926
+  cancel-in-progress: false
+jobs:
+  pilot:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - name: Verify committed script and retain pre-execution protocol
+        run: |
+          python3 -u - <<'PY'
+          import hashlib,os,pathlib,time,urllib.request
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-native-continuation'
+          root.mkdir(exist_ok=False)
+          prefix='https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/d0b316a2495f237f6bfaee0b7a59a428c7f49750/experiments/qwen38-native-continuation/'
+          for name in ('probe.py','PROTOCOL.md'):
+              with urllib.request.urlopen(prefix+name,timeout=25) as r:
+                  data=r.read(100001)
+              assert len(data)<=100000
+              if name=='probe.py':
+                  assert hashlib.sha256(data).hexdigest()=='572d19a95e433193f1993e4059d69fe75bd2cf2018bf577d772284ff1a3abe52'
+              (root/name).write_bytes(data)
+              time.sleep(2)
+          PY
+      - name: Run parser controls and bounded actual-endpoint pilot
+        run: |
+          set -o pipefail
+          root="$RUNNER_TEMP/zero-native-continuation"
+          python3 "$root/probe.py" self-test | tee "$root/parser.log"
+          timeout 650 python3 -u "$root/probe.py" run --out "$root/results" 2>&1 | tee "$root/execution.log"
+          python3 "$root/probe.py" audit --out "$root/results" | tee "$root/audit.log"
+      - name: Retain exact requests, responses and failures without credentials
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: zero-qwen38-native-continuation-20260926
+          path: ${{ runner.temp }}/zero-native-continuation/
+          if-no-files-found: error
+          retention-days: 30
