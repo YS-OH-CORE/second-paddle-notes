@@ -1,0 +1,37 @@
+{
+  "run_id": 36207942892,
+  "artifact_id": 10894896911,
+  "artifact_sha256": "b5f27c7409cbbde570e367ba306afb5a2e358441a275e09b118f7717fdfb92ff",
+  "script_hashes_equal_preexecution_files": true,
+  "all_7_asset_hashes_verified": true,
+  "template_hash_matches_prior_official_preflight": true,
+  "renderings_checked": 12,
+  "unique_schedule_exact": true,
+  "summary_recomputed_and_log_matches": true,
+  "independent_local_jinja_text_replays": 12,
+  "native_token_ids_recomputed_in_local_audit": false,
+  "native_tokenization_vs_rendered_text_checked_in_actions": true,
+  "adapted_and_legacy_saved_token_ids_equal_for_all_4_conditions": true,
+  "visible_content_and_order_preserved": true,
+  "adapter_unit_tests_passed_in_actions": 9,
+  "adapter_unit_tests_passed_in_local_replay": 9,
+  "audit_mutations_rejected": {
+    "missing_rendering": true,
+    "changed_rendered_text": true
+  },
+  "model_forward_passes": 0,
+  "actual_generated_responses": 0,
+  "blocked_native_pilot": {
+    "run_id": 36207317632,
+    "artifact_sha256": "63ccea3d33c337145f650d665b9b929bddfceda5939c9c34e8bbfd92f3c5c535",
+    "http_requests": 1,
+    "http_status": 400,
+    "server_error": {
+      "error": "Bad Request: The endpoint is paused, ask a maintainer to restart it",
+      "code": "BAD_REQUEST"
+    },
+    "completion_requests": 0,
+    "measured_continuations": 0
+  },
+  "independent_external_replication": false
+}
