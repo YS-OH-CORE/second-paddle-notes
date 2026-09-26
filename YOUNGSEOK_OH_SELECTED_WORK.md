@@ -1,9 +1,11 @@
 # Youngseok Oh | Selected work and public evidence
 
 Independent researcher, South Korea · GitHub: **YS-OH-CORE**  
-Prepared with **Zero (ChatGPT)** · Evidence checked: **16 September 2026**
+Prepared with **Zero** · Agent collaboration records checked: **26 September 2026**
 
-Research focus: preserving evidence and corrections across human–AI memory, and reproducible review of agent systems. This self-published index links specific records; it is not an institutional credential or a blanket endorsement.
+Research focus: preserving evidence and corrections across human–AI memory, and reproducible review of agent systems. This self-published index links specific records; it is not an institutional credential or a blanket endorsement. The formal-methods section retains its **16 September 2026** evidence snapshot and was not rerun or rechecked in this update.
+
+[Discuss one scoped AI-continuity review](COLLABORATE.md).
 
 ## 1. Agent reliability: a patch applied by another developer
 
@@ -13,9 +15,32 @@ Research focus: preserving evidence and corrections across human–AI memory, an
 
 [Commit 501be10c](https://github.com/MestreY0d4-Uninter/hermes-agent/commit/501be10cce7159a08279c89c724db602d9770601) explicitly credits `YS-OH-CORE`'s review and states that the patch and binding tests were adapted verbatim from the proposal. The original PR author remains the author and committer of that integration.
 
-**Status:** applied in the external contributor's PR branch; upstream PR #22982 remains **open and unmerged** at the check date. The documented contribution is AI-assisted review, reproduction, a proposed repair and regression tests, not authorship of Hermes Agent or a claim that the change has shipped.
+**Status:** applied in the external contributor's PR branch; upstream PR #22982 remains **open and unmerged**, rechecked on 26 September 2026. The documented contribution is AI-assisted review, reproduction, a proposed repair and regression tests, not authorship of Hermes Agent or a claim that the change has shipped.
+
+## Signal: source review used in an externally authored implementation
+
+**Problem:** a linked Signal account should be able to keep Note to Self as a private notepad without disabling ordinary DMs or the intended group-message path. The feature request and implementation are not ours.
+
+**Our contribution:** [source-level guidance](https://github.com/NousResearch/hermes-agent/issues/121970#issuecomment-5822868222) identified the existing configuration path, recommended parsing quoted false-like values correctly, and limited the gate to non-group self-destination messages. A [follow-up proposed two specific regression cases](https://github.com/NousResearch/hermes-agent/issues/121970#issuecomment-5823237783): quoted `"false"` through the real YAML loader and sequential profile loads A(false) → B(default) → A(false).
+
+**Evidence of use, in the recipients' own records:**
+
+| Stage | Public record | What it establishes |
+|---|---|---|
+| Recipient implementation | [ren2140eth's runtime report](https://github.com/NousResearch/hermes-agent/issues/121970#issuecomment-5823143850) | The recipient explicitly says they implemented `YS-OH-CORE`'s suggested shape and tried it on a linked secondary device. This is their reported field observation, not our access to that device. |
+| New tests from the recipient | [Posted code and test explanation](https://github.com/NousResearch/hermes-agent/issues/121970#issuecomment-5823398598) | The author added the two suggested cases and supplied a patch plus tests. They report 62 passing selected tests and deliberate bad-parser failures. |
+| Another contributor's reproduction | [Halldrix's check and request for permission](https://github.com/NousResearch/hermes-agent/issues/121970#issuecomment-5823646302) | A different contributor reports 62/62 passing, and asks the implementation author before submitting it. [Permission was granted](https://github.com/NousResearch/hermes-agent/issues/121970#issuecomment-5823724566). |
+| Submitted upstream change | [Hermes PR #122033](https://github.com/NousResearch/hermes-agent/pull/122033) | Halldrix submitted the work with credit to ren2140eth, user documentation and two additional cases. The description reports 64/64 selected tests passing. |
+
+**Code-level readback:** the submitted head `bb8f14060ae63968c5d34ca5024dbce7fea93001` contains `is_truthy_value(..., default=True)`, the group-preserving self-destination gate, and the [quoted-value and sequential-profile tests](https://github.com/Halldrix/hermes-agent/blob/bb8f14060ae63968c5d34ca5024dbce7fea93001/tests/gateway/test_signal_note_to_self.py). This update inspected the actual PR diff; it did not rerun that head's tests. The original contributor's 62-case suite and the submitted PR's 64-case suite are different test sets, not conflicting counts or an accuracy comparison.
+
+**Authorship:** the initial implementation, linked-device check and initial synthetic tests belong to **ren2140eth**. The subsequent reproduction, additional tests, documentation and PR submission belong to **Halldrix**. **Youngseok Oh × Zero** contributed problem-focused source guidance, suggested coverage and the earlier verification/handoff trail. We did not submit this PR or author the recipients' work. Our attribution is directly supported by the issue discussion; this page does not claim the submitted PR separately lists us as code authors.
+
+**Status, checked 26 September 2026:** PR #122033 is **open, non-draft and unmerged**. This is evidence that review guidance was implemented and carried into a proposed upstream change, not proof of maintainer approval, a released feature, paid-client work or revenue. The external reports and PR predate this page update; they are not new replies received during today's check. No new runtime or model experiment was performed for this addition.
 
 ## 2. Formal methods: a pinned, kernel-checked finite proof core
+
+*Historical evidence snapshot: 16 September 2026. Retained below, not newly verified by the collaboration-record update.*
 
 **Work:** an explicitly encoded rational evidence score, closure under arbitrary real mixtures of the declared causal reader laws, and a finite adaptive-process crossing bound.
 
@@ -23,14 +48,16 @@ The theorem `ZeroAudit.concrete_five_percent` covers every natural finite horizo
 
 **Executed record:** [run 34993005092](https://github.com/YS-OH-CORE/second-paddle-notes/actions/runs/34993005092) succeeded on [source commit 628bdd91](https://github.com/YS-OH-CORE/second-paddle-notes/tree/628bdd9105ecdb0a3aee27b346a34cdc7443eb3e/research/sequential-lean). The build used Lean 4.29.0 and pinned mathlib. It printed the transitive axioms of thirteen declarations, replayed the authored compiled modules with the same Lean kernel, and rejected two deliberately false test statements. [Full scope and reproduction record](https://github.com/YS-OH-CORE/second-paddle-notes/blob/58140c617271a2fb67a894173a712de8cc28af3e/research/sequential-lean/RESULTS.md).
 
-**Status:** this successful result belongs to the pinned finite core. The later extension in [draft PR #52](https://github.com/YS-OH-CORE/second-paddle-notes/pull/52) has an incomplete overall build. The record does not certify the whole manuscript, exact KL optimality, physical reader assumptions, or empirical AI performance. Kernel rechecking is distinct from an external referee's assessment; see [Lean's proof-validation guidance](https://lean-lang.org/doc/reference/latest/ValidatingProofs/).
+**Status at the historical check date:** this successful result belongs to the pinned finite core. The later extension in [draft PR #52](https://github.com/YS-OH-CORE/second-paddle-notes/pull/52) had an incomplete overall build. The record does not certify the whole manuscript, exact KL optimality, physical reader assumptions, or empirical AI performance. Kernel rechecking is distinct from an external referee's assessment; see [Lean's proof-validation guidance](https://lean-lang.org/doc/reference/latest/ValidatingProofs/).
 
 ## Contribution and collaboration
 
-Youngseok supplies the research direction, original problem framing and user-side corrections. Zero (ChatGPT) supplies substantial analysis, code, formalization and drafting assistance. Those roles are disclosed rather than presenting AI-generated mathematics as independently mastered or externally reviewed human work.
+Youngseok supplies the research direction, original problem framing and user-side corrections. Zero (ChatGPT) supplies substantial analysis, code, formalization and drafting assistance. The work is AI-assisted; the roles and each result's actual validation status remain explicit.
 
 Focused collaboration topics: request/approval binding regressions; traceable evaluation of conversational memory; and checking explicit finite evidence-preservation claims against prior theory. Technical reproduction, formal validity, scholarly novelty and real-world applicability are tracked separately.
 
 ## 한국어 요약
 
-영석(Youngseok Oh)과 Zero의 공개 성과를 원출처로 확인할 수 있는 입구다. 첫 사례는 외부 PR 작성자가 재현·테스트·패치 적용과 `YS-OH-CORE` 크레딧을 직접 남긴 기록이다. 해당 PR의 upstream 병합은 아직 완료되지 않았다. 둘째 사례는 고정된 소스에서 성공한 유한 Lean 증명 핵심부다. 이후 확장의 전체 빌드 상태와 구별한다. 개인 대화, 비공개 초대 메일, 계정 자료는 이 페이지에 포함하지 않는다.
+영석(Youngseok Oh)과 Zero의 공개 작업을 원출처로 확인할 수 있는 입구다. Hermes의 모델 전환 사례에는 외부 개발자가 재현·테스트·패치 적용과 `YS-OH-CORE` 크레딧을 남겼다. Signal 사례에서는 우리 소스 검토와 검사 제안을 받은 사람이 직접 구현했고, 다른 기여자가 다시 검사하고 원 작성자의 허락을 받아 PR #122033을 제출했다. 해당 코드와 테스트는 그 개발자들의 기여이며, 우리는 문제를 좁히는 검토·검증·전달을 보탰다.
+
+두 Hermes PR의 upstream 병합은 2026년 9월 26일 확인 시 완료되지 않았다. 이번 갱신은 이미 발생한 외부 활용을 확인해 연결한 것이며, 새로운 답변·실험·채택을 오늘 얻었다는 뜻이 아니다. 유한 Lean 증명 핵심부는 9월 16일의 별도 기록으로 남기며, 이번에 다시 검증하지 않았다. 개인 대화, 비공개 메일, 계정 자료는 이 페이지에 포함하지 않는다.
