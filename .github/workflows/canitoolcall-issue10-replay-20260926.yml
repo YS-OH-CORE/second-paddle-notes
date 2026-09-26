@@ -38,9 +38,9 @@ jobs:
           run(['git','fetch','--depth=1','https://github.com/redd34/canitoolcall.git',pin],'fetch')
           run(['git','checkout','--detach','FETCH_HEAD'],'checkout')
           assert run(['git','rev-parse','HEAD'],'identity').stdout.strip()==pin
-          source='https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/43153012e2f7989878377fa5398528e6fc194cf6/checks/canitoolcall-issue10-replay/replay.py'
+          source='https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/ea8fb9f56701d107a9be4651f554b586aab46dc1/checks/canitoolcall-issue10-replay/replay.py'
           with urllib.request.urlopen(source,timeout=30) as r:data=r.read(100001)
-          assert hashlib.sha256(data).hexdigest()=='fdca68aa866c3b7e270179f9cbc887fa8eaebf3066c1d3b4a48d9ad850ac8d95'
+          assert hashlib.sha256(data).hexdigest()=='db225584f73b2025af4978e9b606b450cfddf8d9aea5e8af5fd0474765768464'
           (out/'replay.py').write_bytes(data)
           setup=(repo/'scripts/engines/vllm.sh').read_bytes()
           assert hashlib.sha1(b'blob '+str(len(setup)).encode()+b'\0'+setup).hexdigest()=='e8e7bb78792f49543c9350898d3767a31a755336'
@@ -60,7 +60,7 @@ jobs:
               with urllib.request.urlopen(url,timeout=25) as response:data=response.read(500001)
               assert len(data)<=500000
               (origin/name).write_bytes(data)
-          save={'source_commit':pin,'script_commit':'43153012e2f7989878377fa5398528e6fc194cf6','workflow_commit':os.environ['GITHUB_SHA'],'run_id':os.environ['GITHUB_RUN_ID'],'model_calls':0}
+          save={'source_commit':pin,'script_commit':'ea8fb9f56701d107a9be4651f554b586aab46dc1','workflow_commit':os.environ['GITHUB_SHA'],'run_id':os.environ['GITHUB_RUN_ID'],'model_calls':0}
           (out/'PROVENANCE.json').write_text(json.dumps(save,indent=2)+'\n')
           run([sys.executable,'-m','venv',root/'bootstrap'],'bootstrap')
           run([root/'bootstrap/bin/python','-m','pip','install','uv==0.8.22'],'uv')
