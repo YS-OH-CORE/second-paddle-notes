@@ -1,0 +1,50 @@
+name: Qwen3.8 response-field to template bridge
+'on':
+  push:
+    branches: [experiments/qwen38-native-continuation-20260926]
+    paths: [.github/workflows/qwen38-history-bridge-20260926.yml]
+permissions: {}
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    env:
+      HF_HUB_DISABLE_TELEMETRY: '1'
+      HF_HUB_DISABLE_XET: '1'
+      TOKENIZERS_PARALLELISM: 'false'
+    steps:
+      - name: Fetch frozen adapter and synthetic input fixtures
+        run: |
+          python3 -u - <<'PY'
+          import pathlib,os,urllib.request,hashlib
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-history-bridge'
+          root.mkdir(exist_ok=False)
+          prefix='https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/539aa8d163b5f86db1b67f6f256754d6ec2a7388/experiments/qwen38-native-continuation/'
+          expected={'history_bridge.py':'da57c8247c568827839c84b1f428f443a501c4cbde057a7f38a8e510a3db5e37','bridge_probe.py':'b11af51cc3c48de42d27e58ef1cdc3873c8f8e0da3561c489cf2a49576114d0f'}
+          for name,sha in expected.items():
+              with urllib.request.urlopen(prefix+name,timeout=25) as response:data=response.read(100001)
+              assert len(data)<=100000 and hashlib.sha256(data).hexdigest()==sha
+              (root/name).write_bytes(data)
+          PY
+      - name: Install tokenizer only and compare all three representations
+        run: |
+          set -o pipefail
+          root="$RUNNER_TEMP/zero-history-bridge"
+          python3 -m venv "$root/venv"
+          "$root/venv/bin/python" -m pip install --disable-pip-version-check transformers==5.17.0 jinja2==3.1.6 > "$root/install.log" 2>&1
+          "$root/venv/bin/python" -m pip freeze --all > "$root/environment.txt"
+          "$root/venv/bin/python" -u "$root/bridge_probe.py" --out "$root/results" 2>&1 | tee "$root/execution.log"
+      - name: Preserve exact synthetic fixtures, tokens and official assets
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: zero-qwen38-history-bridge-20260926
+          path: |
+            ${{ runner.temp }}/zero-history-bridge/history_bridge.py
+            ${{ runner.temp }}/zero-history-bridge/bridge_probe.py
+            ${{ runner.temp }}/zero-history-bridge/results/
+            ${{ runner.temp }}/zero-history-bridge/execution.log
+            ${{ runner.temp }}/zero-history-bridge/environment.txt
+            ${{ runner.temp }}/zero-history-bridge/install.log
+          if-no-files-found: error
+          retention-days: 30
