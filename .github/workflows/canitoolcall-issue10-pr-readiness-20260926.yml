@@ -1,0 +1,97 @@
+name: Triage patch submission checks
+'on':
+  push:
+    branches: [checks/canitoolcall-issue10-replay-20260926]
+    paths: [.github/workflows/canitoolcall-issue10-pr-readiness-20260926.yml]
+permissions: {}
+concurrency:
+  group: zero-ctc-issue10-pr-readiness-20260926
+  cancel-in-progress: false
+jobs:
+  readiness:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    env:
+      UV_LOCKED: '1'
+      HF_HUB_DISABLE_TELEMETRY: '1'
+      HF_HUB_DISABLE_IMPLICIT_TOKEN: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - name: Acquire pinned source and apply the already published patch
+        run: |
+          python3 -u - <<'PY'
+          import hashlib,json,os,pathlib,subprocess,urllib.request
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-ctc-pr-readiness'
+          root.mkdir(exist_ok=False)
+          repo=root/'repo';repo.mkdir()
+          out=root/'evidence';out.mkdir()
+          pin='5670805d5b140230a323536c5de9a89091ad02d2'
+          def run(args,label):
+              r=subprocess.run(args,cwd=repo,capture_output=True,text=True,timeout=90)
+              (out/(label+'.log')).write_text(r.stdout+'\nSTDERR\n'+r.stderr)
+              r.check_returncode();return r.stdout
+          run(['git','init','-q'],'init')
+          run(['git','fetch','--depth=1','https://github.com/redd34/canitoolcall.git',pin],'fetch')
+          run(['git','checkout','--detach','FETCH_HEAD'],'checkout')
+          assert run(['git','rev-parse','HEAD'],'identity').strip()==pin
+          url='https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/6a1350657219c87d75301b2ca639482871e29e86/checks/canitoolcall-issue10-replay/triage.patch'
+          with urllib.request.urlopen(url,timeout=25) as r:data=r.read(100001)
+          assert hashlib.sha256(data).hexdigest()=='417f42ec0984299f45bb9919a26d20b58e0fdc6a28acbf2ab05c79a05b7e68dd'
+          patch=out/'triage.patch';patch.write_bytes(data)
+          names=['results/2026-09-25/triage.py','results/2026-09-25/triage.jsonl']
+          for name in names:
+              dest=out/'original'/name;dest.parent.mkdir(parents=True,exist_ok=True);dest.write_bytes((repo/name).read_bytes())
+          run(['git','apply','--check',str(patch)],'apply_check')
+          run(['git','apply',str(patch)],'apply')
+          assert sorted(run(['git','diff','--name-only'],'changed_paths').splitlines())==sorted(names)
+          run(['git','diff','--check'],'whitespace')
+          (out/'RUN.json').write_text(json.dumps({'source_commit':pin,'run_id':os.environ['GITHUB_RUN_ID'],'workflow_commit':os.environ['GITHUB_SHA'],'patch_sha256':hashlib.sha256(data).hexdigest(),'model_calls':0,'engine_replays':0},indent=2)+'\n')
+          PY
+      - name: Use the upstream-pinned uv setup action
+        uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7
+        with:
+          python-version: '3.12'
+          enable-cache: false
+      - name: Run contributor checks in one isolated Linux environment
+        run: |
+          set -o pipefail
+          root="$RUNNER_TEMP/zero-ctc-pr-readiness"
+          cd "$root/repo"
+          uv sync 2>&1 | tee "$root/evidence/sync.log"
+          uv run python --version > "$root/evidence/python.txt"
+          uv pip freeze > "$root/evidence/environment.txt"
+          uv run ruff check src tests scripts 2>&1 | tee "$root/evidence/lint.log"
+          uv run ruff format --check src tests scripts 2>&1 | tee "$root/evidence/format.log"
+          uv run mypy 2>&1 | tee "$root/evidence/types.log"
+          uv run pytest --junitxml="$root/evidence/pytest.xml" 2>&1 | tee "$root/evidence/pytest.log"
+          uv run canitoolcall validate 2>&1 | tee "$root/evidence/fixtures.log"
+          uv run python results/2026-09-25/triage.py 2>&1 | tee "$root/evidence/regenerate.log"
+          python3 - <<'PY'
+          import hashlib,json,os,pathlib,subprocess,xml.etree.ElementTree as ET
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-ctc-pr-readiness'
+          repo=root/'repo';out=root/'evidence'
+          names=['results/2026-09-25/triage.py','results/2026-09-25/triage.jsonl']
+          assert sorted(subprocess.check_output(['git','diff','--name-only'],cwd=repo,text=True).splitlines())==sorted(names)
+          subprocess.run(['git','diff','--check'],cwd=repo,check=True)
+          hashes={}
+          for n in names:
+              raw=(repo/n).read_bytes();p=out/'candidate'/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(raw)
+              hashes[n]={'sha256':hashlib.sha256(raw).hexdigest(),'git_blob':hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()}
+          # Regeneration must equal the already reviewed patch, not silently add other edits.
+          subprocess.run(['git','apply','--reverse','--check',str(out/'triage.patch')],cwd=repo,check=True)
+          tree=ET.parse(out/'pytest.xml');cases=tree.findall('.//testcase')
+          counts={'tests':len(cases),'failures':sum(c.find('failure') is not None for c in cases),'errors':sum(c.find('error') is not None for c in cases),'skipped':sum(c.find('skipped') is not None for c in cases)}
+          counts['passed']=counts['tests']-counts['failures']-counts['errors']-counts['skipped']
+          assert counts['failures']==counts['errors']==0
+          summary={'completed':True,'pytest':counts,'lint':True,'format':True,'mypy':True,'fixture_validation':True,'changed_files':names,'candidate_files':hashes,'patch_reverse_check_after_regeneration':True,'model_calls':0,'engine_replays':0,'scope':'Contributor lint/type/unit checks on Linux Python 3.12 only; unavailable engine environments cause their normal test skips, not new engine verification.'}
+          (out/'SUMMARY.json').write_text(json.dumps(summary,indent=2)+'\n')
+          print(json.dumps(summary,indent=2))
+          PY
+      - name: Retain exact candidate files and test results
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: zero-ctc-issue10-pr-readiness-20260926
+          path: ${{ runner.temp }}/zero-ctc-pr-readiness/evidence/
+          if-no-files-found: error
+          retention-days: 30
