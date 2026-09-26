@@ -1,0 +1,21 @@
+{
+  "date": "2026-09-26",
+  "candidate_commit": "127bb79725aeb09d70e58620fd1d88476abf9aca",
+  "older_adapter_commit": "cec74a8ebf5a9d6724104d4867868da118b58205",
+  "run_id": 36219981949,
+  "artifact_id": 10898501575,
+  "artifact_sha256": "7f36c57abf61eb1522b09ae3f42f5ac9c01845453e929ddba781ff0bae0fb3f2",
+  "candidate": {"tests": 7, "passed": 7, "failed": 0, "errors": 0, "skipped": 0},
+  "older_adapter_in_same_revised_checkout": {"tests": 7, "passed": 1, "failed": 6, "errors": 0, "skipped": 0},
+  "recipient_test_files_unmodified": true,
+  "candidate_source_restored": true,
+  "populated_real_faiss_case_executed_not_skipped": true,
+  "source_and_test_git_blobs_verified": true,
+  "junit_counts_and_logs_agree": true,
+  "local_readback_test_executions": 0,
+  "model_calls": 0,
+  "live_chroma_test": false,
+  "full_upstream_suite": false,
+  "independent_external_replication": false,
+  "scope": "Seven recipient tests; current fork snapshot versus exact earlier adapter file in the same environment. Full Memory methods and real FAISS in one case; other collaborators mocked by the unchanged recipient tests. Not new bulk deletion support or a merge approval."
+}
