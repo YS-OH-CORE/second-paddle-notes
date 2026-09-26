@@ -1,0 +1,22 @@
+{
+  "date": "2026-09-26",
+  "kind": "portable_pytest_review_controls",
+  "selected_tests": 14,
+  "passed": 14,
+  "failed": 0,
+  "baseline_snapshot_cases": 9,
+  "deliberately_bad_wrapper_cases_rejected": 5,
+  "bad_cases_a_marker_only_check_would_accept": 4,
+  "changed_call_id_has_identical_render": true,
+  "fixture_inputs_and_baseline_hashes_from_previous_archive": true,
+  "clean_extraction_replay_tests": 14,
+  "clean_extraction_case_observations_identical": true,
+  "python": "3.13.5",
+  "pytest": "9.0.2",
+  "jinja2": "3.1.6",
+  "model_calls": 0,
+  "vllm_converter_executions": 0,
+  "tokenizer_executions": 0,
+  "external_replication": false,
+  "public_recipient_use_confirmed": false
+}
