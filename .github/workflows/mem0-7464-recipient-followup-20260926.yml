@@ -1,0 +1,37 @@
+name: Mem0 recipient revision verification
+'on':
+  push:
+    branches: [checks/mem0-7464-recipient-followup-20260926]
+    paths: [.github/workflows/mem0-7464-recipient-followup-20260926.yml]
+permissions: {}
+concurrency:
+  group: zero-mem0-recipient-followup-20260926
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - name: Fetch frozen runner and execute seven unchanged recipient tests
+        run: |
+          python3 -u - <<'PY'
+          import ast,hashlib,os,pathlib,subprocess,urllib.request
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-mem0-recipient'
+          root.mkdir(exist_ok=False)
+          url='https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/10199d31671ef7fc5f7c428a48856a29875f18d8/checks/mem0-7464-recipient-followup/run.py'
+          with urllib.request.urlopen(url,timeout=25) as response:
+              data=response.read(100001)
+          assert len(data)<=100000
+          assert hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()=='fd67affb2d08b1582b3f1e2aff5b22a4fc58adf1'
+          ast.parse(data)
+          script=root/'run.py';script.write_bytes(data)
+          subprocess.run(['python3','-u',str(script),'--root',str(root/'run')],check=True,timeout=420)
+          PY
+      - name: Preserve original sources, full test outcomes and setup failures
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: zero-mem0-recipient-followup-20260926
+          path: ${{ runner.temp }}/zero-mem0-recipient/run/output/
+          if-no-files-found: error
+          retention-days: 30
