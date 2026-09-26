@@ -1,0 +1,37 @@
+{
+  "source_commit": "9edf62cfd4c493749ca76bc8816db86a5bc8f91d",
+  "run_id": 36227868553,
+  "artifact_id": 10901004486,
+  "artifact_sha256": "8c3210c96eeb37e6ce626395236c8bcefaff39748dd740e39a6e7f1a1177b405",
+  "fixture_records": 469,
+  "declared_reference_results_accepted": 434,
+  "declared_error_alternatives_accepted": 87,
+  "synthetic_corrupt_results_rejected": 1476,
+  "baseline_evaluator_observations": 1997,
+  "control_expectation_mismatches": 0,
+  "all_1997_local_replay_observations_equal": true,
+  "source_manifest_entries": 119,
+  "present_source_files_hash_verified": 116,
+  "omitted_empty_hidden_placeholders": [
+    "fixtures/.gitkeep",
+    "tests/probe/.gitkeep",
+    "tests/adapters/.gitkeep"
+  ],
+  "executed_baseline_script_matches_preexecution_file": true,
+  "unchanged_local_upstream_test_file": "tests/core/test_checks.py",
+  "local_upstream_tests": {"passed": 69, "failed": 0, "errors": 0, "skipped": 0},
+  "current_schema_validation_issues": 0,
+  "local_applicability_control": {
+    "original_issue_fixture_records": 2,
+    "runner_evaluations": 6,
+    "worker_calls_with_test_double": 2,
+    "supports_false_preserves_unsupported": true,
+    "unsupported_calls_parse_or_units": false,
+    "wrong_level_synthetic_check_row_aggregates_to": "pass",
+    "finish_or_assumes_implementation": false
+  },
+  "model_calls": 0,
+  "engine_parser_calls": 0,
+  "independent_external_replication": false,
+  "scope": "Current-evaluator self-consistency and synthetic rejection controls. Does not validate expected parse truth, actual engine parses, streaming, changed schema, or public benchmark scores."
+}
