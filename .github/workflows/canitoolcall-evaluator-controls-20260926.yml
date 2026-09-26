@@ -1,0 +1,61 @@
+name: Parser evaluator reference controls
+'on':
+  push:
+    branches: [checks/canitoolcall-evaluator-controls-20260926]
+    paths: [.github/workflows/canitoolcall-evaluator-controls-20260926.yml]
+permissions: {}
+concurrency:
+  group: zero-canitoolcall-evaluator-controls-20260926
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - name: Fetch pinned source and run complete-corpus evaluator controls
+        run: |
+          python3 -u - <<'PY'
+          import hashlib,json,os,pathlib,shutil,subprocess,sys,urllib.request
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-parser-oracle'
+          root.mkdir(exist_ok=False)
+          out=root/'evidence';out.mkdir()
+          repo=root/'repo';repo.mkdir()
+          home=root/'home';home.mkdir()
+          env={'PATH':os.environ['PATH'],'HOME':str(home),'LANG':'C.UTF-8','GIT_TERMINAL_PROMPT':'0','GIT_LFS_SKIP_SMUDGE':'1','PYTHONDONTWRITEBYTECODE':'1','PIP_DISABLE_PIP_VERSION_CHECK':'1'}
+          def call(args,name,timeout=90):
+              p=subprocess.run(list(map(str,args)),cwd=repo,env=env,capture_output=True,text=True,timeout=timeout)
+              (out/(name+'.log')).write_text(p.stdout+'\nSTDERR\n'+p.stderr,encoding='utf-8')
+              print(name,p.returncode,p.stdout[-3500:],p.stderr[-1000:],flush=True)
+              p.check_returncode();return p
+          pin='9edf62cfd4c493749ca76bc8816db86a5bc8f91d'
+          call(['git','init','-q'],'init')
+          call(['git','fetch','--depth=1','https://github.com/redd34/canitoolcall.git',pin],'fetch',120)
+          call(['git','checkout','--detach','FETCH_HEAD'],'checkout')
+          assert call(['git','rev-parse','HEAD'],'identity').stdout.strip()==pin
+          url='https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/08cd6bb745ac34dbad633bd09c37e582948c6a4f/checks/canitoolcall-evaluator-controls/probe.py'
+          with urllib.request.urlopen(url,timeout=25) as r:data=r.read(100001)
+          assert hashlib.sha256(data).hexdigest()=='7d6fbb53d97eee6287d6d39a8fce56b6460953730321461a87d0e9fbaeb33240'
+          script=out/'probe.py';script.write_bytes(data)
+          kept=out/'upstream';kept.mkdir()
+          for name in ('src','fixtures','spec','tests','LICENSES'):
+              shutil.copytree(repo/name,kept/name)
+          for name in ('LICENSE','THIRD_PARTY_NOTICES.md','pyproject.toml','CONTRIBUTING.md'):
+              shutil.copy2(repo/name,kept/name)
+          manifest={str(p.relative_to(kept)):hashlib.sha256(p.read_bytes()).hexdigest() for p in kept.rglob('*') if p.is_file()}
+          (out/'SOURCE_MANIFEST.json').write_text(json.dumps({'commit':pin,'files':manifest},indent=2)+'\n')
+          (out/'RUN.json').write_text(json.dumps({'source_commit':pin,'script_commit':'08cd6bb745ac34dbad633bd09c37e582948c6a4f','workflow_commit':os.environ['GITHUB_SHA'],'run_id':os.environ['GITHUB_RUN_ID'],'model_calls':0,'engine_parser_calls':0},indent=2)+'\n')
+          call([sys.executable,'-m','venv',root/'venv'],'venv',30)
+          py=root/'venv/bin/python'
+          call([py,'-m','pip','install','jsonschema==4.25.1','jinja2==3.1.6','pytest==8.4.2'],'install',120)
+          (out/'environment.txt').write_text(call([py,'-m','pip','freeze','--all'],'freeze').stdout)
+          call([py,'-B',script,'--repo',repo,'--out',out/'results'],'execution',90)
+          assert call(['git','diff','--exit-code'],'unchanged').stdout.strip()==''
+          PY
+      - name: Preserve observations including failed evaluator contracts
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: zero-canitoolcall-evaluator-controls-20260926
+          path: ${{ runner.temp }}/zero-parser-oracle/evidence/
+          if-no-files-found: error
+          retention-days: 30
