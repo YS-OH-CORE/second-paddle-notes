@@ -10,7 +10,6 @@ from __future__ import annotations
 
 import argparse
 from collections import Counter
-from dataclasses import asdict
 from datetime import datetime, timezone
 import hashlib
 import inspect
@@ -145,7 +144,7 @@ def main() -> int:
                 assert set(reply["streams"]) == {s.id for s in DEFAULT_STRATEGIES}
                 calls += 1 + len(reply["streams"])
                 evaluated = runner.evaluate(f, families[f.family], reply)
-                row = {"fixture": f.id, "reply": reply, "evaluated": asdict(evaluated)}
+                row = {"fixture": f.id, "reply": reply, "evaluated": evaluated.to_dict()}
                 rows.append(row)
                 save(out / f"PASS_{iteration + 1}.json", rows)
                 print("CASE " + json.dumps({"pass": iteration + 1, "fixture": f.id,
