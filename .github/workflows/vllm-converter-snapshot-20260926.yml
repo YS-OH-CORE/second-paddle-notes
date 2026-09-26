@@ -1,0 +1,40 @@
+name: Acquire pinned converter sources
+'on':
+  push:
+    branches: [checks/vllm-58647-turn-boundary-20260926]
+    paths: [.github/workflows/vllm-converter-snapshot-20260926.yml]
+permissions: {}
+jobs:
+  snapshot:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    steps:
+      - name: Download and verify source bytes only
+        run: |
+          python3 -u - <<'PY'
+          import hashlib,json,os,pathlib,time,urllib.request
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-converter-snapshot'
+          root.mkdir(exist_ok=False)
+          pin='ddd6fbca148a867aad1fcab7ec72f582b9977db4'
+          prefix='https://raw.githubusercontent.com/vllm-project/vllm/'+pin+'/'
+          files={'serving.py':('vllm/entrypoints/anthropic/serving.py','08f208f8249e2fb9d31d89bb7d7a2a0e7530514f'), 'protocol.py':('vllm/entrypoints/anthropic/protocol.py','48202831fe397a1ccea5a89c264a9da6e7ce032b'), 'LICENSE.vllm':('LICENSE',None)}
+          manifest={}
+          for name,(path,expected) in files.items():
+              with urllib.request.urlopen(prefix+path,timeout=25) as response:
+                  data=response.read(500001)
+              assert len(data)<=500000
+              blob=hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
+              if expected: assert blob==expected,(name,blob)
+              (root/name).write_bytes(data)
+              manifest[name]={'git_blob':blob,'sha256':hashlib.sha256(data).hexdigest(),'source':prefix+path}
+              time.sleep(2)
+          (root/'SOURCE_MANIFEST.json').write_text(json.dumps({'kind':'source acquisition only; no tests or model inference','upstream_commit':pin,'run_id':os.environ['GITHUB_RUN_ID'],'workflow_commit':os.environ['GITHUB_SHA'],'files':manifest},indent=2)+'\n')
+          print(json.dumps(manifest),flush=True)
+          PY
+      - name: Retain source and provenance
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: zero-vllm-converter-source-20260926
+          path: ${{ runner.temp }}/zero-converter-snapshot/
+          if-no-files-found: error
+          retention-days: 30
