@@ -1,0 +1,95 @@
+name: Requested parser discrepancy replay
+'on':
+  push:
+    branches: [checks/canitoolcall-issue10-replay-20260926]
+    paths: [.github/workflows/canitoolcall-issue10-replay-20260926.yml]
+permissions: {}
+concurrency:
+  group: zero-ctc-issue10-replay-20260926
+  cancel-in-progress: false
+jobs:
+  replay:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    env:
+      HF_HUB_DISABLE_TELEMETRY: '1'
+      HF_HUB_DISABLE_IMPLICIT_TOKEN: '1'
+      HF_HUB_DISABLE_XET: '1'
+      TOKENIZERS_PARALLELISM: 'false'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - name: Acquire immutable source and prepare bounded replay
+        run: |
+          python3 -u - <<'PY'
+          import hashlib,json,os,pathlib,shutil,subprocess,sys,urllib.request
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-ctc-triage'
+          root.mkdir(exist_ok=False)
+          out=root/'evidence';out.mkdir()
+          repo=root/'repo';repo.mkdir()
+          home=root/'home';home.mkdir()
+          env={k:v for k,v in os.environ.items() if not (k.endswith('API_KEY') or k.endswith('TOKEN'))}
+          env.update(HOME=str(home),GIT_TERMINAL_PROMPT='0',GIT_LFS_SKIP_SMUDGE='1')
+          def run(args,label,timeout=120):
+              result=subprocess.run(list(map(str,args)),cwd=repo,env=env,capture_output=True,text=True,timeout=timeout)
+              (out/(label+'.log')).write_text(result.stdout+'\nSTDERR\n'+result.stderr)
+              result.check_returncode();return result
+          pin='5670805d5b140230a323536c5de9a89091ad02d2'
+          run(['git','init','-q'],'init')
+          run(['git','fetch','--depth=1','https://github.com/redd34/canitoolcall.git',pin],'fetch')
+          run(['git','checkout','--detach','FETCH_HEAD'],'checkout')
+          assert run(['git','rev-parse','HEAD'],'identity').stdout.strip()==pin
+          source='https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/43153012e2f7989878377fa5398528e6fc194cf6/checks/canitoolcall-issue10-replay/replay.py'
+          with urllib.request.urlopen(source,timeout=30) as r:data=r.read(100001)
+          assert hashlib.sha256(data).hexdigest()=='fdca68aa866c3b7e270179f9cbc887fa8eaebf3066c1d3b4a48d9ad850ac8d95'
+          (out/'replay.py').write_bytes(data)
+          setup=(repo/'scripts/engines/vllm.sh').read_bytes()
+          assert hashlib.sha1(b'blob '+str(len(setup)).encode()+b'\0'+setup).hexdigest()=='e8e7bb78792f49543c9350898d3767a31a755336'
+          kept=out/'upstream';kept.mkdir()
+          for name in ('src','fixtures','spec','LICENSES','results/2026-09-25'):
+              shutil.copytree(repo/name,kept/name)
+          for name in ('LICENSE','THIRD_PARTY_NOTICES.md','CONTRIBUTING.md','pyproject.toml','scripts/engines/vllm.sh','tests/core/test_results_snapshot.py'):
+              dst=kept/name;dst.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(repo/name,dst)
+          origin=out/'origin_tests';origin.mkdir()
+          for name,url in {
+              'deepseek_test.py':'https://raw.githubusercontent.com/vllm-project/vllm/ced6857afa0ea7b2e3f0846a62e1394e90f15607/tests/tool_parsers/test_deepseekv3_tool_parser.py',
+              'harmony_test.py':'https://raw.githubusercontent.com/vllm-project/vllm/ced6857afa0ea7b2e3f0846a62e1394e90f15607/tests/parser/test_harmony.py',
+              'mistral_test.py':'https://raw.githubusercontent.com/vllm-project/vllm/ced6857afa0ea7b2e3f0846a62e1394e90f15607/tests/parser/mistral/test_tool_calls.py',
+              'sglang_hermes_test.py':'https://raw.githubusercontent.com/sgl-project/sglang/94602c9c2b7cbdb8efd5c52802dac6a1c180089e/test/registered/unit/function_call/test_hermes_detector.py',
+              'LICENSE.vllm':'https://raw.githubusercontent.com/vllm-project/vllm/ced6857afa0ea7b2e3f0846a62e1394e90f15607/LICENSE'
+          }.items():
+              with urllib.request.urlopen(url,timeout=25) as response:data=response.read(500001)
+              assert len(data)<=500000
+              (origin/name).write_bytes(data)
+          save={'source_commit':pin,'script_commit':'43153012e2f7989878377fa5398528e6fc194cf6','workflow_commit':os.environ['GITHUB_SHA'],'run_id':os.environ['GITHUB_RUN_ID'],'model_calls':0}
+          (out/'PROVENANCE.json').write_text(json.dumps(save,indent=2)+'\n')
+          run([sys.executable,'-m','venv',root/'bootstrap'],'bootstrap')
+          run([root/'bootstrap/bin/python','-m','pip','install','uv==0.8.22'],'uv')
+          PY
+      - name: Build the original pinned CPU-only parser environment
+        run: |
+          set -o pipefail
+          root="$RUNNER_TEMP/zero-ctc-triage"
+          export HOME="$root/home"
+          export HF_HOME="$root/hf-cache"
+          export PATH="$root/bootstrap/bin:$PATH"
+          cd "$root/repo"
+          timeout 720 bash scripts/engines/vllm.sh 2>&1 | tee "$root/evidence/engine-setup.log"
+          .venvs/vllm/bin/python -m pip freeze --all > "$root/evidence/environment.txt" 2>&1 || "$root/bootstrap/bin/uv" pip freeze -p .venvs/vllm/bin/python > "$root/evidence/environment.txt"
+      - name: Repeat nine real-parser replays with eight chunkings
+        run: |
+          set -o pipefail
+          root="$RUNNER_TEMP/zero-ctc-triage"
+          export HOME="$root/home"
+          export HF_HOME="$root/hf-cache"
+          export TIKTOKEN_CACHE_DIR="$root/tiktoken-cache"
+          export PYTHONPATH="$root/repo/src"
+          timeout 220 "$root/repo/.venvs/vllm/bin/python" -u "$root/evidence/replay.py" --repo "$root/repo" --out "$root/evidence/results" 2>&1 | tee "$root/evidence/execution.log"
+          git -C "$root/repo" diff --exit-code > "$root/evidence/source-unchanged.log"
+      - name: Keep results and failures, not engine binaries or model assets
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: zero-canitoolcall-issue10-replay-20260926
+          path: ${{ runner.temp }}/zero-ctc-triage/evidence/
+          if-no-files-found: error
+          retention-days: 30
