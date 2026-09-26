@@ -1,0 +1,27 @@
+{
+  "candidate_commit": "a8c3bdb20f5dd558bbb813e1644b82830e63dcbb",
+  "actions_run_id": 36216231517,
+  "normalization_calls_in_actions": 8,
+  "matched_pairs": 4,
+  "pairs": [
+    {"top_system_present": true, "requested_mode": "preserve", "normalized_equal": false, "operator_roles_after": ["user", "assistant", "user", "system"], "tool_roles_after": ["user", "assistant", "user"]},
+    {"top_system_present": true, "requested_mode": "fold", "normalized_equal": true, "operator_roles_after": ["user", "assistant", "user"], "tool_roles_after": ["user", "assistant", "user"]},
+    {"top_system_present": false, "requested_mode": "preserve", "normalized_equal": true, "operator_roles_after": ["user", "assistant", "user"], "tool_roles_after": ["user", "assistant", "user"]},
+    {"top_system_present": false, "requested_mode": "fold", "normalized_equal": true, "operator_roles_after": ["user", "assistant", "user"], "tool_roles_after": ["user", "assistant", "user"]}
+  ],
+  "local_replay_calls": 8,
+  "local_replay_all_observations_equal": true,
+  "actions_python": "3.12.3",
+  "local_python": "3.13.5",
+  "pydantic": "2.13.4",
+  "model_calls": 0,
+  "full_server_imports": 0,
+  "renderer_calls": 0,
+  "network_attempts_during_normalization": 0,
+  "outer_request": "SimpleNamespace with actual extracted Pydantic message schemas",
+  "scope": "10 unchanged normalization functions and 2 unchanged message classes from draft PR 58772",
+  "artifact_sha256": "f6f95ee3b159475955c7259ab0fb6737dc39f4001dc72b4e41bad6d52bdde381",
+  "external_independent_replication": false,
+  "security_exploit_claimed": false,
+  "runtime_fix_proposed": false
+}
