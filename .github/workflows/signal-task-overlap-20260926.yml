@@ -1,0 +1,102 @@
+name: Signal overlapping profile scopes
+'on':
+  push:
+    branches: [checks/signal-task-overlap-20260926]
+    paths: [.github/workflows/signal-task-overlap-20260926.yml]
+permissions: {}
+concurrency:
+  group: zero-signal-task-overlap-20260926
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.14'
+      - name: Run pinned imports in isolated, overlapping task scopes
+        run: |
+          python -u - <<'PY'
+          import ast,hashlib,json,os,pathlib,re,shutil,subprocess,sys,tomllib,urllib.request,xml.etree.ElementTree as ET
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-signal-overlap'
+          root.mkdir(exist_ok=False)
+          repo=root/'repo';repo.mkdir()
+          out=root/'evidence';out.mkdir()
+          home=root/'setup-home';home.mkdir()
+          env={'PATH':os.environ['PATH'],'HOME':str(home),'LANG':'C.UTF-8','GIT_LFS_SKIP_SMUDGE':'1','PYTHONDONTWRITEBYTECODE':'1'}
+          report={'completed':False,'run_id':os.environ['GITHUB_RUN_ID'],'workflow_commit':os.environ['GITHUB_SHA'],'runs':{},'model_calls':0}
+          def call(argv,label,timeout=90,custom=None,check=True):
+              p=subprocess.run(list(map(str,argv)),cwd=repo,env=custom or env,capture_output=True,text=True,timeout=timeout)
+              (out/(label+'.log')).write_text('COMMAND '+repr(argv)+'\n'+p.stdout+'\nSTDERR\n'+p.stderr,encoding='utf-8')
+              print(p.stdout[-2000:]+p.stderr[-3000:],flush=True)
+              if check:p.check_returncode()
+              return p
+          def blob(data):return hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
+          try:
+              pin='bb8f14060ae63968c5d34ca5024dbce7fea93001'
+              call(['git','init','-q'],'git-init')
+              call(['git','fetch','--depth=1','https://github.com/Halldrix/hermes-agent.git',pin],'git-fetch',120)
+              call(['git','checkout','--detach','FETCH_HEAD'],'git-checkout')
+              assert call(['git','rev-parse','HEAD'],'git-head').stdout.strip()==pin
+              production=repo/'gateway/platforms/signal.py'
+              original=production.read_bytes()
+              assert blob(original)=='3fa045195ab48f1ed2fc4987f9164123a70afc9e'
+              test=repo/'tests/gateway/test_signal_note_to_self.py'
+              test_original=test.read_bytes()
+              for path in ['gateway/platforms/signal.py','hermes_constants.py','gateway/config.py','gateway/config_loader.py','tests/gateway/test_signal_note_to_self.py','pyproject.toml','LICENSE']:
+                  target=out/'pinned-source'/path;target.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(repo/path,target)
+              codepin='a3311dfbe693819e2d536035e67e923104fd652b'
+              for name in ['probe.py','PROTOCOL.md']:
+                  url=f'https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/{codepin}/checks/signal-task-overlap/{name}'
+                  with urllib.request.urlopen(url,timeout=25) as r:data=r.read(100001)
+                  assert len(data)<=100000
+                  if name=='probe.py':
+                      assert blob(data)=='75fb48a490a78ab1ff5478c301505fdd1b989c22'
+                      ast.parse(data)
+                  (out/name).write_bytes(data)
+              report.update(candidate_commit=pin,script_commit=codepin,python=sys.version,source_blob=blob(original),original_test_blob=blob(test_original))
+              call([sys.executable,'-m','venv',root/'venv'],'venv')
+              py=root/'venv/bin/python'
+              needed={'openai','python-dotenv','httpx','rich','tenacity','ruamel.yaml','requests','jinja2','pydantic','psutil','prompt_toolkit','packaging','croniter','websockets','pathspec','fire','snowballstemmer','PyJWT','fastapi','python-multipart','truststore','certifi','urllib3','tomli-w'}
+              project=tomllib.loads((repo/'pyproject.toml').read_text())
+              reqs=[r for r in project['project']['dependencies'] if re.split(r'[\[<=>!; @]',r,1)[0] in needed]
+              assert needed<={re.split(r'[\[<=>!; @]',r,1)[0] for r in reqs}
+              reqs+=['PyYAML==6.0.3','pytest==8.4.2','pytest-asyncio==1.2.0']
+              (out/'requested-requirements.txt').write_text('\n'.join(reqs)+'\n')
+              call([py,'-m','pip','install','--disable-pip-version-check',*reqs],'install',240)
+              (out/'environment.txt').write_text(call([py,'-m','pip','freeze','--all'],'freeze').stdout)
+              def child_env(label):
+                  h=root/(label+'-home');h.mkdir()
+                  return {'PATH':env['PATH'],'HOME':str(h),'HERMES_HOME':str(h/'hermes'),'LANG':'C.UTF-8','PYTHONPATH':str(repo),'PYTHONDONTWRITEBYTECODE':'1','PYTEST_DISABLE_PLUGIN_AUTOLOAD':'1','SIGNAL_ALLOWED_USERS':'+15550001111','SIGNAL_GROUP_ALLOWED_USERS':'synthetic-group','SIGNAL_REQUIRE_MENTION':'false','LANGSMITH_TRACING':'false','HERMES_SKIP_PROJECT_ENV':'1'}
+              xml=out/'original-option-tests.xml'
+              arguments=['-q','--noconftest','-p','asyncio','-p','no:cacheprovider','-o','addopts=','--junitxml='+str(xml),str(test)]
+              code="import socket\ndef deny(*a,**k): raise RuntimeError('No network in option tests')\nsocket.socket.connect=socket.socket.connect_ex=deny\nsocket.getaddrinfo=deny\nimport pytest\nraise SystemExit(pytest.main("+repr(arguments)+"))"
+              result=call([py,'-B','-c',code],'original-option-tests',90,custom=child_env('original'),check=False)
+              suites=ET.parse(xml).findall('.//testsuite')
+              counts={k:sum(int(s.attrib.get(k,0)) for s in suites) for k in ('tests','failures','errors','skipped')}
+              report['runs']['original_options']={'exit':result.returncode,'counts':counts}
+              assert result.returncode==0 and counts=={'tests':13,'failures':0,'errors':0,'skipped':0},counts
+              for mode in ['context_local','deliberately_global']:
+                  result=call([py,'-B',out/'probe.py','--repo',repo,'--out',out/mode,'--mode',mode],mode,120,custom=child_env(mode),check=False)
+                  path=out/mode/'RESULT.json'
+                  if path.exists():report['runs'][mode]=json.loads(path.read_text())
+                  result.check_returncode()
+              assert production.read_bytes()==original and test.read_bytes()==test_original
+              report['source_and_original_tests_unchanged']=True
+              report['completed']=True
+          except Exception as exc:
+              report['error']={'type':type(exc).__name__,'message':str(exc)}
+              print('ERROR '+repr(exc),flush=True)
+          finally:
+              (out/'SUMMARY.json').write_text(json.dumps(report,indent=2)+'\n')
+          if not report['completed']:raise SystemExit(1)
+          PY
+      - name: Preserve outputs and any setup failure
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: zero-signal-task-overlap-20260926
+          path: ${{ runner.temp }}/zero-signal-overlap/evidence/
+          if-no-files-found: error
+          retention-days: 30
