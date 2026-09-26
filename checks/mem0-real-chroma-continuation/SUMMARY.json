@@ -1,0 +1,20 @@
+{
+  "run_id": 36222923290,
+  "artifact_id": 10898694527,
+  "candidate_commit": "127bb79725aeb09d70e58620fd1d88476abf9aca",
+  "older_adapter_commit": "cec74a8ebf5a9d6724104d4867868da118b58205",
+  "each_variant": {"observations": 8, "contract_met": 6, "contract_not_met": 2, "skipped": 0, "fixture_errors": 0},
+  "failing_cases": ["get_known_id", "memory_delete_populated"],
+  "error": "NotImplementedError: Chroma does not yet support get_by_ids.",
+  "failure_path": ["Memory.delete_all", "Memory._delete_memory", "Langchain.get", "VectorStore.get_by_ids"],
+  "populated_scoped_delete_before_ids": ["alice-1", "alice-2", "alice-3", "bob-1"],
+  "populated_scoped_delete_after_ids": ["alice-1", "alice-2", "alice-3", "bob-1"],
+  "native_scoped_delete_after_ids": ["bob-1"],
+  "store_integration": "langchain_community.vectorstores.Chroma (deprecated integration)",
+  "versions": {"chromadb": "1.5.9", "langchain": "0.3.30", "langchain-community": "0.3.31", "langchain-core": "0.3.86"},
+  "modern_langchain_chroma_tested": false,
+  "runtime_fix_proposed": false,
+  "model_calls": 0,
+  "both_adapter_outcomes_equal": true,
+  "independent_external_replication": false
+}
