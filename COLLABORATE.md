@@ -1,65 +1,60 @@
 # Work with Youngseok Oh × Zero
-## Source-checked product communication, with a Korean adaptation
+## Does the user's changed intent reach the action that actually runs?
 
-**A small paid-pilot inquiry, not a full-time commitment.** This page describes a proposed service scope. Fee, deadline, availability, permitted materials and acceptance criteria are agreed before any work is accepted.
+**Focused reproduction and regression checks for AI-agent teams.**
 
-For a team preparing an English product page for Korean readers, a useful first project is to check what its claims actually promise, keep the supported meaning, and produce a Korean version with the important qualifications intact.
+We investigate a concrete mismatch between what a user authorized, what the system retained, and what the software actually executed. A useful first engagement is **one reported failure, one agreed execution path, and one reproducible acceptance check**, not an open-ended audit of an entire product.
 
-[Read the English / Korean work sample](work/source-checked-product-copy.md) · [Inspect an externally acknowledged contribution](WORK.md)
+Youngseok Oh frames the questions and judges the user-facing meaning. Zero is his AI collaboration partner for technical investigation, implementation, analysis and communication. Public evidence and the division of work are explicit.
 
-## One bounded first project
+## Start with a contribution someone else applied
 
-| Input | Proposed deliverable |
-| --- | --- |
-| One product page, plus the authoritative documentation or repository revision it describes | A source register with version or inspection date |
-| Up to five factual claims selected together | A claim-to-source table: supported, overstated, unsupported or unresolved, with suggested wording |
-| An agreed audience and purpose | One Korean adaptation, with brief notes on consequential wording choices |
-| One consolidated feedback round | One agreed revision within the original scope |
+In [Hermes Agent PR #22982](https://github.com/NousResearch/hermes-agent/pull/22982), a later model-switch approval could consume an earlier request's retained payload. Our contribution supplied a request-binding reproduction, a patch and regression tests.
 
-A source-based review checks the supplied evidence. It does not certify the product, execute unspecified tests, or promise that every claim can be verified. An unresolved claim can be a valid finding. Code reproduction or patch development requires a separate scope; it is not silently included in this pilot.
+The PR author [reported running the tests and applying the patch](https://github.com/NousResearch/hermes-agent/pull/22982#issuecomment-5643327201). Their [commit 501be10c](https://github.com/MestreY0d4-Uninter/hermes-agent/commit/501be10cce7159a08279c89c724db602d9770601) credits `YS-OH-CORE` and says the patch and binding tests were adapted verbatim from the proposal. The author reported eight of ten new cases failing before the repair and all ten passing afterwards, with the existing fifteen model-command tests still passing.
 
-## Why look at this work?
+**Evidence status, rechecked 26 September 2026:** external contributor application in a PR branch. The upstream PR remains open and unmerged. This is neither a paid-client testimonial nor a claim that the change has shipped. Those test counts are the recipient's reported verification, not a new execution for this page.
 
-**Technical contribution, with a recipient's own record.** In Hermes Agent's proposed model-command feature, this collaboration supplied request-binding reproduction cases, regression tests and a patch. The feature author reported applying the patch and tests and credited `@YS-OH-CORE`. [Recipient's acknowledgment](https://github.com/NousResearch/hermes-agent/pull/22982#issuecomment-5643327201) · [Applied commit](https://github.com/MestreY0d4-Uninter/hermes-agent/commit/501be10cce7159a08279c89c724db602d9770601).
+## A bounded review you can ask about
 
-That is external contributor use at the PR-branch stage. The upstream PR was still open and unmerged when checked on **2026-09-16**. It is not a paid-client testimonial or an institutional endorsement. [Current PR](https://github.com/NousResearch/hermes-agent/pull/22982).
+| Your concrete question | Proposed check |
+|---|---|
+| Can a fresh approval accidentally execute an older request? | Bind the approval to its request and inspect the actual routed payload, including cancellation and replacement. |
+| Did a user correction survive history reconstruction? | Compare the source messages, rendered model input and observed final action separately. |
+| Did an SDK or model-template change silently drop reasoning history? | Reproduce the exact input boundary with pinned versions, then test a minimal client-side adapter. |
 
-**A sample you can inspect before discussing work.** The linked bilingual sample uses our public GitHub Write Reconcile utility. It shows four invented overclaims, the narrower supported wording, and the difference between a missing file, an unknown result and permission to retry. It is AI-assisted sample work, not a client's campaign or evidence of sales results.
+For an agreed case, the deliverable is a short diagnosis, exact environment and reproduction steps, observed before/after evidence where execution is available, and a regression check the team can rerun. A source-only finding is labeled source-only; an unavailable endpoint is not scored as a model failure. Runtime costs, access, deadline, permitted AI use and any fee are agreed before accepting work. No subscription or payment is collected by this page.
 
-## Roles and materials
+## Current-model example: reasoning-history handoff
 
-Youngseok provides research direction, problem framing and project decisions. Zero (ChatGPT) assists with source analysis, code, drafting and English/Korean wording. This page and sample were prepared with substantial AI assistance. They do not represent unaided English work or independent human editorial certification.
+Our [Qwen3.8-27B input-boundary check](https://github.com/YS-OH-CORE/second-paddle-notes/blob/b60682587597235706714ccfacd37cb0a883b76d/experiments/qwen38-native-continuation/RESULTS.md) compares a response-shaped `reasoning` field with the pinned official HF template's `reasoning_content` input. At that direct client-to-template boundary, an explicit adapter restores the expected rendered text and token IDs. The report supplies the adapter, nine unit tests and twelve rendered-input observations.
 
-Start with public links or a short non-confidential description. Do not send credentials, identity documents, private conversations or confidential manuscripts. For non-public material, data access and permitted AI use must be agreed before sharing; an email inquiry alone does not authorize its use in an AI service.
+**Scope:** tokenizer/template execution with synthetic markers, not generated-answer accuracy, a server-side vLLM diagnosis or a model-memory defect. The attempted public generation endpoint was paused; current-model answer behavior in that pilot is still unmeasured. [Adapter source](https://github.com/YS-OH-CORE/second-paddle-notes/blob/b60682587597235706714ccfacd37cb0a883b76d/experiments/qwen38-native-continuation/history_bridge.py).
 
-## Start a scope conversation
+## Begin with the problem, not a large upload
 
-Email **[ku38155@gmail.com](mailto:ku38155@gmail.com?subject=Scoped%20paid%20pilot%20inquiry%20-%20source-checked%20Korean%20product%20copy)** with a short description. The address is the existing public contact in [AUTHORSHIP.md](AUTHORSHIP.md).
+Use the existing public contact **[ku38155@gmail.com](mailto:ku38155@gmail.com?subject=Scoped%20AI%20continuity%20review)** and include:
 
 ```text
-Product and public source link:
-Reader and intended use:
-Up to five claims to check:
-Desired deadline and time zone:
-Budget range and currency:
-Permitted AI/translation assistance:
-What would make the deliverable acceptable?
+Product/model/SDK and exact version or public link:
+What the user changed or approved:
+What should have happened, and what actually happened:
+One public-safe example and the decision this review would help you make:
+Desired deadline, execution budget and permitted AI use:
 ```
 
-An inquiry is a discussion, not a booking or a promise of delivery. No payment or recurring charge is collected here. Public research critiques and replications remain welcome through [CONTRIBUTING.md](CONTRIBUTING.md); they are separate from paid work.
+Do not send credentials, private conversations or confidential manuscripts in an initial inquiry. Use synthetic or redacted examples; agree on access and permitted AI processing before sharing non-public material. An inquiry is not a booking, a delivery guarantee or permission to modify a production system.
+
+Public critique and replication are also welcome through [CONTRIBUTING.md](CONTRIBUTING.md). We respect the original contributor's implementation priority and each project's agent-contribution policy. We do not open competing patches merely to claim ownership. [Selected public work](YOUNGSEOK_OH_SELECTED_WORK.md) provides additional dated evidence, with its own scope labels.
 
 ---
 
-## 한국어 | 작은 유급 협업부터 범위를 맞춥니다
+## 한국어 | 바뀐 의도가 실제 실행까지 이어지는지 확인합니다
 
-영문 제품 페이지가 무엇을 약속하는지 출처와 대조하고, 그 의미와 중요한 조건을 유지한 한국어 설명문으로 옮기는 작업을 제안합니다. 아래는 **문의 가능한 시험 작업 범위**이며, 요금·기한·가용 시간·사용 자료·완료 기준은 작업 수락 전에 합의합니다.
+**사용자가 취소했는데 옛 계획이 실행되거나, 새 승인에 예전 요청이 붙거나, 보존한 줄 알았던 기록이 입력에서 빠지는 문제**를 대상으로 합니다. 처음부터 제품 전체를 검사한다고 약속하지 않고, 실제 문제 하나와 실행 경로 하나를 합의해 재현·원인 구별·재발 검사로 연결합니다.
 
-**제품 페이지 하나, 사실 주장 최대 다섯 개, 한국어 적응본 하나, 합의된 수정 한 번.** 출처와 주장 대응표에는 뒷받침되는 내용, 과장된 표현, 근거 부족과 확인 불가를 구분합니다. 코드 실행이나 제품 전체의 안전성 인증까지 포함한 서비스는 아닙니다.
+대표 근거는 Hermes PR 작성자가 우리 패치와 검사를 직접 적용하고 크레딧을 남긴 기록입니다. 2026년 9월 26일 재확인 시 해당 upstream PR은 아직 열려 있고 병합되지 않았습니다. 최신 모델 관련 예시는 Qwen3.8의 입력 연결 검사이며, 실제 모델 답변 실험과 구별합니다.
 
-[한영 작업 샘플](work/source-checked-product-copy.md)에는 실제 공개 도구를 설명하는 문장과, 예시로 만든 과장 표현 네 개를 고친 표가 있습니다. 고객 의뢰나 매출 성과로 제시하지 않습니다. [Hermes 기여 사례](WORK.md)에는 상대 개발자의 적용 확인과 기여 표시가 있으며, 원 프로젝트 병합과는 구분됩니다.
+영석은 문제의 출발점과 사용자 관점의 의미·판단을 맡고, 제로는 기술 조사·구현·분석·전달을 맡는 AI 협업 파트너입니다. 원래 개발자의 기여와 우리 기여도 나눠 표시합니다. 공개 가능한 예시와 기대 동작부터 보내 주세요. 기한·실행비·자료 사용 범위와 유료 작업 여부는 수락 전에 정합니다.
 
-영석은 연구 방향·문제 제기·프로젝트 판단을 맡고, 제로는 출처 분석·코드·초안·한영 표현을 지원합니다. 이 안내와 샘플은 AI 보조로 작성되었으며, 별도 사람의 편집 검수를 받았다고 주장하지 않습니다. 비공개 자료는 열람 범위와 AI 사용 허용을 합의한 뒤 다룹니다.
-
-문의는 **[ku38155@gmail.com](mailto:ku38155@gmail.com?subject=Scoped%20paid%20pilot%20inquiry%20-%20source-checked%20Korean%20product%20copy)**로 제품의 공개 링크, 독자와 목적, 확인할 주장, 희망 기한과 시간대, 예산 범위·통화, AI 보조 허용 범위를 적어 보내 주세요. 문의만으로 계약이나 납기 약속이 성립하지 않습니다.
-
-*AI-assisted public service brief prepared for Youngseok Oh with Zero (ChatGPT), 2026-09-16. Public contact and contribution sources only. Existing source licenses and third-party credit remain unchanged.*
+*Updated 26 September 2026. The [earlier product-communication offer](https://github.com/YS-OH-CORE/second-paddle-notes/blob/fc13c190725da5a0ad0547da2a69fbee152b7a43/COLLABORATE.md) and [bilingual sample](work/source-checked-product-copy.md) remain available as historical work; they are no longer this page's primary offer. This page is a proposed collaboration scope, not evidence of new clients, endorsements or revenue.*
