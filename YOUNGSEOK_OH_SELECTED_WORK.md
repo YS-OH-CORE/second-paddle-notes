@@ -7,6 +7,28 @@ Research focus: preserving evidence and corrections across human–AI memory, an
 
 [Discuss one scoped AI-continuity review](COLLABORATE.md).
 
+## Memory operations: review used to prevent a false-success response
+
+**Question:** does a successful deletion response mean that the matching memories were actually removed?
+
+In [mem0 issue #7439](https://github.com/mem0ai/mem0/issues/7439#issuecomment-5824943500), our populated-store counterexample showed why returning an invented empty listing was not an adequate fix: deletion could report success while the target records remained. [Souptik96's public response](https://github.com/mem0ai/mem0/issues/7439#issuecomment-5843366869) explicitly credits that check and describes changing the implementation to report unsupported listing rather than silent success.
+
+The [revised fork source](https://github.com/Souptik96/mem0/blob/127bb79725aeb09d70e58620fd1d88476abf9aca/mem0/vector_stores/langchain.py) and the [recipient's populated-FAISS regression](https://github.com/Souptik96/mem0/blob/127bb79725aeb09d70e58620fd1d88476abf9aca/tests/memory/test_main.py) give a code-level trail. Our [earlier follow-up execution](https://github.com/YS-OH-CORE/second-paddle-notes/blob/5bf5a87d001dccae3a83293b11bdc417146fac3c/checks/mem0-7464-recipient-followup/README.md) ran seven selected recipient tests unchanged: seven passed, none skipped; replacing only the adapter with its exact prior version made six fail. This page addition did not rerun those tests.
+
+**Status checked 26 September 2026:** [PR #7464](https://github.com/mem0ai/mem0/pull/7464) is closed and unmerged. Its reported head remains `cec74a8e`; the verified newer fork revision is `127bb797`. The [queue-gate message](https://github.com/mem0ai/mem0/pull/7464#issuecomment-5843251973) explains the pending accepted-issue requirement. Recipient use of review guidance is established; upstream acceptance, release, and bulk-deletion support are not. BlueX888 supplied the original diagnosis, Souptik96 the revised implementation and tests, and Youngseok Oh × Zero the counterexample and follow-up verification.
+
+## Memory evaluation: a report corrected its interpretation and named the reviewers
+
+**Question:** do the saved results support the comparison being claimed?
+
+In [TAM's LongMemEval comparison report](https://github.com/vbcherepanov/total-agent-memory/blob/55d0ab0124ca4fca81479a5bcafa262aaaf0e19e/docs/benchmarks/head-to-head-v14/RESULTS.md#revisions), the author records recalculation of six accuracy cells and four paired comparisons from saved verdicts. Counts agreed; the reporting feedback distinguished a comparison that changed both the judge model and rubric from a prompt-only comparison. The report also distinguishes absence of a statistically detected difference from demonstrated equivalence, and discloses its tuning history.
+
+[The author's attribution commit](https://github.com/vbcherepanov/total-agent-memory/commit/55d0ab0124ca4fca81479a5bcafa262aaaf0e19e) names Youngseok Oh and Zero, states their division of work, and limits the review to saved-verdict calculations and reporting feedback. This is attribution in the author's own repository, not merely a claim on this page. The September 24 record was inspected again for this addition; it is not a new response or a new experiment.
+
+**Scope:** no retrieval rerun, new answer generation, fresh judge decisions, independent audit of tuning, or overall system-quality certification. The report and system remain Vitalii Cherepanov's work. No institutional credential, paid-client relationship, or endorsement is implied.
+
+**한국어:** mem0 사례에서는 실제 기록을 넣은 반례가 상대의 수정 방향과 검사에 반영됐다. TAM 사례에서는 저장된 채점 결과의 재계산과 비교 해석에 대한 검토가 작성자의 보고서 수정 및 기여 표기로 남았다. 둘 다 공개 원출처로 확인할 수 있지만, 정식 제품 반영이나 전체 성능 인증과는 다르다. 이번 추가는 그 두 경로를 기존 대표 작업 소개에 연결하는 편집이며, 신규 실험 결과가 아니다.
+
 ## 1. Agent reliability: a patch applied by another developer
 
 **Work:** request-local binding between a model-switch confirmation and its inline payload in Hermes Agent. The repair prevents a later confirmation from consuming an earlier request's payload.
