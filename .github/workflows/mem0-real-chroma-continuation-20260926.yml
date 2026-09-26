@@ -1,0 +1,41 @@
+name: Mem0 real Chroma continuation
+'on':
+  push:
+    branches: [checks/mem0-real-chroma-continuation-20260926]
+    paths: [.github/workflows/mem0-real-chroma-continuation-20260926.yml]
+permissions: {}
+concurrency:
+  group: zero-mem0-real-chroma-20260926
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Verify frozen test and run bounded local-storage comparisons
+        run: |
+          python3 -u - <<'PY'
+          import hashlib,os,pathlib,subprocess,urllib.request
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'zero-mem0-real-chroma'
+          root.mkdir(exist_ok=False)
+          prefix='https://raw.githubusercontent.com/YS-OH-CORE/second-paddle-notes/50dfd2d97a70b7895dc69b3ed77799c78ab750bd/checks/mem0-real-chroma-continuation/'
+          hashes={'run.py':'23ded716beb172575435ce592ff996232599e2bb50b000c643d72057e729b95d','test_real_chroma.py':'f08d1e00e069f9b5a3ad58a03a831c8df2f4aaf0002d0878f1575e11f37bf388'}
+          for name in ('run.py','test_real_chroma.py','PROTOCOL.md'):
+              with urllib.request.urlopen(prefix+name,timeout=25) as response:
+                  data=response.read(100001)
+              assert len(data)<=100000
+              if name in hashes: assert hashlib.sha256(data).hexdigest()==hashes[name],name
+              (root/name).write_bytes(data)
+          result=subprocess.run(['python3','-u',str(root/'run.py'),'--root',str(root/'run'),'--probe',str(root/'test_real_chroma.py')],timeout=550)
+          out=root/'run/output'
+          if out.exists(): (out/'PROTOCOL.md').write_bytes((root/'PROTOCOL.md').read_bytes())
+          result.check_returncode()
+          PY
+      - name: Retain complete observations, source, errors and environment
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: zero-mem0-real-chroma-continuation-20260926
+          path: ${{ runner.temp }}/zero-mem0-real-chroma/run/output/
+          if-no-files-found: error
+          retention-days: 30
