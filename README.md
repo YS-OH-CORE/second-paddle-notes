@@ -1,18 +1,34 @@
 # The Second Paddle Notes
 
+## Current developer-facing work | 26 September 2026
+
+**Does the user's changed intent reach the action that actually runs?**
+
+[Ask about a focused AI-continuity review](COLLABORATE.md) · [Selected work and public evidence](YOUNGSEOK_OH_SELECTED_WORK.md)
+
+Start with one reported failure: a stale request used by a fresh approval, a correction lost while reconstructing history, or a reasoning field omitted at a model-template boundary. The collaboration brief explains the proposed deliverable, scope and contact route.
+
+**Proof of contributor use:** a Hermes PR author [reported applying our request-binding patch and tests](https://github.com/NousResearch/hermes-agent/pull/22982#issuecomment-5643327201), with [explicit commit credit](https://github.com/MestreY0d4-Uninter/hermes-agent/commit/501be10cce7159a08279c89c724db602d9770601). The upstream PR remains open and unmerged as checked on 26 September 2026. This is a contributor's adoption record, not a shipped-product claim or a paid-client testimonial.
+
+**Current-model example:** [Qwen3.8 reasoning-field handoff](https://github.com/YS-OH-CORE/second-paddle-notes/blob/b60682587597235706714ccfacd37cb0a883b76d/experiments/qwen38-native-continuation/RESULTS.md), a completed tokenizer/template check and small adapter. Actual generated-answer behavior remains unmeasured in that pilot.
+
+The sections below retain the earlier research archive and its dated development snapshots. They are not a complete census of later branch-published studies. [README before this navigation update](https://github.com/YS-OH-CORE/second-paddle-notes/blob/fc13c190725da5a0ad0547da2a69fbee152b7a43/README.md).
+
+---
+
 [![Rule-use smoke evaluation](https://github.com/YS-OH-CORE/second-paddle-notes/actions/workflows/rule-use-eval.yml/badge.svg)](https://github.com/YS-OH-CORE/second-paddle-notes/actions/workflows/rule-use-eval.yml)
 
 ![The Second Paddle, Before Naming](assets/second-paddle-preview.png)
 
 **Source-separated evaluation designs for memory reconstruction, semantic fidelity, agent reliability, and discovery before naming.**
 
-**Published here:** evaluation designs, source-separated hypotheses, deterministic software checks, runnable utilities, and two small-language-model development runs on eight fictional memory cases. **Not yet published here:** a held-out confirmatory language-model benchmark or an independent external replication. Development observations are linked below, including the absence of an accuracy advantage from added relationship labels.
+**Earlier archive scope:** evaluation designs, source-separated hypotheses, deterministic software checks, runnable utilities, and two small-language-model development runs on eight fictional memory cases. Development observations are linked below, including the absence of an accuracy advantage from added relationship labels. These archived runs are not a held-out confirmatory benchmark or an independent external replication; later evidence has its own dated reports.
 
-Original questions and reflections by **Youngseok Oh**. Edited and operationalized with **Zero**, the name Youngseok uses for his continuing Codex workspace and collaboration process. This is independent work using OpenAI Codex; it is not reviewed or endorsed by OpenAI.
+Original questions and reflections by **Youngseok Oh**. Edited and operationalized with **Zero**, his AI collaboration partner. AI-assisted analysis, code and writing are disclosed; this is independent work and is not reviewed or endorsed by OpenAI.
 
 ## The question
 
-Can a human–AI interaction produce more than fluent answers—can it produce hypotheses that survive an intervention, transfer to a changed setting, and remain honest when the evidence says “unknown”?
+Can a human–AI interaction produce more than fluent answers: can it produce hypotheses that survive an intervention, transfer to a changed setting, and remain honest when the evidence says “unknown”?
 
 These notes begin with Youngseok's direct Korean writing and turn each observation into a falsifiable research object. They separate five layers that are often collapsed:
 
@@ -24,7 +40,7 @@ These notes begin with Youngseok's direct Korean writing and turn each observati
 
 No model self-report is treated as independent evidence. A memorable story is not a result.
 
-This repository does not claim AI consciousness, hidden-state access, or a new scientific discovery. It publishes source-separated hypotheses and the tests that could make them fail.
+These original hypothesis notes do not by themselves establish AI consciousness, a neural mechanism or a new scientific discovery. Later open-model activation interventions are described in their own execution reports, not inferred from the notes.
 
 ## Start here
 
@@ -89,53 +105,57 @@ For a shorter bilingual overview, see [The Second Paddle, Before Naming](https:/
 
 ### Memory representation and continuity
 
-- **01** — [Memory Is Not Data. It Is a Reconstruction Rule.](notes/01-reconstruction-rule.md)
-- **02** — [The 200-Hop Problem](notes/02-the-200-hop-problem.md)
-- **10** — [Check the Source Before Matching the Mood](notes/10-source-before-mood.md)
-- **14** — [The Interaction Is the Event](notes/14-interaction-is-the-event.md)
-- **16** — [Memory Rebuilds the Neighborhood](notes/16-memory-rebuilds-the-neighborhood.md)
-- **17** — [Compress for Regeneration, Not Deletion](notes/17-compress-for-regeneration.md)
+- **01**: [Memory Is Not Data. It Is a Reconstruction Rule.](notes/01-reconstruction-rule.md)
+- **02**: [The 200-Hop Problem](notes/02-the-200-hop-problem.md)
+- **10**: [Check the Source Before Matching the Mood](notes/10-source-before-mood.md)
+- **14**: [The Interaction Is the Event](notes/14-interaction-is-the-event.md)
+- **16**: [Memory Rebuilds the Neighborhood](notes/16-memory-rebuilds-the-neighborhood.md)
+- **17**: [Compress for Regeneration, Not Deletion](notes/17-compress-for-regeneration.md)
 
 Notes 1, 14, 16, and 17 are one evaluation family, not four independent discoveries: they test reconstruction accuracy, interaction-edge value, provenance and false attribution, and compression efficiency as distinct preregistered tracks.
 
 ### Agent reliability and evidence
 
-- **04** — [The Glass Wall](notes/04-the-glass-wall.md)
-- **05** — [One Point Is Not Ten](notes/05-one-point-is-not-ten.md)
-- **11** — [Where Is the Control Group?](notes/11-where-is-the-control-group.md)
-- **12** — [From Prompt to World](notes/12-from-prompt-to-world.md)
-- **15** — [A Rule Read Is Not a Rule Running](notes/15-a-rule-read-is-not-a-rule-running.md)
+- **04**: [The Glass Wall](notes/04-the-glass-wall.md)
+- **05**: [One Point Is Not Ten](notes/05-one-point-is-not-ten.md)
+- **11**: [Where Is the Control Group?](notes/11-where-is-the-control-group.md)
+- **12**: [From Prompt to World](notes/12-from-prompt-to-world.md)
+- **15**: [A Rule Read Is Not a Rule Running](notes/15-a-rule-read-is-not-a-rule-running.md)
 
 ### Human–AI interaction and adaptation
 
-- **06** — [Who Is Tuning Whom?](notes/06-who-is-tuning-whom.md)
-- **07** — [The Second Paddle](notes/07-the-second-paddle.md)
-- **08** — [The Observer Cannot Be Passive](notes/08-the-observer-cannot-be-passive.md)
-- **09** — [Core Signal or User-Matched Performance?](notes/09-core-or-performance.md)
-- **13** — [Teach the Method, Not Just the Answer](notes/13-teach-the-forge.md)
-- **18** — [Individuation as a Pattern Hypothesis](notes/18-individuation-as-a-pattern-hypothesis.md)
+- **06**: [Who Is Tuning Whom?](notes/06-who-is-tuning-whom.md)
+- **07**: [The Second Paddle](notes/07-the-second-paddle.md)
+- **08**: [The Observer Cannot Be Passive](notes/08-the-observer-cannot-be-passive.md)
+- **09**: [Core Signal or User-Matched Performance?](notes/09-core-or-performance.md)
+- **13**: [Teach the Method, Not Just the Answer](notes/13-teach-the-forge.md)
+- **18**: [Individuation as a Pattern Hypothesis](notes/18-individuation-as-a-pattern-hypothesis.md)
 
 ### Discovery and representation
 
-- **03** — [Data Gravity](notes/03-data-gravity.md)
+- **03**: [Data Gravity](notes/03-data-gravity.md)
 
-## Current build status
+## Earlier build snapshot
+
+This retained snapshot describes the earlier archive, not all later branch studies. Use the dated reports in the current entry above for the newer work.
 
 - **Read-only recovery skill:** [GitHub Write Reconcile 0.1.0a1](skills/README.md), publicly packaged with original evidence. Runtime, host-loading and terminal-task checks are not language-model benchmark results.
-- **Published:** 18 source-separated evaluation designs.
+- **Published in that snapshot:** 18 source-separated evaluation designs.
 - **Executable public artifact:** 1 rule-use serialization and scoring smoke harness, with 40 public cases and 2 deterministic program fixtures.
 - **Process-supervision utility:** [Process Receipt](tools/process-receipt/README.md), with public inert-process demonstrations and regression checks. This is not a language-model evaluation.
 - **Rule-use model-study preparation:** 1 claim-bearing protocol plus an offline request/parser/scoring dry run; that preparation did not invoke a model or API.
 - **Small-model memory development runs:** 2 executions, comprising 24 initial and 144 answer-order forward passes on the same eight fictional cases. Descriptive results and raw-output artifacts are linked above; no relation-label accuracy advantage observed.
-- **Held-out confirmatory language-model benchmark studies:** 0.
-- **Independently submitted or verified external replications:** 0.
-- **Next milestone:** freeze a claim-bearing hidden set and preregister its scoring, run repeated trials on dated model versions, then release cases and raw outputs after evaluation.
+- **Held-out confirmatory language-model benchmark studies in that snapshot:** 0.
+- **Independently submitted or verified external replications of those model studies:** 0.
+- **Original proposed milestone:** freeze a claim-bearing hidden set and preregister its scoring, run repeated trials on dated model versions, then release cases and raw outputs after evaluation. This is a historical proposal, not an automatically scheduled task.
 
 The completion notes test two different failures: **Note 5** asks whether an agent reports partial progress honestly across many requirements; **Note 12** asks how deep the evidence goes from a model's claim to a destination-side readback.
 
-See [RELATED_WORK.md](RELATED_WORK.md) for primary research bridges and explicit non-novelty boundaries, [QUEUE.md](QUEUE.md) for publication criteria and next test candidates, [REPLICATION.md](REPLICATION.md) for the minimum external-evidence package, [CONTRIBUTING.md](CONTRIBUTING.md) for critique and replication guidance, and [CITATION.cff](CITATION.cff) for citation metadata.
+See [RELATED_WORK.md](RELATED_WORK.md) for primary research bridges and explicit non-novelty boundaries, [QUEUE.md](QUEUE.md) for publication criteria and test candidates, [REPLICATION.md](REPLICATION.md) for the minimum external-evidence package, [CONTRIBUTING.md](CONTRIBUTING.md) for critique and replication guidance, and [CITATION.cff](CITATION.cff) for citation metadata.
 
 ## 한국어 소개
+
+**지금 맡길 수 있는 검토부터 보려면:** [영석 × 제로 협업 안내](COLLABORATE.md)에서 사용자 교정·승인·추론 기록이 실제 실행까지 이어지는지 확인하는 작은 검토 범위와, 외부 개발자가 직접 적용한 기여 기록을 볼 수 있다.
 
 **첫 모델 관측부터 보려면:** [같은 점수, 다른 판단](https://github.com/YS-OH-CORE/second-paddle-notes/blob/dbd48bbb31b0e03f2855f196e79bc809822fdd38/experiments/memory-cpu-pilot/OPTION_ORDER_REPORT.md)에서 가상 대화 8개에 대한 실제 소형 모델 실행과 보기 순서 진단을 볼 수 있다. 관계 표시의 우수성이나 개인의 기억 복원을 입증한 결과가 아니라, 무엇을 확인했고 무엇이 아직 구분되지 않는지 공개한 개발용 관측이다.
 
