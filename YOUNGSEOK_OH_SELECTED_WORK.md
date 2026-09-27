@@ -1,11 +1,27 @@
 # Youngseok Oh | Selected work and public evidence
 
 Independent researcher, South Korea · GitHub: **YS-OH-CORE**  
-Prepared with **Zero** · Agent collaboration records checked: **26 September 2026**
+Prepared with **Zero** · Index updated: **27 September 2026** · individual status checks dated below
 
 Research focus: preserving evidence and corrections across human–AI memory, and reproducible review of agent systems. This self-published index links specific records; it is not an institutional credential or a blanket endorsement. The formal-methods section retains its **16 September 2026** evidence snapshot and was not rerun or rechecked in this update.
 
 [Discuss one scoped AI-continuity review](COLLABORATE.md).
+
+## Evidence at a glance
+
+**Start with what changed for another developer or reader.** These links lead to the recipients' own records where available; the checks below keep original authors and our supplemental work separate.
+
+| Case | What our contribution added | Public outcome |
+|---|---|---|
+| Hermes request binding | Reproduction, repair and regression tests for a stale payload surviving a new approval | [Feature author reports applying the patch and tests](https://github.com/NousResearch/hermes-agent/pull/22982#issuecomment-5643327201), with commit credit |
+| mem0 deletion behavior | A populated-store counterexample to a false-success workaround | [Implementation author credits the check and changes the behavior](https://github.com/mem0ai/mem0/issues/7439#issuecomment-5843366869) |
+| TAM memory evaluation | Saved-verdict recalculation and feedback on what the comparison supports | [Author's corrected report names Youngseok and Zero](https://github.com/vbcherepanov/total-agent-memory/blob/55d0ab0124ca4fca81479a5bcafa262aaaf0e19e/docs/benchmarks/head-to-head-v14/RESULTS.md#revisions) |
+| Transformers generation | One regression that distinguishes two interacting fixes | [Original reporter requests that combined test](https://github.com/huggingface/transformers/issues/49093#issuecomment-5827315466); [test-only handoff](https://github.com/YS-OH-CORE/second-paddle-notes/blob/19162e93067858a17c784df628efbdf97bfa6d0a/checks/transformers-49093/author-handoff/README.md) is available |
+| smolagents tool persistence | Additional serialization cases and verification of the reporter's exact fix | [Executed comparison and reusable checker](https://github.com/YS-OH-CORE/second-paddle-notes/blob/f0e58ef2dd0121bb643746f295a49c102fc9a695/checks/smolagents-2833/RECEIVED_COMMIT_REVIEW.md); no third-party acknowledgement found in the issue |
+
+**27 September 2026 evidence refresh:** the linked recipient records were inspected. Hermes #22982 remains open and unmerged; mem0 #7464 is closed and unmerged. The new Transformers and smolagents sections below identify their exact tested versions. This update adds no new runtime experiment, client, or upstream adoption; older sections retain their individual check dates.
+
+**한국어:** 외부 개발자가 실제로 적용한 패치, 반례를 받아 바꾼 구현, 작성자가 이름을 남긴 보고서 수정부터 확인할 수 있다. Transformers는 신고자가 요청한 추가 검사, smolagents는 실행 근거가 공개된 보조 검증이다. 이 서로 다른 결과를 한꺼번에 ‘공식 채택’이라고 부르지 않는다.
 
 ## Memory operations: review used to prevent a false-success response
 
@@ -59,6 +75,30 @@ In [TAM's LongMemEval comparison report](https://github.com/vbcherepanov/total-a
 **Authorship:** the initial implementation, linked-device check and initial synthetic tests belong to **ren2140eth**. The subsequent reproduction, additional tests, documentation and PR submission belong to **Halldrix**. **Youngseok Oh × Zero** contributed problem-focused source guidance, suggested coverage and the earlier verification/handoff trail. We did not submit this PR or author the recipients' work. Our attribution is directly supported by the issue discussion; this page does not claim the submitted PR separately lists us as code authors.
 
 **Status, checked 26 September 2026:** PR #122033 is **open, non-draft and unmerged**. This is evidence that review guidance was implemented and carried into a proposed upstream change, not proof of maintainer approval, a released feature, paid-client work or revenue. The external reports and PR predate this page update; they are not new replies received during today's check. No new runtime or model experiment was performed for this addition.
+
+## Transformers: a requested regression that catches two interacting fixes
+
+**Problem:** token ID 0 was rejected in list-form sequence bias, while an exact-prefix boundary could skip an otherwise matching bias. Both diagnoses and proposed fixes belong to **lucaluo925**.
+
+**Our contribution:** a combined configuration save/reload and batched-score regression. Reverting either fix makes this one test fail for the corresponding bug, while two selected existing neighbor tests still pass. The [original reporter explicitly requested the combined case](https://github.com/huggingface/transformers/issues/49093#issuecomment-5827315466).
+
+The [pinned execution report](https://github.com/YS-OH-CORE/second-paddle-notes/blob/c0127dc37547ff8b6454be16684fe3b5331d2834/checks/transformers-49093/pr49099/README.md) records twelve selected executions across the original base, the exact then-open PR head, and two single-fix-reverted controls. It includes expected failures, the resolved test-collection setup problem, and JUnit records. These were processor/configuration checks with CPU PyTorch, not model inference or the full upstream suite.
+
+**Use the test:** the [test-only handoff](https://github.com/YS-OH-CORE/second-paddle-notes/blob/19162e93067858a17c784df628efbdf97bfa6d0a/checks/transformers-49093/author-handoff/README.md) gives the unchanged patch and exact command. Its later patch-application check is separately labeled; it was not another pytest run.
+
+**Status, checked 27 September 2026:** issue #49093 remains open. PR #49099, authored by **aniketkrs**, is closed and unmerged. Our role was supplemental testing and handoff, not authorship of that PR. The reporter's positive response and request are established; upstream adoption of our test is not. Original implementation priority remains with lucaluo925.
+
+## smolagents: checking that saved tools preserve their behavior
+
+**Problem:** a blanket replacement of the tool name could alter serialized code. **BlueX888** supplied the report, diagnosis, implementation and original regression test.
+
+**Our contribution:** additional parameter-name and generated-method-name collision cases, a count-one replacement control, and an already-corrupted export check. We then tested BlueX888's exact commit `e643060410cf98bfcea022295e1b83ae65c2a17b` against its parent: **3/6 fixtures preserved behavior before the fix and 6/6 afterward**, using real dictionary restoration and saved-file loading. The author's unchanged added test failed on the parent and passed on the fix.
+
+[Original supplemental review](https://github.com/YS-OH-CORE/second-paddle-notes/blob/33c95c2f097b4b2669a29922330cae868ffa1e09/checks/smolagents-2833/README.md) · [Exact-commit follow-up and checker](https://github.com/YS-OH-CORE/second-paddle-notes/blob/f0e58ef2dd0121bb643746f295a49c102fc9a695/checks/smolagents-2833/RECEIVED_COMMIT_REVIEW.md) · [Public follow-up comment](https://github.com/huggingface/smolagents/issues/2833#issuecomment-5825312101)
+
+**Scope:** local inert tool serialization/loading, no Agent loop or Hub upload. The author's single test was selected with `--noconftest` and plugin autoload disabled; this was not the full upstream test environment. The follow-up did not rerun the older corrupted-export recovery check. The linked raw Actions archive has a stated retention end of **25 October 2026, 01:41:58 UTC**; the commit-pinned report and checker remain the durable entry points.
+
+**Status, checked 27 September 2026:** issue #2833 remains open. No external acknowledgement of our checks was found in its three comments. PR #2835 is a different contributor's implementation and was not validated by these exact-commit tests. This is published supplemental evidence, with no upstream acceptance or causal claim that our review produced the author's fix.
 
 ## 2. Formal methods: a pinned, kernel-checked finite proof core
 
