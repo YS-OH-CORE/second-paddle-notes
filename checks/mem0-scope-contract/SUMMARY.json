@@ -1,0 +1,53 @@
+{
+  "schema": "memory-scope-contract-review/1",
+  "checked_utc": "2026-09-27T23:00:42.109842+00:00",
+  "environment": {
+    "python": "3.13.5",
+    "sqlite": "3.46.1"
+  },
+  "source_commit": "af93b81bc9573be1b78014b5005a0b0d950605bb",
+  "source": {
+    "git_blob_sha": "0b49c8e8be46779722a7827b2e98319930433d40",
+    "sha256": "611f6f177cf99ef402e8ea3070e0f40720a75f7b013711e35da27c2e45f9bb5d",
+    "bytes": 13546
+  },
+  "fictional_scopes": 14,
+  "conditions": 14,
+  "summary": {
+    "native_exact_cleanup": {
+      "contract_satisfied": 2,
+      "contract_unsatisfied": 12,
+      "denominator": 14
+    },
+    "in_memory_field_reference": {
+      "contract_satisfied": 14,
+      "contract_unsatisfied": 0,
+      "denominator": 14
+    },
+    "delete_everything_mutant": {
+      "contract_satisfied": 0,
+      "contract_unsatisfied": 14,
+      "denominator": 14
+    },
+    "no_delete_mutant": {
+      "contract_satisfied": 1,
+      "contract_unsatisfied": 13,
+      "denominator": 14
+    }
+  },
+  "new_model_calls": 0,
+  "user_pc_accesses": 0,
+  "scope": "Native SQLite storage plus canonical builder excerpt; NOT full Memory or AsyncMemory SDK.",
+  "candidate_status": "In-memory reference adapter only; no upstream or user-system installation.",
+  "not_tested": [
+    "vector and entity stores",
+    "full SDK add/delete_all prompt path",
+    "TypeScript",
+    "async SDK",
+    "multi-process races",
+    "large-store performance",
+    "backup erasure"
+  ],
+  "packaging_check": "Standalone reviewer and modular reviewer produced identical per-case observations; no independent replication.",
+  "reference_unit_tests_passed": 12
+}
