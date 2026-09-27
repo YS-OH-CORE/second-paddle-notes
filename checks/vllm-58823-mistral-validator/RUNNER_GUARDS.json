@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "checks": [
+    "existing_output_not_overwritten",
+    "optimized_assertions_rejected",
+    "pinned_source_change_rejected"
+  ],
+  "exit_codes": [
+    2,
+    2,
+    2
+  ],
+  "not_additional_model_or_renderer_cases": true
+}

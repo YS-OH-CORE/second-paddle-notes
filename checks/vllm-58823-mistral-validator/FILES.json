@@ -1,0 +1,19 @@
+{
+  "schema": "review-kit-files/1",
+  "files": {
+    "README.md": "6f11f446163c9dece2ea18edcc8a76d59c296d21e07d771d59e431f46d8b80c2",
+    "LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "NOTICE": "27c9c7ce6c257e867322cca758cca56598c9f6c718094150cc9b10e036c88eef",
+    "mistral.py": "74fa5093b91ed69d79ff402f0f86633be8017f110455f0843513404d6799b6d0",
+    "probe.py": "5d75b7e4de09195cd99789f3939a71c110b9fbeff458e6a8369123c577392dd3",
+    "test_contract.py": "4bfa8329d748fd4a516b4e86b7e66325b982a8b63b6a47afb39ae792a56415f9",
+    "test_provenance_boundary.py": "eeaf82acaf4add891cea32c24c3692c63661e7ada6361244e7be1bfe9ed70340",
+    "run_review.py": "3f56e186cc16c7c8f15cba83d5df9c9717dd05e69411d043a48b95fb87ddde87",
+    "pytest.ini": "48c211dd7eda8adb6a3120670c884b200ef0c9aecd053155edba6197277c7e35",
+    "requirements.txt": "e80e4a8c22ac46726f935bfc1020b1367fa4958b90e98ac14559ba836f4e03fc",
+    "requirements-lock.txt": "dd329941dfec1905862eb07b1a65f9813a56ff210b6ebeb7aeadd98b6b9452aa",
+    "RESULTS.json": "0a0a47c8ff5113225fb8778c8ceafd649958a62b23f9708b52139e6ec769411f",
+    "FRESH_ENV_RESULT.json": "9bb223a035ab30aba063b5e4e2f3d35e9cf17f6df34e250f5ec53e5a185d99d1",
+    "RUNNER_GUARDS.json": "85057605fdcb202d2d14fccc7fb43d459112253e716b2d41e923ed0fb6d8d184"
+  }
+}

@@ -1,0 +1,13 @@
+Mistral tool-image handoff review kit
+
+Includes the unchanged vllm/renderers/mistral.py source from
+Taimys/vllm commit a9cdfa3b645773684b40359e11e78fb49f4c57e8,
+part of the vLLM project, Apache License 2.0.
+Copyright contributors to the vLLM project.
+The proposed renderer change belongs to its original contributor.
+
+The local regression fixtures, provenance characterization, runner,
+packaging and explanatory writing were prepared by Zero (AI),
+with Youngseok Oh's project direction, 27 September 2026.
+The kit does not claim upstream acceptance, independent replication,
+new model behavior findings, or affiliation with the named projects.

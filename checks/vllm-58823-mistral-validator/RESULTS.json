@@ -1,0 +1,67 @@
+{
+  "schema": "mistral-validator-review/1",
+  "status": "passed",
+  "checked_utc": "2026-09-27T10:45:34.273027+00:00",
+  "environment": {
+    "python": "3.12.14",
+    "os": "Windows",
+    "packages": {
+      "mistral-common": "1.11.7",
+      "pydantic": "2.13.5",
+      "pytest": "9.1.1"
+    }
+  },
+  "source_commit": "a9cdfa3b645773684b40359e11e78fb49f4c57e8",
+  "source_sha256": "74fa5093b91ed69d79ff402f0f86633be8017f110455f0843513404d6799b6d0",
+  "counts": {
+    "tests": 8,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "cases": [
+    {
+      "name": "test_image_only_v13_rejects_before_accepts_after",
+      "outcome": "passed"
+    },
+    {
+      "name": "test_v15_is_identity_and_validates_image_in_tool",
+      "outcome": "passed"
+    },
+    {
+      "name": "test_mixed_content_retains_existing_user_text",
+      "outcome": "passed"
+    },
+    {
+      "name": "test_repeat_adaptation_is_idempotent_without_source_mutation",
+      "outcome": "passed"
+    },
+    {
+      "name": "test_duplicate_result_id_remains_rejected",
+      "outcome": "passed"
+    },
+    {
+      "name": "test_missing_parallel_result_remains_rejected_in_serving_mode",
+      "outcome": "passed"
+    },
+    {
+      "name": "test_unknown_tool_result_id_remains_rejected",
+      "outcome": "passed"
+    },
+    {
+      "name": "test_valid_v13_outputs_do_not_identify_original_image_ownership",
+      "outcome": "passed"
+    }
+  ],
+  "scope": "Pinned extracted helper and real Mistral message validators in serving mode.",
+  "not_tested": [
+    "full vLLM import",
+    "image decoding",
+    "tokenizer",
+    "endpoint",
+    "model generation",
+    "real user traffic",
+    "cross-platform equivalence"
+  ],
+  "interpretation": "Seven regression checks plus one characterization of documented attribution loss; not eight bugs."
+}
