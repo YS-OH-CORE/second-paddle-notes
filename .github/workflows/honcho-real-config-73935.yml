@@ -1,13 +1,13 @@
 name: Honcho PR73935 disk-config review check
 'on':
   pull_request:
-    types: [opened]
+    types: [synchronize]
     paths: ['checks/honcho-real-config-73935/**', '.github/workflows/honcho-real-config-73935.yml']
 permissions:
   contents: read
 jobs:
   config-path:
-    if: github.repository == 'YS-OH-CORE/second-paddle-notes' && github.event.repository.private == false && github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.head.ref == 'review/honcho-real-config-73935-20260928' && github.run_attempt == 1
+    if: github.repository == 'YS-OH-CORE/second-paddle-notes' && github.event.repository.private == false && github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.head.ref == 'review/honcho-real-config-73935-20260928' && github.event.before == 'ea01c300d4791e9a1a4d7e211cc7a0e327dc1f14' && github.run_attempt == 1
     runs-on: ubuntu-24.04
     timeout-minutes: 7
     steps:

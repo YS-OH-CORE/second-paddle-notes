@@ -1,10 +1,10 @@
 """Bounded public-source test execution, plus two explicitly local mutants.
 No installed Hermes or user data. Temporary HOME, mocked SDK, and no model calls.
 """
-from pathlib import Path, PurePosixPath
+from pathlib import Path
 from datetime import datetime, timezone
 from importlib.metadata import version
-import hashlib, io, json, os, subprocess, sys, tempfile, urllib.request, zipfile
+import hashlib, json, os, subprocess, sys, tempfile
 import xml.etree.ElementTree as ET
 
 HERE = Path(__file__).resolve().parent
@@ -42,29 +42,36 @@ def execute(repo, out, label):
 def main():
     with tempfile.TemporaryDirectory(prefix='honcho-reviewed-config-') as td:
         root=Path(td);repo=root/'repo';out=root/'results';out.mkdir()
-        req=urllib.request.Request('https://api.github.com/repos/saurabhmeddo/hermes-agent/zipball/'+PIN,
-                                   headers={'User-Agent':'Zero-config-path-test'})
-        with urllib.request.urlopen(req,timeout=45) as s:raw=s.read(64*1024*1024+1)
-        if len(raw)>64*1024*1024:raise ValueError('Archive exceeds 64 MiB bound')
-        with zipfile.ZipFile(io.BytesIO(raw)) as z:
-            prefix=z.namelist()[0].split('/')[0]
-            total=0
-            for item in z.infolist():
-                if item.is_dir():continue
-                rel=PurePosixPath(item.filename).relative_to(prefix)
-                if '..' in rel.parts:raise ValueError('Archive traversal')
-                if rel.suffix not in ('.py','.json','.yaml','.yml','.toml','.txt'):continue
-                if 'tests' in rel.parts or 'website' in rel.parts:continue
-                total+=item.file_size
-                if total>64*1024*1024:raise ValueError('Selected source exceeds 64 MiB')
-                dest=repo.joinpath(*rel.parts);dest.parent.mkdir(parents=True,exist_ok=True)
-                dest.write_bytes(z.read(item))
+        # The whole ZIP exceeded the 64-MiB cap before any tests in attempt 1.
+        # Fetch only git metadata and selected source blobs, not repository media.
+        repo.mkdir()
+        git_env={**os.environ,'GIT_CONFIG_NOSYSTEM':'1','GIT_CONFIG_GLOBAL':os.devnull,
+                 'GIT_TERMINAL_PROMPT':'0','GIT_LFS_SKIP_SMUDGE':'1'}
+        def git(*args):
+            p=subprocess.run(['git','-c','core.hooksPath=/dev/null',*args],cwd=repo,
+                             env=git_env,capture_output=True,text=True,timeout=65)
+            if p.returncode:raise RuntimeError('Sparse source acquisition failed: '+p.stderr[-700:])
+            return p.stdout.strip()
+        git('init','-q')
+        git('remote','add','origin','https://github.com/saurabhmeddo/hermes-agent.git')
+        git('config','core.sparseCheckout','true')
+        git('config','core.sparseCheckoutCone','false')
+        patterns='*.py\n*.json\n*.yaml\n*.yml\n*.toml\n*.txt\n!tests/\n!website/\n'
+        (repo/'.git/info/sparse-checkout').write_text(patterns)
+        git('fetch','--filter=blob:none','--depth=1','origin',PIN)
+        git('checkout','--detach','--quiet','FETCH_HEAD')
+        if git('rev-parse','HEAD')!=PIN:raise ValueError('Unexpected checked out commit')
+        selected=[p for p in repo.rglob('*') if p.is_file() and '.git' not in p.relative_to(repo).parts]
+        if any(p.is_symlink() for p in selected):raise ValueError('No source symlinks allowed')
+        total=sum(p.stat().st_size for p in selected)
+        if total>64*1024*1024:raise ValueError('Selected source exceeds 64 MiB')
+        metadata_bytes=sum(p.stat().st_size for p in (repo/'.git').rglob('*') if p.is_file())
         for path, wanted in EXPECTED.items():
             b=(repo/path).read_bytes()
             got=hashlib.sha1(b'blob '+str(len(b)).encode()+b'\0'+b).hexdigest()
             if got!=wanted:raise ValueError('Upstream source blob mismatch: '+path)
-        emit('SOURCE', {'commit':PIN,'blobs':EXPECTED,'archive_sha256':hashlib.sha256(raw).hexdigest(),
-                        'archive_bytes':len(raw),'selected_source_bytes':total,
+        emit('SOURCE', {'commit':PIN,'blobs':EXPECTED,'acquisition':'depth-1 blob-filtered sparse checkout',
+                        'git_metadata_bytes':metadata_bytes,'selected_source_files':len(selected),'selected_source_bytes':total,
                         'packages':{p:version(p) for p in ('honcho-ai','pytest','PyYAML','python-dotenv','rich')}})
         rows=[]
         rows.append(execute(repo,out,'original_pr_head'))
