@@ -56,7 +56,7 @@ def main():
         git('remote','add','origin','https://github.com/saurabhmeddo/hermes-agent.git')
         git('config','core.sparseCheckout','true')
         git('config','core.sparseCheckoutCone','false')
-        patterns='*.py\n*.json\n*.yaml\n*.yml\n*.toml\n*.txt\n!tests/\n!website/\n'
+        patterns='/*.py\n/agent/**/*.py\n/hermes_cli/**/*.py\n/tools/**/*.py\n/plugins/**/*.py\n/gateway/**/*.py\n/cron/**/*.py\n/pyproject.toml\n'
         (repo/'.git/info/sparse-checkout').write_text(patterns)
         git('fetch','--filter=blob:none','--depth=1','origin',PIN)
         git('checkout','--detach','--quiet','FETCH_HEAD')
@@ -64,6 +64,7 @@ def main():
         selected=[p for p in repo.rglob('*') if p.is_file() and '.git' not in p.relative_to(repo).parts]
         if any(p.is_symlink() for p in selected):raise ValueError('No source symlinks allowed')
         total=sum(p.stat().st_size for p in selected)
+        emit('ACQUISITION',{'selected_files':len(selected),'selected_bytes':total,'largest':[(str(p.relative_to(repo)),p.stat().st_size) for p in sorted(selected,key=lambda p:p.stat().st_size,reverse=True)[:5]]})
         if total>64*1024*1024:raise ValueError('Selected source exceeds 64 MiB')
         metadata_bytes=sum(p.stat().st_size for p in (repo/'.git').rglob('*') if p.is_file())
         for path, wanted in EXPECTED.items():

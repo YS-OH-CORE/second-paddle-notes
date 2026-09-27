@@ -1,7 +1,7 @@
 # Source acquisition attempt history
 
-The first hosted job, run 36358248219 / job 108730150823, installed the test dependencies but stopped before source extraction and before any pytest case: the complete upstream ZIP exceeded the registered 64 MiB bound. This is a setup failure, not a Honcho regression or a completed runtime test.
+1. Run 36358248219 / job 108730150823 installed dependencies but stopped before extraction or tests: the complete upstream ZIP exceeded the registered 64 MiB bound.
+2. Run 36358576690 / job 108731086812 switched to shallow blob-filtered sparse checkout, but the broad source/config extension selection still exceeded 64 MiB. It also stopped before any pytest cases.
+3. The next setup keeps the pinned head, test cases and limits, but narrows selection to root Python and the real import packages (agent, hermes_cli, tools, plugins, gateway, cron). A separate local synthetic Git tree verified that these patterns exclude tests, website and unrelated JSON assets. Selected bytes and the largest files will be logged, rather than relaxing the bound.
 
-The second attempt changes source acquisition only: a shallow, blob-filtered sparse Git checkout requests source/config file types and excludes tests/website media. Selected source still has a 64 MiB limit; metadata size and source byte count are reported separately. No global Git settings, repository credentials or user PC are used. The pinned upstream commit and three verified source blobs, four test cases and two local detector mutants are unchanged.
-
-The workflow permits one synchronize transition from the initial evidence commit ea01c300d4791e9a1a4d7e211cc7a0e327dc1f14. Later result edits do not repeat it. Both hosted attempts remain visible. No runtime pass is asserted until actual case results are available.
+These are acquisition failures in our runner, not Honcho regressions or completed runtime tests. The workflow gates each documented retry to one exact prior head transition and attempt 1. No user PC, model calls, live service credentials or upstream production code are involved. All failed attempts remain visible. No runtime pass is claimed until actual assertions execute.
