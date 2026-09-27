@@ -20,6 +20,9 @@ The thread is not simply whether an AI can say the right thing. It is whether th
 
 ## Research in focus
 
+**[Research brief: before blaming the model, trace what reached it](briefs/context-handoff/README.md)** · [한국어](briefs/context-handoff/BRIEF.ko.md)  
+Four published case studies distinguish information preservation, delivery, behavioral use, and observation. A synthesis and proposed diagnostic method, not a new model result.
+
 ### 01 · Remembering a correction vs. using it
 
 A user changes one category's destination from A to B. Can a model report the new instruction but still choose A when an item arrives?
