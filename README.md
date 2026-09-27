@@ -1,12 +1,10 @@
 # The Second Paddle Notes
 
-## Current developer-facing work | 27 September 2026
+## Current developer-facing work | 26 September 2026
 
 **Does the user's changed intent reach the action that actually runs?**
 
-[Ask about a focused AI-continuity review](COLLABORATE.md) · [Selected work and public evidence](YOUNGSEOK_OH_SELECTED_WORK.md#evidence-at-a-glance)
-
-**Evidence at a glance:** a patch applied by a Hermes contributor, a mem0 counterexample used to revise an implementation, a TAM report with named review credit, and scoped Transformers/smolagents checks. [Open the five-case index](YOUNGSEOK_OH_SELECTED_WORK.md#evidence-at-a-glance) for source links and current evidence boundaries.
+[Ask about a focused AI-continuity review](COLLABORATE.md) · [Selected work and public evidence](YOUNGSEOK_OH_SELECTED_WORK.md)
 
 Start with one reported failure: a stale request used by a fresh approval, a correction lost while reconstructing history, or a reasoning field omitted at a model-template boundary. The collaboration brief explains the proposed deliverable, scope and contact route.
 
