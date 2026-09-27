@@ -1,0 +1,30 @@
+test_author_control_is_not_approved_update (test_pilot.InstrumentTests.test_author_control_is_not_approved_update) ... ok
+test_balanced_answer_positions (test_pilot.InstrumentTests.test_balanced_answer_positions) ... ok
+test_count_not_independent_trials (test_pilot.InstrumentTests.test_count_not_independent_trials) ... ok
+test_deterministic_generation (test_pilot.InstrumentTests.test_deterministic_generation) ... ok
+test_duplicate_json_keys_extra_fields_and_unlisted_codes_rejected (test_pilot.InstrumentTests.test_duplicate_json_keys_extra_fields_and_unlisted_codes_rejected) ... ok
+test_duplicate_output_is_rejected (test_pilot.InstrumentTests.test_duplicate_output_is_rejected) ... ok
+test_empty_run_is_not_a_success (test_pilot.InstrumentTests.test_empty_run_is_not_a_success) ... ok
+test_equal_length_opaque_destinations (test_pilot.InstrumentTests.test_equal_length_opaque_destinations) ... ok
+test_existing_artifacts_not_overwritten (test_pilot.InstrumentTests.test_existing_artifacts_not_overwritten) ... ok
+test_extra_output_is_rejected (test_pilot.InstrumentTests.test_extra_output_is_rejected) ... ok
+test_format_failure_counts_and_is_not_repaired_by_explanation (test_pilot.InstrumentTests.test_format_failure_counts_and_is_not_repaired_by_explanation) ... ok
+test_gold_follows_current_authorized_content_not_fixed_old_answer (test_pilot.InstrumentTests.test_gold_follows_current_authorized_content_not_fixed_old_answer) ... ok
+test_missing_output_is_not_silently_dropped (test_pilot.InstrumentTests.test_missing_output_is_not_silently_dropped) ... ok
+test_no_gold_or_condition_metadata_in_requests (test_pilot.InstrumentTests.test_no_gold_or_condition_metadata_in_requests) ... ok
+test_oracle_score_has_no_recall_choice_gap (test_pilot.InstrumentTests.test_oracle_score_has_no_recall_choice_gap) ... ok
+test_overgeneralized_latest_action_is_not_scored_as_scope_specific (test_pilot.InstrumentTests.test_overgeneralized_latest_action_is_not_scored_as_scope_specific) ... ok
+test_pair_gold_mismatch_rejected (test_pilot.InstrumentTests.test_pair_gold_mismatch_rejected) ... ok
+test_prediction_order_does_not_change_metrics (test_pilot.InstrumentTests.test_prediction_order_does_not_change_metrics) ... ok
+test_primary_condition_changes_one_destination_only (test_pilot.InstrumentTests.test_primary_condition_changes_one_destination_only) ... ok
+test_programs_do_not_mutate_input (test_pilot.InstrumentTests.test_programs_do_not_mutate_input) ... ok
+test_recall_choice_context_equal_except_query (test_pilot.InstrumentTests.test_recall_choice_context_equal_except_query) ... ok
+test_reciting_program_is_distinguished_from_oracle (test_pilot.InstrumentTests.test_reciting_program_is_distinguished_from_oracle) ... ok
+test_stale_program_is_not_mislabeled_as_recall_choice_gap (test_pilot.InstrumentTests.test_stale_program_is_not_mislabeled_as_recall_choice_gap) ... ok
+test_unaffected_scope_gold_constant (test_pilot.InstrumentTests.test_unaffected_scope_gold_constant) ... ok
+test_unique_matching_inventories (test_pilot.InstrumentTests.test_unique_matching_inventories) ... ok
+
+----------------------------------------------------------------------
+Ran 25 tests in 0.188s
+
+OK

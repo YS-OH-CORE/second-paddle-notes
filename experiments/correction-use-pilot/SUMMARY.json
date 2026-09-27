@@ -1,0 +1,77 @@
+{
+  "status": "public_instrument_tested_no_model_results",
+  "at_utc": "2026-09-27T14:20:28.017645+00:00",
+  "python": "3.13.5",
+  "location": "ChatGPT Linux working container, not user PC",
+  "tests": {
+    "distinct": 25,
+    "passed": 25,
+    "failed": 0,
+    "skipped": 0,
+    "log": "TEST_OUTPUT.log"
+  },
+  "model_calls": 0,
+  "remote_desktop_calls": 0,
+  "packages_installed": 0,
+  "paid_requests": 0,
+  "public_synthetic_requests_generated": 576,
+  "paired_queries": 288,
+  "surface_domains": 4,
+  "independent_task_grammars": 1,
+  "source_repo_base": "6415703ffdcd2133c62e8d669432ac11cfd2057f",
+  "original_experiment_modified": false,
+  "deterministic_fixture_metrics": {
+    "oracle": {
+      "accuracy": {
+        "recall": 1.0,
+        "choice": 1.0
+      },
+      "scope_adjusted_update_sensitivity": {
+        "recall": 1.0,
+        "choice": 1.0
+      },
+      "paired_recall_correct_choice_wrong": 0
+    },
+    "stale": {
+      "accuracy": {
+        "recall": 0.8333333333333334,
+        "choice": 0.8333333333333334
+      },
+      "scope_adjusted_update_sensitivity": {
+        "recall": 0.0,
+        "choice": 0.0
+      },
+      "paired_recall_correct_choice_wrong": 0
+    },
+    "recall_only": {
+      "accuracy": {
+        "recall": 1.0,
+        "choice": 0.8333333333333334
+      },
+      "scope_adjusted_update_sensitivity": {
+        "recall": 1.0,
+        "choice": 0.0
+      },
+      "paired_recall_correct_choice_wrong": 48
+    },
+    "blind_latest": {
+      "accuracy": {
+        "recall": 0.3333333333333333,
+        "choice": 0.3333333333333333
+      },
+      "scope_adjusted_update_sensitivity": {
+        "recall": 0.0,
+        "choice": 0.0
+      },
+      "paired_recall_correct_choice_wrong": 0
+    }
+  },
+  "not_completed": [
+    "independent design audit",
+    "preregistered hidden study",
+    "actual LLM comparison",
+    "causal activation experiment",
+    "long-term memory benchmark",
+    "external adoption"
+  ]
+}
