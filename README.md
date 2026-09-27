@@ -4,9 +4,13 @@
 
 **Does the user's changed intent reach the action that actually runs?**
 
-Start with one reported failure: a stale request used by a fresh approval, a correction lost while reconstructing history, or a reasoning field omitted at a model-template boundary. We work toward a reproducible example and a check someone else can run.
+[Ask about a focused AI-continuity review](COLLABORATE.md) · [Selected work and public evidence](YOUNGSEOK_OH_SELECTED_WORK.md#evidence-at-a-glance)
 
-[Technical notes and examples](YOUNGSEOK_OH_SELECTED_WORK.md#evidence-at-a-glance) · [Scope of a focused review](COLLABORATE.md)
+**Evidence at a glance:** a patch applied by a Hermes contributor, a mem0 counterexample used to revise an implementation, a TAM report with named review credit, and scoped Transformers/smolagents checks. [Open the five-case index](YOUNGSEOK_OH_SELECTED_WORK.md#evidence-at-a-glance) for source links and current evidence boundaries.
+
+Start with one reported failure: a stale request used by a fresh approval, a correction lost while reconstructing history, or a reasoning field omitted at a model-template boundary. The collaboration brief explains the proposed deliverable, scope and contact route.
+
+**Proof of contributor use:** a Hermes PR author [reported applying our request-binding patch and tests](https://github.com/NousResearch/hermes-agent/pull/22982#issuecomment-5643327201), with [explicit commit credit](https://github.com/MestreY0d4-Uninter/hermes-agent/commit/501be10cce7159a08279c89c724db602d9770601). The upstream PR remains open and unmerged as checked on 26 September 2026. This is a contributor's adoption record, not a shipped-product claim or a paid-client testimonial.
 
 **Current-model example:** [Qwen3.8 reasoning-field handoff](https://github.com/YS-OH-CORE/second-paddle-notes/blob/b60682587597235706714ccfacd37cb0a883b76d/experiments/qwen38-native-continuation/RESULTS.md), a completed tokenizer/template check and small adapter. Actual generated-answer behavior remains unmeasured in that pilot.
 
