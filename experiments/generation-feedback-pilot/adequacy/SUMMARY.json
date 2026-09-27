@@ -1,0 +1,40 @@
+{
+  "status": "completed_adequacy_diagnostic",
+  "run_id": 36355838214,
+  "job_id": 108723264335,
+  "source_commit": "e19c1c03cf3190bc229f202ab6f787a5020a7891",
+  "summary": {
+    "new_generations": 8,
+    "copy_candidate_exact": true,
+    "domain_control_feasible": true,
+    "graph_candidate_feasible": {
+      "fresh": 0,
+      "bad_prior": 0,
+      "valid_prior": 1
+    },
+    "denominator_per_graph_condition": 2,
+    "strict_feasible_by_id": {
+      "copy": true,
+      "domain": false,
+      "G1/fresh": false,
+      "G1/bad_prior": false,
+      "G1/valid_prior": false,
+      "G2/valid_prior": false,
+      "G2/bad_prior": false,
+      "G2/fresh": false
+    },
+    "same_raw_for_valid_and_bad": {
+      "G1": true,
+      "G2": false
+    }
+  },
+  "result_json_bytes": 15621,
+  "result_json_sha256": "0b9909286e0a96805768eb0c6eb6b87d02011f1e3fbf0b93beef9f5f592d1c59",
+  "audit_passed": true,
+  "pc_accesses": 0,
+  "new_model_responses": 8,
+  "paid_model_api_calls": 0,
+  "semantic_retries": 0,
+  "weights_changed": false,
+  "decision": "retire this model/task as a main feedback-effectiveness test; do basic task-readiness checks first"
+}
