@@ -1,0 +1,43 @@
+{
+  "status": "completed_no_feasible_improvement",
+  "run_id": 36332320437,
+  "job_id": 108656504713,
+  "source_commit": "b6a0889164ec62bd5b1ff2d4b5c9f01aca026fce",
+  "pr": 57,
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "new_continuations": 12,
+  "regenerated_initials": 0,
+  "same_raw_response_all_cells": true,
+  "strict_and_diagnostic_counts": {
+    "coarse": {
+      "denominator": 4,
+      "strict_feasible": 0,
+      "shape_readable": 4,
+      "candidate_feasible": 0,
+      "domain_valid": 0
+    },
+    "format_explicit": {
+      "denominator": 4,
+      "strict_feasible": 0,
+      "shape_readable": 4,
+      "candidate_feasible": 0,
+      "domain_valid": 0
+    },
+    "layered": {
+      "denominator": 4,
+      "strict_feasible": 0,
+      "shape_readable": 4,
+      "candidate_feasible": 0,
+      "domain_valid": 0
+    }
+  },
+  "specific_diagnostic_feedback_delivered": 4,
+  "audit_complete": true,
+  "user_pc_calls": 0,
+  "paid_model_api_calls": 0,
+  "weights_changed": false,
+  "result_json_sha256": "ad7051056bac34d164228b04e6e8ee60d23cd9d271fab5b41466469b77c21bc1",
+  "result_json_bytes": 27687,
+  "next_state": "stop this small-baseline pass; assess task/model adequacy before another run"
+}
