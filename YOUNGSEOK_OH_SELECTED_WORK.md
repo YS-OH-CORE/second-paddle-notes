@@ -1,6 +1,6 @@
-# Youngseok Oh | Technical notes and contribution records
+# Youngseok Oh | Selected work and public evidence
 
-Youngseok Oh · GitHub: **YS-OH-CORE**  
+Independent researcher, South Korea · GitHub: **YS-OH-CORE**  
 Prepared with **Zero** · Index updated: **27 September 2026** · individual status checks dated below
 
 Research focus: preserving evidence and corrections across human–AI memory, and reproducible review of agent systems. This self-published index links specific records; it is not an institutional credential or a blanket endorsement. The formal-methods section retains its **16 September 2026** evidence snapshot and was not rerun or rechecked in this update.
@@ -9,19 +9,19 @@ Research focus: preserving evidence and corrections across human–AI memory, an
 
 ## Evidence at a glance
 
-Choose an example by the problem you are investigating. Each record gives its tested version, source links, original authors and contribution scope.
+**Start with what changed for another developer or reader.** These links lead to the recipients' own records where available; the checks below keep original authors and our supplemental work separate.
 
-| Question | Available material |
-|---|---|
-| Can an approval retain the wrong request? | [Hermes request-binding case and discussion](https://github.com/NousResearch/hermes-agent/pull/22982#issuecomment-5643327201) |
-| Can deletion return success while records remain? | [mem0 populated-store counterexample and follow-up](https://github.com/YS-OH-CORE/second-paddle-notes/blob/5bf5a87d001dccae3a83293b11bdc417146fac3c/checks/mem0-7464-recipient-followup/README.md) |
-| Do two evaluation columns isolate the same variable? | [TAM report and revision notes](https://github.com/vbcherepanov/total-agent-memory/blob/55d0ab0124ca4fca81479a5bcafa262aaaf0e19e/docs/benchmarks/head-to-head-v14/RESULTS.md#revisions) |
-| Does one regression catch both interacting fixes? | [Transformers test-only patch and execution records](https://github.com/YS-OH-CORE/second-paddle-notes/blob/19162e93067858a17c784df628efbdf97bfa6d0a/checks/transformers-49093/author-handoff/README.md) |
-| Does a restored tool behave like its original? | [smolagents exact-commit comparison and checker](https://github.com/YS-OH-CORE/second-paddle-notes/blob/f0e58ef2dd0121bb643746f295a49c102fc9a695/checks/smolagents-2833/RECEIVED_COMMIT_REVIEW.md) |
+| Case | What our contribution added | Public outcome |
+|---|---|---|
+| Hermes request binding | Reproduction, repair and regression tests for a stale payload surviving a new approval | [Feature author reports applying the patch and tests](https://github.com/NousResearch/hermes-agent/pull/22982#issuecomment-5643327201), with commit credit |
+| mem0 deletion behavior | A populated-store counterexample to a false-success workaround | [Implementation author credits the check and changes the behavior](https://github.com/mem0ai/mem0/issues/7439#issuecomment-5843366869) |
+| TAM memory evaluation | Saved-verdict recalculation and feedback on what the comparison supports | [Author's corrected report names Youngseok and Zero](https://github.com/vbcherepanov/total-agent-memory/blob/55d0ab0124ca4fca81479a5bcafa262aaaf0e19e/docs/benchmarks/head-to-head-v14/RESULTS.md#revisions) |
+| Transformers generation | One regression that distinguishes two interacting fixes | [Original reporter requests that combined test](https://github.com/huggingface/transformers/issues/49093#issuecomment-5827315466); [test-only handoff](https://github.com/YS-OH-CORE/second-paddle-notes/blob/19162e93067858a17c784df628efbdf97bfa6d0a/checks/transformers-49093/author-handoff/README.md) is available |
+| smolagents tool persistence | Additional serialization cases and verification of the reporter's exact fix | [Executed comparison and reusable checker](https://github.com/YS-OH-CORE/second-paddle-notes/blob/f0e58ef2dd0121bb643746f295a49c102fc9a695/checks/smolagents-2833/RECEIVED_COMMIT_REVIEW.md); no third-party acknowledgement found in the issue |
 
-Links and selected status records were checked on 27 September 2026. No tests were rerun for this index update; the detailed entries retain their execution dates and distinguish proposed changes from upstream releases.
+**27 September 2026 evidence refresh:** the linked recipient records were inspected. Hermes #22982 remains open and unmerged; mem0 #7464 is closed and unmerged. The new Transformers and smolagents sections below identify their exact tested versions. This update adds no new runtime experiment, client, or upstream adoption; older sections retain their individual check dates.
 
-**한국어:** 비슷한 문제를 살펴보는 사람이 재현 방법과 검사 자료를 찾을 수 있도록 모았다. 각 기록에 원래 작업자의 기여, 우리가 확인한 부분, 실행 범위와 현재 상태를 적었다.
+**한국어:** 외부 개발자가 실제로 적용한 패치, 반례를 받아 바꾼 구현, 작성자가 이름을 남긴 보고서 수정부터 확인할 수 있다. Transformers는 신고자가 요청한 추가 검사, smolagents는 실행 근거가 공개된 보조 검증이다. 이 서로 다른 결과를 한꺼번에 ‘공식 채택’이라고 부르지 않는다.
 
 ## Memory operations: review used to prevent a false-success response
 
@@ -33,7 +33,7 @@ The [revised fork source](https://github.com/Souptik96/mem0/blob/127bb79725aeb09
 
 **Status checked 26 September 2026:** [PR #7464](https://github.com/mem0ai/mem0/pull/7464) is closed and unmerged. Its reported head remains `cec74a8e`; the verified newer fork revision is `127bb797`. The [queue-gate message](https://github.com/mem0ai/mem0/pull/7464#issuecomment-5843251973) explains the pending accepted-issue requirement. Recipient use of review guidance is established; upstream acceptance, release, and bulk-deletion support are not. BlueX888 supplied the original diagnosis, Souptik96 the revised implementation and tests, and Youngseok Oh × Zero the counterexample and follow-up verification.
 
-## Memory evaluation: checking comparison conditions and saved verdicts
+## Memory evaluation: a report corrected its interpretation and named the reviewers
 
 **Question:** do the saved results support the comparison being claimed?
 
@@ -45,7 +45,7 @@ In [TAM's LongMemEval comparison report](https://github.com/vbcherepanov/total-a
 
 **한국어:** mem0 사례에서는 실제 기록을 넣은 반례가 상대의 수정 방향과 검사에 반영됐다. TAM 사례에서는 저장된 채점 결과의 재계산과 비교 해석에 대한 검토가 작성자의 보고서 수정 및 기여 표기로 남았다. 둘 다 공개 원출처로 확인할 수 있지만, 정식 제품 반영이나 전체 성능 인증과는 다르다. 이번 추가는 그 두 경로를 기존 대표 작업 소개에 연결하는 편집이며, 신규 실험 결과가 아니다.
 
-## 1. Agent reliability: binding an approval to its request
+## 1. Agent reliability: a patch applied by another developer
 
 **Work:** request-local binding between a model-switch confirmation and its inline payload in Hermes Agent. The repair prevents a later confirmation from consuming an earlier request's payload.
 
