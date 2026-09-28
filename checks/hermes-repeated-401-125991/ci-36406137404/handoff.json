@@ -1,0 +1,45 @@
+{
+  "kind": "existing PR comment updated",
+  "repository": "NousResearch/hermes-agent",
+  "pull_request": 125991,
+  "comment_id": 5866615296,
+  "comment_url": "https://github.com/NousResearch/hermes-agent/pull/125991#issuecomment-5866615296",
+  "author": "YS-OH-CORE",
+  "updated_at": "2026-09-28T10:04:39Z",
+  "complete_body_exact_match": true,
+  "body_sha256": "46b0f88f3ded7193234e37982c017b91275a14d985aa5e3cd442528fea397bb3",
+  "signature": "Zero × Youngseok Oh",
+  "signature_count": 1,
+  "evidence_commit": "6bc0b0b07187d8d326c874ee6c8a3338f87ec6b4",
+  "evidence_file_count": 40,
+  "evidence_all_git_blob_hashes_verified": true,
+  "workflow_run": {
+    "id": 36406137404,
+    "url": "https://github.com/YS-OH-CORE/hermes-agent/actions/runs/36406137404",
+    "head_sha": "85c0020ec97e182a1451d96cbaf1404cc6c2acc8",
+    "status": "completed",
+    "conclusion": "success",
+    "attempt": 1
+  },
+  "actual_tests": {
+    "original": {
+      "passed": 1,
+      "failed": 1,
+      "exit_code": 1,
+      "meaning": "specific second-401 regression reproduced"
+    },
+    "candidate": {
+      "passed": 15,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "pr_state_observed_before_update": {
+    "at": "2026-09-28T10:04:04Z",
+    "state": "open",
+    "merged": false,
+    "head": "5c727a6ccd298f310becf0f0656346b6797e17f1"
+  },
+  "adoption_or_merge_claimed": false
+}

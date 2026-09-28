@@ -1,0 +1,65 @@
+{
+  "status_checked_at": "2026-09-28T09:25:00Z",
+  "outcome": "No fresh unanswered contributor or maintainer request, new adoption, or merge found in the checked contribution set.",
+  "authored_pr_ci_observations": [
+    {
+      "pr": "https://github.com/NousResearch/hermes-agent/pull/125960",
+      "state": "open",
+      "merged": false,
+      "ci": "action_required",
+      "run": "https://github.com/NousResearch/hermes-agent/actions/runs/36373844312"
+    },
+    {
+      "pr": "https://github.com/modelcontextprotocol/conformance/pull/534",
+      "state": "open",
+      "merged": false,
+      "ci": "action_required",
+      "run": "https://github.com/modelcontextprotocol/conformance/actions/runs/36371929838"
+    },
+    {
+      "pr": "https://github.com/redd34/canitoolcall/pull/31",
+      "state": "open",
+      "merged": false,
+      "ci": "action_required",
+      "run": "https://github.com/redd34/canitoolcall/actions/runs/36367957530"
+    }
+  ],
+  "ci_interpretation": "action_required is not a passing or failing test result.",
+  "tracking_corrections": {
+    "mem0_7452": {
+      "url": "https://github.com/mem0ai/mem0/issues/7452",
+      "kind": "issue",
+      "author": "ac12644",
+      "ys_role": "reviewer supplying a scope-mismatch counterexample and positive control; not author of a PR",
+      "latest_contributor_question": "2026-09-28T00:18:26Z",
+      "already_answered_at": "2026-09-28T00:51:13Z",
+      "reply": "https://github.com/mem0ai/mem0/issues/7452#issuecomment-5861424590",
+      "related_pr": {
+        "url": "https://github.com/mem0ai/mem0/pull/7455",
+        "author": "Sai-Sreenath-1819",
+        "state": "closed",
+        "merged": false
+      },
+      "disposition": "Await contributor revision or maintainer issue acceptance; no newly unanswered request."
+    },
+    "hermes_121944": {
+      "url": "https://github.com/NousResearch/hermes-agent/pull/121944",
+      "raw_mergeability_observation": {
+        "mergeable": true,
+        "mergeable_state": "blocked",
+        "head": "859b987d1df0f47236eabe4190e9d41122b5ea12"
+      },
+      "interpretation": "The earlier normalized mergeable:false response lacked mergeable_state and did not establish merge conflicts."
+    }
+  },
+  "completed_followup": {
+    "subject": "Hermes #125991 fresh PM comparison",
+    "run": "https://github.com/YS-OH-CORE/hermes-agent/actions/runs/36406137404",
+    "evidence_commit": "6bc0b0b07187d8d326c874ee6c8a3338f87ec6b4",
+    "comment": "https://github.com/NousResearch/hermes-agent/pull/125991#issuecomment-5866615296",
+    "comment_updated_at": "2026-09-28T10:04:39Z",
+    "actual_candidate_passes": 15,
+    "original_expected_test_failures": 1
+  },
+  "signature": "Zero × Youngseok Oh"
+}
