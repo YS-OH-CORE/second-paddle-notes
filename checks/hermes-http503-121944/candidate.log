@@ -1,0 +1,23 @@
+▶ running per-file parallel test suite via run_tests_parallel.py
+  (TZ=UTC LANG=C.UTF-8 PYTHONHASHSEED=0; clean env)
+▶ pre-compiling bytecode cache
+▶ launching test runner
+Discovered 4 test files (~31 tests) under ['tests/tools/test_mcp_http_server_fault_recovery.py', 'tests/tools/test_mcp_sse_fallback.py', 'tests/tools/test_mcp_protocol_negotiation.py', 'tests/tools/test_mcp_failure_classification.py']; running with -j 2
+[ 29.0% |     9/~31 | ✓15 | ✗ 0] ✓ tests/tools/test_mcp_failure_classification.py (15✓, 1.7s)
+[ 74.2% |    23/~31 | ✓29 | ✗ 0] ✓ tests/tools/test_mcp_protocol_negotiation.py (14✓, 1.6s)
+[ 80.6% |    25/~31 | ✓31 | ✗ 0] ✓ tests/tools/test_mcp_http_server_fault_recovery.py (2✓, 4.2s)
+[100.0% |    31/~31 | ✓41 | ✗ 0] ✓ tests/tools/test_mcp_sse_fallback.py (10✓, 1.4s)
+
+=== Summary: 4 files, 41 tests passed, 0 failed (100% complete) in 4.8s (2 workers) ===
+  Durations cached to test_durations.json (4 files)
+
+=== Per-file subprocess time distribution ===
+  Files:   4
+  Total subprocess CPU-wall: 9.0s  (runner wall: 4.8s, parallelism: 2x)
+  P50: 1.72s  P90: 4.24s  P95: 4.24s  P99: 4.24s  Max: 4.24s
+  <1s: 0 files (0%)  <2s: 3 files (75%)
+  Top 10 slowest:
+      4.24s  tests/tools/test_mcp_http_server_fault_recovery.py
+      1.72s  tests/tools/test_mcp_failure_classification.py
+      1.63s  tests/tools/test_mcp_protocol_negotiation.py
+      1.45s  tests/tools/test_mcp_sse_fallback.py

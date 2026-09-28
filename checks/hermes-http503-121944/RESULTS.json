@@ -1,0 +1,105 @@
+{
+  "date_utc": "2026-09-28",
+  "type": "Local canonical test execution; not GitHub CI",
+  "issue": "https://github.com/NousResearch/hermes-agent/issues/121933",
+  "original_pr": "https://github.com/NousResearch/hermes-agent/pull/121944",
+  "test_commit": "60c824eadd6952175f15e32e703127560d87d7cb",
+  "test_git_blob": "b36e7271a7519fa37a86bbbed813017b6f477624",
+  "runner": "scripts/run_tests.sh",
+  "runs": [
+    {
+      "label": "parent",
+      "source_commit": "749220ef0007f8d87bd1531f1c24b0fe93816385",
+      "production_transport_blob": "6ebcd85c60402bc6908b297027f3bc303919cc40",
+      "lock_blob": "852ac06d0e91c52da50448d9e7bf0251df00b704",
+      "environment": {
+        "python": "3.12.14",
+        "mcp": "2.0.0",
+        "httpx2": "2.7.0",
+        "anyio": "4.12.1",
+        "pytest": "9.1.1",
+        "pytest-asyncio": "1.3.0"
+      },
+      "files": 1,
+      "passed": 1,
+      "failed": 1,
+      "exit_code": 1,
+      "expected_failure": "HTTP503 causes unwanted legacy SSE GET"
+    },
+    {
+      "label": "candidate",
+      "source_commit": "dad46f06772150168a78b2f85f3c7ebed4d27905",
+      "production_transport_blob": "fba34c54a1201d4221d7344a132aea0b04ec31df",
+      "lock_blob": "852ac06d0e91c52da50448d9e7bf0251df00b704",
+      "environment": {
+        "python": "3.12.14",
+        "mcp": "2.0.0",
+        "httpx2": "2.7.0",
+        "anyio": "4.12.1",
+        "pytest": "9.1.1",
+        "pytest-asyncio": "1.3.0"
+      },
+      "files": 4,
+      "passed": 41,
+      "failed": 0,
+      "exit_code": 0,
+      "new_integration_tests_passed": 2
+    },
+    {
+      "label": "main",
+      "source_commit": "68fa7e9f840d24c72774508cc4dc99e8fcceb26f",
+      "production_transport_blob": "cd69f548a6a13d9184baecbee2ca040dd29278d8",
+      "lock_blob": "953221d85bd0dc70e5ff2c929e5c7245f5f4d235",
+      "environment": {
+        "python": "3.14.7",
+        "mcp": "2.0.0",
+        "httpx2": "2.7.0",
+        "anyio": "4.14.2",
+        "pytest": "9.1.1",
+        "pytest-asyncio": "1.3.0"
+      },
+      "freshly_synced_to_this_lock": false,
+      "files": 1,
+      "passed": 1,
+      "failed": 1,
+      "exit_code": 1,
+      "expected_failure": "HTTP503 causes unwanted legacy SSE GET"
+    }
+  ],
+  "validation": {
+    "ruff": "passed",
+    "git_diff_check": "passed",
+    "remote_test_blob_matches_executed_blob": true
+  },
+  "fixtures": {
+    "host": "127.0.0.1",
+    "data": "synthetic echo text",
+    "sampling": false,
+    "elicitation": false,
+    "protocol": "legacy",
+    "skip_preflight": true,
+    "session_id_header": false
+  },
+  "development_runs": [
+    {
+      "outcome": "two new tests failed after successful actual tool calls due to incorrect test result.isError attribute",
+      "archive": "tool transcript only"
+    },
+    {
+      "outcome": "2 passed after using MCP2 result.is_error",
+      "archive": "tool transcript only"
+    },
+    {
+      "outcome": "no-GET assertion moved before downstream diagnostics, then final41-passrun verified exactpublishedblob",
+      "archive": "candidate.log"
+    }
+  ],
+  "limitations": [
+    "not full Hermes suite",
+    "no public flight service or LLM calls",
+    "not CLI/configuration/preflight/OAuth validation",
+    "not sessionful background-stream validation",
+    "not all5xx statuses",
+    "originalPRnotrebasedorapprovedormerged"
+  ]
+}

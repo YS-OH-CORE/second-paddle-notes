@@ -1,0 +1,78 @@
+▶ no local venv — using Nix dev venv via HERMES_PYTHON: <workspace>/hermes121944/.venv/bin/python
+▶ running per-file parallel test suite via run_tests_parallel.py
+  (TZ=UTC LANG=C.UTF-8 PYTHONHASHSEED=0; clean env)
+▶ pre-compiling bytecode cache
+▶ launching test runner
+Discovered 1 test files (~2 tests) under ['tests/tools/test_mcp_http_server_fault_recovery.py']; running with -j 2
+[100.0% |     2/~2 | ✓1 | ✗1] ✗ tests/tools/test_mcp_http_server_fault_recovery.py (1✓ 1✗, 8.3s)
+
+  ╔╍ Failed: tests/tools/test_mcp_http_server_fault_recovery.py ╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍
+  ║ F.                                                                       [100%]
+  ║ =================================== FAILURES ===================================
+  ║ _____________ test_real_sdk_server_fault_retries_http_and_recovers _____________
+  ║ tests/tools/test_mcp_http_server_fault_recovery.py:142: in test_real_sdk_server_fault_retries_http_and_recovers
+  ║     asyncio.run(run(url, requests))
+  ║ <python-runtime>/lib/python3.12/asyncio/runners.py:195: in run
+  ║     return runner.run(main)
+  ║            ^^^^^^^^^^^^^^^^
+  ║ <python-runtime>/lib/python3.12/asyncio/runners.py:118: in run
+  ║     return self._loop.run_until_complete(task)
+  ║            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ║ <python-runtime>/lib/python3.12/asyncio/base_events.py:691: in run_until_complete
+  ║     return future.result()
+  ║            ^^^^^^^^^^^^^^^
+  ║ tests/tools/test_mcp_http_server_fault_recovery.py:129: in run
+  ║     assert not any(method == "GET" for method, _, _ in requests), requests
+  ║ E   AssertionError: [('POST', '/mcp', 'initialize'), ('POST', '/mcp', 'notifications/initialized'), ('POST', '/mcp', 'tools/list'), ('GET', '/mcp', None), ('POST', '/mcp', 'initialize'), ('POST', '/mcp', 'notifications/initialized'), ...]
+  ║ E   assert not True
+  ║ E    +  where True = any(<generator object test_real_sdk_server_fault_retries_http_and_recovers.<locals>.run.<locals>.<genexpr> at 0x7fef0cf62880>)
+  ║ ------------------------------ Captured log call -------------------------------
+  ║ WARNING  tools.mcp_tool:mcp_tool_transport.py:579 MCP server 'loopback-server-fault': Streamable HTTP rejected the initial connect (Server returned an error response (HTTP 503 from POST http://127.0.0.1:34909/mcp: upstream temporarily unavailable)) — retrying over SSE. If this connects, set `transport: sse` for this server in config.yaml to skip the failed attempt on future startups.
+  ║ =========================== short test summary info ============================
+  ║ FAILED tests/tools/test_mcp_http_server_fault_recovery.py::test_real_sdk_server_fault_retries_http_and_recovers
+  ║ 1 failed, 1 passed in 3.38s
+  ║
+  ║  Repro: python -m pytest tests/tools/test_mcp_http_server_fault_recovery.py -q --tb=short
+  ╚╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍
+
+
+=== Summary: 1 files, 1 tests passed, 1 failed (100% complete) in 8.3s (2 workers) ===
+
+=== Per-file subprocess time distribution ===
+  Files:   1
+  Total subprocess CPU-wall: 8.3s  (runner wall: 8.3s, parallelism: 2x)
+  P50: 8.26s  P90: 8.26s  P95: 8.26s  P99: 8.26s  Max: 8.26s
+  <1s: 0 files (0%)  <2s: 0 files (0%)
+  Top 10 slowest:
+      8.26s  tests/tools/test_mcp_http_server_fault_recovery.py
+
+=== Failure output ===
+
+--- tests/tools/test_mcp_http_server_fault_recovery.py ---
+F.                                                                       [100%]
+=================================== FAILURES ===================================
+_____________ test_real_sdk_server_fault_retries_http_and_recovers _____________
+tests/tools/test_mcp_http_server_fault_recovery.py:142: in test_real_sdk_server_fault_retries_http_and_recovers
+    asyncio.run(run(url, requests))
+<python-runtime>/lib/python3.12/asyncio/runners.py:195: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+<python-runtime>/lib/python3.12/asyncio/runners.py:118: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<python-runtime>/lib/python3.12/asyncio/base_events.py:691: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+tests/tools/test_mcp_http_server_fault_recovery.py:129: in run
+    assert not any(method == "GET" for method, _, _ in requests), requests
+E   AssertionError: [('POST', '/mcp', 'initialize'), ('POST', '/mcp', 'notifications/initialized'), ('POST', '/mcp', 'tools/list'), ('GET', '/mcp', None), ('POST', '/mcp', 'initialize'), ('POST', '/mcp', 'notifications/initialized'), ...]
+E   assert not True
+E    +  where True = any(<generator object test_real_sdk_server_fault_retries_http_and_recovers.<locals>.run.<locals>.<genexpr> at 0x7fef0cf62880>)
+------------------------------ Captured log call -------------------------------
+WARNING  tools.mcp_tool:mcp_tool_transport.py:579 MCP server 'loopback-server-fault': Streamable HTTP rejected the initial connect (Server returned an error response (HTTP 503 from POST http://127.0.0.1:34909/mcp: upstream temporarily unavailable)) — retrying over SSE. If this connects, set `transport: sse` for this server in config.yaml to skip the failed attempt on future startups.
+=========================== short test summary info ============================
+FAILED tests/tools/test_mcp_http_server_fault_recovery.py::test_real_sdk_server_fault_retries_http_and_recovers
+1 failed, 1 passed in 3.38s
+
+=== 1 file with test failures (1 test failed) ===
+  tests/tools/test_mcp_http_server_fault_recovery.py  (1 test failed)
