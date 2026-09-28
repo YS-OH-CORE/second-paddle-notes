@@ -1,0 +1,33 @@
+{
+  "normalization": "The exact common scratch-workspace root prefix was replaced with <WORKSPACE> in every published text file and embedded text. No other original content was changed. originalSha256 hashes the pre-normalization bytes; publishedSha256 hashes the UTF-8 text field.",
+  "executedSources": [
+    {
+      "path": "identity-cases.mjs",
+      "originalSha256": "d69dfd7e8d29b0c81b8d4ef6be24de7adf869910f05e21e65a7293159c3ead9d",
+      "publishedSha256": "d69dfd7e8d29b0c81b8d4ef6be24de7adf869910f05e21e65a7293159c3ead9d",
+      "publishedPath": "scripts/identity-cases.mjs",
+      "executed": true
+    },
+    {
+      "path": "synthetic-initialize-client.mjs",
+      "originalSha256": "0a4c543d77f44ed022d6fc26a0d47e9a42c3dfd67187f36675dec4cb2edc05e0",
+      "publishedSha256": "0a4c543d77f44ed022d6fc26a0d47e9a42c3dfd67187f36675dec4cb2edc05e0",
+      "publishedPath": "scripts/synthetic-initialize-client.mjs",
+      "executed": true
+    },
+    {
+      "path": "validate-identity-cli.mjs",
+      "originalSha256": "dc406c9aaaa7f687201041c102c2eb249d227b5fb45d8352ea0b00dcf8093688",
+      "publishedSha256": "8df30208314a90928051bc406d17488c247f634045dcb6cd8bdd06e10d0542ea",
+      "publishedPath": "scripts/validate-identity-cli.executed.mjs",
+      "executed": true
+    }
+  ],
+  "convenienceCopy": {
+    "path": "scripts/validate-identity-cli.parameterized.mjs",
+    "sha256": "2858552ffcaf6f6515fd4372ce891469d1e99c2af6461fbe71a50a2d28340825",
+    "executed": false,
+    "changeScope": "Only filesystem path configuration and the related environment-variable presence assertions; verified by reversing those exact replacements.",
+    "diff": "path-configuration.diff"
+  }
+}

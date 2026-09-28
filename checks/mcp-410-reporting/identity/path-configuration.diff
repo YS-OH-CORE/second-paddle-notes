@@ -1,0 +1,30 @@
+--- scripts/validate-identity-cli.executed.mjs
++++ scripts/validate-identity-cli.parameterized.mjs
+@@ -10,10 +10,15 @@
+ import { fileURLToPath } from 'node:url';
+ import { identityCases } from './identity-cases.mjs';
+ 
+-const evidence = path.dirname(fileURLToPath(import.meta.url));
++// Convenience copy: only path configuration changed; this copy was not rerun.
++const fixtureDirectory = path.dirname(fileURLToPath(import.meta.url));
++for (const key of ['IDENTITY_BASELINE', 'IDENTITY_CANDIDATE', 'IDENTITY_OUTPUT']) {
++  assert(process.env[key], `${key} must name a local path`);
++}
++const evidence = path.resolve(process.env.IDENTITY_OUTPUT);
+ const revisions = {
+-  baseline: '<WORKSPACE>/mcp165_baseline',
+-  candidate: '<WORKSPACE>/mcp410'
++  baseline: path.resolve(process.env.IDENTITY_BASELINE),
++  candidate: path.resolve(process.env.IDENTITY_CANDIDATE)
+ };
+ const rows = [];
+ const resultsRoot = path.join(evidence, 'results');
+@@ -109,7 +114,7 @@
+   const resultRoot = path.join(resultsRoot, `${leg}-${testCase.name}-${revision}`);
+   await mkdir(resultRoot, { recursive: true });
+   const cliArgs = leg === 'client'
+-    ? ['client', '--scenario', 'initialize', '--spec-version', '2025-11-25', '--command', `${process.execPath} ${path.join(evidence, 'synthetic-initialize-client.mjs')} ${testCase.name}`]
++    ? ['client', '--scenario', 'initialize', '--spec-version', '2025-11-25', '--command', `${process.execPath} ${path.join(fixtureDirectory, 'synthetic-initialize-client.mjs')} ${testCase.name}`]
+     : ['server', '--scenario', 'server-stateless', '--spec-version', '2026-07-28', '--url', `http://127.0.0.1:${proxyPort}/${testCase.name}/mcp`];
+   const args = [path.join(repo, 'dist/index.js'), ...cliArgs, '--timeout', '10000', '--output-dir', resultRoot];
+   const execution = await new Promise((resolve, reject) => {

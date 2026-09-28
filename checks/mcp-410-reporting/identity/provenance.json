@@ -1,0 +1,13 @@
+{
+  "node": "v24.19.0",
+  "baseline": {
+    "repo": "<WORKSPACE>/mcp165_baseline",
+    "commit": "7169291ec0b68eb370fddcd9947313ab0d5e4156",
+    "cliSha256": "441ae3240a329a69239e940ad5cab8128dd178db0e628c58332b0d3527e287b7"
+  },
+  "candidate": {
+    "repo": "<WORKSPACE>/mcp410",
+    "commit": "eac19c4499ebb37ea359024be9aa4cd5c401c154",
+    "cliSha256": "3d98b0723399f5e9de301dfefa71d1356fe05dd8c5bce1dbf8d94d7d1afe4df2"
+  }
+}

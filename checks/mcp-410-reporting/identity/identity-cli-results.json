@@ -1,0 +1,2130 @@
+{
+  "fixtureDescription": "Synthetic raw HTTP initialize client; baseline everything-server behind a synthetic loopback proxy that replaces only successful server/discover identity metadata. Existing repository CLI owns all scenario execution and reporting.",
+  "provenance": {
+    "baseline": {
+      "repo": "<WORKSPACE>/mcp165_baseline",
+      "commit": "7169291ec0b68eb370fddcd9947313ab0d5e4156",
+      "cliSha256": "441ae3240a329a69239e940ad5cab8128dd178db0e628c58332b0d3527e287b7"
+    },
+    "candidate": {
+      "repo": "<WORKSPACE>/mcp410",
+      "commit": "eac19c4499ebb37ea359024be9aa4cd5c401c154",
+      "cliSha256": "3d98b0723399f5e9de301dfefa71d1356fe05dd8c5bce1dbf8d94d7d1afe4df2"
+    }
+  },
+  "runs": 20,
+  "allAssertionsPassed": true,
+  "rows": [
+    {
+      "revision": "baseline",
+      "leg": "client",
+      "caseName": "normal",
+      "identity": {
+        "name": "identity-probe",
+        "version": "1.0.0"
+      },
+      "target": {
+        "id": "mcp-client-initialization",
+        "name": "MCPClientInitialization",
+        "description": "Validates that MCP client properly initializes with server",
+        "status": "SUCCESS",
+        "timestamp": "2026-09-28T05:51:57.917Z",
+        "specReferences": [
+          {
+            "id": "MCP-Lifecycle",
+            "url": "https://modelcontextprotocol.io/specification/2025-06-18/basic/lifecycle"
+          }
+        ],
+        "details": {
+          "protocolVersionSent": "2025-11-25",
+          "expectedSpecVersion": "2025-11-25",
+          "versionMatch": true,
+          "clientName": "identity-probe",
+          "clientVersion": "1.0.0"
+        }
+      },
+      "exitCode": 0,
+      "counts": {
+        "SUCCESS": 1,
+        "FAILURE": 0,
+        "WARNING": 0,
+        "INFO": 1,
+        "SKIPPED": 0
+      },
+      "checksFile": "<WORKSPACE>/mcp410_identity_evidence/results/client-normal-baseline/initialize-2026-09-28T05-51-57-844Z/checks.json",
+      "wireChecks": [],
+      "nonTargetChecks": [
+        {
+          "id": "server-info",
+          "status": "INFO"
+        }
+      ]
+    },
+    {
+      "revision": "candidate",
+      "leg": "client",
+      "caseName": "normal",
+      "identity": {
+        "name": "identity-probe",
+        "version": "1.0.0"
+      },
+      "target": {
+        "id": "mcp-client-initialization",
+        "name": "MCPClientInitialization",
+        "description": "Validates that MCP client properly initializes with server",
+        "status": "SUCCESS",
+        "timestamp": "2026-09-28T05:51:58.346Z",
+        "specReferences": [
+          {
+            "id": "MCP-Lifecycle",
+            "url": "https://modelcontextprotocol.io/specification/2025-06-18/basic/lifecycle"
+          }
+        ],
+        "details": {
+          "protocolVersionSent": "2025-11-25",
+          "expectedSpecVersion": "2025-11-25",
+          "versionMatch": true,
+          "clientName": "identity-probe",
+          "clientVersion": "1.0.0"
+        }
+      },
+      "exitCode": 0,
+      "counts": {
+        "SUCCESS": 1,
+        "FAILURE": 0,
+        "WARNING": 0,
+        "INFO": 1,
+        "SKIPPED": 0
+      },
+      "checksFile": "<WORKSPACE>/mcp410_identity_evidence/results/client-normal-candidate/initialize-2026-09-28T05-51-58-272Z/checks.json",
+      "wireChecks": [],
+      "nonTargetChecks": [
+        {
+          "id": "server-info",
+          "status": "INFO"
+        }
+      ]
+    },
+    {
+      "revision": "baseline",
+      "leg": "client",
+      "caseName": "empty-name",
+      "identity": {
+        "name": "",
+        "version": "1.0.0"
+      },
+      "target": {
+        "id": "mcp-client-initialization",
+        "name": "MCPClientInitialization",
+        "description": "Validates that MCP client properly initializes with server",
+        "status": "FAILURE",
+        "timestamp": "2026-09-28T05:51:58.763Z",
+        "specReferences": [
+          {
+            "id": "MCP-Lifecycle",
+            "url": "https://modelcontextprotocol.io/specification/2025-06-18/basic/lifecycle"
+          }
+        ],
+        "details": {
+          "protocolVersionSent": "2025-11-25",
+          "expectedSpecVersion": "2025-11-25",
+          "versionMatch": true,
+          "clientName": "",
+          "clientVersion": "1.0.0"
+        },
+        "errorMessage": "Client name missing",
+        "logs": [
+          "Client name missing"
+        ]
+      },
+      "exitCode": 1,
+      "counts": {
+        "SUCCESS": 0,
+        "FAILURE": 1,
+        "WARNING": 0,
+        "INFO": 1,
+        "SKIPPED": 0
+      },
+      "checksFile": "<WORKSPACE>/mcp410_identity_evidence/results/client-empty-name-baseline/initialize-2026-09-28T05-51-58-697Z/checks.json",
+      "wireChecks": [],
+      "nonTargetChecks": [
+        {
+          "id": "server-info",
+          "status": "INFO"
+        }
+      ]
+    },
+    {
+      "revision": "candidate",
+      "leg": "client",
+      "caseName": "empty-name",
+      "identity": {
+        "name": "",
+        "version": "1.0.0"
+      },
+      "target": {
+        "id": "mcp-client-initialization",
+        "name": "MCPClientInitialization",
+        "description": "Validates that MCP client properly initializes with server",
+        "status": "SUCCESS",
+        "timestamp": "2026-09-28T05:51:59.179Z",
+        "specReferences": [
+          {
+            "id": "MCP-Lifecycle",
+            "url": "https://modelcontextprotocol.io/specification/2025-06-18/basic/lifecycle"
+          }
+        ],
+        "details": {
+          "protocolVersionSent": "2025-11-25",
+          "expectedSpecVersion": "2025-11-25",
+          "versionMatch": true,
+          "clientName": "",
+          "clientVersion": "1.0.0"
+        }
+      },
+      "exitCode": 0,
+      "counts": {
+        "SUCCESS": 1,
+        "FAILURE": 0,
+        "WARNING": 0,
+        "INFO": 1,
+        "SKIPPED": 0
+      },
+      "checksFile": "<WORKSPACE>/mcp410_identity_evidence/results/client-empty-name-candidate/initialize-2026-09-28T05-51-59-101Z/checks.json",
+      "wireChecks": [],
+      "nonTargetChecks": [
+        {
+          "id": "server-info",
+          "status": "INFO"
+        }
+      ]
+    },
+    {
+      "revision": "baseline",
+      "leg": "client",
+      "caseName": "empty-version",
+      "identity": {
+        "name": "identity-probe",
+        "version": ""
+      },
+      "target": {
+        "id": "mcp-client-initialization",
+        "name": "MCPClientInitialization",
+        "description": "Validates that MCP client properly initializes with server",
+        "status": "FAILURE",
+        "timestamp": "2026-09-28T05:51:59.597Z",
+        "specReferences": [
+          {
+            "id": "MCP-Lifecycle",
+            "url": "https://modelcontextprotocol.io/specification/2025-06-18/basic/lifecycle"
+          }
+        ],
+        "details": {
+          "protocolVersionSent": "2025-11-25",
+          "expectedSpecVersion": "2025-11-25",
+          "versionMatch": true,
+          "clientName": "identity-probe",
+          "clientVersion": ""
+        },
+        "errorMessage": "Client version missing",
+        "logs": [
+          "Client version missing"
+        ]
+      },
+      "exitCode": 1,
+      "counts": {
+        "SUCCESS": 0,
+        "FAILURE": 1,
+        "WARNING": 0,
+        "INFO": 1,
+        "SKIPPED": 0
+      },
+      "checksFile": "<WORKSPACE>/mcp410_identity_evidence/results/client-empty-version-baseline/initialize-2026-09-28T05-51-59-520Z/checks.json",
+      "wireChecks": [],
+      "nonTargetChecks": [
+        {
+          "id": "server-info",
+          "status": "INFO"
+        }
+      ]
+    },
+    {
+      "revision": "candidate",
+      "leg": "client",
+      "caseName": "empty-version",
+      "identity": {
+        "name": "identity-probe",
+        "version": ""
+      },
+      "target": {
+        "id": "mcp-client-initialization",
+        "name": "MCPClientInitialization",
+        "description": "Validates that MCP client properly initializes with server",
+        "status": "SUCCESS",
+        "timestamp": "2026-09-28T05:52:00.051Z",
+        "specReferences": [
+          {
+            "id": "MCP-Lifecycle",
+            "url": "https://modelcontextprotocol.io/specification/2025-06-18/basic/lifecycle"
+          }
+        ],
+        "details": {
+          "protocolVersionSent": "2025-11-25",
+          "expectedSpecVersion": "2025-11-25",
+          "versionMatch": true,
+          "clientName": "identity-probe",
+          "clientVersion": ""
+        }
+      },
+      "exitCode": 0,
+      "counts": {
+        "SUCCESS": 1,
+        "FAILURE": 0,
+        "WARNING": 0,
+        "INFO": 1,
+        "SKIPPED": 0
+      },
+      "checksFile": "<WORKSPACE>/mcp410_identity_evidence/results/client-empty-version-candidate/initialize-2026-09-28T05-51-59-964Z/checks.json",
+      "wireChecks": [],
+      "nonTargetChecks": [
+        {
+          "id": "server-info",
+          "status": "INFO"
+        }
+      ]
+    },
+    {
+      "revision": "baseline",
+      "leg": "client",
+      "caseName": "numeric-fields",
+      "identity": {
+        "name": 42,
+        "version": 7
+      },
+      "target": {
+        "id": "mcp-client-initialization",
+        "name": "MCPClientInitialization",
+        "description": "Validates that MCP client properly initializes with server",
+        "status": "SUCCESS",
+        "timestamp": "2026-09-28T05:52:00.486Z",
+        "specReferences": [
+          {
+            "id": "MCP-Lifecycle",
+            "url": "https://modelcontextprotocol.io/specification/2025-06-18/basic/lifecycle"
+          }
+        ],
+        "details": {
+          "protocolVersionSent": "2025-11-25",
+          "expectedSpecVersion": "2025-11-25",
+          "versionMatch": true,
+          "clientName": 42,
+          "clientVersion": 7
+        }
+      },
+      "exitCode": 0,
+      "counts": {
+        "SUCCESS": 1,
+        "FAILURE": 0,
+        "WARNING": 0,
+        "INFO": 1,
+        "SKIPPED": 0
+      },
+      "checksFile": "<WORKSPACE>/mcp410_identity_evidence/results/client-numeric-fields-baseline/initialize-2026-09-28T05-52-00-411Z/checks.json",
+      "wireChecks": [],
+      "nonTargetChecks": [
+        {
+          "id": "server-info",
+          "status": "INFO"
+        }
+      ]
+    },
+    {
+      "revision": "candidate",
+      "leg": "client",
+      "caseName": "numeric-fields",
+      "identity": {
+        "name": 42,
+        "version": 7
+      },
+      "target": {
+        "id": "mcp-client-initialization",
+        "name": "MCPClientInitialization",
+        "description": "Validates that MCP client properly initializes with server",
+        "status": "FAILURE",
+        "timestamp": "2026-09-28T05:52:00.920Z",
+        "specReferences": [
+          {
+            "id": "MCP-Lifecycle",
+            "url": "https://modelcontextprotocol.io/specification/2025-06-18/basic/lifecycle"
+          }
+        ],
+        "details": {
+          "protocolVersionSent": "2025-11-25",
+          "expectedSpecVersion": "2025-11-25",
+          "versionMatch": true,
+          "clientName": 42,
+          "clientVersion": 7
+        },
+        "errorMessage": "clientInfo needs a string 'name'; clientInfo needs a string 'version'",
+        "logs": [
+          "clientInfo needs a string 'name'",
+          "clientInfo needs a string 'version'"
+        ]
+      },
+      "exitCode": 1,
+      "counts": {
+        "SUCCESS": 0,
+        "FAILURE": 1,
+        "WARNING": 0,
+        "INFO": 1,
+        "SKIPPED": 0
+      },
+      "checksFile": "<WORKSPACE>/mcp410_identity_evidence/results/client-numeric-fields-candidate/initialize-2026-09-28T05-52-00-852Z/checks.json",
+      "wireChecks": [],
+      "nonTargetChecks": [
+        {
+          "id": "server-info",
+          "status": "INFO"
+        }
+      ]
+    },
+    {
+      "revision": "baseline",
+      "leg": "client",
+      "caseName": "missing-fields",
+      "identity": {},
+      "target": {
+        "id": "mcp-client-initialization",
+        "name": "MCPClientInitialization",
+        "description": "Validates that MCP client properly initializes with server",
+        "status": "FAILURE",
+        "timestamp": "2026-09-28T05:52:01.346Z",
+        "specReferences": [
+          {
+            "id": "MCP-Lifecycle",
+            "url": "https://modelcontextprotocol.io/specification/2025-06-18/basic/lifecycle"
+          }
+        ],
+        "details": {
+          "protocolVersionSent": "2025-11-25",
+          "expectedSpecVersion": "2025-11-25",
+          "versionMatch": true
+        },
+        "errorMessage": "Client name missing; Client version missing",
+        "logs": [
+          "Client name missing",
+          "Client version missing"
+        ]
+      },
+      "exitCode": 1,
+      "counts": {
+        "SUCCESS": 0,
+        "FAILURE": 1,
+        "WARNING": 0,
+        "INFO": 1,
+        "SKIPPED": 0
+      },
+      "checksFile": "<WORKSPACE>/mcp410_identity_evidence/results/client-missing-fields-baseline/initialize-2026-09-28T05-52-01-275Z/checks.json",
+      "wireChecks": [],
+      "nonTargetChecks": [
+        {
+          "id": "server-info",
+          "status": "INFO"
+        }
+      ]
+    },
+    {
+      "revision": "candidate",
+      "leg": "client",
+      "caseName": "missing-fields",
+      "identity": {},
+      "target": {
+        "id": "mcp-client-initialization",
+        "name": "MCPClientInitialization",
+        "description": "Validates that MCP client properly initializes with server",
+        "status": "FAILURE",
+        "timestamp": "2026-09-28T05:52:01.770Z",
+        "specReferences": [
+          {
+            "id": "MCP-Lifecycle",
+            "url": "https://modelcontextprotocol.io/specification/2025-06-18/basic/lifecycle"
+          }
+        ],
+        "details": {
+          "protocolVersionSent": "2025-11-25",
+          "expectedSpecVersion": "2025-11-25",
+          "versionMatch": true
+        },
+        "errorMessage": "clientInfo needs a string 'name'; clientInfo needs a string 'version'",
+        "logs": [
+          "clientInfo needs a string 'name'",
+          "clientInfo needs a string 'version'"
+        ]
+      },
+      "exitCode": 1,
+      "counts": {
+        "SUCCESS": 0,
+        "FAILURE": 1,
+        "WARNING": 0,
+        "INFO": 1,
+        "SKIPPED": 0
+      },
+      "checksFile": "<WORKSPACE>/mcp410_identity_evidence/results/client-missing-fields-candidate/initialize-2026-09-28T05-52-01-700Z/checks.json",
+      "wireChecks": [],
+      "nonTargetChecks": [
+        {
+          "id": "server-info",
+          "status": "INFO"
+        }
+      ]
+    },
+    {
+      "revision": "baseline",
+      "leg": "server",
+      "caseName": "normal",
+      "identity": {
+        "name": "identity-probe",
+        "version": "1.0.0"
+      },
+      "target": {
+        "id": "sep-2575-server-identifies-in-result-meta",
+        "name": "ServerIdentifiesInResultMeta",
+        "description": "Servers SHOULD identify themselves via _meta['io.modelcontextprotocol/serverInfo'] on responses (spec PR #3002).",
+        "status": "SUCCESS",
+        "timestamp": "2026-09-28T05:52:02.149Z",
+        "specReferences": [
+          {
+            "id": "SEP-2575",
+            "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2575"
+          }
+        ],
+        "details": {
+          "serverInfo": {
+            "name": "identity-probe",
+            "version": "1.0.0"
+          }
+        }
+      },
+      "exitCode": 0,
+      "counts": {
+        "SUCCESS": 30,
+        "FAILURE": 0,
+        "WARNING": 0,
+        "INFO": 0,
+        "SKIPPED": 0
+      },
+      "checksFile": "<WORKSPACE>/mcp410_identity_evidence/results/server-normal-baseline/server-server-stateless-2026-09-28T05-52-02-147Z/checks.json",
+      "wireChecks": [],
+      "nonTargetChecks": [
+        {
+          "id": "sep-2575-request-meta-invalid-missing-meta",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-meta-invalid-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-request-meta-invalid-missing-protocol-version",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-meta-invalid-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-request-meta-invalid-missing-client-capabilities",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-meta-invalid-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-request-meta-client-info-optional",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-implements-discover",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-declares-prompts-in-discover",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-discover-capabilities-match-handlers",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-unsupported-version-error",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-unsupported-version-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-header-mismatch-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-rejects-undeclared-capability",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-missing-capability-http-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-initialize",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-ping",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-logging-setlevel",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-resources-subscribe",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-resources-unsubscribe",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-no-independent-requests-on-stream",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-no-log-without-loglevel",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-sends-subscription-ack",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-tags-subscription-id",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-honors-notification-filter",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-sends-prompts-list-changed-on-subscription",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-sends-tools-list-changed-on-subscription",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-error-jsonrpc-id",
+          "status": "SUCCESS"
+        }
+      ]
+    },
+    {
+      "revision": "candidate",
+      "leg": "server",
+      "caseName": "normal",
+      "identity": {
+        "name": "identity-probe",
+        "version": "1.0.0"
+      },
+      "target": {
+        "id": "sep-2575-server-identifies-in-result-meta",
+        "name": "ServerIdentifiesInResultMeta",
+        "description": "Servers SHOULD identify themselves via _meta['io.modelcontextprotocol/serverInfo'] on responses (spec PR #3002).",
+        "status": "SUCCESS",
+        "timestamp": "2026-09-28T05:52:04.142Z",
+        "specReferences": [
+          {
+            "id": "SEP-2575",
+            "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2575"
+          }
+        ],
+        "details": {
+          "serverInfo": {
+            "name": "identity-probe",
+            "version": "1.0.0"
+          }
+        }
+      },
+      "exitCode": 0,
+      "counts": {
+        "SUCCESS": 30,
+        "FAILURE": 0,
+        "WARNING": 0,
+        "INFO": 0,
+        "SKIPPED": 0
+      },
+      "checksFile": "<WORKSPACE>/mcp410_identity_evidence/results/server-normal-candidate/server-server-stateless-2026-09-28T05-52-04-140Z/checks.json",
+      "wireChecks": [],
+      "nonTargetChecks": [
+        {
+          "id": "sep-2575-request-meta-invalid-missing-meta",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-meta-invalid-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-request-meta-invalid-missing-protocol-version",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-meta-invalid-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-request-meta-invalid-missing-client-capabilities",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-meta-invalid-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-request-meta-client-info-optional",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-implements-discover",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-declares-prompts-in-discover",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-discover-capabilities-match-handlers",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-unsupported-version-error",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-unsupported-version-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-header-mismatch-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-rejects-undeclared-capability",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-missing-capability-http-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-initialize",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-ping",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-logging-setlevel",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-resources-subscribe",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-resources-unsubscribe",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-no-independent-requests-on-stream",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-no-log-without-loglevel",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-sends-subscription-ack",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-tags-subscription-id",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-honors-notification-filter",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-sends-prompts-list-changed-on-subscription",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-sends-tools-list-changed-on-subscription",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-error-jsonrpc-id",
+          "status": "SUCCESS"
+        }
+      ]
+    },
+    {
+      "revision": "baseline",
+      "leg": "server",
+      "caseName": "empty-name",
+      "identity": {
+        "name": "",
+        "version": "1.0.0"
+      },
+      "target": {
+        "id": "sep-2575-server-identifies-in-result-meta",
+        "name": "ServerIdentifiesInResultMeta",
+        "description": "Servers SHOULD identify themselves via _meta['io.modelcontextprotocol/serverInfo'] on responses (spec PR #3002).",
+        "status": "WARNING",
+        "timestamp": "2026-09-28T05:52:06.120Z",
+        "errorMessage": "No serverInfo in the discover result _meta",
+        "specReferences": [
+          {
+            "id": "SEP-2575",
+            "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2575"
+          }
+        ],
+        "details": {
+          "result": {
+            "supportedVersions": [
+              "2026-07-28"
+            ],
+            "capabilities": {
+              "tools": {
+                "listChanged": true
+              },
+              "prompts": {
+                "listChanged": true
+              },
+              "resources": {}
+            },
+            "_meta": {
+              "io.modelcontextprotocol/serverInfo": {
+                "name": "",
+                "version": "1.0.0"
+              }
+            },
+            "resultType": "complete",
+            "ttlMs": 0,
+            "cacheScope": "private"
+          }
+        }
+      },
+      "exitCode": 0,
+      "counts": {
+        "SUCCESS": 29,
+        "FAILURE": 0,
+        "WARNING": 1,
+        "INFO": 0,
+        "SKIPPED": 0
+      },
+      "checksFile": "<WORKSPACE>/mcp410_identity_evidence/results/server-empty-name-baseline/server-server-stateless-2026-09-28T05-52-06-115Z/checks.json",
+      "wireChecks": [],
+      "nonTargetChecks": [
+        {
+          "id": "sep-2575-request-meta-invalid-missing-meta",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-meta-invalid-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-request-meta-invalid-missing-protocol-version",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-meta-invalid-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-request-meta-invalid-missing-client-capabilities",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-meta-invalid-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-request-meta-client-info-optional",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-implements-discover",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-declares-prompts-in-discover",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-discover-capabilities-match-handlers",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-unsupported-version-error",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-unsupported-version-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-header-mismatch-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-rejects-undeclared-capability",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-missing-capability-http-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-initialize",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-ping",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-logging-setlevel",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-resources-subscribe",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-resources-unsubscribe",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-no-independent-requests-on-stream",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-no-log-without-loglevel",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-sends-subscription-ack",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-tags-subscription-id",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-honors-notification-filter",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-sends-prompts-list-changed-on-subscription",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-sends-tools-list-changed-on-subscription",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-error-jsonrpc-id",
+          "status": "SUCCESS"
+        }
+      ]
+    },
+    {
+      "revision": "candidate",
+      "leg": "server",
+      "caseName": "empty-name",
+      "identity": {
+        "name": "",
+        "version": "1.0.0"
+      },
+      "target": {
+        "id": "sep-2575-server-identifies-in-result-meta",
+        "name": "ServerIdentifiesInResultMeta",
+        "description": "Servers SHOULD identify themselves via _meta['io.modelcontextprotocol/serverInfo'] on responses (spec PR #3002).",
+        "status": "SUCCESS",
+        "timestamp": "2026-09-28T05:52:08.107Z",
+        "specReferences": [
+          {
+            "id": "SEP-2575",
+            "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2575"
+          }
+        ],
+        "details": {
+          "serverInfo": {
+            "name": "",
+            "version": "1.0.0"
+          }
+        }
+      },
+      "exitCode": 0,
+      "counts": {
+        "SUCCESS": 30,
+        "FAILURE": 0,
+        "WARNING": 0,
+        "INFO": 0,
+        "SKIPPED": 0
+      },
+      "checksFile": "<WORKSPACE>/mcp410_identity_evidence/results/server-empty-name-candidate/server-server-stateless-2026-09-28T05-52-08-102Z/checks.json",
+      "wireChecks": [],
+      "nonTargetChecks": [
+        {
+          "id": "sep-2575-request-meta-invalid-missing-meta",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-meta-invalid-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-request-meta-invalid-missing-protocol-version",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-meta-invalid-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-request-meta-invalid-missing-client-capabilities",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-meta-invalid-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-request-meta-client-info-optional",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-implements-discover",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-declares-prompts-in-discover",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-discover-capabilities-match-handlers",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-unsupported-version-error",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-unsupported-version-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-header-mismatch-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-rejects-undeclared-capability",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-missing-capability-http-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-initialize",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-ping",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-logging-setlevel",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-resources-subscribe",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-resources-unsubscribe",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-no-independent-requests-on-stream",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-no-log-without-loglevel",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-sends-subscription-ack",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-tags-subscription-id",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-honors-notification-filter",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-sends-prompts-list-changed-on-subscription",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-sends-tools-list-changed-on-subscription",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-error-jsonrpc-id",
+          "status": "SUCCESS"
+        }
+      ]
+    },
+    {
+      "revision": "baseline",
+      "leg": "server",
+      "caseName": "empty-version",
+      "identity": {
+        "name": "identity-probe",
+        "version": ""
+      },
+      "target": {
+        "id": "sep-2575-server-identifies-in-result-meta",
+        "name": "ServerIdentifiesInResultMeta",
+        "description": "Servers SHOULD identify themselves via _meta['io.modelcontextprotocol/serverInfo'] on responses (spec PR #3002).",
+        "status": "WARNING",
+        "timestamp": "2026-09-28T05:52:10.049Z",
+        "errorMessage": "No serverInfo in the discover result _meta",
+        "specReferences": [
+          {
+            "id": "SEP-2575",
+            "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2575"
+          }
+        ],
+        "details": {
+          "result": {
+            "supportedVersions": [
+              "2026-07-28"
+            ],
+            "capabilities": {
+              "tools": {
+                "listChanged": true
+              },
+              "prompts": {
+                "listChanged": true
+              },
+              "resources": {}
+            },
+            "_meta": {
+              "io.modelcontextprotocol/serverInfo": {
+                "name": "identity-probe",
+                "version": ""
+              }
+            },
+            "resultType": "complete",
+            "ttlMs": 0,
+            "cacheScope": "private"
+          }
+        }
+      },
+      "exitCode": 0,
+      "counts": {
+        "SUCCESS": 29,
+        "FAILURE": 0,
+        "WARNING": 1,
+        "INFO": 0,
+        "SKIPPED": 0
+      },
+      "checksFile": "<WORKSPACE>/mcp410_identity_evidence/results/server-empty-version-baseline/server-server-stateless-2026-09-28T05-52-10-047Z/checks.json",
+      "wireChecks": [],
+      "nonTargetChecks": [
+        {
+          "id": "sep-2575-request-meta-invalid-missing-meta",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-meta-invalid-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-request-meta-invalid-missing-protocol-version",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-meta-invalid-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-request-meta-invalid-missing-client-capabilities",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-meta-invalid-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-request-meta-client-info-optional",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-implements-discover",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-declares-prompts-in-discover",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-discover-capabilities-match-handlers",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-unsupported-version-error",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-unsupported-version-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-header-mismatch-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-rejects-undeclared-capability",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-missing-capability-http-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-initialize",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-ping",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-logging-setlevel",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-resources-subscribe",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-resources-unsubscribe",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-no-independent-requests-on-stream",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-no-log-without-loglevel",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-sends-subscription-ack",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-tags-subscription-id",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-honors-notification-filter",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-sends-prompts-list-changed-on-subscription",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-sends-tools-list-changed-on-subscription",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-error-jsonrpc-id",
+          "status": "SUCCESS"
+        }
+      ]
+    },
+    {
+      "revision": "candidate",
+      "leg": "server",
+      "caseName": "empty-version",
+      "identity": {
+        "name": "identity-probe",
+        "version": ""
+      },
+      "target": {
+        "id": "sep-2575-server-identifies-in-result-meta",
+        "name": "ServerIdentifiesInResultMeta",
+        "description": "Servers SHOULD identify themselves via _meta['io.modelcontextprotocol/serverInfo'] on responses (spec PR #3002).",
+        "status": "SUCCESS",
+        "timestamp": "2026-09-28T05:52:12.083Z",
+        "specReferences": [
+          {
+            "id": "SEP-2575",
+            "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2575"
+          }
+        ],
+        "details": {
+          "serverInfo": {
+            "name": "identity-probe",
+            "version": ""
+          }
+        }
+      },
+      "exitCode": 0,
+      "counts": {
+        "SUCCESS": 30,
+        "FAILURE": 0,
+        "WARNING": 0,
+        "INFO": 0,
+        "SKIPPED": 0
+      },
+      "checksFile": "<WORKSPACE>/mcp410_identity_evidence/results/server-empty-version-candidate/server-server-stateless-2026-09-28T05-52-12-081Z/checks.json",
+      "wireChecks": [],
+      "nonTargetChecks": [
+        {
+          "id": "sep-2575-request-meta-invalid-missing-meta",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-meta-invalid-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-request-meta-invalid-missing-protocol-version",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-meta-invalid-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-request-meta-invalid-missing-client-capabilities",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-meta-invalid-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-request-meta-client-info-optional",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-implements-discover",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-declares-prompts-in-discover",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-discover-capabilities-match-handlers",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-unsupported-version-error",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-unsupported-version-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-header-mismatch-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-rejects-undeclared-capability",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-missing-capability-http-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-initialize",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-ping",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-logging-setlevel",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-resources-subscribe",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-resources-unsubscribe",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-no-independent-requests-on-stream",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-no-log-without-loglevel",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-sends-subscription-ack",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-tags-subscription-id",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-honors-notification-filter",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-sends-prompts-list-changed-on-subscription",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-sends-tools-list-changed-on-subscription",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-error-jsonrpc-id",
+          "status": "SUCCESS"
+        }
+      ]
+    },
+    {
+      "revision": "baseline",
+      "leg": "server",
+      "caseName": "numeric-fields",
+      "identity": {
+        "name": 42,
+        "version": 7
+      },
+      "target": {
+        "id": "sep-2575-server-identifies-in-result-meta",
+        "name": "ServerIdentifiesInResultMeta",
+        "description": "Servers SHOULD identify themselves via _meta['io.modelcontextprotocol/serverInfo'] on responses (spec PR #3002).",
+        "status": "SUCCESS",
+        "timestamp": "2026-09-28T05:52:14.039Z",
+        "specReferences": [
+          {
+            "id": "SEP-2575",
+            "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2575"
+          }
+        ],
+        "details": {
+          "serverInfo": {
+            "name": 42,
+            "version": 7
+          }
+        }
+      },
+      "exitCode": 0,
+      "counts": {
+        "SUCCESS": 30,
+        "FAILURE": 0,
+        "WARNING": 0,
+        "INFO": 0,
+        "SKIPPED": 0
+      },
+      "checksFile": "<WORKSPACE>/mcp410_identity_evidence/results/server-numeric-fields-baseline/server-server-stateless-2026-09-28T05-52-14-037Z/checks.json",
+      "wireChecks": [],
+      "nonTargetChecks": [
+        {
+          "id": "sep-2575-request-meta-invalid-missing-meta",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-meta-invalid-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-request-meta-invalid-missing-protocol-version",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-meta-invalid-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-request-meta-invalid-missing-client-capabilities",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-meta-invalid-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-request-meta-client-info-optional",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-implements-discover",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-declares-prompts-in-discover",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-discover-capabilities-match-handlers",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-unsupported-version-error",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-unsupported-version-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-header-mismatch-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-rejects-undeclared-capability",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-missing-capability-http-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-initialize",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-ping",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-logging-setlevel",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-resources-subscribe",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-resources-unsubscribe",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-no-independent-requests-on-stream",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-no-log-without-loglevel",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-sends-subscription-ack",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-tags-subscription-id",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-honors-notification-filter",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-sends-prompts-list-changed-on-subscription",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-sends-tools-list-changed-on-subscription",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-error-jsonrpc-id",
+          "status": "SUCCESS"
+        }
+      ]
+    },
+    {
+      "revision": "candidate",
+      "leg": "server",
+      "caseName": "numeric-fields",
+      "identity": {
+        "name": 42,
+        "version": 7
+      },
+      "target": {
+        "id": "sep-2575-server-identifies-in-result-meta",
+        "name": "ServerIdentifiesInResultMeta",
+        "description": "Servers SHOULD identify themselves via _meta['io.modelcontextprotocol/serverInfo'] on responses (spec PR #3002).",
+        "status": "WARNING",
+        "timestamp": "2026-09-28T05:52:16.016Z",
+        "errorMessage": "serverInfo in the discover result _meta needs a string 'name' and 'version'",
+        "specReferences": [
+          {
+            "id": "SEP-2575",
+            "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2575"
+          }
+        ],
+        "details": {
+          "result": {
+            "supportedVersions": [
+              "2026-07-28"
+            ],
+            "capabilities": {
+              "tools": {
+                "listChanged": true
+              },
+              "prompts": {
+                "listChanged": true
+              },
+              "resources": {}
+            },
+            "_meta": {
+              "io.modelcontextprotocol/serverInfo": {
+                "name": 42,
+                "version": 7
+              }
+            },
+            "resultType": "complete",
+            "ttlMs": 0,
+            "cacheScope": "private"
+          }
+        }
+      },
+      "exitCode": 0,
+      "counts": {
+        "SUCCESS": 29,
+        "FAILURE": 0,
+        "WARNING": 1,
+        "INFO": 0,
+        "SKIPPED": 0
+      },
+      "checksFile": "<WORKSPACE>/mcp410_identity_evidence/results/server-numeric-fields-candidate/server-server-stateless-2026-09-28T05-52-16-010Z/checks.json",
+      "wireChecks": [],
+      "nonTargetChecks": [
+        {
+          "id": "sep-2575-request-meta-invalid-missing-meta",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-meta-invalid-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-request-meta-invalid-missing-protocol-version",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-meta-invalid-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-request-meta-invalid-missing-client-capabilities",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-meta-invalid-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-request-meta-client-info-optional",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-implements-discover",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-declares-prompts-in-discover",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-discover-capabilities-match-handlers",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-unsupported-version-error",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-unsupported-version-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-header-mismatch-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-rejects-undeclared-capability",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-missing-capability-http-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-initialize",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-ping",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-logging-setlevel",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-resources-subscribe",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-resources-unsubscribe",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-no-independent-requests-on-stream",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-no-log-without-loglevel",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-sends-subscription-ack",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-tags-subscription-id",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-honors-notification-filter",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-sends-prompts-list-changed-on-subscription",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-sends-tools-list-changed-on-subscription",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-error-jsonrpc-id",
+          "status": "SUCCESS"
+        }
+      ]
+    },
+    {
+      "revision": "baseline",
+      "leg": "server",
+      "caseName": "missing-fields",
+      "identity": {},
+      "target": {
+        "id": "sep-2575-server-identifies-in-result-meta",
+        "name": "ServerIdentifiesInResultMeta",
+        "description": "Servers SHOULD identify themselves via _meta['io.modelcontextprotocol/serverInfo'] on responses (spec PR #3002).",
+        "status": "WARNING",
+        "timestamp": "2026-09-28T05:52:18.020Z",
+        "errorMessage": "No serverInfo in the discover result _meta",
+        "specReferences": [
+          {
+            "id": "SEP-2575",
+            "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2575"
+          }
+        ],
+        "details": {
+          "result": {
+            "supportedVersions": [
+              "2026-07-28"
+            ],
+            "capabilities": {
+              "tools": {
+                "listChanged": true
+              },
+              "prompts": {
+                "listChanged": true
+              },
+              "resources": {}
+            },
+            "_meta": {
+              "io.modelcontextprotocol/serverInfo": {}
+            },
+            "resultType": "complete",
+            "ttlMs": 0,
+            "cacheScope": "private"
+          }
+        }
+      },
+      "exitCode": 0,
+      "counts": {
+        "SUCCESS": 29,
+        "FAILURE": 0,
+        "WARNING": 1,
+        "INFO": 0,
+        "SKIPPED": 0
+      },
+      "checksFile": "<WORKSPACE>/mcp410_identity_evidence/results/server-missing-fields-baseline/server-server-stateless-2026-09-28T05-52-18-014Z/checks.json",
+      "wireChecks": [],
+      "nonTargetChecks": [
+        {
+          "id": "sep-2575-request-meta-invalid-missing-meta",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-meta-invalid-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-request-meta-invalid-missing-protocol-version",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-meta-invalid-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-request-meta-invalid-missing-client-capabilities",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-meta-invalid-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-request-meta-client-info-optional",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-implements-discover",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-declares-prompts-in-discover",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-discover-capabilities-match-handlers",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-unsupported-version-error",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-unsupported-version-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-header-mismatch-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-rejects-undeclared-capability",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-missing-capability-http-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-initialize",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-ping",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-logging-setlevel",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-resources-subscribe",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-resources-unsubscribe",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-no-independent-requests-on-stream",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-no-log-without-loglevel",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-sends-subscription-ack",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-tags-subscription-id",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-honors-notification-filter",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-sends-prompts-list-changed-on-subscription",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-sends-tools-list-changed-on-subscription",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-error-jsonrpc-id",
+          "status": "SUCCESS"
+        }
+      ]
+    },
+    {
+      "revision": "candidate",
+      "leg": "server",
+      "caseName": "missing-fields",
+      "identity": {},
+      "target": {
+        "id": "sep-2575-server-identifies-in-result-meta",
+        "name": "ServerIdentifiesInResultMeta",
+        "description": "Servers SHOULD identify themselves via _meta['io.modelcontextprotocol/serverInfo'] on responses (spec PR #3002).",
+        "status": "WARNING",
+        "timestamp": "2026-09-28T05:52:19.985Z",
+        "errorMessage": "serverInfo in the discover result _meta needs a string 'name' and 'version'",
+        "specReferences": [
+          {
+            "id": "SEP-2575",
+            "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2575"
+          }
+        ],
+        "details": {
+          "result": {
+            "supportedVersions": [
+              "2026-07-28"
+            ],
+            "capabilities": {
+              "tools": {
+                "listChanged": true
+              },
+              "prompts": {
+                "listChanged": true
+              },
+              "resources": {}
+            },
+            "_meta": {
+              "io.modelcontextprotocol/serverInfo": {}
+            },
+            "resultType": "complete",
+            "ttlMs": 0,
+            "cacheScope": "private"
+          }
+        }
+      },
+      "exitCode": 0,
+      "counts": {
+        "SUCCESS": 29,
+        "FAILURE": 0,
+        "WARNING": 1,
+        "INFO": 0,
+        "SKIPPED": 0
+      },
+      "checksFile": "<WORKSPACE>/mcp410_identity_evidence/results/server-missing-fields-candidate/server-server-stateless-2026-09-28T05-52-19-980Z/checks.json",
+      "wireChecks": [],
+      "nonTargetChecks": [
+        {
+          "id": "sep-2575-request-meta-invalid-missing-meta",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-meta-invalid-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-request-meta-invalid-missing-protocol-version",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-meta-invalid-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-request-meta-invalid-missing-client-capabilities",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-meta-invalid-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-request-meta-client-info-optional",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-implements-discover",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-declares-prompts-in-discover",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-discover-capabilities-match-handlers",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-unsupported-version-error",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-unsupported-version-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-header-mismatch-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-rejects-undeclared-capability",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-missing-capability-http-400",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-initialize",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-ping",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-logging-setlevel",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-resources-subscribe",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404-resources-unsubscribe",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-method-not-found-404",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-no-independent-requests-on-stream",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-no-log-without-loglevel",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-sends-subscription-ack",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-tags-subscription-id",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-honors-notification-filter",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-sends-prompts-list-changed-on-subscription",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-server-sends-tools-list-changed-on-subscription",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "sep-2575-http-server-error-jsonrpc-id",
+          "status": "SUCCESS"
+        }
+      ]
+    }
+  ]
+}

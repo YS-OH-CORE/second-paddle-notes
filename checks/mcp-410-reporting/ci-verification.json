@@ -1,0 +1,283 @@
+{
+  "recordedDate": "2026-09-28",
+  "upstreamPR": "https://github.com/modelcontextprotocol/conformance/pull/410",
+  "baseline": "7169291ec0b68eb370fddcd9947313ab0d5e4156",
+  "cleanCandidate": "eac19c4499ebb37ea359024be9aa4cd5c401c154",
+  "focused": {
+    "files": 3,
+    "candidate": {
+      "passed": 51,
+      "failed": 0
+    },
+    "baselineWithSameTestFiles": {
+      "passed": 38,
+      "failed": 13,
+      "statusOrSummaryDifferences": 8,
+      "diagnosticDifferences": 5
+    }
+  },
+  "canonicalCI": {
+    "runId": 36383823002,
+    "url": "https://github.com/YS-OH-CORE/conformance/actions/runs/36383823002",
+    "head": "4db04d329da5ef9353903c64d9aa1ef0e26f791e",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "id": 108804914454,
+        "name": "test",
+        "conclusion": "success",
+        "html_url": "https://github.com/YS-OH-CORE/conformance/actions/runs/36383823002/job/108804914454",
+        "steps": [
+          {
+            "number": 1,
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "number": 2,
+            "name": "Run actions/checkout@v6",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "number": 3,
+            "name": "Run actions/setup-node@v6",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "number": 4,
+            "name": "Run npm ci",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "number": 5,
+            "name": "Run npm run check",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "number": 6,
+            "name": "Run npm run build",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "number": 7,
+            "name": "Run npm test",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "number": 13,
+            "name": "Post Run actions/setup-node@v6",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "number": 14,
+            "name": "Post Run actions/checkout@v6",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "number": 15,
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "id": 108805144166,
+        "name": "publish",
+        "conclusion": "skipped",
+        "html_url": "https://github.com/YS-OH-CORE/conformance/actions/runs/36383823002/job/108805144166",
+        "steps": []
+      }
+    ],
+    "testFiles": 47,
+    "passedTests": 639,
+    "cleanCandidateDiff": [
+      {
+        "path": ".github/workflows/ci.yml",
+        "status": "modified",
+        "sha": "6be7cabee54069e35f18f7ecdbe2094dcbb57e33",
+        "patch": "@@ -2,6 +2,7 @@ on:\n   push:\n     branches:\n       - main\n+      - ci/pr-410-reporting-20260928\n   pull_request:\n   release:\n     types: [published]"
+      }
+    ],
+    "logExcerptNormalization": "ANSI color escape sequences removed; selected relevant original lines only. Complete CI job log available through the linked GitHub Actions run.",
+    "logExcerpts": [
+      "2026-09-28T05:53:01.3942593Z ##[group]Run npm ci",
+      "2026-09-28T05:53:08.7901618Z ##[group]Run npm run check",
+      "2026-09-28T05:53:19.1863117Z All matched files use Prettier code style!",
+      "2026-09-28T05:53:19.2430360Z ##[group]Run npm run build",
+      "2026-09-28T05:53:19.6681652Z ##[group]Run npm test",
+      "2026-09-28T05:53:55.4131362Z  Test Files  47 passed (47)",
+      "2026-09-28T05:53:55.4137573Z       Tests  639 passed (639)",
+      "2026-09-28T05:53:55.4140996Z    Duration  35.29s (transform 1.38s, setup 3.42s, import 9.04s, tests 16.69s, environment 5ms)"
+    ]
+  },
+  "realGoCI": {
+    "runId": 36384148230,
+    "url": "https://github.com/YS-OH-CORE/conformance/actions/runs/36384148230",
+    "head": "c8c40a565a1900edbcbd1ef0d8f0aafdaeed50f2",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "id": 108805871886,
+        "name": "compare",
+        "conclusion": "success",
+        "html_url": "https://github.com/YS-OH-CORE/conformance/actions/runs/36384148230/job/108805871886",
+        "steps": [
+          {
+            "number": 1,
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "number": 2,
+            "name": "Run actions/checkout@v6",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "number": 3,
+            "name": "Run actions/checkout@v6",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "number": 4,
+            "name": "Run actions/checkout@v6",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "number": 5,
+            "name": "Run actions/setup-node@v6",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "number": 6,
+            "name": "Run actions/setup-go@v7",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "number": 7,
+            "name": "Install shared conformance dependencies",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "number": 8,
+            "name": "Prepare unchanged baseline",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "number": 9,
+            "name": "Run existing CLI against pinned Go SDK",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "number": 10,
+            "name": "Retain complete evidence including failures",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "number": 16,
+            "name": "Post Run actions/setup-go@v7",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "number": 17,
+            "name": "Post Run actions/setup-node@v6",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "number": 18,
+            "name": "Post Run actions/checkout@v6",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "number": 19,
+            "name": "Post Run actions/checkout@v6",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "number": 20,
+            "name": "Post Run actions/checkout@v6",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "number": 21,
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ]
+      }
+    ],
+    "executions": 12,
+    "cleanCandidateDiff": [
+      {
+        "path": ".github/evidence/pr-410/README.md",
+        "status": "added",
+        "sha": "7450f292d2ac556954010bdec95f0f17d6e40102"
+      },
+      {
+        "path": ".github/evidence/pr-410/go-fixture/main.go",
+        "status": "added",
+        "sha": "ef374a017f7e5745a52626f279f7084dfa386b39"
+      },
+      {
+        "path": ".github/evidence/pr-410/run-go-evidence.mjs",
+        "status": "added",
+        "sha": "5a10c6a99f8aa628c3dd0395829b71631fecc6d3"
+      },
+      {
+        "path": ".github/workflows/pr-410-go-evidence.yml",
+        "status": "added",
+        "sha": "4919387852cf96ce994214329422efa3a5598280"
+      }
+    ],
+    "sdkCommit": "827f90ba0c13edb546028df42fadc9f1211a4ff2",
+    "artifact": {
+      "id": 10953603242,
+      "name": "mcp410-real-go-evidence",
+      "files": 252,
+      "extractedBytes": 636735
+    },
+    "limits": [
+      "Successful experiment includes assertions retaining deliberate negative CLI outcomes.",
+      "Stateless suite has four FAILURE checks and does not isolate warning-only suite exit behavior.",
+      "Warning-only single-scenario server commands exit 0 on both revisions."
+    ]
+  },
+  "distinctPackagePreviewFailures": [
+    {
+      "runId": 36383823018,
+      "url": "https://github.com/YS-OH-CORE/conformance/actions/runs/36383823018",
+      "conclusion": "failure"
+    },
+    {
+      "runId": 36384148111,
+      "url": "https://github.com/YS-OH-CORE/conformance/actions/runs/36384148111",
+      "conclusion": "failure"
+    }
+  ],
+  "packagePreviewExplanation": "Inherited pkg.pr.new workflow requires the GitHub app, which is not installed on the fork. These are separate runs from the successful validation jobs."
+}

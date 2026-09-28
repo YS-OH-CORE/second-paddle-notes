@@ -1,0 +1,135 @@
+{
+  "purpose": "Integrity index for the assembled MCP #410 contribution evidence. This manifest excludes itself.",
+  "recordedDate": "2026-09-28",
+  "identityArtifactRecordsVerified": 104,
+  "goArtifactRecordsVerified": 252,
+  "relativeMarkdownLinksVerified": true,
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 12175,
+      "sha256": "499a264dacfa77655c9b3d7a863d8be1d2b47228058de2eeeae1840da3c17e2f",
+      "gitBlobSha": "e63c9b8952064ea3e84756fb7a79f8d2b7c1fa39"
+    },
+    {
+      "path": "ci-verification.json",
+      "bytes": 9006,
+      "sha256": "1da5b8decb3703161e4f333116ee64ee707456c60771d6a3fd74a12d4cad6b9c",
+      "gitBlobSha": "dc4e11d11bf75edc1ba8ad54f6365e93d8417dd2"
+    },
+    {
+      "path": "go/README.md",
+      "bytes": 8038,
+      "sha256": "135a483c2e337c5b3fc1fd32ce639fc2873065700a45c2f1ea7d663a20e2f34c",
+      "gitBlobSha": "9a7858b42b8aba14a6b11a09baea796bc77e1ddb"
+    },
+    {
+      "path": "go/go-evidence-workflow.yml",
+      "bytes": 2142,
+      "sha256": "f4cdb6f19367b093a90f323690e08273b5cd91023223d7fbf7e1d86dd2b5b0d4",
+      "gitBlobSha": "4919387852cf96ce994214329422efa3a5598280"
+    },
+    {
+      "path": "go/go-fixture/main.go",
+      "bytes": 3520,
+      "sha256": "53e5a63721bebffc4607d61191b950f0f17a8b712d8c3f774493ae913541b846",
+      "gitBlobSha": "ef374a017f7e5745a52626f279f7084dfa386b39"
+    },
+    {
+      "path": "go/manifest.json",
+      "bytes": 96422,
+      "sha256": "3a8fbd75a2cca6b18e75c3fc8b17f1a7b41f974f54186487b083c7d195de57f4",
+      "gitBlobSha": "b0ad0eefc5e8ea02c06754b5f5f4882ff654fd24"
+    },
+    {
+      "path": "go/preparation-README.md",
+      "bytes": 9142,
+      "sha256": "6532d76206114dce134525953500e896d7be68498376eca454f13e7bc9f9e948",
+      "gitBlobSha": "7450f292d2ac556954010bdec95f0f17d6e40102"
+    },
+    {
+      "path": "go/raw-go-evidence.json",
+      "bytes": 797158,
+      "sha256": "c1db13a6ac320f8437118af63d7a010859cb067c744b05ca26bdcb02aa8310e4",
+      "gitBlobSha": "d9e65ebf0aeaead48dc38a6755392985f7d415a3"
+    },
+    {
+      "path": "go/run-go-evidence.mjs",
+      "bytes": 14915,
+      "sha256": "f9cbd996440cb844841d1cd728987311e4e827bbd2cea29dbf89d0691938c2c8",
+      "gitBlobSha": "5a10c6a99f8aa628c3dd0395829b71631fecc6d3"
+    },
+    {
+      "path": "go/summary.json",
+      "bytes": 315255,
+      "sha256": "a9ec7b0ea9561af19288fc049fd13169347c2de7008b2335cce818f260aac683",
+      "gitBlobSha": "249e4a5833432499772851a46288e727f3eee2d3"
+    },
+    {
+      "path": "identity/README.md",
+      "bytes": 6930,
+      "sha256": "85114321ea09b0e64e65978f0b4cf59bf56386ebb1ee04a5d35921f332219ee2",
+      "gitBlobSha": "e439a229c414b5f36488f9727d879830d4e974f6"
+    },
+    {
+      "path": "identity/identity-cli-results.json",
+      "bytes": 63075,
+      "sha256": "91a4adb0e3c910df6d5e9ef3f06955fa6a83eb0f9e9bd440ba92ff885f01b62a",
+      "gitBlobSha": "059033e79bafb7e898b48f2985a7c9b46da6cc7d"
+    },
+    {
+      "path": "identity/path-configuration.diff",
+      "bytes": 1838,
+      "sha256": "53e1f8e8864fdf13796229b2836083f74a1fcedc160ca116de5782b2a39da365",
+      "gitBlobSha": "ce3d90419c8bb869db73a89c3c93a0b0564086ec"
+    },
+    {
+      "path": "identity/provenance.json",
+      "bytes": 428,
+      "sha256": "6c8654c61e77f74045bc897e665771ec640f2d70bc6088687e4787cec41aee4f",
+      "gitBlobSha": "39f963ef322ca73616bff7e7d7cb7f0ce31982f0"
+    },
+    {
+      "path": "identity/raw-identity-evidence.json",
+      "bytes": 545550,
+      "sha256": "23431b7736f77393d0f5c6216c462d5e79bb917bc7600af45d201da6585cd014",
+      "gitBlobSha": "769bd8e97176384435f857dfa38ff66e6c0f81e7"
+    },
+    {
+      "path": "identity/scripts/identity-cases.mjs",
+      "bytes": 369,
+      "sha256": "d69dfd7e8d29b0c81b8d4ef6be24de7adf869910f05e21e65a7293159c3ead9d",
+      "gitBlobSha": "7b725995082e37ba119d17ee7241d5aeec3e01f8"
+    },
+    {
+      "path": "identity/scripts/synthetic-initialize-client.mjs",
+      "bytes": 1717,
+      "sha256": "0a4c543d77f44ed022d6fc26a0d47e9a42c3dfd67187f36675dec4cb2edc05e0",
+      "gitBlobSha": "c8583f779b1b67ca82a74113ed74a34d0af1a13a"
+    },
+    {
+      "path": "identity/scripts/validate-identity-cli.executed.mjs",
+      "bytes": 10278,
+      "sha256": "8df30208314a90928051bc406d17488c247f634045dcb6cd8bdd06e10d0542ea",
+      "gitBlobSha": "38b1e49518382c6eb3f80517e1dcd55d3906b978"
+    },
+    {
+      "path": "identity/scripts/validate-identity-cli.parameterized.mjs",
+      "bytes": 10618,
+      "sha256": "2858552ffcaf6f6515fd4372ce891469d1e99c2af6461fbe71a50a2d28340825",
+      "gitBlobSha": "c7b48253415448fd9a239884df29b70c5e664cfa"
+    },
+    {
+      "path": "identity/source-manifest.json",
+      "bytes": 1688,
+      "sha256": "7155ce63676f701c68299f7416f0f2b54145b9aabd4c89b3cc53901cdd4ae13e",
+      "gitBlobSha": "ff58c95bdf739f000cdeece8f39a3c8046be68e8"
+    },
+    {
+      "path": "local-validation.json",
+      "bytes": 12006,
+      "sha256": "5ce9c8b18a691043f0ea09ccea91cb9cea54fde3ffe55e067a75b794fb2ea317",
+      "gitBlobSha": "4b3bc2e82afbdac9733ac1ae14f64796bc658921"
+    }
+  ]
+}
