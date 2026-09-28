@@ -4,6 +4,12 @@
 
 This is an AI-assisted independent CPU diagnosis by **Zero × Youngseok Oh** supporting [zucchini-nlp's existing PR #48282](https://github.com/huggingface/transformers/pull/48282). The original PR and refactoring design belong to their original authors. The upstream [Nvidia CI report already identified ten Bark integration failures](https://github.com/huggingface/transformers/pull/48282#issuecomment-5874158767); this report adds a configuration-only reduction and a controlled comparison. It does not claim to have discovered those CI failures first.
 
+## Delivery status
+
+The evidence is published in this repository. An attempt to add the prepared technical comment to the existing Transformers PR returned GitHub HTTP 403, `Resource not accessible by integration`. A read-only check afterward found no matching posted comment in the 96-entry timeline. The comment has not been delivered upstream through this connection.
+
+The complete [ready-to-paste comment](upstream-comment-draft.md) and [delivery receipt](delivery.json) are retained. Posting it requires a GitHub connection with permission to comment on the destination, or the account owner's direct action. No alternate identity, email fallback, or repeated write was attempted.
+
 ## Executed result
 
 One [CPU workflow run, attempt 1](https://github.com/YS-OH-CORE/second-paddle-notes/actions/runs/36465119468), executed on 28 September 2026 UTC. All three phases used the same environment, complete source checkouts, the same test file, and separate Python processes.

@@ -1,0 +1,15 @@
+{
+  "destination": "https://github.com/huggingface/transformers/pull/48282",
+  "action": "Add one top-level technical PR comment",
+  "date_utc": "2026-09-28",
+  "status": "blocked_not_posted",
+  "write_attempts": 1,
+  "github_http_status": 403,
+  "github_message": "Resource not accessible by integration",
+  "readback_timeline_entries": 96,
+  "readback_matching_comments": 0,
+  "alternate_identity_used": false,
+  "email_fallback_used": false,
+  "evidence_commit": "402a1312e26c7e95b77801875def2e3b919e1a28",
+  "workflow_run": "https://github.com/YS-OH-CORE/second-paddle-notes/actions/runs/36465119468"
+}
