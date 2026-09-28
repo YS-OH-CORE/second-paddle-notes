@@ -1,0 +1,13 @@
+{
+  "repository": "YS-OH-CORE/hermes-agent",
+  "branch": "review/pr-125991-repeated-401-20260928",
+  "commit": "b7e052c9034a08fb3211ec59b173b4507d236d4c",
+  "tree": "c34aaae949e52215febdcf23dfabc8f34db382bd",
+  "parents": [
+    "5c727a6ccd298f310becf0f0656346b6797e17f1"
+  ],
+  "commitUrl": "https://github.com/YS-OH-CORE/hermes-agent/commit/b7e052c9034a08fb3211ec59b173b4507d236d4c",
+  "branchReadbackSha": "b7e052c9034a08fb3211ec59b173b4507d236d4c",
+  "wholeTreeMatchesTestedCandidate": true,
+  "scope": "Two-file follow-up directly on WYSTAF's original PR head; original ancestry preserved."
+}

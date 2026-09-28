@@ -1,0 +1,106 @@
+[
+  {
+    "path": "AGENTS.md",
+    "previousHermes112864Blob": "832df277675d69dd506fe5a65a9428f0c2c5ec99",
+    "mainBlob": "832df277675d69dd506fe5a65a9428f0c2c5ec99",
+    "headBlob": "832df277675d69dd506fe5a65a9428f0c2c5ec99",
+    "parentBlob": "832df277675d69dd506fe5a65a9428f0c2c5ec99",
+    "unchangedAcrossAll": true
+  },
+  {
+    "path": "CONTRIBUTING.md",
+    "previousHermes112864Blob": "b0baa59b5057c204b3c09d3dd170c0955cfdb39c",
+    "mainBlob": "b0baa59b5057c204b3c09d3dd170c0955cfdb39c",
+    "headBlob": "b0baa59b5057c204b3c09d3dd170c0955cfdb39c",
+    "parentBlob": "b0baa59b5057c204b3c09d3dd170c0955cfdb39c",
+    "unchangedAcrossAll": true
+  },
+  {
+    "path": "agent/AGENTS.md",
+    "previousHermes112864Blob": "9bfd3d135f6f5cd1da32e0ef9a5f8a7293f67645",
+    "mainBlob": "9bfd3d135f6f5cd1da32e0ef9a5f8a7293f67645",
+    "headBlob": "9bfd3d135f6f5cd1da32e0ef9a5f8a7293f67645",
+    "parentBlob": "9bfd3d135f6f5cd1da32e0ef9a5f8a7293f67645",
+    "unchangedAcrossAll": true
+  },
+  {
+    "path": "apps/desktop/AGENTS.md",
+    "previousHermes112864Blob": "34f6bab173256e65b03ac41670daf7d990f4e67e",
+    "mainBlob": "34f6bab173256e65b03ac41670daf7d990f4e67e",
+    "headBlob": "34f6bab173256e65b03ac41670daf7d990f4e67e",
+    "parentBlob": "34f6bab173256e65b03ac41670daf7d990f4e67e",
+    "unchangedAcrossAll": true
+  },
+  {
+    "path": "apps/desktop/src/AGENTS.md",
+    "previousHermes112864Blob": "c42f4c1bfb26d8859caade289f6fcfd4e7c88bcb",
+    "mainBlob": "c42f4c1bfb26d8859caade289f6fcfd4e7c88bcb",
+    "headBlob": "c42f4c1bfb26d8859caade289f6fcfd4e7c88bcb",
+    "parentBlob": "c42f4c1bfb26d8859caade289f6fcfd4e7c88bcb",
+    "unchangedAcrossAll": true
+  },
+  {
+    "path": "cron/AGENTS.md",
+    "previousHermes112864Blob": "6983cf3dfc6d78b706a4cd9445f752586157d6fa",
+    "mainBlob": "6983cf3dfc6d78b706a4cd9445f752586157d6fa",
+    "headBlob": "6983cf3dfc6d78b706a4cd9445f752586157d6fa",
+    "parentBlob": "6983cf3dfc6d78b706a4cd9445f752586157d6fa",
+    "unchangedAcrossAll": true
+  },
+  {
+    "path": "gateway/AGENTS.md",
+    "previousHermes112864Blob": "f08acafdfe64b1365370d8a7becd31d35765614e",
+    "mainBlob": "f08acafdfe64b1365370d8a7becd31d35765614e",
+    "headBlob": "f08acafdfe64b1365370d8a7becd31d35765614e",
+    "parentBlob": "f08acafdfe64b1365370d8a7becd31d35765614e",
+    "unchangedAcrossAll": true
+  },
+  {
+    "path": "hermes_cli/AGENTS.md",
+    "previousHermes112864Blob": "ba5844fbce52db8a83df9d1d6c6ebff044ebe451",
+    "mainBlob": "ba5844fbce52db8a83df9d1d6c6ebff044ebe451",
+    "headBlob": "ba5844fbce52db8a83df9d1d6c6ebff044ebe451",
+    "parentBlob": "ba5844fbce52db8a83df9d1d6c6ebff044ebe451",
+    "unchangedAcrossAll": true
+  },
+  {
+    "path": "plugins/AGENTS.md",
+    "previousHermes112864Blob": "93548f6472a7c74d6db833eb53a9745be41b110c",
+    "mainBlob": "93548f6472a7c74d6db833eb53a9745be41b110c",
+    "headBlob": "93548f6472a7c74d6db833eb53a9745be41b110c",
+    "parentBlob": "93548f6472a7c74d6db833eb53a9745be41b110c",
+    "unchangedAcrossAll": true
+  },
+  {
+    "path": "skills/AGENTS.md",
+    "previousHermes112864Blob": "7e71a19a4022acac42e5be5ed305489e91eb32bd",
+    "mainBlob": "7e71a19a4022acac42e5be5ed305489e91eb32bd",
+    "headBlob": "7e71a19a4022acac42e5be5ed305489e91eb32bd",
+    "parentBlob": "7e71a19a4022acac42e5be5ed305489e91eb32bd",
+    "unchangedAcrossAll": true
+  },
+  {
+    "path": "tools/AGENTS.md",
+    "previousHermes112864Blob": "922bb26685bd590219a8b86f9c144fac446b9faa",
+    "mainBlob": "922bb26685bd590219a8b86f9c144fac446b9faa",
+    "headBlob": "922bb26685bd590219a8b86f9c144fac446b9faa",
+    "parentBlob": "922bb26685bd590219a8b86f9c144fac446b9faa",
+    "unchangedAcrossAll": true
+  },
+  {
+    "path": "tui_gateway/AGENTS.md",
+    "previousHermes112864Blob": "b4e245cbbdccfcce908688c890d09f334ff7dbe6",
+    "mainBlob": "b4e245cbbdccfcce908688c890d09f334ff7dbe6",
+    "headBlob": "b4e245cbbdccfcce908688c890d09f334ff7dbe6",
+    "parentBlob": "b4e245cbbdccfcce908688c890d09f334ff7dbe6",
+    "unchangedAcrossAll": true
+  },
+  {
+    "path": "web/AGENTS.md",
+    "previousHermes112864Blob": "265fb75cd9a26ab286b932bd18ba54602c17aa3f",
+    "mainBlob": "265fb75cd9a26ab286b932bd18ba54602c17aa3f",
+    "headBlob": "265fb75cd9a26ab286b932bd18ba54602c17aa3f",
+    "parentBlob": "265fb75cd9a26ab286b932bd18ba54602c17aa3f",
+    "unchangedAcrossAll": true
+  }
+]

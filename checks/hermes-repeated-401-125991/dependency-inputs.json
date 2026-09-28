@@ -1,0 +1,26 @@
+{
+  "reuse": "The existing PM-built interpreter was reused unchanged for all selected tests. Different committed dependency inputs are listed for transparency; a fresh locked-environment build for each source revision was not performed.",
+  "inputSha256": {
+    "main": {
+      "pyproject.toml": "58c9bcabab40ccdd00522f993010101009c9cd2fa3c502b669297c909dfc7c34",
+      "uv.lock": "f97b75728ec4382ce85ea5bb681d503068c9e41d7e4955c8cae59b3d57dea6dd",
+      "pm/lock.json": "30bd7b5a8624b5b56440789cc969afdea2bf584f769f14e90f7c918ca317c6eb",
+      "scripts/run_tests.sh": "16cd6223a3b517326e023c3b716a182e2818fcc04ebf8a1855f83dc72e52743d",
+      "scripts/run_tests_parallel.py": "15b0f3e3702bab00d8352a56471111d08f3af7e98f7967130ff81e09b7b94015"
+    },
+    "head": {
+      "pyproject.toml": "a6d0b40bfab34227934430c797eded0883d343b3891123375e9067edae1792d6",
+      "uv.lock": "bd27ac91236fa57f9eeffea8d4a324f3ca7f9b218525d74bec14a67fc1163887",
+      "pm/lock.json": "758f34b7dc6cc1c43259dac9fb6adedc9696bbe148413df80bdcfe90716c8bdc",
+      "scripts/run_tests.sh": "818ce416356a6eaa28a9154e0640e45f808c888c7e976e8053a3e5a90b696688",
+      "scripts/run_tests_parallel.py": "15b0f3e3702bab00d8352a56471111d08f3af7e98f7967130ff81e09b7b94015"
+    },
+    "candidate": {
+      "pyproject.toml": "a6d0b40bfab34227934430c797eded0883d343b3891123375e9067edae1792d6",
+      "uv.lock": "bd27ac91236fa57f9eeffea8d4a324f3ca7f9b218525d74bec14a67fc1163887",
+      "pm/lock.json": "758f34b7dc6cc1c43259dac9fb6adedc9696bbe148413df80bdcfe90716c8bdc",
+      "scripts/run_tests.sh": "818ce416356a6eaa28a9154e0640e45f808c888c7e976e8053a3e5a90b696688",
+      "scripts/run_tests_parallel.py": "15b0f3e3702bab00d8352a56471111d08f3af7e98f7967130ff81e09b7b94015"
+    }
+  }
+}

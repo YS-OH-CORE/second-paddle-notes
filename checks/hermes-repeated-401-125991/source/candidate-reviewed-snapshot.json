@@ -1,0 +1,21 @@
+{
+  "base": "5c727a6ccd298f310becf0f0656346b6797e17f1",
+  "workingTree": "/workspace/scratch/860645c74e07/hermes401_candidate",
+  "files": [
+    {
+      "path": "tools/mcp_tool_handlers.py",
+      "bytes": 42482,
+      "sha256": "13f3d10af28670a024bb1f017ea506e8f437fa1beed96f5bf706ccf942632520",
+      "gitBlob": "7ada401398b5e8d1a2b25f635df7eb3df892ffc9"
+    },
+    {
+      "path": "tests/e2e/core/mcp_plugins/test_mcp_streamable_http.py",
+      "bytes": 10415,
+      "sha256": "20a819856089fc837d71eb1da14809caa6a98b00e0bfb52e6738a8fd4c919ce2",
+      "gitBlob": "3fb8dccadb91a79c8655aadb9ea574349d67dfa9"
+    }
+  ],
+  "patchSha256": "7a31e37c6a7e8170d4af1228f567f2dd8ba08678318b65208c1ea9735c157ab4",
+  "review": "No blocker identified in the bounded two-file candidate diff. In-place clear preserves the response hook sink identity and prior consume-once semantics. Strengthened sequential same-session E2E checks actual rejection IDs, no reinitialize/discover, both needs_reauth payloads, and a healthy third canary. No concurrent-request correlation or successful OAuth-refresh coverage claimed.",
+  "reviewMethod": "Read-only source review; no tests run or source edits by reviewer."
+}

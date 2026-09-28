@@ -1,0 +1,896 @@
+{
+  "createdAtUTC": "2026-09-28T08:42:39.058430+00:00",
+  "source": {
+    "repository": "NousResearch/hermes-agent",
+    "pullRequest": 125991,
+    "url": "https://github.com/NousResearch/hermes-agent/pull/125991",
+    "title": "fix(tools): route a folded tools/call 401 through MCP auth recovery",
+    "author": "WYSTAF",
+    "authorFork": "WYSTAF/hermes-agent",
+    "authorBranch": "fix/mcp-tools-call-401-auth-recovery",
+    "head": "5c727a6ccd298f310becf0f0656346b6797e17f1",
+    "baseAtPRSnapshot": "68fa7e9f840d24c72774508cc4dc99e8fcceb26f",
+    "requestedMain": "188a1a5efd098f067638032fea6e24c42d06178f",
+    "wholePRChangedFileCount": 29,
+    "wholePRCommitCount": 12,
+    "note": "The final commit's four-file delta is recorded separately from this whole-branch pull request snapshot."
+  },
+  "sharedGitObjectStore": "/workspace/scratch/5337b406379b/honcho_help/repo/.git",
+  "hydrationMethod": "Primary GitHub connector Git commit/tree/blob metadata and contents, immutable local object reuse, exact Git object framing and hash verification; original unsigned +0330 commit headers and signed main commit preserved byte-for-byte.",
+  "existingWorktreeWriteScope": "No existing worktree files, indexes, or branches were changed by source preparation. Shared-store writes append verified immutable objects and register the four newly requested worktrees.",
+  "commits": {
+    "head": {
+      "commit": "5c727a6ccd298f310becf0f0656346b6797e17f1",
+      "tree": "e48635a43ecc7794b21d9a5e224f3449f9fc9620",
+      "parents": [
+        "7f466af1f243dcfbefaa5a7eb271f8f472fc3dae"
+      ],
+      "originalCommitObjectVerified": true,
+      "originalCommitBytes": {
+        "path": "/workspace/scratch/860645c74e07/hermes401_source_metadata/5c727a6ccd298f310becf0f0656346b6797e17f1.commit.txt",
+        "bytes": 1649,
+        "sha256": "a3d117f4a072589d754bd3c4fbb5d7604417b861b4261f5c825b3719be9e0a19"
+      },
+      "githubCommitMetadata": {
+        "path": "/workspace/scratch/860645c74e07/hermes401_source_metadata/5c727a6ccd298f310becf0f0656346b6797e17f1.commit.json",
+        "bytes": 2578,
+        "sha256": "8e9e11ebc2fda8341c09dd67950fc68073d0789170bd834b6d183f0116240539"
+      },
+      "fullTreeManifest": {
+        "path": "/workspace/scratch/860645c74e07/hermes401_source_metadata/5c727a6ccd298f310becf0f0656346b6797e17f1.tree.json",
+        "bytes": 2554122,
+        "sha256": "751e7b1f46a1f2132cf8e630c4c6e3bc245180c0a833849f69d7afcc3db5cccf"
+      },
+      "treeManifestTruncated": false,
+      "trackedLeaves": 16210,
+      "uniqueBlobs": 16037,
+      "availableUniqueBlobs": 15822,
+      "missingUniqueBlobs": 215,
+      "explicitlyOmittedPaths": 215,
+      "allPythonObjectsAvailable": true,
+      "runnerAndDependencyLockAvailable": true,
+      "historyParentAvailability": {
+        "7f466af1f243dcfbefaa5a7eb271f8f472fc3dae": "7f466af1f243dcfbefaa5a7eb271f8f472fc3dae commit"
+      },
+      "pristineMaterializedFilesVerifiedByGitBlobHashAndMode": 15994,
+      "declaredGitCheckoutLineEndingNormalizations": [
+        {
+          "path": "activate.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "e58ed04c91a3e61d1dac481a8642f6ded946d056",
+          "worktreeBytes": 6874,
+          "sourceBytes": 6718
+        },
+        {
+          "path": "apps/desktop/scripts/update-relaunch-waiter.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "f1b92db75efc8aa9fe053b2dc0d9d322c7518dfc",
+          "worktreeBytes": 1979,
+          "sourceBytes": 1932
+        },
+        {
+          "path": "apps/desktop/scripts/verify-signed-payloads.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "fc486d119cbb6946c9824f89709acdad8b406aa6",
+          "worktreeBytes": 1686,
+          "sourceBytes": 1651
+        },
+        {
+          "path": "evals/update_streaming/watchdog.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "0f3cd764561c60c7205dd35b2ae984607263fe11",
+          "worktreeBytes": 2663,
+          "sourceBytes": 2619
+        },
+        {
+          "path": "optional-skills/software-development/ast-grep/install.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "65dd6d8b6c999f8323f94df4bfec679b599708ec",
+          "worktreeBytes": 7400,
+          "sourceBytes": 7165
+        },
+        {
+          "path": "optional-skills/software-development/ast-grep/tests/smoke.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "b051d1ce04ee92cae34d5ece0247de3fa7bb6fe6",
+          "worktreeBytes": 5824,
+          "sourceBytes": 5701
+        },
+        {
+          "path": "scripts/build/windows-deps.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "35c5c171937ce54260a6eb2176c3d4096d317682",
+          "worktreeBytes": 2043,
+          "sourceBytes": 1999
+        },
+        {
+          "path": "scripts/desktop-update.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "7b9647873d96278e95f233429d80bff6a269d327",
+          "worktreeBytes": 807,
+          "sourceBytes": 791
+        },
+        {
+          "path": "scripts/desktop-update/runtime.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "283b02b0db8a0e539ab39232312376e8e8eaad16",
+          "worktreeBytes": 3060,
+          "sourceBytes": 3006
+        },
+        {
+          "path": "scripts/tests/test-install-ps1-longpath.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "997738df80bf39f0ebcf589fc3d1dbac22161e0c",
+          "worktreeBytes": 16357,
+          "sourceBytes": 16034
+        },
+        {
+          "path": "scripts/tests/test-install-ps1-node-compatibility.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "c6f4ca32fef1b99ec23afc960050058ab0021c39",
+          "worktreeBytes": 3277,
+          "sourceBytes": 3213
+        },
+        {
+          "path": "scripts/update-test/hermes-update-rehearsal.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "7c193027c500dae552797cf917422d7cd9ba73e4",
+          "worktreeBytes": 27561,
+          "sourceBytes": 26967
+        },
+        {
+          "path": "scripts/update-test/smoke-test.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "d875454651b4c42669ed53b2a712d9d00e4b07f1",
+          "worktreeBytes": 18216,
+          "sourceBytes": 17895
+        },
+        {
+          "path": "scripts/windows-build-deps.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "92371454b603f8ed46fa089cfdccffdf4140bdd3",
+          "worktreeBytes": 15819,
+          "sourceBytes": 15560
+        },
+        {
+          "path": "scripts/windows_e2e_harness.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "b3e229dfd98352dae375e2a67ca804d902b128d7",
+          "worktreeBytes": 2601,
+          "sourceBytes": 2553
+        },
+        {
+          "path": "setup-hermes.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "b96b8bd77ae254946f26e0c59e9da22abda7114d",
+          "worktreeBytes": 7491,
+          "sourceBytes": 7344
+        },
+        {
+          "path": "tests/install/e2e-assets/desktop-smoke-windows.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "caf3e2d9c8b62991d43204d5fbbe51f3b41152ba",
+          "worktreeBytes": 3192,
+          "sourceBytes": 3142
+        },
+        {
+          "path": "tests/install/e2e-assets/record-start.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "a49e9ac4a505228b771dd38a81e9946b9ab2f36c",
+          "worktreeBytes": 2624,
+          "sourceBytes": 2562
+        },
+        {
+          "path": "tests/install/e2e-assets/record-stop.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "594b3a417bf16f46e462d75b38cefb54af3b9fcb",
+          "worktreeBytes": 2256,
+          "sourceBytes": 2203
+        },
+        {
+          "path": "tests/install/e2e-assets/source-build-env.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "ff4c7994fd9bb522a7e5e3699cec18349a78211b",
+          "worktreeBytes": 1147,
+          "sourceBytes": 1123
+        },
+        {
+          "path": "tests/install/e2e-assets/source-driver.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "eca4dd7393e22cb9adfd6a2f66dd757f32a8a674",
+          "worktreeBytes": 2007,
+          "sourceBytes": 1966
+        },
+        {
+          "path": "tests/install/e2e-assets/ts-prefix.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "cc9acc878055e6ceb9cbffdf0bf55688d810427d",
+          "worktreeBytes": 927,
+          "sourceBytes": 906
+        },
+        {
+          "path": "tests/install/e2e-assets/windows-bundle-metadata.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "45d2904b9c3506226c599067bb5f3c30271146a3",
+          "worktreeBytes": 4323,
+          "sourceBytes": 4250
+        },
+        {
+          "path": "tests/install/e2e-assets/windows-bundle-metadata.test.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "e1d9d67ec97268eea5b023769d9bb716e2e45b1b",
+          "worktreeBytes": 4348,
+          "sourceBytes": 4296
+        },
+        {
+          "path": "tests/install/e2e-assets/windows-bundled-drive-update.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "20b6c66a7c4585c9c400ae434cea1aacc861ce09",
+          "worktreeBytes": 9920,
+          "sourceBytes": 9718
+        },
+        {
+          "path": "tests/install/windows-bundle-smoke.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "6ed467cfbc57604d38906e1fb048564916d70516",
+          "worktreeBytes": 7750,
+          "sourceBytes": 7630
+        },
+        {
+          "path": "tests/install/windows-bundled-e2e.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "569bd9f3cad00381e6835ea81be4a267aa5ffd4f",
+          "worktreeBytes": 13720,
+          "sourceBytes": 13529
+        }
+      ],
+      "authorizedTestOverlaysAfterInitialConstruction": [
+        {
+          "path": "tests/e2e/core/mcp_plugins/test_mcp_streamable_http.py",
+          "originalBlob": "7589b827232ebb3742244470023bb5b46e1fbc45",
+          "currentWorktreeBlob": "3fb8dccadb91a79c8655aadb9ea574349d67dfa9",
+          "evidence": {
+            "path": "/workspace/scratch/860645c74e07/hermes401_evidence/test_mcp_streamable_http.py",
+            "bytes": 10415,
+            "sha256": "20a819856089fc837d71eb1da14809caa6a98b00e0bfb52e6738a8fd4c919ce2"
+          },
+          "reason": "Root intentionally installed the same strengthened E2E gate on original PR head after initial clean construction."
+        }
+      ],
+      "statusAtFinalSourceVerification": " M tests/e2e/core/mcp_plugins/test_mcp_streamable_http.py\n",
+      "omissionManifest": {
+        "path": "/workspace/scratch/860645c74e07/hermes401_source_metadata/5c727a6ccd298f310becf0f0656346b6797e17f1.omitted-paths.json",
+        "bytes": 40228,
+        "sha256": "ee54ca3c5a824d703a7b2bee84c6423094c11072e836d7c9736a48249e82ebbb"
+      },
+      "sourceWorktree": "/workspace/scratch/860645c74e07/hermes401_head"
+    },
+    "main": {
+      "commit": "188a1a5efd098f067638032fea6e24c42d06178f",
+      "tree": "1833eea38a53fa82b4b85f74f1ae85d65a1b16f5",
+      "parents": [
+        "58d146e961108e84f41bfed59f586121ecb3372c"
+      ],
+      "originalCommitObjectVerified": true,
+      "originalCommitBytes": {
+        "path": "/workspace/scratch/860645c74e07/hermes401_source_metadata/188a1a5efd098f067638032fea6e24c42d06178f.commit.txt",
+        "bytes": 4414,
+        "sha256": "5dcb3ae801fad4dccba1a0634d67489aa56c441bcc0ba9a82be354129fd7097d"
+      },
+      "githubCommitMetadata": {
+        "path": "/workspace/scratch/860645c74e07/hermes401_source_metadata/188a1a5efd098f067638032fea6e24c42d06178f.commit.json",
+        "bytes": 9031,
+        "sha256": "1f74b9d8a45e9e5fbecae9852d5de5c0ab44222eee3b48b007852edc9a85bf27"
+      },
+      "fullTreeManifest": {
+        "path": "/workspace/scratch/860645c74e07/hermes401_source_metadata/188a1a5efd098f067638032fea6e24c42d06178f.tree.json",
+        "bytes": 2608245,
+        "sha256": "16ade1b75845d874b65d90ba339cbf8e09d7109024eab1d913bb52bc77b50d54"
+      },
+      "treeManifestTruncated": false,
+      "trackedLeaves": 16562,
+      "uniqueBlobs": 16373,
+      "availableUniqueBlobs": 16373,
+      "missingUniqueBlobs": 0,
+      "explicitlyOmittedPaths": 0,
+      "allPythonObjectsAvailable": true,
+      "runnerAndDependencyLockAvailable": true,
+      "historyParentAvailability": {
+        "58d146e961108e84f41bfed59f586121ecb3372c": "58d146e961108e84f41bfed59f586121ecb3372c missing"
+      }
+    },
+    "parent": {
+      "commit": "7f466af1f243dcfbefaa5a7eb271f8f472fc3dae",
+      "tree": "3cbc972f047471623037d634d8aa7b8b16852132",
+      "parents": [
+        "a6bfbddf367ad5b17a1a5265ede3ed01bcb9b600"
+      ],
+      "originalCommitObjectVerified": true,
+      "originalCommitBytes": {
+        "path": "/workspace/scratch/860645c74e07/hermes401_source_metadata/7f466af1f243dcfbefaa5a7eb271f8f472fc3dae.commit.txt",
+        "bytes": 1642,
+        "sha256": "842348b353d08b6175404179152d543ac59510946fcc9318779d40d57b07c670"
+      },
+      "githubCommitMetadata": {
+        "path": "/workspace/scratch/860645c74e07/hermes401_source_metadata/7f466af1f243dcfbefaa5a7eb271f8f472fc3dae.commit.json",
+        "bytes": 2568,
+        "sha256": "80dcb5bd2782d3c83f0bb16d5fbed157e4b2e90d64a24f1c027ed49df62417f5"
+      },
+      "fullTreeManifest": {
+        "path": "/workspace/scratch/860645c74e07/hermes401_source_metadata/7f466af1f243dcfbefaa5a7eb271f8f472fc3dae.tree.json",
+        "bytes": 2554122,
+        "sha256": "3a3788ccb8a076362b5fbb50c51e83f6228e29fd4dae6e33f0f517830795d228"
+      },
+      "treeManifestTruncated": false,
+      "trackedLeaves": 16210,
+      "uniqueBlobs": 16037,
+      "availableUniqueBlobs": 15822,
+      "missingUniqueBlobs": 215,
+      "explicitlyOmittedPaths": 215,
+      "allPythonObjectsAvailable": true,
+      "runnerAndDependencyLockAvailable": true,
+      "historyParentAvailability": {
+        "a6bfbddf367ad5b17a1a5265ede3ed01bcb9b600": "a6bfbddf367ad5b17a1a5265ede3ed01bcb9b600 missing"
+      },
+      "pristineMaterializedFilesVerifiedByGitBlobHashAndMode": 15995,
+      "declaredGitCheckoutLineEndingNormalizations": [
+        {
+          "path": "activate.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "e58ed04c91a3e61d1dac481a8642f6ded946d056",
+          "worktreeBytes": 6874,
+          "sourceBytes": 6718
+        },
+        {
+          "path": "apps/desktop/scripts/update-relaunch-waiter.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "f1b92db75efc8aa9fe053b2dc0d9d322c7518dfc",
+          "worktreeBytes": 1979,
+          "sourceBytes": 1932
+        },
+        {
+          "path": "apps/desktop/scripts/verify-signed-payloads.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "fc486d119cbb6946c9824f89709acdad8b406aa6",
+          "worktreeBytes": 1686,
+          "sourceBytes": 1651
+        },
+        {
+          "path": "evals/update_streaming/watchdog.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "0f3cd764561c60c7205dd35b2ae984607263fe11",
+          "worktreeBytes": 2663,
+          "sourceBytes": 2619
+        },
+        {
+          "path": "optional-skills/software-development/ast-grep/install.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "65dd6d8b6c999f8323f94df4bfec679b599708ec",
+          "worktreeBytes": 7400,
+          "sourceBytes": 7165
+        },
+        {
+          "path": "optional-skills/software-development/ast-grep/tests/smoke.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "b051d1ce04ee92cae34d5ece0247de3fa7bb6fe6",
+          "worktreeBytes": 5824,
+          "sourceBytes": 5701
+        },
+        {
+          "path": "scripts/build/windows-deps.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "35c5c171937ce54260a6eb2176c3d4096d317682",
+          "worktreeBytes": 2043,
+          "sourceBytes": 1999
+        },
+        {
+          "path": "scripts/desktop-update.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "7b9647873d96278e95f233429d80bff6a269d327",
+          "worktreeBytes": 807,
+          "sourceBytes": 791
+        },
+        {
+          "path": "scripts/desktop-update/runtime.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "283b02b0db8a0e539ab39232312376e8e8eaad16",
+          "worktreeBytes": 3060,
+          "sourceBytes": 3006
+        },
+        {
+          "path": "scripts/tests/test-install-ps1-longpath.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "997738df80bf39f0ebcf589fc3d1dbac22161e0c",
+          "worktreeBytes": 16357,
+          "sourceBytes": 16034
+        },
+        {
+          "path": "scripts/tests/test-install-ps1-node-compatibility.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "c6f4ca32fef1b99ec23afc960050058ab0021c39",
+          "worktreeBytes": 3277,
+          "sourceBytes": 3213
+        },
+        {
+          "path": "scripts/update-test/hermes-update-rehearsal.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "7c193027c500dae552797cf917422d7cd9ba73e4",
+          "worktreeBytes": 27561,
+          "sourceBytes": 26967
+        },
+        {
+          "path": "scripts/update-test/smoke-test.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "d875454651b4c42669ed53b2a712d9d00e4b07f1",
+          "worktreeBytes": 18216,
+          "sourceBytes": 17895
+        },
+        {
+          "path": "scripts/windows-build-deps.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "92371454b603f8ed46fa089cfdccffdf4140bdd3",
+          "worktreeBytes": 15819,
+          "sourceBytes": 15560
+        },
+        {
+          "path": "scripts/windows_e2e_harness.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "b3e229dfd98352dae375e2a67ca804d902b128d7",
+          "worktreeBytes": 2601,
+          "sourceBytes": 2553
+        },
+        {
+          "path": "setup-hermes.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "b96b8bd77ae254946f26e0c59e9da22abda7114d",
+          "worktreeBytes": 7491,
+          "sourceBytes": 7344
+        },
+        {
+          "path": "tests/install/e2e-assets/desktop-smoke-windows.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "caf3e2d9c8b62991d43204d5fbbe51f3b41152ba",
+          "worktreeBytes": 3192,
+          "sourceBytes": 3142
+        },
+        {
+          "path": "tests/install/e2e-assets/record-start.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "a49e9ac4a505228b771dd38a81e9946b9ab2f36c",
+          "worktreeBytes": 2624,
+          "sourceBytes": 2562
+        },
+        {
+          "path": "tests/install/e2e-assets/record-stop.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "594b3a417bf16f46e462d75b38cefb54af3b9fcb",
+          "worktreeBytes": 2256,
+          "sourceBytes": 2203
+        },
+        {
+          "path": "tests/install/e2e-assets/source-build-env.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "ff4c7994fd9bb522a7e5e3699cec18349a78211b",
+          "worktreeBytes": 1147,
+          "sourceBytes": 1123
+        },
+        {
+          "path": "tests/install/e2e-assets/source-driver.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "eca4dd7393e22cb9adfd6a2f66dd757f32a8a674",
+          "worktreeBytes": 2007,
+          "sourceBytes": 1966
+        },
+        {
+          "path": "tests/install/e2e-assets/ts-prefix.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "cc9acc878055e6ceb9cbffdf0bf55688d810427d",
+          "worktreeBytes": 927,
+          "sourceBytes": 906
+        },
+        {
+          "path": "tests/install/e2e-assets/windows-bundle-metadata.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "45d2904b9c3506226c599067bb5f3c30271146a3",
+          "worktreeBytes": 4323,
+          "sourceBytes": 4250
+        },
+        {
+          "path": "tests/install/e2e-assets/windows-bundle-metadata.test.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "e1d9d67ec97268eea5b023769d9bb716e2e45b1b",
+          "worktreeBytes": 4348,
+          "sourceBytes": 4296
+        },
+        {
+          "path": "tests/install/e2e-assets/windows-bundled-drive-update.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "20b6c66a7c4585c9c400ae434cea1aacc861ce09",
+          "worktreeBytes": 9920,
+          "sourceBytes": 9718
+        },
+        {
+          "path": "tests/install/windows-bundle-smoke.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "6ed467cfbc57604d38906e1fb048564916d70516",
+          "worktreeBytes": 7750,
+          "sourceBytes": 7630
+        },
+        {
+          "path": "tests/install/windows-bundled-e2e.ps1",
+          "gitAttributes": {
+            "text": "set",
+            "eol": "crlf"
+          },
+          "sourceBlob": "569bd9f3cad00381e6835ea81be4a267aa5ffd4f",
+          "worktreeBytes": 13720,
+          "sourceBytes": 13529
+        }
+      ],
+      "authorizedTestOverlaysAfterInitialConstruction": [],
+      "statusAtFinalSourceVerification": "",
+      "omissionManifest": {
+        "path": "/workspace/scratch/860645c74e07/hermes401_source_metadata/7f466af1f243dcfbefaa5a7eb271f8f472fc3dae.omitted-paths.json",
+        "bytes": 40228,
+        "sha256": "ee54ca3c5a824d703a7b2bee84c6423094c11072e836d7c9736a48249e82ebbb"
+      },
+      "sourceWorktree": "/workspace/scratch/860645c74e07/hermes401_parent"
+    }
+  },
+  "initialWorktreeStates": {
+    "head": {
+      "worktree": "/workspace/scratch/860645c74e07/hermes401_head",
+      "commit": "5c727a6ccd298f310becf0f0656346b6797e17f1",
+      "tree": "e48635a43ecc7794b21d9a5e224f3449f9fc9620",
+      "initiallyClean": true,
+      "initialStatusPorcelain": "",
+      "omittedMissingPaths": 215,
+      "allPythonFilesPresent": true,
+      "runnerAndDependencyLockPresent": true,
+      "createdAtUTC": "2026-09-28T08:37:15.362346+00:00",
+      "omissionManifest": "/workspace/scratch/860645c74e07/hermes401_source_metadata/5c727a6ccd298f310becf0f0656346b6797e17f1.omitted-paths.json"
+    },
+    "candidate": {
+      "worktree": "/workspace/scratch/860645c74e07/hermes401_candidate",
+      "commit": "5c727a6ccd298f310becf0f0656346b6797e17f1",
+      "tree": "e48635a43ecc7794b21d9a5e224f3449f9fc9620",
+      "initiallyClean": true,
+      "initialStatusPorcelain": "",
+      "omittedMissingPaths": 215,
+      "allPythonFilesPresent": true,
+      "runnerAndDependencyLockPresent": true,
+      "createdAtUTC": "2026-09-28T08:37:17.004728+00:00",
+      "omissionManifest": "/workspace/scratch/860645c74e07/hermes401_source_metadata/5c727a6ccd298f310becf0f0656346b6797e17f1.omitted-paths.json"
+    },
+    "parent": {
+      "worktree": "/workspace/scratch/860645c74e07/hermes401_parent",
+      "commit": "7f466af1f243dcfbefaa5a7eb271f8f472fc3dae",
+      "tree": "3cbc972f047471623037d634d8aa7b8b16852132",
+      "initiallyClean": true,
+      "initialStatusPorcelain": "",
+      "omittedMissingPaths": 215,
+      "allPythonFilesPresent": true,
+      "runnerAndDependencyLockPresent": true,
+      "createdAtUTC": "2026-09-28T08:37:39.100034+00:00",
+      "omissionManifest": "/workspace/scratch/860645c74e07/hermes401_source_metadata/7f466af1f243dcfbefaa5a7eb271f8f472fc3dae.omitted-paths.json"
+    },
+    "main": {
+      "commit": "188a1a5efd098f067638032fea6e24c42d06178f",
+      "tree": "1833eea38a53fa82b4b85f74f1ae85d65a1b16f5",
+      "worktree": "/workspace/scratch/860645c74e07/hermes401_main",
+      "initiallyClean": true,
+      "initialCleanVerification": "hydrate_exact.py construct completed with its explicit status-empty assertion before root copied its authorized E2E test overlay.",
+      "currentWorktreeMayContainAuthorizedRootTestOverlay": true,
+      "originalCommitFile": "/workspace/scratch/860645c74e07/hermes401_source_metadata/188a1a5efd098f067638032fea6e24c42d06178f.commit.txt",
+      "originalCommitSha256": "5dcb3ae801fad4dccba1a0634d67489aa56c441bcc0ba9a82be354129fd7097d",
+      "sourceManifest": "/workspace/scratch/860645c74e07/hermes401_source_metadata/188a1a5efd098f067638032fea6e24c42d06178f.tree.json"
+    }
+  },
+  "candidateUse": "Initially identical to pristine head; root may add an authorized test-only overlay. Initial source provenance is separate from later experiment state.",
+  "mainUse": "Initially a full clean exact-main worktree. Root subsequently overlaid the authorized strengthened E2E test; this does not change the original commit/tree identities. Current working-file state is owned by the experiment.",
+  "headUse": "Initially clean at the exact original PR commit. Root subsequently installed the same authorized strengthened E2E test for the original-PR red gate. Every other materialized source file was independently checked against its original Git blob and declared checkout attributes.",
+  "downloadedUniqueBlobs": 304,
+  "downloadedVerifiedBytes": 16446023,
+  "remainingMissingUniqueBlobs": 215,
+  "remainingMissingBytes": 10384828,
+  "omissionReason": "Root authorized explicit skip-worktree omissions for unrelated non-Python UI/site/build/install/docs source and one old macOS icon. All Python, scripts/run_tests.sh, and pm/lock.json are present. Full Git trees and exact commits are retained; this is not a complete file materialization for UI/build work.",
+  "omissionExtensions": {
+    ".icns": 1,
+    ".ts": 124,
+    ".mjs": 9,
+    ".tsx": 60,
+    ".json": 1,
+    ".sh": 2,
+    ".ps1": 3,
+    ".md": 14,
+    ".cjs": 1
+  },
+  "blobEvidenceBatches": [
+    {
+      "path": "/workspace/scratch/860645c74e07/hermes401_source_metadata/blobs-000.json",
+      "bytes": 1556779,
+      "sha256": "735a8f2ebc86be4b93629c6316a411481fef8d206cc64f88e9489df2c9e9c2b2",
+      "blobs": 20
+    },
+    {
+      "path": "/workspace/scratch/860645c74e07/hermes401_source_metadata/blobs-020.json",
+      "bytes": 78546,
+      "sha256": "bf4c62f3c5eb1b4be9df1a99dfc6503b9e86c7765e08d28d19e4029875924a4d",
+      "blobs": 20
+    },
+    {
+      "path": "/workspace/scratch/860645c74e07/hermes401_source_metadata/blobs-040.json",
+      "bytes": 2208233,
+      "sha256": "ba4e37f15130b5422181bb9d0bd41a584864307ddb7728eec72a62b5146a82e4",
+      "blobs": 20
+    },
+    {
+      "path": "/workspace/scratch/860645c74e07/hermes401_source_metadata/blobs-060.json",
+      "bytes": 1343399,
+      "sha256": "ad6990129435e40017611a22c23f1daba3d582f00fd312e70dc45001108a0858",
+      "blobs": 20
+    },
+    {
+      "path": "/workspace/scratch/860645c74e07/hermes401_source_metadata/blobs-080.json",
+      "bytes": 440308,
+      "sha256": "8d110f6a193aadfdb73493229edddbf64a32a3e45c6eec78454d863126dbf4db",
+      "blobs": 18
+    },
+    {
+      "path": "/workspace/scratch/860645c74e07/hermes401_source_metadata/blobs-binary-080-one.json",
+      "bytes": 352169,
+      "sha256": "ad28e969ea76504154384c4f12cd76abb0bbf3b340f5e08359a8228f9f2fb03d",
+      "blobs": 1
+    },
+    {
+      "path": "/workspace/scratch/860645c74e07/hermes401_source_metadata/blobs-source-000.json",
+      "bytes": 2350007,
+      "sha256": "6cae4c7d3c4b97ed01caf48a0363dae9c239c8055aaf80dc8687718a51f95d22",
+      "blobs": 20
+    },
+    {
+      "path": "/workspace/scratch/860645c74e07/hermes401_source_metadata/blobs-source-020.json",
+      "bytes": 1320986,
+      "sha256": "9bc44190ce13f88608f703d8d511b3e718cecd4690fd78e1f4bdcb45435ef85f",
+      "blobs": 20
+    },
+    {
+      "path": "/workspace/scratch/860645c74e07/hermes401_source_metadata/blobs-source-040.json",
+      "bytes": 726127,
+      "sha256": "44fe3d8c391c26bbf651903540da944d8dccf619f28fee87a7535fdca86a3d9c",
+      "blobs": 20
+    },
+    {
+      "path": "/workspace/scratch/860645c74e07/hermes401_source_metadata/blobs-source-060.json",
+      "bytes": 2075786,
+      "sha256": "b050cc87463068fae9b00114b03395d22471ad3edf40a75a139a79ef78a72169",
+      "blobs": 20
+    },
+    {
+      "path": "/workspace/scratch/860645c74e07/hermes401_source_metadata/blobs-source-080.json",
+      "bytes": 610180,
+      "sha256": "12cbb3ebbf3bb4643a5489dc389d2fbfda9d86c176941f526f5a16827245611d",
+      "blobs": 20
+    },
+    {
+      "path": "/workspace/scratch/860645c74e07/hermes401_source_metadata/blobs-source-100.json",
+      "bytes": 482365,
+      "sha256": "858ade7eb878576493e89e4359fe66f4b205cceb153476c79f0e35030f1d9df2",
+      "blobs": 20
+    },
+    {
+      "path": "/workspace/scratch/860645c74e07/hermes401_source_metadata/blobs-source-120.json",
+      "bytes": 646687,
+      "sha256": "65415d2f21e2c9199ac010a00e1fc70fb4ccdfe69d5e0c992cdb3592a54287d3",
+      "blobs": 20
+    },
+    {
+      "path": "/workspace/scratch/860645c74e07/hermes401_source_metadata/blobs-source-140.json",
+      "bytes": 410934,
+      "sha256": "18c5e06379455b4337f1f242e62c1c199262bdd7c9642d5be4e66214e3baaead",
+      "blobs": 20
+    },
+    {
+      "path": "/workspace/scratch/860645c74e07/hermes401_source_metadata/blobs-source-160.json",
+      "bytes": 1494643,
+      "sha256": "45d10723091c528ffaf58df786331443d05583463cff9dcf49814f3fb86782f4",
+      "blobs": 20
+    },
+    {
+      "path": "/workspace/scratch/860645c74e07/hermes401_source_metadata/blobs-source-180.json",
+      "bytes": 1020535,
+      "sha256": "5d8110b7f38cf02393620f34d3cce1804b246657f16157035a260d6f35a940ca",
+      "blobs": 20
+    },
+    {
+      "path": "/workspace/scratch/860645c74e07/hermes401_source_metadata/blobs-source-200.json",
+      "bytes": 136496,
+      "sha256": "4c25a4b77542ace773ea4e89df20327cf1d3fbd1b2fec50de699959a4ecd4d3d",
+      "blobs": 5
+    }
+  ],
+  "instructions": {
+    "comparison": {
+      "path": "/workspace/scratch/860645c74e07/hermes401_source_metadata/instruction-comparison.json",
+      "bytes": 4305,
+      "sha256": "115ebd2c9880dc13c92271f9ba021f88c8fd027ad46adb3243285a46868258cf"
+    },
+    "previousHermes112864Commit": "5bed864c5f21ba1248d3a266af2f5a6051c8db3f",
+    "comparedFiles": 13,
+    "allByteIdentical": true
+  },
+  "finalCommitDelta": {
+    "manifest": {
+      "path": "/workspace/scratch/860645c74e07/hermes401_source_metadata/head-parent-delta.json",
+      "bytes": 1818,
+      "sha256": "985c1ea423de43d1310c5517868695ff9d523e96c6de239457107e4973fd9b64"
+    },
+    "files": 4,
+    "insertions": 169,
+    "deletions": 7
+  },
+  "limitations": [
+    "Historical ancestors before the supplied immediate parent or current main may be missing locally.",
+    "215 unrelated paths are explicitly omitted from head, candidate, and parent working files; their expected object IDs and modes are retained in exact trees and omission manifests."
+  ],
+  "applicationTestsRunByThisSourcePreparationAgent": false
+}

@@ -1,0 +1,13 @@
+▶ not activated — using HERMES_PYTHON: /workspace/scratch/860645c74e07/hermes125919/.venv/bin/python
+▶ running per-file parallel test suite via run_tests_parallel.py
+  (TZ=UTC LANG=C.UTF-8 PYTHONHASHSEED=0; clean env)
+▶ pre-compiling bytecode cache
+▶ launching test runner
+usage: run_tests_parallel.py [-h] [-j JOBS] [--paths PATHS]
+                             [--include-integration]
+                             [--file-timeout FILE_TIMEOUT]
+                             [--file-retries FILE_RETRIES] [--slice I/N]
+                             [--generate-slices N] [--files LIST]
+                             [--files-from PATH]
+                             [PATH ...]
+run_tests_parallel.py: error: argument --basetemp: expected one argument

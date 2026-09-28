@@ -1,0 +1,44 @@
+{
+  "label": "main-red-01",
+  "checkout": "/workspace/scratch/860645c74e07/hermes401_main",
+  "head": "188a1a5efd098f067638032fea6e24c42d06178f",
+  "workingTreeStatus": " M tests/e2e/core/mcp_plugins/test_mcp_streamable_http.py\n",
+  "workingTreePatchSha256": "bbe201c25bea3707d3545cb5069ef7757994db4bb977c1196a7e6327e9d9de3a",
+  "command": [
+    "scripts/run_tests.sh",
+    "--file-timeout",
+    "360",
+    "--include-integration",
+    "tests/e2e/core/mcp_plugins/test_mcp_streamable_http.py",
+    "-k",
+    "401",
+    "-v",
+    "--tb=short",
+    "--basetemp",
+    "/workspace/scratch/860645c74e07/hermes401_evidence/main-red-01/pytest"
+  ],
+  "environmentOverrides": {
+    "HERMES_PYTHON": "/workspace/scratch/860645c74e07/hermes125919/.venv/bin/python",
+    "HERMES_TEST_WORKERS": "1",
+    "HERMES_TEST_FILE_RETRIES": "0",
+    "GIT_NO_LAZY_FETCH": "1"
+  },
+  "inputSha256": {
+    "tools/mcp_tool_handlers.py": "d1b4463309a2de351aaf6c7cd8f7a2a1e83f5e26dbe058371c9eeb9d0c567903",
+    "tools/mcp_tool_errors.py": "d24e3f43d47c4621263291a3bb2a8fffb6ded5ad4340dc00af5b9187eca66ee0",
+    "tools/mcp_tool_transport.py": "25bac703ba1040a1d4e5f0ae21568c342185419d2f89ab1750677d1225f726a3",
+    "tools/mcp_oauth_manager.py": "7fa7bf4001ebd89485c830daf4f641418b82ece83838a1602e2f2d07720df3cc",
+    "tools/mcp_tool.py": "b701a960542cba6c6f2719f7fdba8bf78e1aa271d5696d1240edc29d3f7f69b6",
+    "tests/e2e/core/mcp_plugins/test_mcp_streamable_http.py": "20a819856089fc837d71eb1da14809caa6a98b00e0bfb52e6738a8fd4c919ce2",
+    "tests/e2e/core/mcp_plugins/_helpers.py": "b145c16fd4b83ab76b2e4c28c6facafbcc6db2b87b497725f595b2de3deec33a",
+    "tests/e2e/core/mcp_plugins/mcp_fixture_server.py": "8d48d16ac2a46507caebf4a54beb5843832fe543ea5e22853ff0461df84f61c8",
+    "pyproject.toml": "58c9bcabab40ccdd00522f993010101009c9cd2fa3c502b669297c909dfc7c34",
+    "uv.lock": "f97b75728ec4382ce85ea5bb681d503068c9e41d7e4955c8cae59b3d57dea6dd",
+    "scripts/run_tests.sh": "16cd6223a3b517326e023c3b716a182e2818fcc04ebf8a1855f83dc72e52743d"
+  },
+  "startedAt": "2026-09-28T08:28:21.695438+00:00",
+  "exitCode": 2,
+  "elapsedSeconds": 14.588,
+  "finishedAt": "2026-09-28T08:28:36.283165+00:00",
+  "logSha256": "e5c3435bb828eaf77b22d52ae6023f07377270fe75c3f3218011a661036dd3ba"
+}

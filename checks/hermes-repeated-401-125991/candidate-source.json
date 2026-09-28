@@ -1,0 +1,20 @@
+{
+  "parent": "5c727a6ccd298f310becf0f0656346b6797e17f1",
+  "baseTree": "e48635a43ecc7794b21d9a5e224f3449f9fc9620",
+  "candidateTree": "c34aaae949e52215febdcf23dfabc8f34db382bd",
+  "files": [
+    {
+      "path": "tools/mcp_tool_handlers.py",
+      "sha256": "13f3d10af28670a024bb1f017ea506e8f437fa1beed96f5bf706ccf942632520",
+      "gitBlob": "7ada401398b5e8d1a2b25f635df7eb3df892ffc9"
+    },
+    {
+      "path": "tests/e2e/core/mcp_plugins/test_mcp_streamable_http.py",
+      "sha256": "20a819856089fc837d71eb1da14809caa6a98b00e0bfb52e6738a8fd4c919ce2",
+      "gitBlob": "3fb8dccadb91a79c8655aadb9ea574349d67dfa9"
+    }
+  ],
+  "diffStat": ".../core/mcp_plugins/test_mcp_streamable_http.py   | 44 ++++++++++++----------\n tools/mcp_tool_handlers.py                         |  3 +-\n 2 files changed, 26 insertions(+), 21 deletions(-)",
+  "diffCheckExit": 0,
+  "testTiming": "Tests executed on original HEAD plus the exact recorded working-tree patch; publication must reproduce these file blobs and this full tree."
+}

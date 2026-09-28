@@ -1,0 +1,1507 @@
+[
+  {
+    "path": "apps/desktop/assets/icon-dark.icns",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "a2d6c3961d66e67002787a2a551c19b1aac94775",
+    "size": 361309
+  },
+  {
+    "path": "apps/desktop/electron/mac-usage-strings.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "9a6527738d1f01d718829aea024a88ac7605eca8",
+    "size": 1403
+  },
+  {
+    "path": "apps/desktop/electron/main.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "e65d444ab739eec68f2f7e25794fa8da31cb9c4c",
+    "size": 704671
+  },
+  {
+    "path": "apps/desktop/electron/preload.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "2988a7eb661c1d0b92c6c13ab833cc5dd7f2e9ed",
+    "size": 36964
+  },
+  {
+    "path": "apps/desktop/electron/preview-file-watch.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "a94f09231baedc01d2df4167f3545d28345a3f15",
+    "size": 1822
+  },
+  {
+    "path": "apps/desktop/electron/primary-backend-startup.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "37acbf2fc95db6d3b5ba3fe9d4ad03b28b478869",
+    "size": 9393
+  },
+  {
+    "path": "apps/desktop/electron/primary-profile-pin.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "c8ae9c527877aaac4d0e5159d7ca82bab48584c1",
+    "size": 2644
+  },
+  {
+    "path": "apps/desktop/electron/product-identity.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "c8f78b8e068388cabd000b2b92d06738071acd40",
+    "size": 12175
+  },
+  {
+    "path": "apps/desktop/electron/profile-session-routing.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "baf27b60d1731ada0348b1c8eed238e6ed1495eb",
+    "size": 23791
+  },
+  {
+    "path": "apps/desktop/electron/source-python.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "1c7079acdbe3d19fc48f98ed06221bd920d0c7b7",
+    "size": 3162
+  },
+  {
+    "path": "apps/desktop/electron/source-python.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "14e3cd1fcf6a0f271b3a55e30aaf5c3d31760aa9",
+    "size": 2016
+  },
+  {
+    "path": "apps/desktop/electron/ssh-connection.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "4e223cd6ea07cdbee4be15b99d05d9161f958547",
+    "size": 48931
+  },
+  {
+    "path": "apps/desktop/electron/update-handoff-marker.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "352412ac6d83d287b2fde6dadda803da1537c017",
+    "size": 2990
+  },
+  {
+    "path": "apps/desktop/electron/updater/app-installer-strategy.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "080ec81b18a2a2a8015ae6183ec780229d2511de",
+    "size": 7274
+  },
+  {
+    "path": "apps/desktop/electron/updater/channel-protocol.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "4e67c1bb62700b868a21ff9575f34411a0985fbd",
+    "size": 14293
+  },
+  {
+    "path": "apps/desktop/electron/updater/channel.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "4ddc56046ed7dfab0e2b734d4ba513ae0dbc34ec",
+    "size": 25948
+  },
+  {
+    "path": "apps/desktop/electron/updater/checkout-handoff.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "8e68f16303db9917a02ef5b2248e1a7f15759f05",
+    "size": 5152
+  },
+  {
+    "path": "apps/desktop/electron/updater/checkout-legacy.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "30d2d672eb1303d47d2e7fd809284c582ee89e7b",
+    "size": 5418
+  },
+  {
+    "path": "apps/desktop/electron/updater/checkout-source.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "e15c20ad1ac3c843130878b85eb2abea882f65ad",
+    "size": 4309
+  },
+  {
+    "path": "apps/desktop/electron/updater/checkout.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "9d31141770eb00c4bf45d693016dfa6fbe7329a8",
+    "size": 20777
+  },
+  {
+    "path": "apps/desktop/electron/updater/mac-client.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "536c19495914451d6ffae2091dedb9ccc0a798ea",
+    "size": 3928
+  },
+  {
+    "path": "apps/desktop/electron/updater/mac-client.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "23979ef7edd0a277613da8ad3ccae8c5b14f3fb9",
+    "size": 3068
+  },
+  {
+    "path": "apps/desktop/electron/updater/state-db-preflight.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "ab5267225de44b77e319a5dc27de33655f2f7f68",
+    "size": 2982
+  },
+  {
+    "path": "apps/desktop/electron/updater/state-db-preflight.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "bbc8ffdf6153c76671133c4be980872cad5f561a",
+    "size": 1113
+  },
+  {
+    "path": "apps/desktop/electron/window-accelerator.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "933236aefd66d9c69be68da25d27fd80b28cdedd",
+    "size": 2261
+  },
+  {
+    "path": "apps/desktop/electron/window-reveal.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "e07d5071b0a52e4bc5bda9a59eb128e49491b3f2",
+    "size": 10772
+  },
+  {
+    "path": "apps/desktop/electron/window-reveal.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "db289a348fa77289c538e50a70aa1183a78b480b",
+    "size": 4845
+  },
+  {
+    "path": "apps/desktop/scripts/after-pack-toolchain.test.mjs",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "43060fdc9f960623dd46585fc37576b534c864a7",
+    "size": 2964
+  },
+  {
+    "path": "apps/desktop/scripts/after-pack.mjs",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "e1735069787b5fd2b96af593034c54fe6e15a3f1",
+    "size": 5881
+  },
+  {
+    "path": "apps/desktop/scripts/after-pack.test.mjs",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "b908856c110777225137d5fe445473cccb5c0129",
+    "size": 3132
+  },
+  {
+    "path": "apps/desktop/scripts/bundle-electron-main.mjs",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "b72b11b9e8ebdec9fa8ebea17c499899f2b6d8bb",
+    "size": 3868
+  },
+  {
+    "path": "apps/desktop/src/api/sessions.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "e01f58fe2e74c8da08997caf100269ee81cfb386",
+    "size": 26317
+  },
+  {
+    "path": "apps/desktop/src/app/artifacts/artifact-utils.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "4609150adf3af0533599dbc046e04c822ea396b4",
+    "size": 16389
+  },
+  {
+    "path": "apps/desktop/src/app/artifacts/index.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "f6ef646c504266ad74c5fbcee4cc094e817dde1b",
+    "size": 20213
+  },
+  {
+    "path": "apps/desktop/src/app/capabilities/catalog/catalog-browser.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "14009de5a11f0e39e5b10ffe9ddb7d31f12af857",
+    "size": 17497
+  },
+  {
+    "path": "apps/desktop/src/app/capabilities/catalog/catalog-detail-dialog.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "0ce46b73ae21d6035d1a72910ba42f24a4f834c0",
+    "size": 2577
+  },
+  {
+    "path": "apps/desktop/src/app/capabilities/catalog/catalog-pointer.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "5c1ce121cc0918e8aa053ff7627d95450e588f97",
+    "size": 1898
+  },
+  {
+    "path": "apps/desktop/src/app/capabilities/catalog/skill-catalog.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "18a89641d6eb89620ace61b9f37572ca08cda80c",
+    "size": 9903
+  },
+  {
+    "path": "apps/desktop/src/app/capabilities/plugins/plugins-tab.test.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "b5cdd6f701e3a9e95c51101742350d18f048bc1d",
+    "size": 27070
+  },
+  {
+    "path": "apps/desktop/src/app/capabilities/plugins/plugins-tab.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "d8d068192242aac7da53e4d045002bbb7b6a7c16",
+    "size": 26854
+  },
+  {
+    "path": "apps/desktop/src/app/capabilities/skills/skills-tab.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "2f003a31668da65ba83c714144baa908d84e9e21",
+    "size": 11835
+  },
+  {
+    "path": "apps/desktop/src/app/chat/composer/hooks/use-composer-queue.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "e8f749c1c4ce3e4b2bdbaf73904f3724e4779b23",
+    "size": 15844
+  },
+  {
+    "path": "apps/desktop/src/app/chat/composer/hooks/use-slash-completions.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "0f364c5ccd9268b8c391e9e2d90dc1721e498897",
+    "size": 12890
+  },
+  {
+    "path": "apps/desktop/src/app/chat/composer/hooks/use-voice-conversation.test.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "446b603ac1cb2c4d1e688029cb8b0d519379cafc",
+    "size": 10693
+  },
+  {
+    "path": "apps/desktop/src/app/chat/composer/hooks/use-voice-conversation.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "6deab067fc682a15f3aee8fb1c5d1c09d5514dc6",
+    "size": 29283
+  },
+  {
+    "path": "apps/desktop/src/app/chat/hooks/use-composer-actions.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "df261df5acb380364446a55e7bc828ed34f04818",
+    "size": 24785
+  },
+  {
+    "path": "apps/desktop/src/app/chat/right-rail/preview-act.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "e93de5b2ee9efb735a062e6453da4e8c5f072b6c",
+    "size": 19841
+  },
+  {
+    "path": "apps/desktop/src/app/chat/right-rail/preview-pane.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "958e9cc1b935c342daa618fd8cc8ba57cc4390fb",
+    "size": 49624
+  },
+  {
+    "path": "apps/desktop/src/app/chat/right-rail/preview.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "d831bcbb8467eaeac674ce65132c117c594fe120",
+    "size": 1651
+  },
+  {
+    "path": "apps/desktop/src/app/chat/session-tile.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "99ca5f4b51c912e6ccd75ea5a993461ef368f801",
+    "size": 35596
+  },
+  {
+    "path": "apps/desktop/src/app/chat/sidebar/chat-sidebar.integration.test.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "5277809d561ceb82adc6cc405783f06e5cac0f76",
+    "size": 15125
+  },
+  {
+    "path": "apps/desktop/src/app/chat/sidebar/index.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "80d282e7b9f55da238091ea03eec67054da2199f",
+    "size": 88318
+  },
+  {
+    "path": "apps/desktop/src/app/chat/sidebar/profile-switcher.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "20e16d086e11f60b2f3b798d9cff1dd63e45606c",
+    "size": 62353
+  },
+  {
+    "path": "apps/desktop/src/app/chat/sidebar/project-filter.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "4c1fc894fa699c5fa270ab783b2927ecb22ddf87",
+    "size": 1389
+  },
+  {
+    "path": "apps/desktop/src/app/chat/sidebar/session-row.test.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "036a644abfc5e8e242ebd9a91b51a97ff6dbaba5",
+    "size": 14774
+  },
+  {
+    "path": "apps/desktop/src/app/chat/sidebar/session-row.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "f5fe96334be842021ee305687fad37d8498d8b40",
+    "size": 30812
+  },
+  {
+    "path": "apps/desktop/src/app/chat/transcript-backfill.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "84d6182e48740e54e6409d3a98030a007769ff11",
+    "size": 19085
+  },
+  {
+    "path": "apps/desktop/src/app/chat/transcript-backfill.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "e31eb1ec3f94ff1d47423fe2d86556f3a4fdd57c",
+    "size": 14920
+  },
+  {
+    "path": "apps/desktop/src/app/contrib/controller.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "63515cfded856341b372f4ee20dfb25be9c9ac5d",
+    "size": 33811
+  },
+  {
+    "path": "apps/desktop/src/app/contrib/hooks/remembered-session.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "3b4a2ac7f6b75af0c6fa18d5ef5e7ae1e5b07f20",
+    "size": 1139
+  },
+  {
+    "path": "apps/desktop/src/app/contrib/hooks/use-background-sync.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "c1ea8bf7b262fd8427c33cb6f9ff1bc6f67e2b52",
+    "size": 44825
+  },
+  {
+    "path": "apps/desktop/src/app/contrib/hooks/use-background-sync.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "4ffb678471ccabc00173e2761f641e0eee26f95a",
+    "size": 47157
+  },
+  {
+    "path": "apps/desktop/src/app/contrib/hooks/use-desktop-integrations.test.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "7d08c86172cda9106b32eef60a4d4725a53911ef",
+    "size": 33213
+  },
+  {
+    "path": "apps/desktop/src/app/contrib/hooks/use-desktop-integrations.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "e96b85b20375fd9a94075d1cfec33f1ce22d2e17",
+    "size": 20354
+  },
+  {
+    "path": "apps/desktop/src/app/contrib/onboarding-kickoff.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "0153565bd77f0e9e53d190341ab4890937fcfc84",
+    "size": 8867
+  },
+  {
+    "path": "apps/desktop/src/app/contrib/wiring.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "475ff33ef44e390cba56292878ec5fe05a5b27c9",
+    "size": 58049
+  },
+  {
+    "path": "apps/desktop/src/app/gateway/hooks/use-gateway-boot.test.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "2e1d64c33189bf02f211080261efe9b200ebcbc4",
+    "size": 99389
+  },
+  {
+    "path": "apps/desktop/src/app/hooks/use-config-record.test.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "681ca3beaf4fed5011cf6378af2e718f89aa9846",
+    "size": 4552
+  },
+  {
+    "path": "apps/desktop/src/app/hooks/use-config-record.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "478cc3eac0514773ae16df5f698e9f1ad4c99384",
+    "size": 7127
+  },
+  {
+    "path": "apps/desktop/src/app/hooks/use-keybinds.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "175a25641a8d08b106f45ddf1d37cde9df378aea",
+    "size": 20632
+  },
+  {
+    "path": "apps/desktop/src/app/hud/resize-frame.test.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "735a5db73e9b5d46c8ed0c98be510089406b8146",
+    "size": 2965
+  },
+  {
+    "path": "apps/desktop/src/app/session/hooks/use-background-queue-drain.test.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "fa37b7eeca185f9b7fa541e1b6fc20d47e6c1537",
+    "size": 10180
+  },
+  {
+    "path": "apps/desktop/src/app/session/hooks/use-background-queue-drain.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "b67722eb6774af7865aa92edbbcbbaa0218b6860",
+    "size": 6444
+  },
+  {
+    "path": "apps/desktop/src/app/session/hooks/use-message-stream/gateway-event/fallback-switch.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "43f415fd7a04fd0acc32fe9b2c4d6fa9f9e7e3e9",
+    "size": 2345
+  },
+  {
+    "path": "apps/desktop/src/app/session/hooks/use-message-stream/index.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "7944ecdee5984a56888605e7a67531bbe16464fd",
+    "size": 43000
+  },
+  {
+    "path": "apps/desktop/src/app/session/hooks/use-model-controls.test.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "771b92bb348000a335806cdea3ec645d10ae5166",
+    "size": 26399
+  },
+  {
+    "path": "apps/desktop/src/app/session/hooks/use-model-controls.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "2d42bbca1f696cc0e45ebc9964974704b2e42e13",
+    "size": 14382
+  },
+  {
+    "path": "apps/desktop/src/app/session/hooks/use-prompt-actions/index.test.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "cbb1b97353f0b5fc202742b80ec3bebf87fac205",
+    "size": 223816
+  },
+  {
+    "path": "apps/desktop/src/app/session/hooks/use-prompt-actions/submit-view-binding.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "0098177af7465492ba897c45e07b37448f5ffbc6",
+    "size": 3603
+  },
+  {
+    "path": "apps/desktop/src/app/session/hooks/use-prompt-actions/submit.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "cfa405bf23ff93dfcd273add812013f724499618",
+    "size": 46368
+  },
+  {
+    "path": "apps/desktop/src/app/session/hooks/use-session-actions.test.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "0547bab333f2405417f2650774c0eebaee37c7cb",
+    "size": 203578
+  },
+  {
+    "path": "apps/desktop/src/app/session/hooks/use-session-actions/index.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "7dc9df3538b88402a0eea4d86818921d7489ec16",
+    "size": 134390
+  },
+  {
+    "path": "apps/desktop/src/app/session/hooks/use-session-actions/resolve-stored-session.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "fcab3f99e28c13a3193bfe916d825c4142b00694",
+    "size": 12943
+  },
+  {
+    "path": "apps/desktop/src/app/session/hooks/use-session-actions/utils.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "4413467c88c5a303886f26bec51312917e5ea462",
+    "size": 88396
+  },
+  {
+    "path": "apps/desktop/src/app/session/hooks/use-session-list-actions.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "f284f5350a42e81b16b5e883be46581e6779bade",
+    "size": 20293
+  },
+  {
+    "path": "apps/desktop/src/app/session/hooks/use-session-state-cache.test.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "211e5e894e707151d7fb5101785dcf3b6c49c193",
+    "size": 37589
+  },
+  {
+    "path": "apps/desktop/src/app/session/hooks/use-session-state-cache.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "348049f0f4ea0e9f75d5bb665306816ac3827de9",
+    "size": 19113
+  },
+  {
+    "path": "apps/desktop/src/app/session/hooks/use-transcript-peer-sync.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "ece07410b7accab7b14ca273c94ce42d86820f3c",
+    "size": 3011
+  },
+  {
+    "path": "apps/desktop/src/app/settings/connections-registry.test.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "3e9233eb56d41d0a232e0f982f2d3f9110118427",
+    "size": 20335
+  },
+  {
+    "path": "apps/desktop/src/app/settings/connections-registry.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "d29d0c71d05a7f2c99ce79686a8b0c4ba557f17d",
+    "size": 31988
+  },
+  {
+    "path": "apps/desktop/src/app/settings/model-settings.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "43f196caff799b30f436fd775d9a1674f762e06a",
+    "size": 57896
+  },
+  {
+    "path": "apps/desktop/src/app/settings/providers-settings.test.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "b90dd723d68b97d784d3fbbe47a0bfa3cefcafd5",
+    "size": 11184
+  },
+  {
+    "path": "apps/desktop/src/app/settings/providers-settings.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "135882e26335e97410d8802d35f8b42099a24813",
+    "size": 22532
+  },
+  {
+    "path": "apps/desktop/src/app/settings/settings-manifest.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "a6676edc4e2ad702a3ffb2385139f0556d04622e",
+    "size": 14064
+  },
+  {
+    "path": "apps/desktop/src/app/shell/hooks/use-statusbar-items.test.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "c4c0523bcf6f0743ed9c6dc5fe824c1a69b631d9",
+    "size": 8194
+  },
+  {
+    "path": "apps/desktop/src/app/shell/model-catalog-menu.search-fold.test.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "d44db50b8b0edd0b689bb86b73f64de2b05e1386",
+    "size": 2494
+  },
+  {
+    "path": "apps/desktop/src/app/shell/model-catalog-menu.test.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "60a70b64274d6e5317094511fff7bfec74f1ee1e",
+    "size": 10651
+  },
+  {
+    "path": "apps/desktop/src/app/shell/model-catalog-menu.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "03189bee8db66af788a2d1ffc39c06363fde5730",
+    "size": 37771
+  },
+  {
+    "path": "apps/desktop/src/app/shell/model-menu-panel.test.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "d6e3e92370c4e48db2cdcf61ea781e99db8a8301",
+    "size": 21844
+  },
+  {
+    "path": "apps/desktop/src/components/assistant-ui/catalog-advanced-dialog.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "4d0171de74cbcf31a76b435c964f9df18d9fcc76",
+    "size": 12976
+  },
+  {
+    "path": "apps/desktop/src/components/assistant-ui/catalog-install-tool.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "8c981821059c2d353a1fa1d85e5f47f5855478c0",
+    "size": 11778
+  },
+  {
+    "path": "apps/desktop/src/components/assistant-ui/clarify-tool.test.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "c5b8ed4486413404c44a67162cf7129947add996",
+    "size": 45630
+  },
+  {
+    "path": "apps/desktop/src/components/assistant-ui/clarify-tool.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "a7542f1ddfc17572aa694656ad6045a5ee42c57c",
+    "size": 42373
+  },
+  {
+    "path": "apps/desktop/src/components/assistant-ui/markdown-text.prose-safety.test.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "bcf4220e4d8c71ba5dca8a02a8465e395c98630f",
+    "size": 3379
+  },
+  {
+    "path": "apps/desktop/src/components/assistant-ui/markdown-text.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "3fda5aa94a2175ee56eac7f823be82ef14cfed28",
+    "size": 23117
+  },
+  {
+    "path": "apps/desktop/src/components/assistant-ui/thread/list-session-scroll.test.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "15eb4611c328a19cd421b9ea1714c467c2b3ba5c",
+    "size": 33973
+  },
+  {
+    "path": "apps/desktop/src/components/assistant-ui/tool/approval.test.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "3a603a0c3c3ccc429530a53126480505f0fcf7fb",
+    "size": 15250
+  },
+  {
+    "path": "apps/desktop/src/components/assistant-ui/tool/approval.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "03184dc3b505308d603a91a8140e6eb3e56d53b5",
+    "size": 15253
+  },
+  {
+    "path": "apps/desktop/src/components/assistant-ui/tool/delegate.test.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "a70f9f76f8a3dd6d98f9b9ffbcbfe8758784a06d",
+    "size": 3158
+  },
+  {
+    "path": "apps/desktop/src/components/boot-failure-overlay.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "0aff6a0bd86c74a12597909d175e277eba4b3550",
+    "size": 21642
+  },
+  {
+    "path": "apps/desktop/src/components/chat/zoomable-image.test.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "6cf1e834845fbda8da259514ce42b16d0c582cc2",
+    "size": 2207
+  },
+  {
+    "path": "apps/desktop/src/components/chat/zoomable-image.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "75270683cc7f769c1a4b273e6bf09b273a8d2c1c",
+    "size": 4238
+  },
+  {
+    "path": "apps/desktop/src/components/desktop-install-overlay.test.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "44fa21ff30e9c939eff3e97e0f92f876330ea165",
+    "size": 19898
+  },
+  {
+    "path": "apps/desktop/src/components/desktop-install-overlay.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "0ac53fa91564fd38f21264b87051dfe5008c4876",
+    "size": 27968
+  },
+  {
+    "path": "apps/desktop/src/components/onboarding/index.test.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "ae2e5d698f9a644b1acf135722ff16dc72c32309",
+    "size": 5590
+  },
+  {
+    "path": "apps/desktop/src/components/onboarding/index.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "a8905e1f3bfa81771b8f6dd0e42f4849620086e2",
+    "size": 35041
+  },
+  {
+    "path": "apps/desktop/src/components/pane-shell/tree/pane-reload-share.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "657220644b28d6fc221a2e81eb1a13e1b721aa92",
+    "size": 7200
+  },
+  {
+    "path": "apps/desktop/src/components/pane-shell/tree/store.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "6f516d06147d05a94edec623d886ca10183f0ce7",
+    "size": 84070
+  },
+  {
+    "path": "apps/desktop/src/components/remote-setup/use-remote-oauth.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "0c924b79cc01262e055be016105f81e22a412531",
+    "size": 3651
+  },
+  {
+    "path": "apps/desktop/src/components/remote-setup/use-remote-setup.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "de587da31cd39c1be30b33a72463368f2ee3a7a1",
+    "size": 6477
+  },
+  {
+    "path": "apps/desktop/src/components/ui/masonry.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "f630ec80322b90233d4872fd004d0be7664e6a64",
+    "size": 3013
+  },
+  {
+    "path": "apps/desktop/src/components/ui/search-field.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "c7f6ea68f5ab7c99d283f18a0f3c44d8b3f77897",
+    "size": 4574
+  },
+  {
+    "path": "apps/desktop/src/global.d.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "91a292e026a0816add6109e084acc5ab9edb5ed4",
+    "size": 70011
+  },
+  {
+    "path": "apps/desktop/src/i18n/ar.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "2f5d41ac96ca63b518a1120329e984fd4c3cce18",
+    "size": 215485
+  },
+  {
+    "path": "apps/desktop/src/i18n/de.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "a0e8e76a71a28b0b931f5aafa893106e82102bb7",
+    "size": 308878
+  },
+  {
+    "path": "apps/desktop/src/i18n/en.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "efd8febd31028d0acd31742745edc645f4cfd4fe",
+    "size": 265092
+  },
+  {
+    "path": "apps/desktop/src/i18n/es.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "ac8c0714ae5fd43dc1b6fe796731417d9f86244a",
+    "size": 306847
+  },
+  {
+    "path": "apps/desktop/src/i18n/fr.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "3dd01898e1e80fd60698e18a38fc8fd65cd6bdf7",
+    "size": 317476
+  },
+  {
+    "path": "apps/desktop/src/i18n/ja.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "e7ba3786bab7ea53d11a7d8370bc51680f69e98b",
+    "size": 244522
+  },
+  {
+    "path": "apps/desktop/src/i18n/ru.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "f07cdb5d333e0faff6e7bd2d868855bb5323fa73",
+    "size": 291555
+  },
+  {
+    "path": "apps/desktop/src/i18n/types.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "009f158d1bd6eec3080a912c5c1381dddf131fbd",
+    "size": 133490
+  },
+  {
+    "path": "apps/desktop/src/i18n/zh-hant.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "17be495c9f8aeff341d46d2ccb5b71796fd25dba",
+    "size": 203873
+  },
+  {
+    "path": "apps/desktop/src/i18n/zh.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "3e03d4bc4d254050dc8a9b5cb344e0675fe872b0",
+    "size": 246224
+  },
+  {
+    "path": "apps/desktop/src/lib/chat-messages/reconciliation.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "dac288a682a04bcb968a1af0b1abc4867868d5fa",
+    "size": 12284
+  },
+  {
+    "path": "apps/desktop/src/lib/chat-runtime.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "d8ab7ef392e44ecc61ba44e0a650342a9d03f1a4",
+    "size": 10381
+  },
+  {
+    "path": "apps/desktop/src/lib/desktop-slash-commands.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "fed673d9e8c601681d3301d6cb0f7f581cc85b18",
+    "size": 15748
+  },
+  {
+    "path": "apps/desktop/src/lib/desktop-slash-commands.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "844cadcb2e56d096d7608355410d8d4a3a585057",
+    "size": 27433
+  },
+  {
+    "path": "apps/desktop/src/lib/file-preview-math.render.test.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "6a4f680155900180c149d3a2f4b90efa63c0e85e",
+    "size": 3365
+  },
+  {
+    "path": "apps/desktop/src/lib/keybinds/actions.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "cbe2344401ab15d6c9feab0cf249f42f69b43df1",
+    "size": 17514
+  },
+  {
+    "path": "apps/desktop/src/lib/markdown-preprocess.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "8032f37bda3e94baa75acc9ff3676629ed024e22",
+    "size": 37304
+  },
+  {
+    "path": "apps/desktop/src/lib/model-status-label.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "c2c9b2d06d89583e23da7edfaea86d362b6cb2ce",
+    "size": 5851
+  },
+  {
+    "path": "apps/desktop/src/lib/stale-transcript-guard.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "b6ac5c9f7edec4a8221594187e1f17fdca99e08d",
+    "size": 2796
+  },
+  {
+    "path": "apps/desktop/src/plugins/hermes-bots/i18n.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "c4c270a59385dbc9b22e353f0831fa9848e42e57",
+    "size": 110390
+  },
+  {
+    "path": "apps/desktop/src/plugins/hermes-bots/relay.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "63088b7cc6c6208637f7103fbefcc0c3e2088ed4",
+    "size": 33768
+  },
+  {
+    "path": "apps/desktop/src/plugins/kanban/api.events-cursor.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "b57b9948065ada9d4ef11f5f504c4005fc86e26a",
+    "size": 4620
+  },
+  {
+    "path": "apps/desktop/src/sdk/index.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "297be359cc1e3fbd80f76f3adef700fb65bb7fef",
+    "size": 91807
+  },
+  {
+    "path": "apps/desktop/src/store/agent-plugins.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "01675a845ad623fb77cded5f1b1b8bd6973243e9",
+    "size": 16381
+  },
+  {
+    "path": "apps/desktop/src/store/composer-queue.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "b7b36a0f1cdcc071a23a8c9bc5149937f5c60022",
+    "size": 14282
+  },
+  {
+    "path": "apps/desktop/src/store/composer-queue.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "a376bfac869521413a71e581ec6219c04f8f63ba",
+    "size": 12598
+  },
+  {
+    "path": "apps/desktop/src/store/composer.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "94e44bc639ca31fe6dc535fbe6e7bac4b513bc87",
+    "size": 13610
+  },
+  {
+    "path": "apps/desktop/src/store/connections.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "d5c3be5e96eb78106ea7c563c2ff452f2da6510d",
+    "size": 39025
+  },
+  {
+    "path": "apps/desktop/src/store/preview.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "810d47483a2085dd175509d6fe86972082c10ee1",
+    "size": 22425
+  },
+  {
+    "path": "apps/desktop/src/store/profile-dot-state.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "5e422b920c871235acbca9b3b7d047c54d04dc3b",
+    "size": 6626
+  },
+  {
+    "path": "apps/desktop/src/store/profile-dot-state.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "bd1a8ff48b2126b85eb228377ef6890d2f32cda0",
+    "size": 10058
+  },
+  {
+    "path": "apps/desktop/src/store/projects.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "4a7c4a9a3abb890161cd4bb4d19a66d5cfe05d10",
+    "size": 36986
+  },
+  {
+    "path": "apps/desktop/src/store/prompts.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "34c45f5752c43f4c889d4bfa1c1ec0eccdef1a48",
+    "size": 16487
+  },
+  {
+    "path": "apps/desktop/src/store/session-gone-latch.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "17d23ab30c1273a444172f1c04b2c488984d98a1",
+    "size": 5988
+  },
+  {
+    "path": "apps/desktop/src/store/session-states.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "a6bdaf4c20d39cb7b6d4f28eb6cb9d3f5c217a3c",
+    "size": 63092
+  },
+  {
+    "path": "apps/desktop/src/store/session-states.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "c7923c19b60c035bb6d2e85bb271dde774f5d6c8",
+    "size": 107880
+  },
+  {
+    "path": "apps/desktop/src/store/session.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "a7cd0b394fbf0c8f71cb417c716220ddf9e02922",
+    "size": 67198
+  },
+  {
+    "path": "apps/desktop/src/store/session.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "e65d7321a3b582f7d8dbae3d6719bbed14947f30",
+    "size": 74046
+  },
+  {
+    "path": "apps/desktop/src/store/subagents.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "5ca542f0923cc5e7267b832996c19ed20416a356",
+    "size": 16003
+  },
+  {
+    "path": "apps/desktop/src/store/subagents.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "b08a70bd03fae489cfce75bc75f42b9506711e60",
+    "size": 13427
+  },
+  {
+    "path": "apps/desktop/src/store/updates.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "3a53a4c25bc72bddff61186d6b11b9009ef39a8b",
+    "size": 63145
+  },
+  {
+    "path": "apps/desktop/src/store/updates.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "8356f9e29070a1a474c093d27d09fcd6c6e9b602",
+    "size": 43976
+  },
+  {
+    "path": "apps/desktop/src/themes/backend-sync.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "b40d43da45bb70fc7221c0e3bdc86be55edb082c",
+    "size": 6689
+  },
+  {
+    "path": "apps/desktop/src/themes/backend-sync.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "e8b21a5581c589ae481e26cfbaa2f1b333aa8e11",
+    "size": 6983
+  },
+  {
+    "path": "apps/desktop/src/themes/context.test.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "4bc8f8dc71ebcad06f7e2861d53c41db2e460177",
+    "size": 10579
+  },
+  {
+    "path": "apps/desktop/src/themes/context.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "0f76a7b70639d81c4897b3793bbd360e0b420a2d",
+    "size": 25343
+  },
+  {
+    "path": "apps/desktop/src/themes/presets.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "bb49db6e3437afad57c4db55e00f343a8a4c2b86",
+    "size": 2510
+  },
+  {
+    "path": "apps/desktop/src/themes/skin.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "db40797287687016e2b66468e8f1eca2a51e5421",
+    "size": 5063
+  },
+  {
+    "path": "apps/desktop/src/types/hermes.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "43b4fb19e1fd6dc399a69ba1f7c2ca6ef1a746e4",
+    "size": 54926
+  },
+  {
+    "path": "apps/shared/src/catalog-browse.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "ac3488be292d44abf56f1222297923b1117f3bff",
+    "size": 2419
+  },
+  {
+    "path": "apps/shared/src/gateway-contract.generated.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "a91142764b1011feb3e30ce981cd58f7de50d0cf",
+    "size": 198349
+  },
+  {
+    "path": "apps/shared/src/gateway-contract.openrpc.json",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "f922bcb5552e41f4c76f279f85ddc4f90f6c6e4d",
+    "size": 941671
+  },
+  {
+    "path": "apps/shared/src/index.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "82c60f4be56a53c7bf4962db1ce36a2d8064c20c",
+    "size": 4783
+  },
+  {
+    "path": "scripts/build/node-deps.mjs",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "5edc4415b0688fffd72feab24fd1ba0f327284a4",
+    "size": 7648
+  },
+  {
+    "path": "scripts/desktop-update/posix.sh",
+    "mode": "100755",
+    "type": "blob",
+    "sha": "7c3b4560dcc5f338f074db1d11c3eec67bf31cab",
+    "size": 43382
+  },
+  {
+    "path": "scripts/desktop-update/windows.ps1",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "b4645aac156d81836ab517b1339f28e4c69e9730",
+    "size": 87069
+  },
+  {
+    "path": "scripts/install.ps1",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "637cb22a2ea3293e9f05a4eda0f7711715bd7580",
+    "size": 64960
+  },
+  {
+    "path": "scripts/install.sh",
+    "mode": "100755",
+    "type": "blob",
+    "sha": "1911f63e16dbe7be3e2e7d3bd42cf5b655f60ad9",
+    "size": 37310
+  },
+  {
+    "path": "scripts/sandbox/generate-e2e-matrix.mjs",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "d54159b2c825a6c6fc177155cc56b387b3a7847e",
+    "size": 23718
+  },
+  {
+    "path": "tests-js/desktop-builder.test.mjs",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "c1b4fd1d5566fadb1ce980c1a51402452332efa5",
+    "size": 12743
+  },
+  {
+    "path": "tests-js/e2e-matrix-route.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "35a8969ba536843fd6a1fb3c671a5bc99b9bcf60",
+    "size": 1669
+  },
+  {
+    "path": "tests-js/node-deps.test.mjs",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "616f3263c3981669156ede7a20502a56c75eae17",
+    "size": 12568
+  },
+  {
+    "path": "tests-js/scripts/desktop-chat-smoke.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "f5cc88a278622541b047b91c6c102867dafb61da",
+    "size": 13908
+  },
+  {
+    "path": "tests-js/scripts/desktop-smoke-process.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "3d6503005f755a5bf11c89854c63daaee58a12dc",
+    "size": 12802
+  },
+  {
+    "path": "tests-js/scripts/desktop-smoke.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "5ef73fda5dfb090ab8ad3df8883c9fd78c66e5b1",
+    "size": 32754
+  },
+  {
+    "path": "tests-js/scripts/desktop-transcript.test.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "7b7d3d0a17ed3df63ab4392616213177aa6f55c6",
+    "size": 3610
+  },
+  {
+    "path": "tests-js/scripts/mock-provider-config.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "f604772290ad25a3fa699b4e90f8ecca59379254",
+    "size": 5557
+  },
+  {
+    "path": "tests-js/scripts/mock-server.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "6d1d62eff5a360de9e3c4bef353e8d5ec6b9d2f1",
+    "size": 49018
+  },
+  {
+    "path": "tests/install/README.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "af5f967ea8037bbf05736faa789aa164bc8aed9e",
+    "size": 19974
+  },
+  {
+    "path": "tests/install/e2e-assets/launch-from-spec.mjs",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "934193cb5876ca92129ae7ef4fa98d0f7ffc6665",
+    "size": 12940
+  },
+  {
+    "path": "tests/install/e2e-assets/source-branch-probe.cjs",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "393b662276c2439ba23915ec589f76a87dd7b8be",
+    "size": 8295
+  },
+  {
+    "path": "tests/install/windows-e2e.ps1",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "e5641f1716dc415cc5d74d23865d3b0a55ebd1c4",
+    "size": 81670
+  },
+  {
+    "path": "ui-tui/src/components/appLayout.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "d4591835ef815807625564ebf9e6bb4e0cf7841e",
+    "size": 22817
+  },
+  {
+    "path": "ui-tui/src/entry.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "c9f5c48e055c10aee9163422b6b1ec06cbe0fedf",
+    "size": 7661
+  },
+  {
+    "path": "ui-tui/src/lib/terminalModes.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "a2c1371fbf3ad4fa69d4643177a98cea38ae1e9e",
+    "size": 3619
+  },
+  {
+    "path": "ui-tui/src/lib/termux.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "c2cfe915c13d582381678877c30ac304fa2d5a68",
+    "size": 826
+  },
+  {
+    "path": "website/docs/getting-started/platform-support.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "895fbc29430b65d6547fd4581406199f96749882",
+    "size": 4770
+  },
+  {
+    "path": "website/docs/getting-started/updating.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "c6be34a9ad2f1a353de1fc6eed088a4c7860b69a",
+    "size": 39071
+  },
+  {
+    "path": "website/docs/reference/cli-commands.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "a2f81b1724a8e4307972c21835413f24428152ec",
+    "size": 128176
+  },
+  {
+    "path": "website/docs/reference/environment-variables.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "1e01e81322d73a5c4f93a020faf8461385e129f4",
+    "size": 108115
+  },
+  {
+    "path": "website/docs/user-guide/configuration.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "1883092fe088b8fb8a1e6ff6a83e909f494ab7f3",
+    "size": 238015
+  },
+  {
+    "path": "website/docs/user-guide/desktop.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "7cf292f2877cdf627ffb40bf6d9df128e4aede65",
+    "size": 88181
+  },
+  {
+    "path": "website/docs/user-guide/features/computer-use.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "357a5540e2e317383515735bbafd88786ef61fb7",
+    "size": 31595
+  },
+  {
+    "path": "website/docs/user-guide/features/cron.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "c49316ace4729fff9ef1e0be0c2398ab94e54977",
+    "size": 76021
+  },
+  {
+    "path": "website/docs/user-guide/features/kanban.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "507fa598ce20e9184c6d6bdceab183cff0deb9e0",
+    "size": 121437
+  },
+  {
+    "path": "website/docs/user-guide/features/plugin-catalog.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "feda75c8cf4303b2a1bb6d6f6a308012ec939f17",
+    "size": 15902
+  },
+  {
+    "path": "website/docs/user-guide/messaging/index.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "b343b584e1721a7a31e0a3386bf326911c1f0eb5",
+    "size": 58561
+  },
+  {
+    "path": "website/docs/user-guide/windows-native.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "89aa1fbdcc7198d19ee07d29667f6e52b26c3138",
+    "size": 23851
+  },
+  {
+    "path": "website/i18n/zh-Hans/docusaurus-plugin-content-docs/current/user-guide/features/cron.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "af1708901531d529bf9e84d5b30845126c846b3b",
+    "size": 31585
+  },
+  {
+    "path": "website/sidebars.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "b8cbf9aab2c6701ed55e3a8330c779e443ef06e5",
+    "size": 40345
+  },
+  {
+    "path": "website/src/components/PluginCatalog/catalog.ts",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "cb30ee625971f5c47466f1b61058c664d6c8df08",
+    "size": 6187
+  },
+  {
+    "path": "website/src/pages/plugins/index.tsx",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "78356abc38cd69f7b695d2277681ec69a4b3f97d",
+    "size": 31105
+  }
+]

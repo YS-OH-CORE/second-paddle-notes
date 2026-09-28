@@ -1,0 +1,28 @@
+{
+  "testedMain": "188a1a5efd098f067638032fea6e24c42d06178f",
+  "laterObservedMain": "d9d122a003633250d22f786bf3d2fa1b63d99e1d",
+  "comparison": [
+    {
+      "path": "tools/mcp_tool_handlers.py",
+      "exactTextMatchToTestedMain": true,
+      "matchIgnoringTerminalNewline": true,
+      "currentChars": 40919,
+      "testedChars": 40919
+    },
+    {
+      "path": "tools/mcp_tool_errors.py",
+      "exactTextMatchToTestedMain": true,
+      "matchIgnoringTerminalNewline": true,
+      "currentChars": 27684,
+      "testedChars": 27684
+    },
+    {
+      "path": "tools/mcp_tool_transport.py",
+      "exactTextMatchToTestedMain": true,
+      "matchIgnoringTerminalNewline": true,
+      "currentChars": 45375,
+      "testedChars": 45375
+    }
+  ],
+  "scope": "Source-only publication-time relevance check. These three files are byte-for-byte equal as UTF-8 text to the tested main snapshot. No application tests were rerun on the later whole commit."
+}

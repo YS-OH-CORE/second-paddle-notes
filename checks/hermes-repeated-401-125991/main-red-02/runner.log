@@ -1,0 +1,90 @@
+▶ not activated — using HERMES_PYTHON: /workspace/scratch/860645c74e07/hermes125919/.venv/bin/python
+▶ running per-file parallel test suite via run_tests_parallel.py
+  (TZ=UTC LANG=C.UTF-8 PYTHONHASHSEED=0; clean env)
+▶ pre-compiling bytecode cache
+▶ launching test runner
+Discovered 1 test files (~5 tests) under ['tests/e2e/core/mcp_plugins/test_mcp_streamable_http.py']; running with -j 1
+[100.0% |     5/~5 | ✓1 | ✗1] ✗ tests/e2e/core/mcp_plugins/test_mcp_streamable_http.py (1✓ 1✗, 8.5s)
+
+  ╔╍ Failed: tests/e2e/core/mcp_plugins/test_mcp_streamable_http.py ╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍
+  ║ ============================= test session starts ==============================
+  ║ platform linux -- Python 3.14.7, pytest-9.1.1, pluggy-1.6.0 -- /workspace/scratch/860645c74e07/hermes125919/.venv/bin/python
+  ║ cachedir: .pytest_cache
+  ║ rootdir: /workspace/scratch/860645c74e07/hermes401_main
+  ║ configfile: pyproject.toml
+  ║ plugins: asyncio-1.3.0, anyio-4.14.2
+  ║ asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+  ║ collecting ... collected 6 items / 4 deselected / 2 selected
+  ║ 
+  ║ tests/e2e/core/mcp_plugins/test_mcp_streamable_http.py::test_401_on_tools_call_is_reported_as_an_auth_failure FAILED [ 50%]
+  ║ tests/e2e/core/mcp_plugins/test_mcp_streamable_http.py::test_the_call_after_a_401_reaches_the_server PASSED [100%]
+  ║ 
+  ║ =================================== FAILURES ===================================
+  ║ ____________ test_401_on_tools_call_is_reported_as_an_auth_failure _____________
+  ║ tests/e2e/core/mcp_plugins/test_mcp_streamable_http.py:123: in test_401_on_tools_call_is_reported_as_an_auth_failure
+  ║     assert [(r.get("needs_reauth"), r.get("server")) for r in results[:2]] == [
+  ║ E   AssertionError: [{'error': 'MCP call failed: MCPError: Server returned an error response'}, {'error': 'MCP call failed: MCPError: Server returned an error response'}, {'result': 'NOARGS:CANARY-unauth0', 'structuredContent': {'result': 'NOARGS:CANARY-unauth0'}}]
+  ║ E   assert [(None, None), (None, None)] == [(True, 'web'), (True, 'web')]
+  ║ E     
+  ║ E     At index 0 diff: (None, None) != (True, 'web')
+  ║ E     
+  ║ E     Full diff:
+  ║ E       [
+  ║ E           (
+  ║ E     -         True,...
+  ║ E     
+  ║ E     ...Full output truncated (15 lines hidden), use '-vv' to show
+  ║ =========================== short test summary info ============================
+  ║ FAILED tests/e2e/core/mcp_plugins/test_mcp_streamable_http.py::test_401_on_tools_call_is_reported_as_an_auth_failure
+  ║ ================== 1 failed, 1 passed, 4 deselected in 7.51s ===================
+  ║
+  ║  Repro: python -m pytest tests/e2e/core/mcp_plugins/test_mcp_streamable_http.py -k 401 -v --tb=short --basetemp=/workspace/scratch/860645c74e07/hermes401_evidence/main-red-02/pytest
+  ╚╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍
+
+
+=== Summary: 1 files, 1 tests passed, 1 failed (100% complete) in 8.5s (1 workers) ===
+
+=== Per-file subprocess time distribution ===
+  Files:   1
+  Total subprocess CPU-wall: 8.5s  (runner wall: 8.5s, parallelism: 1x)
+  P50: 8.51s  P90: 8.51s  P95: 8.51s  P99: 8.51s  Max: 8.51s
+  <1s: 0 files (0%)  <2s: 0 files (0%)
+  Top 10 slowest:
+      8.51s  tests/e2e/core/mcp_plugins/test_mcp_streamable_http.py
+
+=== Failure output ===
+
+--- tests/e2e/core/mcp_plugins/test_mcp_streamable_http.py ---
+============================= test session starts ==============================
+platform linux -- Python 3.14.7, pytest-9.1.1, pluggy-1.6.0 -- /workspace/scratch/860645c74e07/hermes125919/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /workspace/scratch/860645c74e07/hermes401_main
+configfile: pyproject.toml
+plugins: asyncio-1.3.0, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 6 items / 4 deselected / 2 selected
+
+tests/e2e/core/mcp_plugins/test_mcp_streamable_http.py::test_401_on_tools_call_is_reported_as_an_auth_failure FAILED [ 50%]
+tests/e2e/core/mcp_plugins/test_mcp_streamable_http.py::test_the_call_after_a_401_reaches_the_server PASSED [100%]
+
+=================================== FAILURES ===================================
+____________ test_401_on_tools_call_is_reported_as_an_auth_failure _____________
+tests/e2e/core/mcp_plugins/test_mcp_streamable_http.py:123: in test_401_on_tools_call_is_reported_as_an_auth_failure
+    assert [(r.get("needs_reauth"), r.get("server")) for r in results[:2]] == [
+E   AssertionError: [{'error': 'MCP call failed: MCPError: Server returned an error response'}, {'error': 'MCP call failed: MCPError: Server returned an error response'}, {'result': 'NOARGS:CANARY-unauth0', 'structuredContent': {'result': 'NOARGS:CANARY-unauth0'}}]
+E   assert [(None, None), (None, None)] == [(True, 'web'), (True, 'web')]
+E     
+E     At index 0 diff: (None, None) != (True, 'web')
+E     
+E     Full diff:
+E       [
+E           (
+E     -         True,...
+E     
+E     ...Full output truncated (15 lines hidden), use '-vv' to show
+=========================== short test summary info ============================
+FAILED tests/e2e/core/mcp_plugins/test_mcp_streamable_http.py::test_401_on_tools_call_is_reported_as_an_auth_failure
+================== 1 failed, 1 passed, 4 deselected in 7.51s ===================
+
+=== 1 file with test failures (1 test failed) ===
+  tests/e2e/core/mcp_plugins/test_mcp_streamable_http.py  (1 test failed)
