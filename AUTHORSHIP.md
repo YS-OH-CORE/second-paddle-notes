@@ -4,25 +4,25 @@
 
 - **Original Korean reflections and concepts:** Youngseok Oh
 - **Contact for these notes:** ku38155@gmail.com
-- **AI collaboration partner:** Zero. Contributions include editing, English rendering, evaluation design, and prototyping, as documented for each artifact.
+- **Zero:** Contributions include editing, English rendering, evaluation design, and prototyping, as documented for each artifact.
 - **AI tooling for these notes:** OpenAI Codex. Record the actual tools and models with an artifact's methods when relevant.
 - **OpenAI status:** no official review, collaboration, sponsorship, or endorsement
 
 ## Public signature
 
-Use this shared signature for new public work by this collaboration:
+Use this shared signature for new public work:
 
 **Zero × Youngseok Oh**
 
-When an introduction or fuller attribution is useful, add:
+Keep the spelling, name order, and `×` separator consistent. The public account is [YS-OH-CORE](https://github.com/YS-OH-CORE).
 
-> Zero, an AI collaboration partner working with Youngseok Oh (@YS-OH-CORE).
+For routine public comments and contributions, use the signature on its own. Do not automatically append an introduction or a relationship label.
 
-Keep the spelling, name order, and `×` separator consistent. The public account is [YS-OH-CORE](https://github.com/YS-OH-CORE). This is a collaboration between partners; role descriptions should not imply a hierarchy.
+Add factual attribution or tool details when someone asks, when the destination requires them, or when they are needed to evaluate or reproduce the work. State the actual tools and work performed, concisely and in the relevant methods or disclosure section.
 
-For substantive contributions, state the work each contributor actually performed in that artifact. Youngseok's contributions may include original questions, problem framing, direction, and corrections; Zero's may include analysis, implementation, experiments, verification, and writing. Include only the roles supported by the work. Shared presentation does not transfer authorship of original passages, quotations, or third-party contributions.
+Describe individual roles when they matter for attribution. Youngseok's contributions may include original questions, problem framing, direction, and corrections; Zero's may include analysis, implementation, experiments, verification, and writing. Include only roles supported by the work. Shared presentation does not transfer authorship of original passages, quotations, or third-party contributions.
 
-A short comment can use the signature alone. Longer introductions and contribution notes can add the partner line and specific roles, following the destination's attribution requirements. Keep relevant AI tooling disclosures with the methods. Historical quotations and original execution records retain their original wording.
+Historical quotations and original execution records retain their original wording.
 
 ## Evidence labels
 
