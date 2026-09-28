@@ -7,10 +7,14 @@ on:
 permissions:
   contents: read
 
+defaults:
+  run:
+    shell: bash
+
 jobs:
   lifecycle:
     if: github.repository == 'YS-OH-CORE/second-paddle-notes' && github.ref == 'refs/heads/verify/vllm-58947-abort-20260928'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
@@ -32,15 +36,20 @@ jobs:
         env:
           VLLM_USE_PRECOMPILED: '1'
           VLLM_PRECOMPILED_WHEEL_VARIANT: cpu
-          VLLM_PRECOMPILED_WHEEL_COMMIT: 94d14629247955c69d40bdf2a9d7e3bd45954452
           VLLM_TARGET_DEVICE: cpu
         run: |
+          set -euo pipefail
           mkdir -p "$RUNNER_TEMP/vllm-abort-receipt"
           uv venv --python 3.12
-          uv pip install -r requirements/lint.txt
+          uv pip install -r requirements/lint.txt packaging
           .venv/bin/pre-commit install
+          .venv/bin/python ../evidence/checks/vllm-58947-abort/fetch_official_cpu_wheel.py --output-dir "$RUNNER_TEMP/vllm-cpu-wheel"
+          mkdir -p "$RUNNER_TEMP/vllm-abort-receipt/wheel"
+          cp "$RUNNER_TEMP/vllm-cpu-wheel/manifest.json" "$RUNNER_TEMP/vllm-cpu-wheel/METADATA" "$RUNNER_TEMP/vllm-cpu-wheel/WHEEL" "$RUNNER_TEMP/vllm-abort-receipt/wheel/"
+          read -r VLLM_PRECOMPILED_WHEEL_LOCATION < "$RUNNER_TEMP/vllm-cpu-wheel/wheel-location.txt"
+          export VLLM_PRECOMPILED_WHEEL_LOCATION
           uv pip install --editable . --torch-backend cpu 2>&1 | tee "$RUNNER_TEMP/vllm-abort-receipt/install.log"
-          uv pip install pytest==9.1.0 pytest-asyncio==1.4.0 tblib==3.1.0 librosa==0.10.2.post1
+          uv pip install pytest==9.1.0 pytest-asyncio==1.4.0 tblib==3.1.0
           uv pip freeze > "$RUNNER_TEMP/vllm-abort-receipt/packages.txt"
       - name: Exercise real admission, abort, delayed reclamation, and subsequent progress
         working-directory: vllm
