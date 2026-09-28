@@ -1,0 +1,18 @@
+{
+    "status":  "existing_comment_updated_and_exact_readback_verified",
+    "comment_id":  5866615296,
+    "url":  "https://github.com/NousResearch/hermes-agent/pull/125991#issuecomment-5866615296",
+    "author":  "YS-OH-CORE",
+    "updated_at_utc":  "2026-09-28T20:54:00Z",
+    "new_comment_created":  false,
+    "update_requests":  1,
+    "expected_body_sha256":  "11883ff2b9cf6198ac645ead0b3d1b7fe2a342a1d19f1de348f9624097c8463c",
+    "exact_full_body_match":  true,
+    "write_route":  "GitHub connector",
+    "readback_route":  "Existing account-owner GitHub CLI",
+    "evidence_commit":  "98bf85621db123f0b3a85403d6af734013ec137d",
+    "original_runtime":  "ce962e05ad9acbfa75f506da7b635236a96d733a",
+    "candidate_commit":  "861f94dc4326b9de45fff009202b48415aadb9bc",
+    "workflow_run":  36481347946,
+    "upstream_acceptance":  "not_established"
+}
