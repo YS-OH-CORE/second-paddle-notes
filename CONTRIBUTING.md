@@ -43,10 +43,10 @@ Open a GitHub issue for a critique, case proposal, or replication report. Use a 
 
 ## Authorship and source boundaries
 
-For shared public work by Zero and Youngseok Oh, follow the [public signature and partner attribution standard](AUTHORSHIP.md#public-signature). Use **Zero × Youngseok Oh** consistently and describe each contributor's actual work.
+For shared public work by Zero and Youngseok Oh, follow the [public signature and attribution standard](AUTHORSHIP.md#public-signature). Use **Zero × Youngseok Oh** consistently. The signature alone is the default; add attribution or tool details when requested, required by the destination, or needed to evaluate or reproduce the work.
 
 - Attribute direct quotations to their actual author and link a public source when one exists.
-- Mark translations as translations, AI-assisted text as AI-assisted, and editorial interpretations as interpretations.
+- Mark translations as translations and editorial interpretations as interpretations. Keep applicable AI-use disclosures truthful and concise, alongside the relevant methods or required disclosure section.
 - Do not attribute model-generated language, praise, or self-description to Youngseok Oh.
 - Do not imply endorsement by OpenAI or any cited researcher or institution.
 - Submit only material you created or have the right to share. Do not add a license or reuse permission on behalf of another author.
