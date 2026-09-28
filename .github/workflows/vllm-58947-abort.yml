@@ -49,6 +49,7 @@ jobs:
           read -r VLLM_PRECOMPILED_WHEEL_LOCATION < "$RUNNER_TEMP/vllm-cpu-wheel/wheel-location.txt"
           export VLLM_PRECOMPILED_WHEEL_LOCATION
           uv pip install --editable . --torch-backend cpu 2>&1 | tee "$RUNNER_TEMP/vllm-abort-receipt/install.log"
+          uv pip install --reinstall torchcodec==0.14.0+cpu --index-url https://download.pytorch.org/whl/cpu
           uv pip install pytest==9.1.0 pytest-asyncio==1.4.0 tblib==3.1.0
           uv pip freeze > "$RUNNER_TEMP/vllm-abort-receipt/packages.txt"
       - name: Preserve wheel inspection metadata even after setup failure
