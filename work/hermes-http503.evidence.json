@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "subject": "Hermes PR #121944: adoption of real-loopback HTTP/SSE regression tests",
+  "identity_verified_at_utc": "2026-09-28T05:29:42Z",
+  "pr": {
+    "url": "https://github.com/NousResearch/hermes-agent/pull/121944",
+    "checked_at_utc": "2026-09-28T05:26:53Z",
+    "state": "open",
+    "merged": false,
+    "head_sha": "859b987d1df0f47236eabe4190e9d41122b5ea12",
+    "adoption_scope": "The existing pull-request branch contains the tests; this is not a merge into main."
+  },
+  "original_commit": {
+    "sha": "60c824eadd6952175f15e32e703127560d87d7cb",
+    "url": "https://github.com/YS-OH-CORE/hermes-agent/commit/60c824eadd6952175f15e32e703127560d87d7cb",
+    "parent_sha": "dad46f06772150168a78b2f85f3c7ebed4d27905",
+    "tree_sha": "5555c02bb0e37b3b9721557f2bac4558b0a94728",
+    "git_author": {
+      "name": "Youngseok Oh",
+      "date": "2026-09-28T04:53:30Z"
+    },
+    "git_committer": {
+      "name": "Youngseok Oh",
+      "date": "2026-09-28T04:53:30Z"
+    },
+    "github_author_login": "YS-OH-CORE",
+    "github_committer_login": "YS-OH-CORE",
+    "message": "test(mcp): verify HTTP server-fault recovery with the real SDK",
+    "co_authored_by_trailers": []
+  },
+  "adopted_commit": {
+    "sha": "859b987d1df0f47236eabe4190e9d41122b5ea12",
+    "url": "https://github.com/NousResearch/hermes-agent/commit/859b987d1df0f47236eabe4190e9d41122b5ea12",
+    "parent_sha": "dad46f06772150168a78b2f85f3c7ebed4d27905",
+    "tree_sha": "5555c02bb0e37b3b9721557f2bac4558b0a94728",
+    "git_author": {
+      "name": "liuhao1024",
+      "date": "2026-09-28T05:15:49Z"
+    },
+    "git_committer": {
+      "name": "liuhao1024",
+      "date": "2026-09-28T05:15:49Z"
+    },
+    "github_author_login": "liuhao1024",
+    "github_committer_login": "liuhao1024",
+    "co_authored_by_trailers": [
+      "Co-authored-by: YS-OH-CORE <YS-OH-CORE@users.noreply.github.com>"
+    ],
+    "attribution_note": "The adopted commit records liuhao1024 as Git author and committer and credits YS-OH-CORE in a Co-authored-by trailer. It does not preserve the original commit's Git author/committer fields."
+  },
+  "verified_content": {
+    "changed_files": [
+      {
+        "path": "tests/tools/test_mcp_http_server_fault_recovery.py",
+        "status": "added",
+        "additions": 159,
+        "deletions": 0
+      }
+    ],
+    "original_and_adopted_test_blob": "b36e7271a7519fa37a86bbbed813017b6f477624",
+    "bytes": 6943,
+    "lines": 159,
+    "sha256": "b3be877be1f83c4f1bf8d5a7cee4c2dc57cff2f090562934d8317a537a86f6ea",
+    "parents_identical": true,
+    "entire_trees_identical": true,
+    "changed_file_diffs_identical": true,
+    "remote_blob_and_local_original_bytes_identical": true,
+    "method": "Read both commits through GitHub REST, compare parent/tree/file blob and full file patch, retrieve the adopted Git blob, and compare its bytes and independently computed Git blob hash with the retained original test file. No tests were executed for this readback.",
+    "original_test_url": "https://github.com/YS-OH-CORE/hermes-agent/blob/60c824eadd6952175f15e32e703127560d87d7cb/tests/tools/test_mcp_http_server_fault_recovery.py",
+    "adopted_test_url": "https://github.com/NousResearch/hermes-agent/blob/859b987d1df0f47236eabe4190e9d41122b5ea12/tests/tools/test_mcp_http_server_fault_recovery.py",
+    "adopted_blob_api_url": "https://api.github.com/repos/NousResearch/hermes-agent/git/blobs/b36e7271a7519fa37a86bbbed813017b6f477624"
+  },
+  "recipient_response": {
+    "url": "https://github.com/NousResearch/hermes-agent/pull/121944#issuecomment-5863926910",
+    "author_login": "liuhao1024",
+    "author_association": "NONE",
+    "created_at": "2026-09-28T05:16:21Z",
+    "updated_at": "2026-09-28T05:16:21Z",
+    "adoption_statement": "Picked up your test-only commit verbatim in 859b987 (Co-authored-by kept).",
+    "reported_validation": {
+      "passed": 43,
+      "total": 43,
+      "environment_description": "frozen dev-lock environment",
+      "scope_description": "the new file plus the existing SSE-fallback, protocol-negotiation and failure-classification files",
+      "evidence_type": "Recipient's published report; no recipient execution log was independently inspected."
+    },
+    "role_note": "Response from the PR author; it is not maintainer approval."
+  },
+  "our_prior_execution": {
+    "source_head_sha": "dad46f06772150168a78b2f85f3c7ebed4d27905",
+    "passed": 41,
+    "failed": 0,
+    "files": 4,
+    "per_file_passed": {
+      "tests/tools/test_mcp_http_server_fault_recovery.py": 2,
+      "tests/tools/test_mcp_sse_fallback.py": 10,
+      "tests/tools/test_mcp_protocol_negotiation.py": 14,
+      "tests/tools/test_mcp_failure_classification.py": 15
+    },
+    "evidence_type": "Previously captured execution log, reread during this adoption verification.",
+    "log_url": "https://github.com/YS-OH-CORE/second-paddle-notes/blob/b2900898ae850ef106b8619a53fde93dfd5c2719/checks/hermes-http503-121944/candidate.log",
+    "report_url": "https://github.com/YS-OH-CORE/second-paddle-notes/blob/b2900898ae850ef106b8619a53fde93dfd5c2719/checks/hermes-http503-121944/README.md",
+    "results_url": "https://github.com/YS-OH-CORE/second-paddle-notes/blob/b2900898ae850ef106b8619a53fde93dfd5c2719/checks/hermes-http503-121944/RESULTS.json",
+    "original_handoff_comment_url": "https://github.com/NousResearch/hermes-agent/pull/121944#issuecomment-5863768858"
+  },
+  "count_difference": {
+    "explanation_verified": false,
+    "note": "The recipient's 43/43 report and our logged 41/41 are distinct records. The reason for the count difference has not been established; neither result is substituted for the other."
+  },
+  "contribution_roles": [
+    {
+      "name": "fmunechi",
+      "role": "Original bug report, reproduction and proposed guard",
+      "source_url": "https://github.com/NousResearch/hermes-agent/issues/121933"
+    },
+    {
+      "name": "liuhao1024",
+      "role": "PR implementation, existing unit coverage and incorporation of the supplemental test commit",
+      "source_url": "https://github.com/NousResearch/hermes-agent/pull/121944"
+    },
+    {
+      "name": "Zero × Youngseok Oh",
+      "role": "Supplemental real-loopback tests, original execution and evidence handoff",
+      "source_url": "https://github.com/NousResearch/hermes-agent/pull/121944#issuecomment-5863768858"
+    }
+  ],
+  "limits": [
+    "No new test execution was performed during adoption verification.",
+    "No full-suite, live-service, merge, maintainer approval or independent recipient-log validation is claimed.",
+    "The supplemental fixtures exercise sessionless loopback HTTP/SSE with protocol=legacy and skip_preflight=true; the unchanged prior report retains the full test scope and limits."
+  ],
+  "identity_metadata_note": "Git attribution names, dates and the public co-author trailer are retained; author and committer email fields are omitted from this evidence index."
+}

@@ -3,9 +3,21 @@
 Independent researcher, South Korea · GitHub: **YS-OH-CORE**  
 Prepared with **Zero** · Latest focused evidence update: **28 September 2026**
 
-Research focus: preserving evidence and corrections across human–AI memory, and reproducible review of agent systems. This self-published index links specific records; it is not an institutional credential or a blanket endorsement. The Hermes evaluation entry below was checked on **28 September 2026**. Other entries retain their stated check dates; the formal-methods section retains its **16 September 2026** snapshot.
+Research focus: preserving evidence and corrections across human–AI memory, and reproducible review of agent systems. This self-published index links specific records; it is not an institutional credential or a blanket endorsement. The Hermes HTTP recovery and evaluation entries below were checked on **28 September 2026**. Other entries retain their stated check dates; the formal-methods section retains its **16 September 2026** snapshot.
 
 [Discuss one scoped AI-continuity review](COLLABORATE.md).
+
+## Hermes MCP recovery: an HTTP regression adopted by the PR author
+
+**Outcome, 28 September 2026:** **liuhao1024**, author of [Hermes PR #121944](https://github.com/NousResearch/hermes-agent/pull/121944), [reported incorporating our test-only contribution](https://github.com/NousResearch/hermes-agent/pull/121944#issuecomment-5863926910). The actual [integration commit `859b987`](https://github.com/liuhao1024/hermes-agent/commit/859b987d1df0f47236eabe4190e9d41122b5ea12) contains the unchanged test file and a **YS-OH-CORE co-author trailer**. The recipient also reported local re-testing and explained how the before/after comparison supported the PR's transport decision.
+
+**Problem and contribution:** a temporary HTTP 503 during tool discovery could send Hermes into an inappropriate legacy-SSE fallback. The original reporter **fmunechi** supplied the diagnosis and proposed guard; **liuhao1024** implemented the repair. **Zero × Youngseok Oh** supplied two real-loopback integration tests: recovery from that 503 through the actual MCP SDK and Hermes retry path, plus a genuine HTTP 405 that must still enter legacy SSE and complete a tool call. The [original execution record](https://github.com/YS-OH-CORE/second-paddle-notes/blob/b2900898ae850ef106b8619a53fde93dfd5c2719/checks/hermes-http503-121944/README.md) retains the matched baseline, successful candidate, development corrections, and scope.
+
+**Verified source identity:** submitted commit `60c824e` and recipient commit `859b987` share parent `dad46f0`, the same complete Git tree, and test blob **`b36e7271a7519fa37a86bbbed813017b6f477624`**. Both add only the same 159-line test file. The recipient's commit records **liuhao1024** as Git author and committer and **YS-OH-CORE** in its co-author trailer. [Submitted commit](https://github.com/YS-OH-CORE/hermes-agent/commit/60c824eadd6952175f15e32e703127560d87d7cb) · [Recipient commit](https://github.com/liuhao1024/hermes-agent/commit/859b987d1df0f47236eabe4190e9d41122b5ea12) · [Machine-readable comparison](work/hermes-http503.evidence.json)
+
+**Validation and stage:** our earlier retained run on fix head `dad46f0` passed 41 tests across four related files; the original product PR's parent `749220ef` and separately inspected main each failed the new 503 test while passing the legitimate-SSE control. The recipient's later reply reports 43/43 in their environment. Those counts remain separately attributed, and their difference has not been reconciled. This page update performed source and attribution checks without a new test run. At head `859b987`, the PR is **open and unmerged**: the established outcome is incorporation into the original author's PR branch.
+
+**한국어:** 헤르메스 수정안의 작성자가 우리가 보낸 실제 HTTP 회귀 테스트를 자기 PR에 반영하고, 커밋에 **YS-OH-CORE 공동저자 표기**를 남겼다. 직접 대조한 결과 검사 파일의 내용과 전체 코드 트리가 제출본과 일치했다. 원래 문제 제보와 제품 수정은 fmunechi·liuhao1024의 기여이고, 우리는 실제 SDK와 재시도 경로를 통과하는 검사와 실행 근거를 보탰다. 확인한 단계는 **원작성자의 개발 브랜치 반영**이며, 공식 병합은 아직 전이다. 답변 시각은 9월 28일 **14:16:21 KST**다.
 
 ## Hermes evaluation: a startup observation sharpened the proposed test
 
@@ -106,4 +118,4 @@ Focused collaboration topics: request/approval binding regressions; traceable ev
 
 영석(Youngseok Oh)과 Zero의 공개 작업을 원출처로 확인할 수 있는 입구다. Hermes의 모델 전환 사례에는 외부 개발자가 재현·테스트·패치 적용과 `YS-OH-CORE` 크레딧을 남겼다. Signal 사례에서는 우리 소스 검토와 검사 제안을 받은 사람이 직접 구현했고, 다른 기여자가 다시 검사하고 원 작성자의 허락을 받아 PR #122033을 제출했다. 해당 코드와 테스트는 그 개발자들의 기여이며, 우리는 문제를 좁히는 검토·검증·전달을 보탰다.
 
-두 Hermes PR의 upstream 병합은 2026년 9월 26일 확인 시 완료되지 않았다. 이번 갱신은 이미 발생한 외부 활용을 확인해 연결한 것이며, 새로운 답변·실험·채택을 오늘 얻었다는 뜻이 아니다. 유한 Lean 증명 핵심부는 9월 16일의 별도 기록으로 남기며, 이번에 다시 검증하지 않았다. 개인 대화, 비공개 메일, 계정 자료는 이 페이지에 포함하지 않는다.
+모델 전환·Signal 두 Hermes PR의 upstream 병합은 2026년 9월 26일 확인 시 완료되지 않았다. HTTP 복구 사례는 9월 28일 새로 받은 반영 답변과 실제 커밋을 대조한 기록이다. 다른 사례의 과거 응답·실행 시점은 각 항목에 남겨 두었다. 유한 Lean 증명 핵심부는 9월 16일의 별도 기록으로 남기며, 이번에 다시 검증하지 않았다. 개인 대화, 비공개 메일, 계정 자료는 이 페이지에 포함하지 않는다.

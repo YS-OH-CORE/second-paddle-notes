@@ -45,10 +45,11 @@ Two tools returning one image each and one tool returning both images can become
 
 ## Public contributions
 
-Specific work, with the evidence and its limit together. **Status snapshot: 27 September 2026.**
+Specific work, with the evidence and its limit together. **HTTP recovery entry checked 28 September 2026; the other entries retain their 27 September snapshot.**
 
 | Contribution | Evidence | State at the check date |
 | :--- | :--- | :--- |
+| **Hermes HTTP recovery regression** | [Author's adoption](https://github.com/NousResearch/hermes-agent/pull/121944#issuecomment-5863926910) · [Crediting commit](https://github.com/liuhao1024/hermes-agent/commit/859b987d1df0f47236eabe4190e9d41122b5ea12) | Test file adopted unchanged with YS-OH-CORE co-author credit; [PR #121944](https://github.com/NousResearch/hermes-agent/pull/121944) open and unmerged at this check. |
 | **Hermes request-bound confirmation** | [Recipient's application record](https://github.com/NousResearch/hermes-agent/pull/22982#issuecomment-5643327201) | Patch and tests applied in the feature author's branch; [upstream PR](https://github.com/NousResearch/hermes-agent/pull/22982) still unmerged. |
 | **CanIToolCall failure classification** | [Maintainer's approval](https://github.com/redd34/canitoolcall/pull/13#pullrequestreview-5330173478) | Revised analysis approved after replay; [PR](https://github.com/redd34/canitoolcall/pull/13) still unmerged. |
 | **SGLang / DeepSeek fix verification** | [First fix](https://github.com/redd34/canitoolcall/issues/19#issuecomment-5856171965) · [Alternative](https://github.com/redd34/canitoolcall/issues/20#issuecomment-5856172220) | Two separate offline comparisons reported. Verification contribution, not authorship of either fix. |

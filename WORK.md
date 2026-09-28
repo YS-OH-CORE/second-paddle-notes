@@ -6,7 +6,7 @@ Human–AI collaboration on reproducible failures, regression tests, reviewable 
 
 **한국어 소개는 아래에 있습니다.**
 
-**Evidence at a glance:** [Case 01: request-bound approvals](#case-01--keeping-an-approval-attached-to-its-own-request) · [Case 02: explicit stop handling and an E2E correction](#case-02--explicit-stop-handling-and-an-end-to-end-correction) · [Case 03: adopted TAM evaluation-report review](#case-03--checking-the-numbers-and-narrowing-the-claim) · [Case 04: recipient-confirmed Signal source review](#case-04--keeping-personal-notes-separate-from-agent-prompts)
+**Evidence at a glance:** [Case 01: request-bound approvals](#case-01--keeping-an-approval-attached-to-its-own-request) · [Case 02: explicit stop handling and an E2E correction](#case-02--explicit-stop-handling-and-an-end-to-end-correction) · [Case 03: adopted TAM evaluation-report review](#case-03--checking-the-numbers-and-narrowing-the-claim) · [Case 04: recipient-confirmed Signal source review](#case-04--keeping-personal-notes-separate-from-agent-prompts) · [Case 05: adopted real-HTTP regression](#case-05--proving-http-recovery-through-the-real-transport)
 
 ## Case 01 | Keeping an approval attached to its own request
 
@@ -140,6 +140,22 @@ The current PR's entire `gateway/platforms/signal.py` has Git blob `3fa045195ab4
 
 **Roles and status:** ren2140eth authored the implementation and initial tests; Halldrix carried the upstream integration, documentation and added coverage; Zero supplied source guidance, supplemental verification and evidence handoff; Youngseok Oh supplied collaboration direction and the public account. This remains the same Case 04, not another independent success. No official merge, release, or new recipient endorsement is established by this update. Earlier paragraphs record their earlier stages rather than the current handoff state.
 
+## Case 05 | Proving HTTP recovery through the real transport
+
+**Project:** Hermes Agent PR #121944  
+**Contribution:** real-loopback regression tests and matched execution evidence  
+**Evidence checked:** 2026-09-28
+
+**Outcome:** PR author **liuhao1024** [reported applying the test-only contribution][http503-ack]. The [recipient's commit][http503-adopted] adds the unchanged 159-line test file and a **YS-OH-CORE co-author trailer**. The PR is open and unmerged at that commit; incorporation into the author's PR branch is directly verified.
+
+The original issue concerns a temporary HTTP 503 during tool discovery being mistaken for a reason to switch to legacy SSE. The supplemental tests run the actual MCP SDK, Hermes's HTTP response recorder, and its normal initial-connect retry. One fixture requires a second Streamable HTTP attempt and a successful tool call without an SSE GET; a genuine HTTP 405 control must still complete the legacy-SSE route. [Original report and implementation][http503-pr] · [Executed test and method][http503-report]
+
+The [submitted commit][http503-submitted] and [recipient commit][http503-adopted] share parent `dad46f0` and complete Git tree `5555c02bb0e37b3b9721557f2bac4558b0a94728`. Their added test has the identical blob **`b36e7271a7519fa37a86bbbed813017b6f477624`**. The recipient recorded themselves as Git author and committer and credited **YS-OH-CORE** as co-author. [Exact source and attribution record](work/hermes-http503.evidence.json)
+
+Our retained comparison of the original product PR's parent `749220ef` and fix head `dad46f0` used the same frozen dependency environment. The baseline `749220ef` failed the 503 test and passed the SSE control; the candidate's four-file run passed 41 tests in total, including both new cases. A separately inspected main also exposed the unwanted GET. The recipient subsequently reported **43/43** passing in their environment. The original **41/41** log and that **43/43** report remain separate; their count difference has not been reconciled. This page update checked source identity and attribution without running new tests. The [execution record][http503-report] retains environment differences, development corrections, and the limits of its synthetic loopback fixtures.
+
+**Roles:** **fmunechi** supplied the original bug report, reproduction and proposed guard. **liuhao1024** authored the product repair and integrated the supplemental tests. **Youngseok Oh** supplied the collaboration direction and public account; **Zero (ChatGPT)** supplied the additional test design, execution, and review. The verified result is an adopted test contribution with public credit at the PR-branch stage. Maintainer acceptance, release, and live-service behavior remain unestablished.
+
 ## A useful starting point for collaboration
 
 A good first case is a public, reproducible agent behavior that differs from the user's actual request, or a published evaluation claim with question-level results that can be checked. Provide the exact revision, a small synthetic example or public result file, the expected behavior or claim, and the observed result. That makes it possible to choose a reproduction, regression test, narrow patch, or saved-result audit.
@@ -210,6 +226,14 @@ Keep credentials, private conversations, and personal records out of public issu
 
 이전에 받은 정확한 수정본의 별도 가상 환경 검사와 현재 제출본의 실행 파일이 동일한지 확인하고, Zero가 [해당 커밋에 고정한 COMMENT 검토](https://github.com/NousResearch/hermes-agent/pull/122033#pullrequestreview-5312419768)를 남겼습니다. 이번 단계의 새 제품 실행검사는 없으며, 파일 내용이 같다는 것과 새 환경 전체를 재검증했다는 것은 다릅니다. 같은 네 번째 사례의 진행 상태를 갱신한 것이고, 구현·초기 검사는 ren2140eth, 제출·설명서·추가 검사는 Halldrix의 기여로 남깁니다.
 
+### 사례 05 | 실제 통신 검사가 원작성자의 코드에 반영됨
+
+**2026년 9월 28일 확인.** 헤르메스 PR #121944의 작성자 **liuhao1024**는 우리가 보낸 두 회귀 테스트를 자기 브랜치에 반영했다고 [답했습니다][http503-ack]. 실제 [반영 커밋][http503-adopted]에는 **YS-OH-CORE 공동저자 표기**가 있고, 검사 파일의 내용과 전체 코드 트리가 제출본과 일치함을 직접 대조했습니다.
+
+검사는 일시적인 HTTP 503을 만났을 때 기존 HTTP 방식으로 재시도해 도구를 실행하는지, 실제로 다른 통신 방식이 필요한 HTTP 405에서는 전환이 유지되는지를 확인합니다. 원래 문제 제보와 제품 수정은 fmunechi·liuhao1024의 기여이고, 우리는 실제 SDK와 재시도 경로를 통과하는 검사 및 비교 근거를 보탰습니다. [실행 기록][http503-report]
+
+우리 보존 로그의 관련 검사 **41개 통과**와 작성자가 보고한 **43개 통과**는 출처를 구분했습니다. 개수 차이는 아직 해명되지 않았고, 이번 기록 갱신에서 다시 실행한 수치는 아닙니다. 확인된 성과는 **원작성자의 PR 브랜치에 검사와 기여 표기가 반영된 것**이며, 원 PR은 아직 열려 있고 병합 전입니다.
+
 관련 협업을 제안할 때는 공개해도 되는 작은 재현 예시와 코드 버전, 기대한 결과와 실제 결과를 [이슈](https://github.com/YS-OH-CORE/second-paddle-notes/issues/new)에 남겨 주세요. 소개글의 설명보다 원문 답변, 코드, 검사 자료를 먼저 확인할 수 있도록 구성했습니다.
 
 *This case page was written with Zero (ChatGPT) for Youngseok Oh. It reuses public contribution evidence, not private correspondence. Original code and test licensing remain with their existing files; this page does not relicense them.*
@@ -246,3 +270,8 @@ Keep credentials, private conversations, and personal records out of public issu
 
 [signal-runtime]: https://github.com/NousResearch/hermes-agent/issues/121970#issuecomment-5823143850
 [signal-runtime-followup]: https://github.com/NousResearch/hermes-agent/issues/121970#issuecomment-5823237783
+[http503-ack]: https://github.com/NousResearch/hermes-agent/pull/121944#issuecomment-5863926910
+[http503-adopted]: https://github.com/liuhao1024/hermes-agent/commit/859b987d1df0f47236eabe4190e9d41122b5ea12
+[http503-submitted]: https://github.com/YS-OH-CORE/hermes-agent/commit/60c824eadd6952175f15e32e703127560d87d7cb
+[http503-pr]: https://github.com/NousResearch/hermes-agent/pull/121944
+[http503-report]: https://github.com/YS-OH-CORE/second-paddle-notes/blob/b2900898ae850ef106b8619a53fde93dfd5c2719/checks/hermes-http503-121944/README.md
