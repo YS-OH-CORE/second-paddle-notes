@@ -92,7 +92,7 @@ def phase(source, out):
                  'tests/models/clip/test_modeling_clip.py',
                  'src/transformers/quantizers/quantizer_awq.py'):
         assert (source / path).is_file(), path
-    assert {'models/clip', 'models/llava', 'quantization/awq'} <= available
+    assert {'models/clip', 'models/llava', 'quantization/autoawq'} <= available
     expected_jobs = sorted({'models/clip'} | {f'models/{p}' for p in parents
                                             if f'models/{p}' in available})
     expected_full = ', '.join(p.removeprefix('models/') for p in expected_jobs[:module.MAX_NUM_JOBS_TO_SUGGEST])
@@ -107,8 +107,8 @@ def phase(source, out):
         ('removed_clip', changed(clip, 'removed'), full, (), ''),
         ('unrelated_docs', changed('docs/source/en/testing.md'), full, (), ''),
         ('explicit_models', [], full, ('--message', 'run-slow: clip, llava, _bad, nonexistent_synthetic_model'), "['models/clip', 'models/llava']"),
-        ('explicit_quantizer', [], full, ('--message', 'run-slow: awq', '--quantization'), "['quantization/awq']"),
-        ('changed_quantizer', changed('src/transformers/quantizers/quantizer_awq.py'), full, (), 'awq'),
+        ('explicit_quantizer', [], full, ('--message', 'run-slow: autoawq', '--quantization'), "['quantization/autoawq']"),
+        ('changed_quantizer', changed('src/transformers/quantizers/quantizer_awq.py'), full, (), ''),
     ]
     records = [{'case': 'actual_registry_clip_to_llava', 'passed': True, 'parents': parents}]
     for name, files, metadata, arguments, expected in cases:
@@ -179,7 +179,7 @@ def compare(source, out):
         print(label, {key: result.get(key) for key in ('cases', 'passed', 'failed', 'process_exit_code')})
     # Accept only the specific call-site/inventory effects; import failures are not feature failures.
     assert set(results['original']['failed']) == {'clip_model', 'clip_config', 'clip_test', 'clip_and_llava_inventory'}
-    assert set(results['argument_only']['failed']) == {'clip_only_inventory'}
+    assert set(results['argument_only']['failed']) == {'clip_model', 'clip_config', 'clip_test', 'clip_and_llava_inventory', 'clip_only_inventory'}
     assert results['normalized_filtered']['passed'] == 11
     assert all(r['process_exit_code'] == (0 if k == 'normalized_filtered' else 1) for k, r in results.items())
     print('Expected targeted comparison observed. This is not full upstream CI validation.')
