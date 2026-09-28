@@ -1,0 +1,190 @@
+{
+  "schema_version": 1,
+  "repository": "sgl-project/sglang",
+  "head": "d574752ef39eb3ef73f87c40dca95d76222f9483",
+  "observed_at": "2026-09-28T17:08:09Z",
+  "files": [
+    {
+      "path": "python/sglang/srt/disaggregation/common/conn.py",
+      "bytes": 104517,
+      "sha256": "349f519b174a7501e3959eb9530bc3afefa9372fae122782c093f6564ffa1451",
+      "git_blob_sha": "e56796d5c028024f7eb292632769c22843128f75",
+      "url": "https://github.com/sgl-project/sglang/blob/d574752ef39eb3ef73f87c40dca95d76222f9483/python/sglang/srt/disaggregation/common/conn.py"
+    },
+    {
+      "path": "python/sglang/srt/disaggregation/decode.py",
+      "bytes": 138929,
+      "sha256": "c2b800f67f6a3db87b5290c32fa5070d99e0e64ca41bc571f88b83f3807a72db",
+      "git_blob_sha": "e8e06b885fe5b2182f78d787b742a1268a6ad02b",
+      "url": "https://github.com/sgl-project/sglang/blob/d574752ef39eb3ef73f87c40dca95d76222f9483/python/sglang/srt/disaggregation/decode.py"
+    },
+    {
+      "path": "python/sglang/srt/disaggregation/nixl/conn.py",
+      "bytes": 144248,
+      "sha256": "02fd9826ed139264b03456ee10b2d46388284011f05ad86ed3d3d790e406ea52",
+      "git_blob_sha": "fb099846b720fadecd9db5180491a3631b6a12ad",
+      "url": "https://github.com/sgl-project/sglang/blob/d574752ef39eb3ef73f87c40dca95d76222f9483/python/sglang/srt/disaggregation/nixl/conn.py"
+    },
+    {
+      "path": "python/sglang/srt/disaggregation/mooncake/conn.py",
+      "bytes": 132509,
+      "sha256": "c298ff9ad6fca2a2f4959d0ba43414598ce454edc1d688636af17666a3b7cfd5",
+      "git_blob_sha": "0f0edd888b7073fa49c4c77c4a1adfd70e583950",
+      "url": "https://github.com/sgl-project/sglang/blob/d574752ef39eb3ef73f87c40dca95d76222f9483/python/sglang/srt/disaggregation/mooncake/conn.py"
+    },
+    {
+      "path": "python/sglang/srt/disaggregation/base/conn.py",
+      "bytes": 8721,
+      "sha256": "fb161e695c9ff27e3082fa7c56be4bd432f30c39884b558db23aa2a05104c0ae",
+      "git_blob_sha": "5e31360193583fdf1818008617d6bfbef0465779",
+      "url": "https://github.com/sgl-project/sglang/blob/d574752ef39eb3ef73f87c40dca95d76222f9483/python/sglang/srt/disaggregation/base/conn.py"
+    },
+    {
+      "path": "python/sglang/srt/managers/scheduler.py",
+      "bytes": 268119,
+      "sha256": "64eb5038ccebf043b4027e757c2828e3545a10f32d8e52551f91c486547b5170",
+      "git_blob_sha": "0da72d79e1c3bd9ff8bf2bf355dfea9a93514b2a",
+      "url": "https://github.com/sgl-project/sglang/blob/d574752ef39eb3ef73f87c40dca95d76222f9483/python/sglang/srt/managers/scheduler.py"
+    },
+    {
+      "path": "python/sglang/srt/managers/scheduler_pp_mixin.py",
+      "bytes": 84936,
+      "sha256": "2c0cc6e5cf0e502fc6a34186e10c22c10e85e368ea82ab54ec1e34152a80ee4d",
+      "git_blob_sha": "71bca7dabf2ea4ca5532c8795d635e94f304d34d",
+      "url": "https://github.com/sgl-project/sglang/blob/d574752ef39eb3ef73f87c40dca95d76222f9483/python/sglang/srt/managers/scheduler_pp_mixin.py"
+    },
+    {
+      "path": "python/sglang/srt/arg_groups/pd_disaggregation_hook.py",
+      "bytes": 12886,
+      "sha256": "3533db4fb52f1f1e5c9adf649aecaefb8b1a98f38bdd43d5b8e963d3687b9ef9",
+      "git_blob_sha": "4124b23c5d8ba51b1babbbdb2ca5a07185be9a57",
+      "url": "https://github.com/sgl-project/sglang/blob/d574752ef39eb3ef73f87c40dca95d76222f9483/python/sglang/srt/arg_groups/pd_disaggregation_hook.py"
+    },
+    {
+      "path": "python/sglang/srt/arg_groups/hicache_hook.py",
+      "bytes": 9629,
+      "sha256": "e02c98b29143e0fc1830e1d444034f1c185821b5bb897fa694e05dd47fa60f25",
+      "git_blob_sha": "457f6a04283cefbedd05941dbe2f45a3d78a27b6",
+      "url": "https://github.com/sgl-project/sglang/blob/d574752ef39eb3ef73f87c40dca95d76222f9483/python/sglang/srt/arg_groups/hicache_hook.py"
+    },
+    {
+      "path": "python/pyproject.toml",
+      "bytes": 6795,
+      "sha256": "65703b11578e19164143205ec133863a262aaf789aeb9103a84f2e620d4492cb",
+      "git_blob_sha": "0f5c947b2c3878eaf6648838f23af8c587cf1395",
+      "url": "https://github.com/sgl-project/sglang/blob/d574752ef39eb3ef73f87c40dca95d76222f9483/python/pyproject.toml"
+    },
+    {
+      "path": "test/registered/unit/disaggregation/test_deferred_decode_kv_release.py",
+      "bytes": 21019,
+      "sha256": "d028bc72f97f1a46979304e5c45bc747ae83c9085f10257c668e9e4ed77a5782",
+      "git_blob_sha": "de45d80a6ad0cbe652970d938f6d97f961c029d0",
+      "url": "https://github.com/sgl-project/sglang/blob/d574752ef39eb3ef73f87c40dca95d76222f9483/test/registered/unit/disaggregation/test_deferred_decode_kv_release.py"
+    },
+    {
+      "path": "test/registered/unit/disaggregation/test_nixl_deferred_kv_release.py",
+      "bytes": 13353,
+      "sha256": "ed8a38c0a9d040fed3e2aa228943ad02c931d773ea4862e0cb1e481956cf7ace",
+      "git_blob_sha": "6c66d022dbf13752b85ad7868b721fa797867ada",
+      "url": "https://github.com/sgl-project/sglang/blob/d574752ef39eb3ef73f87c40dca95d76222f9483/test/registered/unit/disaggregation/test_nixl_deferred_kv_release.py"
+    },
+    {
+      "path": "test/registered/unit/disaggregation/test_disaggregation_wire.py",
+      "bytes": 48113,
+      "sha256": "92186291ca023971ea0661eeec4c3f3943bdc84058fa28cd870f80a9e4796d0a",
+      "git_blob_sha": "e85c0a94e6c2e8a88007861fc9c0c2af5a6ec04c",
+      "url": "https://github.com/sgl-project/sglang/blob/d574752ef39eb3ef73f87c40dca95d76222f9483/test/registered/unit/disaggregation/test_disaggregation_wire.py"
+    },
+    {
+      "path": "test/README.md",
+      "bytes": 7517,
+      "sha256": "cc4a22345f55d04890b9ecee049be08669201ecbb7a1b469772bd51da1a424d7",
+      "git_blob_sha": "b0a9e1aa0bd9185c7005a63707463f0985f9fb99",
+      "url": "https://github.com/sgl-project/sglang/blob/d574752ef39eb3ef73f87c40dca95d76222f9483/test/README.md"
+    },
+    {
+      "path": "test/registered/unit/README.md",
+      "bytes": 3421,
+      "sha256": "09e945b5cf093d52b7a7d618caecc1af15df79bb0fa867020b001b6738704673",
+      "git_blob_sha": "7fc2576a5e62051d988dfa9169bb577e5ab797ae",
+      "url": "https://github.com/sgl-project/sglang/blob/d574752ef39eb3ef73f87c40dca95d76222f9483/test/registered/unit/README.md"
+    },
+    {
+      "path": ".claude/skills/write-sglang-test/SKILL.md",
+      "bytes": 20806,
+      "sha256": "f9bb83c36946c346e9aeb156e1605496a74f629297fbc1983d05802d9aec9e0f",
+      "git_blob_sha": "d0ddcdbe9102efaf980349ef360abfbe9c7d6f45",
+      "url": "https://github.com/sgl-project/sglang/blob/d574752ef39eb3ef73f87c40dca95d76222f9483/.claude/skills/write-sglang-test/SKILL.md"
+    },
+    {
+      "path": ".claude/rules/unit-test-admission.md",
+      "bytes": 4117,
+      "sha256": "7cc2202dc8d16e67d238023c63ce8e03dce69ddff8db003769daa578a5cf158c",
+      "git_blob_sha": "4731a596e4a6e295e145460ded7a717c53f2b74b",
+      "url": "https://github.com/sgl-project/sglang/blob/d574752ef39eb3ef73f87c40dca95d76222f9483/.claude/rules/unit-test-admission.md"
+    },
+    {
+      "path": ".claude/rules/general-code-style.md",
+      "bytes": 2271,
+      "sha256": "c2d16134767cf50ea500017c1f1ad4e840fd7f96f0557ba094b0b8995e02b114",
+      "git_blob_sha": "07f82c54845d8b364efde8e840669a3d3d8b06ae",
+      "url": "https://github.com/sgl-project/sglang/blob/d574752ef39eb3ef73f87c40dca95d76222f9483/.claude/rules/general-code-style.md"
+    },
+    {
+      "path": ".claude/rules/comment-style.md",
+      "bytes": 9325,
+      "sha256": "77685bca58a00fbdb78fc13e80ababcd147b1f9f65fa7559efa443893e618426",
+      "git_blob_sha": "09d56239dcc966ce52731a18f2814408af26afc4",
+      "url": "https://github.com/sgl-project/sglang/blob/d574752ef39eb3ef73f87c40dca95d76222f9483/.claude/rules/comment-style.md"
+    },
+    {
+      "path": ".claude/rules/no-dataclasses.md",
+      "bytes": 757,
+      "sha256": "4e7f00c8cf78f69437214861b5588163a46369c2c5952335c1b3353e9a7e2e4c",
+      "git_blob_sha": "6a30511ec67c1c78c6bac8dd0ec01d16753dd233",
+      "url": "https://github.com/sgl-project/sglang/blob/d574752ef39eb3ef73f87c40dca95d76222f9483/.claude/rules/no-dataclasses.md"
+    },
+    {
+      "path": ".claude/rules/no-getattr-defensive.md",
+      "bytes": 1182,
+      "sha256": "c3a9a828c44582dadc562e947530093c1e00964a1010375401166fb52ae964be",
+      "git_blob_sha": "76893d93c1bf645ab8b6d3e9bf57430418e78b8c",
+      "url": "https://github.com/sgl-project/sglang/blob/d574752ef39eb3ef73f87c40dca95d76222f9483/.claude/rules/no-getattr-defensive.md"
+    },
+    {
+      "path": ".claude/rules/modify-component-must-read.md",
+      "bytes": 1181,
+      "sha256": "fcbcda10f6b2e766709c0dd05cd2d2057e6015d422dc9ceee68cb1a100f7833a",
+      "git_blob_sha": "c741c1bb9597d974e90910e37f67137310bf0f5f",
+      "url": "https://github.com/sgl-project/sglang/blob/d574752ef39eb3ef73f87c40dca95d76222f9483/.claude/rules/modify-component-must-read.md"
+    },
+    {
+      "path": "docs/docs/developer_guide/contribution_guide.mdx",
+      "bytes": 21615,
+      "sha256": "a9784a253fbb656f01ec8b26be9b89c786b171f16b92588610cd4273aff2ac59",
+      "git_blob_sha": "a5d8ae179359b7db0851df8f7fc6d73584333fce",
+      "url": "https://github.com/sgl-project/sglang/blob/d574752ef39eb3ef73f87c40dca95d76222f9483/docs/docs/developer_guide/contribution_guide.mdx"
+    },
+    {
+      "path": ".github/MAINTAINER.md",
+      "bytes": 10506,
+      "sha256": "7de808fe716618ea4275752cd9a6a99c711483301f8b7f10af0950798585036e",
+      "git_blob_sha": "42e863b48468cb55892db03b64636f3bc4dae0d4",
+      "url": "https://github.com/sgl-project/sglang/blob/d574752ef39eb3ef73f87c40dca95d76222f9483/.github/MAINTAINER.md"
+    },
+    {
+      "path": ".github/pull_request_template.md",
+      "bytes": 2268,
+      "sha256": "1348f2e4693303084c175a5eadf7f92d737f0af01e2634ce9dc94782c28f98ef",
+      "git_blob_sha": "a2338baf30d92d491f499b7579dadcae647b6fee",
+      "url": "https://github.com/sgl-project/sglang/blob/d574752ef39eb3ef73f87c40dca95d76222f9483/.github/pull_request_template.md"
+    },
+    {
+      "path": ".github/workflows/pr-test.yml",
+      "bytes": 24039,
+      "sha256": "64278c4ea759ea500b93dd497f806e70e2d5da53e43504782cc54ca5d6225f1e",
+      "git_blob_sha": "92ac2038e446b6e87f17be2d71178158e78e9395",
+      "url": "https://github.com/sgl-project/sglang/blob/d574752ef39eb3ef73f87c40dca95d76222f9483/.github/workflows/pr-test.yml"
+    }
+  ]
+}

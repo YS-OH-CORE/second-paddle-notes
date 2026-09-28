@@ -1,0 +1,59 @@
+/home/runner/work/second-paddle-notes/second-paddle-notes/sglang/python/sglang/srt/layers/quantization/awq/awq.py:53: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/home/runner/work/second-paddle-notes/second-paddle-notes/sglang/python/sglang/srt/layers/quantization/gguf.py:69: UserWarning: Only CUDA, MUSA and NPU support GGUF quantization currently.
+  warnings.warn(f"Only CUDA, MUSA and NPU support GGUF quantization currently.")
+test_ack_before_register_is_dropped (__main__.TestAbortAckAggregation.test_ack_before_register_is_dropped) ... ok
+test_clear_deferred_abort_state (__main__.TestAbortAckAggregation.test_clear_deferred_abort_state) ... ok
+test_duplicate_rank_ack_does_not_over_count (__main__.TestAbortAckAggregation.test_duplicate_rank_ack_does_not_over_count) ... ok
+test_late_ack_after_release_does_not_pollute_reused_room (__main__.TestAbortAckAggregation.test_late_ack_after_release_does_not_pollute_reused_room) ... ok
+test_register_resets_stale_acks (__main__.TestAbortAckAggregation.test_register_resets_stale_acks) ... ok
+test_release_safe_only_after_all_required_ranks_ack (__main__.TestAbortAckAggregation.test_release_safe_only_after_all_required_ranks_ack) ... ok
+test_single_rank_fast_path (__main__.TestAbortAckAggregation.test_single_rank_fast_path) ... ok
+test_ensure_abort_notified_sends_once_and_keeps_failure_records (__main__.TestAbortArmsTrackerBeforeSend.test_ensure_abort_notified_sends_once_and_keeps_failure_records) ... ok
+test_force_arm_arms_unpublished_receiver_before_send (__main__.TestAbortArmsTrackerBeforeSend.test_force_arm_arms_unpublished_receiver_before_send) ... ok
+test_opted_out_backend_does_not_arm (__main__.TestAbortArmsTrackerBeforeSend.test_opted_out_backend_does_not_arm) ... ok
+test_prealloc_abort_does_not_arm (__main__.TestAbortArmsTrackerBeforeSend.test_prealloc_abort_does_not_arm) ... ok
+test_tracker_armed_before_the_abort_is_sent (__main__.TestAbortArmsTrackerBeforeSend.test_tracker_armed_before_the_abort_is_sent) ... ok
+test_backends_that_ack_opt_in (__main__.TestBackendOptIn.test_backends_that_ack_opt_in) ... ok
+test_backends_without_a_drain_ack_stay_opted_out (__main__.TestBackendOptIn.test_backends_without_a_drain_ack_stay_opted_out) ... ok
+test_enabled_by_default (__main__.TestBackendOptIn.test_enabled_by_default) ... ok
+test_backend_optout_keeps_immediate_release_and_sends_no_abort (__main__.TestFailedTransfersDeferOnEveryFailure.test_backend_optout_keeps_immediate_release_and_sends_no_abort) ... Decode transfer failed for request rank=0 decode_req.req.rid='r9' decode_req.req.bootstrap_room=9
+ok
+test_non_abort_failure_notifies_and_defers (__main__.TestFailedTransfersDeferOnEveryFailure.test_non_abort_failure_notifies_and_defers) ... Decode transfer failed for request rank=0 decode_req.req.rid='r7' decode_req.req.bootstrap_room=7
+ok
+test_unnotifiable_failure_releases_immediately (__main__.TestFailedTransfersDeferOnEveryFailure.test_unnotifiable_failure_releases_immediately) ... Decode transfer failed for request rank=0 decode_req.req.rid='r8' decode_req.req.bootstrap_room=8
+ok
+test_defer_release_records_deadline_and_idx (__main__.TestResolveDeferredReleases.test_defer_release_records_deadline_and_idx) ... ok
+test_failed_release_is_isolated_and_not_retried (__main__.TestResolveDeferredReleases.test_failed_release_is_isolated_and_not_retried) ... Deferred KV release for room 701 timed out after 30.0s without a full drain ack from prefill; releasing anyway.
+Deferred KV release failed for room 701
+Traceback (most recent call last):
+  File "/home/runner/work/second-paddle-notes/second-paddle-notes/sglang/python/sglang/srt/disaggregation/decode.py", line 2855, in resolve_deferred_releases
+    self._do_release(decode_req, idx)
+  File "/home/runner/work/second-paddle-notes/second-paddle-notes/sglang/python/sglang/srt/disaggregation/decode.py", line 2796, in _do_release
+    self._release_request(decode_req)
+  File "/home/runner/work/second-paddle-notes/second-paddle-notes/sglang/python/sglang/srt/disaggregation/decode.py", line 2614, in _release_request
+    release_kv_cache(decode_req.req, self.tree_cache, is_insert=False)
+  File "/usr/lib/python3.12/unittest/mock.py", line 1134, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/unittest/mock.py", line 1138, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/unittest/mock.py", line 1199, in _execute_mock_call
+    result = effect(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/second-paddle-notes/second-paddle-notes/sglang/test/registered/unit/disaggregation/test_deferred_decode_kv_release.py", line 348, in fake_release
+    raise RuntimeError("boom")
+RuntimeError: boom
+Deferred KV release for room 700 timed out after 30.0s without a full drain ack from prefill; releasing anyway.
+ok
+test_holds_until_drained_then_releases (__main__.TestResolveDeferredReleases.test_holds_until_drained_then_releases) ... ok
+test_host_release_requires_drain_on_every_rank_even_after_timeout (__main__.TestResolveDeferredReleases.test_host_release_requires_drain_on_every_rank_even_after_timeout) ... ok
+test_noop_when_nothing_deferred (__main__.TestResolveDeferredReleases.test_noop_when_nothing_deferred) ... ok
+test_releases_on_timeout_without_ack (__main__.TestResolveDeferredReleases.test_releases_on_timeout_without_ack) ... Deferred KV release for room 300 timed out after 30.0s without a full drain ack from prefill; releasing anyway.
+ok
+
+----------------------------------------------------------------------
+Ran 24 tests in 0.019s
+
+OK

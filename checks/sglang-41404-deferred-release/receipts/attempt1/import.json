@@ -1,0 +1,66 @@
+{
+  "kind": "environment-import-probe",
+  "expected_head": "d574752ef39eb3ef73f87c40dca95d76222f9483",
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "executable": "/home/runner/work/second-paddle-notes/second-paddle-notes/sglang/.venv/bin/python",
+  "official_kernel_stub_helper_used": false,
+  "tests_executed": 0,
+  "environment": {
+    "SGLANG_USE_CPU_ENGINE": null,
+    "SGLANG_IS_IN_CI": "true",
+    "SGLANG_TEST_MAX_RETRY": "0",
+    "SGLANG_BUILD_RUST_EXTS": "none"
+  },
+  "sources": {
+    "test/registered/unit/disaggregation/test_deferred_decode_kv_release.py": {
+      "path": "/home/runner/work/second-paddle-notes/second-paddle-notes/sglang/test/registered/unit/disaggregation/test_deferred_decode_kv_release.py",
+      "sha256": "d028bc72f97f1a46979304e5c45bc747ae83c9085f10257c668e9e4ed77a5782",
+      "matches_frozen_git_blob": true
+    },
+    "python/sglang/srt/disaggregation/decode.py": {
+      "path": "/home/runner/work/second-paddle-notes/second-paddle-notes/sglang/python/sglang/srt/disaggregation/decode.py",
+      "sha256": "c2b800f67f6a3db87b5290c32fa5070d99e0e64ca41bc571f88b83f3807a72db",
+      "matches_frozen_git_blob": true
+    },
+    "python/sglang/srt/disaggregation/common/conn.py": {
+      "path": "/home/runner/work/second-paddle-notes/second-paddle-notes/sglang/python/sglang/srt/disaggregation/common/conn.py",
+      "sha256": "349f519b174a7501e3959eb9530bc3afefa9372fae122782c093f6564ffa1451",
+      "matches_frozen_git_blob": true
+    },
+    "python/sglang/srt/disaggregation/mooncake/conn.py": {
+      "path": "/home/runner/work/second-paddle-notes/second-paddle-notes/sglang/python/sglang/srt/disaggregation/mooncake/conn.py",
+      "sha256": "c298ff9ad6fca2a2f4959d0ba43414598ce454edc1d688636af17666a3b7cfd5",
+      "matches_frozen_git_blob": true
+    },
+    "python/sglang/srt/disaggregation/nixl/conn.py": {
+      "path": "/home/runner/work/second-paddle-notes/second-paddle-notes/sglang/python/sglang/srt/disaggregation/nixl/conn.py",
+      "sha256": "02fd9826ed139264b03456ee10b2d46388284011f05ad86ed3d3d790e406ea52",
+      "matches_frozen_git_blob": true
+    },
+    "python/sglang/test/test_utils.py": {
+      "path": "/home/runner/work/second-paddle-notes/second-paddle-notes/sglang/python/sglang/test/test_utils.py",
+      "sha256": "19e626c461e589c9043e66b1ee77f7205b1aa1754a498a9124e7e8c5312d98b1",
+      "matches_frozen_git_blob": true
+    }
+  },
+  "actual_head": "d574752ef39eb3ef73f87c40dca95d76222f9483",
+  "torch": {
+    "version": "2.13.0+cpu",
+    "binary_git_commit": "cf30153c4c131c8164ee7798e5022d810682e2cb",
+    "cuda_build": null,
+    "hip_build": null,
+    "cuda_available": false,
+    "file": "/home/runner/work/second-paddle-notes/second-paddle-notes/sglang/.venv/lib/python3.12/site-packages/torch/__init__.py"
+  },
+  "triton": {
+    "version": "3.8.0",
+    "file": "/home/runner/work/second-paddle-notes/second-paddle-notes/sglang/.venv/lib/python3.12/site-packages/triton/__init__.py"
+  },
+  "custom_test_case": {
+    "module": "sglang.test.test_utils",
+    "source": "/home/runner/work/second-paddle-notes/second-paddle-notes/sglang/python/sglang/test/test_utils.py"
+  },
+  "platform_class": "SRTPlatform",
+  "upstream_test_count": 24,
+  "status": "import-and-source-check-passed"
+}
