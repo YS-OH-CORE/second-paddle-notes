@@ -1,0 +1,37 @@
+cwd: /workspace/scratch/860645c74e07/mcp533
+command: npm test -- src/runner/server.session-lifetime.test.ts src/runner/server.test.ts --disableConsoleIntercept
+HEAD: a95deff303dc2221654fe4331daf657e0f2ac690 + working-tree lifecycle guard
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @modelcontextprotocol/conformance@0.2.0-alpha.11 test
+> vitest run src/runner/server.session-lifetime.test.ts src/runner/server.test.ts --disableConsoleIntercept
+
+
+ RUN  v4.1.5 /workspace/scratch/860645c74e07/mcp533
+
+SKIPPED: scenario 'server-stateless' is not applicable at spec version 2025-11-25 (introduced in 2026-07-28). Use --force to run it anyway.
+SKIPPED: scenario 'server-initialize' is not applicable at spec version 2026-07-28 (introduced in 2025-06-18, removed in 2026-07-28). Use --force to run it anyway.
+Running client scenario 'server-stateless' against server: http://127.0.0.1:9/mcp
+Running client scenario 'server-initialize' against server: http://127.0.0.1:34663/mcp
+
+Scenario timed out after 1000ms
+Running client scenario 'tasks-lifecycle' against server: http://127.0.0.1:41941/mcp
+Running client scenario 'prompts-list' against server: http://127.0.0.1:33939/mcp
+Running client scenario 'prompts-list' against server: http://127.0.0.1:33017/mcp
+
+Scenario timed out after 2000ms
+Running client scenario 'prompts-list' against server: http://127.0.0.1:36111/mcp
+Running client scenario 'prompts-list' against server: http://127.0.0.1:36189/mcp
+
+Scenario timed out after 1000ms
+Running client scenario 'prompts-list' against server: http://127.0.0.1:36189/mcp
+late connection wire events: [{"method":"POST initialize","sessionId":"s1"},{"method":"POST notifications/initialized","sessionId":"s1"},{"method":"runner returned scenario-timeout"},{"method":"GET","sessionId":"s1"},{"method":"DELETE","sessionId":"s1"},{"method":"POST initialize","sessionId":"s2"},{"method":"POST notifications/initialized","sessionId":"s2"},{"method":"GET","sessionId":"s2"},{"method":"POST prompts/list","sessionId":"s2"},{"method":"DELETE","sessionId":"s2"}]
+late connection observation: {"lateSessionDeletes":1,"lateSessionProbes":0,"healthyPromptStatus":"SUCCESS","healthyFailures":0,"healthySessionDeletes":1,"liveSessions":[]}
+
+ Test Files  2 passed (2)
+      Tests  9 passed (9)
+   Start at  09:21:32
+   Duration  5.96s (transform 710ms, setup 245ms, import 1.23s, tests 4.22s, environment 0ms)
+
+
+EXIT_CODE=0

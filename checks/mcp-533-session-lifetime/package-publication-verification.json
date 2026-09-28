@@ -1,0 +1,16 @@
+{
+  "runId": 36391485935,
+  "url": "https://github.com/YS-OH-CORE/conformance/actions/runs/36391485935",
+  "jobId": 108828094115,
+  "headSha": "95dd2e2c64c7173e5f3ddfada7b03512f88eef89",
+  "workflow": "Publish PR to pkg.pr.new",
+  "event": "push",
+  "conclusion": "failure",
+  "successfulSteps": [
+    "npm ci",
+    "Build"
+  ],
+  "failedStep": "Publish",
+  "reason": "pkg-pr-new service returned 404: the app https://github.com/apps/pkg-pr-new is not installed on YS-OH-CORE/conformance.",
+  "interpretation": "This separate package-publication workflow failed; standard check/build/test CI 36391589358 succeeded. No package publication success is claimed."
+}

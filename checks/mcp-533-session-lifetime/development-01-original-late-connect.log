@@ -1,0 +1,71 @@
+cwd: /workspace/scratch/860645c74e07/mcp533
+command: npm test -- src/runner/server.session-lifetime.test.ts
+HEAD: a95deff303dc2221654fe4331daf657e0f2ac690
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @modelcontextprotocol/conformance@0.2.0-alpha.11 test
+> vitest run src/runner/server.session-lifetime.test.ts
+
+
+ RUN  v4.1.5 /workspace/scratch/860645c74e07/mcp533
+
+stdout | src/runner/server.session-lifetime.test.ts > closes a connection completed after timeout before the abandoned scenario can use it
+Running client scenario 'prompts-list' against server: http://127.0.0.1:40733/mcp
+
+stdout | src/runner/server.session-lifetime.test.ts > closes a connection completed after timeout before the abandoned scenario can use it
+
+Scenario timed out after 1000ms
+
+stdout | src/runner/server.session-lifetime.test.ts > closes a connection completed after timeout before the abandoned scenario can use it
+Running client scenario 'prompts-list' against server: http://127.0.0.1:40733/mcp
+
+stdout | src/runner/server.session-lifetime.test.ts > closes a connection completed after timeout before the abandoned scenario can use it
+late connection wire events: [{"method":"POST initialize","sessionId":"s1"},{"method":"POST notifications/initialized","sessionId":"s1"},{"method":"runner returned scenario-timeout"},{"method":"GET","sessionId":"s1"},{"method":"POST prompts/list","sessionId":"s1"},{"method":"REJECT initialize"}]
+late connection observation: {"lateSessionDeletes":0,"lateSessionProbes":1,"healthyPromptStatus":"FAILURE","healthyFailures":1,"healthySessionDeletes":0,"liveSessions":["s1"]}
+
+ ❯ src/runner/server.session-lifetime.test.ts (1 test | 1 failed) 1040ms
+   × closes a connection completed after timeout before the abandoned scenario can use it 1039ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/runner/server.session-lifetime.test.ts > closes a connection completed after timeout before the abandoned scenario can use it
+AssertionError: expected { lateSessionDeletes: +0, …(5) } to deeply equal { lateSessionDeletes: 1, …(5) }
+
+- Expected
++ Received
+
+  {
+-   "healthyFailures": 0,
+-   "healthyPromptStatus": "SUCCESS",
+-   "healthySessionDeletes": 1,
+-   "lateSessionDeletes": 1,
+-   "lateSessionProbes": 0,
+-   "liveSessions": [],
++   "healthyFailures": 1,
++   "healthyPromptStatus": "FAILURE",
++   "healthySessionDeletes": 0,
++   "lateSessionDeletes": 0,
++   "lateSessionProbes": 1,
++   "liveSessions": [
++     "s1",
++   ],
+  }
+
+ ❯ src/runner/server.session-lifetime.test.ts:157:25
+    155|     console.log('late connection wire events:', JSON.stringify(events)…
+    156|     console.log('late connection observation:', JSON.stringify(observa…
+    157|     expect(observation).toEqual({
+       |                         ^
+    158|       lateSessionDeletes: 1,
+    159|       lateSessionProbes: 0,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  09:17:10
+   Duration  2.31s (transform 700ms, setup 208ms, import 902ms, tests 1.04s, environment 0ms)
+
+
+EXIT_CODE=1

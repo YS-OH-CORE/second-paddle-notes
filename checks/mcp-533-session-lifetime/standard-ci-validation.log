@@ -1,0 +1,347 @@
+2026-09-28T07:25:49.0016420Z ##[group]Run npm ci
+2026-09-28T07:25:49.0017406Z [36;1mnpm ci[0m
+2026-09-28T07:25:49.0256368Z shell: /usr/bin/bash -e {0}
+2026-09-28T07:25:49.0257344Z ##[endgroup]
+2026-09-28T07:25:54.3850547Z 
+2026-09-28T07:25:54.3859863Z > @modelcontextprotocol/conformance@0.2.0-alpha.11 prepare
+2026-09-28T07:25:54.3860781Z > npm run build
+2026-09-28T07:25:54.3861017Z 
+2026-09-28T07:25:54.4878007Z 
+2026-09-28T07:25:54.4878997Z > @modelcontextprotocol/conformance@0.2.0-alpha.11 build
+2026-09-28T07:25:54.4880071Z > tsdown src/index.ts --minify --clean --target node20 --no-fixed-extension
+2026-09-28T07:25:54.4881065Z 
+2026-09-28T07:25:54.5786718Z [34mℹ[39m [34mtsdown v0.21.10[39m powered by [38;2;255;126;23mrolldown v1.0.0-rc.17[39m
+2026-09-28T07:25:54.6143708Z [34mℹ[39m config file: [4m/home/runner/work/conformance/conformance/package.json[24m 
+2026-09-28T07:25:54.6168359Z [34mℹ[39m entry: [34msrc/index.ts[39m
+2026-09-28T07:25:54.6169594Z [34mℹ[39m target: [34mnode20[39m
+2026-09-28T07:25:54.6172510Z [34mℹ[39m tsconfig: [34mtsconfig.json[39m
+2026-09-28T07:25:54.6181180Z [34mℹ[39m Build start
+2026-09-28T07:25:54.7533407Z [34mℹ[39m Granting execute permission to [4mdist/index.js[24m
+2026-09-28T07:25:54.7877259Z [34mℹ[39m [2mdist/[22m[1mindex.js[22m  [2m864.19 kB[22m [2m│ gzip: 177.49 kB[22m
+2026-09-28T07:25:54.7878506Z [34mℹ[39m 1 files, total: 864.19 kB
+2026-09-28T07:25:54.7883069Z [32m✔[39m Build complete in [32m169ms[39m
+2026-09-28T07:25:54.8285855Z 
+2026-09-28T07:25:54.8286530Z added 300 packages, and audited 301 packages in 6s
+2026-09-28T07:25:54.8286990Z 
+2026-09-28T07:25:54.8287783Z 97 packages are looking for funding
+2026-09-28T07:25:54.8288503Z   run `npm fund` for details
+2026-09-28T07:25:54.8650169Z 
+2026-09-28T07:25:54.8650943Z 16 vulnerabilities (2 low, 5 moderate, 9 high)
+2026-09-28T07:25:54.8651245Z 
+2026-09-28T07:25:54.8651408Z To address all issues, run:
+2026-09-28T07:25:54.8651704Z   npm audit fix
+2026-09-28T07:25:54.8651836Z 
+2026-09-28T07:25:54.8652059Z Run `npm audit` for details.
+2026-09-28T07:25:54.8663495Z npm warn install-scripts 2 packages have install scripts not yet covered by allowScripts:
+2026-09-28T07:25:54.8664647Z npm warn install-scripts   esbuild@0.27.4 (postinstall: node install.js)
+2026-09-28T07:25:54.8665680Z npm warn install-scripts   lefthook@2.1.6 (postinstall: node postinstall.js)
+2026-09-28T07:25:54.8666452Z npm warn install-scripts
+2026-09-28T07:25:54.8667489Z npm warn install-scripts Run `npm install-scripts ls` to review, or `npm install-scripts approve <pkg>` to allow.
+2026-09-28T07:25:54.9977014Z ##[group]Run npm run check
+2026-09-28T07:25:54.9977457Z [36;1mnpm run check[0m
+2026-09-28T07:25:55.0074309Z shell: /usr/bin/bash -e {0}
+2026-09-28T07:25:55.0074741Z ##[endgroup]
+2026-09-28T07:25:55.1164179Z 
+2026-09-28T07:25:55.1164841Z > @modelcontextprotocol/conformance@0.2.0-alpha.11 check
+2026-09-28T07:25:55.1165516Z > npm run typecheck && npm run lint
+2026-09-28T07:25:55.1165825Z 
+2026-09-28T07:25:55.2177597Z 
+2026-09-28T07:25:55.2178299Z > @modelcontextprotocol/conformance@0.2.0-alpha.11 typecheck
+2026-09-28T07:25:55.2178935Z > tsgo --noEmit
+2026-09-28T07:25:55.2179160Z 
+2026-09-28T07:25:56.4017977Z 
+2026-09-28T07:25:56.4018794Z > @modelcontextprotocol/conformance@0.2.0-alpha.11 lint
+2026-09-28T07:25:56.4019593Z > eslint src/ examples/ && prettier --check .
+2026-09-28T07:25:56.4020155Z 
+2026-09-28T07:26:00.1805635Z Checking formatting...
+2026-09-28T07:26:03.8585985Z All matched files use Prettier code style!
+2026-09-28T07:26:03.9147646Z ##[group]Run npm run build
+2026-09-28T07:26:03.9147953Z [36;1mnpm run build[0m
+2026-09-28T07:26:03.9217000Z shell: /usr/bin/bash -e {0}
+2026-09-28T07:26:03.9217280Z ##[endgroup]
+2026-09-28T07:26:04.0224078Z 
+2026-09-28T07:26:04.0224856Z > @modelcontextprotocol/conformance@0.2.0-alpha.11 build
+2026-09-28T07:26:04.0225824Z > tsdown src/index.ts --minify --clean --target node20 --no-fixed-extension
+2026-09-28T07:26:04.0226338Z 
+2026-09-28T07:26:04.1111575Z [34mℹ[39m [34mtsdown v0.21.10[39m powered by [38;2;255;126;23mrolldown v1.0.0-rc.17[39m
+2026-09-28T07:26:04.1406744Z [34mℹ[39m config file: [4m/home/runner/work/conformance/conformance/package.json[24m 
+2026-09-28T07:26:04.1426587Z [34mℹ[39m entry: [34msrc/index.ts[39m
+2026-09-28T07:26:04.1427936Z [34mℹ[39m target: [34mnode20[39m
+2026-09-28T07:26:04.1430003Z [34mℹ[39m tsconfig: [34mtsconfig.json[39m
+2026-09-28T07:26:04.1440037Z [34mℹ[39m Build start
+2026-09-28T07:26:04.1495534Z [34mℹ[39m Cleaning 1 files
+2026-09-28T07:26:04.2786698Z [34mℹ[39m Granting execute permission to [4mdist/index.js[24m
+2026-09-28T07:26:04.3061839Z [34mℹ[39m [2mdist/[22m[1mindex.js[22m  [2m864.19 kB[22m [2m│ gzip: 177.49 kB[22m
+2026-09-28T07:26:04.3062771Z [34mℹ[39m 1 files, total: 864.19 kB
+2026-09-28T07:26:04.3067358Z [32m✔[39m Build complete in [32m162ms[39m
+2026-09-28T07:26:04.3267849Z ##[group]Run npm test
+2026-09-28T07:26:04.3268125Z [36;1mnpm test[0m
+2026-09-28T07:26:04.3338575Z shell: /usr/bin/bash -e {0}
+2026-09-28T07:26:04.3338854Z ##[endgroup]
+2026-09-28T07:26:04.4425038Z 
+2026-09-28T07:26:04.4425608Z > @modelcontextprotocol/conformance@0.2.0-alpha.11 test
+2026-09-28T07:26:04.4426137Z > vitest run
+2026-09-28T07:26:04.4426269Z 
+2026-09-28T07:26:04.7414213Z 
+2026-09-28T07:26:04.7418595Z [1m[30m[46m RUN [49m[39m[22m [36mv4.1.5 [39m[90m/home/runner/work/conformance/conformance[39m
+2026-09-28T07:26:04.7419613Z 
+2026-09-28T07:26:05.3045085Z  [32m✓[39m src/scenarios/server/stateless.test.ts [2m([22m[2m20 tests[22m[2m)[22m[32m 22[2mms[22m[39m
+2026-09-28T07:26:07.7585441Z  [32m✓[39m src/scenarios/client/auth/index.test.ts [2m([22m[2m67 tests[22m[2m)[22m[33m 1248[2mms[22m[39m
+2026-09-28T07:26:08.4783990Z  [32m✓[39m src/scenarios/client/draft-result-fields.test.ts [2m([22m[2m26 tests[22m[2m)[22m[33m 302[2mms[22m[39m
+2026-09-28T07:26:09.0852618Z  [32m✓[39m src/validation/wire-schema.test.ts [2m([22m[2m25 tests[22m[2m)[22m[32m 266[2mms[22m[39m
+2026-09-28T07:26:09.8599003Z  [32m✓[39m src/mock-server/mock-server.test.ts [2m([22m[2m28 tests[22m[2m)[22m[33m 378[2mms[22m[39m
+2026-09-28T07:26:10.1228422Z  [32m✓[39m src/expected-failures.test.ts [2m([22m[2m34 tests[22m[2m)[22m[32m 36[2mms[22m[39m
+2026-09-28T07:26:15.0937255Z  [32m✓[39m src/scenarios/server/negative.test.ts [2m([22m[2m10 tests[22m[2m)[22m[33m 4592[2mms[22m[39m
+2026-09-28T07:26:15.3218331Z [90mstdout[2m | src/scenarios/authorization-server/authorization-code-grant.test.ts[2m > [22m[2mAuthorizationCodeGrantScenario[2m > [22m[2mreturns SUCCESS for valid authorization response and token response
+2026-09-28T07:26:15.3220879Z [22m[39mEnsure http://127.0.0.1:3000/callback is registered as a redirect URI for client 'client'.
+2026-09-28T07:26:15.3222179Z Access the following URL in your browser and complete the authentication process.
+2026-09-28T07:26:15.3224612Z https://example.com/auth?response_type=code&client_id=client&state=_nrN1sZqF8Bt6b_awXBujOUpoKLPRNhmF91b1aEOKfA&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fcallback&code_challenge=OVHRIBeD_IeTygNd2gYuIjbAOSeAfTrn8-k8HuzJBF4&code_challenge_method=S256
+2026-09-28T07:26:15.3226232Z 
+2026-09-28T07:26:15.3226624Z Waiting up to 5 minutes for the authorization callback...
+2026-09-28T07:26:15.3227037Z 
+2026-09-28T07:26:15.3247539Z [90mstdout[2m | src/scenarios/authorization-server/authorization-code-grant.test.ts[2m > [22m[2mAuthorizationCodeGrantScenario[2m > [22m[2mreturns FAILURE when state parameter is invalid and does not request a token
+2026-09-28T07:26:15.3248869Z [22m[39mEnsure http://127.0.0.1:3000/callback is registered as a redirect URI for client 'client'.
+2026-09-28T07:26:15.3249598Z Access the following URL in your browser and complete the authentication process.
+2026-09-28T07:26:15.3251663Z https://example.com/auth?response_type=code&client_id=client&state=s9PdwXPeR_dKyOlj_AIcRmuTXYX7AeDGAG2xAtPm8QA&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fcallback&code_challenge=zILQfdtm_Js2XKzzKHNxzeaRQ54XqMaz22baZlEFWfo&code_challenge_method=S256
+2026-09-28T07:26:15.3252570Z 
+2026-09-28T07:26:15.3252804Z Waiting up to 5 minutes for the authorization callback...
+2026-09-28T07:26:15.3253055Z 
+2026-09-28T07:26:15.3260906Z [90mstdout[2m | src/scenarios/authorization-server/authorization-code-grant.test.ts[2m > [22m[2mAuthorizationCodeGrantScenario[2m > [22m[2mreturns FAILURE when the authorization response carries an error parameter
+2026-09-28T07:26:15.3262991Z [22m[39mEnsure http://127.0.0.1:3000/callback is registered as a redirect URI for client 'client'.
+2026-09-28T07:26:15.3264142Z Access the following URL in your browser and complete the authentication process.
+2026-09-28T07:26:15.3266662Z https://example.com/auth?response_type=code&client_id=client&state=YmpIN3mRCkZ-ohMLW6YApoh3Enq3mqT3QWBmHdewsjM&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fcallback&code_challenge=Hu76kaCnL96IGUtHDa77osSNt1-tdKL5slnputnPfpY&code_challenge_method=S256
+2026-09-28T07:26:15.3267583Z 
+2026-09-28T07:26:15.3267822Z Waiting up to 5 minutes for the authorization callback...
+2026-09-28T07:26:15.3268070Z 
+2026-09-28T07:26:15.3274822Z [90mstdout[2m | src/scenarios/authorization-server/authorization-code-grant.test.ts[2m > [22m[2mAuthorizationCodeGrantScenario[2m > [22m[2mreturns FAILURE when code parameter is missing
+2026-09-28T07:26:15.3276738Z [22m[39mEnsure http://127.0.0.1:3000/callback is registered as a redirect URI for client 'client'.
+2026-09-28T07:26:15.3277920Z Access the following URL in your browser and complete the authentication process.
+2026-09-28T07:26:15.3280488Z https://example.com/auth?response_type=code&client_id=client&state=0iwBwfnjyDm9Qt-0bdqZGuj3vfXUf2ZNXtnXhD82DBY&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fcallback&code_challenge=41-mI3bqK_YFKWRE_zU7xCuMTsBoJPIBLOFTCC4Hfik&code_challenge_method=S256
+2026-09-28T07:26:15.3282487Z 
+2026-09-28T07:26:15.3282873Z Waiting up to 5 minutes for the authorization callback...
+2026-09-28T07:26:15.3283286Z 
+2026-09-28T07:26:15.3294943Z [90mstdout[2m | src/scenarios/authorization-server/authorization-code-grant.test.ts[2m > [22m[2mAuthorizationCodeGrantScenario[2m > [22m[2mreturns FAILURE when iss parameter is invalid
+2026-09-28T07:26:15.3296152Z [22m[39mEnsure http://127.0.0.1:3000/callback is registered as a redirect URI for client 'client'.
+2026-09-28T07:26:15.3296853Z Access the following URL in your browser and complete the authentication process.
+2026-09-28T07:26:15.3298956Z https://example.com/auth?response_type=code&client_id=client&state=0ey8HwuB00toVJ3fKZ_8XySF4wLnzh16_zXX2XHcjHY&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fcallback&code_challenge=CKzo19kdhj5ag-1HjNjQORLK6vDFuZ8qvX8GJWX1Dys&code_challenge_method=S256
+2026-09-28T07:26:15.3299947Z 
+2026-09-28T07:26:15.3300189Z Waiting up to 5 minutes for the authorization callback...
+2026-09-28T07:26:15.3300619Z 
+2026-09-28T07:26:15.3301641Z [90mstdout[2m | src/scenarios/authorization-server/authorization-code-grant.test.ts[2m > [22m[2mAuthorizationCodeGrantScenario[2m > [22m[2mreturns FAILURE when token response does not include access_token
+2026-09-28T07:26:15.3302833Z [22m[39mEnsure http://127.0.0.1:3000/callback is registered as a redirect URI for client 'client'.
+2026-09-28T07:26:15.3303506Z Access the following URL in your browser and complete the authentication process.
+2026-09-28T07:26:15.3305416Z https://example.com/auth?response_type=code&client_id=client&state=gGIwvP-dO9Fx1O9-FUoRLY2B_UGsQPXAlHej3lpFsvo&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fcallback&code_challenge=sybALvvxWVt4l-aslAh9GzZGeiwZmaylWFYbWagJVLE&code_challenge_method=S256
+2026-09-28T07:26:15.3306935Z 
+2026-09-28T07:26:15.3307281Z Waiting up to 5 minutes for the authorization callback...
+2026-09-28T07:26:15.3307666Z 
+2026-09-28T07:26:15.3309417Z [90mstdout[2m | src/scenarios/authorization-server/authorization-code-grant.test.ts[2m > [22m[2mAuthorizationCodeGrantScenario[2m > [22m[2mreturns FAILURE when token response does not include token_type
+2026-09-28T07:26:15.3311104Z [22m[39mEnsure http://127.0.0.1:3000/callback is registered as a redirect URI for client 'client'.
+2026-09-28T07:26:15.3311775Z Access the following URL in your browser and complete the authentication process.
+2026-09-28T07:26:15.3313138Z https://example.com/auth?response_type=code&client_id=client&state=i9SM1OHkvaGKpUdNGc03KDyDYMCUVlS2M7Pyd5BFLZk&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fcallback&code_challenge=tiL8Lh9K6EYa2CfHIvahlYg47HfnnhrnISUZ9KM_128&code_challenge_method=S256
+2026-09-28T07:26:15.3314532Z 
+2026-09-28T07:26:15.3314894Z Waiting up to 5 minutes for the authorization callback...
+2026-09-28T07:26:15.3315268Z 
+2026-09-28T07:26:15.3316940Z [90mstdout[2m | src/scenarios/authorization-server/authorization-code-grant.test.ts[2m > [22m[2mAuthorizationCodeGrantScenario[2m > [22m[2mreturns FAILURE when token response Content-Type is invalid
+2026-09-28T07:26:15.3318377Z [22m[39mEnsure http://127.0.0.1:3000/callback is registered as a redirect URI for client 'client'.
+2026-09-28T07:26:15.3319048Z Access the following URL in your browser and complete the authentication process.
+2026-09-28T07:26:15.3320566Z https://example.com/auth?response_type=code&client_id=client&state=9bxUbHYzMKHq4EUUcNgnBoKJIiKd30XRV30m_7cdPk8&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fcallback&code_challenge=ldMmQG0S0zIgoF4ciWgROJszq0ZonIbwG-aaAdV2cBo&code_challenge_method=S256
+2026-09-28T07:26:15.3321451Z 
+2026-09-28T07:26:15.3321671Z Waiting up to 5 minutes for the authorization callback...
+2026-09-28T07:26:15.3321907Z 
+2026-09-28T07:26:15.3323211Z [90mstdout[2m | src/scenarios/authorization-server/authorization-code-grant.test.ts[2m > [22m[2mAuthorizationCodeGrantScenario[2m > [22m[2mreturns FAILURE when token response Cache-Control is invalid
+2026-09-28T07:26:15.3325450Z [22m[39mEnsure http://127.0.0.1:3000/callback is registered as a redirect URI for client 'client'.
+2026-09-28T07:26:15.3326234Z Access the following URL in your browser and complete the authentication process.
+2026-09-28T07:26:15.3327591Z https://example.com/auth?response_type=code&client_id=client&state=0XDHGnsisHJkuL1mijRSAJcNekGoXzLcmoXMDhep_Jo&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fcallback&code_challenge=7qfkMb_I7l1cNXRRu13Vo8qCNTbdspuaQwSFizXj-mg&code_challenge_method=S256
+2026-09-28T07:26:15.3328469Z 
+2026-09-28T07:26:15.3328679Z Waiting up to 5 minutes for the authorization callback...
+2026-09-28T07:26:15.3328922Z 
+2026-09-28T07:26:15.3330283Z [90mstdout[2m | src/scenarios/authorization-server/authorization-code-grant.test.ts[2m > [22m[2mAuthorizationCodeGrantScenario[2m > [22m[2msends the resource parameter in both requests when it is set
+2026-09-28T07:26:15.3332428Z [22m[39mEnsure http://127.0.0.1:3000/callback is registered as a redirect URI for client 'client'.
+2026-09-28T07:26:15.3333134Z Access the following URL in your browser and complete the authentication process.
+2026-09-28T07:26:15.3334716Z https://example.com/auth?response_type=code&client_id=client&state=LccvdJ4HHhcspod0kpl45xGuW5SwgwhD5vJCbcHbMbE&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fcallback&code_challenge=dNMzZEsu2ghQ17-CLQV7CuzU-ZMlx2pRKXKP54AQ_1E&code_challenge_method=S256&resource=https%3A%2F%2Fmcp.example.com%2Fmcp
+2026-09-28T07:26:15.3335969Z 
+2026-09-28T07:26:15.3336331Z Waiting up to 5 minutes for the authorization callback...
+2026-09-28T07:26:15.3336713Z 
+2026-09-28T07:26:15.3338216Z [90mstdout[2m | src/scenarios/authorization-server/authorization-code-grant.test.ts[2m > [22m[2mAuthorizationCodeGrantScenario[2m > [22m[2momits the resource parameter when it is not set
+2026-09-28T07:26:15.3339378Z [22m[39mEnsure http://127.0.0.1:3000/callback is registered as a redirect URI for client 'client'.
+2026-09-28T07:26:15.3340478Z Access the following URL in your browser and complete the authentication process.
+2026-09-28T07:26:15.3342674Z https://example.com/auth?response_type=code&client_id=client&state=zE70IA4denpNT0reZIH3AoJWSUQLQHeYRTyOxMqvvAs&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fcallback&code_challenge=GLeDmM4h2X_yfURoncPWm7_cQT2TdbLu4PaUQTxJRCw&code_challenge_method=S256
+2026-09-28T07:26:15.3343572Z 
+2026-09-28T07:26:15.3343794Z Waiting up to 5 minutes for the authorization callback...
+2026-09-28T07:26:15.3344038Z 
+2026-09-28T07:26:15.3345137Z [90mstdout[2m | src/scenarios/authorization-server/authorization-code-grant.test.ts[2m > [22m[2mAuthorizationCodeGrantScenario[2m > [22m[2mcatches an authorization server that rejects the resource parameter
+2026-09-28T07:26:15.3346348Z [22m[39mEnsure http://127.0.0.1:3000/callback is registered as a redirect URI for client 'client'.
+2026-09-28T07:26:15.3347007Z Access the following URL in your browser and complete the authentication process.
+2026-09-28T07:26:15.3348759Z https://example.com/auth?response_type=code&client_id=client&state=GRTOJ1-vGW2kFPyvqR-vTfQqfp4570baWwJSmijS9oI&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fcallback&code_challenge=v_bCkK2575abyARyjHulgadGTP82qAoJn3Kc3DnKliQ&code_challenge_method=S256&resource=https%3A%2F%2Fmcp.example.com%2Fmcp
+2026-09-28T07:26:15.3349796Z 
+2026-09-28T07:26:15.3350008Z Waiting up to 5 minutes for the authorization callback...
+2026-09-28T07:26:15.3350247Z 
+2026-09-28T07:26:15.3351509Z [90mstdout[2m | src/scenarios/authorization-server/authorization-code-grant.test.ts[2m > [22m[2mAuthorizationCodeGrantScenario[2m > [22m[2mcatches an authorization server that rejects the resource parameter
+2026-09-28T07:26:15.3352778Z [22m[39mEnsure http://127.0.0.1:3000/callback is registered as a redirect URI for client 'client'.
+2026-09-28T07:26:15.3353775Z Access the following URL in your browser and complete the authentication process.
+2026-09-28T07:26:15.3355331Z https://example.com/auth?response_type=code&client_id=client&state=1ggPqBegYvdZ0PIr_7THn9n1r6er8Neyzakys3MzKPU&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fcallback&code_challenge=RGgBncE7csX9KZ3IEF4rqSz-D8UlSlnbinZXswhC_sc&code_challenge_method=S256
+2026-09-28T07:26:15.3356421Z 
+2026-09-28T07:26:15.3356761Z Waiting up to 5 minutes for the authorization callback...
+2026-09-28T07:26:15.3357084Z 
+2026-09-28T07:26:15.3367529Z  [32m✓[39m src/scenarios/authorization-server/authorization-code-grant.test.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 18[2mms[22m[39m
+2026-09-28T07:26:15.9178151Z [90mstdout[2m | src/runner/server.test.ts[2m > [22m[2mrunServerConformanceTest spec-version applicability[2m > [22m[2mskips a draft-only scenario at an explicit dated spec version
+2026-09-28T07:26:15.9179612Z [22m[39mSKIPPED: scenario 'server-stateless' is not applicable at spec version 2025-11-25 (introduced in 2026-07-28). Use --force to run it anyway.
+2026-09-28T07:26:15.9180142Z 
+2026-09-28T07:26:15.9193596Z [90mstdout[2m | src/runner/server.test.ts[2m > [22m[2mrunServerConformanceTest spec-version applicability[2m > [22m[2mskips a removed-in-draft scenario at the draft spec version
+2026-09-28T07:26:15.9195745Z [22m[39mSKIPPED: scenario 'server-initialize' is not applicable at spec version 2026-07-28 (introduced in 2025-06-18, removed in 2026-07-28). Use --force to run it anyway.
+2026-09-28T07:26:15.9196334Z 
+2026-09-28T07:26:15.9244655Z [90mstdout[2m | src/runner/server.test.ts[2m > [22m[2mrunServerConformanceTest spec-version applicability[2m > [22m[2mdoes not skip an applicable scenario/spec-version combination
+2026-09-28T07:26:15.9246060Z [22m[39mRunning client scenario 'server-stateless' against server: http://127.0.0.1:9/mcp
+2026-09-28T07:26:15.9246647Z 
+2026-09-28T07:26:15.9416811Z [90mstdout[2m | src/runner/server.test.ts[2m > [22m[2mrunServerConformanceTest per-scenario timeout[2m > [22m[2mfails the scenario instead of hanging when the server never responds
+2026-09-28T07:26:15.9419014Z [22m[39mRunning client scenario 'server-initialize' against server: http://127.0.0.1:41673/mcp
+2026-09-28T07:26:15.9419655Z 
+2026-09-28T07:26:16.9425915Z [90mstdout[2m | src/runner/server.test.ts[2m > [22m[2mrunServerConformanceTest per-scenario timeout[2m > [22m[2mfails the scenario instead of hanging when the server never responds
+2026-09-28T07:26:16.9427312Z [22m[39m
+2026-09-28T07:26:16.9427726Z Scenario timed out after 1000ms
+2026-09-28T07:26:16.9428012Z 
+2026-09-28T07:26:16.9462903Z [90mstdout[2m | src/runner/server.test.ts[2m > [22m[2mrunServerConformanceTest wire selection for draft-only scenarios[2m > [22m[2memits SEP-2575 stateless wire (no initialize, _meta envelope) on tasks-lifecycle
+2026-09-28T07:26:16.9464930Z [22m[39mRunning client scenario 'tasks-lifecycle' against server: http://127.0.0.1:36081/mcp
+2026-09-28T07:26:16.9471248Z 
+2026-09-28T07:26:17.0518229Z [90mstdout[2m | src/runner/server.test.ts[2m > [22m[2mrunServerConformanceTest session teardown[2m > [22m[2mterminates the session when the scenario fails
+2026-09-28T07:26:17.0519789Z [22m[39mRunning client scenario 'prompts-list' against server: http://127.0.0.1:45861/mcp
+2026-09-28T07:26:17.0520215Z 
+2026-09-28T07:26:17.1106108Z [90mstdout[2m | src/runner/server.test.ts[2m > [22m[2mrunServerConformanceTest session teardown[2m > [22m[2mterminates the session when the scenario times out
+2026-09-28T07:26:17.1107277Z [22m[39mRunning client scenario 'prompts-list' against server: http://127.0.0.1:46201/mcp
+2026-09-28T07:26:17.1107708Z 
+2026-09-28T07:26:19.1107018Z [90mstdout[2m | src/runner/server.test.ts[2m > [22m[2mrunServerConformanceTest session teardown[2m > [22m[2mterminates the session when the scenario times out
+2026-09-28T07:26:19.1107795Z [22m[39m
+2026-09-28T07:26:19.1108075Z Scenario timed out after 2000ms
+2026-09-28T07:26:19.1108270Z 
+2026-09-28T07:26:19.1146271Z [90mstdout[2m | src/runner/server.test.ts[2m > [22m[2mrunServerConformanceTest session teardown[2m > [22m[2mdoes not terminate a session twice when the scenario closed it
+2026-09-28T07:26:19.1148061Z [22m[39mRunning client scenario 'prompts-list' against server: http://127.0.0.1:36971/mcp
+2026-09-28T07:26:19.1149150Z 
+2026-09-28T07:26:19.1273370Z  [32m✓[39m src/runner/server.test.ts [2m([22m[2m8 tests[22m[2m)[22m[33m 3211[2mms[22m[39m
+2026-09-28T07:26:19.1274623Z      [33m[2m✓[22m[39m fails the scenario instead of hanging when the server never responds [33m 1012[2mms[22m[39m
+2026-09-28T07:26:19.1275663Z      [33m[2m✓[22m[39m terminates the session when the scenario times out [33m 2004[2mms[22m[39m
+2026-09-28T07:26:19.4645430Z  [32m✓[39m src/scenarios/server/tools.test.ts [2m([22m[2m33 tests[22m[2m)[22m[32m 14[2mms[22m[39m
+2026-09-28T07:26:20.0498149Z [90mstdout[2m | src/scenarios/client/request-metadata.test.ts[2m > [22m[2mrequest-metadata client scenario — positive test[2m > [22m[2meverything-client passes request-metadata scenario with success status for optional capabilities
+2026-09-28T07:26:20.0500127Z [22m[39mStarting request-metadata client flow...
+2026-09-28T07:26:20.0501008Z Calling server/discover...
+2026-09-28T07:26:20.0501349Z 
+2026-09-28T07:26:20.0713639Z [90mstdout[2m | src/scenarios/client/request-metadata.test.ts[2m > [22m[2mrequest-metadata client scenario — positive test[2m > [22m[2meverything-client passes request-metadata scenario with success status for optional capabilities
+2026-09-28T07:26:20.0715824Z [22m[39mReceived UnsupportedProtocolVersionError, starting negotiation...
+2026-09-28T07:26:20.0716753Z Mutually supported version found: 2026-07-28. Retrying...
+2026-09-28T07:26:20.0717155Z 
+2026-09-28T07:26:20.0750763Z [90mstdout[2m | src/scenarios/client/request-metadata.test.ts[2m > [22m[2mrequest-metadata client scenario — positive test[2m > [22m[2meverything-client passes request-metadata scenario with success status for optional capabilities
+2026-09-28T07:26:20.0756488Z [22m[39mSuccessfully discovered server capabilities: {"supportedVersions":["2026-07-28"],"capabilities":{},"serverInfo":{"name":"test","version":"1.0"},"resultType":"complete","ttlMs":0,"cacheScope":"private"}
+2026-09-28T07:26:20.0759031Z Calling tools/list with inline _meta...
+2026-09-28T07:26:20.0759593Z 
+2026-09-28T07:26:20.0770132Z [90mstdout[2m | src/scenarios/client/request-metadata.test.ts[2m > [22m[2mrequest-metadata client scenario — positive test[2m > [22m[2meverything-client passes request-metadata scenario with success status for optional capabilities
+2026-09-28T07:26:20.0773153Z [22m[39mSuccessfully listed tools statelessly: {"tools":[],"resultType":"complete","ttlMs":0,"cacheScope":"private"}
+2026-09-28T07:26:20.0774416Z request-metadata client flow completed successfully
+2026-09-28T07:26:20.0775884Z 
+2026-09-28T07:26:20.1317372Z  [32m✓[39m src/scenarios/client/request-metadata.test.ts [2m([22m[2m12 tests[22m[2m)[22m[32m 92[2mms[22m[39m
+2026-09-28T07:26:20.7118446Z  [32m✓[39m src/scenarios/authorization-server/authorization-server-metadata.test.ts [2m([22m[2m15 tests[22m[2m)[22m[33m 344[2mms[22m[39m
+2026-09-28T07:26:20.7119885Z      [33m[2m✓[22m[39m accepts a valid scenario name [33m 321[2mms[22m[39m
+2026-09-28T07:26:21.1754484Z  [32m✓[39m src/scenarios/client/http-custom-headers.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 81[2mms[22m[39m
+2026-09-28T07:26:21.5249786Z  [32m✓[39m src/scenarios/server/session-lifecycle.test.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 31[2mms[22m[39m
+2026-09-28T07:26:22.1981807Z  [32m✓[39m src/scenarios/server/skills/negative.test.ts [2m([22m[2m19 tests[22m[2m)[22m[32m 265[2mms[22m[39m
+2026-09-28T07:26:22.8944870Z  [32m✓[39m src/scenarios/client/json-schema-2020-12-preservation.test.ts [2m([22m[2m6 tests[22m[2m)[22m[33m 319[2mms[22m[39m
+2026-09-28T07:26:23.1603642Z  [32m✓[39m src/sdk-runner/sdk-runner.test.ts [2m([22m[2m29 tests[22m[2m)[22m[32m 16[2mms[22m[39m
+2026-09-28T07:26:23.6195018Z  [32m✓[39m src/scenarios/server/http-standard-headers.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 123[2mms[22m[39m
+2026-09-28T07:26:24.0351830Z  [32m✓[39m src/scenarios/server/sse-polling.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 73[2mms[22m[39m
+2026-09-28T07:26:24.2889760Z  [32m✓[39m src/scenarios/client/auth/helpers/dpopProof.test.ts [2m([22m[2m12 tests[22m[2m)[22m[32m 22[2mms[22m[39m
+2026-09-28T07:26:24.5572434Z  [32m✓[39m src/scenarios/client/auth/helpers/dpopResourceAuth.test.ts [2m([22m[2m16 tests[22m[2m)[22m[32m 38[2mms[22m[39m
+2026-09-28T07:26:24.9987330Z  [32m✓[39m src/scenarios/client/auth/helpers/createWorkloadJwt.test.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 212[2mms[22m[39m
+2026-09-28T07:26:29.3134729Z  [32m✓[39m src/scenarios/server/all-scenarios.test.ts [2m([22m[2m55 tests[22m[2m)[22m[33m 3754[2mms[22m[39m
+2026-09-28T07:26:29.3135531Z      [33m[2m✓[22m[39m tools-call-with-logging [33m 320[2mms[22m[39m
+2026-09-28T07:26:29.3136084Z      [33m[2m✓[22m[39m server-stateless [33m 1540[2mms[22m[39m
+2026-09-28T07:26:29.7645369Z  [32m✓[39m src/connection/stateless.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 119[2mms[22m[39m
+2026-09-28T07:26:30.3344917Z  [32m✓[39m src/scenarios/spec-version.test.ts [2m([22m[2m14 tests[22m[2m)[22m[32m 12[2mms[22m[39m
+2026-09-28T07:26:30.9051519Z [90mstdout[2m | src/runner/server.session-lifetime.test.ts[2m > [22m[2mcloses a connection completed after timeout before the abandoned scenario can use it
+2026-09-28T07:26:30.9053369Z [22m[39mRunning client scenario 'prompts-list' against server: http://127.0.0.1:40993/mcp
+2026-09-28T07:26:30.9053993Z 
+2026-09-28T07:26:31.9064025Z [90mstdout[2m | src/runner/server.session-lifetime.test.ts[2m > [22m[2mcloses a connection completed after timeout before the abandoned scenario can use it
+2026-09-28T07:26:31.9065432Z [22m[39m
+2026-09-28T07:26:31.9065838Z Scenario timed out after 1000ms
+2026-09-28T07:26:31.9066180Z 
+2026-09-28T07:26:31.9176352Z [90mstdout[2m | src/runner/server.session-lifetime.test.ts[2m > [22m[2mcloses a connection completed after timeout before the abandoned scenario can use it
+2026-09-28T07:26:31.9178529Z [22m[39mRunning client scenario 'prompts-list' against server: http://127.0.0.1:40993/mcp
+2026-09-28T07:26:31.9179168Z 
+2026-09-28T07:26:31.9463592Z [90mstdout[2m | src/runner/server.session-lifetime.test.ts[2m > [22m[2mcloses a connection completed after timeout before the abandoned scenario can use it
+2026-09-28T07:26:31.9468935Z [22m[39mlate connection wire events: [{"method":"POST initialize","sessionId":"s1"},{"method":"POST notifications/initialized","sessionId":"s1"},{"method":"runner returned scenario-timeout"},{"method":"GET","sessionId":"s1"},{"method":"DELETE","sessionId":"s1"},{"method":"POST initialize","sessionId":"s2"},{"method":"POST notifications/initialized","sessionId":"s2"},{"method":"GET","sessionId":"s2"},{"method":"POST prompts/list","sessionId":"s2"},{"method":"DELETE","sessionId":"s2"}]
+2026-09-28T07:26:31.9473383Z late connection observation: {"lateSessionDeletes":1,"lateSessionProbes":0,"healthyPromptStatus":"SUCCESS","healthyFailures":0,"healthySessionDeletes":1,"liveSessions":[]}
+2026-09-28T07:26:31.9475011Z 
+2026-09-28T07:26:31.9498196Z  [32m✓[39m src/runner/server.session-lifetime.test.ts [2m([22m[2m1 test[22m[2m)[22m[33m 1056[2mms[22m[39m
+2026-09-28T07:26:31.9500573Z    [33m[2m✓[22m[39m closes a connection completed after timeout before the abandoned scenario can use it [33m 1054[2mms[22m[39m
+2026-09-28T07:26:32.3545271Z  [32m✓[39m src/scenarios/server/sse-multiple-streams.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 72[2mms[22m[39m
+2026-09-28T07:26:33.4669264Z  [32m✓[39m src/scenarios/server/negative-mrtr.test.ts [2m([22m[2m4 tests[22m[2m)[22m[33m 788[2mms[22m[39m
+2026-09-28T07:26:34.0939333Z  [32m✓[39m src/requirements.test.ts [2m([22m[2m20 tests[22m[2m)[22m[32m 27[2mms[22m[39m
+2026-09-28T07:26:34.4488437Z  [32m✓[39m src/scenarios/server/lifecycle.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 28[2mms[22m[39m
+2026-09-28T07:26:34.8646413Z  [32m✓[39m src/scenarios/client/auth/helpers/validateDpopProofAtTokenEndpoint.test.ts [2m([22m[2m14 tests[22m[2m)[22m[32m 27[2mms[22m[39m
+2026-09-28T07:26:35.6554656Z  [32m✓[39m src/scenarios/client/json-schema-ref-deref.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 236[2mms[22m[39m
+2026-09-28T07:26:36.1179529Z  [32m✓[39m src/connection/connection.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 145[2mms[22m[39m
+2026-09-28T07:26:36.3659961Z  [32m✓[39m src/scenarios/client/auth/helpers/dpopToken.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 19[2mms[22m[39m
+2026-09-28T07:26:36.5960159Z  [32m✓[39m src/traceability/index.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 7[2mms[22m[39m
+2026-09-28T07:26:36.8184446Z  [32m✓[39m src/new-sep/index.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 6[2mms[22m[39m
+2026-09-28T07:26:37.4625531Z  [32m✓[39m src/scenarios/client/tools_call.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 260[2mms[22m[39m
+2026-09-28T07:26:37.9832661Z  [32m✓[39m src/scenarios/client/skills/capabilities.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 138[2mms[22m[39m
+2026-09-28T07:26:38.1961593Z  [32m✓[39m src/checks/checks.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 6[2mms[22m[39m
+2026-09-28T07:26:38.4024624Z  [32m✓[39m src/tier-check/checks/release.test.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 6[2mms[22m[39m
+2026-09-28T07:26:38.8312640Z  [32m✓[39m src/scenarios/client/http-standard-headers.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 41[2mms[22m[39m
+2026-09-28T07:26:39.2437419Z  [32m✓[39m src/scenarios/server/tasks/lifecycle.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 91[2mms[22m[39m
+2026-09-28T07:26:39.4489181Z  [32m✓[39m src/checks/collapse.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 6[2mms[22m[39m
+2026-09-28T07:26:40.0192685Z [90mstdout[2m | src/runner/client.test.ts[2m > [22m[2mrunConformanceTest spec-version applicability[2m > [22m[2mskips a draft-only scenario at an explicit dated spec version
+2026-09-28T07:26:40.0195267Z [22m[39mSKIPPED: scenario 'http-custom-headers' is not applicable at spec version 2025-11-25 (introduced in 2026-07-28). Use --force to run it anyway.
+2026-09-28T07:26:40.0196181Z 
+2026-09-28T07:26:40.0225328Z [90mstderr[2m | src/runner/client.test.ts[2m > [22m[2mrunConformanceTest spec-version applicability[2m > [22m[2m--force runs an inapplicable scenario at the requested version
+2026-09-28T07:26:40.0226282Z [22m[39mStarting scenario: http-custom-headers
+2026-09-28T07:26:40.0226523Z 
+2026-09-28T07:26:40.0273197Z [90mstderr[2m | src/runner/client.test.ts[2m > [22m[2mrunConformanceTest spec-version applicability[2m > [22m[2m--force runs an inapplicable scenario at the requested version
+2026-09-28T07:26:40.0275687Z [22m[39mExecuting client: node -e "console.log(process.env.MCP_CONFORMANCE_PROTOCOL_VERSION)" http://localhost:37811
+2026-09-28T07:26:40.0281028Z With context: {"toolCalls":[{"name":"test_custom_headers","arguments":{"region":"us-west1","priority":42,"verbose":false,"debug":true,"empty_val":"","method_val":"test-method","float_val":3.14159,"non_ascii_val":"Hello, 世界","whitespace_val":" padded ","leading_space_val":" us-west1","trailing_space_val":"us-west1 ","internal_space_val":"us west 1","control_char_val":"line1\nline2","crlf_val":"line1\r\nline2","tab_val":"\tindented","query":"SELECT * FROM users"}},{"name":"test_custom_headers_null","arguments":{"region":"us-east1","priority":1,"verbose":null,"query":"SELECT 1"}}]}
+2026-09-28T07:26:40.0283390Z 
+2026-09-28T07:26:40.0284189Z (node:3288) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+2026-09-28T07:26:40.0285148Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-09-28T07:26:40.0603226Z [90mstderr[2m | src/runner/client.test.ts[2m > [22m[2mrunConformanceTest spec-version applicability[2m > [22m[2minfers the draft version for a draft-only scenario when --spec-version is omitted
+2026-09-28T07:26:40.0605382Z [22m[39mStarting scenario: http-custom-headers
+2026-09-28T07:26:40.0605787Z 
+2026-09-28T07:26:40.0631863Z [90mstderr[2m | src/runner/client.test.ts[2m > [22m[2mrunConformanceTest spec-version applicability[2m > [22m[2minfers the draft version for a draft-only scenario when --spec-version is omitted
+2026-09-28T07:26:40.0633350Z [22m[39mExecuting client: node -e "console.log(process.env.MCP_CONFORMANCE_PROTOCOL_VERSION)" http://localhost:39449
+2026-09-28T07:26:40.0637204Z With context: {"toolCalls":[{"name":"test_custom_headers","arguments":{"region":"us-west1","priority":42,"verbose":false,"debug":true,"empty_val":"","method_val":"test-method","float_val":3.14159,"non_ascii_val":"Hello, 世界","whitespace_val":" padded ","leading_space_val":" us-west1","trailing_space_val":"us-west1 ","internal_space_val":"us west 1","control_char_val":"line1\nline2","crlf_val":"line1\r\nline2","tab_val":"\tindented","query":"SELECT * FROM users"}},{"name":"test_custom_headers_null","arguments":{"region":"us-east1","priority":1,"verbose":null,"query":"SELECT 1"}}]}
+2026-09-28T07:26:40.0640262Z 
+2026-09-28T07:26:40.0954683Z [90mstderr[2m | src/runner/client.test.ts[2m > [22m[2mrunConformanceTest spec-version applicability[2m > [22m[2minfers the latest dated version for a dual-version scenario when --spec-version is omitted
+2026-09-28T07:26:40.0956294Z [22m[39mStarting scenario: tools_call
+2026-09-28T07:26:40.0956600Z 
+2026-09-28T07:26:40.0982173Z [90mstderr[2m | src/runner/client.test.ts[2m > [22m[2mrunConformanceTest spec-version applicability[2m > [22m[2minfers the latest dated version for a dual-version scenario when --spec-version is omitted
+2026-09-28T07:26:40.0984359Z [22m[39mExecuting client: node -e "console.log(process.env.MCP_CONFORMANCE_PROTOCOL_VERSION)" http://localhost:36195/mcp
+2026-09-28T07:26:40.0984975Z 
+2026-09-28T07:26:40.1291901Z  [32m✓[39m src/runner/client.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 113[2mms[22m[39m
+2026-09-28T07:26:40.6385706Z  [32m✓[39m src/connection/sdk-client.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 150[2mms[22m[39m
+2026-09-28T07:26:41.2577704Z [90mstdout[2m | src/scenarios/client/mrtr-client.test.ts[2m > [22m[2mMRTR client scenario (SEP-2322)[2m > [22m[2meverything-client passes sep-2322-client-request-state scenario
+2026-09-28T07:26:41.2579387Z [22m[39mAvailable tools: [
+2026-09-28T07:26:41.2580669Z   [32m'test_mrtr_echo_state'[39m,
+2026-09-28T07:26:41.2581357Z   [32m'test_mrtr_no_state'[39m,
+2026-09-28T07:26:41.2581880Z   [32m'test_mrtr_unrelated'[39m,
+2026-09-28T07:26:41.2582425Z   [32m'test_mrtr_no_result_type'[39m
+2026-09-28T07:26:41.2582848Z ]
+2026-09-28T07:26:41.2583021Z 
+2026-09-28T07:26:41.2645448Z [90mstdout[2m | src/scenarios/client/mrtr-client.test.ts[2m > [22m[2mMRTR client scenario (SEP-2322)[2m > [22m[2meverything-client passes sep-2322-client-request-state scenario
+2026-09-28T07:26:41.2649861Z [22m[39mtest_mrtr_unrelated: called without MRTR state (isolation check)
+2026-09-28T07:26:41.2651131Z 
+2026-09-28T07:26:41.2668716Z [90mstdout[2m | src/scenarios/client/mrtr-client.test.ts[2m > [22m[2mMRTR client scenario (SEP-2322)[2m > [22m[2meverything-client passes sep-2322-client-request-state scenario
+2026-09-28T07:26:41.2674477Z [22m[39mtest_mrtr_echo_state: MRTR flow completed
+2026-09-28T07:26:41.2676127Z 
+2026-09-28T07:26:41.2712563Z [90mstdout[2m | src/scenarios/client/mrtr-client.test.ts[2m > [22m[2mMRTR client scenario (SEP-2322)[2m > [22m[2meverything-client passes sep-2322-client-request-state scenario
+2026-09-28T07:26:41.2716343Z [22m[39mtest_mrtr_no_state: MRTR flow completed
+2026-09-28T07:26:41.2717158Z 
+2026-09-28T07:26:41.2732241Z [90mstdout[2m | src/scenarios/client/mrtr-client.test.ts[2m > [22m[2mMRTR client scenario (SEP-2322)[2m > [22m[2meverything-client passes sep-2322-client-request-state scenario
+2026-09-28T07:26:41.2734267Z [22m[39mtest_mrtr_no_result_type: result has no resultType, treating as complete
+2026-09-28T07:26:41.2735700Z MRTR client scenario completed
+2026-09-28T07:26:41.2736206Z 
+2026-09-28T07:26:41.2793174Z  [32m✓[39m src/scenarios/client/mrtr-client.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 63[2mms[22m[39m
+2026-09-28T07:26:41.4824798Z  [32m✓[39m src/scenarios/untestable.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 5[2mms[22m[39m
+2026-09-28T07:26:41.6812109Z  [32m✓[39m src/types.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 4[2mms[22m[39m
+2026-09-28T07:26:41.6875798Z 
+2026-09-28T07:26:41.6885043Z [2m Test Files [22m [1m[32m48 passed[39m[22m[90m (48)[39m
+2026-09-28T07:26:41.6887076Z [2m      Tests [22m [1m[32m626 passed[39m[22m[90m (626)[39m
+2026-09-28T07:26:41.6887643Z [2m   Start at [22m 07:26:04
+2026-09-28T07:26:41.6889623Z [2m   Duration [22m 36.93s[2m (transform 1.35s, setup 3.35s, import 8.82s, tests 18.88s, environment 4ms)[22m
+2026-09-28T07:26:41.6891741Z 
+

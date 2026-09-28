@@ -1,0 +1,19 @@
+{
+  "node": "v24.19.0",
+  "npm": "11.9.0",
+  "dependency_source": "/workspace/scratch/860645c74e07/mcp531/node_modules",
+  "manifests": {
+    "mcp533": {
+      "package.json": "f699ac5e56ffeaad1090ee26e126c0d9f9d68e7fad6db30923d30fd7b429c640",
+      "package-lock.json": "8c30fe8f15735bc4660c682225b12ec84bbd08c22e839127445d06b5476c4945"
+    },
+    "mcp533_parent": {
+      "package.json": "f699ac5e56ffeaad1090ee26e126c0d9f9d68e7fad6db30923d30fd7b429c640",
+      "package-lock.json": "8c30fe8f15735bc4660c682225b12ec84bbd08c22e839127445d06b5476c4945"
+    },
+    "mcp410": {
+      "package.json": "f699ac5e56ffeaad1090ee26e126c0d9f9d68e7fad6db30923d30fd7b429c640",
+      "package-lock.json": "8c30fe8f15735bc4660c682225b12ec84bbd08c22e839127445d06b5476c4945"
+    }
+  }
+}

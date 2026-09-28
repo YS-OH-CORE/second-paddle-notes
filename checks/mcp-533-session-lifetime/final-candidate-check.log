@@ -1,0 +1,17 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @modelcontextprotocol/conformance@0.2.0-alpha.11 check
+> npm run typecheck && npm run lint
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @modelcontextprotocol/conformance@0.2.0-alpha.11 typecheck
+> tsgo --noEmit
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @modelcontextprotocol/conformance@0.2.0-alpha.11 lint
+> eslint src/ examples/ && prettier --check .
+
+Checking formatting...
+All matched files use Prettier code style!

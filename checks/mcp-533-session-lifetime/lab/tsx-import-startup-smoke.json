@@ -1,0 +1,24 @@
+{
+  "kind": "bounded SDK startup only; no MCP or CLI requests",
+  "node": "v24.19.0",
+  "tsxVersion": "4.21.0",
+  "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+  "args": [
+    "--import",
+    "file:///workspace/scratch/860645c74e07/mcp533_parent/node_modules/tsx/dist/loader.mjs",
+    "/workspace/scratch/860645c74e07/mcp533_parent/examples/servers/typescript/everything-server.ts"
+  ],
+  "cwd": "/workspace/scratch/860645c74e07/mcp533_parent",
+  "environmentOverrides": {
+    "PORT": "40561"
+  },
+  "startedAt": "2026-09-28T07:38:59.619Z",
+  "stdout": "MCP Conformance Test Server running on http://localhost:40561\n  - MCP endpoint: http://localhost:40561/mcp\n",
+  "stderr": "",
+  "ready": true,
+  "launchError": null,
+  "exitCode": null,
+  "signal": "SIGTERM",
+  "readyAt": "2026-09-28T07:39:00.229Z",
+  "finishedAt": "2026-09-28T07:39:00.235Z"
+}

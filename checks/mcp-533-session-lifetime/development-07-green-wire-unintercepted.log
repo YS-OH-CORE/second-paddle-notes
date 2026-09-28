@@ -1,0 +1,25 @@
+cwd: /workspace/scratch/860645c74e07/mcp533
+command: npm test -- src/runner/server.session-lifetime.test.ts --disableConsoleIntercept
+HEAD: a95deff303dc2221654fe4331daf657e0f2ac690 + working-tree lifecycle guard
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @modelcontextprotocol/conformance@0.2.0-alpha.11 test
+> vitest run src/runner/server.session-lifetime.test.ts --disableConsoleIntercept
+
+
+ RUN  v4.1.5 /workspace/scratch/860645c74e07/mcp533
+
+Running client scenario 'prompts-list' against server: http://127.0.0.1:33037/mcp
+
+Scenario timed out after 1000ms
+Running client scenario 'prompts-list' against server: http://127.0.0.1:33037/mcp
+late connection wire events: [{"method":"POST initialize","sessionId":"s1"},{"method":"POST notifications/initialized","sessionId":"s1"},{"method":"runner returned scenario-timeout"},{"method":"GET","sessionId":"s1"},{"method":"DELETE","sessionId":"s1"},{"method":"POST initialize","sessionId":"s2"},{"method":"POST notifications/initialized","sessionId":"s2"},{"method":"GET","sessionId":"s2"},{"method":"POST prompts/list","sessionId":"s2"},{"method":"DELETE","sessionId":"s2"}]
+late connection observation: {"lateSessionDeletes":1,"lateSessionProbes":0,"healthyPromptStatus":"SUCCESS","healthyFailures":0,"healthySessionDeletes":1,"liveSessions":[]}
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  09:19:34
+   Duration  2.22s (transform 630ms, setup 177ms, import 846ms, tests 1.06s, environment 0ms)
+
+
+EXIT_CODE=0

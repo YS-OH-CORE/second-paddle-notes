@@ -1,0 +1,1672 @@
+{
+  "source": "Unmodified values selected from the complete CI summary retained in raw-runs.tar.gz; no conformance verdicts recomputed.",
+  "ciRunId": 36393089365,
+  "candidateSha": "95dd2e2c64c7173e5f3ddfada7b03512f88eef89",
+  "baselineSha": "7169291ec0b68eb370fddcd9947313ab0d5e4156",
+  "sdkSources": {
+    "typescript": {
+      "source": {
+        "checkout": "/home/runner/work/conformance/conformance/baseline",
+        "commit": "7169291ec0b68eb370fddcd9947313ab0d5e4156",
+        "status": "",
+        "workingTreePatchSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceSha256": "14725982b9cbf005a291344721e852fcb5aad0401a2bbdc2cd059a244b3f0976",
+        "manifestPath": "typescript-server-checkout-source-manifest.json"
+      },
+      "serverPath": "/home/runner/work/conformance/conformance/baseline/examples/servers/typescript/everything-server.ts",
+      "serverSha256": "4502608417f4cde36e50689ba272e46159a14b40f8e64fbf429fbd3fe265bcc4",
+      "tsxLoader": "file:///home/runner/work/conformance/conformance/baseline/node_modules/tsx/dist/loader.mjs",
+      "tsxVersion": "4.21.0",
+      "tsxLoaderSha256": "0b1c5b86192772fe9257710e739959cee5947c11ae1f93b61abfaa9b80c6def1",
+      "version": "1.29.0",
+      "installedSdkSha256": "544086ba039383ef789a4d73b43e4464258492dbf19ac00e9a5ff108f3af850e",
+      "sharedAcrossHeadsAndConditions": true
+    },
+    "go": {
+      "checkout": "/home/runner/work/conformance/conformance/go-sdk",
+      "commit": "827f90ba0c13edb546028df42fadc9f1211a4ff2",
+      "binary": "/home/runner/work/conformance/conformance/capacity-results/build-work/go-everything-server",
+      "binarySha256": "0d4eaafb6e1cbd194464c83fdedee11600df63415f56828b9b526235dd1c8d51",
+      "goModSha256": "8679c6a4a8447d6d2d7e3ac99e922161ba1a0eaa881d7666d503cc473cdbc8a3",
+      "goSumSha256": "1c855ba6f1dbddbe295ac0027add07877cd022198bc32e7bec3731dcb8df3142",
+      "stateless": false,
+      "sharedAcrossHeadsAndConditions": true
+    }
+  },
+  "cliScenarioTimeoutMs": 30000,
+  "outerSuiteWatchdogMs": 600000,
+  "cap": 4,
+  "assertionCount": 94,
+  "allAssertionsPassed": true,
+  "setupOrExecutionErrors": [],
+  "runs": [
+    {
+      "sdk": "typescript",
+      "head": "baseline",
+      "condition": "clean",
+      "cliExitCode": 0,
+      "counts": {
+        "SUCCESS": 73,
+        "FAILURE": 0,
+        "WARNING": 0,
+        "INFO": 0,
+        "SKIPPED": 0
+      },
+      "scenarioCount": 31,
+      "issuedSessions": 32,
+      "successfulDeleteReleases": 31,
+      "fixtureCapDenials": 0,
+      "fixturePromptRejections": 0,
+      "injectedPromptSessionIds": [],
+      "residualSessions": [
+        {
+          "sessionId": "72505cff-3eff-4930-8434-227a85c6c0ce",
+          "initializeRequestId": 160,
+          "issuedInScenario": "dns-rebinding-protection",
+          "clientName": "conformance-dns-rebinding-test",
+          "protocolVersionRequested": "2025-11-25",
+          "observedRpcMethods": [
+            "initialize",
+            "notifications/initialized"
+          ],
+          "deleteAttempts": 0,
+          "releasedByDelete": false,
+          "releaseRequestId": null
+        }
+      ],
+      "failedChecks": [],
+      "rawRunPath": "ci-capacity/capacity-results/typescript/baseline/clean"
+    },
+    {
+      "sdk": "typescript",
+      "head": "baseline",
+      "condition": "reject-prompts",
+      "cliExitCode": 1,
+      "counts": {
+        "SUCCESS": 66,
+        "FAILURE": 7,
+        "WARNING": 0,
+        "INFO": 0,
+        "SKIPPED": 0
+      },
+      "scenarioCount": 31,
+      "issuedSessions": 30,
+      "successfulDeleteReleases": 26,
+      "fixtureCapDenials": 3,
+      "fixturePromptRejections": 4,
+      "injectedPromptSessionIds": [
+        "72dacde3-6a3e-4fdb-af7b-f9d0d9e097eb",
+        "859acdd7-0eed-41b3-86fe-81b29760fadd",
+        "ac4631d9-9372-4363-9e25-5a1b9c31d0b0",
+        "b32cf041-43d2-473b-976b-be6402008f06"
+      ],
+      "residualSessions": [
+        {
+          "sessionId": "72dacde3-6a3e-4fdb-af7b-f9d0d9e097eb",
+          "initializeRequestId": 134,
+          "issuedInScenario": "prompts-list",
+          "clientName": "conformance-test-client",
+          "protocolVersionRequested": "2025-11-25",
+          "observedRpcMethods": [
+            "initialize",
+            "notifications/initialized",
+            "prompts/list"
+          ],
+          "deleteAttempts": 0,
+          "releasedByDelete": false,
+          "releaseRequestId": null
+        },
+        {
+          "sessionId": "ac4631d9-9372-4363-9e25-5a1b9c31d0b0",
+          "initializeRequestId": 138,
+          "issuedInScenario": "prompts-get-simple",
+          "clientName": "conformance-test-client",
+          "protocolVersionRequested": "2025-11-25",
+          "observedRpcMethods": [
+            "initialize",
+            "notifications/initialized",
+            "prompts/get"
+          ],
+          "deleteAttempts": 0,
+          "releasedByDelete": false,
+          "releaseRequestId": null
+        },
+        {
+          "sessionId": "b32cf041-43d2-473b-976b-be6402008f06",
+          "initializeRequestId": 142,
+          "issuedInScenario": "prompts-get-with-args",
+          "clientName": "conformance-test-client",
+          "protocolVersionRequested": "2025-11-25",
+          "observedRpcMethods": [
+            "initialize",
+            "notifications/initialized",
+            "prompts/get"
+          ],
+          "deleteAttempts": 0,
+          "releasedByDelete": false,
+          "releaseRequestId": null
+        },
+        {
+          "sessionId": "859acdd7-0eed-41b3-86fe-81b29760fadd",
+          "initializeRequestId": 146,
+          "issuedInScenario": "prompts-get-embedded-resource",
+          "clientName": "conformance-test-client",
+          "protocolVersionRequested": "2025-11-25",
+          "observedRpcMethods": [
+            "initialize",
+            "notifications/initialized",
+            "prompts/get"
+          ],
+          "deleteAttempts": 0,
+          "releasedByDelete": false,
+          "releaseRequestId": null
+        }
+      ],
+      "failedChecks": [
+        {
+          "scenario": "dns-rebinding-protection",
+          "check": {
+            "id": "localhost-host-rebinding-rejected",
+            "name": "DNSRebindingRejected",
+            "description": "Server rejects requests with non-localhost Host/Origin headers",
+            "timestamp": "2026-09-28T07:42:52.709Z",
+            "specReferences": [
+              {
+                "id": "MCP-DNS-Rebinding-Protection",
+                "url": "https://modelcontextprotocol.io/specification/2025-11-25/basic/security_best_practices#local-mcp-server-compromise"
+              },
+              {
+                "id": "MCP-Transport-Security",
+                "url": "https://modelcontextprotocol.io/specification/2025-11-25/basic/transports#security-warning"
+              }
+            ],
+            "status": "FAILURE",
+            "errorMessage": "Expected HTTP 4xx for invalid Host/Origin headers, got 503",
+            "details": {
+              "hostHeader": "evil.example.com",
+              "originHeader": "http://evil.example.com",
+              "statusCode": 503,
+              "body": {
+                "jsonrpc": "2.0",
+                "id": 1,
+                "error": {
+                  "code": -32000,
+                  "message": "[mcp533 capacity fixture] live issued-session cap 4 reached"
+                }
+              }
+            }
+          }
+        },
+        {
+          "scenario": "dns-rebinding-protection",
+          "check": {
+            "id": "localhost-host-valid-accepted",
+            "name": "LocalhostHostAccepted",
+            "description": "Server accepts requests with valid localhost Host/Origin headers",
+            "timestamp": "2026-09-28T07:42:52.709Z",
+            "specReferences": [
+              {
+                "id": "MCP-DNS-Rebinding-Protection",
+                "url": "https://modelcontextprotocol.io/specification/2025-11-25/basic/security_best_practices#local-mcp-server-compromise"
+              },
+              {
+                "id": "MCP-Transport-Security",
+                "url": "https://modelcontextprotocol.io/specification/2025-11-25/basic/transports#security-warning"
+              }
+            ],
+            "status": "FAILURE",
+            "errorMessage": "Expected HTTP 2xx for valid localhost Host/Origin headers, got 503",
+            "details": {
+              "hostHeader": "127.0.0.1:41663",
+              "originHeader": "http://127.0.0.1:41663",
+              "statusCode": 503,
+              "body": {
+                "jsonrpc": "2.0",
+                "id": 1,
+                "error": {
+                  "code": -32000,
+                  "message": "[mcp533 capacity fixture] live issued-session cap 4 reached"
+                }
+              }
+            }
+          }
+        },
+        {
+          "scenario": "prompts-get-embedded-resource",
+          "check": {
+            "id": "prompts-get-embedded-resource",
+            "name": "PromptsGetEmbeddedResource",
+            "description": "Get prompt with embedded resource",
+            "status": "FAILURE",
+            "timestamp": "2026-09-28T07:42:52.706Z",
+            "errorMessage": "Failed: [mcp533 capacity fixture] disabled method prompts/get",
+            "specReferences": [
+              {
+                "id": "MCP-Prompts-Embedded-Resources",
+                "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/prompts#embedded-resources"
+              }
+            ]
+          }
+        },
+        {
+          "scenario": "prompts-get-simple",
+          "check": {
+            "id": "prompts-get-simple",
+            "name": "PromptsGetSimple",
+            "description": "Get simple prompt successfully",
+            "status": "FAILURE",
+            "timestamp": "2026-09-28T07:42:52.689Z",
+            "errorMessage": "Failed: [mcp533 capacity fixture] disabled method prompts/get",
+            "specReferences": [
+              {
+                "id": "MCP-Prompts-Get",
+                "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/prompts#getting-prompts"
+              }
+            ]
+          }
+        },
+        {
+          "scenario": "prompts-get-with-args",
+          "check": {
+            "id": "prompts-get-with-args",
+            "name": "PromptsGetWithArgs",
+            "description": "Get parameterized prompt with argument substitution",
+            "status": "FAILURE",
+            "timestamp": "2026-09-28T07:42:52.698Z",
+            "errorMessage": "Failed: [mcp533 capacity fixture] disabled method prompts/get",
+            "specReferences": [
+              {
+                "id": "MCP-Prompts-Get",
+                "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/prompts#getting-prompts"
+              }
+            ]
+          }
+        },
+        {
+          "scenario": "prompts-get-with-image",
+          "check": {
+            "id": "prompts-get-with-image",
+            "name": "PromptsGetWithImage",
+            "description": "Get prompt with image content",
+            "status": "FAILURE",
+            "timestamp": "2026-09-28T07:42:52.708Z",
+            "errorMessage": "Failed: Streamable HTTP error: Error POSTing to endpoint: {\"jsonrpc\":\"2.0\",\"id\":0,\"error\":{\"code\":-32000,\"message\":\"[mcp533 capacity fixture] live issued-session cap 4 reached\"}}",
+            "specReferences": [
+              {
+                "id": "MCP-Prompts-Image",
+                "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/prompts#image-content"
+              }
+            ]
+          }
+        },
+        {
+          "scenario": "prompts-list",
+          "check": {
+            "id": "prompts-list",
+            "name": "PromptsList",
+            "description": "Server lists available prompts with valid structure",
+            "status": "FAILURE",
+            "timestamp": "2026-09-28T07:42:52.677Z",
+            "errorMessage": "Failed: [mcp533 capacity fixture] disabled method prompts/list",
+            "specReferences": [
+              {
+                "id": "MCP-Prompts-List",
+                "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/prompts#listing-prompts"
+              }
+            ]
+          }
+        }
+      ],
+      "rawRunPath": "ci-capacity/capacity-results/typescript/baseline/reject-prompts"
+    },
+    {
+      "sdk": "typescript",
+      "head": "candidate",
+      "condition": "clean",
+      "cliExitCode": 0,
+      "counts": {
+        "SUCCESS": 73,
+        "FAILURE": 0,
+        "WARNING": 0,
+        "INFO": 0,
+        "SKIPPED": 0
+      },
+      "scenarioCount": 31,
+      "issuedSessions": 32,
+      "successfulDeleteReleases": 31,
+      "fixtureCapDenials": 0,
+      "fixturePromptRejections": 0,
+      "injectedPromptSessionIds": [],
+      "residualSessions": [
+        {
+          "sessionId": "b0f63e20-ae59-46ab-b2b1-6f52b2254871",
+          "initializeRequestId": 160,
+          "issuedInScenario": "dns-rebinding-protection",
+          "clientName": "conformance-dns-rebinding-test",
+          "protocolVersionRequested": "2025-11-25",
+          "observedRpcMethods": [
+            "initialize",
+            "notifications/initialized"
+          ],
+          "deleteAttempts": 0,
+          "releasedByDelete": false,
+          "releaseRequestId": null
+        }
+      ],
+      "failedChecks": [],
+      "rawRunPath": "ci-capacity/capacity-results/typescript/candidate/clean"
+    },
+    {
+      "sdk": "typescript",
+      "head": "candidate",
+      "condition": "reject-prompts",
+      "cliExitCode": 1,
+      "counts": {
+        "SUCCESS": 68,
+        "FAILURE": 5,
+        "WARNING": 0,
+        "INFO": 0,
+        "SKIPPED": 0
+      },
+      "scenarioCount": 31,
+      "issuedSessions": 32,
+      "successfulDeleteReleases": 31,
+      "fixtureCapDenials": 0,
+      "fixturePromptRejections": 5,
+      "injectedPromptSessionIds": [
+        "10c0de05-6c46-41da-8d21-a88c1d83586b",
+        "121b7946-1f63-4cfb-aec7-350e9577e21f",
+        "9b46d857-f0fd-4cfa-a2cb-c99ac9c3b3d3",
+        "a1a7675d-8436-4e75-9461-89f1083ee8f8",
+        "b1e30106-8d4c-4122-b6e2-93dd6d46f775"
+      ],
+      "residualSessions": [
+        {
+          "sessionId": "1614ef88-7fb6-44d2-9092-ca87b5a6760e",
+          "initializeRequestId": 160,
+          "issuedInScenario": "dns-rebinding-protection",
+          "clientName": "conformance-dns-rebinding-test",
+          "protocolVersionRequested": "2025-11-25",
+          "observedRpcMethods": [
+            "initialize",
+            "notifications/initialized"
+          ],
+          "deleteAttempts": 0,
+          "releasedByDelete": false,
+          "releaseRequestId": null
+        }
+      ],
+      "failedChecks": [
+        {
+          "scenario": "prompts-get-embedded-resource",
+          "check": {
+            "id": "prompts-get-embedded-resource",
+            "name": "PromptsGetEmbeddedResource",
+            "description": "Get prompt with embedded resource",
+            "status": "FAILURE",
+            "timestamp": "2026-09-28T07:42:57.569Z",
+            "errorMessage": "Failed: [mcp533 capacity fixture] disabled method prompts/get",
+            "specReferences": [
+              {
+                "id": "MCP-Prompts-Embedded-Resources",
+                "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/prompts#embedded-resources"
+              }
+            ]
+          }
+        },
+        {
+          "scenario": "prompts-get-simple",
+          "check": {
+            "id": "prompts-get-simple",
+            "name": "PromptsGetSimple",
+            "description": "Get simple prompt successfully",
+            "status": "FAILURE",
+            "timestamp": "2026-09-28T07:42:57.551Z",
+            "errorMessage": "Failed: [mcp533 capacity fixture] disabled method prompts/get",
+            "specReferences": [
+              {
+                "id": "MCP-Prompts-Get",
+                "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/prompts#getting-prompts"
+              }
+            ]
+          }
+        },
+        {
+          "scenario": "prompts-get-with-args",
+          "check": {
+            "id": "prompts-get-with-args",
+            "name": "PromptsGetWithArgs",
+            "description": "Get parameterized prompt with argument substitution",
+            "status": "FAILURE",
+            "timestamp": "2026-09-28T07:42:57.561Z",
+            "errorMessage": "Failed: [mcp533 capacity fixture] disabled method prompts/get",
+            "specReferences": [
+              {
+                "id": "MCP-Prompts-Get",
+                "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/prompts#getting-prompts"
+              }
+            ]
+          }
+        },
+        {
+          "scenario": "prompts-get-with-image",
+          "check": {
+            "id": "prompts-get-with-image",
+            "name": "PromptsGetWithImage",
+            "description": "Get prompt with image content",
+            "status": "FAILURE",
+            "timestamp": "2026-09-28T07:42:57.578Z",
+            "errorMessage": "Failed: [mcp533 capacity fixture] disabled method prompts/get",
+            "specReferences": [
+              {
+                "id": "MCP-Prompts-Image",
+                "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/prompts#image-content"
+              }
+            ]
+          }
+        },
+        {
+          "scenario": "prompts-list",
+          "check": {
+            "id": "prompts-list",
+            "name": "PromptsList",
+            "description": "Server lists available prompts with valid structure",
+            "status": "FAILURE",
+            "timestamp": "2026-09-28T07:42:57.538Z",
+            "errorMessage": "Failed: [mcp533 capacity fixture] disabled method prompts/list",
+            "specReferences": [
+              {
+                "id": "MCP-Prompts-List",
+                "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/prompts#listing-prompts"
+              }
+            ]
+          }
+        }
+      ],
+      "rawRunPath": "ci-capacity/capacity-results/typescript/candidate/reject-prompts"
+    },
+    {
+      "sdk": "go",
+      "head": "baseline",
+      "condition": "clean",
+      "cliExitCode": 0,
+      "counts": {
+        "SUCCESS": 73,
+        "FAILURE": 0,
+        "WARNING": 0,
+        "INFO": 0,
+        "SKIPPED": 0
+      },
+      "scenarioCount": 31,
+      "issuedSessions": 32,
+      "successfulDeleteReleases": 31,
+      "fixtureCapDenials": 0,
+      "fixturePromptRejections": 0,
+      "injectedPromptSessionIds": [],
+      "residualSessions": [
+        {
+          "sessionId": "QFGFPJT5AB5AKNZHU7UEFSDMW5",
+          "initializeRequestId": 160,
+          "issuedInScenario": "dns-rebinding-protection",
+          "clientName": "conformance-dns-rebinding-test",
+          "protocolVersionRequested": "2025-11-25",
+          "observedRpcMethods": [
+            "initialize",
+            "notifications/initialized"
+          ],
+          "deleteAttempts": 0,
+          "releasedByDelete": false,
+          "releaseRequestId": null
+        }
+      ],
+      "failedChecks": [],
+      "rawRunPath": "ci-capacity/capacity-results/go/baseline/clean"
+    },
+    {
+      "sdk": "go",
+      "head": "baseline",
+      "condition": "reject-prompts",
+      "cliExitCode": 1,
+      "counts": {
+        "SUCCESS": 66,
+        "FAILURE": 7,
+        "WARNING": 0,
+        "INFO": 0,
+        "SKIPPED": 0
+      },
+      "scenarioCount": 31,
+      "issuedSessions": 30,
+      "successfulDeleteReleases": 26,
+      "fixtureCapDenials": 3,
+      "fixturePromptRejections": 4,
+      "injectedPromptSessionIds": [
+        "6AJQQANCWF3OBWO3KVO5GAB7EI",
+        "EJEEKAJRI7XJVPU2L5PXCOFXPA",
+        "HT2EV2U4BHQD5YLMGOX6475Y2B",
+        "LN2MXHK6YUJMISFJGUN4JRF5OA"
+      ],
+      "residualSessions": [
+        {
+          "sessionId": "HT2EV2U4BHQD5YLMGOX6475Y2B",
+          "initializeRequestId": 134,
+          "issuedInScenario": "prompts-list",
+          "clientName": "conformance-test-client",
+          "protocolVersionRequested": "2025-11-25",
+          "observedRpcMethods": [
+            "initialize",
+            "notifications/initialized",
+            "prompts/list"
+          ],
+          "deleteAttempts": 0,
+          "releasedByDelete": false,
+          "releaseRequestId": null
+        },
+        {
+          "sessionId": "LN2MXHK6YUJMISFJGUN4JRF5OA",
+          "initializeRequestId": 138,
+          "issuedInScenario": "prompts-get-simple",
+          "clientName": "conformance-test-client",
+          "protocolVersionRequested": "2025-11-25",
+          "observedRpcMethods": [
+            "initialize",
+            "notifications/initialized",
+            "prompts/get"
+          ],
+          "deleteAttempts": 0,
+          "releasedByDelete": false,
+          "releaseRequestId": null
+        },
+        {
+          "sessionId": "EJEEKAJRI7XJVPU2L5PXCOFXPA",
+          "initializeRequestId": 142,
+          "issuedInScenario": "prompts-get-with-args",
+          "clientName": "conformance-test-client",
+          "protocolVersionRequested": "2025-11-25",
+          "observedRpcMethods": [
+            "initialize",
+            "notifications/initialized",
+            "prompts/get"
+          ],
+          "deleteAttempts": 0,
+          "releasedByDelete": false,
+          "releaseRequestId": null
+        },
+        {
+          "sessionId": "6AJQQANCWF3OBWO3KVO5GAB7EI",
+          "initializeRequestId": 146,
+          "issuedInScenario": "prompts-get-embedded-resource",
+          "clientName": "conformance-test-client",
+          "protocolVersionRequested": "2025-11-25",
+          "observedRpcMethods": [
+            "initialize",
+            "notifications/initialized",
+            "prompts/get"
+          ],
+          "deleteAttempts": 0,
+          "releasedByDelete": false,
+          "releaseRequestId": null
+        }
+      ],
+      "failedChecks": [
+        {
+          "scenario": "dns-rebinding-protection",
+          "check": {
+            "id": "localhost-host-rebinding-rejected",
+            "name": "DNSRebindingRejected",
+            "description": "Server rejects requests with non-localhost Host/Origin headers",
+            "timestamp": "2026-09-28T07:43:01.070Z",
+            "specReferences": [
+              {
+                "id": "MCP-DNS-Rebinding-Protection",
+                "url": "https://modelcontextprotocol.io/specification/2025-11-25/basic/security_best_practices#local-mcp-server-compromise"
+              },
+              {
+                "id": "MCP-Transport-Security",
+                "url": "https://modelcontextprotocol.io/specification/2025-11-25/basic/transports#security-warning"
+              }
+            ],
+            "status": "FAILURE",
+            "errorMessage": "Expected HTTP 4xx for invalid Host/Origin headers, got 503",
+            "details": {
+              "hostHeader": "evil.example.com",
+              "originHeader": "http://evil.example.com",
+              "statusCode": 503,
+              "body": {
+                "jsonrpc": "2.0",
+                "id": 1,
+                "error": {
+                  "code": -32000,
+                  "message": "[mcp533 capacity fixture] live issued-session cap 4 reached"
+                }
+              }
+            }
+          }
+        },
+        {
+          "scenario": "dns-rebinding-protection",
+          "check": {
+            "id": "localhost-host-valid-accepted",
+            "name": "LocalhostHostAccepted",
+            "description": "Server accepts requests with valid localhost Host/Origin headers",
+            "timestamp": "2026-09-28T07:43:01.070Z",
+            "specReferences": [
+              {
+                "id": "MCP-DNS-Rebinding-Protection",
+                "url": "https://modelcontextprotocol.io/specification/2025-11-25/basic/security_best_practices#local-mcp-server-compromise"
+              },
+              {
+                "id": "MCP-Transport-Security",
+                "url": "https://modelcontextprotocol.io/specification/2025-11-25/basic/transports#security-warning"
+              }
+            ],
+            "status": "FAILURE",
+            "errorMessage": "Expected HTTP 2xx for valid localhost Host/Origin headers, got 503",
+            "details": {
+              "hostHeader": "127.0.0.1:42223",
+              "originHeader": "http://127.0.0.1:42223",
+              "statusCode": 503,
+              "body": {
+                "jsonrpc": "2.0",
+                "id": 1,
+                "error": {
+                  "code": -32000,
+                  "message": "[mcp533 capacity fixture] live issued-session cap 4 reached"
+                }
+              }
+            }
+          }
+        },
+        {
+          "scenario": "prompts-get-embedded-resource",
+          "check": {
+            "id": "prompts-get-embedded-resource",
+            "name": "PromptsGetEmbeddedResource",
+            "description": "Get prompt with embedded resource",
+            "status": "FAILURE",
+            "timestamp": "2026-09-28T07:43:01.067Z",
+            "errorMessage": "Failed: [mcp533 capacity fixture] disabled method prompts/get",
+            "specReferences": [
+              {
+                "id": "MCP-Prompts-Embedded-Resources",
+                "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/prompts#embedded-resources"
+              }
+            ]
+          }
+        },
+        {
+          "scenario": "prompts-get-simple",
+          "check": {
+            "id": "prompts-get-simple",
+            "name": "PromptsGetSimple",
+            "description": "Get simple prompt successfully",
+            "status": "FAILURE",
+            "timestamp": "2026-09-28T07:43:01.056Z",
+            "errorMessage": "Failed: [mcp533 capacity fixture] disabled method prompts/get",
+            "specReferences": [
+              {
+                "id": "MCP-Prompts-Get",
+                "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/prompts#getting-prompts"
+              }
+            ]
+          }
+        },
+        {
+          "scenario": "prompts-get-with-args",
+          "check": {
+            "id": "prompts-get-with-args",
+            "name": "PromptsGetWithArgs",
+            "description": "Get parameterized prompt with argument substitution",
+            "status": "FAILURE",
+            "timestamp": "2026-09-28T07:43:01.061Z",
+            "errorMessage": "Failed: [mcp533 capacity fixture] disabled method prompts/get",
+            "specReferences": [
+              {
+                "id": "MCP-Prompts-Get",
+                "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/prompts#getting-prompts"
+              }
+            ]
+          }
+        },
+        {
+          "scenario": "prompts-get-with-image",
+          "check": {
+            "id": "prompts-get-with-image",
+            "name": "PromptsGetWithImage",
+            "description": "Get prompt with image content",
+            "status": "FAILURE",
+            "timestamp": "2026-09-28T07:43:01.069Z",
+            "errorMessage": "Failed: Streamable HTTP error: Error POSTing to endpoint: {\"jsonrpc\":\"2.0\",\"id\":0,\"error\":{\"code\":-32000,\"message\":\"[mcp533 capacity fixture] live issued-session cap 4 reached\"}}",
+            "specReferences": [
+              {
+                "id": "MCP-Prompts-Image",
+                "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/prompts#image-content"
+              }
+            ]
+          }
+        },
+        {
+          "scenario": "prompts-list",
+          "check": {
+            "id": "prompts-list",
+            "name": "PromptsList",
+            "description": "Server lists available prompts with valid structure",
+            "status": "FAILURE",
+            "timestamp": "2026-09-28T07:43:01.047Z",
+            "errorMessage": "Failed: [mcp533 capacity fixture] disabled method prompts/list",
+            "specReferences": [
+              {
+                "id": "MCP-Prompts-List",
+                "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/prompts#listing-prompts"
+              }
+            ]
+          }
+        }
+      ],
+      "rawRunPath": "ci-capacity/capacity-results/go/baseline/reject-prompts"
+    },
+    {
+      "sdk": "go",
+      "head": "candidate",
+      "condition": "clean",
+      "cliExitCode": 0,
+      "counts": {
+        "SUCCESS": 73,
+        "FAILURE": 0,
+        "WARNING": 0,
+        "INFO": 0,
+        "SKIPPED": 0
+      },
+      "scenarioCount": 31,
+      "issuedSessions": 32,
+      "successfulDeleteReleases": 31,
+      "fixtureCapDenials": 0,
+      "fixturePromptRejections": 0,
+      "injectedPromptSessionIds": [],
+      "residualSessions": [
+        {
+          "sessionId": "XNMLLEIVKOLAWZIR6SSTWTA6JO",
+          "initializeRequestId": 160,
+          "issuedInScenario": "dns-rebinding-protection",
+          "clientName": "conformance-dns-rebinding-test",
+          "protocolVersionRequested": "2025-11-25",
+          "observedRpcMethods": [
+            "initialize",
+            "notifications/initialized"
+          ],
+          "deleteAttempts": 0,
+          "releasedByDelete": false,
+          "releaseRequestId": null
+        }
+      ],
+      "failedChecks": [],
+      "rawRunPath": "ci-capacity/capacity-results/go/candidate/clean"
+    },
+    {
+      "sdk": "go",
+      "head": "candidate",
+      "condition": "reject-prompts",
+      "cliExitCode": 1,
+      "counts": {
+        "SUCCESS": 68,
+        "FAILURE": 5,
+        "WARNING": 0,
+        "INFO": 0,
+        "SKIPPED": 0
+      },
+      "scenarioCount": 31,
+      "issuedSessions": 32,
+      "successfulDeleteReleases": 31,
+      "fixtureCapDenials": 0,
+      "fixturePromptRejections": 5,
+      "injectedPromptSessionIds": [
+        "2TUR5L4DH5TDIDXFSHQEVBA4PB",
+        "5DAULOUZHN2GQ5FC4TTCZAFEXA",
+        "OWA3CJSJRN3PKMEFD4CRP4MCUX",
+        "YDCTNP3KJQNZG46JU57IFGD7UL",
+        "ZFC4ZOUWWNOL5DNY2Z2FHTL4KW"
+      ],
+      "residualSessions": [
+        {
+          "sessionId": "MRL5B43MKG4J4ACMSP7VZ3J3A4",
+          "initializeRequestId": 160,
+          "issuedInScenario": "dns-rebinding-protection",
+          "clientName": "conformance-dns-rebinding-test",
+          "protocolVersionRequested": "2025-11-25",
+          "observedRpcMethods": [
+            "initialize",
+            "notifications/initialized"
+          ],
+          "deleteAttempts": 0,
+          "releasedByDelete": false,
+          "releaseRequestId": null
+        }
+      ],
+      "failedChecks": [
+        {
+          "scenario": "prompts-get-embedded-resource",
+          "check": {
+            "id": "prompts-get-embedded-resource",
+            "name": "PromptsGetEmbeddedResource",
+            "description": "Get prompt with embedded resource",
+            "status": "FAILURE",
+            "timestamp": "2026-09-28T07:43:04.496Z",
+            "errorMessage": "Failed: [mcp533 capacity fixture] disabled method prompts/get",
+            "specReferences": [
+              {
+                "id": "MCP-Prompts-Embedded-Resources",
+                "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/prompts#embedded-resources"
+              }
+            ]
+          }
+        },
+        {
+          "scenario": "prompts-get-simple",
+          "check": {
+            "id": "prompts-get-simple",
+            "name": "PromptsGetSimple",
+            "description": "Get simple prompt successfully",
+            "status": "FAILURE",
+            "timestamp": "2026-09-28T07:43:04.483Z",
+            "errorMessage": "Failed: [mcp533 capacity fixture] disabled method prompts/get",
+            "specReferences": [
+              {
+                "id": "MCP-Prompts-Get",
+                "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/prompts#getting-prompts"
+              }
+            ]
+          }
+        },
+        {
+          "scenario": "prompts-get-with-args",
+          "check": {
+            "id": "prompts-get-with-args",
+            "name": "PromptsGetWithArgs",
+            "description": "Get parameterized prompt with argument substitution",
+            "status": "FAILURE",
+            "timestamp": "2026-09-28T07:43:04.489Z",
+            "errorMessage": "Failed: [mcp533 capacity fixture] disabled method prompts/get",
+            "specReferences": [
+              {
+                "id": "MCP-Prompts-Get",
+                "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/prompts#getting-prompts"
+              }
+            ]
+          }
+        },
+        {
+          "scenario": "prompts-get-with-image",
+          "check": {
+            "id": "prompts-get-with-image",
+            "name": "PromptsGetWithImage",
+            "description": "Get prompt with image content",
+            "status": "FAILURE",
+            "timestamp": "2026-09-28T07:43:04.503Z",
+            "errorMessage": "Failed: [mcp533 capacity fixture] disabled method prompts/get",
+            "specReferences": [
+              {
+                "id": "MCP-Prompts-Image",
+                "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/prompts#image-content"
+              }
+            ]
+          }
+        },
+        {
+          "scenario": "prompts-list",
+          "check": {
+            "id": "prompts-list",
+            "name": "PromptsList",
+            "description": "Server lists available prompts with valid structure",
+            "status": "FAILURE",
+            "timestamp": "2026-09-28T07:43:04.473Z",
+            "errorMessage": "Failed: [mcp533 capacity fixture] disabled method prompts/list",
+            "specReferences": [
+              {
+                "id": "MCP-Prompts-List",
+                "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/prompts#listing-prompts"
+              }
+            ]
+          }
+        }
+      ],
+      "rawRunPath": "ci-capacity/capacity-results/go/candidate/reject-prompts"
+    }
+  ],
+  "assertions": [
+    {
+      "scope": "typescript/baseline/clean",
+      "name": "CLI completed without outer watchdog or launch/log failure",
+      "passed": true
+    },
+    {
+      "scope": "typescript/baseline/clean",
+      "name": "Every CLI-selected scenario has retained checks",
+      "passed": true
+    },
+    {
+      "scope": "typescript/baseline/clean",
+      "name": "CLI printed pass/failure totals agree with retained checks",
+      "passed": true
+    },
+    {
+      "scope": "typescript/baseline/clean",
+      "name": "Observed issued-session capacity never exceeded four",
+      "passed": true
+    },
+    {
+      "scope": "typescript/baseline/clean",
+      "name": "All initialize admissions settled",
+      "passed": true
+    },
+    {
+      "scope": "typescript/baseline/clean",
+      "name": "Stateful SDK actually issued sessions",
+      "passed": true
+    },
+    {
+      "scope": "typescript/baseline/clean",
+      "name": "No unexpected proxy transport failures or journal errors",
+      "passed": true
+    },
+    {
+      "scope": "typescript/baseline/clean",
+      "name": "The first actual prompt request had no other outstanding sessions or pending initializes",
+      "passed": true,
+      "firstPromptRequest": {
+        "requestId": 137,
+        "scenario": "prompts-list",
+        "method": "POST",
+        "path": "/mcp",
+        "rpcMethod": "prompts/list",
+        "rpcId": 1,
+        "sessionId": "47cd4443-581f-4ab7-a7da-2fa7883efe07",
+        "host": "127.0.0.1:33845",
+        "origin": null,
+        "otherLiveSessionIds": [],
+        "pendingInitializeRequestIds": []
+      }
+    },
+    {
+      "scope": "typescript/baseline/clean",
+      "name": "Clean control had no fixture cap or prompt denials",
+      "passed": true
+    },
+    {
+      "scope": "typescript/baseline/reject-prompts",
+      "name": "CLI completed without outer watchdog or launch/log failure",
+      "passed": true
+    },
+    {
+      "scope": "typescript/baseline/reject-prompts",
+      "name": "Every CLI-selected scenario has retained checks",
+      "passed": true
+    },
+    {
+      "scope": "typescript/baseline/reject-prompts",
+      "name": "CLI printed pass/failure totals agree with retained checks",
+      "passed": true
+    },
+    {
+      "scope": "typescript/baseline/reject-prompts",
+      "name": "Observed issued-session capacity never exceeded four",
+      "passed": true
+    },
+    {
+      "scope": "typescript/baseline/reject-prompts",
+      "name": "All initialize admissions settled",
+      "passed": true
+    },
+    {
+      "scope": "typescript/baseline/reject-prompts",
+      "name": "Stateful SDK actually issued sessions",
+      "passed": true
+    },
+    {
+      "scope": "typescript/baseline/reject-prompts",
+      "name": "No unexpected proxy transport failures or journal errors",
+      "passed": true
+    },
+    {
+      "scope": "typescript/baseline/reject-prompts",
+      "name": "The first actual prompt request had no other outstanding sessions or pending initializes",
+      "passed": true,
+      "firstPromptRequest": {
+        "requestId": 137,
+        "scenario": "prompts-list",
+        "method": "POST",
+        "path": "/mcp",
+        "rpcMethod": "prompts/list",
+        "rpcId": 1,
+        "sessionId": "72dacde3-6a3e-4fdb-af7b-f9d0d9e097eb",
+        "host": "127.0.0.1:41663",
+        "origin": null,
+        "otherLiveSessionIds": [],
+        "pendingInitializeRequestIds": []
+      }
+    },
+    {
+      "scope": "typescript/baseline/reject-prompts",
+      "name": "Injected prompt errors were exercised and CLI retained a failing verdict",
+      "passed": true
+    },
+    {
+      "scope": "typescript/baseline/reject-prompts",
+      "name": "Baseline prompt failures exhausted the actual fixture cap",
+      "passed": true
+    },
+    {
+      "scope": "typescript/candidate/clean",
+      "name": "CLI completed without outer watchdog or launch/log failure",
+      "passed": true
+    },
+    {
+      "scope": "typescript/candidate/clean",
+      "name": "Every CLI-selected scenario has retained checks",
+      "passed": true
+    },
+    {
+      "scope": "typescript/candidate/clean",
+      "name": "CLI printed pass/failure totals agree with retained checks",
+      "passed": true
+    },
+    {
+      "scope": "typescript/candidate/clean",
+      "name": "Observed issued-session capacity never exceeded four",
+      "passed": true
+    },
+    {
+      "scope": "typescript/candidate/clean",
+      "name": "All initialize admissions settled",
+      "passed": true
+    },
+    {
+      "scope": "typescript/candidate/clean",
+      "name": "Stateful SDK actually issued sessions",
+      "passed": true
+    },
+    {
+      "scope": "typescript/candidate/clean",
+      "name": "No unexpected proxy transport failures or journal errors",
+      "passed": true
+    },
+    {
+      "scope": "typescript/candidate/clean",
+      "name": "The first actual prompt request had no other outstanding sessions or pending initializes",
+      "passed": true,
+      "firstPromptRequest": {
+        "requestId": 137,
+        "scenario": "prompts-list",
+        "method": "POST",
+        "path": "/mcp",
+        "rpcMethod": "prompts/list",
+        "rpcId": 1,
+        "sessionId": "17eb6bd8-38d5-4d0b-9897-6694c7459fa0",
+        "host": "127.0.0.1:38419",
+        "origin": null,
+        "otherLiveSessionIds": [],
+        "pendingInitializeRequestIds": []
+      }
+    },
+    {
+      "scope": "typescript/candidate/clean",
+      "name": "Clean control had no fixture cap or prompt denials",
+      "passed": true
+    },
+    {
+      "scope": "typescript/candidate/reject-prompts",
+      "name": "CLI completed without outer watchdog or launch/log failure",
+      "passed": true
+    },
+    {
+      "scope": "typescript/candidate/reject-prompts",
+      "name": "Every CLI-selected scenario has retained checks",
+      "passed": true
+    },
+    {
+      "scope": "typescript/candidate/reject-prompts",
+      "name": "CLI printed pass/failure totals agree with retained checks",
+      "passed": true
+    },
+    {
+      "scope": "typescript/candidate/reject-prompts",
+      "name": "Observed issued-session capacity never exceeded four",
+      "passed": true
+    },
+    {
+      "scope": "typescript/candidate/reject-prompts",
+      "name": "All initialize admissions settled",
+      "passed": true
+    },
+    {
+      "scope": "typescript/candidate/reject-prompts",
+      "name": "Stateful SDK actually issued sessions",
+      "passed": true
+    },
+    {
+      "scope": "typescript/candidate/reject-prompts",
+      "name": "No unexpected proxy transport failures or journal errors",
+      "passed": true
+    },
+    {
+      "scope": "typescript/candidate/reject-prompts",
+      "name": "The first actual prompt request had no other outstanding sessions or pending initializes",
+      "passed": true,
+      "firstPromptRequest": {
+        "requestId": 137,
+        "scenario": "prompts-list",
+        "method": "POST",
+        "path": "/mcp",
+        "rpcMethod": "prompts/list",
+        "rpcId": 1,
+        "sessionId": "10c0de05-6c46-41da-8d21-a88c1d83586b",
+        "host": "127.0.0.1:34315",
+        "origin": null,
+        "otherLiveSessionIds": [],
+        "pendingInitializeRequestIds": []
+      }
+    },
+    {
+      "scope": "typescript/candidate/reject-prompts",
+      "name": "Injected prompt errors were exercised and CLI retained a failing verdict",
+      "passed": true
+    },
+    {
+      "scope": "typescript/candidate/reject-prompts",
+      "name": "Candidate had no fixture cap denials",
+      "passed": true
+    },
+    {
+      "scope": "typescript/candidate/reject-prompts",
+      "name": "Every injected prompt session received exactly one successful DELETE",
+      "passed": true,
+      "sessionIds": [
+        "10c0de05-6c46-41da-8d21-a88c1d83586b",
+        "121b7946-1f63-4cfb-aec7-350e9577e21f",
+        "b1e30106-8d4c-4122-b6e2-93dd6d46f775",
+        "a1a7675d-8436-4e75-9461-89f1083ee8f8",
+        "9b46d857-f0fd-4cfa-a2cb-c99ac9c3b3d3"
+      ]
+    },
+    {
+      "scope": "typescript/candidate/reject-prompts",
+      "name": "Candidate sent no duplicate DELETE requests",
+      "passed": true
+    },
+    {
+      "scope": "typescript/candidate/reject-prompts",
+      "name": "Candidate failures are only the intentionally injected prompt errors",
+      "passed": true,
+      "failures": [
+        {
+          "scenario": "prompts-get-embedded-resource",
+          "id": "prompts-get-embedded-resource",
+          "errorMessage": "Failed: [mcp533 capacity fixture] disabled method prompts/get"
+        },
+        {
+          "scenario": "prompts-get-simple",
+          "id": "prompts-get-simple",
+          "errorMessage": "Failed: [mcp533 capacity fixture] disabled method prompts/get"
+        },
+        {
+          "scenario": "prompts-get-with-args",
+          "id": "prompts-get-with-args",
+          "errorMessage": "Failed: [mcp533 capacity fixture] disabled method prompts/get"
+        },
+        {
+          "scenario": "prompts-get-with-image",
+          "id": "prompts-get-with-image",
+          "errorMessage": "Failed: [mcp533 capacity fixture] disabled method prompts/get"
+        },
+        {
+          "scenario": "prompts-list",
+          "id": "prompts-list",
+          "errorMessage": "Failed: [mcp533 capacity fixture] disabled method prompts/list"
+        }
+      ]
+    },
+    {
+      "scope": "typescript",
+      "name": "Comparison controls completed",
+      "passed": true
+    },
+    {
+      "scope": "typescript",
+      "name": "Clean CLI verdicts and per-check statuses agree between heads",
+      "passed": true
+    },
+    {
+      "scope": "typescript",
+      "name": "Clean residual session origins agree between heads",
+      "passed": true,
+      "baselineResidualOrigins": [
+        {
+          "clientName": "conformance-dns-rebinding-test",
+          "protocolVersionRequested": "2025-11-25",
+          "observedRpcMethods": [
+            "initialize",
+            "notifications/initialized"
+          ]
+        }
+      ],
+      "candidateResidualOrigins": [
+        {
+          "clientName": "conformance-dns-rebinding-test",
+          "protocolVersionRequested": "2025-11-25",
+          "observedRpcMethods": [
+            "initialize",
+            "notifications/initialized"
+          ]
+        }
+      ]
+    },
+    {
+      "scope": "typescript",
+      "name": "Candidate prompt errors add no residual sessions beyond its clean control",
+      "passed": true,
+      "cleanResidualOrigins": [
+        {
+          "clientName": "conformance-dns-rebinding-test",
+          "protocolVersionRequested": "2025-11-25",
+          "observedRpcMethods": [
+            "initialize",
+            "notifications/initialized"
+          ]
+        }
+      ],
+      "injectedResidualOrigins": [
+        {
+          "clientName": "conformance-dns-rebinding-test",
+          "protocolVersionRequested": "2025-11-25",
+          "observedRpcMethods": [
+            "initialize",
+            "notifications/initialized"
+          ]
+        }
+      ]
+    },
+    {
+      "scope": "typescript",
+      "name": "Candidate non-prompt check statuses remain unchanged under injection",
+      "passed": true
+    },
+    {
+      "scope": "typescript",
+      "name": "Candidate reached an injected request in every CLI-selected prompt scenario",
+      "passed": true,
+      "selectedPromptScenarios": [
+        "prompts-list",
+        "prompts-get-simple",
+        "prompts-get-with-args",
+        "prompts-get-embedded-resource",
+        "prompts-get-with-image"
+      ]
+    },
+    {
+      "scope": "go/baseline/clean",
+      "name": "CLI completed without outer watchdog or launch/log failure",
+      "passed": true
+    },
+    {
+      "scope": "go/baseline/clean",
+      "name": "Every CLI-selected scenario has retained checks",
+      "passed": true
+    },
+    {
+      "scope": "go/baseline/clean",
+      "name": "CLI printed pass/failure totals agree with retained checks",
+      "passed": true
+    },
+    {
+      "scope": "go/baseline/clean",
+      "name": "Observed issued-session capacity never exceeded four",
+      "passed": true
+    },
+    {
+      "scope": "go/baseline/clean",
+      "name": "All initialize admissions settled",
+      "passed": true
+    },
+    {
+      "scope": "go/baseline/clean",
+      "name": "Stateful SDK actually issued sessions",
+      "passed": true
+    },
+    {
+      "scope": "go/baseline/clean",
+      "name": "No unexpected proxy transport failures or journal errors",
+      "passed": true
+    },
+    {
+      "scope": "go/baseline/clean",
+      "name": "The first actual prompt request had no other outstanding sessions or pending initializes",
+      "passed": true,
+      "firstPromptRequest": {
+        "requestId": 137,
+        "scenario": "prompts-list",
+        "method": "POST",
+        "path": "/",
+        "rpcMethod": "prompts/list",
+        "rpcId": 1,
+        "sessionId": "2PORKNAR3OD4IRJ6PCEQT37OBA",
+        "host": "127.0.0.1:43595",
+        "origin": null,
+        "otherLiveSessionIds": [],
+        "pendingInitializeRequestIds": []
+      }
+    },
+    {
+      "scope": "go/baseline/clean",
+      "name": "Clean control had no fixture cap or prompt denials",
+      "passed": true
+    },
+    {
+      "scope": "go/baseline/reject-prompts",
+      "name": "CLI completed without outer watchdog or launch/log failure",
+      "passed": true
+    },
+    {
+      "scope": "go/baseline/reject-prompts",
+      "name": "Every CLI-selected scenario has retained checks",
+      "passed": true
+    },
+    {
+      "scope": "go/baseline/reject-prompts",
+      "name": "CLI printed pass/failure totals agree with retained checks",
+      "passed": true
+    },
+    {
+      "scope": "go/baseline/reject-prompts",
+      "name": "Observed issued-session capacity never exceeded four",
+      "passed": true
+    },
+    {
+      "scope": "go/baseline/reject-prompts",
+      "name": "All initialize admissions settled",
+      "passed": true
+    },
+    {
+      "scope": "go/baseline/reject-prompts",
+      "name": "Stateful SDK actually issued sessions",
+      "passed": true
+    },
+    {
+      "scope": "go/baseline/reject-prompts",
+      "name": "No unexpected proxy transport failures or journal errors",
+      "passed": true
+    },
+    {
+      "scope": "go/baseline/reject-prompts",
+      "name": "The first actual prompt request had no other outstanding sessions or pending initializes",
+      "passed": true,
+      "firstPromptRequest": {
+        "requestId": 137,
+        "scenario": "prompts-list",
+        "method": "POST",
+        "path": "/",
+        "rpcMethod": "prompts/list",
+        "rpcId": 1,
+        "sessionId": "HT2EV2U4BHQD5YLMGOX6475Y2B",
+        "host": "127.0.0.1:42223",
+        "origin": null,
+        "otherLiveSessionIds": [],
+        "pendingInitializeRequestIds": []
+      }
+    },
+    {
+      "scope": "go/baseline/reject-prompts",
+      "name": "Injected prompt errors were exercised and CLI retained a failing verdict",
+      "passed": true
+    },
+    {
+      "scope": "go/baseline/reject-prompts",
+      "name": "Baseline prompt failures exhausted the actual fixture cap",
+      "passed": true
+    },
+    {
+      "scope": "go/candidate/clean",
+      "name": "CLI completed without outer watchdog or launch/log failure",
+      "passed": true
+    },
+    {
+      "scope": "go/candidate/clean",
+      "name": "Every CLI-selected scenario has retained checks",
+      "passed": true
+    },
+    {
+      "scope": "go/candidate/clean",
+      "name": "CLI printed pass/failure totals agree with retained checks",
+      "passed": true
+    },
+    {
+      "scope": "go/candidate/clean",
+      "name": "Observed issued-session capacity never exceeded four",
+      "passed": true
+    },
+    {
+      "scope": "go/candidate/clean",
+      "name": "All initialize admissions settled",
+      "passed": true
+    },
+    {
+      "scope": "go/candidate/clean",
+      "name": "Stateful SDK actually issued sessions",
+      "passed": true
+    },
+    {
+      "scope": "go/candidate/clean",
+      "name": "No unexpected proxy transport failures or journal errors",
+      "passed": true
+    },
+    {
+      "scope": "go/candidate/clean",
+      "name": "The first actual prompt request had no other outstanding sessions or pending initializes",
+      "passed": true,
+      "firstPromptRequest": {
+        "requestId": 137,
+        "scenario": "prompts-list",
+        "method": "POST",
+        "path": "/",
+        "rpcMethod": "prompts/list",
+        "rpcId": 1,
+        "sessionId": "SIRTRUY2PQGS6WFMLZS43UNE44",
+        "host": "127.0.0.1:37171",
+        "origin": null,
+        "otherLiveSessionIds": [],
+        "pendingInitializeRequestIds": []
+      }
+    },
+    {
+      "scope": "go/candidate/clean",
+      "name": "Clean control had no fixture cap or prompt denials",
+      "passed": true
+    },
+    {
+      "scope": "go/candidate/reject-prompts",
+      "name": "CLI completed without outer watchdog or launch/log failure",
+      "passed": true
+    },
+    {
+      "scope": "go/candidate/reject-prompts",
+      "name": "Every CLI-selected scenario has retained checks",
+      "passed": true
+    },
+    {
+      "scope": "go/candidate/reject-prompts",
+      "name": "CLI printed pass/failure totals agree with retained checks",
+      "passed": true
+    },
+    {
+      "scope": "go/candidate/reject-prompts",
+      "name": "Observed issued-session capacity never exceeded four",
+      "passed": true
+    },
+    {
+      "scope": "go/candidate/reject-prompts",
+      "name": "All initialize admissions settled",
+      "passed": true
+    },
+    {
+      "scope": "go/candidate/reject-prompts",
+      "name": "Stateful SDK actually issued sessions",
+      "passed": true
+    },
+    {
+      "scope": "go/candidate/reject-prompts",
+      "name": "No unexpected proxy transport failures or journal errors",
+      "passed": true
+    },
+    {
+      "scope": "go/candidate/reject-prompts",
+      "name": "The first actual prompt request had no other outstanding sessions or pending initializes",
+      "passed": true,
+      "firstPromptRequest": {
+        "requestId": 137,
+        "scenario": "prompts-list",
+        "method": "POST",
+        "path": "/",
+        "rpcMethod": "prompts/list",
+        "rpcId": 1,
+        "sessionId": "YDCTNP3KJQNZG46JU57IFGD7UL",
+        "host": "127.0.0.1:41471",
+        "origin": null,
+        "otherLiveSessionIds": [],
+        "pendingInitializeRequestIds": []
+      }
+    },
+    {
+      "scope": "go/candidate/reject-prompts",
+      "name": "Injected prompt errors were exercised and CLI retained a failing verdict",
+      "passed": true
+    },
+    {
+      "scope": "go/candidate/reject-prompts",
+      "name": "Candidate had no fixture cap denials",
+      "passed": true
+    },
+    {
+      "scope": "go/candidate/reject-prompts",
+      "name": "Every injected prompt session received exactly one successful DELETE",
+      "passed": true,
+      "sessionIds": [
+        "YDCTNP3KJQNZG46JU57IFGD7UL",
+        "ZFC4ZOUWWNOL5DNY2Z2FHTL4KW",
+        "OWA3CJSJRN3PKMEFD4CRP4MCUX",
+        "2TUR5L4DH5TDIDXFSHQEVBA4PB",
+        "5DAULOUZHN2GQ5FC4TTCZAFEXA"
+      ]
+    },
+    {
+      "scope": "go/candidate/reject-prompts",
+      "name": "Candidate sent no duplicate DELETE requests",
+      "passed": true
+    },
+    {
+      "scope": "go/candidate/reject-prompts",
+      "name": "Candidate failures are only the intentionally injected prompt errors",
+      "passed": true,
+      "failures": [
+        {
+          "scenario": "prompts-get-embedded-resource",
+          "id": "prompts-get-embedded-resource",
+          "errorMessage": "Failed: [mcp533 capacity fixture] disabled method prompts/get"
+        },
+        {
+          "scenario": "prompts-get-simple",
+          "id": "prompts-get-simple",
+          "errorMessage": "Failed: [mcp533 capacity fixture] disabled method prompts/get"
+        },
+        {
+          "scenario": "prompts-get-with-args",
+          "id": "prompts-get-with-args",
+          "errorMessage": "Failed: [mcp533 capacity fixture] disabled method prompts/get"
+        },
+        {
+          "scenario": "prompts-get-with-image",
+          "id": "prompts-get-with-image",
+          "errorMessage": "Failed: [mcp533 capacity fixture] disabled method prompts/get"
+        },
+        {
+          "scenario": "prompts-list",
+          "id": "prompts-list",
+          "errorMessage": "Failed: [mcp533 capacity fixture] disabled method prompts/list"
+        }
+      ]
+    },
+    {
+      "scope": "go",
+      "name": "Comparison controls completed",
+      "passed": true
+    },
+    {
+      "scope": "go",
+      "name": "Clean CLI verdicts and per-check statuses agree between heads",
+      "passed": true
+    },
+    {
+      "scope": "go",
+      "name": "Clean residual session origins agree between heads",
+      "passed": true,
+      "baselineResidualOrigins": [
+        {
+          "clientName": "conformance-dns-rebinding-test",
+          "protocolVersionRequested": "2025-11-25",
+          "observedRpcMethods": [
+            "initialize",
+            "notifications/initialized"
+          ]
+        }
+      ],
+      "candidateResidualOrigins": [
+        {
+          "clientName": "conformance-dns-rebinding-test",
+          "protocolVersionRequested": "2025-11-25",
+          "observedRpcMethods": [
+            "initialize",
+            "notifications/initialized"
+          ]
+        }
+      ]
+    },
+    {
+      "scope": "go",
+      "name": "Candidate prompt errors add no residual sessions beyond its clean control",
+      "passed": true,
+      "cleanResidualOrigins": [
+        {
+          "clientName": "conformance-dns-rebinding-test",
+          "protocolVersionRequested": "2025-11-25",
+          "observedRpcMethods": [
+            "initialize",
+            "notifications/initialized"
+          ]
+        }
+      ],
+      "injectedResidualOrigins": [
+        {
+          "clientName": "conformance-dns-rebinding-test",
+          "protocolVersionRequested": "2025-11-25",
+          "observedRpcMethods": [
+            "initialize",
+            "notifications/initialized"
+          ]
+        }
+      ]
+    },
+    {
+      "scope": "go",
+      "name": "Candidate non-prompt check statuses remain unchanged under injection",
+      "passed": true
+    },
+    {
+      "scope": "go",
+      "name": "Candidate reached an injected request in every CLI-selected prompt scenario",
+      "passed": true,
+      "selectedPromptScenarios": [
+        "prompts-list",
+        "prompts-get-simple",
+        "prompts-get-with-args",
+        "prompts-get-embedded-resource",
+        "prompts-get-with-image"
+      ]
+    }
+  ]
+}
