@@ -1,0 +1,55 @@
+name: vLLM deferred-request abort review
+
+on:
+  push:
+    branches: [verify/vllm-58947-abort-20260928]
+
+permissions:
+  contents: read
+
+jobs:
+  lifecycle:
+    if: github.repository == 'YS-OH-CORE/second-paddle-notes' && github.ref == 'refs/heads/verify/vllm-58947-abort-20260928'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          path: evidence
+          persist-credentials: false
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          repository: vllm-project/vllm
+          ref: 365706a27300453ba9218c1585a64a1f44b54254
+          path: vllm
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@fac544c07dec837d0ccb6301d7b5580bf5edae39 # v8.2.0
+        with:
+          version: '0.9.28'
+          enable-cache: false
+      - name: Install the documented CPU Python development environment
+        working-directory: vllm
+        env:
+          VLLM_USE_PRECOMPILED: '1'
+          VLLM_PRECOMPILED_WHEEL_VARIANT: cpu
+          VLLM_PRECOMPILED_WHEEL_COMMIT: 94d14629247955c69d40bdf2a9d7e3bd45954452
+          VLLM_TARGET_DEVICE: cpu
+        run: |
+          mkdir -p "$RUNNER_TEMP/vllm-abort-receipt"
+          uv venv --python 3.12
+          uv pip install -r requirements/lint.txt
+          .venv/bin/pre-commit install
+          uv pip install --editable . --torch-backend cpu 2>&1 | tee "$RUNNER_TEMP/vllm-abort-receipt/install.log"
+          uv pip install pytest==9.1.0 pytest-asyncio==1.4.0 tblib==3.1.0 librosa==0.10.2.post1
+          uv pip freeze > "$RUNNER_TEMP/vllm-abort-receipt/packages.txt"
+      - name: Exercise real admission, abort, delayed reclamation, and subsequent progress
+        working-directory: vllm
+        run: .venv/bin/python ../evidence/checks/vllm-58947-abort/run.py
+      - name: Upload bounded receipts even when setup or assertions fail
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: vllm-58947-abort-review
+          path: ${{ runner.temp }}/vllm-abort-receipt
+          if-no-files-found: warn
+          retention-days: 30
