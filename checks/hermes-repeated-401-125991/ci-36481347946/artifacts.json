@@ -1,0 +1,18 @@
+{
+  "run": 36481347946,
+  "publisher_reported_only": true,
+  "artifacts": [
+    {
+      "lane": "candidate",
+      "id": 10997033146,
+      "bytes": 11713,
+      "digest": "sha256:f2654104d05a80a99fea1f5374811a581a8da2c0acc4390e98b8197660f474e0"
+    },
+    {
+      "lane": "original",
+      "id": 10996948123,
+      "bytes": 9591,
+      "digest": "sha256:03abbfc559d0f44e183f6453940756e6bba7ce77bbae6b35b30b53b62451b4ed"
+    }
+  ]
+}

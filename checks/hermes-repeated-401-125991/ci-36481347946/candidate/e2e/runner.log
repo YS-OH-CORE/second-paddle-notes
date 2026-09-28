@@ -1,0 +1,18 @@
+▶ not activated — using HERMES_PYTHON: /home/runner/work/_temp/hermes-mcp-test-env/bin/python
+▶ running per-file parallel test suite via run_tests_parallel.py
+  (TZ=UTC LANG=C.UTF-8 PYTHONHASHSEED=0; clean env)
+▶ pre-compiling bytecode cache
+▶ launching test runner
+Discovered 1 test files (~5 tests) under ['tests/e2e/core/mcp_plugins/test_mcp_streamable_http.py']; running with -j 1
+[100.0% |     5/~5 | ✓2 | ✗0] ✓ tests/e2e/core/mcp_plugins/test_mcp_streamable_http.py (2✓, 9.6s)
+
+=== Summary: 1 files, 2 tests passed, 0 failed (100% complete) in 9.6s (1 workers) ===
+  Durations cached to test_durations.json (1 files)
+
+=== Per-file subprocess time distribution ===
+  Files:   1
+  Total subprocess CPU-wall: 9.6s  (runner wall: 9.6s, parallelism: 1x)
+  P50: 9.63s  P90: 9.63s  P95: 9.63s  P99: 9.63s  Max: 9.63s
+  <1s: 0 files (0%)  <2s: 0 files (0%)
+  Top 10 slowest:
+      9.63s  tests/e2e/core/mcp_plugins/test_mcp_streamable_http.py

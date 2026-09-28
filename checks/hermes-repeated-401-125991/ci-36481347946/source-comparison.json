@@ -1,0 +1,23 @@
+{
+  "prior_runtime": "5c727a6ccd298f310becf0f0656346b6797e17f1",
+  "refreshed_runtime": "ce962e05ad9acbfa75f506da7b635236a96d733a",
+  "handler_and_original_test_byte_identical": true,
+  "lock_hashes": {
+    "pyproject.toml": {
+      "old": "a6d0b40bfab34227934430c797eded0883d343b3891123375e9067edae1792d6",
+      "refreshed": "58c9bcabab40ccdd00522f993010101009c9cd2fa3c502b669297c909dfc7c34"
+    },
+    "uv.lock": {
+      "old": "bd27ac91236fa57f9eeffea8d4a324f3ca7f9b218525d74bec14a67fc1163887",
+      "refreshed": "f97b75728ec4382ce85ea5bb681d503068c9e41d7e4955c8cae59b3d57dea6dd"
+    },
+    "pm/lock.json": {
+      "old": "758f34b7dc6cc1c43259dac9fb6adedc9696bbe148413df80bdcfe90716c8bdc",
+      "refreshed": "30bd7b5a8624b5b56440789cc969afdea2bf584f769f14e90f7c918ca317c6eb"
+    }
+  },
+  "same_correction_file_blobs": {
+    "tools/mcp_tool_handlers.py": "7ada401398b5e8d1a2b25f635df7eb3df892ffc9",
+    "tests/e2e/core/mcp_plugins/test_mcp_streamable_http.py": "3fb8dccadb91a79c8655aadb9ea574349d67dfa9"
+  }
+}

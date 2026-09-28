@@ -1,0 +1,18 @@
+▶ not activated — using HERMES_PYTHON: /home/runner/work/_temp/hermes-mcp-test-env/bin/python
+▶ running per-file parallel test suite via run_tests_parallel.py
+  (TZ=UTC LANG=C.UTF-8 PYTHONHASHSEED=0; clean env)
+▶ pre-compiling bytecode cache
+▶ launching test runner
+Discovered 1 test files (~3 tests) under ['tests/tools/test_mcp_tool_401_handling.py']; running with -j 1
+[100.0% |     3/~3 | ✓3 | ✗0] ✓ tests/tools/test_mcp_tool_401_handling.py (3✓, 1.5s)
+
+=== Summary: 1 files, 3 tests passed, 0 failed (100% complete) in 1.6s (1 workers) ===
+  Durations cached to test_durations.json (1 files)
+
+=== Per-file subprocess time distribution ===
+  Files:   1
+  Total subprocess CPU-wall: 1.5s  (runner wall: 1.6s, parallelism: 1x)
+  P50: 1.55s  P90: 1.55s  P95: 1.55s  P99: 1.55s  Max: 1.55s
+  <1s: 0 files (0%)  <2s: 1 files (100%)
+  Top 10 slowest:
+      1.55s  tests/tools/test_mcp_tool_401_handling.py

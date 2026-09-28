@@ -1,0 +1,134 @@
+{
+  "lane": "candidate",
+  "runtime_commit": "861f94dc4326b9de45fff009202b48415aadb9bc",
+  "frozen_test_sha256": "20a819856089fc837d71eb1da14809caa6a98b00e0bfb52e6738a8fd4c919ce2",
+  "gates": [
+    {
+      "gate": "e2e",
+      "exit_code": 0,
+      "cases": [
+        {
+          "name": "test_401_on_tools_call_is_reported_as_an_auth_failure",
+          "class": "tests.e2e.core.mcp_plugins.test_mcp_streamable_http",
+          "state": "passed"
+        },
+        {
+          "name": "test_the_call_after_a_401_reaches_the_server",
+          "class": "tests.e2e.core.mcp_plugins.test_mcp_streamable_http",
+          "state": "passed"
+        }
+      ],
+      "passed": 2,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "interpretation": "selected tests passed",
+      "oracle_accepted": true
+    },
+    {
+      "gate": "errors",
+      "exit_code": 0,
+      "cases": [
+        {
+          "name": "test_format_connect_error_reports_real_messages_on_cyclic_chain",
+          "class": "tests.tools.test_mcp_tool_errors",
+          "state": "passed"
+        },
+        {
+          "name": "test_format_connect_error_finds_missing_executable_through_deep_cyclic_chain",
+          "class": "tests.tools.test_mcp_tool_errors",
+          "state": "passed"
+        },
+        {
+          "name": "test_folded_error_alone_is_not_an_auth_error",
+          "class": "tests.tools.test_mcp_tool_errors",
+          "state": "passed"
+        },
+        {
+          "name": "test_a_recorded_401_is_recognised_as_an_auth_error",
+          "class": "tests.tools.test_mcp_tool_errors",
+          "state": "passed"
+        },
+        {
+          "name": "test_only_401_counts_as_a_recorded_auth_error",
+          "class": "tests.tools.test_mcp_tool_errors",
+          "state": "passed"
+        },
+        {
+          "name": "test_no_recording_is_not_an_auth_error",
+          "class": "tests.tools.test_mcp_tool_errors",
+          "state": "passed"
+        },
+        {
+          "name": "test_a_malformed_recorded_status_is_not_an_auth_error",
+          "class": "tests.tools.test_mcp_tool_errors",
+          "state": "passed"
+        },
+        {
+          "name": "test_a_recorded_401_reaches_the_auth_recovery_ladder",
+          "class": "tests.tools.test_mcp_tool_errors",
+          "state": "passed"
+        },
+        {
+          "name": "test_a_recorded_403_does_not_reach_the_auth_ladder",
+          "class": "tests.tools.test_mcp_tool_errors",
+          "state": "passed"
+        }
+      ],
+      "passed": 9,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "interpretation": "selected tests passed",
+      "oracle_accepted": true
+    },
+    {
+      "gate": "handling",
+      "exit_code": 0,
+      "cases": [
+        {
+          "name": "test_is_auth_error_detects_oauth_flow_error",
+          "class": "tests.tools.test_mcp_tool_401_handling",
+          "state": "passed"
+        },
+        {
+          "name": "test_call_tool_handler_returns_needs_reauth_on_unrecoverable_401",
+          "class": "tests.tools.test_mcp_tool_401_handling",
+          "state": "passed"
+        },
+        {
+          "name": "test_call_tool_handler_non_auth_error_still_generic",
+          "class": "tests.tools.test_mcp_tool_401_handling",
+          "state": "passed"
+        }
+      ],
+      "passed": 3,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "interpretation": "selected tests passed",
+      "oracle_accepted": true
+    },
+    {
+      "gate": "recorder",
+      "exit_code": 0,
+      "cases": [
+        {
+          "name": "test_opaque_sdk_rejection_is_reported_with_the_servers_status_and_body",
+          "class": "tests.tools.test_mcp_sse_fallback",
+          "state": "passed"
+        }
+      ],
+      "passed": 1,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "interpretation": "selected tests passed",
+      "oracle_accepted": true
+    }
+  ],
+  "all_oracles_accepted": true,
+  "test_passes": 15,
+  "test_failures": 0,
+  "file_retries": 0
+}

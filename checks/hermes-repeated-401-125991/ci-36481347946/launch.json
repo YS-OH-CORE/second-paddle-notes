@@ -1,0 +1,13 @@
+{
+  "original": "ce962e05ad9acbfa75f506da7b635236a96d733a",
+  "original_tree": "07776847a83b231e8d026ff3771a94ed4cfb9012",
+  "candidate": "861f94dc4326b9de45fff009202b48415aadb9bc",
+  "candidate_tree": "41abf3e73863f0a16fbde1b2704cca10e4634b34",
+  "launcher": "f5346e44f1e1c95b92060fa9c731cae7be99e62f",
+  "branch": "verify/pr-125991-refreshed-pm-20260929",
+  "prior_correction": "b7e052c9034a08fb3211ec59b173b4507d236d4c",
+  "unchanged_patch_blobs": {
+    "tools/mcp_tool_handlers.py": "7ada401398b5e8d1a2b25f635df7eb3df892ffc9",
+    "tests/e2e/core/mcp_plugins/test_mcp_streamable_http.py": "3fb8dccadb91a79c8655aadb9ea574349d67dfa9"
+  }
+}

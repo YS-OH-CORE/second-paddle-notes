@@ -1,0 +1,72 @@
+{
+  "original": {
+    "counts": {
+      "passed": 1,
+      "failure": 1,
+      "error": 0,
+      "skipped": 0
+    },
+    "tracked_files": 16588,
+    "source_hashes": {
+      "pyproject.toml": "58c9bcabab40ccdd00522f993010101009c9cd2fa3c502b669297c909dfc7c34",
+      "uv.lock": "f97b75728ec4382ce85ea5bb681d503068c9e41d7e4955c8cae59b3d57dea6dd",
+      "pm/lock.json": "30bd7b5a8624b5b56440789cc969afdea2bf584f769f14e90f7c918ca317c6eb",
+      "scripts/run_tests.sh": "16cd6223a3b517326e023c3b716a182e2818fcc04ebf8a1855f83dc72e52743d",
+      "tests/e2e/core/mcp_plugins/test_mcp_streamable_http.py": "20a819856089fc837d71eb1da14809caa6a98b00e0bfb52e6738a8fd4c919ce2",
+      "tools/mcp_tool_handlers.py": "10202e40355f417b3865224922c9725b3e0b943bea083eb7be3d878b77dbe144",
+      ".github/actions/setup-pm/action.yml": "07e24a71548c846b0794bbd35fa69a119f855c8165974397f99ddff4645fe031"
+    },
+    "call_ids": [
+      3,
+      4,
+      5
+    ],
+    "rejected_ids": [
+      3,
+      4
+    ],
+    "python": "3.14.7 (main, Sep  1 2026, 14:18:09) [Clang 22.1.3 ]",
+    "versions": {
+      "mcp": "2.0.0",
+      "httpx2": "2.7.0",
+      "pytest": "9.1.1",
+      "pytest-asyncio": "1.3.0"
+    },
+    "receipt_files": 10
+  },
+  "candidate": {
+    "counts": {
+      "passed": 15,
+      "failure": 0,
+      "error": 0,
+      "skipped": 0
+    },
+    "tracked_files": 16588,
+    "source_hashes": {
+      "pyproject.toml": "58c9bcabab40ccdd00522f993010101009c9cd2fa3c502b669297c909dfc7c34",
+      "uv.lock": "f97b75728ec4382ce85ea5bb681d503068c9e41d7e4955c8cae59b3d57dea6dd",
+      "pm/lock.json": "30bd7b5a8624b5b56440789cc969afdea2bf584f769f14e90f7c918ca317c6eb",
+      "scripts/run_tests.sh": "16cd6223a3b517326e023c3b716a182e2818fcc04ebf8a1855f83dc72e52743d",
+      "tests/e2e/core/mcp_plugins/test_mcp_streamable_http.py": "20a819856089fc837d71eb1da14809caa6a98b00e0bfb52e6738a8fd4c919ce2",
+      "tools/mcp_tool_handlers.py": "13f3d10af28670a024bb1f017ea506e8f437fa1beed96f5bf706ccf942632520",
+      ".github/actions/setup-pm/action.yml": "07e24a71548c846b0794bbd35fa69a119f855c8165974397f99ddff4645fe031"
+    },
+    "call_ids": [
+      3,
+      4,
+      5
+    ],
+    "rejected_ids": [
+      3,
+      4
+    ],
+    "python": "3.14.7 (main, Sep  1 2026, 14:18:09) [Clang 22.1.3 ]",
+    "versions": {
+      "mcp": "2.0.0",
+      "httpx2": "2.7.0",
+      "pytest": "9.1.1",
+      "pytest-asyncio": "1.3.0"
+    },
+    "receipt_files": 22
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "gate": "recorder",
+  "exit_code": 0,
+  "cases": [
+    {
+      "name": "test_opaque_sdk_rejection_is_reported_with_the_servers_status_and_body",
+      "class": "tests.tools.test_mcp_sse_fallback",
+      "state": "passed"
+    }
+  ],
+  "passed": 1,
+  "failed": 0,
+  "errors": 0,
+  "skipped": 0,
+  "interpretation": "selected tests passed",
+  "oracle_accepted": true
+}

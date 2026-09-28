@@ -1,0 +1,22 @@
+{
+  "gate": "e2e",
+  "exit_code": 1,
+  "cases": [
+    {
+      "name": "test_401_on_tools_call_is_reported_as_an_auth_failure",
+      "class": "tests.e2e.core.mcp_plugins.test_mcp_streamable_http",
+      "state": "failure"
+    },
+    {
+      "name": "test_the_call_after_a_401_reaches_the_server",
+      "class": "tests.e2e.core.mcp_plugins.test_mcp_streamable_http",
+      "state": "passed"
+    }
+  ],
+  "passed": 1,
+  "failed": 1,
+  "errors": 0,
+  "skipped": 0,
+  "interpretation": "expected regression reproduced; the original test failed",
+  "oracle_accepted": true
+}
