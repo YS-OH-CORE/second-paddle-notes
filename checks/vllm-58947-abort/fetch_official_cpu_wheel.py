@@ -14,7 +14,7 @@ from pathlib import Path
 
 from packaging.markers import default_environment
 from packaging.requirements import Requirement
-from packaging.tags import parse_tag, sys_tags
+from packaging.tags import Tag, parse_tag, sys_tags
 from packaging.utils import canonicalize_name, parse_wheel_filename
 from packaging.version import Version
 
@@ -91,8 +91,18 @@ def main():
     if canonicalize_name(metadata["Name"]) != "vllm" or Version(metadata["Version"]) != version:
         raise ValueError("Wheel METADATA package/version differs from fixed CPU filename")
     actual_tags = set().union(*(parse_tag(t) for t in wheel_metadata.get_all("Tag", [])))
-    if actual_tags != filename_tags or not actual_tags.intersection(supported):
-        raise ValueError("WHEEL tags differ from filename or are incompatible")
+    generic_tags = {Tag(t.interpreter, t.abi, "linux_x86_64") for t in filename_tags}
+    tags_record = {
+        "filename_tags": sorted(map(str, filename_tags)),
+        "wheel_tags": sorted(map(str, actual_tags)),
+        "tags_equal": actual_tags == filename_tags,
+        "documented_platform_only_retag": actual_tags == generic_tags,
+    }
+    (out / "tags.json").write_text(json.dumps(tags_record, indent=2) + "\n")
+    print(json.dumps(tags_record), flush=True)
+    if actual_tags not in (filename_tags, generic_tags) or not actual_tags.intersection(supported):
+        raise ValueError("WHEEL differs beyond documented platform retagging or is incompatible")
+    manifest.update(tags_record)
     marker_env = default_environment()
     marker_env["extra"] = ""
     torch_requirements = []
