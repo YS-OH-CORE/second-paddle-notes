@@ -1,0 +1,12 @@
+{
+  "canonical_exit_code": 1,
+  "outer_timeout": false,
+  "elapsed_seconds": 17.574750106000003,
+  "observations": [
+    "observation-get-405-call-500.json",
+    "observation-get-401-call-500.json",
+    "observation-get-405-call-401.json"
+  ],
+  "test_sha256_after": "ea5e7aee7d5f43ef5dfc60a6e7c2e85dadc94906bce99a3c277a4bc118efc264",
+  "production_changes_after": ""
+}

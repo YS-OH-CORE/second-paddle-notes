@@ -1,0 +1,63 @@
+{
+  "get_status": 405,
+  "call_status": 500,
+  "expected_needs_signin": false,
+  "before": {
+    "result": "witness-ok"
+  },
+  "rejected": {
+    "error": "MCP call failed: MCPError: Server returned an error response"
+  },
+  "after": {
+    "result": "witness-ok"
+  },
+  "wire": [
+    {
+      "http_method": "GET",
+      "status": 405
+    },
+    {
+      "http_method": "POST",
+      "status": 200,
+      "rpc_method": "initialize",
+      "id": 1
+    },
+    {
+      "http_method": "POST",
+      "status": 202,
+      "rpc_method": "notifications/initialized",
+      "id": null
+    },
+    {
+      "http_method": "GET",
+      "status": 405
+    },
+    {
+      "http_method": "POST",
+      "status": 200,
+      "rpc_method": "tools/list",
+      "id": 2
+    },
+    {
+      "http_method": "POST",
+      "status": 200,
+      "rpc_method": "tools/call",
+      "id": 3,
+      "mode": "ok"
+    },
+    {
+      "http_method": "POST",
+      "status": 500,
+      "rpc_method": "tools/call",
+      "id": 4,
+      "mode": "reject"
+    },
+    {
+      "http_method": "POST",
+      "status": 200,
+      "rpc_method": "tools/call",
+      "id": 5,
+      "mode": "ok"
+    }
+  ]
+}

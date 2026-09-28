@@ -1,0 +1,72 @@
+{
+  "get_status": 401,
+  "call_status": 500,
+  "expected_needs_signin": false,
+  "before": {
+    "result": "witness-ok"
+  },
+  "rejected": {
+    "error": "MCP server 'http_auth_witness' accepted the connection anonymously but rejected this call with 401 \u2014 it requires sign-in. Run `hermes mcp login http_auth_witness` to set up OAuth for it. Do NOT retry this tool \u2014 ask the user to sign in.",
+    "needs_reauth": true,
+    "server": "http_auth_witness"
+  },
+  "after": {
+    "result": "witness-ok"
+  },
+  "wire": [
+    {
+      "http_method": "GET",
+      "status": 401,
+      "session_attached": false
+    },
+    {
+      "http_method": "POST",
+      "status": 200,
+      "rpc_method": "initialize",
+      "id": 1
+    },
+    {
+      "http_method": "POST",
+      "status": 202,
+      "rpc_method": "notifications/initialized",
+      "id": null
+    },
+    {
+      "http_method": "GET",
+      "status": 401,
+      "session_attached": true
+    },
+    {
+      "http_method": "POST",
+      "status": 200,
+      "rpc_method": "tools/list",
+      "id": 2
+    },
+    {
+      "http_method": "GET",
+      "status": 401,
+      "session_attached": true
+    },
+    {
+      "http_method": "POST",
+      "status": 200,
+      "rpc_method": "tools/call",
+      "id": 3,
+      "mode": "ok"
+    },
+    {
+      "http_method": "POST",
+      "status": 500,
+      "rpc_method": "tools/call",
+      "id": 4,
+      "mode": "reject"
+    },
+    {
+      "http_method": "POST",
+      "status": 200,
+      "rpc_method": "tools/call",
+      "id": 5,
+      "mode": "ok"
+    }
+  ]
+}

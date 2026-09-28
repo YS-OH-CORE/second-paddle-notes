@@ -1,0 +1,38 @@
+{
+  "runtime_head": "646031aa6c87f118e8c0a9b8d4feb79b32fba93c",
+  "runtime_tree": "2a56e26e97845f2934760fbd5e332d5ebc27c283",
+  "tracked_file_count": 13886,
+  "test_path": "tests/tools/test_mcp_http_auth_witness.py",
+  "test_sha256": "ea5e7aee7d5f43ef5dfc60a6e7c2e85dadc94906bce99a3c277a4bc118efc264",
+  "source_sha256": {
+    "tools/mcp_tool_handlers.py": "b81abd5d09d536547666ac768e5d30f391b1c556ab4eb73b30a7e6f2bf08bc6c",
+    "tools/mcp_tool_errors.py": "2c77a7f793f12cfa601edfc1ed77b146d726980dabab5cbabed37136b65f3950",
+    "tools/mcp_tool_transport.py": "ab3a4e7d566ac0e19c03664f662209b4caed4d15babd3852ead006426e3f2740",
+    "tools/mcp_tool.py": "0f8386ce2c002f6ad6d9d011b9de7bf8721667e19270e198fb99f8d88ea563b0",
+    "uv.lock": "811a21647251a3fd024a3e2f49c90ac0600c678e500cc08ed51db38c452a6c65",
+    "pyproject.toml": "eb0b8daac75c0c0e655282a1a836cb4c8a0bdc266e435a4d77e3295544ccf488"
+  },
+  "command": [
+    "bash",
+    "scripts/run_tests.sh",
+    "--jobs",
+    "1",
+    "--file-retries",
+    "0",
+    "--file-timeout",
+    "180",
+    "--include-integration",
+    "tests/tools/test_mcp_http_auth_witness.py",
+    "-v",
+    "--tb=short",
+    "--",
+    "-m",
+    "integration",
+    "--basetemp=/home/runner/work/_temp/http-auth-witness-pytest",
+    "--junitxml=/home/runner/work/_temp/http-auth-witness-receipt/junit.xml"
+  ],
+  "workflow_sha": "951fd532d99a79504a096dae52d7280cf4e441e1",
+  "run_id": "36412487458",
+  "run_attempt": "1",
+  "production_changes": ""
+}

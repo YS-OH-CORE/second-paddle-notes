@@ -1,0 +1,25 @@
+{
+  "target_pr": "https://github.com/NousResearch/hermes-agent/pull/114591",
+  "target_head": "646031aa6c87f118e8c0a9b8d4feb79b32fba93c",
+  "final_verification_commit": "951fd532d99a79504a096dae52d7280cf4e441e1",
+  "final_verification_tree": "9aff067407ed081da9edabf3ec9b4a618f1dde1e",
+  "final_run": 36412487458,
+  "status": "Final regression observed and receipts verified; upstream delivery pending",
+  "source_finding_credit": "kvnloo",
+  "implementation_author": "teknium1",
+  "signature": "Zero × Youngseok Oh",
+  "launch_history": [
+    "An unexecuted staging commit b186e01fcdc9b802341dd211941bae0f00d9db02 was superseded before branch creation to preserve outer-timeout receipts.",
+    "A command to create a new bare repository was rejected by the remote plugin. No configuration was changed; a pre-existing isolated bare repository was verified and reused.",
+    "The first Git fetch ended with a TLS connection-close error after 62.35 seconds and did not reach push.",
+    "Native branch creation and fast-forward to 5abcd0053693d95a0aba7b768b4ed4b7ae2402d7 triggered run 36411636097. The commit-specific workflow lookup returned an empty list, so this run was initially missed.",
+    "A separate procedure document was committed as a72fbdfd1d9ee3dce4a071aff40e0d4d1929a327. An advertised-branch fetch and normal fast-forward push succeeded in 12.03 seconds, producing incidental second run 36411912136.",
+    "A raw branch-filtered Actions query revealed both initial runs. Their wrong diagnosis was observed, but their GET counter also included connection preflight.",
+    "The test and procedure were corrected to count only session-bearing GETs, producing commit 951fd532d99a79504a096dae52d7280cf4e441e1 and final run 36412487458. No production implementation changed."
+  ],
+  "execution_claims": [
+    "Three separate workflow runs, each attempt 1; no runner file retries.",
+    "The first two runs are provisional observations with a documented synchronization limitation, not planned independent replications.",
+    "The final run establishes the intended session-bearing GET ordering and has 1 assertion failure, 2 passes, 0 errors, 0 skips, and canonical exit 1."
+  ]
+}

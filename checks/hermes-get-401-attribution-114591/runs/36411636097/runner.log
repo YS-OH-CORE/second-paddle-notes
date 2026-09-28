@@ -1,0 +1,79 @@
+▶ running per-file parallel test suite via run_tests_parallel.py
+  (TZ=UTC LANG=C.UTF-8 PYTHONHASHSEED=0; clean env)
+▶ pre-compiling bytecode cache
+▶ launching test runner
+Discovered 1 test files (~1 tests) under ['tests/tools/test_mcp_http_auth_witness.py']; running with -j 1
+[100.0% |     1/~1 | ✓2 | ✗1] ✗ tests/tools/test_mcp_http_auth_witness.py (2✓ 1✗, 2.9s)
+
+  ╔╍ Failed: tests/tools/test_mcp_http_auth_witness.py ╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍
+  ║ ============================= test session starts ==============================
+  ║ platform linux -- Python 3.11.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/hermes-agent/hermes-agent/.venv/bin/python
+  ║ cachedir: .pytest_cache
+  ║ rootdir: /home/runner/work/hermes-agent/hermes-agent
+  ║ configfile: pyproject.toml
+  ║ plugins: asyncio-1.3.0, anyio-4.12.1
+  ║ asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+  ║ collecting ... collected 3 items
+  ║ 
+  ║ tests/tools/test_mcp_http_auth_witness.py::test_auth_diagnosis_belongs_to_the_failed_call[generic-without-get-challenge] PASSED [ 33%]
+  ║ tests/tools/test_mcp_http_auth_witness.py::test_auth_diagnosis_belongs_to_the_failed_call[generic-after-get-challenge] FAILED [ 66%]
+  ║ tests/tools/test_mcp_http_auth_witness.py::test_auth_diagnosis_belongs_to_the_failed_call[call-time-challenge] PASSED [100%]
+  ║ 
+  ║ =================================== FAILURES ===================================
+  ║ _ test_auth_diagnosis_belongs_to_the_failed_call[generic-after-get-challenge] __
+  ║ tests/tools/test_mcp_http_auth_witness.py:152: in test_auth_diagnosis_belongs_to_the_failed_call
+  ║     assert rejected.get("needs_reauth", False) is needs_signin, observation
+  ║ E   AssertionError: {'get_status': 401, 'call_status': 500, 'expected_needs_signin': False, 'before': {'result': 'witness-ok'}, ...}
+  ║ E   assert True is False
+  ║ E    +  where True = <built-in method get of dict object at 0x7fc464842980>('needs_reauth', False)
+  ║ E    +    where <built-in method get of dict object at 0x7fc464842980> = {'error': "MCP server 'http_auth_witness' accepted the connection anonymously but rejected this call with 401 — it requires sign-in. Run `hermes mcp login http_auth_witness` to set up OAuth for it. Do NOT retry this tool — ask the user to sign in.", 'needs_reauth': True, 'server': 'http_auth_witness'}.get
+  ║ - generated xml file: /home/runner/work/_temp/http-auth-witness-receipt/junit.xml -
+  ║ =========================== short test summary info ============================
+  ║ FAILED tests/tools/test_mcp_http_auth_witness.py::test_auth_diagnosis_belongs_to_the_failed_call[generic-after-get-challenge]
+  ║ ========================= 1 failed, 2 passed in 2.11s ==========================
+  ║
+  ║  Repro: python -m pytest tests/tools/test_mcp_http_auth_witness.py -v --tb=short -m integration --basetemp=/home/runner/work/_temp/http-auth-witness-pytest --junitxml=/home/runner/work/_temp/http-auth-witness-receipt/junit.xml
+  ╚╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍
+
+
+=== Summary: 1 files, 2 tests passed, 1 failed (100% complete) in 2.9s (1 workers) ===
+
+=== Per-file subprocess time distribution ===
+  Files:   1
+  Total subprocess CPU-wall: 2.9s  (runner wall: 2.9s, parallelism: 1x)
+  P50: 2.94s  P90: 2.94s  P95: 2.94s  P99: 2.94s  Max: 2.94s
+  <1s: 0 files (0%)  <2s: 0 files (0%)
+  Top 10 slowest:
+      2.94s  tests/tools/test_mcp_http_auth_witness.py
+
+=== Failure output ===
+
+--- tests/tools/test_mcp_http_auth_witness.py ---
+============================= test session starts ==============================
+platform linux -- Python 3.11.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/hermes-agent/hermes-agent/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /home/runner/work/hermes-agent/hermes-agent
+configfile: pyproject.toml
+plugins: asyncio-1.3.0, anyio-4.12.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 3 items
+
+tests/tools/test_mcp_http_auth_witness.py::test_auth_diagnosis_belongs_to_the_failed_call[generic-without-get-challenge] PASSED [ 33%]
+tests/tools/test_mcp_http_auth_witness.py::test_auth_diagnosis_belongs_to_the_failed_call[generic-after-get-challenge] FAILED [ 66%]
+tests/tools/test_mcp_http_auth_witness.py::test_auth_diagnosis_belongs_to_the_failed_call[call-time-challenge] PASSED [100%]
+
+=================================== FAILURES ===================================
+_ test_auth_diagnosis_belongs_to_the_failed_call[generic-after-get-challenge] __
+tests/tools/test_mcp_http_auth_witness.py:152: in test_auth_diagnosis_belongs_to_the_failed_call
+    assert rejected.get("needs_reauth", False) is needs_signin, observation
+E   AssertionError: {'get_status': 401, 'call_status': 500, 'expected_needs_signin': False, 'before': {'result': 'witness-ok'}, ...}
+E   assert True is False
+E    +  where True = <built-in method get of dict object at 0x7fc464842980>('needs_reauth', False)
+E    +    where <built-in method get of dict object at 0x7fc464842980> = {'error': "MCP server 'http_auth_witness' accepted the connection anonymously but rejected this call with 401 — it requires sign-in. Run `hermes mcp login http_auth_witness` to set up OAuth for it. Do NOT retry this tool — ask the user to sign in.", 'needs_reauth': True, 'server': 'http_auth_witness'}.get
+- generated xml file: /home/runner/work/_temp/http-auth-witness-receipt/junit.xml -
+=========================== short test summary info ============================
+FAILED tests/tools/test_mcp_http_auth_witness.py::test_auth_diagnosis_belongs_to_the_failed_call[generic-after-get-challenge]
+========================= 1 failed, 2 passed in 2.11s ==========================
+
+=== 1 file with test failures (1 test failed) ===
+  tests/tools/test_mcp_http_auth_witness.py  (1 test failed)
