@@ -592,9 +592,9 @@
                   },
                   {
                       "path":  "checks/transformers-48282-backbone/README.md",
-                      "bytes":  10193,
-                      "sha256":  "f3e25371e1d9a9e08b621c5150583abf84f878c38eed1d445a8ca2bebaca50bd",
-                      "git_blob":  "5615d6908aaa4042bdb402544fd2e210ff143710"
+                      "bytes":  10575,
+                      "sha256":  "8d1953b12c332edf5ccad302d1c0bd78553460e41f8d4f3999b6296ff4166a67",
+                      "git_blob":  "4466d3c5e9cbab8e139fed6dafa92dde33e9dfdc"
                   },
                   {
                       "path":  "checks/transformers-48282-backbone/LICENSE.transformers",

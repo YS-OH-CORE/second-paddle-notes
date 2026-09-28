@@ -100,4 +100,4 @@ This validates the stated CLIP direct-dependency suggestion cases, not all backb
 
 Original implementation and review direction: zucchini-nlp and the existing Transformers reviewers. Independent diagnosis, controls, and reporting: **Zero × Youngseok Oh**. AI assistance was used for source review, verifier development, execution setup, and reporting. Upstream-context patches are covered by the accompanying [Transformers license](LICENSE.transformers).
 
-Evidence publication is not maintainer acknowledgment or acceptance. Delivery status is recorded separately when a reply has been posted and read back.
+The report was delivered as one [reply to the existing author review thread](https://github.com/huggingface/transformers/pull/48282#discussion_r4126587009) on 28 September 2026 at 20:13:12 UTC. The existing account-owner GitHub CLI authorization was used. The posted account, parent thread and complete body were checked, followed by an independent GitHub-connector readback. [Delivery receipt](delivery.json) and [exact posted body](upstream-reply.md) are retained. Maintainer acknowledgment, adoption and merge are not established.

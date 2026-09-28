@@ -1,0 +1,20 @@
+{
+    "status":  "posted_readback_verified",
+    "repository":  "huggingface/transformers",
+    "pr_number":  48282,
+    "review_comment_id":  4126587009,
+    "in_reply_to_id":  4123602478,
+    "comment_url":  "https://github.com/huggingface/transformers/pull/48282#discussion_r4126587009",
+    "author":  "YS-OH-CORE",
+    "created_at_utc":  "2026-09-28T20:13:12Z",
+    "exact_body_match":  true,
+    "write_attempts":  1,
+    "reply_sha256":  "22e63eb5ebf9ba71864bc6882852c823c848e483444285949401c245415e55e4",
+    "evidence_commit":  "42bc566da6ff91bb3db6b5afa7e067dfd86336a2",
+    "tested_pr_head":  "f3e3ad778c38990d38100c44c74f2054b9b2aae6",
+    "route":  "Existing account-owner GitHub CLI authorization",
+    "maintainer_acknowledgment":  "not_established",
+    "independent_connector_readback":  true,
+    "matching_replies":  1,
+    "public_comment_preflight":  "NO_LISTED_PATTERN_FOUND"
+}
