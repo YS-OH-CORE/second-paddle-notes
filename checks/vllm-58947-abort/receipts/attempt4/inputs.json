@@ -1,0 +1,29 @@
+{
+  "upstream_head": "365706a27300453ba9218c1585a64a1f44b54254",
+  "upstream_tree": "eac71de736907afd5010f7fd6487de6d343b5016",
+  "source_sha256": {
+    "vllm/v1/core/sched/scheduler.py": "86552c9cf760c484697623ea832e16ce0ef42b4bbe00fac223e00040f68d1a36",
+    "tests/v1/kv_connector/unit/test_remote_prefill_lifecycle.py": "6cfeaf312beedca01c675d6c5b3b05fedc09fca2cad25eb53662a71db51169b2",
+    "tests/v1/kv_connector/unit/utils.py": "f77a3a8989976f812b066c19ce23ca6fab7486dd7ff21d647f4ffdfb4f039ff0",
+    "tests/v1/kv_connector/unit/conftest.py": "e32ed7663896abe5a2e6064e9b56e9d5bb99d44e3ed938edee4e08ea188da843",
+    "tests/conftest.py": "04ebad61208572ec894a650a2f0009c9e75ed0d5017bd1491490f9834d24e178",
+    "vllm/v1/core/kv_cache_manager.py": "62d1e370eb043f1632a1e1a019471b5cb0440f65f045970c7d3bb120841a2b1f",
+    "vllm/v1/core/block_pool.py": "4b8ab71264415ad3fd1752cb1364568c2d035c22f92e4842843b79e281dbff76"
+  },
+  "modified_test_sha256": "6eb8ccff3a7f507a1ede486d1059ee91f10102bff2b471bdd05aa0894f878c2b",
+  "addition_sha256": "e17407d104fd88886eb4fc98c808c18aa6ffc801fa28e151bc498a7d0fd5085a",
+  "workflow_sha": "491a2d4cb6a5b94b6f9a0678e90a4a9ed98b7f96",
+  "run_id": "36453327818",
+  "run_attempt": "1",
+  "scheduler_module_path": "vllm/v1/core/sched/scheduler.py",
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+  "packages": {
+    "vllm": "0.1.dev1+g365706a27.cpu",
+    "torch": "2.13.0+cpu",
+    "transformers": "5.17.0",
+    "pytest": "9.1.0",
+    "pytest-asyncio": "1.4.0"
+  },
+  "scope": "Actual Scheduler, KV block pool and Nixl scheduler; existing synthetic runner completion signals. No model inference or device transfer."
+}

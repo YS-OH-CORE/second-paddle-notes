@@ -1,0 +1,384 @@
+{
+  "binary_git_version": "cf30153c4c131c8164ee7798e5022d810682e2cb",
+  "errors": [],
+  "experiment": "PyTorch PR 192656 Python source-overlay comparison",
+  "interpretation": "The exact predicted numerical discrepancy was reproduced in this Python source-overlay environment.",
+  "original_source_sha256": {
+    "torch/_subclasses/functional_tensor.py": "6deba1070cc1453b421a860292993965ad7251f8e429919b62d303eb29819941",
+    "torch/autograd/forward_ad.py": "ae4e14b87c82a98581038e66729766c23abebe2456dd9202a082879594b8ac6a"
+  },
+  "restored_original_sources": {
+    "torch/_subclasses/functional_tensor.py": true,
+    "torch/autograd/forward_ad.py": true
+  },
+  "results": {
+    "candidate": {
+      "report": {
+        "binary_git_version": "cf30153c4c131c8164ee7798e5022d810682e2cb",
+        "cuda_available": false,
+        "cuda_build": null,
+        "hip_build": null,
+        "observations": [
+          {
+            "input_primal_after": [
+              1.0,
+              2.0
+            ],
+            "input_tangent_after": [
+              3.0,
+              4.0
+            ],
+            "mode": "eager",
+            "primal": [
+              6.0,
+              12.0
+            ],
+            "tangent": [
+              18.0,
+              24.0
+            ],
+            "variant": "clone"
+          },
+          {
+            "input_primal_after": [
+              1.0,
+              2.0
+            ],
+            "input_tangent_after": [
+              3.0,
+              4.0
+            ],
+            "mode": "functional",
+            "primal": [
+              6.0,
+              12.0
+            ],
+            "tangent": [
+              18.0,
+              24.0
+            ],
+            "variant": "clone"
+          },
+          {
+            "input_primal_after": [
+              1.0,
+              2.0
+            ],
+            "input_tangent_after": [
+              3.0,
+              4.0
+            ],
+            "mode": "eager",
+            "primal": [
+              6.0,
+              12.0
+            ],
+            "tangent": [
+              48.0,
+              54.0
+            ],
+            "variant": "mutate"
+          },
+          {
+            "input_primal_after": [
+              1.0,
+              2.0
+            ],
+            "input_tangent_after": [
+              3.0,
+              4.0
+            ],
+            "mode": "eager",
+            "primal": [
+              6.0,
+              12.0
+            ],
+            "tangent": [
+              18.0,
+              24.0
+            ],
+            "variant": "clone"
+          },
+          {
+            "input_primal_after": [
+              1.0,
+              2.0
+            ],
+            "input_tangent_after": [
+              3.0,
+              4.0
+            ],
+            "mode": "eager",
+            "primal": [
+              6.0,
+              12.0
+            ],
+            "tangent": [
+              48.0,
+              54.0
+            ],
+            "variant": "mutate"
+          },
+          {
+            "input_primal_after": [
+              1.0,
+              2.0
+            ],
+            "input_tangent_after": [
+              3.0,
+              4.0
+            ],
+            "mode": "functional",
+            "primal": [
+              6.0,
+              12.0
+            ],
+            "tangent": [
+              18.0,
+              24.0
+            ],
+            "variant": "mutate"
+          },
+          {
+            "input_primal_after": [
+              1.0,
+              2.0
+            ],
+            "input_tangent_after": [
+              3.0,
+              4.0
+            ],
+            "mode": "eager",
+            "primal": [
+              6.0,
+              12.0
+            ],
+            "tangent": [
+              18.0,
+              24.0
+            ],
+            "variant": "readonly"
+          },
+          {
+            "input_primal_after": [
+              1.0,
+              2.0
+            ],
+            "input_tangent_after": [
+              3.0,
+              4.0
+            ],
+            "mode": "functional",
+            "primal": [
+              6.0,
+              12.0
+            ],
+            "tangent": [
+              18.0,
+              24.0
+            ],
+            "variant": "readonly"
+          }
+        ],
+        "python": "3.12.3",
+        "sources": {
+          "torch._subclasses.functional_tensor": {
+            "path": "/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/.venv/lib/python3.12/site-packages/torch/_subclasses/functional_tensor.py",
+            "sha256": "5e5235ce069c7eae3a06cb0c97e3411e9dfcf190e39abc2d0ad1b275e90a6a51"
+          },
+          "torch.autograd.forward_ad": {
+            "path": "/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/.venv/lib/python3.12/site-packages/torch/autograd/forward_ad.py",
+            "sha256": "d493b00c81ea6d359b13673c5777c339774f0bd55d93dbaefe10d41c6ef69954"
+          }
+        },
+        "statuses": {
+          "test_clone_mutation_matches_eager": {
+            "detail": null,
+            "state": "ok"
+          },
+          "test_eager_oracle": {
+            "detail": null,
+            "state": "ok"
+          },
+          "test_intermediate_tangent_mutation_matches_eager": {
+            "detail": "Traceback (most recent call last):\n  File \"/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/.venv/lib/python3.12/site-packages/torch/testing/_internal/common_utils.py\", line 3553, in wrapper\n    method(*args, **kwargs)\n  File \"/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/checks/pytorch-192656-forwardad/repro.py\", line 107, in test_intermediate_tangent_mutation_matches_eager\n    self.compare_with_eager(\"mutate\")\n  File \"/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/checks/pytorch-192656-forwardad/repro.py\", line 98, in compare_with_eager\n    self.assertEqual(actual[\"tangent\"], expected[\"tangent\"])\n  File \"/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/.venv/lib/python3.12/site-packages/torch/testing/_internal/common_utils.py\", line 4571, in assertEqual\n    raise error_metas.pop()[0].to_error(  # type: ignore[index]\nAssertionError: Scalars are not close!\n\nExpected 48.0 but got 18.0.\nAbsolute difference: 30.0 (up to 1e-05 allowed)\nRelative difference: 0.625 (up to 1.3e-06 allowed)\n\nThe failure occurred for item [0]\n\nTo execute this test, run the following from the base repo dir:\n    python repro.py TestIntermediateTangentAlias.test_intermediate_tangent_mutation_matches_eager\n\nThis message can be suppressed by setting PYTORCH_PRINT_REPRO_ON_FAILURE=0\n",
+            "state": "FAIL"
+          },
+          "test_readonly_matches_eager": {
+            "detail": null,
+            "state": "ok"
+          }
+        },
+        "torch_version": "2.13.0+cpu"
+      },
+      "returncode": 1,
+      "timed_out": false
+    },
+    "parent": {
+      "report": {
+        "binary_git_version": "cf30153c4c131c8164ee7798e5022d810682e2cb",
+        "cuda_available": false,
+        "cuda_build": null,
+        "hip_build": null,
+        "observations": [
+          {
+            "input_primal_after": [
+              1.0,
+              2.0
+            ],
+            "input_tangent_after": [
+              3.0,
+              4.0
+            ],
+            "mode": "eager",
+            "primal": [
+              6.0,
+              12.0
+            ],
+            "tangent": [
+              18.0,
+              24.0
+            ],
+            "variant": "clone"
+          },
+          {
+            "error": "unpack_dual returned no tangent for intermediate dual",
+            "error_type": "RuntimeError",
+            "mode": "functional",
+            "variant": "clone"
+          },
+          {
+            "input_primal_after": [
+              1.0,
+              2.0
+            ],
+            "input_tangent_after": [
+              3.0,
+              4.0
+            ],
+            "mode": "eager",
+            "primal": [
+              6.0,
+              12.0
+            ],
+            "tangent": [
+              48.0,
+              54.0
+            ],
+            "variant": "mutate"
+          },
+          {
+            "input_primal_after": [
+              1.0,
+              2.0
+            ],
+            "input_tangent_after": [
+              3.0,
+              4.0
+            ],
+            "mode": "eager",
+            "primal": [
+              6.0,
+              12.0
+            ],
+            "tangent": [
+              18.0,
+              24.0
+            ],
+            "variant": "clone"
+          },
+          {
+            "input_primal_after": [
+              1.0,
+              2.0
+            ],
+            "input_tangent_after": [
+              3.0,
+              4.0
+            ],
+            "mode": "eager",
+            "primal": [
+              6.0,
+              12.0
+            ],
+            "tangent": [
+              48.0,
+              54.0
+            ],
+            "variant": "mutate"
+          },
+          {
+            "error": "unpack_dual returned no tangent for intermediate dual",
+            "error_type": "RuntimeError",
+            "mode": "functional",
+            "variant": "mutate"
+          },
+          {
+            "input_primal_after": [
+              1.0,
+              2.0
+            ],
+            "input_tangent_after": [
+              3.0,
+              4.0
+            ],
+            "mode": "eager",
+            "primal": [
+              6.0,
+              12.0
+            ],
+            "tangent": [
+              18.0,
+              24.0
+            ],
+            "variant": "readonly"
+          },
+          {
+            "error": "unpack_dual returned no tangent for intermediate dual",
+            "error_type": "RuntimeError",
+            "mode": "functional",
+            "variant": "readonly"
+          }
+        ],
+        "python": "3.12.3",
+        "sources": {
+          "torch._subclasses.functional_tensor": {
+            "path": "/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/.venv/lib/python3.12/site-packages/torch/_subclasses/functional_tensor.py",
+            "sha256": "91fd79c21e9119a530958514d1de8520098cbaa8f8ad8cf41ad6d898d047a2ad"
+          },
+          "torch.autograd.forward_ad": {
+            "path": "/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/.venv/lib/python3.12/site-packages/torch/autograd/forward_ad.py",
+            "sha256": "289adf8dbb998f011fbe189852bd9f95931c0fe36c12922aacaaa877b96e4a23"
+          }
+        },
+        "statuses": {
+          "test_clone_mutation_matches_eager": {
+            "detail": "Traceback (most recent call last):\n  File \"/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/.venv/lib/python3.12/site-packages/torch/testing/_internal/common_utils.py\", line 3553, in wrapper\n    method(*args, **kwargs)\n  File \"/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/checks/pytorch-192656-forwardad/repro.py\", line 104, in test_clone_mutation_matches_eager\n    self.compare_with_eager(\"clone\")\n  File \"/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/checks/pytorch-192656-forwardad/repro.py\", line 94, in compare_with_eager\n    actual = observe(\"functional\", variant)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/checks/pytorch-192656-forwardad/repro.py\", line 45, in observe\n    result = function(dual)\n             ^^^^^^^^^^^^^^\n  File \"/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/.venv/lib/python3.12/site-packages/torch/_subclasses/functional_tensor.py\", line 831, in inner\n    func_outputs = func(*func_args, **func_kwargs)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/checks/pytorch-192656-forwardad/repro.py\", line 31, in f\n    raise RuntimeError(\"unpack_dual returned no tangent for intermediate dual\")\nRuntimeError: unpack_dual returned no tangent for intermediate dual\n\nTo execute this test, run the following from the base repo dir:\n    python repro.py TestIntermediateTangentAlias.test_clone_mutation_matches_eager\n\nThis message can be suppressed by setting PYTORCH_PRINT_REPRO_ON_FAILURE=0\n",
+            "state": "ERROR"
+          },
+          "test_eager_oracle": {
+            "detail": null,
+            "state": "ok"
+          },
+          "test_intermediate_tangent_mutation_matches_eager": {
+            "detail": "Traceback (most recent call last):\n  File \"/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/.venv/lib/python3.12/site-packages/torch/testing/_internal/common_utils.py\", line 3553, in wrapper\n    method(*args, **kwargs)\n  File \"/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/checks/pytorch-192656-forwardad/repro.py\", line 107, in test_intermediate_tangent_mutation_matches_eager\n    self.compare_with_eager(\"mutate\")\n  File \"/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/checks/pytorch-192656-forwardad/repro.py\", line 94, in compare_with_eager\n    actual = observe(\"functional\", variant)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/checks/pytorch-192656-forwardad/repro.py\", line 45, in observe\n    result = function(dual)\n             ^^^^^^^^^^^^^^\n  File \"/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/.venv/lib/python3.12/site-packages/torch/_subclasses/functional_tensor.py\", line 831, in inner\n    func_outputs = func(*func_args, **func_kwargs)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/checks/pytorch-192656-forwardad/repro.py\", line 31, in f\n    raise RuntimeError(\"unpack_dual returned no tangent for intermediate dual\")\nRuntimeError: unpack_dual returned no tangent for intermediate dual\n\nTo execute this test, run the following from the base repo dir:\n    python repro.py TestIntermediateTangentAlias.test_intermediate_tangent_mutation_matches_eager\n\nThis message can be suppressed by setting PYTORCH_PRINT_REPRO_ON_FAILURE=0\n",
+            "state": "ERROR"
+          },
+          "test_readonly_matches_eager": {
+            "detail": "Traceback (most recent call last):\n  File \"/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/.venv/lib/python3.12/site-packages/torch/testing/_internal/common_utils.py\", line 3553, in wrapper\n    method(*args, **kwargs)\n  File \"/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/checks/pytorch-192656-forwardad/repro.py\", line 101, in test_readonly_matches_eager\n    self.compare_with_eager(\"readonly\")\n  File \"/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/checks/pytorch-192656-forwardad/repro.py\", line 94, in compare_with_eager\n    actual = observe(\"functional\", variant)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/checks/pytorch-192656-forwardad/repro.py\", line 45, in observe\n    result = function(dual)\n             ^^^^^^^^^^^^^^\n  File \"/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/.venv/lib/python3.12/site-packages/torch/_subclasses/functional_tensor.py\", line 831, in inner\n    func_outputs = func(*func_args, **func_kwargs)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/checks/pytorch-192656-forwardad/repro.py\", line 31, in f\n    raise RuntimeError(\"unpack_dual returned no tangent for intermediate dual\")\nRuntimeError: unpack_dual returned no tangent for intermediate dual\n\nTo execute this test, run the following from the base repo dir:\n    python repro.py TestIntermediateTangentAlias.test_readonly_matches_eager\n\nThis message can be suppressed by setting PYTORCH_PRINT_REPRO_ON_FAILURE=0\n",
+            "state": "ERROR"
+          }
+        },
+        "torch_version": "2.13.0+cpu"
+      },
+      "returncode": 1,
+      "timed_out": false
+    }
+  },
+  "source_refs": {
+    "candidate": "eb9c90dd1f2b67cadf9f7681176f1b5fab074423",
+    "parent": "061ace3a865340a4f6a351e5ef8f3a7f37b6645e"
+  },
+  "target_conditions_met": true,
+  "torch_version": "2.13.0+cpu"
+}

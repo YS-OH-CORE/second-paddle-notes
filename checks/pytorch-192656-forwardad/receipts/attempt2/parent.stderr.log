@@ -1,0 +1,93 @@
+
+Running tests...
+----------------------------------------------------------------------
+  test_clone_mutation_matches_eager (__main__.TestIntermediateTangentAlias.test_clone_mutation_matches_eager) ... ERROR (0.126s)
+  test_eager_oracle (__main__.TestIntermediateTangentAlias.test_eager_oracle) ... ok (0.002s)
+  test_intermediate_tangent_mutation_matches_eager (__main__.TestIntermediateTangentAlias.test_intermediate_tangent_mutation_matches_eager) ... ERROR (0.002s)
+  test_readonly_matches_eager (__main__.TestIntermediateTangentAlias.test_readonly_matches_eager) ... ERROR (0.002s)
+
+======================================================================
+ERROR [0.126s]: test_clone_mutation_matches_eager (__main__.TestIntermediateTangentAlias.test_clone_mutation_matches_eager)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/.venv/lib/python3.12/site-packages/torch/testing/_internal/common_utils.py", line 3553, in wrapper
+    method(*args, **kwargs)
+  File "/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/checks/pytorch-192656-forwardad/repro.py", line 104, in test_clone_mutation_matches_eager
+    self.compare_with_eager("clone")
+  File "/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/checks/pytorch-192656-forwardad/repro.py", line 94, in compare_with_eager
+    actual = observe("functional", variant)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/checks/pytorch-192656-forwardad/repro.py", line 45, in observe
+    result = function(dual)
+             ^^^^^^^^^^^^^^
+  File "/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/.venv/lib/python3.12/site-packages/torch/_subclasses/functional_tensor.py", line 831, in inner
+    func_outputs = func(*func_args, **func_kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/checks/pytorch-192656-forwardad/repro.py", line 31, in f
+    raise RuntimeError("unpack_dual returned no tangent for intermediate dual")
+RuntimeError: unpack_dual returned no tangent for intermediate dual
+
+To execute this test, run the following from the base repo dir:
+    python repro.py TestIntermediateTangentAlias.test_clone_mutation_matches_eager
+
+This message can be suppressed by setting PYTORCH_PRINT_REPRO_ON_FAILURE=0
+
+======================================================================
+ERROR [0.002s]: test_intermediate_tangent_mutation_matches_eager (__main__.TestIntermediateTangentAlias.test_intermediate_tangent_mutation_matches_eager)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/.venv/lib/python3.12/site-packages/torch/testing/_internal/common_utils.py", line 3553, in wrapper
+    method(*args, **kwargs)
+  File "/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/checks/pytorch-192656-forwardad/repro.py", line 107, in test_intermediate_tangent_mutation_matches_eager
+    self.compare_with_eager("mutate")
+  File "/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/checks/pytorch-192656-forwardad/repro.py", line 94, in compare_with_eager
+    actual = observe("functional", variant)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/checks/pytorch-192656-forwardad/repro.py", line 45, in observe
+    result = function(dual)
+             ^^^^^^^^^^^^^^
+  File "/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/.venv/lib/python3.12/site-packages/torch/_subclasses/functional_tensor.py", line 831, in inner
+    func_outputs = func(*func_args, **func_kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/checks/pytorch-192656-forwardad/repro.py", line 31, in f
+    raise RuntimeError("unpack_dual returned no tangent for intermediate dual")
+RuntimeError: unpack_dual returned no tangent for intermediate dual
+
+To execute this test, run the following from the base repo dir:
+    python repro.py TestIntermediateTangentAlias.test_intermediate_tangent_mutation_matches_eager
+
+This message can be suppressed by setting PYTORCH_PRINT_REPRO_ON_FAILURE=0
+
+======================================================================
+ERROR [0.002s]: test_readonly_matches_eager (__main__.TestIntermediateTangentAlias.test_readonly_matches_eager)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/.venv/lib/python3.12/site-packages/torch/testing/_internal/common_utils.py", line 3553, in wrapper
+    method(*args, **kwargs)
+  File "/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/checks/pytorch-192656-forwardad/repro.py", line 101, in test_readonly_matches_eager
+    self.compare_with_eager("readonly")
+  File "/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/checks/pytorch-192656-forwardad/repro.py", line 94, in compare_with_eager
+    actual = observe("functional", variant)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/checks/pytorch-192656-forwardad/repro.py", line 45, in observe
+    result = function(dual)
+             ^^^^^^^^^^^^^^
+  File "/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/.venv/lib/python3.12/site-packages/torch/_subclasses/functional_tensor.py", line 831, in inner
+    func_outputs = func(*func_args, **func_kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/checks/pytorch-192656-forwardad/repro.py", line 31, in f
+    raise RuntimeError("unpack_dual returned no tangent for intermediate dual")
+RuntimeError: unpack_dual returned no tangent for intermediate dual
+
+To execute this test, run the following from the base repo dir:
+    python repro.py TestIntermediateTangentAlias.test_readonly_matches_eager
+
+This message can be suppressed by setting PYTORCH_PRINT_REPRO_ON_FAILURE=0
+
+----------------------------------------------------------------------
+Ran 4 tests in 3.750s
+
+FAILED (errors=3)
+
+Generating XML reports...
+Generated XML report: /home/runner/work/_temp/pytorch-forwardad-receipt/xml/parent/.home.runner.work.second-paddle-notes.second-paddle-notes.evidence.checks.pytorch-192656-forwardad.repro/TEST-TestIntermediateTangentAlias-20260928164426.xml

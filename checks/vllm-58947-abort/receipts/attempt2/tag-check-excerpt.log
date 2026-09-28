@@ -1,0 +1,28 @@
+2026-09-28T16:38:41.5465576Z  + python-discovery==1.6.1
+2026-09-28T16:38:41.5466168Z  + pyyaml==6.0.3
+2026-09-28T16:38:41.5467063Z  + virtualenv==21.13.0
+2026-09-28T16:38:41.8020759Z pre-commit installed at .git/hooks/pre-commit
+2026-09-28T16:38:41.8035455Z pre-commit installed at .git/hooks/commit-msg
+2026-09-28T16:38:43.4962546Z Traceback (most recent call last):
+2026-09-28T16:38:43.4973088Z   File "/home/runner/work/second-paddle-notes/second-paddle-notes/vllm/../evidence/checks/vllm-58947-abort/fetch_official_cpu_wheel.py", line 128, in <module>
+2026-09-28T16:38:43.4974693Z     main()
+2026-09-28T16:38:43.4975681Z   File "/home/runner/work/second-paddle-notes/second-paddle-notes/vllm/../evidence/checks/vllm-58947-abort/fetch_official_cpu_wheel.py", line 95, in main
+2026-09-28T16:38:43.4977010Z     raise ValueError("WHEEL tags differ from filename or are incompatible")
+2026-09-28T16:38:43.4977738Z ValueError: WHEEL tags differ from filename or are incompatible
+2026-09-28T16:38:43.5147237Z ##[error]Process completed with exit code 1.
+2026-09-28T16:38:43.5357378Z ##[group]Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+2026-09-28T16:38:43.5357913Z with:
+2026-09-28T16:38:43.5358242Z   name: vllm-58947-abort-review
+2026-09-28T16:38:43.5358626Z   path: /home/runner/work/_temp/vllm-abort-receipt
+2026-09-28T16:38:43.5359065Z   if-no-files-found: warn
+2026-09-28T16:38:43.5359408Z   retention-days: 30
+2026-09-28T16:38:43.5359721Z   compression-level: 6
+2026-09-28T16:38:43.5360014Z   overwrite: false
+2026-09-28T16:38:43.5360294Z   include-hidden-files: false
+2026-09-28T16:38:43.5360634Z env:
+2026-09-28T16:38:43.5361008Z   UV_PYTHON_INSTALL_DIR: /home/runner/work/_temp/uv-python-dir
+2026-09-28T16:38:43.5361410Z ##[endgroup]
+2026-09-28T16:38:43.7046936Z (node:2589) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-09-28T16:38:43.7048616Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-09-28T16:38:43.7128590Z ##[warning]No files were found with the provided path: /home/runner/work/_temp/vllm-abort-receipt. No artifacts will be uploaded.
+

@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/checks/pytorch-192656-forwardad/repro.py", line 138, in <module>
+    run_tests()
+  File "/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/.venv/lib/python3.12/site-packages/torch/testing/_internal/common_utils.py", line 1395, in run_tests
+    import xmlrunner  # type: ignore[import]
+    ^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'xmlrunner'

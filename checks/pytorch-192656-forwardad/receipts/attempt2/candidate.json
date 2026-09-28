@@ -1,0 +1,202 @@
+{
+  "report": {
+    "binary_git_version": "cf30153c4c131c8164ee7798e5022d810682e2cb",
+    "cuda_available": false,
+    "cuda_build": null,
+    "hip_build": null,
+    "observations": [
+      {
+        "input_primal_after": [
+          1.0,
+          2.0
+        ],
+        "input_tangent_after": [
+          3.0,
+          4.0
+        ],
+        "mode": "eager",
+        "primal": [
+          6.0,
+          12.0
+        ],
+        "tangent": [
+          18.0,
+          24.0
+        ],
+        "variant": "clone"
+      },
+      {
+        "input_primal_after": [
+          1.0,
+          2.0
+        ],
+        "input_tangent_after": [
+          3.0,
+          4.0
+        ],
+        "mode": "functional",
+        "primal": [
+          6.0,
+          12.0
+        ],
+        "tangent": [
+          18.0,
+          24.0
+        ],
+        "variant": "clone"
+      },
+      {
+        "input_primal_after": [
+          1.0,
+          2.0
+        ],
+        "input_tangent_after": [
+          3.0,
+          4.0
+        ],
+        "mode": "eager",
+        "primal": [
+          6.0,
+          12.0
+        ],
+        "tangent": [
+          48.0,
+          54.0
+        ],
+        "variant": "mutate"
+      },
+      {
+        "input_primal_after": [
+          1.0,
+          2.0
+        ],
+        "input_tangent_after": [
+          3.0,
+          4.0
+        ],
+        "mode": "eager",
+        "primal": [
+          6.0,
+          12.0
+        ],
+        "tangent": [
+          18.0,
+          24.0
+        ],
+        "variant": "clone"
+      },
+      {
+        "input_primal_after": [
+          1.0,
+          2.0
+        ],
+        "input_tangent_after": [
+          3.0,
+          4.0
+        ],
+        "mode": "eager",
+        "primal": [
+          6.0,
+          12.0
+        ],
+        "tangent": [
+          48.0,
+          54.0
+        ],
+        "variant": "mutate"
+      },
+      {
+        "input_primal_after": [
+          1.0,
+          2.0
+        ],
+        "input_tangent_after": [
+          3.0,
+          4.0
+        ],
+        "mode": "functional",
+        "primal": [
+          6.0,
+          12.0
+        ],
+        "tangent": [
+          18.0,
+          24.0
+        ],
+        "variant": "mutate"
+      },
+      {
+        "input_primal_after": [
+          1.0,
+          2.0
+        ],
+        "input_tangent_after": [
+          3.0,
+          4.0
+        ],
+        "mode": "eager",
+        "primal": [
+          6.0,
+          12.0
+        ],
+        "tangent": [
+          18.0,
+          24.0
+        ],
+        "variant": "readonly"
+      },
+      {
+        "input_primal_after": [
+          1.0,
+          2.0
+        ],
+        "input_tangent_after": [
+          3.0,
+          4.0
+        ],
+        "mode": "functional",
+        "primal": [
+          6.0,
+          12.0
+        ],
+        "tangent": [
+          18.0,
+          24.0
+        ],
+        "variant": "readonly"
+      }
+    ],
+    "python": "3.12.3",
+    "sources": {
+      "torch._subclasses.functional_tensor": {
+        "path": "/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/.venv/lib/python3.12/site-packages/torch/_subclasses/functional_tensor.py",
+        "sha256": "5e5235ce069c7eae3a06cb0c97e3411e9dfcf190e39abc2d0ad1b275e90a6a51"
+      },
+      "torch.autograd.forward_ad": {
+        "path": "/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/.venv/lib/python3.12/site-packages/torch/autograd/forward_ad.py",
+        "sha256": "d493b00c81ea6d359b13673c5777c339774f0bd55d93dbaefe10d41c6ef69954"
+      }
+    },
+    "statuses": {
+      "test_clone_mutation_matches_eager": {
+        "detail": null,
+        "state": "ok"
+      },
+      "test_eager_oracle": {
+        "detail": null,
+        "state": "ok"
+      },
+      "test_intermediate_tangent_mutation_matches_eager": {
+        "detail": "Traceback (most recent call last):\n  File \"/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/.venv/lib/python3.12/site-packages/torch/testing/_internal/common_utils.py\", line 3553, in wrapper\n    method(*args, **kwargs)\n  File \"/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/checks/pytorch-192656-forwardad/repro.py\", line 107, in test_intermediate_tangent_mutation_matches_eager\n    self.compare_with_eager(\"mutate\")\n  File \"/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/checks/pytorch-192656-forwardad/repro.py\", line 98, in compare_with_eager\n    self.assertEqual(actual[\"tangent\"], expected[\"tangent\"])\n  File \"/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/.venv/lib/python3.12/site-packages/torch/testing/_internal/common_utils.py\", line 4571, in assertEqual\n    raise error_metas.pop()[0].to_error(  # type: ignore[index]\nAssertionError: Scalars are not close!\n\nExpected 48.0 but got 18.0.\nAbsolute difference: 30.0 (up to 1e-05 allowed)\nRelative difference: 0.625 (up to 1.3e-06 allowed)\n\nThe failure occurred for item [0]\n\nTo execute this test, run the following from the base repo dir:\n    python repro.py TestIntermediateTangentAlias.test_intermediate_tangent_mutation_matches_eager\n\nThis message can be suppressed by setting PYTORCH_PRINT_REPRO_ON_FAILURE=0\n",
+        "state": "FAIL"
+      },
+      "test_readonly_matches_eager": {
+        "detail": null,
+        "state": "ok"
+      }
+    },
+    "torch_version": "2.13.0+cpu"
+  },
+  "returncode": 1,
+  "timed_out": false
+}

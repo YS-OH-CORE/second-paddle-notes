@@ -1,0 +1,40 @@
+
+Running tests...
+----------------------------------------------------------------------
+  test_clone_mutation_matches_eager (__main__.TestIntermediateTangentAlias.test_clone_mutation_matches_eager) ... ok (0.129s)
+  test_eager_oracle (__main__.TestIntermediateTangentAlias.test_eager_oracle) ... ok (0.002s)
+  test_intermediate_tangent_mutation_matches_eager (__main__.TestIntermediateTangentAlias.test_intermediate_tangent_mutation_matches_eager) ... FAIL (0.009s)
+  test_readonly_matches_eager (__main__.TestIntermediateTangentAlias.test_readonly_matches_eager) ... ok (0.007s)
+
+======================================================================
+FAIL [0.009s]: test_intermediate_tangent_mutation_matches_eager (__main__.TestIntermediateTangentAlias.test_intermediate_tangent_mutation_matches_eager)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/.venv/lib/python3.12/site-packages/torch/testing/_internal/common_utils.py", line 3553, in wrapper
+    method(*args, **kwargs)
+  File "/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/checks/pytorch-192656-forwardad/repro.py", line 107, in test_intermediate_tangent_mutation_matches_eager
+    self.compare_with_eager("mutate")
+  File "/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/checks/pytorch-192656-forwardad/repro.py", line 98, in compare_with_eager
+    self.assertEqual(actual["tangent"], expected["tangent"])
+  File "/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/.venv/lib/python3.12/site-packages/torch/testing/_internal/common_utils.py", line 4571, in assertEqual
+    raise error_metas.pop()[0].to_error(  # type: ignore[index]
+AssertionError: Scalars are not close!
+
+Expected 48.0 but got 18.0.
+Absolute difference: 30.0 (up to 1e-05 allowed)
+Relative difference: 0.625 (up to 1.3e-06 allowed)
+
+The failure occurred for item [0]
+
+To execute this test, run the following from the base repo dir:
+    python repro.py TestIntermediateTangentAlias.test_intermediate_tangent_mutation_matches_eager
+
+This message can be suppressed by setting PYTORCH_PRINT_REPRO_ON_FAILURE=0
+
+----------------------------------------------------------------------
+Ran 4 tests in 3.695s
+
+FAILED (failures=1)
+
+Generating XML reports...
+Generated XML report: /home/runner/work/_temp/pytorch-forwardad-receipt/xml/candidate/.home.runner.work.second-paddle-notes.second-paddle-notes.evidence.checks.pytorch-192656-forwardad.repro/TEST-TestIntermediateTangentAlias-20260928164434.xml

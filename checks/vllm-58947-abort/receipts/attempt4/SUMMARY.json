@@ -1,0 +1,109 @@
+{
+  "candidate": {
+    "command": [
+      "/home/runner/work/second-paddle-notes/second-paddle-notes/vllm/.venv/bin/python",
+      "-m",
+      "pytest",
+      "tests/v1/kv_connector/unit/test_remote_prefill_lifecycle.py",
+      "-v",
+      "--tb=short",
+      "--junitxml=/home/runner/work/_temp/vllm-abort-receipt/candidate.xml"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "elapsed_seconds": 22.45172223,
+    "cases": [
+      {
+        "name": "test_basic_lifecycle",
+        "status": "passed"
+      },
+      {
+        "name": "test_interleaved_lifecycle",
+        "status": "passed"
+      },
+      {
+        "name": "test_no_spurious_prefix_caching",
+        "status": "passed"
+      },
+      {
+        "name": "test_full_block_prompt",
+        "status": "passed"
+      },
+      {
+        "name": "test_cannot_schedule_after_recv",
+        "status": "passed"
+      },
+      {
+        "name": "test_cannot_recv",
+        "status": "passed"
+      },
+      {
+        "name": "test_p_side_chunked_prefill_mamba",
+        "status": "passed"
+      },
+      {
+        "name": "test_async_load_reserves_blocks_for_inflight",
+        "status": "passed"
+      },
+      {
+        "name": "test_async_loads_both_admitted_when_pool_fits",
+        "status": "passed"
+      },
+      {
+        "name": "test_async_load_reserves_blocks_for_promotion_margin",
+        "status": "passed"
+      },
+      {
+        "name": "test_deferred_lookup_does_not_block_parked_load",
+        "status": "passed"
+      },
+      {
+        "name": "test_aborted_remote_load_releases_capacity_after_receive[abort-before-receive]",
+        "status": "passed"
+      },
+      {
+        "name": "test_aborted_remote_load_releases_capacity_after_receive[abort-after-receive]",
+        "status": "passed"
+      }
+    ]
+  },
+  "negative_control": {
+    "command": [
+      "/home/runner/work/second-paddle-notes/second-paddle-notes/vllm/.venv/bin/python",
+      "-m",
+      "pytest",
+      "tests/v1/kv_connector/unit/test_remote_prefill_lifecycle.py",
+      "-v",
+      "--tb=short",
+      "--junitxml=/home/runner/work/_temp/vllm-abort-receipt/removed_deferred_cleanup.xml",
+      "-k",
+      "test_aborted_remote_load_releases_capacity_after_receive"
+    ],
+    "exit_code": 1,
+    "timeout": false,
+    "elapsed_seconds": 9.104365364000003,
+    "cases": [
+      {
+        "name": "test_aborted_remote_load_releases_capacity_after_receive[abort-before-receive]",
+        "status": "failure"
+      },
+      {
+        "name": "test_aborted_remote_load_releases_capacity_after_receive[abort-after-receive]",
+        "status": "failure"
+      }
+    ]
+  },
+  "new_cases": [
+    {
+      "name": "test_aborted_remote_load_releases_capacity_after_receive[abort-before-receive]",
+      "status": "passed"
+    },
+    {
+      "name": "test_aborted_remote_load_releases_capacity_after_receive[abort-after-receive]",
+      "status": "passed"
+    }
+  ],
+  "expected_comparison_observed": true,
+  "restored_scheduler_sha256": "86552c9cf760c484697623ea832e16ce0ef42b4bbe00fac223e00040f68d1a36",
+  "production_diff_after": ""
+}

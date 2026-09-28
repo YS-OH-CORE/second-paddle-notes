@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="2" time="1.793" timestamp="2026-09-28T16:46:42.238258+00:00" hostname="runnervmtr4k5"><testcase classname="tests.v1.kv_connector.unit.test_remote_prefill_lifecycle" name="test_aborted_remote_load_releases_capacity_after_receive[abort-before-receive]" time="1.015"><failure message="assert (0, 1) == (1, 0)&#10;  &#10;  At index 0 diff: 0 != 1&#10;  &#10;  Full diff:&#10;    (&#10;  +     0,&#10;        1,&#10;  -     0,&#10;    )">tests/v1/kv_connector/unit/test_remote_prefill_lifecycle.py:923: in test_aborted_remote_load_releases_capacity_after_receive
+    assert (stats.num_waiting_reqs, stats.num_skipped_waiting_reqs) == (1, 0)
+E   assert (0, 1) == (1, 0)
+E     
+E     At index 0 diff: 0 != 1
+E     
+E     Full diff:
+E       (
+E     +     0,
+E           1,
+E     -     0,
+E       )</failure></testcase><testcase classname="tests.v1.kv_connector.unit.test_remote_prefill_lifecycle" name="test_aborted_remote_load_releases_capacity_after_receive[abort-after-receive]" time="0.396"><failure message="assert (0, 1) == (1, 0)&#10;  &#10;  At index 0 diff: 0 != 1&#10;  &#10;  Full diff:&#10;    (&#10;  +     0,&#10;        1,&#10;  -     0,&#10;    )">tests/v1/kv_connector/unit/test_remote_prefill_lifecycle.py:923: in test_aborted_remote_load_releases_capacity_after_receive
+    assert (stats.num_waiting_reqs, stats.num_skipped_waiting_reqs) == (1, 0)
+E   assert (0, 1) == (1, 0)
+E     
+E     At index 0 diff: 0 != 1
+E     
+E     Full diff:
+E       (
+E     +     0,
+E           1,
+E     -     0,
+E       )</failure></testcase></testsuite></testsuites>

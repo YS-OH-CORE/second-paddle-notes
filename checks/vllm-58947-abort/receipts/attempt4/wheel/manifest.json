@@ -1,0 +1,44 @@
+{
+  "release_url": "https://github.com/vllm-project/vllm/releases/tag/v0.30.0",
+  "wheel_url": "https://github.com/vllm-project/vllm/releases/download/v0.30.0/vllm-0.30.0%2Bcpu-cp38-abi3-manylinux_2_39_x86_64.whl",
+  "publisher_sha256": "0ee75278b3626c5d0b7c310c6d62afae93e900f4eac339c91e333fde5108ed78",
+  "expected_size_bytes": 147429514,
+  "binary_source_commit": "ced6857afa0ea7b2e3f0846a62e1394e90f15607",
+  "python_source_commit": "365706a27300453ba9218c1585a64a1f44b54254",
+  "target_torch": "2.13.0+cpu",
+  "started_at_utc": "2026-09-28T16:45:42.281675+00:00",
+  "runner": {
+    "implementation_name": "cpython",
+    "implementation_version": "3.12.3",
+    "os_name": "posix",
+    "platform_machine": "x86_64",
+    "platform_release": "6.17.0-1022-azure",
+    "platform_system": "Linux",
+    "platform_version": "#22-Ubuntu SMP Mon Jul 27 17:24:03 UTC 2026",
+    "python_full_version": "3.12.3",
+    "platform_python_implementation": "CPython",
+    "python_version": "3.12",
+    "sys_platform": "linux"
+  },
+  "libc": [
+    "glibc",
+    "2.39"
+  ],
+  "validated": true,
+  "filename_tags": [
+    "cp38-abi3-manylinux_2_39_x86_64"
+  ],
+  "wheel_tags": [
+    "cp38-abi3-linux_x86_64"
+  ],
+  "tags_equal": false,
+  "documented_platform_only_retag": true,
+  "wheel_path": "/home/runner/work/_temp/vllm-cpu-wheel/vllm-0.30.0+cpu-cp38-abi3-manylinux_2_39_x86_64.whl",
+  "wheel_sha256": "0ee75278b3626c5d0b7c310c6d62afae93e900f4eac339c91e333fde5108ed78",
+  "wheel_size_bytes": 147429514,
+  "wheel_metadata_version": "0.30.0+cpu",
+  "applicable_torch_requirements": [
+    "torch==2.13.0+cpu; platform_machine == \"x86_64\" or platform_machine == \"s390x\" or platform_machine == \"aarch64\""
+  ],
+  "validated_at_utc": "2026-09-28T16:45:42.994761+00:00"
+}

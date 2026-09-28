@@ -1,0 +1,31 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.1.0, pluggy-1.6.0 -- /home/runner/work/second-paddle-notes/second-paddle-notes/vllm/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /home/runner/work/second-paddle-notes/second-paddle-notes/vllm
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, platformdirs-4.12.1, anyio-4.15.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 13 items
+
+tests/v1/kv_connector/unit/test_remote_prefill_lifecycle.py::test_basic_lifecycle PASSED [  7%]
+tests/v1/kv_connector/unit/test_remote_prefill_lifecycle.py::test_interleaved_lifecycle PASSED [ 15%]
+tests/v1/kv_connector/unit/test_remote_prefill_lifecycle.py::test_no_spurious_prefix_caching PASSED [ 23%]
+tests/v1/kv_connector/unit/test_remote_prefill_lifecycle.py::test_full_block_prompt PASSED [ 30%]
+tests/v1/kv_connector/unit/test_remote_prefill_lifecycle.py::test_cannot_schedule_after_recv PASSED [ 38%]
+tests/v1/kv_connector/unit/test_remote_prefill_lifecycle.py::test_cannot_recv PASSED [ 46%]
+tests/v1/kv_connector/unit/test_remote_prefill_lifecycle.py::test_p_side_chunked_prefill_mamba PASSED [ 53%]
+tests/v1/kv_connector/unit/test_remote_prefill_lifecycle.py::test_async_load_reserves_blocks_for_inflight PASSED [ 61%]
+tests/v1/kv_connector/unit/test_remote_prefill_lifecycle.py::test_async_loads_both_admitted_when_pool_fits PASSED [ 69%]
+tests/v1/kv_connector/unit/test_remote_prefill_lifecycle.py::test_async_load_reserves_blocks_for_promotion_margin PASSED [ 76%]
+tests/v1/kv_connector/unit/test_remote_prefill_lifecycle.py::test_deferred_lookup_does_not_block_parked_load PASSED [ 84%]
+tests/v1/kv_connector/unit/test_remote_prefill_lifecycle.py::test_aborted_remote_load_releases_capacity_after_receive[abort-before-receive] PASSED [ 92%]
+tests/v1/kv_connector/unit/test_remote_prefill_lifecycle.py::test_aborted_remote_load_releases_capacity_after_receive[abort-after-receive] PASSED [100%]
+
+=============================== warnings summary ===============================
+.venv/lib/python3.12/site-packages/torch/jit/_script.py:365: 14 warnings
+  /home/runner/work/second-paddle-notes/second-paddle-notes/vllm/.venv/lib/python3.12/site-packages/torch/jit/_script.py:365: DeprecationWarning: `torch.jit.script_method` is deprecated. Please switch to `torch.compile` or `torch.export`.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /home/runner/work/_temp/vllm-abort-receipt/candidate.xml -
+======================= 13 passed, 14 warnings in 14.42s =======================

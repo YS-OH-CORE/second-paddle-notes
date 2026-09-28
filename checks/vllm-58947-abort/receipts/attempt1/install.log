@@ -1,0 +1,108 @@
+Resolved 152 packages in 14.08s
+   Building vllm @ file:///home/runner/work/second-paddle-notes/second-paddle-notes/vllm
+Downloading pillow (6.6MiB)
+Downloading numpy (15.8MiB)
+Downloading aiohttp (1.7MiB)
+Downloading openai (2.0MiB)
+Downloading pydantic-core (2.0MiB)
+Downloading tiktoken (1.1MiB)
+Downloading pycountry (7.7MiB)
+Downloading anthropic (1.3MiB)
+Downloading uvloop (4.2MiB)
+Downloading pygments (1.2MiB)
+Downloading tokenizers (3.2MiB)
+Downloading opencv-python-headless (58.4MiB)
+Downloading hf-xet (4.3MiB)
+Downloading apache-tvm-ffi (3.1MiB)
+Downloading mistral-common (6.3MiB)
+Downloading grpcio (6.8MiB)
+Downloading intel-openmp (28.2MiB)
+Downloading transformers (11.7MiB)
+Downloading cryptography (4.5MiB)
+Downloading xgrammar (1.2MiB)
+Downloading torchvision (1.8MiB)
+Downloading llguidance (2.9MiB)
+Downloading setuptools (1.2MiB)
+Downloading triton (255.7MiB)
+Downloading llvmlite (53.7MiB)
+Downloading outlines-core (2.2MiB)
+Downloading intel-cmplr-lib-ur (5.6MiB)
+Downloading torchcodec (9.0MiB)
+Downloading oss-harmony (3.4MiB)
+Downloading numba (3.6MiB)
+Downloading sentencepiece (1.3MiB)
+ Downloaded tiktoken
+ Downloaded xgrammar
+ Downloaded sentencepiece
+ Downloaded torchvision
+ Downloaded aiohttp
+ Downloaded pydantic-core
+  × Failed to build `vllm @
+  │ file:///home/runner/work/second-paddle-notes/second-paddle-notes/vllm`
+  ├─▶ The build backend returned an error
+  ╰─▶ Call to `setuptools.build_meta.build_editable` failed (exit status: 1)
+
+      [stdout]
+      Using precompiled wheel commit 94d14629247955c69d40bdf2a9d7e3bd45954452
+      with variant cpu
+      Trying to fetch nightly build metadata from
+      https://wheels.vllm.ai/94d14629247955c69d40bdf2a9d7e3bd45954452/cpu/vllm/metadata.json
+
+      [stderr]
+      /home/runner/.cache/uv/builds-v0/.tmpIClaXZ/lib/python3.12/site-packages/torch/_subclasses/functional_tensor.py:368:
+      UserWarning: Failed to initialize NumPy: No
+      module named 'numpy' (Triggered internally at
+      /__w/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:84.)
+        cpu = _conversion_method_template(device=torch.device("cpu"))
+      Traceback (most recent call last):
+        File "<string>", line 937, in determine_wheel_url
+        File "<string>", line 545, in fetch_metadata_for_variant
+        File "/usr/lib/python3.12/urllib/request.py", line 215, in urlopen
+          return opener.open(url, data, timeout)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File "/usr/lib/python3.12/urllib/request.py", line 521, in open
+          response = meth(req, response)
+                     ^^^^^^^^^^^^^^^^^^^
+        File "/usr/lib/python3.12/urllib/request.py", line 630, in
+      http_response
+          response = self.parent.error(
+                     ^^^^^^^^^^^^^^^^^^
+        File "/usr/lib/python3.12/urllib/request.py", line 559, in error
+          return self._call_chain(*args)
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+        File "/usr/lib/python3.12/urllib/request.py", line 492, in _call_chain
+          result = func(*args)
+                   ^^^^^^^^^^^
+        File "/usr/lib/python3.12/urllib/request.py", line 639, in
+      http_error_default
+          raise HTTPError(req.full_url, code, msg, hdrs, fp)
+      urllib.error.HTTPError: HTTP Error 404: Not Found
+
+      The above exception was the direct cause of the following exception:
+
+      Traceback (most recent call last):
+        File "<string>", line 11, in <module>
+        File
+      "/home/runner/.cache/uv/builds-v0/.tmpIClaXZ/lib/python3.12/site-packages/setuptools/build_meta.py",
+      line 472, in build_editable
+          return self._build_with_temp_dir(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File
+      "/home/runner/.cache/uv/builds-v0/.tmpIClaXZ/lib/python3.12/site-packages/setuptools/build_meta.py",
+      line 408, in _build_with_temp_dir
+          self.run_setup()
+        File
+      "/home/runner/.cache/uv/builds-v0/.tmpIClaXZ/lib/python3.12/site-packages/setuptools/build_meta.py",
+      line 317, in run_setup
+          exec(code, locals())
+        File "<string>", line 1478, in <module>
+        File "<string>", line 941, in determine_wheel_url
+      RuntimeError: Failed to fetch precompiled wheel metadata for CUDA
+      variant 'cpu' at commit 94d14629247955c69d40bdf2a9d7e3bd45954452.
+      The root/default variant is not used as a fallback because its CUDA
+      compatibility with the selected variant cannot be verified. Provide
+      a compatible wheel with VLLM_PRECOMPILED_WHEEL_LOCATION or disable
+      VLLM_USE_PRECOMPILED to build from source.
+
+      hint: This usually indicates a problem with the package or the build
+      environment.

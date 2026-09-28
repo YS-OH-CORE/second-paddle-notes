@@ -1,0 +1,10 @@
+{
+  "filename_tags": [
+    "cp38-abi3-manylinux_2_39_x86_64"
+  ],
+  "wheel_tags": [
+    "cp38-abi3-linux_x86_64"
+  ],
+  "tags_equal": false,
+  "documented_platform_only_retag": true
+}

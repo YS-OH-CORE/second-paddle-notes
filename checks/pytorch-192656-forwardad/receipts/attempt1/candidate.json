@@ -1,0 +1,24 @@
+{
+  "report": {
+    "binary_git_version": "cf30153c4c131c8164ee7798e5022d810682e2cb",
+    "cuda_available": false,
+    "cuda_build": null,
+    "hip_build": null,
+    "observations": [],
+    "python": "3.12.3",
+    "sources": {
+      "torch._subclasses.functional_tensor": {
+        "path": "/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/.venv/lib/python3.12/site-packages/torch/_subclasses/functional_tensor.py",
+        "sha256": "5e5235ce069c7eae3a06cb0c97e3411e9dfcf190e39abc2d0ad1b275e90a6a51"
+      },
+      "torch.autograd.forward_ad": {
+        "path": "/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/.venv/lib/python3.12/site-packages/torch/autograd/forward_ad.py",
+        "sha256": "d493b00c81ea6d359b13673c5777c339774f0bd55d93dbaefe10d41c6ef69954"
+      }
+    },
+    "statuses": {},
+    "torch_version": "2.13.0+cpu"
+  },
+  "returncode": 1,
+  "timed_out": false
+}

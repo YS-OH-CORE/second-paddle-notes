@@ -1,0 +1,81 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.1.0, pluggy-1.6.0 -- /home/runner/work/second-paddle-notes/second-paddle-notes/vllm/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /home/runner/work/second-paddle-notes/second-paddle-notes/vllm
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, platformdirs-4.12.1, anyio-4.15.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 13 items / 11 deselected / 2 selected
+
+tests/v1/kv_connector/unit/test_remote_prefill_lifecycle.py::test_aborted_remote_load_releases_capacity_after_receive[abort-before-receive] FAILED [ 50%]
+tests/v1/kv_connector/unit/test_remote_prefill_lifecycle.py::test_aborted_remote_load_releases_capacity_after_receive[abort-after-receive] FAILED [100%]
+
+=================================== FAILURES ===================================
+_ test_aborted_remote_load_releases_capacity_after_receive[abort-before-receive] _
+tests/v1/kv_connector/unit/test_remote_prefill_lifecycle.py:923: in test_aborted_remote_load_releases_capacity_after_receive
+    assert (stats.num_waiting_reqs, stats.num_skipped_waiting_reqs) == (1, 0)
+E   assert (0, 1) == (1, 0)
+E     
+E     At index 0 diff: 0 != 1
+E     
+E     Full diff:
+E       (
+E     +     0,
+E           1,
+E     -     0,
+E       )
+----------------------------- Captured stderr call -----------------------------
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+------------------------------ Captured log call -------------------------------
+WARNING  huggingface_hub.utils._http:_http.py:993 Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+WARNING  vllm.platforms.cpu:cpu.py:279 CPU backend prefers block_size is multiples of 32, otherwise the performance is not optimized.
+WARNING  vllm.platforms.cpu:cpu.py:300 Reset SSM cache type to float32 for accelerated GDN mamba backend 'none'.
+WARNING  vllm.distributed.nixl_utils:nixl_utils.py:62 NIXL is not available
+WARNING  vllm.distributed.nixl_utils:nixl_utils.py:64 NIXL agent config is not available
+WARNING  vllm.distributed.kv_transfer.kv_connector.v1.base:base.py:209 Initializing KVConnectorBase_V1. This API is experimental and subject to change in the future as we iterate the design.
+_ test_aborted_remote_load_releases_capacity_after_receive[abort-after-receive] _
+tests/v1/kv_connector/unit/test_remote_prefill_lifecycle.py:923: in test_aborted_remote_load_releases_capacity_after_receive
+    assert (stats.num_waiting_reqs, stats.num_skipped_waiting_reqs) == (1, 0)
+E   assert (0, 1) == (1, 0)
+E     
+E     At index 0 diff: 0 != 1
+E     
+E     Full diff:
+E       (
+E     +     0,
+E           1,
+E     -     0,
+E       )
+------------------------------ Captured log call -------------------------------
+WARNING  vllm.platforms.cpu:cpu.py:279 CPU backend prefers block_size is multiples of 32, otherwise the performance is not optimized.
+WARNING  vllm.platforms.cpu:cpu.py:300 Reset SSM cache type to float32 for accelerated GDN mamba backend 'none'.
+WARNING  vllm.distributed.kv_transfer.kv_connector.v1.base:base.py:209 Initializing KVConnectorBase_V1. This API is experimental and subject to change in the future as we iterate the design.
+=============================== warnings summary ===============================
+.venv/lib/python3.12/site-packages/torch/jit/_script.py:365: 14 warnings
+  /home/runner/work/second-paddle-notes/second-paddle-notes/vllm/.venv/lib/python3.12/site-packages/torch/jit/_script.py:365: DeprecationWarning: `torch.jit.script_method` is deprecated. Please switch to `torch.compile` or `torch.export`.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /home/runner/work/_temp/vllm-abort-receipt/removed_deferred_cleanup.xml -
+=========================== short test summary info ============================
+FAILED tests/v1/kv_connector/unit/test_remote_prefill_lifecycle.py::test_aborted_remote_load_releases_capacity_after_receive[abort-before-receive] - assert (0, 1) == (1, 0)
+  
+  At index 0 diff: 0 != 1
+  
+  Full diff:
+    (
+  +     0,
+        1,
+  -     0,
+    )
+FAILED tests/v1/kv_connector/unit/test_remote_prefill_lifecycle.py::test_aborted_remote_load_releases_capacity_after_receive[abort-after-receive] - assert (0, 1) == (1, 0)
+  
+  At index 0 diff: 0 != 1
+  
+  Full diff:
+    (
+  +     0,
+        1,
+  -     0,
+    )
+================ 2 failed, 11 deselected, 14 warnings in 1.79s =================

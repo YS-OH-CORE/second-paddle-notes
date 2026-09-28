@@ -1,0 +1,78 @@
+{
+  "binary_git_version": "cf30153c4c131c8164ee7798e5022d810682e2cb",
+  "errors": [
+    "parent did not execute exactly the four intended tests",
+    "candidate did not execute exactly the four intended tests",
+    "parent did not show the original missing-tangent defect with a passing eager oracle",
+    "parent errors did not identify the intended original defect",
+    "candidate did not pass all three controls and fail only the mutation assertion",
+    "candidate functional observations were incomplete",
+    "eager mutation oracle was not observed as expected"
+  ],
+  "experiment": "PyTorch PR 192656 Python source-overlay comparison",
+  "interpretation": "The required evidence signature was not established; inspect errors and raw observations before interpreting the run.",
+  "original_source_sha256": {
+    "torch/_subclasses/functional_tensor.py": "6deba1070cc1453b421a860292993965ad7251f8e429919b62d303eb29819941",
+    "torch/autograd/forward_ad.py": "ae4e14b87c82a98581038e66729766c23abebe2456dd9202a082879594b8ac6a"
+  },
+  "restored_original_sources": {
+    "torch/_subclasses/functional_tensor.py": true,
+    "torch/autograd/forward_ad.py": true
+  },
+  "results": {
+    "candidate": {
+      "report": {
+        "binary_git_version": "cf30153c4c131c8164ee7798e5022d810682e2cb",
+        "cuda_available": false,
+        "cuda_build": null,
+        "hip_build": null,
+        "observations": [],
+        "python": "3.12.3",
+        "sources": {
+          "torch._subclasses.functional_tensor": {
+            "path": "/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/.venv/lib/python3.12/site-packages/torch/_subclasses/functional_tensor.py",
+            "sha256": "5e5235ce069c7eae3a06cb0c97e3411e9dfcf190e39abc2d0ad1b275e90a6a51"
+          },
+          "torch.autograd.forward_ad": {
+            "path": "/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/.venv/lib/python3.12/site-packages/torch/autograd/forward_ad.py",
+            "sha256": "d493b00c81ea6d359b13673c5777c339774f0bd55d93dbaefe10d41c6ef69954"
+          }
+        },
+        "statuses": {},
+        "torch_version": "2.13.0+cpu"
+      },
+      "returncode": 1,
+      "timed_out": false
+    },
+    "parent": {
+      "report": {
+        "binary_git_version": "cf30153c4c131c8164ee7798e5022d810682e2cb",
+        "cuda_available": false,
+        "cuda_build": null,
+        "hip_build": null,
+        "observations": [],
+        "python": "3.12.3",
+        "sources": {
+          "torch._subclasses.functional_tensor": {
+            "path": "/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/.venv/lib/python3.12/site-packages/torch/_subclasses/functional_tensor.py",
+            "sha256": "91fd79c21e9119a530958514d1de8520098cbaa8f8ad8cf41ad6d898d047a2ad"
+          },
+          "torch.autograd.forward_ad": {
+            "path": "/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/.venv/lib/python3.12/site-packages/torch/autograd/forward_ad.py",
+            "sha256": "289adf8dbb998f011fbe189852bd9f95931c0fe36c12922aacaaa877b96e4a23"
+          }
+        },
+        "statuses": {},
+        "torch_version": "2.13.0+cpu"
+      },
+      "returncode": 1,
+      "timed_out": false
+    }
+  },
+  "source_refs": {
+    "candidate": "eb9c90dd1f2b67cadf9f7681176f1b5fab074423",
+    "parent": "061ace3a865340a4f6a351e5ef8f3a7f37b6645e"
+  },
+  "target_conditions_met": false,
+  "torch_version": "2.13.0+cpu"
+}

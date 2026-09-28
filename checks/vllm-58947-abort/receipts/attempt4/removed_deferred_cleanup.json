@@ -1,0 +1,26 @@
+{
+  "command": [
+    "/home/runner/work/second-paddle-notes/second-paddle-notes/vllm/.venv/bin/python",
+    "-m",
+    "pytest",
+    "tests/v1/kv_connector/unit/test_remote_prefill_lifecycle.py",
+    "-v",
+    "--tb=short",
+    "--junitxml=/home/runner/work/_temp/vllm-abort-receipt/removed_deferred_cleanup.xml",
+    "-k",
+    "test_aborted_remote_load_releases_capacity_after_receive"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "elapsed_seconds": 9.104365364000003,
+  "cases": [
+    {
+      "name": "test_aborted_remote_load_releases_capacity_after_receive[abort-before-receive]",
+      "status": "failure"
+    },
+    {
+      "name": "test_aborted_remote_load_releases_capacity_after_receive[abort-after-receive]",
+      "status": "failure"
+    }
+  ]
+}

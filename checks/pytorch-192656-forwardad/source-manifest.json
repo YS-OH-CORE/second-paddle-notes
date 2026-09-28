@@ -1,0 +1,32 @@
+{
+  "refs": {
+    "parent": "061ace3a865340a4f6a351e5ef8f3a7f37b6645e",
+    "candidate": "eb9c90dd1f2b67cadf9f7681176f1b5fab074423"
+  },
+  "source_files": {
+    "parent": {
+      "torch/_subclasses/functional_tensor.py": {
+        "bytes": 44478,
+        "sha256": "91fd79c21e9119a530958514d1de8520098cbaa8f8ad8cf41ad6d898d047a2ad",
+        "git_blob": "fc90a261d072feff9852acbf5168ee7c0da4f708"
+      },
+      "torch/autograd/forward_ad.py": {
+        "bytes": 8030,
+        "sha256": "289adf8dbb998f011fbe189852bd9f95931c0fe36c12922aacaaa877b96e4a23",
+        "git_blob": "664d9173edadf1a9b792cbf25d394eab4d536762"
+      }
+    },
+    "candidate": {
+      "torch/_subclasses/functional_tensor.py": {
+        "bytes": 47347,
+        "sha256": "5e5235ce069c7eae3a06cb0c97e3411e9dfcf190e39abc2d0ad1b275e90a6a51",
+        "git_blob": "ec75c6430c49863fd18dde7024a4f00475045ed6"
+      },
+      "torch/autograd/forward_ad.py": {
+        "bytes": 8249,
+        "sha256": "d493b00c81ea6d359b13673c5777c339774f0bd55d93dbaefe10d41c6ef69954",
+        "git_blob": "be2dcb46a2727b642c1c692cb539ffa71b14d6c0"
+      }
+    }
+  }
+}
