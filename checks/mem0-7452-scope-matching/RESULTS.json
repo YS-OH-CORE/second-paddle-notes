@@ -1,0 +1,26 @@
+{
+  "upstream_commit": "af93b81bc9573be1b78014b5005a0b0d950605bb",
+  "upstream_blobs": {
+    "main.py": "6f4292be9d238420062964d2801a3855f5d08570",
+    "storage.py": "0b49c8e8be46779722a7827b2e98319930433d40"
+  },
+  "python": "3.12.14",
+  "sqlite": "3.53.1",
+  "test_methods": 10,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "synthetic_scope_count": 105,
+  "synthetic_filter_count": 55,
+  "scope_filter_comparisons_per_matrix": 5775,
+  "scope": "Unmodified upstream SQLite storage and selected canonical builder; review-only deletion helper",
+  "not_executed": [
+    "Memory/AsyncMemory public APIs",
+    "vector stores",
+    "LLM/embeddings",
+    "network",
+    "concurrent cross-process writes",
+    "legacy noncanonical scope formats",
+    "performance benchmark"
+  ]
+}
