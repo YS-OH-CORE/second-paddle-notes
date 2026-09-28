@@ -1,0 +1,16 @@
+{
+  "timestamp": "2026-09-28T11:05:13Z",
+  "action": "Supplement existing PR with a real HTTP attribution regression",
+  "repository": "NousResearch/hermes-agent",
+  "pr": 114591,
+  "outcome": "Evidence published; direct comment and complete body readback verified",
+  "comment_url": "https://github.com/NousResearch/hermes-agent/pull/114591#issuecomment-5868615536",
+  "evidence_commit": "606e965ffe1a97f100d0f9a4c23423b41a23f5f1",
+  "final_verification_run": 36412487458,
+  "original_runtime_unchanged": true,
+  "scope": "Background session-bearing GET401 before unrelated tools/call POST500",
+  "final_result": "One intended correctness-assertion failure, two passing controls; no setup error, skip, or timeout",
+  "initial_run_qualification": "Two initial runs observed the misclassification but counted connection preflight in the synchronization gate. Both are retained with that limitation; final run uses session-bearing GETs only.",
+  "adoption_or_merge_claimed": false,
+  "signature": "Zero × Youngseok Oh"
+}

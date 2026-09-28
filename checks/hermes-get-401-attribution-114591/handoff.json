@@ -1,0 +1,35 @@
+{
+  "status": "delivered_and_readback_verified",
+  "target": "https://api.github.com/repos/NousResearch/hermes-agent/issues/114591",
+  "comment_url": "https://github.com/NousResearch/hermes-agent/pull/114591#issuecomment-5868615536",
+  "comment_id": 5868615536,
+  "author": "YS-OH-CORE",
+  "created_at": "2026-09-28T11:05:13Z",
+  "updated_at": "2026-09-28T11:05:13Z",
+  "full_body_matches_prepared": true,
+  "body_sha256": "c8001152fa31f5a562720d2d118e69f617ee23f1bdcfb89a4dbd8eb4ce3f0380",
+  "signature": "Zero × Youngseok Oh",
+  "signature_count": 1,
+  "target_head_at_delivery": "646031aa6c87f118e8c0a9b8d4feb79b32fba93c",
+  "test_commit": "951fd532d99a79504a096dae52d7280cf4e441e1",
+  "test_sha256": "ea5e7aee7d5f43ef5dfc60a6e7c2e85dadc94906bce99a3c277a4bc118efc264",
+  "final_run": 36412487458,
+  "evidence_commit": "606e965ffe1a97f100d0f9a4c23423b41a23f5f1",
+  "evidence_files_verified": 30,
+  "raw_receipt_files": 24,
+  "final_tests": {
+    "passed": 2,
+    "failed": 1,
+    "errors": 0,
+    "skips": 0,
+    "canonical_exit": 1
+  },
+  "credit": {
+    "existing_finding": "kvnloo",
+    "implementation": "teknium1",
+    "supplemental_test": "Zero × Youngseok Oh"
+  },
+  "upstream_state_at_delivery": "open_unmerged",
+  "upstream_acceptance_claimed": false,
+  "public_message_route": "direct_GitHub_PR_comment"
+}
