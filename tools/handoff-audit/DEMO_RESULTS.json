@@ -1,0 +1,141 @@
+{
+  "scope": "New finite software audit of the previously documented source-attribution tradeoff, not a new upstream defect.",
+  "source_commit": "a9cdfa3b645773684b40359e11e78fb49f4c57e8",
+  "source_sha256": "74fa5093b91ed69d79ff402f0f86633be8017f110455f0843513404d6799b6d0",
+  "synthetic_source_histories": 4,
+  "model_calls": 0,
+  "reports": {
+    "v15_identity": {
+      "schema": "handoff-audit-result/0.1",
+      "status": "no_conflict_in_supplied_cases",
+      "scope": "v15_identity: four equiprobable synthetic ownership histories; only declared JSON at this one-step decision.",
+      "cases": 4,
+      "distinct_available_inputs": 4,
+      "shared_view_groups": 0,
+      "compatible_shared_view_groups": 0,
+      "conflicting_groups": 0,
+      "witnesses": [],
+      "finite_full_coverage_ceiling": {
+        "numerator": 1,
+        "denominator": 1,
+        "best_covered_weight": 4,
+        "total_weight": 4
+      },
+      "interpretation": "Best achievable by any one-step rule seeing only request+available on this finite weighted inventory. Not measured model accuracy or a deployment distribution.",
+      "equality": "Typed structural JSON with sorted object keys; list order and string contents retained. Supply rendered text as a string if byte/order differences matter.",
+      "limits": [
+        "Declared available information must include all relevant retained state and retrieval results.",
+        "No witness is not a proof of universal preservation.",
+        "Acceptable actions and weights are caller-supplied judgments.",
+        "Clarification is an ordinary action only when explicitly acceptable; no free abstention is invented."
+      ]
+    },
+    "v13_messages_only": {
+      "schema": "handoff-audit-result/0.1",
+      "status": "conflict_witness_found",
+      "scope": "v13_messages_only: four equiprobable synthetic ownership histories; only declared JSON at this one-step decision.",
+      "cases": 4,
+      "distinct_available_inputs": 2,
+      "shared_view_groups": 1,
+      "compatible_shared_view_groups": 0,
+      "conflicting_groups": 1,
+      "witnesses": [
+        {
+          "input_sha256": "316a5bf3a5fb1c5ccb85c504ca7e4251638fe51944c7e186d248efa9cda49826",
+          "case_ids": [
+            "AA",
+            "AB",
+            "BB"
+          ],
+          "acceptable_actions_by_case": {
+            "AA": [
+              "abc123XYZ"
+            ],
+            "AB": [
+              "def456UVW"
+            ],
+            "BB": [
+              "def456UVW"
+            ]
+          },
+          "group_weight": 3,
+          "best_covered_weight": 2,
+          "no_common_acceptable_action": true
+        }
+      ],
+      "finite_full_coverage_ceiling": {
+        "numerator": 3,
+        "denominator": 4,
+        "best_covered_weight": 3,
+        "total_weight": 4
+      },
+      "interpretation": "Best achievable by any one-step rule seeing only request+available on this finite weighted inventory. Not measured model accuracy or a deployment distribution.",
+      "equality": "Typed structural JSON with sorted object keys; list order and string contents retained. Supply rendered text as a string if byte/order differences matter.",
+      "limits": [
+        "Declared available information must include all relevant retained state and retrieval results.",
+        "No witness is not a proof of universal preservation.",
+        "Acceptable actions and weights are caller-supplied judgments.",
+        "Clarification is an ordinary action only when explicitly acceptable; no free abstention is invented."
+      ]
+    },
+    "v13_with_sidecar": {
+      "schema": "handoff-audit-result/0.1",
+      "status": "no_conflict_in_supplied_cases",
+      "scope": "v13_with_sidecar: four equiprobable synthetic ownership histories; only declared JSON at this one-step decision.",
+      "cases": 4,
+      "distinct_available_inputs": 4,
+      "shared_view_groups": 0,
+      "compatible_shared_view_groups": 0,
+      "conflicting_groups": 0,
+      "witnesses": [],
+      "finite_full_coverage_ceiling": {
+        "numerator": 1,
+        "denominator": 1,
+        "best_covered_weight": 4,
+        "total_weight": 4
+      },
+      "interpretation": "Best achievable by any one-step rule seeing only request+available on this finite weighted inventory. Not measured model accuracy or a deployment distribution.",
+      "equality": "Typed structural JSON with sorted object keys; list order and string contents retained. Supply rendered text as a string if byte/order differences matter.",
+      "limits": [
+        "Declared available information must include all relevant retained state and retrieval results.",
+        "No witness is not a proof of universal preservation.",
+        "Acceptable actions and weights are caller-supplied judgments.",
+        "Clarification is an ordinary action only when explicitly acceptable; no free abstention is invented."
+      ]
+    },
+    "v13_clarification_allowed": {
+      "schema": "handoff-audit-result/0.1",
+      "status": "no_conflict_in_supplied_cases",
+      "scope": "v13_clarification_allowed: four equiprobable synthetic ownership histories; only declared JSON at this one-step decision.",
+      "cases": 4,
+      "distinct_available_inputs": 2,
+      "shared_view_groups": 1,
+      "compatible_shared_view_groups": 1,
+      "conflicting_groups": 0,
+      "witnesses": [],
+      "finite_full_coverage_ceiling": {
+        "numerator": 1,
+        "denominator": 1,
+        "best_covered_weight": 4,
+        "total_weight": 4
+      },
+      "interpretation": "Best achievable by any one-step rule seeing only request+available on this finite weighted inventory. Not measured model accuracy or a deployment distribution.",
+      "equality": "Typed structural JSON with sorted object keys; list order and string contents retained. Supply rendered text as a string if byte/order differences matter.",
+      "limits": [
+        "Declared available information must include all relevant retained state and retrieval results.",
+        "No witness is not a proof of universal preservation.",
+        "Acceptable actions and weights are caller-supplied judgments.",
+        "Clarification is an ordinary action only when explicitly acceptable; no free abstention is invented."
+      ]
+    }
+  },
+  "sidecar_status": "Analyst diagnostic control, not a vLLM patch or validated renderer integration.",
+  "clarification_status": "Shared permitted immediate action, not successful identification or retrieval execution.",
+  "not_executed": [
+    "full vLLM import",
+    "message validator",
+    "tokenizer",
+    "model inference",
+    "real tool execution"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "schema": "handoff-audit/0.1",
+  "scope": "Synthetic example: only this request and message are available.",
+  "expected_case_ids": [
+    "approved",
+    "suggested"
+  ],
+  "cases": [
+    {
+      "id": "approved",
+      "request": "Choose the current destination.",
+      "available": {
+        "text": "Use B."
+      },
+      "acceptable_actions": [
+        "B"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "suggested",
+      "request": "Choose the current destination.",
+      "available": {
+        "text": "Use B."
+      },
+      "acceptable_actions": [
+        "A"
+      ],
+      "weight": 1
+    }
+  ]
+}

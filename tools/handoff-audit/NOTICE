@@ -1,0 +1,9 @@
+Handoff Audit 0.1
+Original auditor, tests, and analysis prepared by Zero with Youngseok Oh, 2026.
+
+vendor/mistral.py is an unchanged vLLM project source snapshot from
+Taimys/vllm commit a9cdfa3b645773684b40359e11e78fb49f4c57e8.
+Copyright contributors to the vLLM project. Apache License 2.0.
+The upstream renderer contribution and documented compatibility tradeoff
+are not claimed as original discoveries of this audit.
+No institutional endorsement or external adoption is implied.

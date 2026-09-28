@@ -1,0 +1,14 @@
+{
+  "status": "passed_in_chatgpt_working_container",
+  "python": "3.13.5",
+  "unittest_methods": 27,
+  "finite_policy_comparisons": 3430,
+  "comparison_scope": "One exhaustive unit test, not model responses",
+  "original_run_seconds": 2.366,
+  "stderr_source": "TEST_LOG.txt",
+  "source_module_sha256": "74fa5093b91ed69d79ff402f0f86633be8017f110455f0843513404d6799b6d0",
+  "model_calls": 0,
+  "user_pc_calls": 0,
+  "hosted_jobs_started": 0,
+  "external_replication": false
+}

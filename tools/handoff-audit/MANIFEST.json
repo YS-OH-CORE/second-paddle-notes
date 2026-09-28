@@ -1,0 +1,17 @@
+{
+  "schema": "handoff-audit-files/0.1",
+  "files": {
+    "DEMO_RESULTS.json": "ebe67910fa797e231eb9fd642588dd4049252c245002cc3fbefe60debc7b8479",
+    "LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "NOTICE": "d0634b133896e12f111f317eb5161f49c737e9c060882d93d4e5aa3663b14430",
+    "README.md": "0cb2309005f932b1d4a6ae730ec0b46458c2bb88835c52a373e4490809c2e026",
+    "START_HERE.ko.md": "8be8203f8ae650d895d8fb9cad704ac14d839c7583a5d334be4afec00f406408",
+    "TEST_LOG.txt": "f3100179bc8451876adfd069163271707fd6ac40c89093b85fe055dffb3d1a4b",
+    "TEST_RESULTS.json": "7cd21a028c82d1cea815985454a5caa09dcab2eec62d4113698e631a8775ae39",
+    "audit.py": "d77ea78ff14a9d851663dd997331851fefbb636b8dcb6e9e006ebe3b864cb794",
+    "demo.py": "9216d9bf8844ec1711ddcd168dea66ca6b86325ee44bc8c5856d5b737e9efa90",
+    "example.json": "a3c5c7e50c80a4f9617935c07ef77e45c0a6563aae9efdd276c80a860af27768",
+    "test_audit.py": "a209d2b77a657c21fc4893955160a6ebc4bbdea80c840252fa2b19e54b7c8cd8",
+    "vendor/mistral.py": "74fa5093b91ed69d79ff402f0f86633be8017f110455f0843513404d6799b6d0"
+  }
+}
