@@ -1,0 +1,51 @@
+name: Tokenizers 2466 valid Unicode differential
+on:
+  push:
+    branches: ['verify/tokenizers-2466-unicode-20260929']
+permissions:
+  contents: read
+jobs:
+  compare:
+    if: github.repository == 'YS-OH-CORE/second-paddle-notes'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - lane: base
+            ref: bbccb0513ff9afda385ca5c85c66eddb1318cfc7
+          - lane: candidate
+            ref: cde465c9580a0b3f6831318539e3ff2360c7fb09
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          path: evidence
+          persist-credentials: false
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          repository: huggingface/tokenizers
+          ref: ${{ matrix.ref }}
+          path: source
+          persist-credentials: false
+      - name: Pin Rust toolchain
+        run: |
+          set -euo pipefail
+          rustup toolchain install 1.93.1 --profile minimal
+          rustup default 1.93.1
+          rustc -Vv
+      - name: Execute source and release oracle
+        env:
+          LANE: ${{ matrix.lane }}
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/unicode-receipts"
+          python3 evidence/checks/tokenizers-2466-unicode/run.py "$LANE" source "$RUNNER_TEMP/unicode-receipts" 2>&1 | tee "$RUNNER_TEMP/unicode-receipts/driver.log"
+      - name: Preserve results and setup failures
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: unicode-${{ matrix.lane }}-${{ github.run_id }}
+          path: ${{ runner.temp }}/unicode-receipts
+          retention-days: 30
+          if-no-files-found: error
