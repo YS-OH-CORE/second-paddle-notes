@@ -1,0 +1,11 @@
+--- a/src/transformers/configuration_utils.py
++++ b/src/transformers/configuration_utils.py
+@@ -198,6 +198,8 @@
+         self.model_type = model_type if model_type is not None else config_class.model_type
+ 
+     def get_config_class(self, model_type: str | None = None):
++        if issubclass(self.config_class, PreTrainedConfig) and model_type == self.config_class.model_type:
++            return self.config_class
+         # Avoid circular imports - we only need the static mapping here to map from `string` to config class
+         from transformers.models.auto.configuration_auto import CONFIG_MAPPING
+ 

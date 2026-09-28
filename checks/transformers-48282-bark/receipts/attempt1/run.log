@@ -1,0 +1,4 @@
+baseline {'tests_run': 12, 'passed': 12, 'errors': 0, 'failures': 0, 'skipped': 0, 'exit_code': 0}
+candidate {'tests_run': 12, 'passed': 3, 'errors': 9, 'failures': 0, 'skipped': 0, 'exit_code': 1}
+diagnostic_patch {'tests_run': 12, 'passed': 12, 'errors': 0, 'failures': 0, 'skipped': 0, 'exit_code': 0}
+Expected configuration regression matrix observed; this is not the upstream PR CI result.

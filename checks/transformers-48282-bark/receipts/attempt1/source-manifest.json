@@ -1,0 +1,18 @@
+{
+  "baseline_commit": "2e703d6c7e81ec584c25edc39e8bd2f5a45b04bd",
+  "candidate_commit": "f3e3ad778c38990d38100c44c74f2054b9b2aae6",
+  "baseline_hashes": {
+    "src/transformers/configuration_utils.py": "d2a79a113f041bdb58b4cb1c4b95442dcfd943851e21be69209f2b3f0f105138",
+    "src/transformers/models/bark/configuration_bark.py": "ddb8b22e8eee0fa15a1f1ffb38838ce5c0f3d4b91c160daddba628e67f7c6fcc",
+    "src/transformers/models/auto/configuration_auto.py": "bb70710967ea05d4f0ea37140cc23cac84b140876bcdca2de602c0faf5bb9fa1",
+    "src/transformers/models/auto/auto_mappings.py": "3d9294aab5ac51badd2cd0283bd1e64d64a5eaf8cc88a2aa78292de072835bb9",
+    "src/transformers/models/llava/configuration_llava.py": "6c54ca2479eb6b8177f6abed2580b90f9248412612f6cc8370f6367bc8a182b9"
+  },
+  "candidate_hashes": {
+    "src/transformers/configuration_utils.py": "e0ccbaae4deced5792d692c3cc8c893399eb92f9b1b9829c12b4e56c92dbb0a9",
+    "src/transformers/models/bark/configuration_bark.py": "154ffb88c29546a63fad1ed217b9ef62cd8abba59c3d6db4dc995ab2e854a4de",
+    "src/transformers/models/auto/configuration_auto.py": "bb70710967ea05d4f0ea37140cc23cac84b140876bcdca2de602c0faf5bb9fa1",
+    "src/transformers/models/auto/auto_mappings.py": "53cb7a77a18621d3d0132c25d0520c4272d4dedfd994c2b1e72b6ab682f5ea38",
+    "src/transformers/models/llava/configuration_llava.py": "254d50125aed4e87dceb7d45c4de4edfe70d70a31b6f91781b4e577c4257974d"
+  }
+}

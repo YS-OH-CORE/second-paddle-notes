@@ -1,0 +1,155 @@
+{
+  "excludes": "file-manifest.json itself",
+  "files": [
+    {
+      "path": ".github/workflows/verify-transformers-48282-bark.yml",
+      "bytes": 2656,
+      "sha256": "8dc7691e52b38cb80844da0f5e57c089e47d8af89e7b812591277e00fa476985",
+      "git_blob": "e04a913fd16d5b3ea9b403458a558fab29a0f337"
+    },
+    {
+      "path": "checks/transformers-48282-bark/LICENSE.transformers",
+      "bytes": 11419,
+      "sha256": "199a731f49348b9f3a787c1401d2c9e64214964912fb6834b851bf9daa2ffd39",
+      "git_blob": "45678db2bc5d8968132f211e46a8c2f22167a161"
+    },
+    {
+      "path": "checks/transformers-48282-bark/README.md",
+      "bytes": 9439,
+      "sha256": "3f9da9b0a99a95db87739ca60cd37d35169890a4e84ac8f509177d4d711335c4",
+      "git_blob": "dcacfb1876d73656e4a5a8693a6899731f99b1b1"
+    },
+    {
+      "path": "checks/transformers-48282-bark/execution.json",
+      "bytes": 769,
+      "sha256": "eb1d3a385a652c8376dc32c486c4d56413512ebec740629e094386d6ab7bb523",
+      "git_blob": "4c48cd2e73ec9dcfc2b1b17836f45d3d5b0aba30"
+    },
+    {
+      "path": "checks/transformers-48282-bark/receipts/attempt1/SUMMARY.json",
+      "bytes": 11800,
+      "sha256": "296ae589c71af2b11695541a88e9eb32a6c8baf0dc01164d7b6676aaf20b82bf",
+      "git_blob": "14d633b3bad0850b46169c81bc13b6eb2fb6147a"
+    },
+    {
+      "path": "checks/transformers-48282-bark/receipts/attempt1/baseline.exit-code.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "git_blob": "573541ac9702dd3969c9bc859d2b91ec1f7e6e56"
+    },
+    {
+      "path": "checks/transformers-48282-bark/receipts/attempt1/baseline.json",
+      "bytes": 1801,
+      "sha256": "5c8e42e22b540ad87d26708e114c62d93280a6dae3ac1fc039f70ae018314463",
+      "git_blob": "23ee59889d9bf541e533aa651ff4ac88775ec971"
+    },
+    {
+      "path": "checks/transformers-48282-bark/receipts/attempt1/baseline.stderr",
+      "bytes": 1515,
+      "sha256": "6a159e13cad5e8dc6db5b8b398314071adaad66a2cacd7b76108203b8a2b300a",
+      "git_blob": "002a277a22684935d54024f485bfcfac60533daa"
+    },
+    {
+      "path": "checks/transformers-48282-bark/receipts/attempt1/baseline.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "checks/transformers-48282-bark/receipts/attempt1/candidate.exit-code.txt",
+      "bytes": 2,
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "git_blob": "d00491fd7e5bb6fa28c517a0bb32b8b506539d4d"
+    },
+    {
+      "path": "checks/transformers-48282-bark/receipts/attempt1/candidate.json",
+      "bytes": 2810,
+      "sha256": "33d6cbe41084677f7287d64e3c184e58969d76abdd59671532f9b3fb7bb68ec5",
+      "git_blob": "5bc1aa246d308a08517cf3079ea4966231df42e0"
+    },
+    {
+      "path": "checks/transformers-48282-bark/receipts/attempt1/candidate.stderr",
+      "bytes": 113197,
+      "sha256": "e432d9710685d400f0816dedc32f6943a42efa505a708c414731797cf0474884",
+      "git_blob": "df216805b5397ae0c6dbd7764ddea737daabf1e2"
+    },
+    {
+      "path": "checks/transformers-48282-bark/receipts/attempt1/candidate.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "checks/transformers-48282-bark/receipts/attempt1/diagnostic.patch",
+      "bytes": 609,
+      "sha256": "d526f1ccad28b68fa3b7178871e7f0d331593996c83fc102664d98d902309bcd",
+      "git_blob": "6ec5e7010e9f4fcd330f0250d1027248400f2ef0"
+    },
+    {
+      "path": "checks/transformers-48282-bark/receipts/attempt1/diagnostic_patch.exit-code.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "git_blob": "573541ac9702dd3969c9bc859d2b91ec1f7e6e56"
+    },
+    {
+      "path": "checks/transformers-48282-bark/receipts/attempt1/diagnostic_patch.json",
+      "bytes": 1802,
+      "sha256": "7d4b506682a4291d04e10e6ec0c43e494b0fb0eb8346c724ab17fe4dc104a8bc",
+      "git_blob": "4b47ab395276c8e1665f89392b89108180246cff"
+    },
+    {
+      "path": "checks/transformers-48282-bark/receipts/attempt1/diagnostic_patch.stderr",
+      "bytes": 1515,
+      "sha256": "809c6f9d8f961c84ddc31d493922e82947957235ba5ead20c63ba2160f8a39ae",
+      "git_blob": "76fe2e44a34a0cb0151e4bfb937e0054de18cf67"
+    },
+    {
+      "path": "checks/transformers-48282-bark/receipts/attempt1/diagnostic_patch.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "checks/transformers-48282-bark/receipts/attempt1/install.log",
+      "bytes": 1454,
+      "sha256": "6bebfa5dfe443247ddf9c25547c4fda442e2c7a0e15e97d52734b7586789e6d2",
+      "git_blob": "4791f35e1f1fff9d77ceeb76fda4985c143715a1"
+    },
+    {
+      "path": "checks/transformers-48282-bark/receipts/attempt1/packages.txt",
+      "bytes": 615,
+      "sha256": "d347c3054ec33c018d8a4344983900299edc8a4268af2db7f36e8d2082e67586",
+      "git_blob": "bb14f6666ef4b526917196a5e7f2993abdc4c621"
+    },
+    {
+      "path": "checks/transformers-48282-bark/receipts/attempt1/run.log",
+      "bytes": 395,
+      "sha256": "e58f84c2af1790a28c14e15a8af23c1036e1515474f4e65a1fa5edf97c55d431",
+      "git_blob": "db2eac9b83b5419e7579c72bbc2938773106aaa8"
+    },
+    {
+      "path": "checks/transformers-48282-bark/receipts/attempt1/source-manifest.json",
+      "bytes": 1421,
+      "sha256": "3c94acf3b62eb345320eec4b8a5de14629faf713ccd87f93569cf0d4acdade83",
+      "git_blob": "32a8e84e383a76258be3191acbdc5996c7f5f041"
+    },
+    {
+      "path": "checks/transformers-48282-bark/run.py",
+      "bytes": 5106,
+      "sha256": "8aa3042569033f2475407df188be26ef1b6c067b0c59267ce91cbc7d00897425",
+      "git_blob": "cab5513e79bf92478bb54ca7e360114e883c805d"
+    },
+    {
+      "path": "checks/transformers-48282-bark/test_bark_config.py",
+      "bytes": 6752,
+      "sha256": "96195f0c3a8fabec006a22c70ced706fd042b913044aef0fb341dacac3cf4802",
+      "git_blob": "91c727af32c20a495eb364a9aa84e5fa2137ac50"
+    },
+    {
+      "path": "checks/transformers-48282-bark/workflow.yml",
+      "bytes": 2656,
+      "sha256": "8dc7691e52b38cb80844da0f5e57c089e47d8af89e7b812591277e00fa476985",
+      "git_blob": "e04a913fd16d5b3ea9b403458a558fab29a0f337"
+    }
+  ]
+}

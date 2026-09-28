@@ -1,0 +1,291 @@
+{
+  "baseline_commit": "2e703d6c7e81ec584c25edc39e8bd2f5a45b04bd",
+  "candidate_commit": "f3e3ad778c38990d38100c44c74f2054b9b2aae6",
+  "baseline_hashes": {
+    "src/transformers/configuration_utils.py": "d2a79a113f041bdb58b4cb1c4b95442dcfd943851e21be69209f2b3f0f105138",
+    "src/transformers/models/bark/configuration_bark.py": "ddb8b22e8eee0fa15a1f1ffb38838ce5c0f3d4b91c160daddba628e67f7c6fcc",
+    "src/transformers/models/auto/configuration_auto.py": "bb70710967ea05d4f0ea37140cc23cac84b140876bcdca2de602c0faf5bb9fa1",
+    "src/transformers/models/auto/auto_mappings.py": "3d9294aab5ac51badd2cd0283bd1e64d64a5eaf8cc88a2aa78292de072835bb9",
+    "src/transformers/models/llava/configuration_llava.py": "6c54ca2479eb6b8177f6abed2580b90f9248412612f6cc8370f6367bc8a182b9"
+  },
+  "candidate_hashes": {
+    "src/transformers/configuration_utils.py": "e0ccbaae4deced5792d692c3cc8c893399eb92f9b1b9829c12b4e56c92dbb0a9",
+    "src/transformers/models/bark/configuration_bark.py": "154ffb88c29546a63fad1ed217b9ef62cd8abba59c3d6db4dc995ab2e854a4de",
+    "src/transformers/models/auto/configuration_auto.py": "bb70710967ea05d4f0ea37140cc23cac84b140876bcdca2de602c0faf5bb9fa1",
+    "src/transformers/models/auto/auto_mappings.py": "53cb7a77a18621d3d0132c25d0520c4272d4dedfd994c2b1e72b6ab682f5ea38",
+    "src/transformers/models/llava/configuration_llava.py": "254d50125aed4e87dceb7d45c4de4edfe70d70a31b6f91781b4e577c4257974d"
+  },
+  "phases": {
+    "baseline": {
+      "python": "3.12.3",
+      "transformers": "5.18.0.dev0",
+      "source_module": "/home/runner/work/second-paddle-notes/second-paddle-notes/baseline/src/transformers/__init__.py",
+      "tests_run": 12,
+      "passed": 12,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "mapping_contains": {
+        "semantic": false,
+        "coarse_acoustics": false,
+        "fine_acoustics": false
+      },
+      "observed": {
+        "saved_bark_model_types": {
+          "semantic_config": "semantic",
+          "coarse_acoustics_config": "coarse_acoustics",
+          "fine_acoustics_config": "fine_acoustics"
+        }
+      },
+      "tests": [
+        {
+          "test": "test_default_construction",
+          "status": "pass"
+        },
+        {
+          "test": "test_dict_coarse_acoustics_config_model_type_False",
+          "status": "pass"
+        },
+        {
+          "test": "test_dict_coarse_acoustics_config_model_type_True",
+          "status": "pass"
+        },
+        {
+          "test": "test_dict_fine_acoustics_config_model_type_False",
+          "status": "pass"
+        },
+        {
+          "test": "test_dict_fine_acoustics_config_model_type_True",
+          "status": "pass"
+        },
+        {
+          "test": "test_dict_roundtrip_from_instances",
+          "status": "pass"
+        },
+        {
+          "test": "test_dict_semantic_config_model_type_False",
+          "status": "pass"
+        },
+        {
+          "test": "test_dict_semantic_config_model_type_True",
+          "status": "pass"
+        },
+        {
+          "test": "test_instance_input_control",
+          "status": "pass"
+        },
+        {
+          "test": "test_llava_default_auto_config_control",
+          "status": "pass"
+        },
+        {
+          "test": "test_llava_explicit_auto_config_override_control",
+          "status": "pass"
+        },
+        {
+          "test": "test_local_save_reload_from_instances",
+          "status": "pass"
+        }
+      ],
+      "scope": "Configuration only; no weights, forward pass, GPU, or Hub checkpoint",
+      "exit_code": 0,
+      "source_hashes": {
+        "src/transformers/configuration_utils.py": "d2a79a113f041bdb58b4cb1c4b95442dcfd943851e21be69209f2b3f0f105138",
+        "src/transformers/models/bark/configuration_bark.py": "ddb8b22e8eee0fa15a1f1ffb38838ce5c0f3d4b91c160daddba628e67f7c6fcc",
+        "src/transformers/models/auto/configuration_auto.py": "bb70710967ea05d4f0ea37140cc23cac84b140876bcdca2de602c0faf5bb9fa1",
+        "src/transformers/models/auto/auto_mappings.py": "3d9294aab5ac51badd2cd0283bd1e64d64a5eaf8cc88a2aa78292de072835bb9",
+        "src/transformers/models/llava/configuration_llava.py": "6c54ca2479eb6b8177f6abed2580b90f9248412612f6cc8370f6367bc8a182b9"
+      }
+    },
+    "candidate": {
+      "python": "3.12.3",
+      "transformers": "5.18.0.dev0",
+      "source_module": "/home/runner/work/second-paddle-notes/second-paddle-notes/candidate/src/transformers/__init__.py",
+      "tests_run": 12,
+      "passed": 3,
+      "errors": 9,
+      "failures": 0,
+      "skipped": 0,
+      "mapping_contains": {
+        "semantic": false,
+        "coarse_acoustics": false,
+        "fine_acoustics": false
+      },
+      "observed": {
+        "saved_bark_model_types": {
+          "semantic_config": "semantic",
+          "coarse_acoustics_config": "coarse_acoustics",
+          "fine_acoustics_config": "fine_acoustics"
+        }
+      },
+      "tests": [
+        {
+          "test": "test_default_construction",
+          "status": "error",
+          "exception": "ValueError",
+          "message_prefix": "Unrecognized model type for subconfig: semantic"
+        },
+        {
+          "test": "test_dict_coarse_acoustics_config_model_type_False",
+          "status": "error",
+          "exception": "ValueError",
+          "message_prefix": "Unrecognized model type for subconfig: coarse_acoustics"
+        },
+        {
+          "test": "test_dict_coarse_acoustics_config_model_type_True",
+          "status": "error",
+          "exception": "ValueError",
+          "message_prefix": "Unrecognized model type for subconfig: coarse_acoustics"
+        },
+        {
+          "test": "test_dict_fine_acoustics_config_model_type_False",
+          "status": "error",
+          "exception": "ValueError",
+          "message_prefix": "Unrecognized model type for subconfig: fine_acoustics"
+        },
+        {
+          "test": "test_dict_fine_acoustics_config_model_type_True",
+          "status": "error",
+          "exception": "ValueError",
+          "message_prefix": "Unrecognized model type for subconfig: fine_acoustics"
+        },
+        {
+          "test": "test_dict_roundtrip_from_instances",
+          "status": "error",
+          "exception": "ValueError",
+          "message_prefix": "Unrecognized model type for subconfig: semantic"
+        },
+        {
+          "test": "test_dict_semantic_config_model_type_False",
+          "status": "error",
+          "exception": "ValueError",
+          "message_prefix": "Unrecognized model type for subconfig: semantic"
+        },
+        {
+          "test": "test_dict_semantic_config_model_type_True",
+          "status": "error",
+          "exception": "ValueError",
+          "message_prefix": "Unrecognized model type for subconfig: semantic"
+        },
+        {
+          "test": "test_instance_input_control",
+          "status": "pass"
+        },
+        {
+          "test": "test_llava_default_auto_config_control",
+          "status": "pass"
+        },
+        {
+          "test": "test_llava_explicit_auto_config_override_control",
+          "status": "pass"
+        },
+        {
+          "test": "test_local_save_reload_from_instances",
+          "status": "error",
+          "exception": "ValueError",
+          "message_prefix": "Unrecognized model type for subconfig: semantic"
+        }
+      ],
+      "scope": "Configuration only; no weights, forward pass, GPU, or Hub checkpoint",
+      "exit_code": 1,
+      "source_hashes": {
+        "src/transformers/configuration_utils.py": "e0ccbaae4deced5792d692c3cc8c893399eb92f9b1b9829c12b4e56c92dbb0a9",
+        "src/transformers/models/bark/configuration_bark.py": "154ffb88c29546a63fad1ed217b9ef62cd8abba59c3d6db4dc995ab2e854a4de",
+        "src/transformers/models/auto/configuration_auto.py": "bb70710967ea05d4f0ea37140cc23cac84b140876bcdca2de602c0faf5bb9fa1",
+        "src/transformers/models/auto/auto_mappings.py": "53cb7a77a18621d3d0132c25d0520c4272d4dedfd994c2b1e72b6ab682f5ea38",
+        "src/transformers/models/llava/configuration_llava.py": "254d50125aed4e87dceb7d45c4de4edfe70d70a31b6f91781b4e577c4257974d"
+      }
+    },
+    "diagnostic_patch": {
+      "python": "3.12.3",
+      "transformers": "5.18.0.dev0",
+      "source_module": "/home/runner/work/second-paddle-notes/second-paddle-notes/candidate/src/transformers/__init__.py",
+      "tests_run": 12,
+      "passed": 12,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "mapping_contains": {
+        "semantic": false,
+        "coarse_acoustics": false,
+        "fine_acoustics": false
+      },
+      "observed": {
+        "saved_bark_model_types": {
+          "semantic_config": "semantic",
+          "coarse_acoustics_config": "coarse_acoustics",
+          "fine_acoustics_config": "fine_acoustics"
+        }
+      },
+      "tests": [
+        {
+          "test": "test_default_construction",
+          "status": "pass"
+        },
+        {
+          "test": "test_dict_coarse_acoustics_config_model_type_False",
+          "status": "pass"
+        },
+        {
+          "test": "test_dict_coarse_acoustics_config_model_type_True",
+          "status": "pass"
+        },
+        {
+          "test": "test_dict_fine_acoustics_config_model_type_False",
+          "status": "pass"
+        },
+        {
+          "test": "test_dict_fine_acoustics_config_model_type_True",
+          "status": "pass"
+        },
+        {
+          "test": "test_dict_roundtrip_from_instances",
+          "status": "pass"
+        },
+        {
+          "test": "test_dict_semantic_config_model_type_False",
+          "status": "pass"
+        },
+        {
+          "test": "test_dict_semantic_config_model_type_True",
+          "status": "pass"
+        },
+        {
+          "test": "test_instance_input_control",
+          "status": "pass"
+        },
+        {
+          "test": "test_llava_default_auto_config_control",
+          "status": "pass"
+        },
+        {
+          "test": "test_llava_explicit_auto_config_override_control",
+          "status": "pass"
+        },
+        {
+          "test": "test_local_save_reload_from_instances",
+          "status": "pass"
+        }
+      ],
+      "scope": "Configuration only; no weights, forward pass, GPU, or Hub checkpoint",
+      "exit_code": 0,
+      "source_hashes": {
+        "src/transformers/configuration_utils.py": "cb02b84628b53bffc13b884cc0ab159ebea847627fe77c42a4b732e4a0cea1e1",
+        "src/transformers/models/bark/configuration_bark.py": "154ffb88c29546a63fad1ed217b9ef62cd8abba59c3d6db4dc995ab2e854a4de",
+        "src/transformers/models/auto/configuration_auto.py": "bb70710967ea05d4f0ea37140cc23cac84b140876bcdca2de602c0faf5bb9fa1",
+        "src/transformers/models/auto/auto_mappings.py": "53cb7a77a18621d3d0132c25d0520c4272d4dedfd994c2b1e72b6ab682f5ea38",
+        "src/transformers/models/llava/configuration_llava.py": "254d50125aed4e87dceb7d45c4de4edfe70d70a31b6f91781b4e577c4257974d"
+      }
+    }
+  },
+  "source_restored": true,
+  "restored_candidate_hashes": {
+    "src/transformers/configuration_utils.py": "e0ccbaae4deced5792d692c3cc8c893399eb92f9b1b9829c12b4e56c92dbb0a9",
+    "src/transformers/models/bark/configuration_bark.py": "154ffb88c29546a63fad1ed217b9ef62cd8abba59c3d6db4dc995ab2e854a4de",
+    "src/transformers/models/auto/configuration_auto.py": "bb70710967ea05d4f0ea37140cc23cac84b140876bcdca2de602c0faf5bb9fa1",
+    "src/transformers/models/auto/auto_mappings.py": "53cb7a77a18621d3d0132c25d0520c4272d4dedfd994c2b1e72b6ab682f5ea38",
+    "src/transformers/models/llava/configuration_llava.py": "254d50125aed4e87dceb7d45c4de4edfe70d70a31b6f91781b4e577c4257974d"
+  },
+  "method": "Same environment; complete frozen checkouts via PYTHONPATH; fresh process for each phase",
+  "diagnostic_patch_status": "Mechanism check only; not a validated fix for all 313 PR files"
+}

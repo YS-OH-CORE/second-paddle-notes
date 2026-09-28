@@ -1,0 +1,73 @@
+{
+  "python": "3.12.3",
+  "transformers": "5.18.0.dev0",
+  "source_module": "/home/runner/work/second-paddle-notes/second-paddle-notes/baseline/src/transformers/__init__.py",
+  "tests_run": 12,
+  "passed": 12,
+  "errors": 0,
+  "failures": 0,
+  "skipped": 0,
+  "mapping_contains": {
+    "semantic": false,
+    "coarse_acoustics": false,
+    "fine_acoustics": false
+  },
+  "observed": {
+    "saved_bark_model_types": {
+      "semantic_config": "semantic",
+      "coarse_acoustics_config": "coarse_acoustics",
+      "fine_acoustics_config": "fine_acoustics"
+    }
+  },
+  "tests": [
+    {
+      "test": "test_default_construction",
+      "status": "pass"
+    },
+    {
+      "test": "test_dict_coarse_acoustics_config_model_type_False",
+      "status": "pass"
+    },
+    {
+      "test": "test_dict_coarse_acoustics_config_model_type_True",
+      "status": "pass"
+    },
+    {
+      "test": "test_dict_fine_acoustics_config_model_type_False",
+      "status": "pass"
+    },
+    {
+      "test": "test_dict_fine_acoustics_config_model_type_True",
+      "status": "pass"
+    },
+    {
+      "test": "test_dict_roundtrip_from_instances",
+      "status": "pass"
+    },
+    {
+      "test": "test_dict_semantic_config_model_type_False",
+      "status": "pass"
+    },
+    {
+      "test": "test_dict_semantic_config_model_type_True",
+      "status": "pass"
+    },
+    {
+      "test": "test_instance_input_control",
+      "status": "pass"
+    },
+    {
+      "test": "test_llava_default_auto_config_control",
+      "status": "pass"
+    },
+    {
+      "test": "test_llava_explicit_auto_config_override_control",
+      "status": "pass"
+    },
+    {
+      "test": "test_local_save_reload_from_instances",
+      "status": "pass"
+    }
+  ],
+  "scope": "Configuration only; no weights, forward pass, GPU, or Hub checkpoint"
+}
