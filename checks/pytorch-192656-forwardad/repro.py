@@ -71,10 +71,12 @@ class TestIntermediateTangentAlias(TestCase):
             ("expectedFailures", "EXPECTED_FAILURE"),
         ):
             for test, explanation in getattr(active_result, attribute, []):
-                if test is self:
+                if test is self or test.id() == self.id():
                     state, detail = label, explanation
-        if self in getattr(active_result, "unexpectedSuccesses", []):
-            state = "UNEXPECTED_SUCCESS"
+        for entry in getattr(active_result, "unexpectedSuccesses", []):
+            test = entry[0] if isinstance(entry, tuple) else entry
+            if test is self or test.id() == self.id():
+                state = "UNEXPECTED_SUCCESS"
         STATUSES[self._testMethodName] = {"state": state, "detail": detail}
         return returned
 

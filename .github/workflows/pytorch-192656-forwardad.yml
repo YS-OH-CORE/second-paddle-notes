@@ -53,7 +53,7 @@ jobs:
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/pytorch-forwardad-receipt"
           uv venv --python 3.12
-          uv pip install --python .venv/bin/python torch==2.13.0 --torch-backend cpu expecttest hypothesis numpy 2>&1 | tee "$RUNNER_TEMP/pytorch-forwardad-receipt/install.log"
+          uv pip install --python .venv/bin/python torch==2.13.0 --torch-backend cpu expecttest hypothesis numpy unittest-xml-reporting==3.2.0 2>&1 | tee "$RUNNER_TEMP/pytorch-forwardad-receipt/install.log"
           uv pip freeze --python .venv/bin/python > "$RUNNER_TEMP/pytorch-forwardad-receipt/packages.txt"
       - name: Compare exact source variants and restore the original wheel sources
         working-directory: evidence

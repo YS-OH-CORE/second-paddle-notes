@@ -184,7 +184,11 @@ def main():
                 clear_cache(target)
                 if sha(target.read_bytes()) != expected:
                     raise RuntimeError("installed overlay readback mismatch: " + path)
-            process, stdout = execute([sys.executable, str(Path(__file__).with_name("repro.py")), "-v"], variant, receipt)
+            process, stdout = execute(
+                [sys.executable, str(Path(__file__).with_name("repro.py")), "-v",
+                 "--save-xml", str(receipt / "xml" / variant)],
+                variant, receipt,
+            )
             report = parsed_observations(stdout)
             check_report(report, EXPECTED[variant], package_root)
             if report["binary_git_version"] != original_report["binary_git_version"]:
