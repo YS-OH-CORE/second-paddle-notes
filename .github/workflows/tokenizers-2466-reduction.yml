@@ -1,0 +1,40 @@
+name: Tokenizers 2466 Unicode mismatch reduction
+on:
+  push:
+    branches: ['verify/tokenizers-2466-reduction-20260929']
+permissions:
+  contents: read
+jobs:
+  reduce:
+    if: github.repository == 'YS-OH-CORE/second-paddle-notes'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          path: evidence
+          persist-credentials: false
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          repository: huggingface/tokenizers
+          ref: cde465c9580a0b3f6831318539e3ff2360c7fb09
+          path: source
+          persist-credentials: false
+      - name: Pin Rust toolchain
+        run: |
+          set -euo pipefail
+          rustup toolchain install 1.93.1 --profile minimal
+          rustup default 1.93.1
+      - name: Reduce prior failures without changing implementation
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/reduction-receipts"
+          python3 evidence/checks/tokenizers-2466-unicode/reduce_run.py candidate source "$RUNNER_TEMP/reduction-receipts" 2>&1 | tee "$RUNNER_TEMP/reduction-receipts/driver.log"
+      - name: Preserve complete output and failures
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: unicode-reduction-${{ github.run_id }}
+          path: ${{ runner.temp }}/reduction-receipts
+          retention-days: 30
+          if-no-files-found: error
