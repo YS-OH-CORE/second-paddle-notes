@@ -45,7 +45,7 @@ Two tools returning one image each and one tool returning both images can become
 
 ## Public contributions
 
-Specific work, with the evidence and its limit together. **HTTP recovery entry checked 28 September 2026; the other entries retain their 27 September snapshot.**
+Specific work, with the evidence and its limit together. **The Mem0 entry about unsupported listing was checked 29 September 2026 (KST); HTTP recovery was checked 28 September; the other entries retain their 27 September snapshot.**
 
 | Contribution | Evidence | State at the check date |
 | :--- | :--- | :--- |
@@ -53,6 +53,7 @@ Specific work, with the evidence and its limit together. **HTTP recovery entry c
 | **Hermes request-bound confirmation** | [Recipient's application record](https://github.com/NousResearch/hermes-agent/pull/22982#issuecomment-5643327201) | Patch and tests applied in the feature author's branch; [upstream PR](https://github.com/NousResearch/hermes-agent/pull/22982) still unmerged. |
 | **CanIToolCall failure classification** | [Maintainer's approval](https://github.com/redd34/canitoolcall/pull/13#pullrequestreview-5330173478) | Revised analysis approved after replay; [PR](https://github.com/redd34/canitoolcall/pull/13) still unmerged. |
 | **SGLang / DeepSeek fix verification** | [First fix](https://github.com/redd34/canitoolcall/issues/19#issuecomment-5856171965) · [Alternative](https://github.com/redd34/canitoolcall/issues/20#issuecomment-5856172220) | Two separate offline comparisons reported. Verification contribution, not authorship of either fix. |
+| **Mem0 unsupported listing** | [Recipient's revision](https://github.com/mem0ai/mem0/issues/7439#issuecomment-5843366869) · [Case and source evidence](WORK.md#case-06--keeping-unsupported-deletion-from-reporting-success) | Finding incorporated into the contributor's follow-up fork; [PR #7464](https://github.com/mem0ai/mem0/pull/7464) closed and unmerged. |
 | **Mem0 deletion-scope review** | [Counterexample and positive control](https://github.com/mem0ai/mem0/issues/7452#issuecomment-5855365753) | A remaining scope mismatch reported on a proposed fix; not a shipped repair. |
 
 [Full dated casebook](YOUNGSEOK_OH_SELECTED_WORK.md) · [Long-form contribution trail](WORK.md)
