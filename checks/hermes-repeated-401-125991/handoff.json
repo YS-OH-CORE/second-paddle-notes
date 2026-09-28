@@ -1,0 +1,98 @@
+{
+  "task": "Hermes PR #125991 repeated HTTP401 recorder lifetime follow-up",
+  "deliveryStatus": "Delivered to the original PR; upstream adoption and merge are not established.",
+  "originalAuthor": "WYSTAF",
+  "candidate": {
+    "repository": "YS-OH-CORE/hermes-agent",
+    "branch": "review/pr-125991-repeated-401-20260928",
+    "commit": "b7e052c9034a08fb3211ec59b173b4507d236d4c",
+    "tree": "c34aaae949e52215febdcf23dfabc8f34db382bd",
+    "parents": [
+      "5c727a6ccd298f310becf0f0656346b6797e17f1"
+    ],
+    "commitUrl": "https://github.com/YS-OH-CORE/hermes-agent/commit/b7e052c9034a08fb3211ec59b173b4507d236d4c",
+    "branchReadbackSha": "b7e052c9034a08fb3211ec59b173b4507d236d4c",
+    "wholeTreeMatchesTestedCandidate": true,
+    "scope": "Two-file follow-up directly on WYSTAF's original PR head; original ancestry preserved."
+  },
+  "evidence": {
+    "repository": "YS-OH-CORE/second-paddle-notes",
+    "commit": "8fdbd20689d2ca8c2b5475121795d4a1c3ff3593",
+    "tree": "32affdeded9bb596bd58daaa90cf1a4c0a00b3a8",
+    "refVerified": true,
+    "verifiedFileCount": 39,
+    "allGitBlobHashesMatch": true,
+    "url": "https://github.com/YS-OH-CORE/second-paddle-notes/tree/8fdbd20689d2ca8c2b5475121795d4a1c3ff3593/checks/hermes-repeated-401-125991"
+  },
+  "originalPrComment": {
+    "id": 5866615296,
+    "htmlUrl": "https://github.com/NousResearch/hermes-agent/pull/125991#issuecomment-5866615296",
+    "author": "YS-OH-CORE",
+    "createdAt": "2026-09-28T08:50:43Z",
+    "exactBodyVerified": true,
+    "identicalBodyCount": 1
+  },
+  "testedMain": "188a1a5efd098f067638032fea6e24c42d06178f",
+  "laterSourceOnlyMain": "d9d122a003633250d22f786bf3d2fa1b63d99e1d",
+  "results": [
+    {
+      "label": "main-red-01",
+      "exitCode": 2,
+      "classification": "Preparation only: split --basetemp argument rejected before tests."
+    },
+    {
+      "label": "main-red-02",
+      "exitCode": 1,
+      "passed": 1,
+      "failed": 1,
+      "authResults": [
+        "generic",
+        "generic"
+      ],
+      "healthyThirdCall": "success"
+    },
+    {
+      "label": "original-pr-red-01",
+      "exitCode": 1,
+      "passed": 1,
+      "failed": 1,
+      "authResults": [
+        "needs_reauth",
+        "generic"
+      ],
+      "healthyThirdCall": "success"
+    },
+    {
+      "label": "candidate-green-01",
+      "exitCode": 0,
+      "passed": 2,
+      "failed": 0,
+      "authResults": [
+        "needs_reauth",
+        "needs_reauth"
+      ],
+      "healthyThirdCall": "success"
+    },
+    {
+      "label": "candidate-auth-unit-01",
+      "exitCode": 0,
+      "passed": 12,
+      "failed": 0
+    },
+    {
+      "label": "candidate-recorder-01",
+      "exitCode": 0,
+      "passed": 1,
+      "failed": 0
+    }
+  ],
+  "candidatePasses": 15,
+  "limitations": [
+    "Sequential calls through an existing SDK session; no successful OAuth refresh or concurrent request attribution claim.",
+    "Linux selected-test validation, not full-suite or CI validation.",
+    "Existing immutable PM-built environment reused; no fresh per-revision locked installation.",
+    "Original-head/candidate materializations omit 215 explicitly listed non-Python paths; runtime Python, runners, and dependency lock files present.",
+    "Persisted SQLite tool rows corroborate pytest's direct assertions on the fake provider request, which was not independently retained."
+  ],
+  "signature": "Zero × Youngseok Oh"
+}
