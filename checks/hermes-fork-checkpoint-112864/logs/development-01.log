@@ -1,0 +1,18 @@
+▶ not activated — using HERMES_PYTHON: <workspace>/hermes125919/.venv/bin/python
+▶ running per-file parallel test suite via run_tests_parallel.py
+  (TZ=UTC LANG=C.UTF-8 PYTHONHASHSEED=0; clean env)
+▶ pre-compiling bytecode cache
+▶ launching test runner
+Discovered 1 test files (~2 tests) under ['tests/agent/test_fork_checkpoint_compaction.py']; running with -j 1
+[100.0% |     2/~2 | ✓2 | ✗0] ✓ tests/agent/test_fork_checkpoint_compaction.py (2✓, 3.2s)
+
+=== Summary: 1 files, 2 tests passed, 0 failed (100% complete) in 3.2s (1 workers) ===
+  Durations cached to test_durations.json (1 files)
+
+=== Per-file subprocess time distribution ===
+  Files:   1
+  Total subprocess CPU-wall: 3.2s  (runner wall: 3.2s, parallelism: 1x)
+  P50: 3.22s  P90: 3.22s  P95: 3.22s  P99: 3.22s  Max: 3.22s
+  <1s: 0 files (0%)  <2s: 0 files (0%)
+  Top 10 slowest:
+      3.22s  tests/agent/test_fork_checkpoint_compaction.py

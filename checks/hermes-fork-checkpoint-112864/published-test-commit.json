@@ -1,0 +1,29 @@
+{
+  "url": "https://github.com/YS-OH-CORE/hermes-agent/commit/4263499f48a2b2f5015b60918301d42270c8ff59",
+  "sha": "4263499f48a2b2f5015b60918301d42270c8ff59",
+  "tree": "34238ce5798301437ef932740e5b231c5240fe68",
+  "author": "YS-OH-CORE",
+  "parents": [
+    "5bed864c5f21ba1248d3a266af2f5a6051c8db3f"
+  ],
+  "message": "test(agent): exercise checkpoint policy through real isolated forks\n\nReplace the two helper-level checkpoint assertions in PR #112864 with\ntwo invariants through actual AIAgent construction, cache-parity forks,\nforced Hermes compaction, and temporary SQLite session persistence.\n\nThe isolated fork must produce a summary while retaining the parent\ntranscript/session state; a durable agent without a v2 provider must\nstill fail before a summary call. Only the model boundary returns a\nsynthetic typed response.\n\nThe fork invariant fails with CompressionCheckpointUnavailable on the\nexact parent d4720b4e; both invariants and 113 neighboring tests pass\non the original fix at 5bed864c. Product code and original fix\nauthorship are preserved.\n\nZero × Youngseok Oh",
+  "files": [
+    {
+      "path": "tests/agent/test_fork_checkpoint_compaction.py",
+      "sha": "c8a9d577f08ce32c444045c34e238fe772e64ca5",
+      "status": "added",
+      "additions": 251,
+      "deletions": 0
+    },
+    {
+      "path": "tests/agent/test_pre_compress_checkpoint_contract.py",
+      "sha": "7544e8b9e83018de8aa90297d0b2e963def9e643",
+      "status": "modified",
+      "additions": 0,
+      "deletions": 37
+    }
+  ],
+  "branch": "refs/heads/review/pr-112864-fork-checkpoint-20260928",
+  "branch_sha": "4263499f48a2b2f5015b60918301d42270c8ff59",
+  "exact_test_blobs_verified": true
+}

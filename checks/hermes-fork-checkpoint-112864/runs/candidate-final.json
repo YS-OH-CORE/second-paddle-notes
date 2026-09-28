@@ -1,0 +1,40 @@
+{
+  "label": "candidate-final",
+  "checkout": "<workspace>/hermes112864",
+  "head": "5bed864c5f21ba1248d3a266af2f5a6051c8db3f",
+  "command": [
+    "scripts/run_tests.sh",
+    "tests/agent/test_fork_checkpoint_compaction.py",
+    "tests/agent/test_pre_compress_checkpoint_contract.py",
+    "tests/agent/test_background_review_cache_parity.py",
+    "tests/hermes_state/test_background_review_session_isolation.py",
+    "tests/agent/test_native_compaction.py",
+    "tests/agent/test_detached_fork_lifecycle_hooks.py",
+    "tests/agent/test_review_fork_cache_scope.py"
+  ],
+  "environment_overrides": {
+    "HERMES_PYTHON": "<workspace>/hermes125919/.venv/bin/python",
+    "HERMES_TEST_WORKERS": "1",
+    "HERMES_TEST_FILE_RETRIES": "0",
+    "GIT_NO_LAZY_FETCH": "1"
+  },
+  "input_sha256": {
+    "tests/agent/test_fork_checkpoint_compaction.py": "4ad1674113b027b14e65bc87d868d0c0911b3a34fe7de34ef120c320850278fe",
+    "tests/agent/test_pre_compress_checkpoint_contract.py": "10db031ab54297b91d32064ddfd6292694596425acaa397959b6cfe79238dc5c",
+    "tests/agent/test_background_review_cache_parity.py": "46a9039dc771223d69c7e8f14efa4068c3d303fd474c8fb2b24dca92eeb1d935",
+    "tests/hermes_state/test_background_review_session_isolation.py": "1d5b1134c1902490d4969ebfbcdd0c3210bf1069b64908054d270ed608f7aa8c",
+    "tests/agent/test_native_compaction.py": "41cf09d5263fd855e06bdd979d6145c6f4c2d4fb7d1f20e656ff1636ef354f87",
+    "tests/agent/test_detached_fork_lifecycle_hooks.py": "cbccee7de8ec55ee420bdf3e70478465dc59e3b36c83992f458718439261d3ce",
+    "tests/agent/test_review_fork_cache_scope.py": "854f6ba8f3a14455bcf6c623bb1e52968b67df072462439d88f9e6558be861bf",
+    "pyproject.toml": "a6d0b40bfab34227934430c797eded0883d343b3891123375e9067edae1792d6",
+    "uv.lock": "bd27ac91236fa57f9eeffea8d4a324f3ca7f9b218525d74bec14a67fc1163887",
+    "scripts/run_tests.sh": "16cd6223a3b517326e023c3b716a182e2818fcc04ebf8a1855f83dc72e52743d"
+  },
+  "started_at": "2026-09-28T06:41:00.943030+00:00",
+  "exit_code": 0,
+  "elapsed_seconds": 16.056,
+  "finished_at": "2026-09-28T06:41:16.998834+00:00",
+  "raw_log_sha256": "fabd97843d947a7a492c96797ce0da3ddbd9ae8601563167dcea7db33c615c3d",
+  "published_log_sha256": "8d7b3d3890deb6c63ef752581374e92257c314b42da9074719893360011488a7",
+  "publication_transformation": "Only the exact temporary workspace root prefix was replaced with <workspace>; all result text is preserved."
+}

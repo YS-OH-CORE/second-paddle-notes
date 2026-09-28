@@ -1,0 +1,40 @@
+{
+  "sourceRepository": "https://github.com/TurgutKural/hermes-agent",
+  "startingCommit": "68fa7e9f840d24c72774508cc4dc99e8fcceb26f",
+  "hydratedChangedBlobs": 66,
+  "blobHashesVerified": true,
+  "treeHashesVerifiedAgainstGitHub": true,
+  "commitHashesVerifiedAgainstGitHub": true,
+  "targets": {
+    "base": {
+      "sha": "298df0820d6a72250640600efe454d3debfdf2b4",
+      "tree": "7c3e1bccbd0fc7a96b7eb00bac657572952c53b2",
+      "worktree": "<workspace>/hermes112864_base",
+      "verifiedClean": true
+    },
+    "parent": {
+      "sha": "d4720b4ea85a49b3d16e536eea9fb2c8d10a0e69",
+      "tree": "0d729e194154a8a7601d9d1385144b7f328fcde8",
+      "worktree": "<workspace>/hermes112864_parent",
+      "verifiedClean": true
+    },
+    "candidate": {
+      "sha": "5bed864c5f21ba1248d3a266af2f5a6051c8db3f",
+      "tree": "09b266398a76b8a81a99eab13fcbf2183e6a9163",
+      "worktree": "<workspace>/hermes112864",
+      "verifiedClean": true
+    }
+  },
+  "networkGitUsed": false,
+  "testsOrBuildsRun": false,
+  "completeBlobAvailabilityCheck": {
+    "distinctBlobObjects": 16390,
+    "missing": 0
+  },
+  "sourceHistoryScope": "Only the three target commit objects were reconstructed; unrelated ancestor commit objects were not hydrated.",
+  "record_scope": "Source preparation before test overlays; testsOrBuildsRun describes source hydration only. Subsequent test outcomes are in runs/.",
+  "original_pr_parent": "d4720b4ea85a49b3d16e536eea9fb2c8d10a0e69",
+  "original_pr_head": "5bed864c5f21ba1248d3a266af2f5a6051c8db3f",
+  "test_handoff_parent": "5bed864c5f21ba1248d3a266af2f5a6051c8db3f",
+  "test_handoff_commit": "4263499f48a2b2f5015b60918301d42270c8ff59"
+}

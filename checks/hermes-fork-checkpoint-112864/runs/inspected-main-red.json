@@ -1,0 +1,28 @@
+{
+  "label": "inspected-main-red",
+  "checkout": "<workspace>/hermes112864_base",
+  "head": "298df0820d6a72250640600efe454d3debfdf2b4",
+  "command": [
+    "scripts/run_tests.sh",
+    "tests/agent/test_fork_checkpoint_compaction.py"
+  ],
+  "environment_overrides": {
+    "HERMES_PYTHON": "<workspace>/hermes125919/.venv/bin/python",
+    "HERMES_TEST_WORKERS": "1",
+    "HERMES_TEST_FILE_RETRIES": "0",
+    "GIT_NO_LAZY_FETCH": "1"
+  },
+  "input_sha256": {
+    "tests/agent/test_fork_checkpoint_compaction.py": "4ad1674113b027b14e65bc87d868d0c0911b3a34fe7de34ef120c320850278fe",
+    "pyproject.toml": "a6d0b40bfab34227934430c797eded0883d343b3891123375e9067edae1792d6",
+    "uv.lock": "bd27ac91236fa57f9eeffea8d4a324f3ca7f9b218525d74bec14a67fc1163887",
+    "scripts/run_tests.sh": "16cd6223a3b517326e023c3b716a182e2818fcc04ebf8a1855f83dc72e52743d"
+  },
+  "started_at": "2026-09-28T06:41:00.950226+00:00",
+  "exit_code": 1,
+  "elapsed_seconds": 19.568,
+  "finished_at": "2026-09-28T06:41:20.518163+00:00",
+  "raw_log_sha256": "c92d016313c34897e90ef9a6db73fe611144b20c8722a12a836c647de78c8da7",
+  "published_log_sha256": "f5431d696991068a8bd021a2b99a12da76f06b2a787e52d4f17db7868292e14b",
+  "publication_transformation": "Only the exact temporary workspace root prefix was replaced with <workspace>; all result text is preserved."
+}

@@ -1,0 +1,218 @@
+▶ not activated — using HERMES_PYTHON: <workspace>/hermes125919/.venv/bin/python
+▶ running per-file parallel test suite via run_tests_parallel.py
+  (TZ=UTC LANG=C.UTF-8 PYTHONHASHSEED=0; clean env)
+▶ pre-compiling bytecode cache
+▶ launching test runner
+Discovered 1 test files (~2 tests) under ['tests/agent/test_fork_checkpoint_compaction.py']; running with -j 1
+[100.0% |     2/~2 | ✓1 | ✗1] ✗ tests/agent/test_fork_checkpoint_compaction.py (1✓ 1✗, 3.7s)
+
+  ╔╍ Failed: tests/agent/test_fork_checkpoint_compaction.py ╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍
+  ║         providers inside MemoryManager.on_pre_compress(). Raises :class:`CompressionCheckpointUnavailable` when a
+  ║         required checkpoint cannot be taken."""
+  ║         memory_context = ""
+  ║         memory_manager = getattr(agent, "_memory_manager", None)
+  ║         evidence_messages = _direct_messages_for_pre_compress_memory(messages)
+  ║         if checkpoint_required:
+  ║             supports_checkpoint = getattr(memory_manager, "supports_pre_compress_checkpoint", None)
+  ║             if memory_manager is None or not callable(supports_checkpoint):
+  ║ >               raise _checkpoint_incapable(
+  ║                     f"no active provider implements checkpoint API v{PRE_COMPRESS_CHECKPOINT_API_VERSION}"
+  ║                 )
+  ║ E               agent.conversation_compression.CompressionCheckpointUnavailable: BLOCKED_MISSING_PREREQUISITE: required pre-compress checkpoint unavailable: no active provider implements checkpoint API v2. Recover by set compression.checkpoint_required: false, or switch to a memory provider that implements checkpoint API v2
+  ║ 
+  ║ <workspace>/hermes112864_base/agent/conversation_compression.py:2961: CompressionCheckpointUnavailable
+  ║ ------------------------------ Captured log call -------------------------------
+  ║ INFO     run_agent:agent_runtime_helpers.py:1945 OpenAI client created (agent_init, shared=True) thread=MainThread:140281921136448 provider=openai base_url=https://api.openai.com/v1 model=gpt-4.1
+  ║ INFO     agent.memory_manager:memory_manager.py:129 Memory provider(s) ['checkpoint-regression-provider'] configured but the 'memory' toolset is gated off for this session (platform_toolsets / agent.disabled_toolsets) — provider tools and system-prompt block are both withheld.
+  ║ WARNING  agent.context_pin:context_pin.py:68 model.context_length pins gpt-4.1 at 128,000 tokens but the provider advertises 1,047,576; the pin wins. Remove model.context_length from config.yaml to use the advertised window.
+  ║ INFO     run_agent:agent_runtime_helpers.py:1945 OpenAI client created (agent_init, shared=True) thread=MainThread:140281921136448 provider=openai base_url=https://api.openai.com/v1 model=gpt-4.1
+  ║ WARNING  agent.conversation_compression:conversation_compression.py:1419 compression.checkpoint_required is enabled but the active memory provider (no active provider) does not implement checkpoint API v2. Compress will fail closed. Recover by set compression.checkpoint_required: false, or switch to a memory provider that implements checkpoint API v2.
+  ║ INFO     agent.conversation_compression:conversation_compression.py:4025 context compression started: session=parent messages=50 tokens=~unknown model=gpt-4.1 focus=None
+  ║ WARNING  agent.auxiliary_client:auxiliary_client.py:4620 Auxiliary call: main provider openai is unavailable and no fallback_chain / fallback_providers is configured — refusing to guess another logged-in provider. Re-authenticate (`hermes model`) or declare a fallback.
+  ║ WARNING  agent.conversation_compression:conversation_compression.py:2121 No auxiliary LLM provider for compression — summaries will be unavailable.
+  ║ INFO     agent.conversation_compression:conversation_compression.py:1497 context compression attempt telemetry: {"attempt_id":"1428550e9fa9486da62fb42035811ec1","chunk_count":0,"chunking":false,"commit_status":"aborted","event":"compression_attempt","failure_class":"exception:CompressionCheckpointUnavailable","fallback_used":false,"session_id":"parent","split_status":"aborted","total_duration_ms":13}
+  ║ INFO     run_agent:client_lifecycle.py:206 OpenAI client closed (agent_close, shared=True, tcp_force_closed=0) thread=MainThread:140281921136448 provider=openai base_url=https://api.openai.com/v1 model=gpt-4.1
+  ║ INFO     hermes_cli.mem_trim:mem_trim.py:179 memory trim: reason=agent close malloc_trim=1 rss_kib=144952->144764 rss_anon_kib=124588->124400 threads=3 duration_ms=95.9
+  ║ INFO     run_agent:client_lifecycle.py:206 OpenAI client closed (agent_close, shared=True, tcp_force_closed=0) thread=MainThread:140281921136448 provider=openai base_url=https://api.openai.com/v1 model=gpt-4.1
+  ║ =========================== short test summary info ============================
+  ║ FAILED tests/agent/test_fork_checkpoint_compaction.py::test_real_isolated_fork_compacts_without_rewriting_parent
+  ║ ========================= 1 failed, 1 passed in 2.83s ==========================
+  ║
+  ║  Repro: python -m pytest tests/agent/test_fork_checkpoint_compaction.py
+  ╚╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍
+
+
+=== Summary: 1 files, 1 tests passed, 1 failed (100% complete) in 3.7s (1 workers) ===
+
+=== Per-file subprocess time distribution ===
+  Files:   1
+  Total subprocess CPU-wall: 3.7s  (runner wall: 3.7s, parallelism: 1x)
+  P50: 3.72s  P90: 3.72s  P95: 3.72s  P99: 3.72s  Max: 3.72s
+  <1s: 0 files (0%)  <2s: 0 files (0%)
+  Top 10 slowest:
+      3.72s  tests/agent/test_fork_checkpoint_compaction.py
+
+=== Failure output ===
+
+--- tests/agent/test_fork_checkpoint_compaction.py ---
+============================= test session starts ==============================
+platform linux -- Python 3.14.7, pytest-9.1.1, pluggy-1.6.0
+rootdir: <workspace>/hermes112864_base
+configfile: pyproject.toml
+plugins: asyncio-1.3.0, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 2 items
+
+tests/agent/test_fork_checkpoint_compaction.py F.                        [100%]
+
+=================================== FAILURES ===================================
+__________ test_real_isolated_fork_compacts_without_rewriting_parent ___________
+
+checkpoint_profile = (PosixPath('/var/tmp/hermes-pytest-0/r-9dxc_5gu/pytest-of-root/pytest-0/test_real_isolated_fork_compac0/hermes'), [])
+
+    def test_real_isolated_fork_compacts_without_rewriting_parent(checkpoint_profile):
+        from agent.background_review import build_cache_parity_fork
+        from agent.context_compressor import COMPRESSED_SUMMARY_METADATA_KEY, ContextCompressor
+        from agent.memory_manager import MemoryManager
+        from agent.memory_provider import MemoryProvider, PRE_COMPRESS_CHECKPOINT_API_VERSION
+        from hermes_state import SessionDB
+    
+        class CheckpointProvider(MemoryProvider):
+            pre_compress_checkpoint_api_version = PRE_COMPRESS_CHECKPOINT_API_VERSION
+            name = "checkpoint-regression-provider"
+    
+            def __init__(self):
+                self.checkpoints = []
+    
+            def is_available(self):
+                return True
+    
+            def initialize(self, session_id, **kwargs):
+                self.session_id = session_id
+    
+            def get_tool_schemas(self):
+                return []
+    
+            def on_pre_compress(self, messages, *, require_checkpoint=False):
+                self.checkpoints.append((deepcopy(messages), require_checkpoint))
+                return "Synthetic checkpoint provider context"
+    
+        home, summary_calls = checkpoint_profile
+        manager = MemoryManager()
+        provider = CheckpointProvider()
+        manager.add_provider(provider)
+        manager.initialize_all(session_id="parent", hermes_home=str(home), platform="cli")
+        db = SessionDB(db_path=home / "state.db")
+        parent = fork = None
+        try:
+            parent = _make_agent(db, "parent", memory_manager=manager)
+            assert parent._memory_manager is manager
+            assert manager.supports_pre_compress_checkpoint(PRE_COMPRESS_CHECKPOINT_API_VERSION)
+            assert parent.compression_checkpoint_required is True
+            parent_history = deepcopy(parent._session_messages)
+            parent_prompt = parent._cached_system_prompt
+            before = _durable_snapshot(db, parent.session_id)
+    
+            fork, _, routed = build_cache_parity_fork(parent, max_iterations=1)
+            assert routed is False
+            assert fork._memory_manager is None
+            assert fork._persist_disabled is True
+            assert fork._session_db is None
+            assert isinstance(fork.context_compressor, ContextCompressor)
+            assert fork.context_compressor._session_db is None
+            assert fork.context_compressor._session_id == ""
+            assert fork.compression_enabled is True
+            assert fork.compression_in_place is True
+            assert fork.compression_checkpoint_required is True
+            assert fork._cached_system_prompt == parent_prompt
+            assert fork.tools == parent.tools
+    
+            fork_history = deepcopy(parent_history)
+>           compressed, _ = fork._compress_context(fork_history, parent_prompt, force=True)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+<workspace>/hermes112864_base/tests/agent/test_fork_checkpoint_compaction.py:195: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+<workspace>/hermes112864_base/agent/compression_facade.py:296: in _compress_context
+    result = _run_under_progress_timeout(
+<workspace>/hermes112864_base/agent/compression_facade.py:178: in _run_under_progress_timeout
+    return run_compress_context_with_progress_timeout(
+<workspace>/hermes112864_base/agent/conversation_compression.py:1288: in run_compress_context_with_progress_timeout
+    settled, result = _await_worker_within_budget(
+<workspace>/hermes112864_base/agent/conversation_compression.py:1064: in _await_worker_within_budget
+    return True, future.result(timeout=wait_slice)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<workspace>/hermes125919_dev_home/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/concurrent/futures/_base.py:454: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+<workspace>/hermes125919_dev_home/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/concurrent/futures/_base.py:396: in __get_result
+    raise self._exception
+<workspace>/hermes125919_dev_home/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/concurrent/futures/thread.py:86: in run
+    result = ctx.run(self.task)
+             ^^^^^^^^^^^^^^^^^^
+<workspace>/hermes125919_dev_home/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/concurrent/futures/thread.py:73: in run
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+<workspace>/hermes112864_base/tools/daemon_pool.py:35: in _run_with_context
+    return ctx.run(fn, *call_args, **call_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<workspace>/hermes112864_base/tools/thread_context.py:72: in _runner
+    return ctx.run(_inner)
+           ^^^^^^^^^^^^^^^
+<workspace>/hermes112864_base/tools/thread_context.py:63: in _inner
+    return target(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+<workspace>/hermes112864_base/agent/conversation_compression.py:1239: in _fence_gated_worker
+    return worker(worker_fence)
+           ^^^^^^^^^^^^^^^^^^^^
+<workspace>/hermes112864_base/agent/compression_facade.py:145: in _snapshot_worker
+    result_msgs, result_prompt = run(
+<workspace>/hermes112864_base/agent/compression_facade.py:279: in _run
+    return compress_context(
+<workspace>/hermes112864_base/agent/conversation_compression.py:4149: in compress_context
+    phase = _run_summary_phase(
+<workspace>/hermes112864_base/agent/conversation_compression.py:3902: in _run_summary_phase
+    memory_context = _pre_compress_memory_context(agent, messages, checkpoint_required)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+agent = <run_agent.AIAgent object at 0x7f95e6839810>
+messages = [{'role': 'user', 'content': 'Review revision 0. Local revision details. Local revision details. Local revision detail... findings. Local review findings. Local review findings.', '_db_persisted': True, 'timestamp': 1790577678.734106}, ...]
+checkpoint_required = True
+
+    def _pre_compress_memory_context(agent: Any, messages: list, checkpoint_required: bool) -> str:
+        """Provider ``on_pre_compress()`` insights to surface in the summary ("" if none).
+        Raw messages stay the API v1 provider contract; normalized evidence goes only to API v2+ checkpoint
+        providers inside MemoryManager.on_pre_compress(). Raises :class:`CompressionCheckpointUnavailable` when a
+        required checkpoint cannot be taken."""
+        memory_context = ""
+        memory_manager = getattr(agent, "_memory_manager", None)
+        evidence_messages = _direct_messages_for_pre_compress_memory(messages)
+        if checkpoint_required:
+            supports_checkpoint = getattr(memory_manager, "supports_pre_compress_checkpoint", None)
+            if memory_manager is None or not callable(supports_checkpoint):
+>               raise _checkpoint_incapable(
+                    f"no active provider implements checkpoint API v{PRE_COMPRESS_CHECKPOINT_API_VERSION}"
+                )
+E               agent.conversation_compression.CompressionCheckpointUnavailable: BLOCKED_MISSING_PREREQUISITE: required pre-compress checkpoint unavailable: no active provider implements checkpoint API v2. Recover by set compression.checkpoint_required: false, or switch to a memory provider that implements checkpoint API v2
+
+<workspace>/hermes112864_base/agent/conversation_compression.py:2961: CompressionCheckpointUnavailable
+------------------------------ Captured log call -------------------------------
+INFO     run_agent:agent_runtime_helpers.py:1945 OpenAI client created (agent_init, shared=True) thread=MainThread:140281921136448 provider=openai base_url=https://api.openai.com/v1 model=gpt-4.1
+INFO     agent.memory_manager:memory_manager.py:129 Memory provider(s) ['checkpoint-regression-provider'] configured but the 'memory' toolset is gated off for this session (platform_toolsets / agent.disabled_toolsets) — provider tools and system-prompt block are both withheld.
+WARNING  agent.context_pin:context_pin.py:68 model.context_length pins gpt-4.1 at 128,000 tokens but the provider advertises 1,047,576; the pin wins. Remove model.context_length from config.yaml to use the advertised window.
+INFO     run_agent:agent_runtime_helpers.py:1945 OpenAI client created (agent_init, shared=True) thread=MainThread:140281921136448 provider=openai base_url=https://api.openai.com/v1 model=gpt-4.1
+WARNING  agent.conversation_compression:conversation_compression.py:1419 compression.checkpoint_required is enabled but the active memory provider (no active provider) does not implement checkpoint API v2. Compress will fail closed. Recover by set compression.checkpoint_required: false, or switch to a memory provider that implements checkpoint API v2.
+INFO     agent.conversation_compression:conversation_compression.py:4025 context compression started: session=parent messages=50 tokens=~unknown model=gpt-4.1 focus=None
+WARNING  agent.auxiliary_client:auxiliary_client.py:4620 Auxiliary call: main provider openai is unavailable and no fallback_chain / fallback_providers is configured — refusing to guess another logged-in provider. Re-authenticate (`hermes model`) or declare a fallback.
+WARNING  agent.conversation_compression:conversation_compression.py:2121 No auxiliary LLM provider for compression — summaries will be unavailable.
+INFO     agent.conversation_compression:conversation_compression.py:1497 context compression attempt telemetry: {"attempt_id":"1428550e9fa9486da62fb42035811ec1","chunk_count":0,"chunking":false,"commit_status":"aborted","event":"compression_attempt","failure_class":"exception:CompressionCheckpointUnavailable","fallback_used":false,"session_id":"parent","split_status":"aborted","total_duration_ms":13}
+INFO     run_agent:client_lifecycle.py:206 OpenAI client closed (agent_close, shared=True, tcp_force_closed=0) thread=MainThread:140281921136448 provider=openai base_url=https://api.openai.com/v1 model=gpt-4.1
+INFO     hermes_cli.mem_trim:mem_trim.py:179 memory trim: reason=agent close malloc_trim=1 rss_kib=144952->144764 rss_anon_kib=124588->124400 threads=3 duration_ms=95.9
+INFO     run_agent:client_lifecycle.py:206 OpenAI client closed (agent_close, shared=True, tcp_force_closed=0) thread=MainThread:140281921136448 provider=openai base_url=https://api.openai.com/v1 model=gpt-4.1
+=========================== short test summary info ============================
+FAILED tests/agent/test_fork_checkpoint_compaction.py::test_real_isolated_fork_compacts_without_rewriting_parent
+========================= 1 failed, 1 passed in 2.83s ==========================
+
+=== 1 file with test failures (1 test failed) ===
+  tests/agent/test_fork_checkpoint_compaction.py  (1 test failed)
