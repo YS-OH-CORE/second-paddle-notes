@@ -1,11 +1,35 @@
 # Youngseok Oh | Selected work and public evidence
 
 Independent researcher, South Korea · GitHub: **YS-OH-CORE**  
-Prepared with **Zero** · Agent collaboration records checked: **26 September 2026**
+Prepared with **Zero** · Latest focused evidence update: **28 September 2026**
 
-Research focus: preserving evidence and corrections across human–AI memory, and reproducible review of agent systems. This self-published index links specific records; it is not an institutional credential or a blanket endorsement. The formal-methods section retains its **16 September 2026** evidence snapshot and was not rerun or rechecked in this update.
+Research focus: preserving evidence and corrections across human–AI memory, and reproducible review of agent systems. This self-published index links specific records; it is not an institutional credential or a blanket endorsement. The Hermes evaluation entry below was checked on **28 September 2026**. Other entries retain their stated check dates; the formal-methods section retains its **16 September 2026** snapshot.
 
 [Discuss one scoped AI-continuity review](COLLABORATE.md).
+
+## Hermes evaluation: a startup observation sharpened the proposed test
+
+**Question:** can an evaluation run alter memory before its first measured turn, even when `saveMessages=false` is configured?
+
+**Outcome:** discussion participant **mdhaseeb343q-pixel** accepted our correction about an existing persistence proposal, then explicitly used **@YS-OH-CORE**'s startup observation to identify a missing assertion in another participant's proposed test. This is an externally attributable use of the review in test and policy discussion. [Acknowledgment and correction](https://github.com/NousResearch/hermes-agent/issues/121935#issuecomment-5854968442) · [Use in the test discussion](https://github.com/NousResearch/hermes-agent/issues/121935#issuecomment-5857521128)
+
+### Evidence trail
+
+| Stage | Public evidence | What it establishes |
+|---|---|---|
+| Executed probe, 25 September 2026 UTC | [Our report to issue #121935](https://github.com/NousResearch/hermes-agent/issues/121935#issuecomment-5829103900) · [Pinned probe and results](https://github.com/YS-OH-CORE/second-paddle-notes/blob/23a9c91985dc80ca9b9ff8988f02fee60e67d073/checks/hermes-eval-write-boundary-121935/README.md) | In a synthetic cold, owner-declared, per-directory session, initialization reached three recorded file-upload calls with `saveMessages=false`. Warm, per-session-strategy and nonowner controls recorded none. |
+| Recipient response, 27 September 10:16 UTC | [Acknowledgment](https://github.com/NousResearch/hermes-agent/issues/121935#issuecomment-5854968442) | The participant explicitly accepted the correction that PR #73935 already covers automatic persistence including migration, and identified the startup-state controls as useful policy evidence. |
+| Subsequent use, 27 September 16:07 UTC | [Test-design follow-up](https://github.com/NousResearch/hermes-agent/issues/121935#issuecomment-5857521128) | The participant cited @YS-OH-CORE's probe to explain why checking only turn sync, profile mirroring and session-end flush could miss initialization writes. They asked for an initialization assertion and explicit startup fixtures. |
+
+**Why the control matters:** a warm fixture can record no uploads even when an implementation would still upload files on a fresh owner session. A regression test must establish which startup state it exercises. The contribution made that conditional behavior concrete so other participants could use it when defining the test.
+
+The source-selected probe used unchanged method bodies from `7b761da2de4979e424510ca7022bf9527aa65b68`, with fake manager/SDK collaborators and synthetic files. Its fourteen cases at two setting values produced 28 condition/case observations. It recorded call reachability rather than uploading to a live service. Those are the earlier executed observations; no probe or model was rerun for this index update.
+
+**Status checked 28 September 2026:** [issue #121935](https://github.com/NousResearch/hermes-agent/issues/121935) remains open with a maintainer decision requested before implementation. The discussion reuse above does not establish an adopted implementation or maintainer approval. The related automatic-persistence [PR #73935](https://github.com/NousResearch/hermes-agent/pull/73935) remains open and unmerged at `91b3b31dc91aec04abac8be5d240f2d0ad491054`. Its narrower setting intentionally preserves explicit tool writes; that contract is distinct from the proposed strict read-only invocation policy.
+
+**Roles:** fmunechi supplied the original opt-out request; mdhaseeb343q-pixel developed the invocation-policy proposal and the cited follow-up analysis; saurabhmeddo authored the existing automatic-persistence proposal. **Youngseok Oh × Zero** contributed the supplemental fixture, executed observations and correction. The cited responses predate this page addition; they are newly linked here, not newly received endorsements.
+
+**한국어:** “자동 저장을 껐으니 평가 중 기억도 바뀌지 않을 것”이라고 가정하면 시작 단계의 파일 업로드를 놓칠 수 있었다. 우리 검증은 어떤 시작 상태에서 그 호출이 생기고, 어떤 대조 상태에서는 생기지 않는지 보여줬다. 논의 참여자는 이 결과를 받아 기존 수정안에 대한 자신의 설명을 고쳤고, 다른 사람이 제안한 검사에도 `YS-OH-CORE`를 인용해 시작 단계 검사를 추가해야 한다고 설명했다. 확인된 성과는 **실행 근거가 다른 참여자의 설명과 검사 설계 논의에 쓰인 것**이다. 정식 구현과 병합 여부는 별개이며, 이번에는 해당 공개 경로를 대표 작업 소개에 연결했다. 응답 시각은 한국시간 9월 27일 19:16과 9월 28일 01:07이다.
 
 ## Memory operations: review used to prevent a false-success response
 
