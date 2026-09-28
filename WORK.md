@@ -6,7 +6,7 @@ Human–AI collaboration on reproducible failures, regression tests, reviewable 
 
 **한국어 소개는 아래에 있습니다.**
 
-**Evidence at a glance:** [Case 01: request-bound approvals](#case-01--keeping-an-approval-attached-to-its-own-request) · [Case 02: explicit stop handling and an E2E correction](#case-02--explicit-stop-handling-and-an-end-to-end-correction) · [Case 03: adopted TAM evaluation-report review](#case-03--checking-the-numbers-and-narrowing-the-claim) · [Case 04: recipient-confirmed Signal source review](#case-04--keeping-personal-notes-separate-from-agent-prompts) · [Case 05: adopted real-HTTP regression](#case-05--proving-http-recovery-through-the-real-transport)
+**Evidence at a glance:** [Case 01: request-bound approvals](#case-01--keeping-an-approval-attached-to-its-own-request) · [Case 02: explicit stop handling and an E2E correction](#case-02--explicit-stop-handling-and-an-end-to-end-correction) · [Case 03: adopted TAM evaluation-report review](#case-03--checking-the-numbers-and-narrowing-the-claim) · [Case 04: recipient-confirmed Signal source review](#case-04--keeping-personal-notes-separate-from-agent-prompts) · [Case 05: adopted real-HTTP regression](#case-05--proving-http-recovery-through-the-real-transport) · [Case 06: explicit deletion failure](#case-06--keeping-unsupported-deletion-from-reporting-success)
 
 ## Case 01 | Keeping an approval attached to its own request
 
@@ -156,6 +156,29 @@ Our retained comparison of the original product PR's parent `749220ef` and fix h
 
 **Roles:** **fmunechi** supplied the original bug report, reproduction and proposed guard. **liuhao1024** authored the product repair and integrated the supplemental tests. **Youngseok Oh** supplied the collaboration direction and public account; **Zero (ChatGPT)** supplied the additional test design, execution, and review. The verified result is an adopted test contribution with public credit at the PR-branch stage. Maintainer acceptance, release, and live-service behavior remain unestablished.
 
+## Case 06 | Keeping unsupported deletion from reporting success
+
+**Project:** Mem0, issue #7439 and the contributor's follow-up fork  
+**Contribution:** a counterexample with stored records and verification of the contributor's revised tests  
+**Evidence checked:** 2026-09-29 (KST)
+
+**Outcome:** contributor **Souptik96** [credited our check][mem0-ack] and changed their implementation and regression coverage. The revised code is present in [fork commit `127bb797`][mem0-revised]. This establishes incorporation by the recipient into their own fork. The related [PR #7464][mem0-pr] is closed and unmerged, and its recorded head is the older `cec74a8e`; it does not contain the verified follow-up revision in its recorded head.
+
+Our [earlier check][mem0-review] used a real FAISS store with matching records. Returning an invented empty listing made `delete_all()` report success while the requested records remained. Souptik96 replaced that fallback with `NotImplementedError` for unsupported clients, propagated Chroma listing errors, and added a regression with actual FAISS records. The correction makes unsupported operations fail explicitly; it does not implement bulk deletion.
+
+The [preserved comparison][mem0-report] used seven unchanged tests from the contributor's revised fork:
+
+| Adapter used with the same seven tests | Passed | Failed | Errors / skips |
+|---|---:|---:|---:|
+| Revised fork `127bb797` | 7 | 0 | 0 / 0 |
+| Only the adapter replaced by its earlier `cec74a8e` version | 1 | 6 | 0 / 0 |
+
+The empty Chroma fixture passed in both conditions. The populated FAISS test required explicit errors and retention of its three Alice labels and one Bob label. The fixture checks retained labels; it does not audit the complete document contents and IDs.
+
+For this page, the original JUnit reports, logs, archive checksum and source blobs were rechecked without running new tests. The selected checks use real Memory/adapter imports and offline FAISS, alongside existing dependency/history mocks, mocked Chroma and `--noconftest`. Dependency installation used version ranges. These results do not establish a passing full suite, live-provider behavior or a newly implemented deletion capability. [Exact evidence record](work/mem0-nonempty-delete.evidence.json)
+
+**Roles:** **BlueX888** reported the original fall-through defect. **Souptik96** authored the revised implementation and tests. **Youngseok Oh** supplied the collaboration direction and public account; **Zero (ChatGPT)** supplied the counterexample, execution and review. The [project's requirement for an accepted issue][mem0-gate] remains outstanding; maintainer acceptance, merge and release are not established. Original code and test licensing stays with those files.
+
 ## A useful starting point for collaboration
 
 A good first case is a public, reproducible agent behavior that differs from the user's actual request, or a published evaluation claim with question-level results that can be checked. Provide the exact revision, a small synthetic example or public result file, the expected behavior or claim, and the observed result. That makes it possible to choose a reproduction, regression test, narrow patch, or saved-result audit.
@@ -234,6 +257,14 @@ Keep credentials, private conversations, and personal records out of public issu
 
 우리 보존 로그의 관련 검사 **41개 통과**와 작성자가 보고한 **43개 통과**는 출처를 구분했습니다. 개수 차이는 아직 해명되지 않았고, 이번 기록 갱신에서 다시 실행한 수치는 아닙니다. 확인된 성과는 **원작성자의 PR 브랜치에 검사와 기여 표기가 반영된 것**이며, 원 PR은 아직 열려 있고 병합 전입니다.
 
+### 사례 06 | 삭제 실패가 성공으로 표시되는 문제를 검증해 수정으로 연결함
+
+**2026년 9월 29일 한국시간 기준으로 확인했습니다.** Mem0 기여자 **Souptik96**는 우리가 보낸 검증을 받아 구현과 회귀 검사를 수정했다고 [공개 답변했습니다][mem0-ack]. 우리 검사는 실제 기록이 들어 있는 FAISS 저장소에서 삭제 성공 안내가 나와도 대상 기록이 남는 반례를 보였습니다. 상대는 지원하지 않는 작업을 `NotImplementedError`로 알리고, 실제 기록이 있는 FAISS 검사를 추가했습니다. 그 변경은 [상대의 개인 저장소 `127bb797` 커밋][mem0-revised]에 있습니다. 확인된 성과는 **다른 기여자의 구현·검사에 검토 결과가 반영된 것**입니다. 이 변경은 해당 LangChain 연결 경로에 일괄 삭제 기능을 추가한 것은 아닙니다.
+
+보존된 비교에서는 상대가 작성한 검사 7개가 수정본에서 모두 통과했습니다. 같은 검사에서 adapter 파일만 이전 판본으로 바꾸면 **6개 실패·1개 통과**였고, 실제로 빈 결과를 다루는 Chroma 가상 대조군은 계속 통과했습니다. FAISS 검사는 예외 발생과 Alice 3개·Bob 1개의 라벨 유지를 확인했으며, 문서 내용과 ID 전체의 무결성 검사로 확대하지 않습니다. 실제 Memory 코드와 오프라인 FAISS를 사용했지만 주변 의존성과 history 등은 기존 가상 객체를 사용했습니다. 선택 검사, 버전 범위에 따른 의존성 설치, `--noconftest` 실행이라는 한계도 [근거 기록](work/mem0-nonempty-delete.evidence.json)에 남겼습니다. 이번 갱신에서는 [기존 원시 결과][mem0-report]와 파일 식별자를 다시 대조했으며 제품 검사를 새로 실행하지 않았습니다.
+
+[PR #7464][mem0-pr]는 이슈 수락 표시를 기다리는 절차에 따라 닫혀 있고, 기록된 head는 이전 `cec74a8e`입니다. 검증한 후속 코드는 상대의 개인 저장소에 있으며, 공식 병합·배포는 확인되지 않았습니다. 원래 결함 제보는 **BlueX888**, 수정 구현과 검사는 **Souptik96**의 기여입니다. **영석**은 협업 방향과 공개 계정을, **Zero**는 반례·실행·후속 검증을 맡았습니다.
+
 관련 협업을 제안할 때는 공개해도 되는 작은 재현 예시와 코드 버전, 기대한 결과와 실제 결과를 [이슈](https://github.com/YS-OH-CORE/second-paddle-notes/issues/new)에 남겨 주세요. 소개글의 설명보다 원문 답변, 코드, 검사 자료를 먼저 확인할 수 있도록 구성했습니다.
 
 *This case page was written with Zero (ChatGPT) for Youngseok Oh. It reuses public contribution evidence, not private correspondence. Original code and test licensing remain with their existing files; this page does not relicense them.*
@@ -275,3 +306,11 @@ Keep credentials, private conversations, and personal records out of public issu
 [http503-submitted]: https://github.com/YS-OH-CORE/hermes-agent/commit/60c824eadd6952175f15e32e703127560d87d7cb
 [http503-pr]: https://github.com/NousResearch/hermes-agent/pull/121944
 [http503-report]: https://github.com/YS-OH-CORE/second-paddle-notes/blob/b2900898ae850ef106b8619a53fde93dfd5c2719/checks/hermes-http503-121944/README.md
+
+[mem0-issue]: https://github.com/mem0ai/mem0/issues/7439
+[mem0-review]: https://github.com/mem0ai/mem0/issues/7439#issuecomment-5824943500
+[mem0-ack]: https://github.com/mem0ai/mem0/issues/7439#issuecomment-5843366869
+[mem0-revised]: https://github.com/Souptik96/mem0/commit/127bb79725aeb09d70e58620fd1d88476abf9aca
+[mem0-pr]: https://github.com/mem0ai/mem0/pull/7464
+[mem0-gate]: https://github.com/mem0ai/mem0/pull/7464#issuecomment-5843251973
+[mem0-report]: https://github.com/YS-OH-CORE/second-paddle-notes/blob/5bf5a87d001dccae3a83293b11bdc417146fac3c/checks/mem0-7464-recipient-followup/README.md

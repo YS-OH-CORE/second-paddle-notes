@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "subject": "Mem0 #7439: a populated-store counterexample incorporated into a contributor's follow-up fork",
+  "evidence_checked_at_utc": "2026-09-28T15:41:59Z",
+  "evidence_checked_local_date": "2026-09-29",
+  "timezone": "Asia/Seoul",
+  "evidence_class": "Recipient-incorporated implementation and regression changes in a contributor fork, with public attribution and retained comparison results",
+  "original_issue": {
+    "url": "https://github.com/mem0ai/mem0/issues/7439",
+    "author_login": "BlueX888",
+    "current_labels": [
+      "vector-store"
+    ]
+  },
+  "contribution_chain": {
+    "our_counterexample_url": "https://github.com/mem0ai/mem0/issues/7439#issuecomment-5824943500",
+    "recipient_acknowledgment": {
+      "url": "https://github.com/mem0ai/mem0/issues/7439#issuecomment-5843366869",
+      "author_login": "Souptik96",
+      "author_association": "NONE",
+      "created_at": "2026-09-26T05:01:16Z",
+      "updated_at": "2026-09-26T05:01:16Z",
+      "statement_summary": "The populated-store check showed that an empty fallback creates silent false success; the contributor changed unsupported listing to an explicit error and added a real FAISS regression."
+    },
+    "our_verification_handoff_url": "https://github.com/mem0ai/mem0/issues/7439#issuecomment-5843446863"
+  },
+  "incorporation": {
+    "repository": "Souptik96/mem0",
+    "branch": "fix/langchain-list-7439",
+    "verified_current_branch_sha": "127bb79725aeb09d70e58620fd1d88476abf9aca",
+    "commit_sha": "127bb79725aeb09d70e58620fd1d88476abf9aca",
+    "commit_url": "https://github.com/Souptik96/mem0/commit/127bb79725aeb09d70e58620fd1d88476abf9aca",
+    "commit_date": "2026-09-26T04:54:57Z",
+    "author_login": "Souptik96",
+    "scope": "The contributor's own follow-up fork commit contains the implementation and tests; the upstream PR metadata still points to the older revision.",
+    "source_files": [
+      {
+        "path": "mem0/vector_stores/langchain.py",
+        "git_blob": "09e2ee4f9a5471878c6166b3fdab752389354a9c"
+      },
+      {
+        "path": "tests/memory/test_main.py",
+        "git_blob": "df10946acb1821e1a94dedf7cc1854b8f2ebbce8"
+      },
+      {
+        "path": "tests/vector_stores/test_langchain_vector_store.py",
+        "git_blob": "9e55ace7ac0f73ffa66f3496099ffcd81f79682b"
+      }
+    ],
+    "identity_method": "Compared contributor commit metadata, the pinned execution runner, and source identities in the retained artifact; all three file blobs agree."
+  },
+  "upstream_pr": {
+    "url": "https://github.com/mem0ai/mem0/pull/7464",
+    "state": "closed",
+    "merged": false,
+    "head_sha": "cec74a8ebf5a9d6724104d4867868da118b58205",
+    "gate_comment_url": "https://github.com/mem0ai/mem0/pull/7464#issuecomment-5843251973",
+    "gate_status": "The linked issue has not received the accepted label. The newer fork code is distinct from the closed PR's recorded head."
+  },
+  "preserved_execution": {
+    "run_url": "https://github.com/YS-OH-CORE/second-paddle-notes/actions/runs/36219981949",
+    "run_id": 36219981949,
+    "attempt": 1,
+    "created_at": "2026-09-26T05:10:02Z",
+    "workflow_sha": "2391bb3da140c0d3da55b6b9e6f1901b1287aa48",
+    "workflow_conclusion": "success",
+    "conclusion_meaning": "The comparison verified the expected results in both conditions, including the actual failing pytest exit on the older adapter.",
+    "report_url": "https://github.com/YS-OH-CORE/second-paddle-notes/blob/5bf5a87d001dccae3a83293b11bdc417146fac3c/checks/mem0-7464-recipient-followup/README.md",
+    "summary_url": "https://github.com/YS-OH-CORE/second-paddle-notes/blob/5bf5a87d001dccae3a83293b11bdc417146fac3c/checks/mem0-7464-recipient-followup/SUMMARY.json",
+    "runner_url": "https://github.com/YS-OH-CORE/second-paddle-notes/blob/10199d31671ef7fc5f7c428a48856a29875f18d8/checks/mem0-7464-recipient-followup/run.py",
+    "runner_git_blob": "fd67affb2d08b1582b3f1e2aff5b22a4fc58adf1",
+    "source_adapter_counterfactual": {
+      "commit_sha": "cec74a8ebf5a9d6724104d4867868da118b58205",
+      "path": "mem0/vector_stores/langchain.py",
+      "git_blob": "c3f5f60ebc9418730235493eba2a73f9cb3f8a34",
+      "method": "Only this adapter file was replaced in the revised checkout; the seven tests were unchanged."
+    },
+    "selected_tests": [
+      "tests/vector_stores/test_langchain_vector_store.py::test_list_with_exception",
+      "tests/vector_stores/test_langchain_vector_store.py::test_list_non_chroma_client_raises_not_implemented",
+      "tests/vector_stores/test_langchain_vector_store.py::test_list_chroma_empty_result_returns_nested_empty_list",
+      "tests/memory/test_main.py::test_get_all_with_non_chroma_langchain_store_raises",
+      "tests/memory/test_main.py::test_delete_all_with_non_chroma_langchain_store_raises_without_deleting",
+      "tests/memory/test_main.py::test_async_get_all_and_delete_all_with_non_chroma_langchain_store_raise",
+      "tests/memory/test_main.py::test_delete_all_with_populated_faiss_langchain_store_keeps_records_and_raises"
+    ],
+    "revised_fork": {
+      "passed": 7,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "pytest_exit": 0
+    },
+    "earlier_adapter_only": {
+      "passed": 1,
+      "failed": 6,
+      "errors": 0,
+      "skipped": 0,
+      "pytest_exit": 1
+    },
+    "shared_passing_control": "The empty mocked Chroma fixture returns the nested empty-list format.",
+    "populated_faiss_observation": "The selected real-FAISS test was not skipped. It checks explicit errors and retention of the three Alice labels and one Bob label; it does not audit complete original document content and IDs.",
+    "raw_artifact": {
+      "id": 10898501575,
+      "url": "https://github.com/YS-OH-CORE/second-paddle-notes/actions/runs/36219981949/artifacts/10898501575",
+      "bytes": 40026,
+      "sha256": "7f36c57abf61eb1522b09ae3f42f5ac9c01845453e929ddba781ff0bae0fb3f2",
+      "crc_check_passed": true,
+      "reviewed_files": [
+        "candidate.xml",
+        "older_fallback.xml",
+        "SUMMARY.json",
+        "candidate.log",
+        "older_fallback.log"
+      ]
+    },
+    "last_updated_at": "2026-09-26T05:10:47Z"
+  },
+  "roles": [
+    {
+      "name": "BlueX888",
+      "role": "Original fall-through defect report"
+    },
+    {
+      "name": "Souptik96",
+      "role": "Revised implementation and regression test author"
+    },
+    {
+      "name": "Youngseok Oh",
+      "role": "Collaboration direction and public account"
+    },
+    {
+      "name": "Zero (ChatGPT)",
+      "role": "Populated-store counterexample, execution, review, and this evidence curation"
+    }
+  ],
+  "limits": [
+    "No new product tests or model calls were run for this page update; the raw receipts and source identities were reread.",
+    "This is incorporation into another contributor's fork, not Mem0 maintainer acceptance, upstream PR-head adoption, merge, or release.",
+    "The correction explicitly rejects unsupported enumeration; it does not implement bulk deletion for non-Chroma clients.",
+    "The selected tests use real Memory/adapter imports and real FAISS with FakeEmbeddings, alongside existing factory/config/history/telemetry mocks and mocked Chroma.",
+    "The original run used --noconftest, disabled plugin autoload, and explicit pytest plugins. Installation used dependency version ranges.",
+    "Seven selected tests were checked; the contributor's broader 408-test statement and the full upstream suite were not independently verified.",
+    "The file/blob comparison and artifact reread are not a new or independent external execution.",
+    "Original code and test licensing remains with the existing files; this record does not relicense the contributor's work."
+  ],
+  "public_signature": "Zero × Youngseok Oh"
+}
