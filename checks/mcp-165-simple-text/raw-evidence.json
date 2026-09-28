@@ -1,0 +1,1871 @@
+{
+  "description": "Complete ten-run SDK/CLI evidence and four build logs, consolidated by original relative path.",
+  "normalization": {
+    "operation": "Exact literal replacement of the execution scratch-root prefix with <SCRATCH_ROOT> in string values and text.",
+    "replacement": "<SCRATCH_ROOT>",
+    "otherChanges": "JSON is parsed and reserialized into this container. Field values are unchanged apart from the documented path normalization; text logs retain all content, including stderr and ANSI escapes."
+  },
+  "sourceFileCount": 54,
+  "files": [
+    {
+      "originalRelativePath": "verified-run/baseline/diagnostic-tool-missing/cli.stderr.log",
+      "format": "text",
+      "content": ""
+    },
+    {
+      "originalRelativePath": "verified-run/baseline/diagnostic-tool-missing/cli.stdout.log",
+      "format": "text",
+      "content": "Running client scenario 'tools-call-simple-text' against server: http://127.0.0.1:42989/mcp\nResults saved to <SCRATCH_ROOT>/mcp165_sdk_evidence/verified-run/baseline/diagnostic-tool-missing/results/server-tools-call-simple-text-2026-09-28T05-11-59-520Z\nChecks:\n\u001b[90m2026-09-28T05:11:59.634Z\u001b[0m [tools-call-simple-text] \u001b[32mSUCCESS\u001b[0m Tool returns simple text content\n\u001b[90m2026-09-28T05:11:59.635Z\u001b[0m [wire-schema-valid     ] \u001b[32mSUCCESS\u001b[0m Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version\n\nTest Results:\nPassed: 2/2, 0 failed, 0 warnings\n"
+    },
+    {
+      "originalRelativePath": "verified-run/baseline/diagnostic-tool-missing/invocation.json",
+      "format": "json",
+      "content": {
+        "executable": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "cwd": "<SCRATCH_ROOT>/mcp165_baseline",
+        "args": [
+          "dist/index.js",
+          "server",
+          "--url",
+          "http://127.0.0.1:42989/mcp",
+          "--scenario",
+          "tools-call-simple-text",
+          "--spec-version",
+          "2025-11-25",
+          "--timeout",
+          "15000",
+          "-o",
+          "<SCRATCH_ROOT>/mcp165_sdk_evidence/verified-run/baseline/diagnostic-tool-missing/results"
+        ],
+        "exitCode": 0,
+        "signal": null,
+        "timedOut": false
+      }
+    },
+    {
+      "originalRelativePath": "verified-run/baseline/diagnostic-tool-missing/results/server-tools-call-simple-text-2026-09-28T05-11-59-520Z/checks.json",
+      "format": "json",
+      "content": [
+        {
+          "id": "tools-call-simple-text",
+          "name": "ToolsCallSimpleText",
+          "description": "Tool returns simple text content",
+          "status": "SUCCESS",
+          "timestamp": "2026-09-28T05:11:59.634Z",
+          "specReferences": [
+            {
+              "id": "MCP-Tools-Call",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/tools#calling-tools"
+            }
+          ],
+          "details": {
+            "result": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "MCP error -32602: Tool test_simple_text not found"
+                }
+              ],
+              "isError": true
+            }
+          }
+        },
+        {
+          "id": "wire-schema-valid",
+          "name": "WireSchemaValid",
+          "description": "Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version",
+          "status": "SUCCESS",
+          "timestamp": "2026-09-28T05:11:59.635Z",
+          "specReferences": [
+            {
+              "id": "MCP-Schema",
+              "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/schema/2025-11-25/schema.json"
+            }
+          ],
+          "details": {
+            "messagesValidated": 5,
+            "violations": []
+          }
+        }
+      ]
+    },
+    {
+      "originalRelativePath": "verified-run/baseline/diagnostic-tool-missing/server-observations.json",
+      "format": "json",
+      "content": {
+        "variant": "diagnostic-tool-missing",
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/mcp",
+            "headers": {
+              "accept": "application/json, text/event-stream",
+              "contentType": "application/json"
+            },
+            "body": {
+              "method": "initialize",
+              "params": {
+                "protocolVersion": "2025-11-25",
+                "capabilities": {
+                  "sampling": {},
+                  "elicitation": {}
+                },
+                "clientInfo": {
+                  "name": "conformance-test-client",
+                  "version": "1.0.0"
+                }
+              },
+              "jsonrpc": "2.0",
+              "id": 0
+            }
+          },
+          {
+            "method": "POST",
+            "path": "/mcp",
+            "headers": {
+              "accept": "application/json, text/event-stream",
+              "contentType": "application/json",
+              "protocolVersion": "2025-11-25"
+            },
+            "body": {
+              "method": "notifications/initialized",
+              "jsonrpc": "2.0"
+            }
+          },
+          {
+            "method": "GET",
+            "path": "/mcp",
+            "headers": {
+              "accept": "text/event-stream",
+              "protocolVersion": "2025-11-25"
+            }
+          },
+          {
+            "method": "POST",
+            "path": "/mcp",
+            "headers": {
+              "accept": "application/json, text/event-stream",
+              "contentType": "application/json",
+              "protocolVersion": "2025-11-25"
+            },
+            "body": {
+              "method": "tools/call",
+              "params": {
+                "name": "test_simple_text"
+              },
+              "jsonrpc": "2.0",
+              "id": 1
+            }
+          }
+        ],
+        "responses": [
+          {
+            "requestIndex": 0,
+            "status": 200,
+            "contentType": "text/event-stream",
+            "body": "event: message\ndata: {\"result\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{\"tools\":{\"listChanged\":true}},\"serverInfo\":{\"name\":\"simple-text-sdk-proof\",\"version\":\"1.0.0\"}},\"jsonrpc\":\"2.0\",\"id\":0}\n\n"
+          },
+          {
+            "requestIndex": 1,
+            "status": 202,
+            "contentType": "text/plain; charset=UTF-8",
+            "body": ""
+          },
+          {
+            "requestIndex": 2,
+            "status": 405,
+            "body": ""
+          },
+          {
+            "requestIndex": 3,
+            "status": 200,
+            "contentType": "text/event-stream",
+            "body": "event: message\ndata: {\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"MCP error -32602: Tool test_simple_text not found\"}],\"isError\":true},\"jsonrpc\":\"2.0\",\"id\":1}\n\n"
+          }
+        ],
+        "handlerCalls": [],
+        "errors": []
+      }
+    },
+    {
+      "originalRelativePath": "verified-run/baseline/error-isError-true/cli.stderr.log",
+      "format": "text",
+      "content": ""
+    },
+    {
+      "originalRelativePath": "verified-run/baseline/error-isError-true/cli.stdout.log",
+      "format": "text",
+      "content": "Running client scenario 'tools-call-simple-text' against server: http://127.0.0.1:46683/mcp\nResults saved to <SCRATCH_ROOT>/mcp165_sdk_evidence/verified-run/baseline/error-isError-true/results/server-tools-call-simple-text-2026-09-28T05-11-59-035Z\nChecks:\n\u001b[90m2026-09-28T05:11:59.148Z\u001b[0m [tools-call-simple-text] \u001b[32mSUCCESS\u001b[0m Tool returns simple text content\n\u001b[90m2026-09-28T05:11:59.149Z\u001b[0m [wire-schema-valid     ] \u001b[32mSUCCESS\u001b[0m Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version\n\nTest Results:\nPassed: 2/2, 0 failed, 0 warnings\n"
+    },
+    {
+      "originalRelativePath": "verified-run/baseline/error-isError-true/invocation.json",
+      "format": "json",
+      "content": {
+        "executable": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "cwd": "<SCRATCH_ROOT>/mcp165_baseline",
+        "args": [
+          "dist/index.js",
+          "server",
+          "--url",
+          "http://127.0.0.1:46683/mcp",
+          "--scenario",
+          "tools-call-simple-text",
+          "--spec-version",
+          "2025-11-25",
+          "--timeout",
+          "15000",
+          "-o",
+          "<SCRATCH_ROOT>/mcp165_sdk_evidence/verified-run/baseline/error-isError-true/results"
+        ],
+        "exitCode": 0,
+        "signal": null,
+        "timedOut": false
+      }
+    },
+    {
+      "originalRelativePath": "verified-run/baseline/error-isError-true/results/server-tools-call-simple-text-2026-09-28T05-11-59-035Z/checks.json",
+      "format": "json",
+      "content": [
+        {
+          "id": "tools-call-simple-text",
+          "name": "ToolsCallSimpleText",
+          "description": "Tool returns simple text content",
+          "status": "SUCCESS",
+          "timestamp": "2026-09-28T05:11:59.148Z",
+          "specReferences": [
+            {
+              "id": "MCP-Tools-Call",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/tools#calling-tools"
+            }
+          ],
+          "details": {
+            "result": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "This is a simple text response for testing."
+                }
+              ],
+              "isError": true
+            }
+          }
+        },
+        {
+          "id": "wire-schema-valid",
+          "name": "WireSchemaValid",
+          "description": "Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version",
+          "status": "SUCCESS",
+          "timestamp": "2026-09-28T05:11:59.149Z",
+          "specReferences": [
+            {
+              "id": "MCP-Schema",
+              "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/schema/2025-11-25/schema.json"
+            }
+          ],
+          "details": {
+            "messagesValidated": 5,
+            "violations": []
+          }
+        }
+      ]
+    },
+    {
+      "originalRelativePath": "verified-run/baseline/error-isError-true/server-observations.json",
+      "format": "json",
+      "content": {
+        "variant": "error-isError-true",
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/mcp",
+            "headers": {
+              "accept": "application/json, text/event-stream",
+              "contentType": "application/json"
+            },
+            "body": {
+              "method": "initialize",
+              "params": {
+                "protocolVersion": "2025-11-25",
+                "capabilities": {
+                  "sampling": {},
+                  "elicitation": {}
+                },
+                "clientInfo": {
+                  "name": "conformance-test-client",
+                  "version": "1.0.0"
+                }
+              },
+              "jsonrpc": "2.0",
+              "id": 0
+            }
+          },
+          {
+            "method": "POST",
+            "path": "/mcp",
+            "headers": {
+              "accept": "application/json, text/event-stream",
+              "contentType": "application/json",
+              "protocolVersion": "2025-11-25"
+            },
+            "body": {
+              "method": "notifications/initialized",
+              "jsonrpc": "2.0"
+            }
+          },
+          {
+            "method": "GET",
+            "path": "/mcp",
+            "headers": {
+              "accept": "text/event-stream",
+              "protocolVersion": "2025-11-25"
+            }
+          },
+          {
+            "method": "POST",
+            "path": "/mcp",
+            "headers": {
+              "accept": "application/json, text/event-stream",
+              "contentType": "application/json",
+              "protocolVersion": "2025-11-25"
+            },
+            "body": {
+              "method": "tools/call",
+              "params": {
+                "name": "test_simple_text"
+              },
+              "jsonrpc": "2.0",
+              "id": 1
+            }
+          }
+        ],
+        "responses": [
+          {
+            "requestIndex": 0,
+            "status": 200,
+            "contentType": "text/event-stream",
+            "body": "event: message\ndata: {\"result\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{\"tools\":{\"listChanged\":true}},\"serverInfo\":{\"name\":\"simple-text-sdk-proof\",\"version\":\"1.0.0\"}},\"jsonrpc\":\"2.0\",\"id\":0}\n\n"
+          },
+          {
+            "requestIndex": 1,
+            "status": 202,
+            "contentType": "text/plain; charset=UTF-8",
+            "body": ""
+          },
+          {
+            "requestIndex": 2,
+            "status": 405,
+            "body": ""
+          },
+          {
+            "requestIndex": 3,
+            "status": 200,
+            "contentType": "text/event-stream",
+            "body": "event: message\ndata: {\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"This is a simple text response for testing.\"}],\"isError\":true},\"jsonrpc\":\"2.0\",\"id\":1}\n\n"
+          }
+        ],
+        "handlerCalls": [
+          {
+            "name": "test_simple_text",
+            "inputSchemaPresent": false
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "originalRelativePath": "verified-run/baseline/explicit-empty-inputSchema/cli.stderr.log",
+      "format": "text",
+      "content": ""
+    },
+    {
+      "originalRelativePath": "verified-run/baseline/explicit-empty-inputSchema/cli.stdout.log",
+      "format": "text",
+      "content": "Running client scenario 'tools-call-simple-text' against server: http://127.0.0.1:42041/mcp\nResults saved to <SCRATCH_ROOT>/mcp165_sdk_evidence/verified-run/baseline/explicit-empty-inputSchema/results/server-tools-call-simple-text-2026-09-28T05-12-00-096Z\nChecks:\n\u001b[90m2026-09-28T05:12:00.242Z\u001b[0m [tools-call-simple-text] \u001b[32mSUCCESS\u001b[0m Tool returns simple text content\n\u001b[90m2026-09-28T05:12:00.243Z\u001b[0m [wire-schema-valid     ] \u001b[32mSUCCESS\u001b[0m Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version\n\nTest Results:\nPassed: 2/2, 0 failed, 0 warnings\n"
+    },
+    {
+      "originalRelativePath": "verified-run/baseline/explicit-empty-inputSchema/invocation.json",
+      "format": "json",
+      "content": {
+        "executable": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "cwd": "<SCRATCH_ROOT>/mcp165_baseline",
+        "args": [
+          "dist/index.js",
+          "server",
+          "--url",
+          "http://127.0.0.1:42041/mcp",
+          "--scenario",
+          "tools-call-simple-text",
+          "--spec-version",
+          "2025-11-25",
+          "--timeout",
+          "15000",
+          "-o",
+          "<SCRATCH_ROOT>/mcp165_sdk_evidence/verified-run/baseline/explicit-empty-inputSchema/results"
+        ],
+        "exitCode": 0,
+        "signal": null,
+        "timedOut": false
+      }
+    },
+    {
+      "originalRelativePath": "verified-run/baseline/explicit-empty-inputSchema/results/server-tools-call-simple-text-2026-09-28T05-12-00-096Z/checks.json",
+      "format": "json",
+      "content": [
+        {
+          "id": "tools-call-simple-text",
+          "name": "ToolsCallSimpleText",
+          "description": "Tool returns simple text content",
+          "status": "SUCCESS",
+          "timestamp": "2026-09-28T05:12:00.242Z",
+          "specReferences": [
+            {
+              "id": "MCP-Tools-Call",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/tools#calling-tools"
+            }
+          ],
+          "details": {
+            "result": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "MCP error -32602: Input validation error: Invalid arguments for tool test_simple_text: [\n  {\n    \"expected\": \"object\",\n    \"code\": \"invalid_type\",\n    \"path\": [],\n    \"message\": \"Invalid input: expected object, received undefined\"\n  }\n]"
+                }
+              ],
+              "isError": true
+            }
+          }
+        },
+        {
+          "id": "wire-schema-valid",
+          "name": "WireSchemaValid",
+          "description": "Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version",
+          "status": "SUCCESS",
+          "timestamp": "2026-09-28T05:12:00.243Z",
+          "specReferences": [
+            {
+              "id": "MCP-Schema",
+              "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/schema/2025-11-25/schema.json"
+            }
+          ],
+          "details": {
+            "messagesValidated": 5,
+            "violations": []
+          }
+        }
+      ]
+    },
+    {
+      "originalRelativePath": "verified-run/baseline/explicit-empty-inputSchema/server-observations.json",
+      "format": "json",
+      "content": {
+        "variant": "explicit-empty-inputSchema",
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/mcp",
+            "headers": {
+              "accept": "application/json, text/event-stream",
+              "contentType": "application/json"
+            },
+            "body": {
+              "method": "initialize",
+              "params": {
+                "protocolVersion": "2025-11-25",
+                "capabilities": {
+                  "sampling": {},
+                  "elicitation": {}
+                },
+                "clientInfo": {
+                  "name": "conformance-test-client",
+                  "version": "1.0.0"
+                }
+              },
+              "jsonrpc": "2.0",
+              "id": 0
+            }
+          },
+          {
+            "method": "POST",
+            "path": "/mcp",
+            "headers": {
+              "accept": "application/json, text/event-stream",
+              "contentType": "application/json",
+              "protocolVersion": "2025-11-25"
+            },
+            "body": {
+              "method": "notifications/initialized",
+              "jsonrpc": "2.0"
+            }
+          },
+          {
+            "method": "GET",
+            "path": "/mcp",
+            "headers": {
+              "accept": "text/event-stream",
+              "protocolVersion": "2025-11-25"
+            }
+          },
+          {
+            "method": "POST",
+            "path": "/mcp",
+            "headers": {
+              "accept": "application/json, text/event-stream",
+              "contentType": "application/json",
+              "protocolVersion": "2025-11-25"
+            },
+            "body": {
+              "method": "tools/call",
+              "params": {
+                "name": "test_simple_text"
+              },
+              "jsonrpc": "2.0",
+              "id": 1
+            }
+          }
+        ],
+        "responses": [
+          {
+            "requestIndex": 0,
+            "status": 200,
+            "contentType": "text/event-stream",
+            "body": "event: message\ndata: {\"result\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{\"tools\":{\"listChanged\":true}},\"serverInfo\":{\"name\":\"simple-text-sdk-proof\",\"version\":\"1.0.0\"}},\"jsonrpc\":\"2.0\",\"id\":0}\n\n"
+          },
+          {
+            "requestIndex": 1,
+            "status": 202,
+            "contentType": "text/plain; charset=UTF-8",
+            "body": ""
+          },
+          {
+            "requestIndex": 2,
+            "status": 405,
+            "body": ""
+          },
+          {
+            "requestIndex": 3,
+            "status": 200,
+            "contentType": "text/event-stream",
+            "body": "event: message\ndata: {\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"MCP error -32602: Input validation error: Invalid arguments for tool test_simple_text: [\\n  {\\n    \\\"expected\\\": \\\"object\\\",\\n    \\\"code\\\": \\\"invalid_type\\\",\\n    \\\"path\\\": [],\\n    \\\"message\\\": \\\"Invalid input: expected object, received undefined\\\"\\n  }\\n]\"}],\"isError\":true},\"jsonrpc\":\"2.0\",\"id\":1}\n\n"
+          }
+        ],
+        "handlerCalls": [],
+        "errors": []
+      }
+    },
+    {
+      "originalRelativePath": "verified-run/baseline/success-isError-absent/cli.stderr.log",
+      "format": "text",
+      "content": ""
+    },
+    {
+      "originalRelativePath": "verified-run/baseline/success-isError-absent/cli.stdout.log",
+      "format": "text",
+      "content": "Running client scenario 'tools-call-simple-text' against server: http://127.0.0.1:44113/mcp\nResults saved to <SCRATCH_ROOT>/mcp165_sdk_evidence/verified-run/baseline/success-isError-absent/results/server-tools-call-simple-text-2026-09-28T05-11-58-059Z\nChecks:\n\u001b[90m2026-09-28T05:11:58.192Z\u001b[0m [tools-call-simple-text] \u001b[32mSUCCESS\u001b[0m Tool returns simple text content\n\u001b[90m2026-09-28T05:11:58.194Z\u001b[0m [wire-schema-valid     ] \u001b[32mSUCCESS\u001b[0m Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version\n\nTest Results:\nPassed: 2/2, 0 failed, 0 warnings\n"
+    },
+    {
+      "originalRelativePath": "verified-run/baseline/success-isError-absent/invocation.json",
+      "format": "json",
+      "content": {
+        "executable": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "cwd": "<SCRATCH_ROOT>/mcp165_baseline",
+        "args": [
+          "dist/index.js",
+          "server",
+          "--url",
+          "http://127.0.0.1:44113/mcp",
+          "--scenario",
+          "tools-call-simple-text",
+          "--spec-version",
+          "2025-11-25",
+          "--timeout",
+          "15000",
+          "-o",
+          "<SCRATCH_ROOT>/mcp165_sdk_evidence/verified-run/baseline/success-isError-absent/results"
+        ],
+        "exitCode": 0,
+        "signal": null,
+        "timedOut": false
+      }
+    },
+    {
+      "originalRelativePath": "verified-run/baseline/success-isError-absent/results/server-tools-call-simple-text-2026-09-28T05-11-58-059Z/checks.json",
+      "format": "json",
+      "content": [
+        {
+          "id": "tools-call-simple-text",
+          "name": "ToolsCallSimpleText",
+          "description": "Tool returns simple text content",
+          "status": "SUCCESS",
+          "timestamp": "2026-09-28T05:11:58.192Z",
+          "specReferences": [
+            {
+              "id": "MCP-Tools-Call",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/tools#calling-tools"
+            }
+          ],
+          "details": {
+            "result": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "This is a simple text response for testing."
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "wire-schema-valid",
+          "name": "WireSchemaValid",
+          "description": "Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version",
+          "status": "SUCCESS",
+          "timestamp": "2026-09-28T05:11:58.194Z",
+          "specReferences": [
+            {
+              "id": "MCP-Schema",
+              "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/schema/2025-11-25/schema.json"
+            }
+          ],
+          "details": {
+            "messagesValidated": 5,
+            "violations": []
+          }
+        }
+      ]
+    },
+    {
+      "originalRelativePath": "verified-run/baseline/success-isError-absent/server-observations.json",
+      "format": "json",
+      "content": {
+        "variant": "success-isError-absent",
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/mcp",
+            "headers": {
+              "accept": "application/json, text/event-stream",
+              "contentType": "application/json"
+            },
+            "body": {
+              "method": "initialize",
+              "params": {
+                "protocolVersion": "2025-11-25",
+                "capabilities": {
+                  "sampling": {},
+                  "elicitation": {}
+                },
+                "clientInfo": {
+                  "name": "conformance-test-client",
+                  "version": "1.0.0"
+                }
+              },
+              "jsonrpc": "2.0",
+              "id": 0
+            }
+          },
+          {
+            "method": "POST",
+            "path": "/mcp",
+            "headers": {
+              "accept": "application/json, text/event-stream",
+              "contentType": "application/json",
+              "protocolVersion": "2025-11-25"
+            },
+            "body": {
+              "method": "notifications/initialized",
+              "jsonrpc": "2.0"
+            }
+          },
+          {
+            "method": "GET",
+            "path": "/mcp",
+            "headers": {
+              "accept": "text/event-stream",
+              "protocolVersion": "2025-11-25"
+            }
+          },
+          {
+            "method": "POST",
+            "path": "/mcp",
+            "headers": {
+              "accept": "application/json, text/event-stream",
+              "contentType": "application/json",
+              "protocolVersion": "2025-11-25"
+            },
+            "body": {
+              "method": "tools/call",
+              "params": {
+                "name": "test_simple_text"
+              },
+              "jsonrpc": "2.0",
+              "id": 1
+            }
+          }
+        ],
+        "responses": [
+          {
+            "requestIndex": 0,
+            "status": 200,
+            "contentType": "text/event-stream",
+            "body": "event: message\ndata: {\"result\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{\"tools\":{\"listChanged\":true}},\"serverInfo\":{\"name\":\"simple-text-sdk-proof\",\"version\":\"1.0.0\"}},\"jsonrpc\":\"2.0\",\"id\":0}\n\n"
+          },
+          {
+            "requestIndex": 1,
+            "status": 202,
+            "contentType": "text/plain; charset=UTF-8",
+            "body": ""
+          },
+          {
+            "requestIndex": 2,
+            "status": 405,
+            "body": ""
+          },
+          {
+            "requestIndex": 3,
+            "status": 200,
+            "contentType": "text/event-stream",
+            "body": "event: message\ndata: {\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"This is a simple text response for testing.\"}]},\"jsonrpc\":\"2.0\",\"id\":1}\n\n"
+          }
+        ],
+        "handlerCalls": [
+          {
+            "name": "test_simple_text",
+            "inputSchemaPresent": false
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "originalRelativePath": "verified-run/baseline/success-isError-false/cli.stderr.log",
+      "format": "text",
+      "content": ""
+    },
+    {
+      "originalRelativePath": "verified-run/baseline/success-isError-false/cli.stdout.log",
+      "format": "text",
+      "content": "Running client scenario 'tools-call-simple-text' against server: http://127.0.0.1:41601/mcp\nResults saved to <SCRATCH_ROOT>/mcp165_sdk_evidence/verified-run/baseline/success-isError-false/results/server-tools-call-simple-text-2026-09-28T05-11-58-579Z\nChecks:\n\u001b[90m2026-09-28T05:11:58.691Z\u001b[0m [tools-call-simple-text] \u001b[32mSUCCESS\u001b[0m Tool returns simple text content\n\u001b[90m2026-09-28T05:11:58.693Z\u001b[0m [wire-schema-valid     ] \u001b[32mSUCCESS\u001b[0m Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version\n\nTest Results:\nPassed: 2/2, 0 failed, 0 warnings\n"
+    },
+    {
+      "originalRelativePath": "verified-run/baseline/success-isError-false/invocation.json",
+      "format": "json",
+      "content": {
+        "executable": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "cwd": "<SCRATCH_ROOT>/mcp165_baseline",
+        "args": [
+          "dist/index.js",
+          "server",
+          "--url",
+          "http://127.0.0.1:41601/mcp",
+          "--scenario",
+          "tools-call-simple-text",
+          "--spec-version",
+          "2025-11-25",
+          "--timeout",
+          "15000",
+          "-o",
+          "<SCRATCH_ROOT>/mcp165_sdk_evidence/verified-run/baseline/success-isError-false/results"
+        ],
+        "exitCode": 0,
+        "signal": null,
+        "timedOut": false
+      }
+    },
+    {
+      "originalRelativePath": "verified-run/baseline/success-isError-false/results/server-tools-call-simple-text-2026-09-28T05-11-58-579Z/checks.json",
+      "format": "json",
+      "content": [
+        {
+          "id": "tools-call-simple-text",
+          "name": "ToolsCallSimpleText",
+          "description": "Tool returns simple text content",
+          "status": "SUCCESS",
+          "timestamp": "2026-09-28T05:11:58.691Z",
+          "specReferences": [
+            {
+              "id": "MCP-Tools-Call",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/tools#calling-tools"
+            }
+          ],
+          "details": {
+            "result": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "This is a simple text response for testing."
+                }
+              ],
+              "isError": false
+            }
+          }
+        },
+        {
+          "id": "wire-schema-valid",
+          "name": "WireSchemaValid",
+          "description": "Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version",
+          "status": "SUCCESS",
+          "timestamp": "2026-09-28T05:11:58.693Z",
+          "specReferences": [
+            {
+              "id": "MCP-Schema",
+              "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/schema/2025-11-25/schema.json"
+            }
+          ],
+          "details": {
+            "messagesValidated": 5,
+            "violations": []
+          }
+        }
+      ]
+    },
+    {
+      "originalRelativePath": "verified-run/baseline/success-isError-false/server-observations.json",
+      "format": "json",
+      "content": {
+        "variant": "success-isError-false",
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/mcp",
+            "headers": {
+              "accept": "application/json, text/event-stream",
+              "contentType": "application/json"
+            },
+            "body": {
+              "method": "initialize",
+              "params": {
+                "protocolVersion": "2025-11-25",
+                "capabilities": {
+                  "sampling": {},
+                  "elicitation": {}
+                },
+                "clientInfo": {
+                  "name": "conformance-test-client",
+                  "version": "1.0.0"
+                }
+              },
+              "jsonrpc": "2.0",
+              "id": 0
+            }
+          },
+          {
+            "method": "POST",
+            "path": "/mcp",
+            "headers": {
+              "accept": "application/json, text/event-stream",
+              "contentType": "application/json",
+              "protocolVersion": "2025-11-25"
+            },
+            "body": {
+              "method": "notifications/initialized",
+              "jsonrpc": "2.0"
+            }
+          },
+          {
+            "method": "GET",
+            "path": "/mcp",
+            "headers": {
+              "accept": "text/event-stream",
+              "protocolVersion": "2025-11-25"
+            }
+          },
+          {
+            "method": "POST",
+            "path": "/mcp",
+            "headers": {
+              "accept": "application/json, text/event-stream",
+              "contentType": "application/json",
+              "protocolVersion": "2025-11-25"
+            },
+            "body": {
+              "method": "tools/call",
+              "params": {
+                "name": "test_simple_text"
+              },
+              "jsonrpc": "2.0",
+              "id": 1
+            }
+          }
+        ],
+        "responses": [
+          {
+            "requestIndex": 0,
+            "status": 200,
+            "contentType": "text/event-stream",
+            "body": "event: message\ndata: {\"result\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{\"tools\":{\"listChanged\":true}},\"serverInfo\":{\"name\":\"simple-text-sdk-proof\",\"version\":\"1.0.0\"}},\"jsonrpc\":\"2.0\",\"id\":0}\n\n"
+          },
+          {
+            "requestIndex": 1,
+            "status": 202,
+            "contentType": "text/plain; charset=UTF-8",
+            "body": ""
+          },
+          {
+            "requestIndex": 2,
+            "status": 405,
+            "body": ""
+          },
+          {
+            "requestIndex": 3,
+            "status": 200,
+            "contentType": "text/event-stream",
+            "body": "event: message\ndata: {\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"This is a simple text response for testing.\"}],\"isError\":false},\"jsonrpc\":\"2.0\",\"id\":1}\n\n"
+          }
+        ],
+        "handlerCalls": [
+          {
+            "name": "test_simple_text",
+            "inputSchemaPresent": false
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "originalRelativePath": "verified-run/baseline-build.stderr.log",
+      "format": "text",
+      "content": "npm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\n"
+    },
+    {
+      "originalRelativePath": "verified-run/baseline-build.stdout.log",
+      "format": "text",
+      "content": "\n> @modelcontextprotocol/conformance@0.2.0-alpha.11 build\n> tsdown src/index.ts --minify --clean --target node20 --no-fixed-extension\n\n\u2139 tsdown v0.21.10 powered by rolldown v1.0.0-rc.17\n\u2139 config file: <SCRATCH_ROOT>/mcp165_baseline/package.json \n\u2139 entry: src/index.ts\n\u2139 target: node20\n\u2139 tsconfig: tsconfig.json\n\u2139 Build start\n\u2139 Granting execute permission to dist/index.js\n\u2139 dist/index.js  863.71 kB \u2502 gzip: 177.33 kB\n\u2139 1 files, total: 863.71 kB\n\u2714 Build complete in 141ms\n"
+    },
+    {
+      "originalRelativePath": "verified-run/candidate/diagnostic-tool-missing/cli.stderr.log",
+      "format": "text",
+      "content": ""
+    },
+    {
+      "originalRelativePath": "verified-run/candidate/diagnostic-tool-missing/cli.stdout.log",
+      "format": "text",
+      "content": "Running client scenario 'tools-call-simple-text' against server: http://127.0.0.1:35957/mcp\nResults saved to <SCRATCH_ROOT>/mcp165_sdk_evidence/verified-run/candidate/diagnostic-tool-missing/results/server-tools-call-simple-text-2026-09-28T05-12-02-382Z\nChecks:\n\u001b[90m2026-09-28T05:12:02.492Z\u001b[0m [tools-call-simple-text] \u001b[31mFAILURE\u001b[0m Tool returns simple text content\n\u001b[90m2026-09-28T05:12:02.494Z\u001b[0m [wire-schema-valid     ] \u001b[32mSUCCESS\u001b[0m Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version\n\nTest Results:\nPassed: 1/2, 1 failed, 0 warnings\n\n=== Failed Checks ===\n\n  - ToolsCallSimpleText: Tool returns simple text content\n    Error: Tool returned an error instead of content\n\nTest calling a tool that returns simple text.\n\n\u001b[1mServer Implementation Requirements:\u001b[0m\n\nImplement tool \u001b[2mtest_simple_text\u001b[0m with no arguments that returns:\n\n``\u001b[2mjson\n{\n  \"content\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"This is a simple text response for testing.\"\n    }\n  ]\n}\n\u001b[0m``\n"
+    },
+    {
+      "originalRelativePath": "verified-run/candidate/diagnostic-tool-missing/invocation.json",
+      "format": "json",
+      "content": {
+        "executable": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "cwd": "<SCRATCH_ROOT>/mcp165",
+        "args": [
+          "dist/index.js",
+          "server",
+          "--url",
+          "http://127.0.0.1:35957/mcp",
+          "--scenario",
+          "tools-call-simple-text",
+          "--spec-version",
+          "2025-11-25",
+          "--timeout",
+          "15000",
+          "-o",
+          "<SCRATCH_ROOT>/mcp165_sdk_evidence/verified-run/candidate/diagnostic-tool-missing/results"
+        ],
+        "exitCode": 1,
+        "signal": null,
+        "timedOut": false
+      }
+    },
+    {
+      "originalRelativePath": "verified-run/candidate/diagnostic-tool-missing/results/server-tools-call-simple-text-2026-09-28T05-12-02-382Z/checks.json",
+      "format": "json",
+      "content": [
+        {
+          "id": "tools-call-simple-text",
+          "name": "ToolsCallSimpleText",
+          "description": "Tool returns simple text content",
+          "status": "FAILURE",
+          "timestamp": "2026-09-28T05:12:02.492Z",
+          "errorMessage": "Tool returned an error instead of content",
+          "specReferences": [
+            {
+              "id": "MCP-Tools-Call",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/tools#calling-tools"
+            }
+          ],
+          "details": {
+            "result": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "MCP error -32602: Tool test_simple_text not found"
+                }
+              ],
+              "isError": true
+            }
+          }
+        },
+        {
+          "id": "wire-schema-valid",
+          "name": "WireSchemaValid",
+          "description": "Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version",
+          "status": "SUCCESS",
+          "timestamp": "2026-09-28T05:12:02.494Z",
+          "specReferences": [
+            {
+              "id": "MCP-Schema",
+              "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/schema/2025-11-25/schema.json"
+            }
+          ],
+          "details": {
+            "messagesValidated": 5,
+            "violations": []
+          }
+        }
+      ]
+    },
+    {
+      "originalRelativePath": "verified-run/candidate/diagnostic-tool-missing/server-observations.json",
+      "format": "json",
+      "content": {
+        "variant": "diagnostic-tool-missing",
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/mcp",
+            "headers": {
+              "accept": "application/json, text/event-stream",
+              "contentType": "application/json"
+            },
+            "body": {
+              "method": "initialize",
+              "params": {
+                "protocolVersion": "2025-11-25",
+                "capabilities": {
+                  "sampling": {},
+                  "elicitation": {}
+                },
+                "clientInfo": {
+                  "name": "conformance-test-client",
+                  "version": "1.0.0"
+                }
+              },
+              "jsonrpc": "2.0",
+              "id": 0
+            }
+          },
+          {
+            "method": "POST",
+            "path": "/mcp",
+            "headers": {
+              "accept": "application/json, text/event-stream",
+              "contentType": "application/json",
+              "protocolVersion": "2025-11-25"
+            },
+            "body": {
+              "method": "notifications/initialized",
+              "jsonrpc": "2.0"
+            }
+          },
+          {
+            "method": "GET",
+            "path": "/mcp",
+            "headers": {
+              "accept": "text/event-stream",
+              "protocolVersion": "2025-11-25"
+            }
+          },
+          {
+            "method": "POST",
+            "path": "/mcp",
+            "headers": {
+              "accept": "application/json, text/event-stream",
+              "contentType": "application/json",
+              "protocolVersion": "2025-11-25"
+            },
+            "body": {
+              "method": "tools/call",
+              "params": {
+                "name": "test_simple_text",
+                "arguments": {}
+              },
+              "jsonrpc": "2.0",
+              "id": 1
+            }
+          }
+        ],
+        "responses": [
+          {
+            "requestIndex": 0,
+            "status": 200,
+            "contentType": "text/event-stream",
+            "body": "event: message\ndata: {\"result\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{\"tools\":{\"listChanged\":true}},\"serverInfo\":{\"name\":\"simple-text-sdk-proof\",\"version\":\"1.0.0\"}},\"jsonrpc\":\"2.0\",\"id\":0}\n\n"
+          },
+          {
+            "requestIndex": 1,
+            "status": 202,
+            "contentType": "text/plain; charset=UTF-8",
+            "body": ""
+          },
+          {
+            "requestIndex": 2,
+            "status": 405,
+            "body": ""
+          },
+          {
+            "requestIndex": 3,
+            "status": 200,
+            "contentType": "text/event-stream",
+            "body": "event: message\ndata: {\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"MCP error -32602: Tool test_simple_text not found\"}],\"isError\":true},\"jsonrpc\":\"2.0\",\"id\":1}\n\n"
+          }
+        ],
+        "handlerCalls": [],
+        "errors": []
+      }
+    },
+    {
+      "originalRelativePath": "verified-run/candidate/error-isError-true/cli.stderr.log",
+      "format": "text",
+      "content": ""
+    },
+    {
+      "originalRelativePath": "verified-run/candidate/error-isError-true/cli.stdout.log",
+      "format": "text",
+      "content": "Running client scenario 'tools-call-simple-text' against server: http://127.0.0.1:42023/mcp\nResults saved to <SCRATCH_ROOT>/mcp165_sdk_evidence/verified-run/candidate/error-isError-true/results/server-tools-call-simple-text-2026-09-28T05-12-01-916Z\nChecks:\n\u001b[90m2026-09-28T05:12:02.021Z\u001b[0m [tools-call-simple-text] \u001b[31mFAILURE\u001b[0m Tool returns simple text content\n\u001b[90m2026-09-28T05:12:02.022Z\u001b[0m [wire-schema-valid     ] \u001b[32mSUCCESS\u001b[0m Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version\n\nTest Results:\nPassed: 1/2, 1 failed, 0 warnings\n\n=== Failed Checks ===\n\n  - ToolsCallSimpleText: Tool returns simple text content\n    Error: Tool returned an error instead of content\n\nTest calling a tool that returns simple text.\n\n\u001b[1mServer Implementation Requirements:\u001b[0m\n\nImplement tool \u001b[2mtest_simple_text\u001b[0m with no arguments that returns:\n\n``\u001b[2mjson\n{\n  \"content\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"This is a simple text response for testing.\"\n    }\n  ]\n}\n\u001b[0m``\n"
+    },
+    {
+      "originalRelativePath": "verified-run/candidate/error-isError-true/invocation.json",
+      "format": "json",
+      "content": {
+        "executable": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "cwd": "<SCRATCH_ROOT>/mcp165",
+        "args": [
+          "dist/index.js",
+          "server",
+          "--url",
+          "http://127.0.0.1:42023/mcp",
+          "--scenario",
+          "tools-call-simple-text",
+          "--spec-version",
+          "2025-11-25",
+          "--timeout",
+          "15000",
+          "-o",
+          "<SCRATCH_ROOT>/mcp165_sdk_evidence/verified-run/candidate/error-isError-true/results"
+        ],
+        "exitCode": 1,
+        "signal": null,
+        "timedOut": false
+      }
+    },
+    {
+      "originalRelativePath": "verified-run/candidate/error-isError-true/results/server-tools-call-simple-text-2026-09-28T05-12-01-916Z/checks.json",
+      "format": "json",
+      "content": [
+        {
+          "id": "tools-call-simple-text",
+          "name": "ToolsCallSimpleText",
+          "description": "Tool returns simple text content",
+          "status": "FAILURE",
+          "timestamp": "2026-09-28T05:12:02.021Z",
+          "errorMessage": "Tool returned an error instead of content",
+          "specReferences": [
+            {
+              "id": "MCP-Tools-Call",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/tools#calling-tools"
+            }
+          ],
+          "details": {
+            "result": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "This is a simple text response for testing."
+                }
+              ],
+              "isError": true
+            }
+          }
+        },
+        {
+          "id": "wire-schema-valid",
+          "name": "WireSchemaValid",
+          "description": "Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version",
+          "status": "SUCCESS",
+          "timestamp": "2026-09-28T05:12:02.022Z",
+          "specReferences": [
+            {
+              "id": "MCP-Schema",
+              "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/schema/2025-11-25/schema.json"
+            }
+          ],
+          "details": {
+            "messagesValidated": 5,
+            "violations": []
+          }
+        }
+      ]
+    },
+    {
+      "originalRelativePath": "verified-run/candidate/error-isError-true/server-observations.json",
+      "format": "json",
+      "content": {
+        "variant": "error-isError-true",
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/mcp",
+            "headers": {
+              "accept": "application/json, text/event-stream",
+              "contentType": "application/json"
+            },
+            "body": {
+              "method": "initialize",
+              "params": {
+                "protocolVersion": "2025-11-25",
+                "capabilities": {
+                  "sampling": {},
+                  "elicitation": {}
+                },
+                "clientInfo": {
+                  "name": "conformance-test-client",
+                  "version": "1.0.0"
+                }
+              },
+              "jsonrpc": "2.0",
+              "id": 0
+            }
+          },
+          {
+            "method": "POST",
+            "path": "/mcp",
+            "headers": {
+              "accept": "application/json, text/event-stream",
+              "contentType": "application/json",
+              "protocolVersion": "2025-11-25"
+            },
+            "body": {
+              "method": "notifications/initialized",
+              "jsonrpc": "2.0"
+            }
+          },
+          {
+            "method": "GET",
+            "path": "/mcp",
+            "headers": {
+              "accept": "text/event-stream",
+              "protocolVersion": "2025-11-25"
+            }
+          },
+          {
+            "method": "POST",
+            "path": "/mcp",
+            "headers": {
+              "accept": "application/json, text/event-stream",
+              "contentType": "application/json",
+              "protocolVersion": "2025-11-25"
+            },
+            "body": {
+              "method": "tools/call",
+              "params": {
+                "name": "test_simple_text",
+                "arguments": {}
+              },
+              "jsonrpc": "2.0",
+              "id": 1
+            }
+          }
+        ],
+        "responses": [
+          {
+            "requestIndex": 0,
+            "status": 200,
+            "contentType": "text/event-stream",
+            "body": "event: message\ndata: {\"result\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{\"tools\":{\"listChanged\":true}},\"serverInfo\":{\"name\":\"simple-text-sdk-proof\",\"version\":\"1.0.0\"}},\"jsonrpc\":\"2.0\",\"id\":0}\n\n"
+          },
+          {
+            "requestIndex": 1,
+            "status": 202,
+            "contentType": "text/plain; charset=UTF-8",
+            "body": ""
+          },
+          {
+            "requestIndex": 2,
+            "status": 405,
+            "body": ""
+          },
+          {
+            "requestIndex": 3,
+            "status": 200,
+            "contentType": "text/event-stream",
+            "body": "event: message\ndata: {\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"This is a simple text response for testing.\"}],\"isError\":true},\"jsonrpc\":\"2.0\",\"id\":1}\n\n"
+          }
+        ],
+        "handlerCalls": [
+          {
+            "name": "test_simple_text",
+            "inputSchemaPresent": false
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "originalRelativePath": "verified-run/candidate/explicit-empty-inputSchema/cli.stderr.log",
+      "format": "text",
+      "content": ""
+    },
+    {
+      "originalRelativePath": "verified-run/candidate/explicit-empty-inputSchema/cli.stdout.log",
+      "format": "text",
+      "content": "Running client scenario 'tools-call-simple-text' against server: http://127.0.0.1:41483/mcp\nResults saved to <SCRATCH_ROOT>/mcp165_sdk_evidence/verified-run/candidate/explicit-empty-inputSchema/results/server-tools-call-simple-text-2026-09-28T05-12-02-835Z\nChecks:\n\u001b[90m2026-09-28T05:12:02.951Z\u001b[0m [tools-call-simple-text] \u001b[32mSUCCESS\u001b[0m Tool returns simple text content\n\u001b[90m2026-09-28T05:12:02.952Z\u001b[0m [wire-schema-valid     ] \u001b[32mSUCCESS\u001b[0m Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version\n\nTest Results:\nPassed: 2/2, 0 failed, 0 warnings\n"
+    },
+    {
+      "originalRelativePath": "verified-run/candidate/explicit-empty-inputSchema/invocation.json",
+      "format": "json",
+      "content": {
+        "executable": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "cwd": "<SCRATCH_ROOT>/mcp165",
+        "args": [
+          "dist/index.js",
+          "server",
+          "--url",
+          "http://127.0.0.1:41483/mcp",
+          "--scenario",
+          "tools-call-simple-text",
+          "--spec-version",
+          "2025-11-25",
+          "--timeout",
+          "15000",
+          "-o",
+          "<SCRATCH_ROOT>/mcp165_sdk_evidence/verified-run/candidate/explicit-empty-inputSchema/results"
+        ],
+        "exitCode": 0,
+        "signal": null,
+        "timedOut": false
+      }
+    },
+    {
+      "originalRelativePath": "verified-run/candidate/explicit-empty-inputSchema/results/server-tools-call-simple-text-2026-09-28T05-12-02-835Z/checks.json",
+      "format": "json",
+      "content": [
+        {
+          "id": "tools-call-simple-text",
+          "name": "ToolsCallSimpleText",
+          "description": "Tool returns simple text content",
+          "status": "SUCCESS",
+          "timestamp": "2026-09-28T05:12:02.951Z",
+          "specReferences": [
+            {
+              "id": "MCP-Tools-Call",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/tools#calling-tools"
+            }
+          ],
+          "details": {
+            "result": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "This is a simple text response for testing."
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "wire-schema-valid",
+          "name": "WireSchemaValid",
+          "description": "Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version",
+          "status": "SUCCESS",
+          "timestamp": "2026-09-28T05:12:02.952Z",
+          "specReferences": [
+            {
+              "id": "MCP-Schema",
+              "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/schema/2025-11-25/schema.json"
+            }
+          ],
+          "details": {
+            "messagesValidated": 5,
+            "violations": []
+          }
+        }
+      ]
+    },
+    {
+      "originalRelativePath": "verified-run/candidate/explicit-empty-inputSchema/server-observations.json",
+      "format": "json",
+      "content": {
+        "variant": "explicit-empty-inputSchema",
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/mcp",
+            "headers": {
+              "accept": "application/json, text/event-stream",
+              "contentType": "application/json"
+            },
+            "body": {
+              "method": "initialize",
+              "params": {
+                "protocolVersion": "2025-11-25",
+                "capabilities": {
+                  "sampling": {},
+                  "elicitation": {}
+                },
+                "clientInfo": {
+                  "name": "conformance-test-client",
+                  "version": "1.0.0"
+                }
+              },
+              "jsonrpc": "2.0",
+              "id": 0
+            }
+          },
+          {
+            "method": "POST",
+            "path": "/mcp",
+            "headers": {
+              "accept": "application/json, text/event-stream",
+              "contentType": "application/json",
+              "protocolVersion": "2025-11-25"
+            },
+            "body": {
+              "method": "notifications/initialized",
+              "jsonrpc": "2.0"
+            }
+          },
+          {
+            "method": "GET",
+            "path": "/mcp",
+            "headers": {
+              "accept": "text/event-stream",
+              "protocolVersion": "2025-11-25"
+            }
+          },
+          {
+            "method": "POST",
+            "path": "/mcp",
+            "headers": {
+              "accept": "application/json, text/event-stream",
+              "contentType": "application/json",
+              "protocolVersion": "2025-11-25"
+            },
+            "body": {
+              "method": "tools/call",
+              "params": {
+                "name": "test_simple_text",
+                "arguments": {}
+              },
+              "jsonrpc": "2.0",
+              "id": 1
+            }
+          }
+        ],
+        "responses": [
+          {
+            "requestIndex": 0,
+            "status": 200,
+            "contentType": "text/event-stream",
+            "body": "event: message\ndata: {\"result\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{\"tools\":{\"listChanged\":true}},\"serverInfo\":{\"name\":\"simple-text-sdk-proof\",\"version\":\"1.0.0\"}},\"jsonrpc\":\"2.0\",\"id\":0}\n\n"
+          },
+          {
+            "requestIndex": 1,
+            "status": 202,
+            "contentType": "text/plain; charset=UTF-8",
+            "body": ""
+          },
+          {
+            "requestIndex": 2,
+            "status": 405,
+            "body": ""
+          },
+          {
+            "requestIndex": 3,
+            "status": 200,
+            "contentType": "text/event-stream",
+            "body": "event: message\ndata: {\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"This is a simple text response for testing.\"}]},\"jsonrpc\":\"2.0\",\"id\":1}\n\n"
+          }
+        ],
+        "handlerCalls": [
+          {
+            "name": "test_simple_text",
+            "inputSchemaPresent": true,
+            "arguments": {}
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "originalRelativePath": "verified-run/candidate/success-isError-absent/cli.stderr.log",
+      "format": "text",
+      "content": ""
+    },
+    {
+      "originalRelativePath": "verified-run/candidate/success-isError-absent/cli.stdout.log",
+      "format": "text",
+      "content": "Running client scenario 'tools-call-simple-text' against server: http://127.0.0.1:46671/mcp\nResults saved to <SCRATCH_ROOT>/mcp165_sdk_evidence/verified-run/candidate/success-isError-absent/results/server-tools-call-simple-text-2026-09-28T05-12-00-969Z\nChecks:\n\u001b[90m2026-09-28T05:12:01.091Z\u001b[0m [tools-call-simple-text] \u001b[32mSUCCESS\u001b[0m Tool returns simple text content\n\u001b[90m2026-09-28T05:12:01.093Z\u001b[0m [wire-schema-valid     ] \u001b[32mSUCCESS\u001b[0m Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version\n\nTest Results:\nPassed: 2/2, 0 failed, 0 warnings\n"
+    },
+    {
+      "originalRelativePath": "verified-run/candidate/success-isError-absent/invocation.json",
+      "format": "json",
+      "content": {
+        "executable": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "cwd": "<SCRATCH_ROOT>/mcp165",
+        "args": [
+          "dist/index.js",
+          "server",
+          "--url",
+          "http://127.0.0.1:46671/mcp",
+          "--scenario",
+          "tools-call-simple-text",
+          "--spec-version",
+          "2025-11-25",
+          "--timeout",
+          "15000",
+          "-o",
+          "<SCRATCH_ROOT>/mcp165_sdk_evidence/verified-run/candidate/success-isError-absent/results"
+        ],
+        "exitCode": 0,
+        "signal": null,
+        "timedOut": false
+      }
+    },
+    {
+      "originalRelativePath": "verified-run/candidate/success-isError-absent/results/server-tools-call-simple-text-2026-09-28T05-12-00-969Z/checks.json",
+      "format": "json",
+      "content": [
+        {
+          "id": "tools-call-simple-text",
+          "name": "ToolsCallSimpleText",
+          "description": "Tool returns simple text content",
+          "status": "SUCCESS",
+          "timestamp": "2026-09-28T05:12:01.091Z",
+          "specReferences": [
+            {
+              "id": "MCP-Tools-Call",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/tools#calling-tools"
+            }
+          ],
+          "details": {
+            "result": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "This is a simple text response for testing."
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "wire-schema-valid",
+          "name": "WireSchemaValid",
+          "description": "Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version",
+          "status": "SUCCESS",
+          "timestamp": "2026-09-28T05:12:01.093Z",
+          "specReferences": [
+            {
+              "id": "MCP-Schema",
+              "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/schema/2025-11-25/schema.json"
+            }
+          ],
+          "details": {
+            "messagesValidated": 5,
+            "violations": []
+          }
+        }
+      ]
+    },
+    {
+      "originalRelativePath": "verified-run/candidate/success-isError-absent/server-observations.json",
+      "format": "json",
+      "content": {
+        "variant": "success-isError-absent",
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/mcp",
+            "headers": {
+              "accept": "application/json, text/event-stream",
+              "contentType": "application/json"
+            },
+            "body": {
+              "method": "initialize",
+              "params": {
+                "protocolVersion": "2025-11-25",
+                "capabilities": {
+                  "sampling": {},
+                  "elicitation": {}
+                },
+                "clientInfo": {
+                  "name": "conformance-test-client",
+                  "version": "1.0.0"
+                }
+              },
+              "jsonrpc": "2.0",
+              "id": 0
+            }
+          },
+          {
+            "method": "POST",
+            "path": "/mcp",
+            "headers": {
+              "accept": "application/json, text/event-stream",
+              "contentType": "application/json",
+              "protocolVersion": "2025-11-25"
+            },
+            "body": {
+              "method": "notifications/initialized",
+              "jsonrpc": "2.0"
+            }
+          },
+          {
+            "method": "GET",
+            "path": "/mcp",
+            "headers": {
+              "accept": "text/event-stream",
+              "protocolVersion": "2025-11-25"
+            }
+          },
+          {
+            "method": "POST",
+            "path": "/mcp",
+            "headers": {
+              "accept": "application/json, text/event-stream",
+              "contentType": "application/json",
+              "protocolVersion": "2025-11-25"
+            },
+            "body": {
+              "method": "tools/call",
+              "params": {
+                "name": "test_simple_text",
+                "arguments": {}
+              },
+              "jsonrpc": "2.0",
+              "id": 1
+            }
+          }
+        ],
+        "responses": [
+          {
+            "requestIndex": 0,
+            "status": 200,
+            "contentType": "text/event-stream",
+            "body": "event: message\ndata: {\"result\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{\"tools\":{\"listChanged\":true}},\"serverInfo\":{\"name\":\"simple-text-sdk-proof\",\"version\":\"1.0.0\"}},\"jsonrpc\":\"2.0\",\"id\":0}\n\n"
+          },
+          {
+            "requestIndex": 1,
+            "status": 202,
+            "contentType": "text/plain; charset=UTF-8",
+            "body": ""
+          },
+          {
+            "requestIndex": 2,
+            "status": 405,
+            "body": ""
+          },
+          {
+            "requestIndex": 3,
+            "status": 200,
+            "contentType": "text/event-stream",
+            "body": "event: message\ndata: {\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"This is a simple text response for testing.\"}]},\"jsonrpc\":\"2.0\",\"id\":1}\n\n"
+          }
+        ],
+        "handlerCalls": [
+          {
+            "name": "test_simple_text",
+            "inputSchemaPresent": false
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "originalRelativePath": "verified-run/candidate/success-isError-false/cli.stderr.log",
+      "format": "text",
+      "content": ""
+    },
+    {
+      "originalRelativePath": "verified-run/candidate/success-isError-false/cli.stdout.log",
+      "format": "text",
+      "content": "Running client scenario 'tools-call-simple-text' against server: http://127.0.0.1:46531/mcp\nResults saved to <SCRATCH_ROOT>/mcp165_sdk_evidence/verified-run/candidate/success-isError-false/results/server-tools-call-simple-text-2026-09-28T05-12-01-436Z\nChecks:\n\u001b[90m2026-09-28T05:12:01.563Z\u001b[0m [tools-call-simple-text] \u001b[32mSUCCESS\u001b[0m Tool returns simple text content\n\u001b[90m2026-09-28T05:12:01.565Z\u001b[0m [wire-schema-valid     ] \u001b[32mSUCCESS\u001b[0m Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version\n\nTest Results:\nPassed: 2/2, 0 failed, 0 warnings\n"
+    },
+    {
+      "originalRelativePath": "verified-run/candidate/success-isError-false/invocation.json",
+      "format": "json",
+      "content": {
+        "executable": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "cwd": "<SCRATCH_ROOT>/mcp165",
+        "args": [
+          "dist/index.js",
+          "server",
+          "--url",
+          "http://127.0.0.1:46531/mcp",
+          "--scenario",
+          "tools-call-simple-text",
+          "--spec-version",
+          "2025-11-25",
+          "--timeout",
+          "15000",
+          "-o",
+          "<SCRATCH_ROOT>/mcp165_sdk_evidence/verified-run/candidate/success-isError-false/results"
+        ],
+        "exitCode": 0,
+        "signal": null,
+        "timedOut": false
+      }
+    },
+    {
+      "originalRelativePath": "verified-run/candidate/success-isError-false/results/server-tools-call-simple-text-2026-09-28T05-12-01-436Z/checks.json",
+      "format": "json",
+      "content": [
+        {
+          "id": "tools-call-simple-text",
+          "name": "ToolsCallSimpleText",
+          "description": "Tool returns simple text content",
+          "status": "SUCCESS",
+          "timestamp": "2026-09-28T05:12:01.563Z",
+          "specReferences": [
+            {
+              "id": "MCP-Tools-Call",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/tools#calling-tools"
+            }
+          ],
+          "details": {
+            "result": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "This is a simple text response for testing."
+                }
+              ],
+              "isError": false
+            }
+          }
+        },
+        {
+          "id": "wire-schema-valid",
+          "name": "WireSchemaValid",
+          "description": "Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version",
+          "status": "SUCCESS",
+          "timestamp": "2026-09-28T05:12:01.565Z",
+          "specReferences": [
+            {
+              "id": "MCP-Schema",
+              "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/schema/2025-11-25/schema.json"
+            }
+          ],
+          "details": {
+            "messagesValidated": 5,
+            "violations": []
+          }
+        }
+      ]
+    },
+    {
+      "originalRelativePath": "verified-run/candidate/success-isError-false/server-observations.json",
+      "format": "json",
+      "content": {
+        "variant": "success-isError-false",
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/mcp",
+            "headers": {
+              "accept": "application/json, text/event-stream",
+              "contentType": "application/json"
+            },
+            "body": {
+              "method": "initialize",
+              "params": {
+                "protocolVersion": "2025-11-25",
+                "capabilities": {
+                  "sampling": {},
+                  "elicitation": {}
+                },
+                "clientInfo": {
+                  "name": "conformance-test-client",
+                  "version": "1.0.0"
+                }
+              },
+              "jsonrpc": "2.0",
+              "id": 0
+            }
+          },
+          {
+            "method": "POST",
+            "path": "/mcp",
+            "headers": {
+              "accept": "application/json, text/event-stream",
+              "contentType": "application/json",
+              "protocolVersion": "2025-11-25"
+            },
+            "body": {
+              "method": "notifications/initialized",
+              "jsonrpc": "2.0"
+            }
+          },
+          {
+            "method": "GET",
+            "path": "/mcp",
+            "headers": {
+              "accept": "text/event-stream",
+              "protocolVersion": "2025-11-25"
+            }
+          },
+          {
+            "method": "POST",
+            "path": "/mcp",
+            "headers": {
+              "accept": "application/json, text/event-stream",
+              "contentType": "application/json",
+              "protocolVersion": "2025-11-25"
+            },
+            "body": {
+              "method": "tools/call",
+              "params": {
+                "name": "test_simple_text",
+                "arguments": {}
+              },
+              "jsonrpc": "2.0",
+              "id": 1
+            }
+          }
+        ],
+        "responses": [
+          {
+            "requestIndex": 0,
+            "status": 200,
+            "contentType": "text/event-stream",
+            "body": "event: message\ndata: {\"result\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{\"tools\":{\"listChanged\":true}},\"serverInfo\":{\"name\":\"simple-text-sdk-proof\",\"version\":\"1.0.0\"}},\"jsonrpc\":\"2.0\",\"id\":0}\n\n"
+          },
+          {
+            "requestIndex": 1,
+            "status": 202,
+            "contentType": "text/plain; charset=UTF-8",
+            "body": ""
+          },
+          {
+            "requestIndex": 2,
+            "status": 405,
+            "body": ""
+          },
+          {
+            "requestIndex": 3,
+            "status": 200,
+            "contentType": "text/event-stream",
+            "body": "event: message\ndata: {\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"This is a simple text response for testing.\"}],\"isError\":false},\"jsonrpc\":\"2.0\",\"id\":1}\n\n"
+          }
+        ],
+        "handlerCalls": [
+          {
+            "name": "test_simple_text",
+            "inputSchemaPresent": false
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "originalRelativePath": "verified-run/candidate-build.stderr.log",
+      "format": "text",
+      "content": "npm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\n"
+    },
+    {
+      "originalRelativePath": "verified-run/candidate-build.stdout.log",
+      "format": "text",
+      "content": "\n> @modelcontextprotocol/conformance@0.2.0-alpha.11 build\n> tsdown src/index.ts --minify --clean --target node20 --no-fixed-extension\n\n\u2139 tsdown v0.21.10 powered by rolldown v1.0.0-rc.17\n\u2139 config file: <SCRATCH_ROOT>/mcp165/package.json \n\u2139 entry: src/index.ts\n\u2139 target: node20\n\u2139 tsconfig: tsconfig.json\n\u2139 Build start\n\u2139 Granting execute permission to dist/index.js\n\u2139 dist/index.js  863.80 kB \u2502 gzip: 177.35 kB\n\u2139 1 files, total: 863.80 kB\n\u2714 Build complete in 115ms\n"
+    }
+  ]
+}

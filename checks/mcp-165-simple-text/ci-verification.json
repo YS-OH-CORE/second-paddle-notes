@@ -1,0 +1,99 @@
+{
+  "recordedAt": "2026-09-28T05:19:14.392Z",
+  "cleanHead": "89c0d2f9db7f5173cefa8d9dcc2740b262f98947",
+  "ciHead": "d64b16b724e8133f8becb4b6c437b7209f78df03",
+  "cleanBranch": "review/pr-165-iserror-rebased-20260928",
+  "ciBranch": "ci/pr-165-iserror-20260928",
+  "run": {
+    "id": 36381211744,
+    "url": "https://github.com/YS-OH-CORE/conformance/actions/runs/36381211744",
+    "status": "completed",
+    "conclusion": "success",
+    "headSha": "d64b16b724e8133f8becb4b6c437b7209f78df03"
+  },
+  "sourceIdentity": {
+    "compareUrl": "https://github.com/YS-OH-CORE/conformance/compare/89c0d2f9db7f5173cefa8d9dcc2740b262f98947...d64b16b724e8133f8becb4b6c437b7209f78df03",
+    "files": [
+      {
+        "filename": ".github/workflows/ci.yml",
+        "additions": 1,
+        "deletions": 0,
+        "patch": "@@ -2,6 +2,7 @@ on:\n   push:\n     branches:\n       - main\n+      - ci/pr-165-iserror-20260928\n   pull_request:\n   release:\n     types: [published]"
+      }
+    ],
+    "explanation": "The CI commit changes only its exact push branch trigger. All product and test blobs match the clean handoff branch."
+  },
+  "jobs": [
+    {
+      "id": 108797174158,
+      "name": "test",
+      "url": "https://github.com/YS-OH-CORE/conformance/actions/runs/36381211744/job/108797174158",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v6",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@v6",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm ci",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run check",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run build",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm test",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@v6",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v6",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 108797395367,
+      "name": "publish",
+      "url": "https://github.com/YS-OH-CORE/conformance/actions/runs/36381211744/job/108797395367",
+      "conclusion": "skipped",
+      "steps": []
+    }
+  ],
+  "testSummary": [
+    "2026-09-28T05:17:06.4120647Z All matched files use Prettier code style!",
+    "2026-09-28T05:17:42.3545749Z  Test Files  48 passed (48)",
+    "2026-09-28T05:17:42.3548545Z       Tests  628 passed (628)",
+    "2026-09-28T05:17:42.3550617Z    Duration  35.05s (transform 1.39s, setup 3.48s, import 9.01s, tests 16.48s, environment 6ms)"
+  ],
+  "preview": {
+    "runUrl": "https://github.com/YS-OH-CORE/conformance/actions/runs/36381211781",
+    "jobId": 108797174409,
+    "conclusion": "failure",
+    "diagnostic": [
+      "2026-09-28T05:16:59.7202703Z Check failed (404): {\"url\":\"/check\",\"statusCode\":404,\"statusMessage\":\"Not Found\",\"message\":\"The app https://github.com/apps/pkg-pr-new is not installed on YS-OH-CORE/conformance.\",\"stack\":\"\"}",
+      "2026-09-28T05:16:59.7423317Z ##[error]Process completed with exit code 1."
+    ],
+    "explanation": "Separate inherited package-preview workflow cannot publish because the pkg.pr.new app is not installed on the fork."
+  }
+}

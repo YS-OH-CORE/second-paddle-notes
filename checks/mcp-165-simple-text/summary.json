@@ -1,0 +1,617 @@
+{
+  "recordedAt": "2026-09-28T05:11:57.315Z",
+  "runtime": {
+    "node": "v24.19.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "sdk": "1.29.0"
+  },
+  "scenario": "tools-call-simple-text",
+  "specVersion": "2025-11-25",
+  "method": "Existing built conformance CLI against a real McpServer and StreamableHTTPServerTransport on loopback",
+  "sources": {
+    "baseline": {
+      "commit": "7169291ec0b68eb370fddcd9947313ab0d5e4156",
+      "lockSha256": "8c30fe8f15735bc4660c682225b12ec84bbd08c22e839127445d06b5476c4945"
+    },
+    "candidate": {
+      "commit": "0a0039d9226d8dfae490a22256f901c6c97ce8a8",
+      "lockSha256": "8c30fe8f15735bc4660c682225b12ec84bbd08c22e839127445d06b5476c4945"
+    }
+  },
+  "runs": [
+    {
+      "label": "baseline",
+      "variant": "success-isError-absent",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "checkId": "tools-call-simple-text",
+      "status": "SUCCESS",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "This is a simple text response for testing."
+          }
+        ]
+      },
+      "wireSchemaCheckId": "wire-schema-valid",
+      "wireSchemaStatus": "SUCCESS",
+      "allChecks": [
+        {
+          "id": "tools-call-simple-text",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "wire-schema-valid",
+          "status": "SUCCESS"
+        }
+      ],
+      "toolRequests": [
+        {
+          "name": "test_simple_text"
+        }
+      ],
+      "handlerCalls": [
+        {
+          "name": "test_simple_text",
+          "inputSchemaPresent": false
+        }
+      ],
+      "fixtureErrors": [],
+      "checksPath": "baseline/success-isError-absent/results/server-tools-call-simple-text-2026-09-28T05-11-58-059Z/checks.json",
+      "observationsPath": "baseline/success-isError-absent/server-observations.json"
+    },
+    {
+      "label": "baseline",
+      "variant": "success-isError-false",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "checkId": "tools-call-simple-text",
+      "status": "SUCCESS",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "This is a simple text response for testing."
+          }
+        ],
+        "isError": false
+      },
+      "wireSchemaCheckId": "wire-schema-valid",
+      "wireSchemaStatus": "SUCCESS",
+      "allChecks": [
+        {
+          "id": "tools-call-simple-text",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "wire-schema-valid",
+          "status": "SUCCESS"
+        }
+      ],
+      "toolRequests": [
+        {
+          "name": "test_simple_text"
+        }
+      ],
+      "handlerCalls": [
+        {
+          "name": "test_simple_text",
+          "inputSchemaPresent": false
+        }
+      ],
+      "fixtureErrors": [],
+      "checksPath": "baseline/success-isError-false/results/server-tools-call-simple-text-2026-09-28T05-11-58-579Z/checks.json",
+      "observationsPath": "baseline/success-isError-false/server-observations.json"
+    },
+    {
+      "label": "baseline",
+      "variant": "error-isError-true",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "checkId": "tools-call-simple-text",
+      "status": "SUCCESS",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "This is a simple text response for testing."
+          }
+        ],
+        "isError": true
+      },
+      "wireSchemaCheckId": "wire-schema-valid",
+      "wireSchemaStatus": "SUCCESS",
+      "allChecks": [
+        {
+          "id": "tools-call-simple-text",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "wire-schema-valid",
+          "status": "SUCCESS"
+        }
+      ],
+      "toolRequests": [
+        {
+          "name": "test_simple_text"
+        }
+      ],
+      "handlerCalls": [
+        {
+          "name": "test_simple_text",
+          "inputSchemaPresent": false
+        }
+      ],
+      "fixtureErrors": [],
+      "checksPath": "baseline/error-isError-true/results/server-tools-call-simple-text-2026-09-28T05-11-59-035Z/checks.json",
+      "observationsPath": "baseline/error-isError-true/server-observations.json"
+    },
+    {
+      "label": "baseline",
+      "variant": "diagnostic-tool-missing",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "checkId": "tools-call-simple-text",
+      "status": "SUCCESS",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "MCP error -32602: Tool test_simple_text not found"
+          }
+        ],
+        "isError": true
+      },
+      "wireSchemaCheckId": "wire-schema-valid",
+      "wireSchemaStatus": "SUCCESS",
+      "allChecks": [
+        {
+          "id": "tools-call-simple-text",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "wire-schema-valid",
+          "status": "SUCCESS"
+        }
+      ],
+      "toolRequests": [
+        {
+          "name": "test_simple_text"
+        }
+      ],
+      "handlerCalls": [],
+      "fixtureErrors": [],
+      "checksPath": "baseline/diagnostic-tool-missing/results/server-tools-call-simple-text-2026-09-28T05-11-59-520Z/checks.json",
+      "observationsPath": "baseline/diagnostic-tool-missing/server-observations.json"
+    },
+    {
+      "label": "baseline",
+      "variant": "explicit-empty-inputSchema",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "checkId": "tools-call-simple-text",
+      "status": "SUCCESS",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "MCP error -32602: Input validation error: Invalid arguments for tool test_simple_text: [\n  {\n    \"expected\": \"object\",\n    \"code\": \"invalid_type\",\n    \"path\": [],\n    \"message\": \"Invalid input: expected object, received undefined\"\n  }\n]"
+          }
+        ],
+        "isError": true
+      },
+      "wireSchemaCheckId": "wire-schema-valid",
+      "wireSchemaStatus": "SUCCESS",
+      "allChecks": [
+        {
+          "id": "tools-call-simple-text",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "wire-schema-valid",
+          "status": "SUCCESS"
+        }
+      ],
+      "toolRequests": [
+        {
+          "name": "test_simple_text"
+        }
+      ],
+      "handlerCalls": [],
+      "fixtureErrors": [],
+      "checksPath": "baseline/explicit-empty-inputSchema/results/server-tools-call-simple-text-2026-09-28T05-12-00-096Z/checks.json",
+      "observationsPath": "baseline/explicit-empty-inputSchema/server-observations.json"
+    },
+    {
+      "label": "candidate",
+      "variant": "success-isError-absent",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "checkId": "tools-call-simple-text",
+      "status": "SUCCESS",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "This is a simple text response for testing."
+          }
+        ]
+      },
+      "wireSchemaCheckId": "wire-schema-valid",
+      "wireSchemaStatus": "SUCCESS",
+      "allChecks": [
+        {
+          "id": "tools-call-simple-text",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "wire-schema-valid",
+          "status": "SUCCESS"
+        }
+      ],
+      "toolRequests": [
+        {
+          "name": "test_simple_text",
+          "arguments": {}
+        }
+      ],
+      "handlerCalls": [
+        {
+          "name": "test_simple_text",
+          "inputSchemaPresent": false
+        }
+      ],
+      "fixtureErrors": [],
+      "checksPath": "candidate/success-isError-absent/results/server-tools-call-simple-text-2026-09-28T05-12-00-969Z/checks.json",
+      "observationsPath": "candidate/success-isError-absent/server-observations.json"
+    },
+    {
+      "label": "candidate",
+      "variant": "success-isError-false",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "checkId": "tools-call-simple-text",
+      "status": "SUCCESS",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "This is a simple text response for testing."
+          }
+        ],
+        "isError": false
+      },
+      "wireSchemaCheckId": "wire-schema-valid",
+      "wireSchemaStatus": "SUCCESS",
+      "allChecks": [
+        {
+          "id": "tools-call-simple-text",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "wire-schema-valid",
+          "status": "SUCCESS"
+        }
+      ],
+      "toolRequests": [
+        {
+          "name": "test_simple_text",
+          "arguments": {}
+        }
+      ],
+      "handlerCalls": [
+        {
+          "name": "test_simple_text",
+          "inputSchemaPresent": false
+        }
+      ],
+      "fixtureErrors": [],
+      "checksPath": "candidate/success-isError-false/results/server-tools-call-simple-text-2026-09-28T05-12-01-436Z/checks.json",
+      "observationsPath": "candidate/success-isError-false/server-observations.json"
+    },
+    {
+      "label": "candidate",
+      "variant": "error-isError-true",
+      "exitCode": 1,
+      "signal": null,
+      "timedOut": false,
+      "checkId": "tools-call-simple-text",
+      "status": "FAILURE",
+      "errorMessage": "Tool returned an error instead of content",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "This is a simple text response for testing."
+          }
+        ],
+        "isError": true
+      },
+      "wireSchemaCheckId": "wire-schema-valid",
+      "wireSchemaStatus": "SUCCESS",
+      "allChecks": [
+        {
+          "id": "tools-call-simple-text",
+          "status": "FAILURE"
+        },
+        {
+          "id": "wire-schema-valid",
+          "status": "SUCCESS"
+        }
+      ],
+      "toolRequests": [
+        {
+          "name": "test_simple_text",
+          "arguments": {}
+        }
+      ],
+      "handlerCalls": [
+        {
+          "name": "test_simple_text",
+          "inputSchemaPresent": false
+        }
+      ],
+      "fixtureErrors": [],
+      "checksPath": "candidate/error-isError-true/results/server-tools-call-simple-text-2026-09-28T05-12-01-916Z/checks.json",
+      "observationsPath": "candidate/error-isError-true/server-observations.json"
+    },
+    {
+      "label": "candidate",
+      "variant": "diagnostic-tool-missing",
+      "exitCode": 1,
+      "signal": null,
+      "timedOut": false,
+      "checkId": "tools-call-simple-text",
+      "status": "FAILURE",
+      "errorMessage": "Tool returned an error instead of content",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "MCP error -32602: Tool test_simple_text not found"
+          }
+        ],
+        "isError": true
+      },
+      "wireSchemaCheckId": "wire-schema-valid",
+      "wireSchemaStatus": "SUCCESS",
+      "allChecks": [
+        {
+          "id": "tools-call-simple-text",
+          "status": "FAILURE"
+        },
+        {
+          "id": "wire-schema-valid",
+          "status": "SUCCESS"
+        }
+      ],
+      "toolRequests": [
+        {
+          "name": "test_simple_text",
+          "arguments": {}
+        }
+      ],
+      "handlerCalls": [],
+      "fixtureErrors": [],
+      "checksPath": "candidate/diagnostic-tool-missing/results/server-tools-call-simple-text-2026-09-28T05-12-02-382Z/checks.json",
+      "observationsPath": "candidate/diagnostic-tool-missing/server-observations.json"
+    },
+    {
+      "label": "candidate",
+      "variant": "explicit-empty-inputSchema",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "checkId": "tools-call-simple-text",
+      "status": "SUCCESS",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "This is a simple text response for testing."
+          }
+        ]
+      },
+      "wireSchemaCheckId": "wire-schema-valid",
+      "wireSchemaStatus": "SUCCESS",
+      "allChecks": [
+        {
+          "id": "tools-call-simple-text",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "wire-schema-valid",
+          "status": "SUCCESS"
+        }
+      ],
+      "toolRequests": [
+        {
+          "name": "test_simple_text",
+          "arguments": {}
+        }
+      ],
+      "handlerCalls": [
+        {
+          "name": "test_simple_text",
+          "inputSchemaPresent": true,
+          "arguments": {}
+        }
+      ],
+      "fixtureErrors": [],
+      "checksPath": "candidate/explicit-empty-inputSchema/results/server-tools-call-simple-text-2026-09-28T05-12-02-835Z/checks.json",
+      "observationsPath": "candidate/explicit-empty-inputSchema/server-observations.json"
+    }
+  ],
+  "assertions": [
+    {
+      "label": "baseline",
+      "variant": "success-isError-absent",
+      "expectations": {
+        "expectedCliExit": true,
+        "expectedScenarioStatus": true,
+        "stableCheckId": true,
+        "validWireSchema": true,
+        "actualHandlerCount": true,
+        "oneToolCall": true,
+        "expectedArguments": true,
+        "cleanFixture": true,
+        "completed": true
+      },
+      "passed": true
+    },
+    {
+      "label": "baseline",
+      "variant": "success-isError-false",
+      "expectations": {
+        "expectedCliExit": true,
+        "expectedScenarioStatus": true,
+        "stableCheckId": true,
+        "validWireSchema": true,
+        "actualHandlerCount": true,
+        "oneToolCall": true,
+        "expectedArguments": true,
+        "cleanFixture": true,
+        "completed": true
+      },
+      "passed": true
+    },
+    {
+      "label": "baseline",
+      "variant": "error-isError-true",
+      "expectations": {
+        "expectedCliExit": true,
+        "expectedScenarioStatus": true,
+        "stableCheckId": true,
+        "validWireSchema": true,
+        "actualHandlerCount": true,
+        "oneToolCall": true,
+        "expectedArguments": true,
+        "cleanFixture": true,
+        "completed": true
+      },
+      "passed": true
+    },
+    {
+      "label": "baseline",
+      "variant": "diagnostic-tool-missing",
+      "expectations": {
+        "expectedCliExit": true,
+        "expectedScenarioStatus": true,
+        "stableCheckId": true,
+        "validWireSchema": true,
+        "actualHandlerCount": true,
+        "oneToolCall": true,
+        "expectedArguments": true,
+        "cleanFixture": true,
+        "completed": true
+      },
+      "passed": true
+    },
+    {
+      "label": "baseline",
+      "variant": "explicit-empty-inputSchema",
+      "expectations": {
+        "expectedCliExit": true,
+        "expectedScenarioStatus": true,
+        "stableCheckId": true,
+        "validWireSchema": true,
+        "actualHandlerCount": true,
+        "oneToolCall": true,
+        "expectedArguments": true,
+        "cleanFixture": true,
+        "completed": true
+      },
+      "passed": true
+    },
+    {
+      "label": "candidate",
+      "variant": "success-isError-absent",
+      "expectations": {
+        "expectedCliExit": true,
+        "expectedScenarioStatus": true,
+        "stableCheckId": true,
+        "validWireSchema": true,
+        "actualHandlerCount": true,
+        "oneToolCall": true,
+        "expectedArguments": true,
+        "cleanFixture": true,
+        "completed": true
+      },
+      "passed": true
+    },
+    {
+      "label": "candidate",
+      "variant": "success-isError-false",
+      "expectations": {
+        "expectedCliExit": true,
+        "expectedScenarioStatus": true,
+        "stableCheckId": true,
+        "validWireSchema": true,
+        "actualHandlerCount": true,
+        "oneToolCall": true,
+        "expectedArguments": true,
+        "cleanFixture": true,
+        "completed": true
+      },
+      "passed": true
+    },
+    {
+      "label": "candidate",
+      "variant": "error-isError-true",
+      "expectations": {
+        "expectedCliExit": true,
+        "expectedScenarioStatus": true,
+        "stableCheckId": true,
+        "validWireSchema": true,
+        "actualHandlerCount": true,
+        "oneToolCall": true,
+        "expectedArguments": true,
+        "cleanFixture": true,
+        "completed": true
+      },
+      "passed": true
+    },
+    {
+      "label": "candidate",
+      "variant": "diagnostic-tool-missing",
+      "expectations": {
+        "expectedCliExit": true,
+        "expectedScenarioStatus": true,
+        "stableCheckId": true,
+        "validWireSchema": true,
+        "actualHandlerCount": true,
+        "oneToolCall": true,
+        "expectedArguments": true,
+        "cleanFixture": true,
+        "completed": true
+      },
+      "passed": true
+    },
+    {
+      "label": "candidate",
+      "variant": "explicit-empty-inputSchema",
+      "expectations": {
+        "expectedCliExit": true,
+        "expectedScenarioStatus": true,
+        "stableCheckId": true,
+        "validWireSchema": true,
+        "actualHandlerCount": true,
+        "oneToolCall": true,
+        "expectedArguments": true,
+        "cleanFixture": true,
+        "completed": true
+      },
+      "passed": true
+    }
+  ],
+  "allAssertionsPassed": true
+}
