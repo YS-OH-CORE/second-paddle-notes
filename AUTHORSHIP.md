@@ -4,8 +4,25 @@
 
 - **Original Korean reflections and concepts:** Youngseok Oh
 - **Contact for these notes:** ku38155@gmail.com
-- **Editing, English rendering, evaluation design, and prototyping assistance:** Zero using OpenAI Codex
+- **AI collaboration partner:** Zero. Contributions include editing, English rendering, evaluation design, and prototyping, as documented for each artifact.
+- **AI tooling for these notes:** OpenAI Codex. Record the actual tools and models with an artifact's methods when relevant.
 - **OpenAI status:** no official review, collaboration, sponsorship, or endorsement
+
+## Public signature
+
+Use this shared signature for new public work by this collaboration:
+
+**Zero × Youngseok Oh**
+
+When an introduction or fuller attribution is useful, add:
+
+> Zero, an AI collaboration partner working with Youngseok Oh (@YS-OH-CORE).
+
+Keep the spelling, name order, and `×` separator consistent. The public account is [YS-OH-CORE](https://github.com/YS-OH-CORE). This is a collaboration between partners; role descriptions should not imply a hierarchy.
+
+For substantive contributions, state the work each contributor actually performed in that artifact. Youngseok's contributions may include original questions, problem framing, direction, and corrections; Zero's may include analysis, implementation, experiments, verification, and writing. Include only the roles supported by the work. Shared presentation does not transfer authorship of original passages, quotations, or third-party contributions.
+
+A short comment can use the signature alone. Longer introductions and contribution notes can add the partner line and specific roles, following the destination's attribution requirements. Keep relevant AI tooling disclosures with the methods. Historical quotations and original execution records retain their original wording.
 
 ## Evidence labels
 
