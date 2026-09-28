@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/tmp/stdlib-probe-7gjlzz65/bin/python",
+    "-I",
+    "/home/runner/work/second-paddle-notes/second-paddle-notes/candidate/utils/get_pr_run_slow_jobs.py",
+    "--message",
+    "run-slow: clip"
+  ],
+  "changed_files": [],
+  "arguments": [
+    "--message",
+    "run-slow: clip"
+  ],
+  "exit_code": 1,
+  "stdout": "",
+  "stderr_file": "clean_environment.stderr",
+  "isolated_interpreter": true
+}

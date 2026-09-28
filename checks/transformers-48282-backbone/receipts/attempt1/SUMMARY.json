@@ -1,0 +1,36 @@
+{
+  "head": "f3e3ad778c38990d38100c44c74f2054b9b2aae6",
+  "source_restored": true,
+  "clean_environment": {
+    "command": [
+      "/tmp/stdlib-probe-fqt3pjee/bin/python",
+      "-I",
+      "/home/runner/work/second-paddle-notes/second-paddle-notes/candidate/utils/get_pr_run_slow_jobs.py",
+      "--message",
+      "run-slow: clip"
+    ],
+    "changed_files": [],
+    "arguments": [
+      "--message",
+      "run-slow: clip"
+    ],
+    "exit_code": 1,
+    "stdout": "",
+    "stderr_file": "clean_environment.stderr",
+    "isolated_interpreter": true
+  },
+  "phases": {
+    "original": {
+      "setup_failed": true,
+      "process_exit_code": 1
+    },
+    "argument_only": {
+      "setup_failed": true,
+      "process_exit_code": 1
+    },
+    "normalized_filtered": {
+      "setup_failed": true,
+      "process_exit_code": 1
+    }
+  }
+}

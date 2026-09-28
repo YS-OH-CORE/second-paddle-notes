@@ -1,0 +1,10 @@
+{
+  "cases": 11,
+  "passed": 7,
+  "failed": [
+    "clip_model",
+    "clip_config",
+    "clip_test",
+    "clip_and_llava_inventory"
+  ]
+}

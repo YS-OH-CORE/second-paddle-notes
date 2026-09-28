@@ -1,0 +1,13 @@
+original {'cases': None, 'passed': None, 'failed': None, 'process_exit_code': 1}
+argument_only {'cases': None, 'passed': None, 'failed': None, 'process_exit_code': 1}
+normalized_filtered {'cases': None, 'passed': None, 'failed': None, 'process_exit_code': 1}
+Traceback (most recent call last):
+  File "/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/checks/transformers-48282-backbone/check.py", line 203, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/checks/transformers-48282-backbone/check.py", line 198, in main
+    compare(source, out)
+  File "/home/runner/work/second-paddle-notes/second-paddle-notes/evidence/checks/transformers-48282-backbone/check.py", line 181, in compare
+    assert set(results['original']['failed']) == {'clip_model', 'clip_config', 'clip_test', 'clip_and_llava_inventory'}
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+KeyError: 'failed'

@@ -1,0 +1,4 @@
+original {'cases': 11, 'passed': 7, 'failed': ['clip_model', 'clip_config', 'clip_test', 'clip_and_llava_inventory'], 'process_exit_code': 1}
+argument_only {'cases': 11, 'passed': 6, 'failed': ['clip_model', 'clip_config', 'clip_test', 'clip_and_llava_inventory', 'clip_only_inventory'], 'process_exit_code': 1}
+normalized_filtered {'cases': 11, 'passed': 11, 'failed': [], 'process_exit_code': 0}
+Expected targeted comparison observed. This is not full upstream CI validation.

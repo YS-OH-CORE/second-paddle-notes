@@ -1,0 +1,938 @@
+{
+  "head": "f3e3ad778c38990d38100c44c74f2054b9b2aae6",
+  "source_restored": true,
+  "clean_environment": {
+    "command": [
+      "/tmp/stdlib-probe-7gjlzz65/bin/python",
+      "-I",
+      "/home/runner/work/second-paddle-notes/second-paddle-notes/candidate/utils/get_pr_run_slow_jobs.py",
+      "--message",
+      "run-slow: clip"
+    ],
+    "changed_files": [],
+    "arguments": [
+      "--message",
+      "run-slow: clip"
+    ],
+    "exit_code": 1,
+    "stdout": "",
+    "stderr_file": "clean_environment.stderr",
+    "isolated_interpreter": true
+  },
+  "phases": {
+    "original": {
+      "head": "f3e3ad778c38990d38100c44c74f2054b9b2aae6",
+      "source_module": "/home/runner/work/second-paddle-notes/second-paddle-notes/candidate/src/transformers/__init__.py",
+      "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+      "transformers": "5.18.0.dev0",
+      "target_sha256": "51adf69edb98e69a2f110ba5c048dcffc9d1904e443df4c118dbfac45da86d48",
+      "cases": 11,
+      "passed": 7,
+      "failed": [
+        "clip_model",
+        "clip_config",
+        "clip_test",
+        "clip_and_llava_inventory"
+      ],
+      "registry_parents": [
+        "granite4_vision",
+        "llava",
+        "llava_next",
+        "llava_next_video",
+        "omdet_turbo",
+        "sam3",
+        "video_llava",
+        "vipllava"
+      ],
+      "expected_full_jobs": [
+        "models/clip",
+        "models/granite4_vision",
+        "models/llava",
+        "models/llava_next",
+        "models/llava_next_video",
+        "models/omdet_turbo",
+        "models/sam3",
+        "models/video_llava",
+        "models/vipllava"
+      ],
+      "records": [
+        {
+          "case": "actual_registry_clip_to_llava",
+          "passed": true,
+          "parents": [
+            "granite4_vision",
+            "llava",
+            "llava_next",
+            "llava_next_video",
+            "omdet_turbo",
+            "sam3",
+            "video_llava",
+            "vipllava"
+          ]
+        },
+        {
+          "command": [
+            "/home/runner/work/_temp/backbone-venv/bin/python",
+            "/home/runner/work/second-paddle-notes/second-paddle-notes/candidate/utils/get_pr_run_slow_jobs.py"
+          ],
+          "changed_files": [
+            {
+              "filename": "src/transformers/models/clip/modeling_clip.py",
+              "status": "modified"
+            }
+          ],
+          "arguments": [],
+          "exit_code": 0,
+          "stdout": "clip",
+          "stderr_file": "clip_model.stderr",
+          "isolated_interpreter": false,
+          "case": "clip_model",
+          "expected_stdout": "clip, granite4_vision, llava, llava_next, llava_next_video, omdet_turbo, sam3, video_llava, vipllava",
+          "passed": false,
+          "inventory_sizes": {
+            "tests_dir.txt": 20,
+            "tests_models_dir.txt": 520,
+            "tests_quantization_dir.txt": 25
+          }
+        },
+        {
+          "command": [
+            "/home/runner/work/_temp/backbone-venv/bin/python",
+            "/home/runner/work/second-paddle-notes/second-paddle-notes/candidate/utils/get_pr_run_slow_jobs.py"
+          ],
+          "changed_files": [
+            {
+              "filename": "src/transformers/models/clip/configuration_clip.py",
+              "status": "modified"
+            }
+          ],
+          "arguments": [],
+          "exit_code": 0,
+          "stdout": "clip",
+          "stderr_file": "clip_config.stderr",
+          "isolated_interpreter": false,
+          "case": "clip_config",
+          "expected_stdout": "clip, granite4_vision, llava, llava_next, llava_next_video, omdet_turbo, sam3, video_llava, vipllava",
+          "passed": false,
+          "inventory_sizes": {
+            "tests_dir.txt": 20,
+            "tests_models_dir.txt": 520,
+            "tests_quantization_dir.txt": 25
+          }
+        },
+        {
+          "command": [
+            "/home/runner/work/_temp/backbone-venv/bin/python",
+            "/home/runner/work/second-paddle-notes/second-paddle-notes/candidate/utils/get_pr_run_slow_jobs.py"
+          ],
+          "changed_files": [
+            {
+              "filename": "tests/models/clip/test_modeling_clip.py",
+              "status": "modified"
+            }
+          ],
+          "arguments": [],
+          "exit_code": 0,
+          "stdout": "clip",
+          "stderr_file": "clip_test.stderr",
+          "isolated_interpreter": false,
+          "case": "clip_test",
+          "expected_stdout": "clip, granite4_vision, llava, llava_next, llava_next_video, omdet_turbo, sam3, video_llava, vipllava",
+          "passed": false,
+          "inventory_sizes": {
+            "tests_dir.txt": 20,
+            "tests_models_dir.txt": 520,
+            "tests_quantization_dir.txt": 25
+          }
+        },
+        {
+          "command": [
+            "/home/runner/work/_temp/backbone-venv/bin/python",
+            "/home/runner/work/second-paddle-notes/second-paddle-notes/candidate/utils/get_pr_run_slow_jobs.py"
+          ],
+          "changed_files": [
+            {
+              "filename": "src/transformers/models/clip/modeling_clip.py",
+              "status": "modified"
+            }
+          ],
+          "arguments": [],
+          "exit_code": 0,
+          "stdout": "clip",
+          "stderr_file": "clip_and_llava_inventory.stderr",
+          "isolated_interpreter": false,
+          "case": "clip_and_llava_inventory",
+          "expected_stdout": "clip, llava",
+          "passed": false,
+          "inventory_sizes": {
+            "tests_dir.txt": 20,
+            "tests_models_dir.txt": 2,
+            "tests_quantization_dir.txt": 25
+          }
+        },
+        {
+          "command": [
+            "/home/runner/work/_temp/backbone-venv/bin/python",
+            "/home/runner/work/second-paddle-notes/second-paddle-notes/candidate/utils/get_pr_run_slow_jobs.py"
+          ],
+          "changed_files": [
+            {
+              "filename": "src/transformers/models/clip/modeling_clip.py",
+              "status": "modified"
+            }
+          ],
+          "arguments": [],
+          "exit_code": 0,
+          "stdout": "clip",
+          "stderr_file": "clip_only_inventory.stderr",
+          "isolated_interpreter": false,
+          "case": "clip_only_inventory",
+          "expected_stdout": "clip",
+          "passed": true,
+          "inventory_sizes": {
+            "tests_dir.txt": 20,
+            "tests_models_dir.txt": 1,
+            "tests_quantization_dir.txt": 25
+          }
+        },
+        {
+          "command": [
+            "/home/runner/work/_temp/backbone-venv/bin/python",
+            "/home/runner/work/second-paddle-notes/second-paddle-notes/candidate/utils/get_pr_run_slow_jobs.py"
+          ],
+          "changed_files": [
+            {
+              "filename": "src/transformers/models/clip/modeling_clip.py",
+              "status": "removed"
+            }
+          ],
+          "arguments": [],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr_file": "removed_clip.stderr",
+          "isolated_interpreter": false,
+          "case": "removed_clip",
+          "expected_stdout": "",
+          "passed": true,
+          "inventory_sizes": {
+            "tests_dir.txt": 20,
+            "tests_models_dir.txt": 520,
+            "tests_quantization_dir.txt": 25
+          }
+        },
+        {
+          "command": [
+            "/home/runner/work/_temp/backbone-venv/bin/python",
+            "/home/runner/work/second-paddle-notes/second-paddle-notes/candidate/utils/get_pr_run_slow_jobs.py"
+          ],
+          "changed_files": [
+            {
+              "filename": "docs/source/en/testing.md",
+              "status": "modified"
+            }
+          ],
+          "arguments": [],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr_file": "unrelated_docs.stderr",
+          "isolated_interpreter": false,
+          "case": "unrelated_docs",
+          "expected_stdout": "",
+          "passed": true,
+          "inventory_sizes": {
+            "tests_dir.txt": 20,
+            "tests_models_dir.txt": 520,
+            "tests_quantization_dir.txt": 25
+          }
+        },
+        {
+          "command": [
+            "/home/runner/work/_temp/backbone-venv/bin/python",
+            "/home/runner/work/second-paddle-notes/second-paddle-notes/candidate/utils/get_pr_run_slow_jobs.py",
+            "--message",
+            "run-slow: clip, llava, _bad, nonexistent_synthetic_model"
+          ],
+          "changed_files": [],
+          "arguments": [
+            "--message",
+            "run-slow: clip, llava, _bad, nonexistent_synthetic_model"
+          ],
+          "exit_code": 0,
+          "stdout": "['models/clip', 'models/llava']",
+          "stderr_file": "explicit_models.stderr",
+          "isolated_interpreter": false,
+          "case": "explicit_models",
+          "expected_stdout": "['models/clip', 'models/llava']",
+          "passed": true,
+          "inventory_sizes": {
+            "tests_dir.txt": 20,
+            "tests_models_dir.txt": 520,
+            "tests_quantization_dir.txt": 25
+          }
+        },
+        {
+          "command": [
+            "/home/runner/work/_temp/backbone-venv/bin/python",
+            "/home/runner/work/second-paddle-notes/second-paddle-notes/candidate/utils/get_pr_run_slow_jobs.py",
+            "--message",
+            "run-slow: autoawq",
+            "--quantization"
+          ],
+          "changed_files": [],
+          "arguments": [
+            "--message",
+            "run-slow: autoawq",
+            "--quantization"
+          ],
+          "exit_code": 0,
+          "stdout": "['quantization/autoawq']",
+          "stderr_file": "explicit_quantizer.stderr",
+          "isolated_interpreter": false,
+          "case": "explicit_quantizer",
+          "expected_stdout": "['quantization/autoawq']",
+          "passed": true,
+          "inventory_sizes": {
+            "tests_dir.txt": 20,
+            "tests_models_dir.txt": 520,
+            "tests_quantization_dir.txt": 25
+          }
+        },
+        {
+          "command": [
+            "/home/runner/work/_temp/backbone-venv/bin/python",
+            "/home/runner/work/second-paddle-notes/second-paddle-notes/candidate/utils/get_pr_run_slow_jobs.py"
+          ],
+          "changed_files": [
+            {
+              "filename": "src/transformers/quantizers/quantizer_awq.py",
+              "status": "modified"
+            }
+          ],
+          "arguments": [],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr_file": "changed_quantizer.stderr",
+          "isolated_interpreter": false,
+          "case": "changed_quantizer",
+          "expected_stdout": "",
+          "passed": true,
+          "inventory_sizes": {
+            "tests_dir.txt": 20,
+            "tests_models_dir.txt": 520,
+            "tests_quantization_dir.txt": 25
+          }
+        }
+      ],
+      "scope": "Actual CLI and real config registry; synthetic changed-file inputs, no CI dispatch or model execution",
+      "process_exit_code": 1
+    },
+    "argument_only": {
+      "head": "f3e3ad778c38990d38100c44c74f2054b9b2aae6",
+      "source_module": "/home/runner/work/second-paddle-notes/second-paddle-notes/candidate/src/transformers/__init__.py",
+      "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+      "transformers": "5.18.0.dev0",
+      "target_sha256": "9fce8490f22f16df0e89254844a646fe077c79b9f5fbd1eb86c058ec21a80da0",
+      "cases": 11,
+      "passed": 6,
+      "failed": [
+        "clip_model",
+        "clip_config",
+        "clip_test",
+        "clip_and_llava_inventory",
+        "clip_only_inventory"
+      ],
+      "registry_parents": [
+        "granite4_vision",
+        "llava",
+        "llava_next",
+        "llava_next_video",
+        "omdet_turbo",
+        "sam3",
+        "video_llava",
+        "vipllava"
+      ],
+      "expected_full_jobs": [
+        "models/clip",
+        "models/granite4_vision",
+        "models/llava",
+        "models/llava_next",
+        "models/llava_next_video",
+        "models/omdet_turbo",
+        "models/sam3",
+        "models/video_llava",
+        "models/vipllava"
+      ],
+      "records": [
+        {
+          "case": "actual_registry_clip_to_llava",
+          "passed": true,
+          "parents": [
+            "granite4_vision",
+            "llava",
+            "llava_next",
+            "llava_next_video",
+            "omdet_turbo",
+            "sam3",
+            "video_llava",
+            "vipllava"
+          ]
+        },
+        {
+          "command": [
+            "/home/runner/work/_temp/backbone-venv/bin/python",
+            "/home/runner/work/second-paddle-notes/second-paddle-notes/candidate/utils/get_pr_run_slow_jobs.py"
+          ],
+          "changed_files": [
+            {
+              "filename": "src/transformers/models/clip/modeling_clip.py",
+              "status": "modified"
+            }
+          ],
+          "arguments": [],
+          "exit_code": 0,
+          "stdout": "granite4_vision, llava, llava_next, llava_next_video, clip, omdet_turbo, sam3, video_llava, vipllava",
+          "stderr_file": "clip_model.stderr",
+          "isolated_interpreter": false,
+          "case": "clip_model",
+          "expected_stdout": "clip, granite4_vision, llava, llava_next, llava_next_video, omdet_turbo, sam3, video_llava, vipllava",
+          "passed": false,
+          "inventory_sizes": {
+            "tests_dir.txt": 20,
+            "tests_models_dir.txt": 520,
+            "tests_quantization_dir.txt": 25
+          }
+        },
+        {
+          "command": [
+            "/home/runner/work/_temp/backbone-venv/bin/python",
+            "/home/runner/work/second-paddle-notes/second-paddle-notes/candidate/utils/get_pr_run_slow_jobs.py"
+          ],
+          "changed_files": [
+            {
+              "filename": "src/transformers/models/clip/configuration_clip.py",
+              "status": "modified"
+            }
+          ],
+          "arguments": [],
+          "exit_code": 0,
+          "stdout": "granite4_vision, llava, llava_next, llava_next_video, clip, omdet_turbo, sam3, video_llava, vipllava",
+          "stderr_file": "clip_config.stderr",
+          "isolated_interpreter": false,
+          "case": "clip_config",
+          "expected_stdout": "clip, granite4_vision, llava, llava_next, llava_next_video, omdet_turbo, sam3, video_llava, vipllava",
+          "passed": false,
+          "inventory_sizes": {
+            "tests_dir.txt": 20,
+            "tests_models_dir.txt": 520,
+            "tests_quantization_dir.txt": 25
+          }
+        },
+        {
+          "command": [
+            "/home/runner/work/_temp/backbone-venv/bin/python",
+            "/home/runner/work/second-paddle-notes/second-paddle-notes/candidate/utils/get_pr_run_slow_jobs.py"
+          ],
+          "changed_files": [
+            {
+              "filename": "tests/models/clip/test_modeling_clip.py",
+              "status": "modified"
+            }
+          ],
+          "arguments": [],
+          "exit_code": 0,
+          "stdout": "granite4_vision, llava, llava_next, llava_next_video, clip, omdet_turbo, sam3, video_llava, vipllava",
+          "stderr_file": "clip_test.stderr",
+          "isolated_interpreter": false,
+          "case": "clip_test",
+          "expected_stdout": "clip, granite4_vision, llava, llava_next, llava_next_video, omdet_turbo, sam3, video_llava, vipllava",
+          "passed": false,
+          "inventory_sizes": {
+            "tests_dir.txt": 20,
+            "tests_models_dir.txt": 520,
+            "tests_quantization_dir.txt": 25
+          }
+        },
+        {
+          "command": [
+            "/home/runner/work/_temp/backbone-venv/bin/python",
+            "/home/runner/work/second-paddle-notes/second-paddle-notes/candidate/utils/get_pr_run_slow_jobs.py"
+          ],
+          "changed_files": [
+            {
+              "filename": "src/transformers/models/clip/modeling_clip.py",
+              "status": "modified"
+            }
+          ],
+          "arguments": [],
+          "exit_code": 0,
+          "stdout": "granite4_vision, llava, llava_next, llava_next_video, clip, omdet_turbo, sam3, video_llava, vipllava",
+          "stderr_file": "clip_and_llava_inventory.stderr",
+          "isolated_interpreter": false,
+          "case": "clip_and_llava_inventory",
+          "expected_stdout": "clip, llava",
+          "passed": false,
+          "inventory_sizes": {
+            "tests_dir.txt": 20,
+            "tests_models_dir.txt": 2,
+            "tests_quantization_dir.txt": 25
+          }
+        },
+        {
+          "command": [
+            "/home/runner/work/_temp/backbone-venv/bin/python",
+            "/home/runner/work/second-paddle-notes/second-paddle-notes/candidate/utils/get_pr_run_slow_jobs.py"
+          ],
+          "changed_files": [
+            {
+              "filename": "src/transformers/models/clip/modeling_clip.py",
+              "status": "modified"
+            }
+          ],
+          "arguments": [],
+          "exit_code": 0,
+          "stdout": "granite4_vision, llava, llava_next, llava_next_video, clip, omdet_turbo, sam3, video_llava, vipllava",
+          "stderr_file": "clip_only_inventory.stderr",
+          "isolated_interpreter": false,
+          "case": "clip_only_inventory",
+          "expected_stdout": "clip",
+          "passed": false,
+          "inventory_sizes": {
+            "tests_dir.txt": 20,
+            "tests_models_dir.txt": 1,
+            "tests_quantization_dir.txt": 25
+          }
+        },
+        {
+          "command": [
+            "/home/runner/work/_temp/backbone-venv/bin/python",
+            "/home/runner/work/second-paddle-notes/second-paddle-notes/candidate/utils/get_pr_run_slow_jobs.py"
+          ],
+          "changed_files": [
+            {
+              "filename": "src/transformers/models/clip/modeling_clip.py",
+              "status": "removed"
+            }
+          ],
+          "arguments": [],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr_file": "removed_clip.stderr",
+          "isolated_interpreter": false,
+          "case": "removed_clip",
+          "expected_stdout": "",
+          "passed": true,
+          "inventory_sizes": {
+            "tests_dir.txt": 20,
+            "tests_models_dir.txt": 520,
+            "tests_quantization_dir.txt": 25
+          }
+        },
+        {
+          "command": [
+            "/home/runner/work/_temp/backbone-venv/bin/python",
+            "/home/runner/work/second-paddle-notes/second-paddle-notes/candidate/utils/get_pr_run_slow_jobs.py"
+          ],
+          "changed_files": [
+            {
+              "filename": "docs/source/en/testing.md",
+              "status": "modified"
+            }
+          ],
+          "arguments": [],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr_file": "unrelated_docs.stderr",
+          "isolated_interpreter": false,
+          "case": "unrelated_docs",
+          "expected_stdout": "",
+          "passed": true,
+          "inventory_sizes": {
+            "tests_dir.txt": 20,
+            "tests_models_dir.txt": 520,
+            "tests_quantization_dir.txt": 25
+          }
+        },
+        {
+          "command": [
+            "/home/runner/work/_temp/backbone-venv/bin/python",
+            "/home/runner/work/second-paddle-notes/second-paddle-notes/candidate/utils/get_pr_run_slow_jobs.py",
+            "--message",
+            "run-slow: clip, llava, _bad, nonexistent_synthetic_model"
+          ],
+          "changed_files": [],
+          "arguments": [
+            "--message",
+            "run-slow: clip, llava, _bad, nonexistent_synthetic_model"
+          ],
+          "exit_code": 0,
+          "stdout": "['models/clip', 'models/llava']",
+          "stderr_file": "explicit_models.stderr",
+          "isolated_interpreter": false,
+          "case": "explicit_models",
+          "expected_stdout": "['models/clip', 'models/llava']",
+          "passed": true,
+          "inventory_sizes": {
+            "tests_dir.txt": 20,
+            "tests_models_dir.txt": 520,
+            "tests_quantization_dir.txt": 25
+          }
+        },
+        {
+          "command": [
+            "/home/runner/work/_temp/backbone-venv/bin/python",
+            "/home/runner/work/second-paddle-notes/second-paddle-notes/candidate/utils/get_pr_run_slow_jobs.py",
+            "--message",
+            "run-slow: autoawq",
+            "--quantization"
+          ],
+          "changed_files": [],
+          "arguments": [
+            "--message",
+            "run-slow: autoawq",
+            "--quantization"
+          ],
+          "exit_code": 0,
+          "stdout": "['quantization/autoawq']",
+          "stderr_file": "explicit_quantizer.stderr",
+          "isolated_interpreter": false,
+          "case": "explicit_quantizer",
+          "expected_stdout": "['quantization/autoawq']",
+          "passed": true,
+          "inventory_sizes": {
+            "tests_dir.txt": 20,
+            "tests_models_dir.txt": 520,
+            "tests_quantization_dir.txt": 25
+          }
+        },
+        {
+          "command": [
+            "/home/runner/work/_temp/backbone-venv/bin/python",
+            "/home/runner/work/second-paddle-notes/second-paddle-notes/candidate/utils/get_pr_run_slow_jobs.py"
+          ],
+          "changed_files": [
+            {
+              "filename": "src/transformers/quantizers/quantizer_awq.py",
+              "status": "modified"
+            }
+          ],
+          "arguments": [],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr_file": "changed_quantizer.stderr",
+          "isolated_interpreter": false,
+          "case": "changed_quantizer",
+          "expected_stdout": "",
+          "passed": true,
+          "inventory_sizes": {
+            "tests_dir.txt": 20,
+            "tests_models_dir.txt": 520,
+            "tests_quantization_dir.txt": 25
+          }
+        }
+      ],
+      "scope": "Actual CLI and real config registry; synthetic changed-file inputs, no CI dispatch or model execution",
+      "process_exit_code": 1
+    },
+    "normalized_filtered": {
+      "head": "f3e3ad778c38990d38100c44c74f2054b9b2aae6",
+      "source_module": "/home/runner/work/second-paddle-notes/second-paddle-notes/candidate/src/transformers/__init__.py",
+      "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+      "transformers": "5.18.0.dev0",
+      "target_sha256": "ff021c5611042cfdec16e851c9b3622b4346126964357ecaf14c935d62205cca",
+      "cases": 11,
+      "passed": 11,
+      "failed": [],
+      "registry_parents": [
+        "granite4_vision",
+        "llava",
+        "llava_next",
+        "llava_next_video",
+        "omdet_turbo",
+        "sam3",
+        "video_llava",
+        "vipllava"
+      ],
+      "expected_full_jobs": [
+        "models/clip",
+        "models/granite4_vision",
+        "models/llava",
+        "models/llava_next",
+        "models/llava_next_video",
+        "models/omdet_turbo",
+        "models/sam3",
+        "models/video_llava",
+        "models/vipllava"
+      ],
+      "records": [
+        {
+          "case": "actual_registry_clip_to_llava",
+          "passed": true,
+          "parents": [
+            "granite4_vision",
+            "llava",
+            "llava_next",
+            "llava_next_video",
+            "omdet_turbo",
+            "sam3",
+            "video_llava",
+            "vipllava"
+          ]
+        },
+        {
+          "command": [
+            "/home/runner/work/_temp/backbone-venv/bin/python",
+            "/home/runner/work/second-paddle-notes/second-paddle-notes/candidate/utils/get_pr_run_slow_jobs.py"
+          ],
+          "changed_files": [
+            {
+              "filename": "src/transformers/models/clip/modeling_clip.py",
+              "status": "modified"
+            }
+          ],
+          "arguments": [],
+          "exit_code": 0,
+          "stdout": "clip, granite4_vision, llava, llava_next, llava_next_video, omdet_turbo, sam3, video_llava, vipllava",
+          "stderr_file": "clip_model.stderr",
+          "isolated_interpreter": false,
+          "case": "clip_model",
+          "expected_stdout": "clip, granite4_vision, llava, llava_next, llava_next_video, omdet_turbo, sam3, video_llava, vipllava",
+          "passed": true,
+          "inventory_sizes": {
+            "tests_dir.txt": 20,
+            "tests_models_dir.txt": 520,
+            "tests_quantization_dir.txt": 25
+          }
+        },
+        {
+          "command": [
+            "/home/runner/work/_temp/backbone-venv/bin/python",
+            "/home/runner/work/second-paddle-notes/second-paddle-notes/candidate/utils/get_pr_run_slow_jobs.py"
+          ],
+          "changed_files": [
+            {
+              "filename": "src/transformers/models/clip/configuration_clip.py",
+              "status": "modified"
+            }
+          ],
+          "arguments": [],
+          "exit_code": 0,
+          "stdout": "clip, granite4_vision, llava, llava_next, llava_next_video, omdet_turbo, sam3, video_llava, vipllava",
+          "stderr_file": "clip_config.stderr",
+          "isolated_interpreter": false,
+          "case": "clip_config",
+          "expected_stdout": "clip, granite4_vision, llava, llava_next, llava_next_video, omdet_turbo, sam3, video_llava, vipllava",
+          "passed": true,
+          "inventory_sizes": {
+            "tests_dir.txt": 20,
+            "tests_models_dir.txt": 520,
+            "tests_quantization_dir.txt": 25
+          }
+        },
+        {
+          "command": [
+            "/home/runner/work/_temp/backbone-venv/bin/python",
+            "/home/runner/work/second-paddle-notes/second-paddle-notes/candidate/utils/get_pr_run_slow_jobs.py"
+          ],
+          "changed_files": [
+            {
+              "filename": "tests/models/clip/test_modeling_clip.py",
+              "status": "modified"
+            }
+          ],
+          "arguments": [],
+          "exit_code": 0,
+          "stdout": "clip, granite4_vision, llava, llava_next, llava_next_video, omdet_turbo, sam3, video_llava, vipllava",
+          "stderr_file": "clip_test.stderr",
+          "isolated_interpreter": false,
+          "case": "clip_test",
+          "expected_stdout": "clip, granite4_vision, llava, llava_next, llava_next_video, omdet_turbo, sam3, video_llava, vipllava",
+          "passed": true,
+          "inventory_sizes": {
+            "tests_dir.txt": 20,
+            "tests_models_dir.txt": 520,
+            "tests_quantization_dir.txt": 25
+          }
+        },
+        {
+          "command": [
+            "/home/runner/work/_temp/backbone-venv/bin/python",
+            "/home/runner/work/second-paddle-notes/second-paddle-notes/candidate/utils/get_pr_run_slow_jobs.py"
+          ],
+          "changed_files": [
+            {
+              "filename": "src/transformers/models/clip/modeling_clip.py",
+              "status": "modified"
+            }
+          ],
+          "arguments": [],
+          "exit_code": 0,
+          "stdout": "clip, llava",
+          "stderr_file": "clip_and_llava_inventory.stderr",
+          "isolated_interpreter": false,
+          "case": "clip_and_llava_inventory",
+          "expected_stdout": "clip, llava",
+          "passed": true,
+          "inventory_sizes": {
+            "tests_dir.txt": 20,
+            "tests_models_dir.txt": 2,
+            "tests_quantization_dir.txt": 25
+          }
+        },
+        {
+          "command": [
+            "/home/runner/work/_temp/backbone-venv/bin/python",
+            "/home/runner/work/second-paddle-notes/second-paddle-notes/candidate/utils/get_pr_run_slow_jobs.py"
+          ],
+          "changed_files": [
+            {
+              "filename": "src/transformers/models/clip/modeling_clip.py",
+              "status": "modified"
+            }
+          ],
+          "arguments": [],
+          "exit_code": 0,
+          "stdout": "clip",
+          "stderr_file": "clip_only_inventory.stderr",
+          "isolated_interpreter": false,
+          "case": "clip_only_inventory",
+          "expected_stdout": "clip",
+          "passed": true,
+          "inventory_sizes": {
+            "tests_dir.txt": 20,
+            "tests_models_dir.txt": 1,
+            "tests_quantization_dir.txt": 25
+          }
+        },
+        {
+          "command": [
+            "/home/runner/work/_temp/backbone-venv/bin/python",
+            "/home/runner/work/second-paddle-notes/second-paddle-notes/candidate/utils/get_pr_run_slow_jobs.py"
+          ],
+          "changed_files": [
+            {
+              "filename": "src/transformers/models/clip/modeling_clip.py",
+              "status": "removed"
+            }
+          ],
+          "arguments": [],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr_file": "removed_clip.stderr",
+          "isolated_interpreter": false,
+          "case": "removed_clip",
+          "expected_stdout": "",
+          "passed": true,
+          "inventory_sizes": {
+            "tests_dir.txt": 20,
+            "tests_models_dir.txt": 520,
+            "tests_quantization_dir.txt": 25
+          }
+        },
+        {
+          "command": [
+            "/home/runner/work/_temp/backbone-venv/bin/python",
+            "/home/runner/work/second-paddle-notes/second-paddle-notes/candidate/utils/get_pr_run_slow_jobs.py"
+          ],
+          "changed_files": [
+            {
+              "filename": "docs/source/en/testing.md",
+              "status": "modified"
+            }
+          ],
+          "arguments": [],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr_file": "unrelated_docs.stderr",
+          "isolated_interpreter": false,
+          "case": "unrelated_docs",
+          "expected_stdout": "",
+          "passed": true,
+          "inventory_sizes": {
+            "tests_dir.txt": 20,
+            "tests_models_dir.txt": 520,
+            "tests_quantization_dir.txt": 25
+          }
+        },
+        {
+          "command": [
+            "/home/runner/work/_temp/backbone-venv/bin/python",
+            "/home/runner/work/second-paddle-notes/second-paddle-notes/candidate/utils/get_pr_run_slow_jobs.py",
+            "--message",
+            "run-slow: clip, llava, _bad, nonexistent_synthetic_model"
+          ],
+          "changed_files": [],
+          "arguments": [
+            "--message",
+            "run-slow: clip, llava, _bad, nonexistent_synthetic_model"
+          ],
+          "exit_code": 0,
+          "stdout": "['models/clip', 'models/llava']",
+          "stderr_file": "explicit_models.stderr",
+          "isolated_interpreter": false,
+          "case": "explicit_models",
+          "expected_stdout": "['models/clip', 'models/llava']",
+          "passed": true,
+          "inventory_sizes": {
+            "tests_dir.txt": 20,
+            "tests_models_dir.txt": 520,
+            "tests_quantization_dir.txt": 25
+          }
+        },
+        {
+          "command": [
+            "/home/runner/work/_temp/backbone-venv/bin/python",
+            "/home/runner/work/second-paddle-notes/second-paddle-notes/candidate/utils/get_pr_run_slow_jobs.py",
+            "--message",
+            "run-slow: autoawq",
+            "--quantization"
+          ],
+          "changed_files": [],
+          "arguments": [
+            "--message",
+            "run-slow: autoawq",
+            "--quantization"
+          ],
+          "exit_code": 0,
+          "stdout": "['quantization/autoawq']",
+          "stderr_file": "explicit_quantizer.stderr",
+          "isolated_interpreter": false,
+          "case": "explicit_quantizer",
+          "expected_stdout": "['quantization/autoawq']",
+          "passed": true,
+          "inventory_sizes": {
+            "tests_dir.txt": 20,
+            "tests_models_dir.txt": 520,
+            "tests_quantization_dir.txt": 25
+          }
+        },
+        {
+          "command": [
+            "/home/runner/work/_temp/backbone-venv/bin/python",
+            "/home/runner/work/second-paddle-notes/second-paddle-notes/candidate/utils/get_pr_run_slow_jobs.py"
+          ],
+          "changed_files": [
+            {
+              "filename": "src/transformers/quantizers/quantizer_awq.py",
+              "status": "modified"
+            }
+          ],
+          "arguments": [],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr_file": "changed_quantizer.stderr",
+          "isolated_interpreter": false,
+          "case": "changed_quantizer",
+          "expected_stdout": "",
+          "passed": true,
+          "inventory_sizes": {
+            "tests_dir.txt": 20,
+            "tests_models_dir.txt": 520,
+            "tests_quantization_dir.txt": 25
+          }
+        }
+      ],
+      "scope": "Actual CLI and real config registry; synthetic changed-file inputs, no CI dispatch or model execution",
+      "process_exit_code": 0
+    }
+  }
+}

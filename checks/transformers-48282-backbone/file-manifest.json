@@ -1,0 +1,606 @@
+{
+    "scope":  "Exact UTF-8 text files, including unedited downloaded execution receipts",
+    "excludes":  "file-manifest.json itself and later delivery records",
+    "files":  [
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt1/argument_only/diagnostic.patch",
+                      "bytes":  601,
+                      "sha256":  "8e57304af67f180c3809a667ce61eee44a6ae8230381a4380b3033717da94ca5",
+                      "git_blob":  "505c5e4e639b4d892db6e13d0e2bd436cd736cfe"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt1/argument_only/driver.stderr",
+                      "bytes":  740,
+                      "sha256":  "c830a1077fcc674b2994df16314a6aae7da6e86f3e5cdc123c6b32779defd123",
+                      "git_blob":  "f87053cdc6741702d77c129e9f93853c7361a06d"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt1/argument_only/driver.stdout",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "git_blob":  "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt1/clean_environment.json",
+                      "bytes":  415,
+                      "sha256":  "5ffdd59a0bf14462c0d2cb08a7862922bbbecc12b7af893963266b3d6cf53ad2",
+                      "git_blob":  "d863142dec5fd73b7f894e759fdf1991dddfea7b"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt1/clean_environment.stderr",
+                      "bytes":  317,
+                      "sha256":  "ed64df780f48a2e00b329742e58d9aeae0b63840a1eba7a83ced90f9cfed5d81",
+                      "git_blob":  "96dba3456814ec0fcb00edda6ee1f2a6ba10c657"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt1/clean_environment.stdout",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "git_blob":  "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt1/install.log",
+                      "bytes":  1458,
+                      "sha256":  "53acd60e6c6b9b7ab44278fd9aa2dff8666d70577d3e17a02e263047df2f7698",
+                      "git_blob":  "407e18308cd1d06716227bdfbc923adbf97e0fc9"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt1/normalized_filtered/diagnostic.patch",
+                      "bytes":  819,
+                      "sha256":  "8a01d316cda46c3361f2fe8c27da079261065fcac5f5a763fb8a7b5c76d051e2",
+                      "git_blob":  "9638d5792f9736530ceba3a8d4ec3abd2c7bd440"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt1/normalized_filtered/driver.stderr",
+                      "bytes":  740,
+                      "sha256":  "c830a1077fcc674b2994df16314a6aae7da6e86f3e5cdc123c6b32779defd123",
+                      "git_blob":  "f87053cdc6741702d77c129e9f93853c7361a06d"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt1/normalized_filtered/driver.stdout",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "git_blob":  "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt1/original/driver.stderr",
+                      "bytes":  740,
+                      "sha256":  "c830a1077fcc674b2994df16314a6aae7da6e86f3e5cdc123c6b32779defd123",
+                      "git_blob":  "f87053cdc6741702d77c129e9f93853c7361a06d"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt1/original/driver.stdout",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "git_blob":  "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt1/packages.txt",
+                      "bytes":  615,
+                      "sha256":  "d347c3054ec33c018d8a4344983900299edc8a4268af2db7f36e8d2082e67586",
+                      "git_blob":  "bb14f6666ef4b526917196a5e7f2993abdc4c621"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt1/run.log",
+                      "bytes":  984,
+                      "sha256":  "779266f6c1f7de6eac5e11e95900a0af1b6c72e82c6dd7e8a696aafd7639c3b3",
+                      "git_blob":  "59bd0a4ad3f14c15ab2c44481d6b42a6a1df59bc"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt1/source.json",
+                      "bytes":  329,
+                      "sha256":  "84d860729ef17ee143069de31aa248e163de1c8c1cea07098686149452ef8d77",
+                      "git_blob":  "a374ab1bddbc607e3796200c086734405c632f57"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt1/SUMMARY.json",
+                      "bytes":  837,
+                      "sha256":  "f486e6948f58c84b5d95ac004898c65531da7d6c37c8c781a6b08a007f463be8",
+                      "git_blob":  "8fb1950b367885546932698d989bc130c659f3ba"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/argument_only/changed_quantizer.stderr",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "git_blob":  "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/argument_only/changed_quantizer.stdout",
+                      "bytes":  1,
+                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+                      "git_blob":  "8b137891791fe96927ad78e64b0aad7bded08bdc"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/argument_only/clip_and_llava_inventory.stderr",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "git_blob":  "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/argument_only/clip_and_llava_inventory.stdout",
+                      "bytes":  101,
+                      "sha256":  "eaca508cd793cc20bb7b22b380cc0e953b5be59a3367ae893c3bddd99d2792dd",
+                      "git_blob":  "d4184f98c4a921720be0f827d6e2b978b7b6f5f6"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/argument_only/clip_config.stderr",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "git_blob":  "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/argument_only/clip_config.stdout",
+                      "bytes":  101,
+                      "sha256":  "eaca508cd793cc20bb7b22b380cc0e953b5be59a3367ae893c3bddd99d2792dd",
+                      "git_blob":  "d4184f98c4a921720be0f827d6e2b978b7b6f5f6"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/argument_only/clip_model.stderr",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "git_blob":  "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/argument_only/clip_model.stdout",
+                      "bytes":  101,
+                      "sha256":  "eaca508cd793cc20bb7b22b380cc0e953b5be59a3367ae893c3bddd99d2792dd",
+                      "git_blob":  "d4184f98c4a921720be0f827d6e2b978b7b6f5f6"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/argument_only/clip_only_inventory.stderr",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "git_blob":  "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/argument_only/clip_only_inventory.stdout",
+                      "bytes":  101,
+                      "sha256":  "eaca508cd793cc20bb7b22b380cc0e953b5be59a3367ae893c3bddd99d2792dd",
+                      "git_blob":  "d4184f98c4a921720be0f827d6e2b978b7b6f5f6"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/argument_only/clip_test.stderr",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "git_blob":  "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/argument_only/clip_test.stdout",
+                      "bytes":  101,
+                      "sha256":  "eaca508cd793cc20bb7b22b380cc0e953b5be59a3367ae893c3bddd99d2792dd",
+                      "git_blob":  "d4184f98c4a921720be0f827d6e2b978b7b6f5f6"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/argument_only/diagnostic.patch",
+                      "bytes":  601,
+                      "sha256":  "8e57304af67f180c3809a667ce61eee44a6ae8230381a4380b3033717da94ca5",
+                      "git_blob":  "505c5e4e639b4d892db6e13d0e2bd436cd736cfe"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/argument_only/driver.stderr",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "git_blob":  "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/argument_only/driver.stdout",
+                      "bytes":  164,
+                      "sha256":  "cf3db07fe4f3a7dd3b3a6cffc6543672386e9d08de1aaab67fb271331b1b660c",
+                      "git_blob":  "0e3312c55976c850cf8b2fbae03d2320fcdf1594"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/argument_only/explicit_models.stderr",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "git_blob":  "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/argument_only/explicit_models.stdout",
+                      "bytes":  32,
+                      "sha256":  "698dccae516e5ed9cfe553652cd4dda20ea006e7d1474f13486eb8724b286a81",
+                      "git_blob":  "a9957e502a2cb29226d3e40b50250b26e61af4e2"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/argument_only/explicit_quantizer.stderr",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "git_blob":  "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/argument_only/explicit_quantizer.stdout",
+                      "bytes":  25,
+                      "sha256":  "fad37634aba32d1281540c826a81130251677a8a924fdda3de629a65cd461872",
+                      "git_blob":  "47e64685795c518e88750f9df75c6a47ecefe75d"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/argument_only/removed_clip.stderr",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "git_blob":  "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/argument_only/removed_clip.stdout",
+                      "bytes":  1,
+                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+                      "git_blob":  "8b137891791fe96927ad78e64b0aad7bded08bdc"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/argument_only/result.json",
+                      "bytes":  9747,
+                      "sha256":  "a12c4f73ef555e74d5f7f87ca60e36b0ae30059aefe46f5a4549ca88f685ee02",
+                      "git_blob":  "5bea125030e6ded79b14a878bb21fafd1242bef3"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/argument_only/unrelated_docs.stderr",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "git_blob":  "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/argument_only/unrelated_docs.stdout",
+                      "bytes":  1,
+                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+                      "git_blob":  "8b137891791fe96927ad78e64b0aad7bded08bdc"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/clean_environment.json",
+                      "bytes":  415,
+                      "sha256":  "fc30f6043ac3b9991616f55715eb45dff9c0bb4cce372c145114dd2f6330f5e5",
+                      "git_blob":  "e942b0e947ce55383ccdf5925026b160adb5d9fd"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/clean_environment.stderr",
+                      "bytes":  317,
+                      "sha256":  "ed64df780f48a2e00b329742e58d9aeae0b63840a1eba7a83ced90f9cfed5d81",
+                      "git_blob":  "96dba3456814ec0fcb00edda6ee1f2a6ba10c657"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/clean_environment.stdout",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "git_blob":  "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/install.log",
+                      "bytes":  1458,
+                      "sha256":  "f08eafc603e124652cf27b9294b935c26a34d2ffccd14e51e50143cbbf2c94f9",
+                      "git_blob":  "31af7bfef263c4c99cf34ef9d3f753d2e2e0c647"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/normalized_filtered/changed_quantizer.stderr",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "git_blob":  "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/normalized_filtered/changed_quantizer.stdout",
+                      "bytes":  1,
+                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+                      "git_blob":  "8b137891791fe96927ad78e64b0aad7bded08bdc"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/normalized_filtered/clip_and_llava_inventory.stderr",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "git_blob":  "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/normalized_filtered/clip_and_llava_inventory.stdout",
+                      "bytes":  12,
+                      "sha256":  "477d33675649e9fb6ee7341c77a2c0ffcaab7c8e49bf400b3a91a38c7e82c486",
+                      "git_blob":  "f34147c984727298cbaf4593b1a2c3af1c6f0528"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/normalized_filtered/clip_config.stderr",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "git_blob":  "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/normalized_filtered/clip_config.stdout",
+                      "bytes":  101,
+                      "sha256":  "bf574ed185d7c30d2ed0d1f24480d8954b9317cb94e49331c49ac72b748f922f",
+                      "git_blob":  "a8279f2e1b416245e538d4d535c77a23fe1d2677"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/normalized_filtered/clip_model.stderr",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "git_blob":  "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/normalized_filtered/clip_model.stdout",
+                      "bytes":  101,
+                      "sha256":  "bf574ed185d7c30d2ed0d1f24480d8954b9317cb94e49331c49ac72b748f922f",
+                      "git_blob":  "a8279f2e1b416245e538d4d535c77a23fe1d2677"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/normalized_filtered/clip_only_inventory.stderr",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "git_blob":  "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/normalized_filtered/clip_only_inventory.stdout",
+                      "bytes":  5,
+                      "sha256":  "aabd20ae0ed292fed27bd7f6e5e572d530b88c96f194855b9e8806e976eb2e36",
+                      "git_blob":  "361bfc628bf2db07d1190783778ed02699e3ee77"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/normalized_filtered/clip_test.stderr",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "git_blob":  "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/normalized_filtered/clip_test.stdout",
+                      "bytes":  101,
+                      "sha256":  "bf574ed185d7c30d2ed0d1f24480d8954b9317cb94e49331c49ac72b748f922f",
+                      "git_blob":  "a8279f2e1b416245e538d4d535c77a23fe1d2677"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/normalized_filtered/diagnostic.patch",
+                      "bytes":  819,
+                      "sha256":  "8a01d316cda46c3361f2fe8c27da079261065fcac5f5a763fb8a7b5c76d051e2",
+                      "git_blob":  "9638d5792f9736530ceba3a8d4ec3abd2c7bd440"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/normalized_filtered/driver.stderr",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "git_blob":  "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/normalized_filtered/driver.stdout",
+                      "bytes":  50,
+                      "sha256":  "1b12442b872103e2b1933f73c7db14f71856849bbf74c6685edc0d8e1d25c284",
+                      "git_blob":  "66d94d4153918782a39c679ca55f923430ea5406"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/normalized_filtered/explicit_models.stderr",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "git_blob":  "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/normalized_filtered/explicit_models.stdout",
+                      "bytes":  32,
+                      "sha256":  "698dccae516e5ed9cfe553652cd4dda20ea006e7d1474f13486eb8724b286a81",
+                      "git_blob":  "a9957e502a2cb29226d3e40b50250b26e61af4e2"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/normalized_filtered/explicit_quantizer.stderr",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "git_blob":  "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/normalized_filtered/explicit_quantizer.stdout",
+                      "bytes":  25,
+                      "sha256":  "fad37634aba32d1281540c826a81130251677a8a924fdda3de629a65cd461872",
+                      "git_blob":  "47e64685795c518e88750f9df75c6a47ecefe75d"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/normalized_filtered/removed_clip.stderr",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "git_blob":  "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/normalized_filtered/removed_clip.stdout",
+                      "bytes":  1,
+                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+                      "git_blob":  "8b137891791fe96927ad78e64b0aad7bded08bdc"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/normalized_filtered/result.json",
+                      "bytes":  9443,
+                      "sha256":  "ffda08462fe10dbc9e9809037e1b13448f43cacecd7735d997a447088771275c",
+                      "git_blob":  "f30107a23258e3bb99a4032ca74084b95c5007a9"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/normalized_filtered/unrelated_docs.stderr",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "git_blob":  "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/normalized_filtered/unrelated_docs.stdout",
+                      "bytes":  1,
+                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+                      "git_blob":  "8b137891791fe96927ad78e64b0aad7bded08bdc"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/original/changed_quantizer.stderr",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "git_blob":  "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/original/changed_quantizer.stdout",
+                      "bytes":  1,
+                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+                      "git_blob":  "8b137891791fe96927ad78e64b0aad7bded08bdc"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/original/clip_and_llava_inventory.stderr",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "git_blob":  "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/original/clip_and_llava_inventory.stdout",
+                      "bytes":  5,
+                      "sha256":  "aabd20ae0ed292fed27bd7f6e5e572d530b88c96f194855b9e8806e976eb2e36",
+                      "git_blob":  "361bfc628bf2db07d1190783778ed02699e3ee77"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/original/clip_config.stderr",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "git_blob":  "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/original/clip_config.stdout",
+                      "bytes":  5,
+                      "sha256":  "aabd20ae0ed292fed27bd7f6e5e572d530b88c96f194855b9e8806e976eb2e36",
+                      "git_blob":  "361bfc628bf2db07d1190783778ed02699e3ee77"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/original/clip_model.stderr",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "git_blob":  "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/original/clip_model.stdout",
+                      "bytes":  5,
+                      "sha256":  "aabd20ae0ed292fed27bd7f6e5e572d530b88c96f194855b9e8806e976eb2e36",
+                      "git_blob":  "361bfc628bf2db07d1190783778ed02699e3ee77"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/original/clip_only_inventory.stderr",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "git_blob":  "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/original/clip_only_inventory.stdout",
+                      "bytes":  5,
+                      "sha256":  "aabd20ae0ed292fed27bd7f6e5e572d530b88c96f194855b9e8806e976eb2e36",
+                      "git_blob":  "361bfc628bf2db07d1190783778ed02699e3ee77"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/original/clip_test.stderr",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "git_blob":  "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/original/clip_test.stdout",
+                      "bytes":  5,
+                      "sha256":  "aabd20ae0ed292fed27bd7f6e5e572d530b88c96f194855b9e8806e976eb2e36",
+                      "git_blob":  "361bfc628bf2db07d1190783778ed02699e3ee77"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/original/driver.stderr",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "git_blob":  "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/original/driver.stdout",
+                      "bytes":  137,
+                      "sha256":  "9f28b59218651678bf594c515c514e6be68cb59a41ed0a73e00df72db7593031",
+                      "git_blob":  "ff95ebdf2e79197eed2e23a6a451129776a67743"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/original/explicit_models.stderr",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "git_blob":  "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/original/explicit_models.stdout",
+                      "bytes":  32,
+                      "sha256":  "698dccae516e5ed9cfe553652cd4dda20ea006e7d1474f13486eb8724b286a81",
+                      "git_blob":  "a9957e502a2cb29226d3e40b50250b26e61af4e2"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/original/explicit_quantizer.stderr",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "git_blob":  "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/original/explicit_quantizer.stdout",
+                      "bytes":  25,
+                      "sha256":  "fad37634aba32d1281540c826a81130251677a8a924fdda3de629a65cd461872",
+                      "git_blob":  "47e64685795c518e88750f9df75c6a47ecefe75d"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/original/removed_clip.stderr",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "git_blob":  "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/original/removed_clip.stdout",
+                      "bytes":  1,
+                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+                      "git_blob":  "8b137891791fe96927ad78e64b0aad7bded08bdc"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/original/result.json",
+                      "bytes":  9239,
+                      "sha256":  "29f5bb4145b787077476ce6d54c2bcd8a8d2b66185be2adc96443f2381db7603",
+                      "git_blob":  "0d7c43c9402a42d6f177e85923599ac557ffeae4"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/original/unrelated_docs.stderr",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "git_blob":  "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/original/unrelated_docs.stdout",
+                      "bytes":  1,
+                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+                      "git_blob":  "8b137891791fe96927ad78e64b0aad7bded08bdc"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/packages.txt",
+                      "bytes":  615,
+                      "sha256":  "d347c3054ec33c018d8a4344983900299edc8a4268af2db7f36e8d2082e67586",
+                      "git_blob":  "bb14f6666ef4b526917196a5e7f2993abdc4c621"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/run.log",
+                      "bytes":  478,
+                      "sha256":  "96560b0c15a91c4022874c23624ac3f1b2a34831b8eed9e7bcadba160d4337c4",
+                      "git_blob":  "4d1871eabdac1b394d4fad700a4290bcdf0287ab"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/source.json",
+                      "bytes":  329,
+                      "sha256":  "84d860729ef17ee143069de31aa248e163de1c8c1cea07098686149452ef8d77",
+                      "git_blob":  "a374ab1bddbc607e3796200c086734405c632f57"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/receipts/attempt2/SUMMARY.json",
+                      "bytes":  32793,
+                      "sha256":  "09d31a01a83ce1d795abe2f829e470e4312f62dd1b6e10c827239349db75a314",
+                      "git_blob":  "c8f0a2d1d7c6ccda7dcd250644147eab2d3050f0"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/check.py",
+                      "bytes":  11115,
+                      "sha256":  "2d980b5a4aa31f50113b43805c94ef2091d49a2517bb4bb381e98b5e64f16e66",
+                      "git_blob":  "57619573fa5610c80337b5cd2b07e41bb5f0dcd2"
+                  },
+                  {
+                      "path":  ".github/workflows/verify-transformers-48282-backbone.yml",
+                      "bytes":  2369,
+                      "sha256":  "906e63926588d199ee82a287f2b9df48b944c3958c3a218d6e6a0165c1d9ce84",
+                      "git_blob":  "f2506b456dcd8e45b6e8daa43278a57c351a0bf0"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/workflow.yml",
+                      "bytes":  2369,
+                      "sha256":  "906e63926588d199ee82a287f2b9df48b944c3958c3a218d6e6a0165c1d9ce84",
+                      "git_blob":  "f2506b456dcd8e45b6e8daa43278a57c351a0bf0"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/README.md",
+                      "bytes":  10193,
+                      "sha256":  "f3e25371e1d9a9e08b621c5150583abf84f878c38eed1d445a8ca2bebaca50bd",
+                      "git_blob":  "5615d6908aaa4042bdb402544fd2e210ff143710"
+                  },
+                  {
+                      "path":  "checks/transformers-48282-backbone/LICENSE.transformers",
+                      "bytes":  11419,
+                      "sha256":  "199a731f49348b9f3a787c1401d2c9e64214964912fb6834b851bf9daa2ffd39",
+                      "git_blob":  "45678db2bc5d8968132f211e46a8c2f22167a161"
+                  }
+              ]
+}

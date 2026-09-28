@@ -1,0 +1,17 @@
+--- a/utils/get_pr_run_slow_jobs.py
++++ b/utils/get_pr_run_slow_jobs.py
+@@ -67,8 +67,12 @@
+                 # TODO: for files in `quantizers`, the processed item above may not exist. Try using a fuzzy matching
+                 if item in repo_content:
+                     jobs_to_run.append(item)
+-                if multimodal_parents := get_composite_files(get_composite_files):
+-                    jobs_to_run.extend(multimodal_parents)
++                if item.startswith("models/"):
++                    jobs_to_run.extend(
++                        f"models/{parent}"
++                        for parent in get_composite_files(item.removeprefix("models/"))
++                        if f"models/{parent}" in repo_content
++                    )
+                 break
+     jobs_to_run = sorted(set(jobs_to_run))
+ 

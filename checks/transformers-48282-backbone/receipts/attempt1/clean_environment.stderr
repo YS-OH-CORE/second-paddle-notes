@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/home/runner/work/second-paddle-notes/second-paddle-notes/candidate/utils/get_pr_run_slow_jobs.py", line 7, in <module>
+    from transformers.models.auto.configuration_auto import CONFIG_MAPPING, model_type_to_module_name
+ModuleNotFoundError: No module named 'transformers'

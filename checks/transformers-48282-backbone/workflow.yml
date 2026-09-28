@@ -1,0 +1,57 @@
+name: Transformers 48282 backbone job selection
+on:
+  push:
+    branches: ['verify/transformers-48282-backbone-20260929']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  diagnostic:
+    if: github.repository == 'YS-OH-CORE/second-paddle-notes'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      HF_HUB_OFFLINE: '1'
+      TRANSFORMERS_OFFLINE: '1'
+      HF_HUB_DISABLE_TELEMETRY: '1'
+      OMP_NUM_THREADS: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONUNBUFFERED: '1'
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          path: evidence
+          persist-credentials: false
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          repository: huggingface/transformers
+          ref: f3e3ad778c38990d38100c44c74f2054b9b2aae6
+          path: candidate
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@fac544c07dec837d0ccb6301d7b5580bf5edae39
+        with:
+          version: '0.9.28'
+          enable-cache: false
+      - name: Install isolated CPU dependencies
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/backbone-receipts"
+          uv venv --python 3.12 "$RUNNER_TEMP/backbone-venv"
+          uv pip install --python "$RUNNER_TEMP/backbone-venv/bin/python" --torch-backend cpu --editable ./candidate torch==2.13.0 2>&1 | tee "$RUNNER_TEMP/backbone-receipts/install.log"
+          uv pip freeze --python "$RUNNER_TEMP/backbone-venv/bin/python" > "$RUNNER_TEMP/backbone-receipts/packages.txt"
+      - name: Execute actual CLI comparison
+        run: |
+          set -euo pipefail
+          "$RUNNER_TEMP/backbone-venv/bin/python" -m py_compile evidence/checks/transformers-48282-backbone/check.py
+          "$RUNNER_TEMP/backbone-venv/bin/python" evidence/checks/transformers-48282-backbone/check.py --source candidate --output "$RUNNER_TEMP/backbone-receipts" 2>&1 | tee "$RUNNER_TEMP/backbone-receipts/run.log"
+      - name: Retain every result and setup failure
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: transformers-48282-backbone-attempt2
+          path: ${{ runner.temp }}/backbone-receipts
+          retention-days: 30
+          if-no-files-found: error
