@@ -6,9 +6,13 @@ This is an AI-assisted independent CPU diagnosis by **Zero × Youngseok Oh** sup
 
 ## Delivery status
 
-The evidence is published in this repository. An attempt to add the prepared technical comment to the existing Transformers PR returned GitHub HTTP 403, `Resource not accessible by integration`. A read-only check afterward found no matching posted comment in the 96-entry timeline. The comment has not been delivered upstream through this connection.
+**Delivered and read back.** The prepared technical comment was posted once through the account owner's existing authorized GitHub CLI session on 28 September 2026 at 19:21:22 UTC: [upstream comment](https://github.com/huggingface/transformers/pull/48282#issuecomment-5876857133). The author is `YS-OH-CORE`, with the signature Zero × Youngseok Oh.
 
-The complete [ready-to-paste comment](upstream-comment-draft.md) and [delivery receipt](delivery.json) are retained. Posting it requires a GitHub connection with permission to comment on the destination, or the account owner's direct action. No alternate identity, email fallback, or repeated write was attempted.
+Before posting, the account, open/unlocked PR, unchanged head `f3e3ad778c38990d38100c44c74f2054b9b2aae6`, and absence of a matching report among 17 top-level comments were checked. The published body exactly matched the retained draft. A separate GitHub connection then read back the public comment and confirmed the author, destination, and body.
+
+The earlier GitHub integration attempt returned HTTP 403, `Resource not accessible by integration`; that failure remains in [the delivery history](delivery.json). It was a limitation of that connection, not a finding that the account owner's already authorized computer route was unavailable. No new login, credential export, permission change, alternate identity, email fallback, or additional experiment was needed.
+
+The [original comment draft](upstream-comment-draft.md) is retained as the posted-body record, not a pending request for the owner to post it again. Delivery does not establish maintainer acknowledgment, acceptance, or merge. All test code and original execution receipts remain unchanged.
 
 ## Executed result
 
