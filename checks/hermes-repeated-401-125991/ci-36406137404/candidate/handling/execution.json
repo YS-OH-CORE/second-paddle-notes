@@ -1,0 +1,24 @@
+{
+  "command": [
+    "bash",
+    "scripts/run_tests.sh",
+    "--jobs",
+    "1",
+    "--file-retries",
+    "0",
+    "--file-timeout",
+    "900",
+    "--include-integration",
+    "tests/tools/test_mcp_tool_401_handling.py",
+    "--",
+    "--basetemp=/home/runner/work/_temp/repeated-401-candidate-handling",
+    "--junitxml=/home/runner/work/_temp/repeated-401-receipts/handling/junit.xml"
+  ],
+  "cwd": "/home/runner/work/hermes-agent/hermes-agent",
+  "started_unix_time": 1790589236.8942132,
+  "expected": "3 passed",
+  "file_retries": 0,
+  "workers": 1,
+  "exit_code": 0,
+  "finished_unix_time": 1790589239.4564207
+}

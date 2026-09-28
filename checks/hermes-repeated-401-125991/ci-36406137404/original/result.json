@@ -1,0 +1,33 @@
+{
+  "lane": "original",
+  "runtime_commit": "5c727a6ccd298f310becf0f0656346b6797e17f1",
+  "frozen_test_sha256": "20a819856089fc837d71eb1da14809caa6a98b00e0bfb52e6738a8fd4c919ce2",
+  "gates": [
+    {
+      "gate": "e2e",
+      "exit_code": 1,
+      "cases": [
+        {
+          "name": "test_401_on_tools_call_is_reported_as_an_auth_failure",
+          "class": "tests.e2e.core.mcp_plugins.test_mcp_streamable_http",
+          "state": "failure"
+        },
+        {
+          "name": "test_the_call_after_a_401_reaches_the_server",
+          "class": "tests.e2e.core.mcp_plugins.test_mcp_streamable_http",
+          "state": "passed"
+        }
+      ],
+      "passed": 1,
+      "failed": 1,
+      "errors": 0,
+      "skipped": 0,
+      "interpretation": "expected regression reproduced; the original test failed",
+      "oracle_accepted": true
+    }
+  ],
+  "all_oracles_accepted": true,
+  "test_passes": 1,
+  "test_failures": 1,
+  "file_retries": 0
+}

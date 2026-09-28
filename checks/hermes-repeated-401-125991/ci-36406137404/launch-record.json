@@ -1,0 +1,75 @@
+{
+  "purpose": "Resolve prior reused-PM-environment and omitted-working-path limitations with a fresh GitHub-hosted comparison",
+  "original_runtime": "5c727a6ccd298f310becf0f0656346b6797e17f1",
+  "candidate_runtime": "b7e052c9034a08fb3211ec59b173b4507d236d4c",
+  "frozen_test_sha256": "20a819856089fc837d71eb1da14809caa6a98b00e0bfb52e6738a8fd4c919ce2",
+  "initial_launcher": "2d6dda35aef47ba9847dcd779c2272428dbeab70",
+  "initial_tree": "e1b7f21879ac55410c97ba0bef9cb43825db4f09",
+  "initial_branch_create_recorded_at": "2026-09-28T09:43:42Z",
+  "initial_trigger_observation": {
+    "at": "2026-09-28T09:44:40Z",
+    "repository_workflow_count": 0,
+    "repository_run_count": 0,
+    "test_execution": "none observed",
+    "cause": "not established"
+  },
+  "push_launcher": "85c0020ec97e182a1451d96cbaf1404cc6c2acc8",
+  "push_tree": "cfaddeebeaedfc1b3e8dd4c7349c387012445a5b",
+  "verification_branch": "verify/pr-125991-cold-pm-20260928",
+  "static_review": {
+    "independent_reviews": 2,
+    "blocking_issue_fixed_before_publication": "--workers 1 replaced with supported --jobs 1",
+    "remaining_static_blockers": [],
+    "not_a_test_execution": true
+  },
+  "publication_preflight": {
+    "git_blob": "26c7f4a081ca9839ee251f6315da24e998a868ab",
+    "self_test": "3 clean, 14 flagged, oversized input rejected",
+    "listed_patterns_absent_from_both_files": true,
+    "is_authorization": false
+  },
+  "launcher_files": {
+    "repeated_401_ci.py": "d74f9444879d706ba5dbfb4b8405506165cee960292ea69e7872d6ec4bc7dce8",
+    "repeated-401-cold-pm.yml": "94ba909befdc923cb413a4c4dca72e749e3671ec7c43507332cf14934c3551e8"
+  },
+  "status": "fresh CI completed; actual results independently audited against retained JUnit and HTTP records",
+  "push_result": {
+    "completed": true,
+    "exit_code": 0,
+    "commit": "85c0020ec97e182a1451d96cbaf1404cc6c2acc8",
+    "scope": "one workflow file; 3 insertions, 2 deletions",
+    "method": "same-account authenticated Git push; no force"
+  },
+  "workflow_run": {
+    "id": 36406137404,
+    "url": "https://github.com/YS-OH-CORE/hermes-agent/actions/runs/36406137404",
+    "event": "push",
+    "head_sha": "85c0020ec97e182a1451d96cbaf1404cc6c2acc8",
+    "status_at_2026_09_28_095204_utc": "in_progress",
+    "final_status": "completed",
+    "conclusion": "success",
+    "completed_recorded_at": "2026-09-28T09:54:07Z"
+  },
+  "observed_tests": {
+    "original": {
+      "passed": 1,
+      "failed": 1,
+      "errors": 0,
+      "skips": 0,
+      "canonical_exit_code": 1,
+      "classification": "specific second-401 regression reproduced"
+    },
+    "candidate": {
+      "passed": 15,
+      "failed": 0,
+      "errors": 0,
+      "skips": 0,
+      "canonical_exit_codes": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "scope": "fresh CI evidence and README updates; not permission to publish or a claim of adoption",
+  "source_review": "two independent static reviews; invalid --workers argument corrected before launcher publication",
+  "result_review": "original job log and both lanes retained receipts independently reviewed; counts and exits checked against all five JUnit reports",
+  "artifact_review": {
+    "files": 32,
+    "bytes": 46376,
+    "all_file_sizes_and_SHA256_values_match_manifest": true,
+    "all_transfer_archive_payloads_match_mapped_receipts": true
+  },
+  "observed_candidate": {
+    "passed": 15,
+    "failed": 0,
+    "errors": 0,
+    "skips": 0
+  },
+  "observed_original": {
+    "passed": 1,
+    "failed": 1,
+    "canonical_exit_code": 1,
+    "specific_second_401_assertion": true
+  },
+  "scope_limits": [
+    "targeted sequential-call tests",
+    "original runtime received frozen candidate E2E test",
+    "no OAuth refresh or concurrent-request coverage",
+    "full source checkout does not imply UI/build testing",
+    "no adoption or merge established"
+  ],
+  "preflight": {
+    "tool_git_blob": "26c7f4a081ca9839ee251f6315da24e998a868ab",
+    "self_test_passed": true,
+    "evidence_payload_files_before_this_review_receipt": 39,
+    "listed_pattern_findings": [],
+    "meaning": "Listed patterns absent; complete content reviewed separately; not authorization"
+  },
+  "review_changes": [
+    "explicit transfer root mappings recorded",
+    "unchanged original PR clarified as unchanged runtime"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "method": "Same-account gh run download; temporary ZIP repack of extracted artifact contents; SHA256 checked before extracting on review workspace; Windows path separators normalized without changing file bytes",
+  "file_count": 32,
+  "file_bytes": 46376,
+  "transfer_archive_bytes": 23505,
+  "transfer_archive_sha256": "97e55cb7a572b669c62f2fc4dda34d1429bad707eb2ab2c11bc6eb337dfe337b",
+  "github_archive_digest_scope": "Original per-artifact ZIP digests are in artifacts.json; the transfer repack has its own digest.",
+  "artifact_root_mapping": {
+    "repeated-401-original-36406137404-1": "original",
+    "repeated-401-candidate-36406137404-1": "candidate"
+  },
+  "per_file_verification": "All 32 ZIP file payloads compared byte-for-byte with their normalized and mapped receipt files; no file content transformation"
+}

@@ -14,7 +14,7 @@ The existing test harness starts the real Hermes CLI, a fake model provider, and
 
 The test requires exactly three server-observed calls and three tool results, matches the rejected request IDs to the first two calls, and rejects any later `initialize` or `server/discover`. That method-count guard protects the SDK connection lifetime being exercised; it does **not** measure TCP socket reuse. Successful OAuth refresh, concurrent requests, and remote authentication providers are outside this experiment.
 
-## Identical-test results
+## Initial local identical-test results
 
 The same frozen test file was applied to inspected main, the unchanged PR runtime, and the candidate. Its SHA256 is `20a819856089fc837d71eb1da14809caa6a98b00e0bfb52e6738a8fd4c919ce2`, recorded before every run.
 
@@ -28,11 +28,17 @@ Both candidate authentication payloads identify server `web`. Across all three r
 
 A later source-only check at main `d9d122a003633250d22f786bf3d2fa1b63d99e1d` found `mcp_tool_handlers.py`, `mcp_tool_errors.py`, and `mcp_tool_transport.py` text-identical to tested main `188a1a5`. That later revision was not rerun. [Relevance check](later-main-relevance.json).
 
-The candidate additionally passed **12 existing authentication unit tests** and **one selected response-recorder test**, totaling **15 candidate passes** across the three runs. These are targeted results; no full-suite or CI result is claimed. [Authentication log](candidate-auth-unit-01/runner.log), [recorder log](candidate-recorder-01/runner.log).
+The candidate additionally passed **12 existing authentication unit tests** and **one selected response-recorder test**, totaling **15 candidate passes** across the three runs. These initial runs were targeted local results; the fresh CI comparison is recorded separately below. [Authentication log](candidate-auth-unit-01/runner.log), [recorder log](candidate-recorder-01/runner.log).
 
 An initial preparation attempt, [main-red-01](main-red-01/), exited 2 because the runner rejected the split `--basetemp` argument. Only the evidence driver's argument syntax was corrected to `--basetemp=...`; that attempt supplies no behavioral result. It remains alongside all five valid runs, including both expected failures.
 
-## Provenance and practical limits
+## Fresh GitHub-hosted comparison
+
+A subsequent [fresh PM CI run](https://github.com/YS-OH-CORE/hermes-agent/actions/runs/36406137404), completed on 2026-09-28 at 09:54:07 UTC, reproduced the original PR's **1 failed / 1 passed** E2E result and the unchanged candidate's **15 selected passes**. Both lanes used full checkouts with 16,210 tracked files and newly built environments from their committed PM dependency inputs, with caches disabled and zero file retries. This resolves the initial environment-reuse and omitted-working-path conditions for these selected tests.
+
+The original job's green status means its strict negative-result check detected the specific second-401 failure; its actual test exit is still 1. [Complete fresh-CI methods, 32 retained receipt files, JUnit reports, HTTP logs, and launcher history](ci-36406137404/README.md).
+
+## Initial local provenance and practical limits
 
 Each run retains its command, exit status, timestamps, source hashes, working-tree patch, and complete runner output. Candidate tests ran on the original PR HEAD plus the recorded overlay. Publication verification confirms the published commit's parent, both file blobs, and complete candidate tree `c34aaae949e52215febdcf23dfabc8f34db382bd` match that tested state. [Publication verification](publication-verification.json).
 

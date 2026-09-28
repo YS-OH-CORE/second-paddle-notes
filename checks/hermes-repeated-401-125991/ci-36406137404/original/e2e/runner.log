@@ -1,0 +1,158 @@
+▶ not activated — using HERMES_PYTHON: /home/runner/work/_temp/hermes-mcp-test-env/bin/python
+▶ running per-file parallel test suite via run_tests_parallel.py
+  (TZ=UTC LANG=C.UTF-8 PYTHONHASHSEED=0; clean env)
+▶ pre-compiling bytecode cache
+▶ launching test runner
+Discovered 1 test files (~5 tests) under ['tests/e2e/core/mcp_plugins/test_mcp_streamable_http.py']; running with -j 1
+[100.0% |     5/~5 | ✓1 | ✗1] ✗ tests/e2e/core/mcp_plugins/test_mcp_streamable_http.py (1✓ 1✗, 10.1s)
+
+  ╔╍ Failed: tests/e2e/core/mcp_plugins/test_mcp_streamable_http.py ╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍
+  ║     self.raw_requestline = self.rfile.readline(65537)
+  ║                            ~~~~~~~~~~~~~~~~~~~^^^^^^^
+  ║   File "/home/runner/work/_temp/setup-pm/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/socket.py", line 729, in readinto
+  ║     return self._sock.recv_into(b)
+  ║            ~~~~~~~~~~~~~~~~~~~~^^^
+  ║ ConnectionResetError: [Errno 104] Connection reset by peer
+  ║ ----------------------------------------
+  ║ - generated xml file: /home/runner/work/_temp/repeated-401-receipts/e2e/junit.xml -
+  ║ =========================== short test summary info ============================
+  ║ FAILED tests/e2e/core/mcp_plugins/test_mcp_streamable_http.py::test_401_on_tools_call_is_reported_as_an_auth_failure - AssertionError: [{'error': "MCP server 'web' requires re-authentication. Run `hermes mcp login web` (or delete the tokens file under ~...ned an error response'}, {'result': 'NOARGS:CANARY-unauth0', 'structuredContent': {'result': 'NOARGS:CANARY-unauth0'}}]
+  ║ assert [(True, 'web'), (None, None)] == [(True, 'web'), (True, 'web')]
+  ║   
+  ║   At index 1 diff: (None, None) != (True, 'web')
+  ║   
+  ║   Full diff:
+  ║     [
+  ║         (
+  ║             True,
+  ║             'web',
+  ║         ),
+  ║         (
+  ║   -         True,
+  ║   ?         ^^^
+  ║   +         None,
+  ║   ?         ^^^
+  ║   -         'web',
+  ║   +         None,
+  ║         ),
+  ║     ]
+  ║ ================== 1 failed, 1 passed, 4 deselected in 8.87s ===================
+  ║
+  ║  Repro: python -m pytest tests/e2e/core/mcp_plugins/test_mcp_streamable_http.py -k test_401_on_tools_call_is_reported_as_an_auth_failure or test_the_call_after_a_401_reaches_the_server --basetemp=/home/runner/work/_temp/repeated-401-original-e2e --junitxml=/home/runner/work/_temp/repeated-401-receipts/e2e/junit.xml
+  ╚╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍
+
+
+=== Summary: 1 files, 1 tests passed, 1 failed (100% complete) in 10.1s (1 workers) ===
+
+=== Per-file subprocess time distribution ===
+  Files:   1
+  Total subprocess CPU-wall: 10.1s  (runner wall: 10.1s, parallelism: 1x)
+  P50: 10.12s  P90: 10.12s  P95: 10.12s  P99: 10.12s  Max: 10.12s
+  <1s: 0 files (0%)  <2s: 0 files (0%)
+  Top 10 slowest:
+     10.12s  tests/e2e/core/mcp_plugins/test_mcp_streamable_http.py
+
+=== Failure output ===
+
+--- tests/e2e/core/mcp_plugins/test_mcp_streamable_http.py ---
+============================= test session starts ==============================
+platform linux -- Python 3.14.7, pytest-9.1.1, pluggy-1.6.0
+rootdir: /home/runner/work/hermes-agent/hermes-agent
+configfile: pyproject.toml
+plugins: asyncio-1.3.0, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 6 items / 4 deselected / 2 selected
+
+tests/e2e/core/mcp_plugins/test_mcp_streamable_http.py F.                [100%]
+
+=================================== FAILURES ===================================
+____________ test_401_on_tools_call_is_reported_as_an_auth_failure _____________
+
+unauthorized = {'log': PosixPath('/home/runner/work/_temp/repeated-401-original-e2e/unauth0/http_inbound.jsonl'), 'results': ['<untru...h0", "structuredContent": {"result": "NOARGS:CANARY-unauth0"}}\n</untrusted_tool_result>'], 'canary': 'CANARY-unauth0'}
+
+    def test_401_on_tools_call_is_reported_as_an_auth_failure(unauthorized: dict[str, Any]) -> None:
+        messages = inbound(unauthorized["log"])
+        calls = [m for m in messages if isinstance(m, dict) and m.get("method") == "tools/call"]
+        results = [payload(r) for r in unauthorized["results"]]
+        assert len(calls) == len(results) == 3, (calls, results)
+        rejected = [m["injected_401_for"] for m in messages if isinstance(m, dict) and "injected_401_for" in m]
+        assert rejected == [m["id"] for m in calls[:2]], (rejected, calls)
+        # A reconnect would install a new recorder and hide a broken live-hook reference.
+        after_first_call = messages[messages.index(calls[0]) + 1:]
+        assert not [m for m in after_first_call if isinstance(m, dict)
+                    and m.get("method") in {"initialize", "server/discover"}], after_first_call
+>       assert [(r.get("needs_reauth"), r.get("server")) for r in results[:2]] == [
+            (True, SERVER), (True, SERVER)
+        ], results
+E       AssertionError: [{'error': "MCP server 'web' requires re-authentication. Run `hermes mcp login web` (or delete the tokens file under ~...ned an error response'}, {'result': 'NOARGS:CANARY-unauth0', 'structuredContent': {'result': 'NOARGS:CANARY-unauth0'}}]
+E       assert [(True, 'web'), (None, None)] == [(True, 'web'), (True, 'web')]
+E         
+E         At index 1 diff: (None, None) != (True, 'web')
+E         
+E         Full diff:
+E           [
+E               (
+E                   True,
+E                   'web',
+E               ),
+E               (
+E         -         True,
+E         ?         ^^^
+E         +         None,
+E         ?         ^^^
+E         -         'web',
+E         +         None,
+E               ),
+E           ]
+
+tests/e2e/core/mcp_plugins/test_mcp_streamable_http.py:123: AssertionError
+---------------------------- Captured stderr setup -----------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 57850)
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-pm/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-pm/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-pm/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/home/runner/work/_temp/setup-pm/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/http/server.py", line 502, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/runner/work/_temp/setup-pm/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/http/server.py", line 468, in handle_one_request
+    self.raw_requestline = self.rfile.readline(65537)
+                           ~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/home/runner/work/_temp/setup-pm/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/socket.py", line 729, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+ConnectionResetError: [Errno 104] Connection reset by peer
+----------------------------------------
+- generated xml file: /home/runner/work/_temp/repeated-401-receipts/e2e/junit.xml -
+=========================== short test summary info ============================
+FAILED tests/e2e/core/mcp_plugins/test_mcp_streamable_http.py::test_401_on_tools_call_is_reported_as_an_auth_failure - AssertionError: [{'error': "MCP server 'web' requires re-authentication. Run `hermes mcp login web` (or delete the tokens file under ~...ned an error response'}, {'result': 'NOARGS:CANARY-unauth0', 'structuredContent': {'result': 'NOARGS:CANARY-unauth0'}}]
+assert [(True, 'web'), (None, None)] == [(True, 'web'), (True, 'web')]
+  
+  At index 1 diff: (None, None) != (True, 'web')
+  
+  Full diff:
+    [
+        (
+            True,
+            'web',
+        ),
+        (
+  -         True,
+  ?         ^^^
+  +         None,
+  ?         ^^^
+  -         'web',
+  +         None,
+        ),
+    ]
+================== 1 failed, 1 passed, 4 deselected in 8.87s ===================
+
+=== 1 file with test failures (1 test failed) ===
+  tests/e2e/core/mcp_plugins/test_mcp_streamable_http.py  (1 test failed)

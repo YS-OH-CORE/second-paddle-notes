@@ -1,0 +1,28 @@
+{
+  "lane": "candidate",
+  "runtime_commit": "b7e052c9034a08fb3211ec59b173b4507d236d4c",
+  "runtime_tree": "c34aaae949e52215febdcf23dfabc8f34db382bd",
+  "checkout": "ordinary full checkout; no sparse checkout or omitted tracked paths",
+  "tracked_file_count": 16210,
+  "original_test_sha256": "20a819856089fc837d71eb1da14809caa6a98b00e0bfb52e6738a8fd4c919ce2",
+  "frozen_test_sha256": "20a819856089fc837d71eb1da14809caa6a98b00e0bfb52e6738a8fd4c919ce2",
+  "working_tree_patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "files": {
+    "pyproject.toml": "a6d0b40bfab34227934430c797eded0883d343b3891123375e9067edae1792d6",
+    "uv.lock": "bd27ac91236fa57f9eeffea8d4a324f3ca7f9b218525d74bec14a67fc1163887",
+    "pm/lock.json": "758f34b7dc6cc1c43259dac9fb6adedc9696bbe148413df80bdcfe90716c8bdc",
+    "scripts/run_tests.sh": "818ce416356a6eaa28a9154e0640e45f808c888c7e976e8053a3e5a90b696688",
+    "tests/e2e/core/mcp_plugins/test_mcp_streamable_http.py": "20a819856089fc837d71eb1da14809caa6a98b00e0bfb52e6738a8fd4c919ce2",
+    "tools/mcp_tool_handlers.py": "13f3d10af28670a024bb1f017ea506e8f437fa1beed96f5bf706ccf942632520",
+    ".github/actions/setup-pm/action.yml": "07e24a71548c846b0794bbd35fa69a119f855c8165974397f99ddff4645fe031"
+  },
+  "workflow_commit": "85c0020ec97e182a1451d96cbaf1404cc6c2acc8",
+  "run_id": "36406137404",
+  "run_attempt": "1",
+  "runner_os": "Linux",
+  "runner_arch": "X64",
+  "runner_image": "20260920.314.1",
+  "preparation_unix_time": 1790589165.2052164,
+  "dependency_build": "pm.build_env, frozen committed inputs, dev+test groups, new output",
+  "restored_tool_or_dependency_caches": false
+}

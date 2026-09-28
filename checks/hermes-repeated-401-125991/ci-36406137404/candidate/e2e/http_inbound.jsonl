@@ -1,0 +1,8 @@
+{"pid": 2952, "msg": {"jsonrpc": "2.0", "id": 1, "method": "initialize", "params": {"protocolVersion": "2025-11-25", "capabilities": {"sampling": {"tools": {}}, "elicitation": {"form": {}, "url": {}}}, "clientInfo": {"name": "mcp", "version": "0.1.0"}, "_meta": {}}}}
+{"pid": 2952, "msg": {"jsonrpc": "2.0", "method": "notifications/initialized"}}
+{"pid": 2952, "msg": {"jsonrpc": "2.0", "id": 2, "method": "tools/list", "params": {"_meta": {}}}}
+{"pid": 2952, "msg": {"jsonrpc": "2.0", "id": 3, "method": "tools/call", "params": {"name": "noargs_probe", "arguments": {}, "_meta": {}}}}
+{"pid": 2952, "msg": {"injected_401_for": 3}}
+{"pid": 2952, "msg": {"jsonrpc": "2.0", "id": 4, "method": "tools/call", "params": {"name": "noargs_probe", "arguments": {}, "_meta": {}}}}
+{"pid": 2952, "msg": {"injected_401_for": 4}}
+{"pid": 2952, "msg": {"jsonrpc": "2.0", "id": 5, "method": "tools/call", "params": {"name": "noargs_probe", "arguments": {}, "_meta": {}}}}

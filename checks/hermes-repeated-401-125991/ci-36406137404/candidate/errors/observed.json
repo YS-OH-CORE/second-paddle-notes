@@ -1,0 +1,57 @@
+{
+  "gate": "errors",
+  "exit_code": 0,
+  "cases": [
+    {
+      "name": "test_format_connect_error_reports_real_messages_on_cyclic_chain",
+      "class": "tests.tools.test_mcp_tool_errors",
+      "state": "passed"
+    },
+    {
+      "name": "test_format_connect_error_finds_missing_executable_through_deep_cyclic_chain",
+      "class": "tests.tools.test_mcp_tool_errors",
+      "state": "passed"
+    },
+    {
+      "name": "test_folded_error_alone_is_not_an_auth_error",
+      "class": "tests.tools.test_mcp_tool_errors",
+      "state": "passed"
+    },
+    {
+      "name": "test_a_recorded_401_is_recognised_as_an_auth_error",
+      "class": "tests.tools.test_mcp_tool_errors",
+      "state": "passed"
+    },
+    {
+      "name": "test_only_401_counts_as_a_recorded_auth_error",
+      "class": "tests.tools.test_mcp_tool_errors",
+      "state": "passed"
+    },
+    {
+      "name": "test_no_recording_is_not_an_auth_error",
+      "class": "tests.tools.test_mcp_tool_errors",
+      "state": "passed"
+    },
+    {
+      "name": "test_a_malformed_recorded_status_is_not_an_auth_error",
+      "class": "tests.tools.test_mcp_tool_errors",
+      "state": "passed"
+    },
+    {
+      "name": "test_a_recorded_401_reaches_the_auth_recovery_ladder",
+      "class": "tests.tools.test_mcp_tool_errors",
+      "state": "passed"
+    },
+    {
+      "name": "test_a_recorded_403_does_not_reach_the_auth_ladder",
+      "class": "tests.tools.test_mcp_tool_errors",
+      "state": "passed"
+    }
+  ],
+  "passed": 9,
+  "failed": 0,
+  "errors": 0,
+  "skipped": 0,
+  "interpretation": "selected tests passed",
+  "oracle_accepted": true
+}

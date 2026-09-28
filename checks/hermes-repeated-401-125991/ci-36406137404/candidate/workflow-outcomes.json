@@ -1,0 +1,7 @@
+{
+  "REVIEW_LANE": "candidate",
+  "INPUTS_OUTCOME": "success",
+  "TOOLCHAIN_OUTCOME": "success",
+  "DEPENDENCIES_OUTCOME": "success",
+  "VERIFICATION_OUTCOME": "success"
+}
