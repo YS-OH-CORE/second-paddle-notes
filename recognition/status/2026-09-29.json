@@ -1,0 +1,90 @@
+[
+  {
+    "repository": "NousResearch/hermes-agent",
+    "number": 22982,
+    "url": "https://github.com/NousResearch/hermes-agent/pull/22982",
+    "title": "fix(gateway): route model command inline payloads",
+    "state": "open",
+    "merged": false,
+    "head_sha": "8c0090dc9adbddcebb5491559ad98e1cf90d5bb4",
+    "merged_at": null,
+    "checked_at_utc": "2026-09-29T05:49:26.914883+00:00"
+  },
+  {
+    "repository": "NousResearch/hermes-agent",
+    "number": 121944,
+    "url": "https://github.com/NousResearch/hermes-agent/pull/121944",
+    "title": "fix(mcp): a recorded 5xx is a server fault, not an SSE-only transport mismatch",
+    "state": "open",
+    "merged": false,
+    "head_sha": "859b987d1df0f47236eabe4190e9d41122b5ea12",
+    "merged_at": null,
+    "checked_at_utc": "2026-09-29T05:49:26.992089+00:00"
+  },
+  {
+    "repository": "modelcontextprotocol/conformance",
+    "number": 533,
+    "url": "https://github.com/modelcontextprotocol/conformance/pull/533",
+    "title": "fix(runner): terminate sessions the scenario left open",
+    "state": "open",
+    "merged": false,
+    "head_sha": "95dd2e2c64c7173e5f3ddfada7b03512f88eef89",
+    "merged_at": null,
+    "checked_at_utc": "2026-09-29T05:49:26.895158+00:00"
+  },
+  {
+    "repository": "redd34/canitoolcall",
+    "number": 13,
+    "url": "https://github.com/redd34/canitoolcall/pull/13",
+    "title": "triage: distinguish nine vLLM recovery discrepancies",
+    "state": "open",
+    "merged": false,
+    "head_sha": "7f6242c267175a7fda9659ccf40f3c0248c886e3",
+    "merged_at": null,
+    "checked_at_utc": "2026-09-29T05:49:27.472382+00:00"
+  },
+  {
+    "repository": "mem0ai/mem0",
+    "number": 7455,
+    "url": "https://github.com/mem0ai/mem0/pull/7455",
+    "title": "Fix: 7452 delete_all clears the scope's session messages (Python + TS SDKs)",
+    "state": "closed",
+    "merged": false,
+    "head_sha": "af93b81bc9573be1b78014b5005a0b0d950605bb",
+    "merged_at": null,
+    "checked_at_utc": "2026-09-29T05:49:27.367314+00:00"
+  },
+  {
+    "repository": "mem0ai/mem0",
+    "number": 7464,
+    "url": "https://github.com/mem0ai/mem0/pull/7464",
+    "title": "fix(vector_stores): raise NotImplementedError from Langchain.list() for non-Chroma clients",
+    "state": "closed",
+    "merged": false,
+    "head_sha": "cec74a8ebf5a9d6724104d4867868da118b58205",
+    "merged_at": null,
+    "checked_at_utc": "2026-09-29T05:49:27.517360+00:00"
+  },
+  {
+    "repository": "NousResearch/hermes-agent",
+    "number": 122033,
+    "url": "https://github.com/NousResearch/hermes-agent/pull/122033",
+    "title": "feat(signal): add a note_to_self opt-out (#121970)",
+    "state": "open",
+    "merged": false,
+    "head_sha": "bb8f14060ae63968c5d34ca5024dbce7fea93001",
+    "merged_at": null,
+    "checked_at_utc": "2026-09-29T05:49:27.828226+00:00"
+  },
+  {
+    "repository": "NousResearch/hermes-agent",
+    "number": 84236,
+    "url": "https://github.com/NousResearch/hermes-agent/pull/84236",
+    "title": "fix(agent): visible closing message and structured stop_kind for interrupted turns",
+    "state": "open",
+    "merged": false,
+    "head_sha": "e99497e5101358b496ca860a3e42c1b623375287",
+    "merged_at": null,
+    "checked_at_utc": "2026-09-29T05:49:27.888284+00:00"
+  }
+]
