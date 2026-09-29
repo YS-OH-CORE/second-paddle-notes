@@ -1,0 +1,12 @@
+{
+  "account": "YS-OH-CORE",
+  "comment_id": 5884179619,
+  "url": "https://github.com/mem0ai/mem0/issues/7452#issuecomment-5884179619",
+  "disposition": "posted_once_via_existing_same_account_cli",
+  "complete_body_readback_matched": true,
+  "body_sha256_utf8": "24b4a64451755da8b84a20aa2404213935d1f385449fd5c816c3e9efbdc3a86a",
+  "evidence_commit": "ee6a2e622436c4dd3519b5d72be2d7727a44148d",
+  "initial_connector_attempt": "403 Resource not accessible by integration",
+  "recorded_at_utc": "2026-09-29T05:21:27.074103+00:00",
+  "acceptance_status": "Delivery verified; no recipient acceptance or upstream merge claimed."
+}
