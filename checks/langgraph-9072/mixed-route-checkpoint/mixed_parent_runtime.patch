@@ -1,0 +1,67 @@
+--- a/libs/prebuilt/langgraph/prebuilt/tool_node.py
++++ b/libs/prebuilt/langgraph/prebuilt/tool_node.py
+@@ -892,22 +892,57 @@
+             Command | list[ToolMessage] | dict[str, list[ToolMessage]]
+         ] = []
+ 
+-        # combine all parent commands with goto into a single parent command
++        # A parent handoff raises ParentCommand at the graph boundary. If any
++        # parent destination is a Send, collect its sibling parent commands too,
++        # otherwise the first exception can discard another sibling's handoff.
++        has_parent_send = any(
++            isinstance(output, Command)
++            and output.graph is Command.PARENT
++            and (
++                isinstance(output.goto, Send)
++                or (
++                    not isinstance(output.goto, str)
++                    and any(isinstance(go, Send) for go in output.goto)
++                )
++            )
++            for output in flat_outputs
++        )
+         parent_command: Command | None = None
+         for output in flat_outputs:
+             if isinstance(output, Command):
+-                if (
+-                    output.graph is Command.PARENT
+-                    and isinstance(output.goto, list)
+-                    and all(isinstance(send, Send) for send in output.goto)
++                if output.graph is Command.PARENT and (
++                    has_parent_send
++                    or (
++                        isinstance(output.goto, list)
++                        and all(isinstance(send, Send) for send in output.goto)
++                    )
+                 ):
+                     if parent_command:
++                        if output.update is None:
++                            merged_update = parent_command.update
++                        elif parent_command.update is None:
++                            merged_update = output.update
++                        else:
++                            merged_update = list(
++                                parent_command._update_as_tuples()
++                            ) + list(output._update_as_tuples())
++                        previous_goto = (
++                            [parent_command.goto]
++                            if isinstance(parent_command.goto, (str, Send))
++                            else list(parent_command.goto)
++                        )
++                        next_goto = (
++                            [output.goto]
++                            if isinstance(output.goto, (str, Send))
++                            else list(output.goto)
++                        )
+                         parent_command = replace(
+                             parent_command,
+-                            goto=cast("list[Send]", parent_command.goto) + output.goto,
++                            goto=previous_goto + next_goto,
++                            update=merged_update,
+                         )
+                     else:
+-                        parent_command = Command(graph=Command.PARENT, goto=output.goto)
++                        parent_command = output
+                 else:
+                     combined_outputs.append(output)
+             else:

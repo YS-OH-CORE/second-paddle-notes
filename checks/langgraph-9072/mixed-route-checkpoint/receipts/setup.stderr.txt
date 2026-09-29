@@ -1,0 +1,80 @@
+Using CPython 3.12.10 interpreter at: [HOME]\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\python.exe
+Creating virtual environment at: [WORKDIR]\venv
+   Building langgraph @ file:///[WORKDIR]/langgraph-07b33185eab893be2ed031eedae52f09314bf77c/libs/langgraph
+   Building langgraph-checkpoint @ file:///[WORKDIR]/langgraph-07b33185eab893be2ed031eedae52f09314bf77c/libs/checkpoint
+   Building langgraph-checkpoint-postgres @ file:///[WORKDIR]/langgraph-07b33185eab893be2ed031eedae52f09314bf77c/libs/checkpoint-postgres
+   Building langgraph-checkpoint-sqlite @ file:///[WORKDIR]/langgraph-07b33185eab893be2ed031eedae52f09314bf77c/libs/checkpoint-sqlite
+   Building langgraph-prebuilt @ file:///[WORKDIR]/langgraph-07b33185eab893be2ed031eedae52f09314bf77c/libs/prebuilt
+   Building langgraph-sdk @ file:///[WORKDIR]/langgraph-07b33185eab893be2ed031eedae52f09314bf77c/libs/sdk-py
+Downloading pygments (1.2MiB)
+Downloading ruff (10.0MiB)
+Downloading ty (12.3MiB)
+Downloading psycopg-binary (3.4MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pygments
+ Downloaded pydantic-core
+ Downloaded psycopg-binary
+      Built langgraph-prebuilt @ file:///[WORKDIR]/langgraph-07b33185eab893be2ed031eedae52f09314bf77c/libs/prebuilt
+      Built langgraph-checkpoint-sqlite @ file:///[WORKDIR]/langgraph-07b33185eab893be2ed031eedae52f09314bf77c/libs/checkpoint-sqlite
+      Built langgraph @ file:///[WORKDIR]/langgraph-07b33185eab893be2ed031eedae52f09314bf77c/libs/langgraph
+      Built langgraph-sdk @ file:///[WORKDIR]/langgraph-07b33185eab893be2ed031eedae52f09314bf77c/libs/sdk-py
+      Built langgraph-checkpoint @ file:///[WORKDIR]/langgraph-07b33185eab893be2ed031eedae52f09314bf77c/libs/checkpoint
+      Built langgraph-checkpoint-postgres @ file:///[WORKDIR]/langgraph-07b33185eab893be2ed031eedae52f09314bf77c/libs/checkpoint-postgres
+ Downloaded ruff
+ Downloaded ty
+Prepared 54 packages in 4.49s
+Installed 54 packages in 1.00s
+ + aiosqlite==0.22.1
+ + annotated-types==0.7.0
+ + anyio==4.14.2
+ + certifi==2026.1.4
+ + charset-normalizer==3.4.4
+ + codespell==2.4.3
+ + colorama==0.4.6
+ + h11==0.16.0
+ + httpcore==1.0.9
+ + httpx==0.28.1
+ + idna==3.15
+ + iniconfig==2.3.0
+ + jsonpatch==1.33
+ + jsonpointer==3.0.0
+ + langchain-core==1.6.1
+ + langchain-protocol==0.0.18
+ + langgraph==1.2.12 (from file:///[WORKDIR]/langgraph-07b33185eab893be2ed031eedae52f09314bf77c/libs/langgraph)
+ + langgraph-checkpoint==4.2.0 (from file:///[WORKDIR]/langgraph-07b33185eab893be2ed031eedae52f09314bf77c/libs/checkpoint)
+ + langgraph-checkpoint-postgres==3.1.2 (from file:///[WORKDIR]/langgraph-07b33185eab893be2ed031eedae52f09314bf77c/libs/checkpoint-postgres)
+ + langgraph-checkpoint-sqlite==3.1.1 (from file:///[WORKDIR]/langgraph-07b33185eab893be2ed031eedae52f09314bf77c/libs/checkpoint-sqlite)
+ + langgraph-prebuilt==1.1.0 (from file:///[WORKDIR]/langgraph-07b33185eab893be2ed031eedae52f09314bf77c/libs/prebuilt)
+ + langgraph-sdk==0.4.5 (from file:///[WORKDIR]/langgraph-07b33185eab893be2ed031eedae52f09314bf77c/libs/sdk-py)
+ + langsmith==0.8.18
+ + orjson==3.11.9
+ + ormsgpack==1.12.2
+ + packaging==25.0
+ + pluggy==1.6.0
+ + psycopg==3.3.4
+ + psycopg-binary==3.3.4
+ + psycopg-pool==3.3.1
+ + pydantic==2.13.4
+ + pydantic-core==2.46.4
+ + pygments==2.20.0
+ + pytest==9.1.1
+ + pytest-asyncio==1.4.0
+ + pytest-mock==3.15.1
+ + pytest-watcher==0.6.3
+ + pyyaml==6.0.3
+ + requests==2.33.0
+ + requests-toolbelt==1.0.0
+ + ruff==0.16.5
+ + sqlite-vec==0.1.9
+ + syrupy==6.0.0
+ + tenacity==9.1.2
+ + ty==0.0.75
+ + typing-extensions==4.15.0
+ + typing-inspection==0.4.2
+ + tzdata==2025.3
+ + urllib3==2.7.0
+ + uuid-utils==0.13.0
+ + watchdog==6.0.0
+ + websockets==15.0.1
+ + xxhash==3.8.1
+ + zstandard==0.25.0

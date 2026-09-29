@@ -1,0 +1,93 @@
+{
+  "source_repo": "langchain-ai/langgraph",
+  "source_commit": "07b33185eab893be2ed031eedae52f09314bf77c",
+  "source_zip_sha256": "1c656f29e74eb5177b5429eb3d27d370bb89e298353e0d568cc4b36de21f6d57",
+  "checked_at_utc": "2026-09-29T07:34:34.552146+00:00",
+  "comparison": [
+    {
+      "variant": "baseline",
+      "exit_code": 1,
+      "grouped": {
+        "test_parent_handoff_durability": {
+          "failed": 48
+        },
+        "test_parent_command_handoff": {
+          "failed": 22,
+          "passed": 2
+        },
+        "test_tool_node": {
+          "passed": 44
+        }
+      },
+      "checkpoint_phase_records": 16
+    },
+    {
+      "variant": "prior",
+      "exit_code": 1,
+      "grouped": {
+        "test_parent_handoff_durability": {
+          "passed": 14,
+          "failed": 34
+        },
+        "test_parent_command_handoff": {
+          "passed": 24
+        },
+        "test_tool_node": {
+          "passed": 44
+        }
+      },
+      "checkpoint_phase_records": 16
+    },
+    {
+      "variant": "candidate",
+      "exit_code": 0,
+      "grouped": {
+        "test_parent_handoff_durability": {
+          "passed": 48
+        },
+        "test_parent_command_handoff": {
+          "passed": 24
+        },
+        "test_tool_node": {
+          "passed": 44
+        }
+      },
+      "checkpoint_phase_records": 16
+    }
+  ],
+  "identities": {
+    "upstream_tool_node": {
+      "sha256": "e13ea6317164c823eae8512f94eeaea28c43731cf0a7ed1d9de9fca4a95f1782",
+      "git_blob_sha1": "95e161b9078e3123afa1854247a5dfd132410a53"
+    },
+    "prior_tool_node": {
+      "sha256": "0b6551bbffc385167a072484ea46376d3732c7c66a0c0e7d95b6eea838410c5d",
+      "git_blob_sha1": "17b1fe45831bdefb593bb957325bf13cd15123e9"
+    },
+    "candidate_tool_node": {
+      "sha256": "51972b3a8b160841775ef0830c34254e4bf86b705afc1b32ef372a13d741acbe",
+      "git_blob_sha1": "94ee2bed928fe9a55a322957484e967ca3d9bc3b"
+    },
+    "new_tests": {
+      "sha256": "b3e949dc8c17e37c8b5c8b4aca94db11418ae599678481016c4c46185c753f61",
+      "git_blob_sha1": "5903df0fd70b3a7e06c16bad8b5e950d7c4daec6"
+    },
+    "prior_tests": {
+      "sha256": "b4960c257562bf78928f7f328ab84b278f4355f9764a8b44959e981eacf319e4",
+      "git_blob_sha1": "203dc3fa62c14606e669c7bbfbc3d91c3c11ef5a"
+    },
+    "unchanged_upstream_tests": {
+      "sha256": "5ff4e2bc5565368aedbb5347b802d3fd1d74ff6bdaf7d8134b68997a7e50bb5e",
+      "git_blob_sha1": "47ebdcae0d936167649c0d33103650388d290a9a"
+    },
+    "frozen_uv_lock": {
+      "sha256": "41e25e4a220b7ef9d7d28b9e26aa57025df2986fe7f9ce3f8f3cf72c70732bf8",
+      "git_blob_sha1": "1087fae187862821f3a55883cb84c8b4bbdd5983"
+    }
+  },
+  "packaged_patches_reproduce_tested_bytes": true,
+  "live_model_configured": false,
+  "new_tests_mock_graph_components": false,
+  "network_audit_instrumented": false,
+  "scope": "Three specified test files, not the full upstream suite. Controlled checkpoint stop/restart, not crash consistency or general exactly-once execution."
+}

@@ -1,0 +1,705 @@
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF..FFFFFFFFFFFFFFFF [ 62%]
+............................................                             [100%]
+================================== FAILURES ===================================
+______________ test_mixed_parent_routes[list-list-forward-sync] _______________
+tests\test_parent_handoff_durability.py:110: in test_mixed_parent_routes
+    assert actual == {"total": 5, "best": ["b", "c"],
+E   AssertionError: assert {'total': 0, ... 'beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 0} != {'total': 5}
+E     {'tool_ids': []} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'best': []} != {'best': ['b', 'c']}
+E     Use -v to get more diff
+______________ test_mixed_parent_routes[list-list-forward-async] ______________
+tests\test_parent_handoff_durability.py:110: in test_mixed_parent_routes
+    assert actual == {"total": 5, "best": ["b", "c"],
+E   AssertionError: assert {'total': 0, ... 'beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 0} != {'total': 5}
+E     {'tool_ids': []} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'best': []} != {'best': ['b', 'c']}
+E     Use -v to get more diff
+______________ test_mixed_parent_routes[list-list-reverse-sync] _______________
+tests\test_parent_handoff_durability.py:110: in test_mixed_parent_routes
+    assert actual == {"total": 5, "best": ["b", "c"],
+E   AssertionError: assert {'total': 0, ... 'beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 0} != {'total': 5}
+E     {'tool_ids': []} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     {'best': []} != {'best': ['b', 'c']}
+E     Use -v to get more diff
+______________ test_mixed_parent_routes[list-list-reverse-async] ______________
+tests\test_parent_handoff_durability.py:110: in test_mixed_parent_routes
+    assert actual == {"total": 5, "best": ["b", "c"],
+E   AssertionError: assert {'total': 0, ... 'beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 0} != {'total': 5}
+E     {'tool_ids': []} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     {'best': []} != {'best': ['b', 'c']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[list-single-forward-sync] ______________
+tests\test_parent_handoff_durability.py:110: in test_mixed_parent_routes
+    assert actual == {"total": 5, "best": ["b", "c"],
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 3} != {'total': 5}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[list-single-forward-async] _____________
+tests\test_parent_handoff_durability.py:110: in test_mixed_parent_routes
+    assert actual == {"total": 5, "best": ["b", "c"],
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 3} != {'total': 5}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[list-single-reverse-sync] ______________
+tests\test_parent_handoff_durability.py:110: in test_mixed_parent_routes
+    assert actual == {"total": 5, "best": ["b", "c"],
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'total': 2} != {'total': 5}
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[list-single-reverse-async] _____________
+tests\test_parent_handoff_durability.py:110: in test_mixed_parent_routes
+    assert actual == {"total": 5, "best": ["b", "c"],
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'total': 2} != {'total': 5}
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[single-list-forward-sync] ______________
+tests\test_parent_handoff_durability.py:110: in test_mixed_parent_routes
+    assert actual == {"total": 5, "best": ["b", "c"],
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'total': 2} != {'total': 5}
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[single-list-forward-async] _____________
+tests\test_parent_handoff_durability.py:110: in test_mixed_parent_routes
+    assert actual == {"total": 5, "best": ["b", "c"],
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'total': 2} != {'total': 5}
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[single-list-reverse-sync] ______________
+tests\test_parent_handoff_durability.py:110: in test_mixed_parent_routes
+    assert actual == {"total": 5, "best": ["b", "c"],
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 3} != {'total': 5}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[single-list-reverse-async] _____________
+tests\test_parent_handoff_durability.py:110: in test_mixed_parent_routes
+    assert actual == {"total": 5, "best": ["b", "c"],
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 3} != {'total': 5}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     Use -v to get more diff
+______________ test_mixed_parent_routes[list-tuple-forward-sync] ______________
+tests\test_parent_handoff_durability.py:110: in test_mixed_parent_routes
+    assert actual == {"total": 5, "best": ["b", "c"],
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 3} != {'total': 5}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[list-tuple-forward-async] ______________
+tests\test_parent_handoff_durability.py:110: in test_mixed_parent_routes
+    assert actual == {"total": 5, "best": ["b", "c"],
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 3} != {'total': 5}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     Use -v to get more diff
+______________ test_mixed_parent_routes[list-tuple-reverse-sync] ______________
+tests\test_parent_handoff_durability.py:110: in test_mixed_parent_routes
+    assert actual == {"total": 5, "best": ["b", "c"],
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'total': 2} != {'total': 5}
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[list-tuple-reverse-async] ______________
+tests\test_parent_handoff_durability.py:110: in test_mixed_parent_routes
+    assert actual == {"total": 5, "best": ["b", "c"],
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'total': 2} != {'total': 5}
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     Use -v to get more diff
+______________ test_mixed_parent_routes[tuple-list-forward-sync] ______________
+tests\test_parent_handoff_durability.py:110: in test_mixed_parent_routes
+    assert actual == {"total": 5, "best": ["b", "c"],
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'total': 2} != {'total': 5}
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[tuple-list-forward-async] ______________
+tests\test_parent_handoff_durability.py:110: in test_mixed_parent_routes
+    assert actual == {"total": 5, "best": ["b", "c"],
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'total': 2} != {'total': 5}
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     Use -v to get more diff
+______________ test_mixed_parent_routes[tuple-list-reverse-sync] ______________
+tests\test_parent_handoff_durability.py:110: in test_mixed_parent_routes
+    assert actual == {"total": 5, "best": ["b", "c"],
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 3} != {'total': 5}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[tuple-list-reverse-async] ______________
+tests\test_parent_handoff_durability.py:110: in test_mixed_parent_routes
+    assert actual == {"total": 5, "best": ["b", "c"],
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 3} != {'total': 5}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[list-string-forward-sync] ______________
+tests\test_parent_handoff_durability.py:110: in test_mixed_parent_routes
+    assert actual == {"total": 5, "best": ["b", "c"],
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 3} != {'total': 5}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[list-string-forward-async] _____________
+tests\test_parent_handoff_durability.py:110: in test_mixed_parent_routes
+    assert actual == {"total": 5, "best": ["b", "c"],
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 3} != {'total': 5}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[list-string-reverse-sync] ______________
+tests\test_parent_handoff_durability.py:110: in test_mixed_parent_routes
+    assert actual == {"total": 5, "best": ["b", "c"],
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'total': 2} != {'total': 5}
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[list-string-reverse-async] _____________
+tests\test_parent_handoff_durability.py:110: in test_mixed_parent_routes
+    assert actual == {"total": 5, "best": ["b", "c"],
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'total': 2} != {'total': 5}
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[string-list-forward-sync] ______________
+tests\test_parent_handoff_durability.py:110: in test_mixed_parent_routes
+    assert actual == {"total": 5, "best": ["b", "c"],
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'total': 2} != {'total': 5}
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[string-list-forward-async] _____________
+tests\test_parent_handoff_durability.py:110: in test_mixed_parent_routes
+    assert actual == {"total": 5, "best": ["b", "c"],
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'total': 2} != {'total': 5}
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[string-list-reverse-sync] ______________
+tests\test_parent_handoff_durability.py:110: in test_mixed_parent_routes
+    assert actual == {"total": 5, "best": ["b", "c"],
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 3} != {'total': 5}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[string-list-reverse-async] _____________
+tests\test_parent_handoff_durability.py:110: in test_mixed_parent_routes
+    assert actual == {"total": 5, "best": ["b", "c"],
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 3} != {'total': 5}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[tuple-single-forward-sync] _____________
+tests\test_parent_handoff_durability.py:110: in test_mixed_parent_routes
+    assert actual == {"total": 5, "best": ["b", "c"],
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'total': 2} != {'total': 5}
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     Use -v to get more diff
+____________ test_mixed_parent_routes[tuple-single-forward-async] _____________
+tests\test_parent_handoff_durability.py:110: in test_mixed_parent_routes
+    assert actual == {"total": 5, "best": ["b", "c"],
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'total': 2} != {'total': 5}
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[tuple-single-reverse-sync] _____________
+tests\test_parent_handoff_durability.py:110: in test_mixed_parent_routes
+    assert actual == {"total": 5, "best": ["b", "c"],
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 3} != {'total': 5}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     Use -v to get more diff
+____________ test_mixed_parent_routes[tuple-single-reverse-async] _____________
+tests\test_parent_handoff_durability.py:110: in test_mixed_parent_routes
+    assert actual == {"total": 5, "best": ["b", "c"],
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 3} != {'total': 5}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     Use -v to get more diff
+______________ test_mixed_parent_routes[list-empty-forward-sync] ______________
+tests\test_parent_handoff_durability.py:110: in test_mixed_parent_routes
+    assert actual == {"total": 5, "best": ["b", "c"],
+E   AssertionError: assert {'total': 0, ...'alpha'], ...} == {'total': 5, ...'alpha'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 0} != {'total': 5}
+E     {'tool_ids': []} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'best': []} != {'best': ['b', 'c']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[list-empty-forward-async] ______________
+tests\test_parent_handoff_durability.py:110: in test_mixed_parent_routes
+    assert actual == {"total": 5, "best": ["b", "c"],
+E   AssertionError: assert {'total': 0, ...'alpha'], ...} == {'total': 5, ...'alpha'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 0} != {'total': 5}
+E     {'tool_ids': []} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'best': []} != {'best': ['b', 'c']}
+E     Use -v to get more diff
+______________ test_mixed_parent_routes[list-empty-reverse-sync] ______________
+tests\test_parent_handoff_durability.py:110: in test_mixed_parent_routes
+    assert actual == {"total": 5, "best": ["b", "c"],
+E   AssertionError: assert {'total': 0, ...['beta'], ...} == {'total': 5, ...['beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 0} != {'total': 5}
+E     {'tool_ids': []} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     {'best': []} != {'best': ['b', 'c']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[list-empty-reverse-async] ______________
+tests\test_parent_handoff_durability.py:110: in test_mixed_parent_routes
+    assert actual == {"total": 5, "best": ["b", "c"],
+E   AssertionError: assert {'total': 0, ...['beta'], ...} == {'total': 5, ...['beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 0} != {'total': 5}
+E     {'tool_ids': []} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     {'best': []} != {'best': ['b', 'c']}
+E     Use -v to get more diff
+__________ test_root_reducer_receives_separate_updates[forward-sync] __________
+tests\test_parent_handoff_durability.py:137: in test_root_reducer_receives_separate_updates
+    assert actual == 5
+E   assert 0 == 5
+_________ test_root_reducer_receives_separate_updates[forward-async] __________
+tests\test_parent_handoff_durability.py:137: in test_root_reducer_receives_separate_updates
+    assert actual == 5
+E   assert 0 == 5
+__________ test_root_reducer_receives_separate_updates[reverse-sync] __________
+tests\test_parent_handoff_durability.py:137: in test_root_reducer_receives_separate_updates
+    assert actual == 5
+E   assert 0 == 5
+_________ test_root_reducer_receives_separate_updates[reverse-async] __________
+tests\test_parent_handoff_durability.py:137: in test_root_reducer_receives_separate_updates
+    assert actual == 5
+E   assert 0 == 5
+_______ test_checkpoint_resume_in_a_new_process[list-list-sync-sqlite] ________
+tests\test_parent_handoff_durability.py:179: in test_checkpoint_resume_in_a_new_process
+    assert {k: observation[k] for k in expected} == expected
+E   AssertionError: assert {'total': 0, ...pha', 'beta']} == {'total': 5, ...pha', 'beta']}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'total': 0} != {'total': 5}
+E     {'tool_ids': []} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'best': []} != {'best': ['b', 'c']}
+E     Use -v to get more diff
+_______ test_checkpoint_resume_in_a_new_process[list-list-async-sqlite] _______
+tests\test_parent_handoff_durability.py:179: in test_checkpoint_resume_in_a_new_process
+    assert {k: observation[k] for k in expected} == expected
+E   AssertionError: assert {'total': 0, ...pha', 'beta']} == {'total': 5, ...pha', 'beta']}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'total': 0} != {'total': 5}
+E     {'tool_ids': []} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'best': []} != {'best': ['b', 'c']}
+E     Use -v to get more diff
+______ test_checkpoint_resume_in_a_new_process[list-single-sync-sqlite] _______
+tests\test_parent_handoff_durability.py:179: in test_checkpoint_resume_in_a_new_process
+    assert {k: observation[k] for k in expected} == expected
+E   AssertionError: assert {'total': 3, ...ed': ['beta']} == {'total': 5, ...pha', 'beta']}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'total': 3} != {'total': 5}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     Use -v to get more diff
+______ test_checkpoint_resume_in_a_new_process[list-single-async-sqlite] ______
+tests\test_parent_handoff_durability.py:179: in test_checkpoint_resume_in_a_new_process
+    assert {k: observation[k] for k in expected} == expected
+E   AssertionError: assert {'total': 3, ...ed': ['beta']} == {'total': 5, ...pha', 'beta']}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'total': 3} != {'total': 5}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     Use -v to get more diff
+______ test_checkpoint_resume_in_a_new_process[list-string-sync-sqlite] _______
+tests\test_parent_handoff_durability.py:179: in test_checkpoint_resume_in_a_new_process
+    assert {k: observation[k] for k in expected} == expected
+E   AssertionError: assert {'total': 3, ...ed': ['beta']} == {'total': 5, ...pha', 'beta']}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'total': 3} != {'total': 5}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     Use -v to get more diff
+______ test_checkpoint_resume_in_a_new_process[list-string-async-sqlite] ______
+tests\test_parent_handoff_durability.py:179: in test_checkpoint_resume_in_a_new_process
+    assert {k: observation[k] for k in expected} == expected
+E   AssertionError: assert {'total': 3, ...ed': ['beta']} == {'total': 5, ...pha', 'beta']}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'total': 3} != {'total': 5}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     Use -v to get more diff
+______ test_checkpoint_resume_in_a_new_process[string-list-sync-sqlite] _______
+tests\test_parent_handoff_durability.py:179: in test_checkpoint_resume_in_a_new_process
+    assert {k: observation[k] for k in expected} == expected
+E   AssertionError: assert {'total': 2, ...d': ['alpha']} == {'total': 5, ...pha', 'beta']}
+E     
+E     Differing items:
+E     {'total': 2} != {'total': 5}
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     Use -v to get more diff
+______ test_checkpoint_resume_in_a_new_process[string-list-async-sqlite] ______
+tests\test_parent_handoff_durability.py:179: in test_checkpoint_resume_in_a_new_process
+    assert {k: observation[k] for k in expected} == expected
+E   AssertionError: assert {'total': 2, ...d': ['alpha']} == {'total': 5, ...pha', 'beta']}
+E     
+E     Differing items:
+E     {'total': 2} != {'total': 5}
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     Use -v to get more diff
+_______________ test_parent_handoff_contract[single-send-sync] ________________
+tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 2
+E    +  where 2 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E4E15281E0>)
+_______________ test_parent_handoff_contract[single-send-async] _______________
+tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 2
+E    +  where 2 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E4E15FDA40>)
+_________________ test_parent_handoff_contract[siblings-sync] _________________
+tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E4E1526190>)
+________________ test_parent_handoff_contract[siblings-async] _________________
+tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E4E15FFAC0>)
+_________________ test_parent_handoff_contract[reversed-sync] _________________
+tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E4E15DA740>)
+________________ test_parent_handoff_contract[reversed-async] _________________
+tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E4E15FE190>)
+________________ test_parent_handoff_contract[dict-tuple-sync] ________________
+tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E4E1525150>)
+_______________ test_parent_handoff_contract[dict-tuple-async] ________________
+tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E4E1529CB0>)
+________________ test_parent_handoff_contract[tuple-dict-sync] ________________
+tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E4E15257D0>)
+_______________ test_parent_handoff_contract[tuple-dict-async] ________________
+tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E4E1526740>)
+_______________ test_parent_handoff_contract[tuple-tuple-sync] ________________
+tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E4E15FD970>)
+_______________ test_parent_handoff_contract[tuple-tuple-async] _______________
+tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E4E1567AC0>)
+_____________ test_parent_handoff_contract[dataclass-tuple-sync] ______________
+tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E4E15DA260>)
+_____________ test_parent_handoff_contract[dataclass-tuple-async] _____________
+tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E4E10EBC60>)
+______________ test_parent_handoff_contract[tuple-pydantic-sync] ______________
+tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E4E1566A80>)
+_____________ test_parent_handoff_contract[tuple-pydantic-async] ______________
+tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E4E15664D0>)
+________________ test_parent_handoff_contract[none-tuple-sync] ________________
+tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 3
+E    +  where 3 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E4E1705D80>)
+_______________ test_parent_handoff_contract[none-tuple-async] ________________
+tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 3
+E    +  where 3 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E4E15FE190>)
+________________ test_parent_handoff_contract[tuple-none-sync] ________________
+tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 2
+E    +  where 2 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E4E1525CB0>)
+_______________ test_parent_handoff_contract[tuple-none-async] ________________
+tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 2
+E    +  where 2 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E4E1527E00>)
+____________ test_parent_handoff_contract[unreduced-conflict-sync] ____________
+tests\test_parent_command_handoff.py:119: in test_parent_handoff_contract
+    with pytest.raises(InvalidUpdateError, match="exclusive"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE InvalidUpdateError
+___________ test_parent_handoff_contract[unreduced-conflict-async] ____________
+tests\test_parent_command_handoff.py:119: in test_parent_handoff_contract
+    with pytest.raises(InvalidUpdateError, match="exclusive"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE InvalidUpdateError
+============================== warnings summary ===============================
+tests\conftest.py:31
+  [WORKDIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\conftest.py:31: PytestAssertRewriteWarning: Module already imported so cannot be rewritten; tests.memory_assert
+    pytest.register_assert_rewrite("tests.memory_assert")
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[list-list-forward-sync]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[list-list-forward-async]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[list-list-reverse-sync]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[list-list-reverse-async]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[list-single-forward-sync]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[list-single-forward-async]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[list-single-reverse-sync]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[list-single-reverse-async]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[single-list-forward-sync]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[single-list-forward-async]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[single-list-reverse-sync]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[single-list-reverse-async]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[list-tuple-forward-sync]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[list-tuple-forward-async]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[list-tuple-reverse-sync]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[list-tuple-reverse-async]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[tuple-list-forward-sync]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[tuple-list-forward-async]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[tuple-list-reverse-sync]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[tuple-list-reverse-async]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[list-string-forward-sync]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[list-string-forward-async]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[list-string-reverse-sync]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[list-string-reverse-async]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[string-list-forward-sync]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[string-list-forward-async]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[string-list-reverse-sync]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[string-list-reverse-async]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[tuple-single-forward-sync]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[tuple-single-forward-async]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[tuple-single-reverse-sync]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[tuple-single-reverse-async]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[list-empty-forward-sync]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[list-empty-forward-async]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[list-empty-reverse-sync]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[list-empty-reverse-async]
+FAILED tests/test_parent_handoff_durability.py::test_root_reducer_receives_separate_updates[forward-sync]
+FAILED tests/test_parent_handoff_durability.py::test_root_reducer_receives_separate_updates[forward-async]
+FAILED tests/test_parent_handoff_durability.py::test_root_reducer_receives_separate_updates[reverse-sync]
+FAILED tests/test_parent_handoff_durability.py::test_root_reducer_receives_separate_updates[reverse-async]
+FAILED tests/test_parent_handoff_durability.py::test_checkpoint_resume_in_a_new_process[list-list-sync-sqlite]
+FAILED tests/test_parent_handoff_durability.py::test_checkpoint_resume_in_a_new_process[list-list-async-sqlite]
+FAILED tests/test_parent_handoff_durability.py::test_checkpoint_resume_in_a_new_process[list-single-sync-sqlite]
+FAILED tests/test_parent_handoff_durability.py::test_checkpoint_resume_in_a_new_process[list-single-async-sqlite]
+FAILED tests/test_parent_handoff_durability.py::test_checkpoint_resume_in_a_new_process[list-string-sync-sqlite]
+FAILED tests/test_parent_handoff_durability.py::test_checkpoint_resume_in_a_new_process[list-string-async-sqlite]
+FAILED tests/test_parent_handoff_durability.py::test_checkpoint_resume_in_a_new_process[string-list-sync-sqlite]
+FAILED tests/test_parent_handoff_durability.py::test_checkpoint_resume_in_a_new_process[string-list-async-sqlite]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[single-send-sync]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[single-send-async]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[siblings-sync]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[siblings-async]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[reversed-sync]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[reversed-async]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[dict-tuple-sync]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[dict-tuple-async]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[tuple-dict-sync]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[tuple-dict-async]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[tuple-tuple-sync]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[tuple-tuple-async]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[dataclass-tuple-sync]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[dataclass-tuple-async]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[tuple-pydantic-sync]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[tuple-pydantic-async]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[none-tuple-sync]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[none-tuple-async]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[tuple-none-sync]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[tuple-none-async]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[unreduced-conflict-sync]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[unreduced-conflict-async]
+70 failed, 46 passed, 1 warning in 30.62s

@@ -1,0 +1,931 @@
+{
+  "variant": "prior",
+  "exit_code": 1,
+  "elapsed_seconds": 33.25,
+  "source_sha256": "0b6551bbffc385167a072484ea46376d3732c7c66a0c0e7d95b6eea838410c5d",
+  "test_sha256": "b3e949dc8c17e37c8b5c8b4aca94db11418ae599678481016c4c46185c753f61",
+  "outcomes": [
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[list-list-forward-sync]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[list-list-forward-async]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[list-list-reverse-sync]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[list-list-reverse-async]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[list-single-forward-sync]",
+      "result": "failed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[list-single-forward-async]",
+      "result": "failed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[list-single-reverse-sync]",
+      "result": "failed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[list-single-reverse-async]",
+      "result": "failed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[single-list-forward-sync]",
+      "result": "failed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[single-list-forward-async]",
+      "result": "failed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[single-list-reverse-sync]",
+      "result": "failed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[single-list-reverse-async]",
+      "result": "failed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[list-tuple-forward-sync]",
+      "result": "failed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[list-tuple-forward-async]",
+      "result": "failed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[list-tuple-reverse-sync]",
+      "result": "failed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[list-tuple-reverse-async]",
+      "result": "failed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[tuple-list-forward-sync]",
+      "result": "failed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[tuple-list-forward-async]",
+      "result": "failed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[tuple-list-reverse-sync]",
+      "result": "failed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[tuple-list-reverse-async]",
+      "result": "failed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[list-string-forward-sync]",
+      "result": "failed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[list-string-forward-async]",
+      "result": "failed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[list-string-reverse-sync]",
+      "result": "failed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[list-string-reverse-async]",
+      "result": "failed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[string-list-forward-sync]",
+      "result": "failed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[string-list-forward-async]",
+      "result": "failed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[string-list-reverse-sync]",
+      "result": "failed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[string-list-reverse-async]",
+      "result": "failed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[tuple-single-forward-sync]",
+      "result": "failed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[tuple-single-forward-async]",
+      "result": "failed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[tuple-single-reverse-sync]",
+      "result": "failed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[tuple-single-reverse-async]",
+      "result": "failed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[list-empty-forward-sync]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[list-empty-forward-async]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[list-empty-reverse-sync]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[list-empty-reverse-async]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_root_reducer_receives_separate_updates[forward-sync]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_root_reducer_receives_separate_updates[forward-async]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_root_reducer_receives_separate_updates[reverse-sync]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_root_reducer_receives_separate_updates[reverse-async]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_checkpoint_resume_in_a_new_process[list-list-sync-sqlite]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_checkpoint_resume_in_a_new_process[list-list-async-sqlite]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_checkpoint_resume_in_a_new_process[list-single-sync-sqlite]",
+      "result": "failed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_checkpoint_resume_in_a_new_process[list-single-async-sqlite]",
+      "result": "failed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_checkpoint_resume_in_a_new_process[list-string-sync-sqlite]",
+      "result": "failed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_checkpoint_resume_in_a_new_process[list-string-async-sqlite]",
+      "result": "failed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_checkpoint_resume_in_a_new_process[string-list-sync-sqlite]",
+      "result": "failed"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_checkpoint_resume_in_a_new_process[string-list-async-sqlite]",
+      "result": "failed"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[single-send-sync]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[single-send-async]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[siblings-sync]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[siblings-async]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[reversed-sync]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[reversed-async]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[string-control-sync]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[string-control-async]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[dict-tuple-sync]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[dict-tuple-async]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[tuple-dict-sync]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[tuple-dict-async]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[tuple-tuple-sync]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[tuple-tuple-async]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[dataclass-tuple-sync]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[dataclass-tuple-async]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[tuple-pydantic-sync]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[tuple-pydantic-async]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[none-tuple-sync]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[none-tuple-async]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[tuple-none-sync]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[tuple-none-async]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[unreduced-conflict-sync]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[unreduced-conflict-async]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_tool_call_input",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_error_handling_default_invocation",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_error_handling_default_exception",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_error_handling",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_error_handling_callable",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_handle_tool_errors_false",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_individual_tool_error_handling",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_incorrect_tool_name",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_node_interrupt",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_command[dict]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_command[tool_calls]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_command_list_input",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_parent_command_with_send",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_command_remove_all_messages",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_inject_state[_InjectStateSchema]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_inject_state[_InjectedStatePydanticV2Schema]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_inject_state[_InjectedStateDataclassSchema]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_inject_state[_InjectedStatePydanticSchema]",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_inject_store",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_ensure_utf8",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_messages_key",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_stream_writer",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_call_request_setattr_deprecation_warning",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_inject_async_all_types_signature_only",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_inject_async_all_types_with_decorator",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_inject_async_all_types_with_schema",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_tool_runtime_generic",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_inject_runtime_dynamic_tool_via_wrap_tool_call",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_inject_runtime_dynamic_tool_via_wrap_tool_call_async",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_runtime_defaults_tools_to_empty_list",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_runtime_forwards_execution_info_server_info_and_tools",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_runtime_forwards_execution_info_server_info_and_tools_async",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_strips_plain_injected_tool_arg",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_strips_custom_injected_tool_arg_subclass",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_injected_state_overwrites_llm_value",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_list_return_command_and_tool_message",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_list_return_nested_terminator",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_list_return_parent_goto_with_terminator",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_list_return_no_terminator_raises",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_list_return_multiple_terminators_raises",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_list_return_validation_error_handled",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_list_return_async_smoke",
+      "result": "passed"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_list_return_mixed_with_regular_tool",
+      "result": "passed"
+    }
+  ],
+  "checkpoint_observations": [
+    {
+      "approvals": [
+        "approved"
+      ],
+      "best": [
+        "b",
+        "c"
+      ],
+      "interrupt_count": 0,
+      "next": [],
+      "phase": "resume",
+      "pid": 10344,
+      "tool_ids": [
+        "call-alpha",
+        "call-beta"
+      ],
+      "total": 5,
+      "visited": [
+        "alpha",
+        "beta"
+      ],
+      "case_directory": "test_checkpoint_resume_in_a_ne0"
+    },
+    {
+      "approvals": [],
+      "best": [
+        "b",
+        "c"
+      ],
+      "interrupt_count": 1,
+      "next": [
+        "approve"
+      ],
+      "phase": "seed",
+      "pid": 85852,
+      "tool_ids": [
+        "call-alpha",
+        "call-beta"
+      ],
+      "total": 5,
+      "visited": [
+        "alpha",
+        "beta"
+      ],
+      "case_directory": "test_checkpoint_resume_in_a_ne0"
+    },
+    {
+      "approvals": [
+        "approved"
+      ],
+      "best": [
+        "b",
+        "c"
+      ],
+      "interrupt_count": 0,
+      "next": [],
+      "phase": "resume",
+      "pid": 33580,
+      "tool_ids": [
+        "call-alpha",
+        "call-beta"
+      ],
+      "total": 5,
+      "visited": [
+        "alpha",
+        "beta"
+      ],
+      "case_directory": "test_checkpoint_resume_in_a_ne1"
+    },
+    {
+      "approvals": [],
+      "best": [
+        "b",
+        "c"
+      ],
+      "interrupt_count": 1,
+      "next": [
+        "approve"
+      ],
+      "phase": "seed",
+      "pid": 76892,
+      "tool_ids": [
+        "call-alpha",
+        "call-beta"
+      ],
+      "total": 5,
+      "visited": [
+        "alpha",
+        "beta"
+      ],
+      "case_directory": "test_checkpoint_resume_in_a_ne1"
+    },
+    {
+      "approvals": [
+        "approved"
+      ],
+      "best": [
+        "b",
+        "c"
+      ],
+      "interrupt_count": 0,
+      "next": [],
+      "phase": "resume",
+      "pid": 75796,
+      "tool_ids": [
+        "call-beta"
+      ],
+      "total": 3,
+      "visited": [
+        "beta"
+      ],
+      "case_directory": "test_checkpoint_resume_in_a_ne2"
+    },
+    {
+      "approvals": [],
+      "best": [
+        "b",
+        "c"
+      ],
+      "interrupt_count": 1,
+      "next": [
+        "approve"
+      ],
+      "phase": "seed",
+      "pid": 76176,
+      "tool_ids": [
+        "call-beta"
+      ],
+      "total": 3,
+      "visited": [
+        "beta"
+      ],
+      "case_directory": "test_checkpoint_resume_in_a_ne2"
+    },
+    {
+      "approvals": [
+        "approved"
+      ],
+      "best": [
+        "b",
+        "c"
+      ],
+      "interrupt_count": 0,
+      "next": [],
+      "phase": "resume",
+      "pid": 57116,
+      "tool_ids": [
+        "call-beta"
+      ],
+      "total": 3,
+      "visited": [
+        "beta"
+      ],
+      "case_directory": "test_checkpoint_resume_in_a_ne3"
+    },
+    {
+      "approvals": [],
+      "best": [
+        "b",
+        "c"
+      ],
+      "interrupt_count": 1,
+      "next": [
+        "approve"
+      ],
+      "phase": "seed",
+      "pid": 30488,
+      "tool_ids": [
+        "call-beta"
+      ],
+      "total": 3,
+      "visited": [
+        "beta"
+      ],
+      "case_directory": "test_checkpoint_resume_in_a_ne3"
+    },
+    {
+      "approvals": [
+        "approved"
+      ],
+      "best": [
+        "b",
+        "c"
+      ],
+      "interrupt_count": 0,
+      "next": [],
+      "phase": "resume",
+      "pid": 24784,
+      "tool_ids": [
+        "call-beta"
+      ],
+      "total": 3,
+      "visited": [
+        "beta"
+      ],
+      "case_directory": "test_checkpoint_resume_in_a_ne4"
+    },
+    {
+      "approvals": [],
+      "best": [
+        "b",
+        "c"
+      ],
+      "interrupt_count": 1,
+      "next": [
+        "approve"
+      ],
+      "phase": "seed",
+      "pid": 9396,
+      "tool_ids": [
+        "call-beta"
+      ],
+      "total": 3,
+      "visited": [
+        "beta"
+      ],
+      "case_directory": "test_checkpoint_resume_in_a_ne4"
+    },
+    {
+      "approvals": [
+        "approved"
+      ],
+      "best": [
+        "b",
+        "c"
+      ],
+      "interrupt_count": 0,
+      "next": [],
+      "phase": "resume",
+      "pid": 46144,
+      "tool_ids": [
+        "call-beta"
+      ],
+      "total": 3,
+      "visited": [
+        "beta"
+      ],
+      "case_directory": "test_checkpoint_resume_in_a_ne5"
+    },
+    {
+      "approvals": [],
+      "best": [
+        "b",
+        "c"
+      ],
+      "interrupt_count": 1,
+      "next": [
+        "approve"
+      ],
+      "phase": "seed",
+      "pid": 48484,
+      "tool_ids": [
+        "call-beta"
+      ],
+      "total": 3,
+      "visited": [
+        "beta"
+      ],
+      "case_directory": "test_checkpoint_resume_in_a_ne5"
+    },
+    {
+      "approvals": [
+        "approved"
+      ],
+      "best": [
+        "a"
+      ],
+      "interrupt_count": 0,
+      "next": [],
+      "phase": "resume",
+      "pid": 77584,
+      "tool_ids": [
+        "call-alpha"
+      ],
+      "total": 2,
+      "visited": [
+        "alpha"
+      ],
+      "case_directory": "test_checkpoint_resume_in_a_ne6"
+    },
+    {
+      "approvals": [],
+      "best": [
+        "a"
+      ],
+      "interrupt_count": 1,
+      "next": [
+        "approve"
+      ],
+      "phase": "seed",
+      "pid": 82964,
+      "tool_ids": [
+        "call-alpha"
+      ],
+      "total": 2,
+      "visited": [
+        "alpha"
+      ],
+      "case_directory": "test_checkpoint_resume_in_a_ne6"
+    },
+    {
+      "approvals": [
+        "approved"
+      ],
+      "best": [
+        "a"
+      ],
+      "interrupt_count": 0,
+      "next": [],
+      "phase": "resume",
+      "pid": 49192,
+      "tool_ids": [
+        "call-alpha"
+      ],
+      "total": 2,
+      "visited": [
+        "alpha"
+      ],
+      "case_directory": "test_checkpoint_resume_in_a_ne7"
+    },
+    {
+      "approvals": [],
+      "best": [
+        "a"
+      ],
+      "interrupt_count": 1,
+      "next": [
+        "approve"
+      ],
+      "phase": "seed",
+      "pid": 80924,
+      "tool_ids": [
+        "call-alpha"
+      ],
+      "total": 2,
+      "visited": [
+        "alpha"
+      ],
+      "case_directory": "test_checkpoint_resume_in_a_ne7"
+    }
+  ]
+}

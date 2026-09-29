@@ -1,0 +1,704 @@
+{
+  "variant": "baseline",
+  "exit_code": 1,
+  "elapsed_seconds": 34.47,
+  "source_sha256": "e13ea6317164c823eae8512f94eeaea28c43731cf0a7ed1d9de9fca4a95f1782",
+  "outcomes": [
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[list-list-forward-sync]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 0, ... 'beta'], ...} == {'total': 5, ... 'beta'], ...}\n  \n  Omitting 2 identical items, use -vv to show\n  Differing items:\n  {'total': 0} != {'total': 5}\n  {'tool_ids': []} != {'tool_ids': ['call-alpha', 'call-beta']}\n  {'best': []} != {'best': ['b', 'c']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[list-list-forward-async]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 0, ... 'beta'], ...} == {'total': 5, ... 'beta'], ...}\n  \n  Omitting 2 identical items, use -vv to show\n  Differing items:\n  {'total': 0} != {'total': 5}\n  {'tool_ids': []} != {'tool_ids': ['call-alpha', 'call-beta']}\n  {'best': []} != {'best': ['b', 'c']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[list-list-reverse-sync]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 0, ... 'beta'], ...} == {'total': 5, ... 'beta'], ...}\n  \n  Omitting 2 identical items, use -vv to show\n  Differing items:\n  {'total': 0} != {'total': 5}\n  {'tool_ids': []} != {'tool_ids': ['call-beta', 'call-alpha']}\n  {'best': []} != {'best': ['b', 'c']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[list-list-reverse-async]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 0, ... 'beta'], ...} == {'total': 5, ... 'beta'], ...}\n  \n  Omitting 2 identical items, use -vv to show\n  Differing items:\n  {'total': 0} != {'total': 5}\n  {'tool_ids': []} != {'tool_ids': ['call-beta', 'call-alpha']}\n  {'best': []} != {'best': ['b', 'c']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[list-single-forward-sync]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}\n  \n  Omitting 2 identical items, use -vv to show\n  Differing items:\n  {'total': 3} != {'total': 5}\n  {'visited': ['beta']} != {'visited': ['alpha', 'beta']}\n  {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[list-single-forward-async]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}\n  \n  Omitting 2 identical items, use -vv to show\n  Differing items:\n  {'total': 3} != {'total': 5}\n  {'visited': ['beta']} != {'visited': ['alpha', 'beta']}\n  {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[list-single-reverse-sync]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}\n  \n  Omitting 1 identical items, use -vv to show\n  Differing items:\n  {'total': 2} != {'total': 5}\n  {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}\n  {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-beta', 'call-alpha']}\n  {'best': ['a']} != {'best': ['b', 'c']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[list-single-reverse-async]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}\n  \n  Omitting 1 identical items, use -vv to show\n  Differing items:\n  {'total': 2} != {'total': 5}\n  {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}\n  {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-beta', 'call-alpha']}\n  {'best': ['a']} != {'best': ['b', 'c']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[single-list-forward-sync]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}\n  \n  Omitting 1 identical items, use -vv to show\n  Differing items:\n  {'total': 2} != {'total': 5}\n  {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}\n  {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}\n  {'best': ['a']} != {'best': ['b', 'c']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[single-list-forward-async]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}\n  \n  Omitting 1 identical items, use -vv to show\n  Differing items:\n  {'total': 2} != {'total': 5}\n  {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}\n  {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}\n  {'best': ['a']} != {'best': ['b', 'c']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[single-list-reverse-sync]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}\n  \n  Omitting 2 identical items, use -vv to show\n  Differing items:\n  {'total': 3} != {'total': 5}\n  {'visited': ['beta']} != {'visited': ['alpha', 'beta']}\n  {'tool_ids': ['call-beta']} != {'tool_ids': ['call-beta', 'call-alpha']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[single-list-reverse-async]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}\n  \n  Omitting 2 identical items, use -vv to show\n  Differing items:\n  {'total': 3} != {'total': 5}\n  {'visited': ['beta']} != {'visited': ['alpha', 'beta']}\n  {'tool_ids': ['call-beta']} != {'tool_ids': ['call-beta', 'call-alpha']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[list-tuple-forward-sync]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}\n  \n  Omitting 2 identical items, use -vv to show\n  Differing items:\n  {'total': 3} != {'total': 5}\n  {'visited': ['beta']} != {'visited': ['alpha', 'beta']}\n  {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[list-tuple-forward-async]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}\n  \n  Omitting 2 identical items, use -vv to show\n  Differing items:\n  {'total': 3} != {'total': 5}\n  {'visited': ['beta']} != {'visited': ['alpha', 'beta']}\n  {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[list-tuple-reverse-sync]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}\n  \n  Omitting 1 identical items, use -vv to show\n  Differing items:\n  {'total': 2} != {'total': 5}\n  {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}\n  {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-beta', 'call-alpha']}\n  {'best': ['a']} != {'best': ['b', 'c']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[list-tuple-reverse-async]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}\n  \n  Omitting 1 identical items, use -vv to show\n  Differing items:\n  {'total': 2} != {'total': 5}\n  {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}\n  {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-beta', 'call-alpha']}\n  {'best': ['a']} != {'best': ['b', 'c']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[tuple-list-forward-sync]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}\n  \n  Omitting 1 identical items, use -vv to show\n  Differing items:\n  {'total': 2} != {'total': 5}\n  {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}\n  {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}\n  {'best': ['a']} != {'best': ['b', 'c']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[tuple-list-forward-async]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}\n  \n  Omitting 1 identical items, use -vv to show\n  Differing items:\n  {'total': 2} != {'total': 5}\n  {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}\n  {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}\n  {'best': ['a']} != {'best': ['b', 'c']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[tuple-list-reverse-sync]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}\n  \n  Omitting 2 identical items, use -vv to show\n  Differing items:\n  {'total': 3} != {'total': 5}\n  {'visited': ['beta']} != {'visited': ['alpha', 'beta']}\n  {'tool_ids': ['call-beta']} != {'tool_ids': ['call-beta', 'call-alpha']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[tuple-list-reverse-async]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}\n  \n  Omitting 2 identical items, use -vv to show\n  Differing items:\n  {'total': 3} != {'total': 5}\n  {'visited': ['beta']} != {'visited': ['alpha', 'beta']}\n  {'tool_ids': ['call-beta']} != {'tool_ids': ['call-beta', 'call-alpha']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[list-string-forward-sync]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}\n  \n  Omitting 2 identical items, use -vv to show\n  Differing items:\n  {'total': 3} != {'total': 5}\n  {'visited': ['beta']} != {'visited': ['alpha', 'beta']}\n  {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[list-string-forward-async]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}\n  \n  Omitting 2 identical items, use -vv to show\n  Differing items:\n  {'total': 3} != {'total': 5}\n  {'visited': ['beta']} != {'visited': ['alpha', 'beta']}\n  {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[list-string-reverse-sync]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}\n  \n  Omitting 1 identical items, use -vv to show\n  Differing items:\n  {'total': 2} != {'total': 5}\n  {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}\n  {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-beta', 'call-alpha']}\n  {'best': ['a']} != {'best': ['b', 'c']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[list-string-reverse-async]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}\n  \n  Omitting 1 identical items, use -vv to show\n  Differing items:\n  {'total': 2} != {'total': 5}\n  {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}\n  {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-beta', 'call-alpha']}\n  {'best': ['a']} != {'best': ['b', 'c']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[string-list-forward-sync]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}\n  \n  Omitting 1 identical items, use -vv to show\n  Differing items:\n  {'total': 2} != {'total': 5}\n  {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}\n  {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}\n  {'best': ['a']} != {'best': ['b', 'c']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[string-list-forward-async]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}\n  \n  Omitting 1 identical items, use -vv to show\n  Differing items:\n  {'total': 2} != {'total': 5}\n  {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}\n  {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}\n  {'best': ['a']} != {'best': ['b', 'c']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[string-list-reverse-sync]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}\n  \n  Omitting 2 identical items, use -vv to show\n  Differing items:\n  {'total': 3} != {'total': 5}\n  {'visited': ['beta']} != {'visited': ['alpha', 'beta']}\n  {'tool_ids': ['call-beta']} != {'tool_ids': ['call-beta', 'call-alpha']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[string-list-reverse-async]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}\n  \n  Omitting 2 identical items, use -vv to show\n  Differing items:\n  {'total': 3} != {'total': 5}\n  {'visited': ['beta']} != {'visited': ['alpha', 'beta']}\n  {'tool_ids': ['call-beta']} != {'tool_ids': ['call-beta', 'call-alpha']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[tuple-single-forward-sync]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}\n  \n  Omitting 1 identical items, use -vv to show\n  Differing items:\n  {'total': 2} != {'total': 5}\n  {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}\n  {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}\n  {'best': ['a']} != {'best': ['b', 'c']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[tuple-single-forward-async]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}\n  \n  Omitting 1 identical items, use -vv to show\n  Differing items:\n  {'total': 2} != {'total': 5}\n  {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}\n  {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}\n  {'best': ['a']} != {'best': ['b', 'c']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[tuple-single-reverse-sync]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}\n  \n  Omitting 2 identical items, use -vv to show\n  Differing items:\n  {'total': 3} != {'total': 5}\n  {'visited': ['beta']} != {'visited': ['alpha', 'beta']}\n  {'tool_ids': ['call-beta']} != {'tool_ids': ['call-beta', 'call-alpha']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[tuple-single-reverse-async]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}\n  \n  Omitting 2 identical items, use -vv to show\n  Differing items:\n  {'total': 3} != {'total': 5}\n  {'visited': ['beta']} != {'visited': ['alpha', 'beta']}\n  {'tool_ids': ['call-beta']} != {'tool_ids': ['call-beta', 'call-alpha']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[list-empty-forward-sync]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 0, ...'alpha'], ...} == {'total': 5, ...'alpha'], ...}\n  \n  Omitting 2 identical items, use -vv to show\n  Differing items:\n  {'total': 0} != {'total': 5}\n  {'tool_ids': []} != {'tool_ids': ['call-alpha', 'call-beta']}\n  {'best': []} != {'best': ['b', 'c']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[list-empty-forward-async]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 0, ...'alpha'], ...} == {'total': 5, ...'alpha'], ...}\n  \n  Omitting 2 identical items, use -vv to show\n  Differing items:\n  {'total': 0} != {'total': 5}\n  {'tool_ids': []} != {'tool_ids': ['call-alpha', 'call-beta']}\n  {'best': []} != {'best': ['b', 'c']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[list-empty-reverse-sync]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 0, ...['beta'], ...} == {'total': 5, ...['beta'], ...}\n  \n  Omitting 2 identical items, use -vv to show\n  Differing items:\n  {'total': 0} != {'total': 5}\n  {'tool_ids': []} != {'tool_ids': ['call-beta', 'call-alpha']}\n  {'best': []} != {'best': ['b', 'c']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_mixed_parent_routes[list-empty-reverse-async]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 0, ...['beta'], ...} == {'total': 5, ...['beta'], ...}\n  \n  Omitting 2 identical items, use -vv to show\n  Differing items:\n  {'total': 0} != {'total': 5}\n  {'tool_ids': []} != {'tool_ids': ['call-beta', 'call-alpha']}\n  {'best': []} != {'best': ['b', 'c']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_root_reducer_receives_separate_updates[forward-sync]",
+      "result": "failed",
+      "message": "assert 0 == 5"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_root_reducer_receives_separate_updates[forward-async]",
+      "result": "failed",
+      "message": "assert 0 == 5"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_root_reducer_receives_separate_updates[reverse-sync]",
+      "result": "failed",
+      "message": "assert 0 == 5"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_root_reducer_receives_separate_updates[reverse-async]",
+      "result": "failed",
+      "message": "assert 0 == 5"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_checkpoint_resume_in_a_new_process[list-list-sync-sqlite]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 0, ...pha', 'beta']} == {'total': 5, ...pha', 'beta']}\n  \n  Omitting 1 identical items, use -vv to show\n  Differing items:\n  {'total': 0} != {'total': 5}\n  {'tool_ids': []} != {'tool_ids': ['call-alpha', 'call-beta']}\n  {'best': []} != {'best': ['b', 'c']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_checkpoint_resume_in_a_new_process[list-list-async-sqlite]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 0, ...pha', 'beta']} == {'total': 5, ...pha', 'beta']}\n  \n  Omitting 1 identical items, use -vv to show\n  Differing items:\n  {'total': 0} != {'total': 5}\n  {'tool_ids': []} != {'tool_ids': ['call-alpha', 'call-beta']}\n  {'best': []} != {'best': ['b', 'c']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_checkpoint_resume_in_a_new_process[list-single-sync-sqlite]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 3, ...ed': ['beta']} == {'total': 5, ...pha', 'beta']}\n  \n  Omitting 1 identical items, use -vv to show\n  Differing items:\n  {'total': 3} != {'total': 5}\n  {'visited': ['beta']} != {'visited': ['alpha', 'beta']}\n  {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_checkpoint_resume_in_a_new_process[list-single-async-sqlite]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 3, ...ed': ['beta']} == {'total': 5, ...pha', 'beta']}\n  \n  Omitting 1 identical items, use -vv to show\n  Differing items:\n  {'total': 3} != {'total': 5}\n  {'visited': ['beta']} != {'visited': ['alpha', 'beta']}\n  {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_checkpoint_resume_in_a_new_process[list-string-sync-sqlite]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 3, ...ed': ['beta']} == {'total': 5, ...pha', 'beta']}\n  \n  Omitting 1 identical items, use -vv to show\n  Differing items:\n  {'total': 3} != {'total': 5}\n  {'visited': ['beta']} != {'visited': ['alpha', 'beta']}\n  {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_checkpoint_resume_in_a_new_process[list-string-async-sqlite]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 3, ...ed': ['beta']} == {'total': 5, ...pha', 'beta']}\n  \n  Omitting 1 identical items, use -vv to show\n  Differing items:\n  {'total': 3} != {'total': 5}\n  {'visited': ['beta']} != {'visited': ['alpha', 'beta']}\n  {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_checkpoint_resume_in_a_new_process[string-list-sync-sqlite]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 2, ...d': ['alpha']} == {'total': 5, ...pha', 'beta']}\n  \n  Differing items:\n  {'total': 2} != {'total': 5}\n  {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}\n  {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}\n  {'best': ['a']} != {'best': ['b', 'c']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_handoff_durability",
+      "name": "test_checkpoint_resume_in_a_new_process[string-list-async-sqlite]",
+      "result": "failed",
+      "message": "AssertionError: assert {'total': 2, ...d': ['alpha']} == {'total': 5, ...pha', 'beta']}\n  \n  Differing items:\n  {'total': 2} != {'total': 5}\n  {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}\n  {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}\n  {'best': ['a']} != {'best': ['b', 'c']}\n  Use -v to get more diff"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[single-send-sync]",
+      "result": "failed",
+      "message": "assert 0 == 2\n +  where 2 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E4E15281E0>)"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[single-send-async]",
+      "result": "failed",
+      "message": "assert 0 == 2\n +  where 2 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E4E15FDA40>)"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[siblings-sync]",
+      "result": "failed",
+      "message": "assert 0 == 5\n +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E4E1526190>)"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[siblings-async]",
+      "result": "failed",
+      "message": "assert 0 == 5\n +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E4E15FFAC0>)"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[reversed-sync]",
+      "result": "failed",
+      "message": "assert 0 == 5\n +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E4E15DA740>)"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[reversed-async]",
+      "result": "failed",
+      "message": "assert 0 == 5\n +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E4E15FE190>)"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[string-control-sync]",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[string-control-async]",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[dict-tuple-sync]",
+      "result": "failed",
+      "message": "assert 0 == 5\n +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E4E1525150>)"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[dict-tuple-async]",
+      "result": "failed",
+      "message": "assert 0 == 5\n +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E4E1529CB0>)"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[tuple-dict-sync]",
+      "result": "failed",
+      "message": "assert 0 == 5\n +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E4E15257D0>)"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[tuple-dict-async]",
+      "result": "failed",
+      "message": "assert 0 == 5\n +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E4E1526740>)"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[tuple-tuple-sync]",
+      "result": "failed",
+      "message": "assert 0 == 5\n +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E4E15FD970>)"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[tuple-tuple-async]",
+      "result": "failed",
+      "message": "assert 0 == 5\n +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E4E1567AC0>)"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[dataclass-tuple-sync]",
+      "result": "failed",
+      "message": "assert 0 == 5\n +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E4E15DA260>)"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[dataclass-tuple-async]",
+      "result": "failed",
+      "message": "assert 0 == 5\n +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E4E10EBC60>)"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[tuple-pydantic-sync]",
+      "result": "failed",
+      "message": "assert 0 == 5\n +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E4E1566A80>)"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[tuple-pydantic-async]",
+      "result": "failed",
+      "message": "assert 0 == 5\n +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E4E15664D0>)"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[none-tuple-sync]",
+      "result": "failed",
+      "message": "assert 0 == 3\n +  where 3 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E4E1705D80>)"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[none-tuple-async]",
+      "result": "failed",
+      "message": "assert 0 == 3\n +  where 3 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E4E15FE190>)"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[tuple-none-sync]",
+      "result": "failed",
+      "message": "assert 0 == 2\n +  where 2 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E4E1525CB0>)"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[tuple-none-async]",
+      "result": "failed",
+      "message": "assert 0 == 2\n +  where 2 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E4E1527E00>)"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[unreduced-conflict-sync]",
+      "result": "failed",
+      "message": "Failed: DID NOT RAISE InvalidUpdateError"
+    },
+    {
+      "classname": "tests.test_parent_command_handoff",
+      "name": "test_parent_handoff_contract[unreduced-conflict-async]",
+      "result": "failed",
+      "message": "Failed: DID NOT RAISE InvalidUpdateError"
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_tool_call_input",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_error_handling_default_invocation",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_error_handling_default_exception",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_error_handling",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_error_handling_callable",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_handle_tool_errors_false",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_individual_tool_error_handling",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_incorrect_tool_name",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_node_interrupt",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_command[dict]",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_command[tool_calls]",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_command_list_input",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_parent_command_with_send",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_command_remove_all_messages",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_inject_state[_InjectStateSchema]",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_inject_state[_InjectedStatePydanticV2Schema]",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_inject_state[_InjectedStateDataclassSchema]",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_inject_state[_InjectedStatePydanticSchema]",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_inject_store",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_ensure_utf8",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_messages_key",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_stream_writer",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_call_request_setattr_deprecation_warning",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_inject_async_all_types_signature_only",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_inject_async_all_types_with_decorator",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_inject_async_all_types_with_schema",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_tool_runtime_generic",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_inject_runtime_dynamic_tool_via_wrap_tool_call",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_inject_runtime_dynamic_tool_via_wrap_tool_call_async",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_runtime_defaults_tools_to_empty_list",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_runtime_forwards_execution_info_server_info_and_tools",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_runtime_forwards_execution_info_server_info_and_tools_async",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_strips_plain_injected_tool_arg",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_strips_custom_injected_tool_arg_subclass",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_injected_state_overwrites_llm_value",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_list_return_command_and_tool_message",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_list_return_nested_terminator",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_list_return_parent_goto_with_terminator",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_list_return_no_terminator_raises",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_list_return_multiple_terminators_raises",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_list_return_validation_error_handled",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_list_return_async_smoke",
+      "result": "passed",
+      "message": ""
+    },
+    {
+      "classname": "tests.test_tool_node",
+      "name": "test_tool_node_list_return_mixed_with_regular_tool",
+      "result": "passed",
+      "message": ""
+    }
+  ]
+}

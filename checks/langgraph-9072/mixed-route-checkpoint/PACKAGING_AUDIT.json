@@ -1,0 +1,10 @@
+{
+  "first_attempt": {
+    "text_matched": true,
+    "bytes_matched": false,
+    "reason": "Inherited Windows Git CRLF conversion"
+  },
+  "correction": "Per-command git -c core.autocrlf=false apply",
+  "final_runtime_and_test_bytes_matched": true,
+  "global_git_configuration_changed": false
+}

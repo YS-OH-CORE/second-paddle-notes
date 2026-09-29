@@ -1,0 +1,10 @@
+{
+  "command": [
+    "uv",
+    "sync",
+    "--frozen",
+    "--python",
+    "3.12"
+  ],
+  "exit_code": 0
+}

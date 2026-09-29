@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="70" skipped="0" tests="116" time="30.528" timestamp="2026-09-29T16:28:13.479465+09:00" hostname="kaye"><testcase classname="tests.test_parent_handoff_durability" name="test_mixed_parent_routes[list-list-forward-sync]" time="0.012"><failure message="AssertionError: assert {'total': 0, ... 'beta'], ...} == {'total': 5, ... 'beta'], ...}&#10;  &#10;  Omitting 2 identical items, use -vv to show&#10;  Differing items:&#10;  {'tool_ids': []} != {'tool_ids': ['call-alpha', 'call-beta']}&#10;  {'best': []} != {'best': ['b', 'c']}&#10;  {'total': 0} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 0, ... 'beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'tool_ids': []} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'best': []} != {'best': ['b', 'c']}
+E     {'total': 0} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_mixed_parent_routes[list-list-forward-async]" time="0.013"><failure message="AssertionError: assert {'total': 0, ... 'beta'], ...} == {'total': 5, ... 'beta'], ...}&#10;  &#10;  Omitting 2 identical items, use -vv to show&#10;  Differing items:&#10;  {'tool_ids': []} != {'tool_ids': ['call-alpha', 'call-beta']}&#10;  {'best': []} != {'best': ['b', 'c']}&#10;  {'total': 0} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 0, ... 'beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'tool_ids': []} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'best': []} != {'best': ['b', 'c']}
+E     {'total': 0} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_mixed_parent_routes[list-list-reverse-sync]" time="0.007"><failure message="AssertionError: assert {'total': 0, ... 'beta'], ...} == {'total': 5, ... 'beta'], ...}&#10;  &#10;  Omitting 2 identical items, use -vv to show&#10;  Differing items:&#10;  {'tool_ids': []} != {'tool_ids': ['call-beta', 'call-alpha']}&#10;  {'best': []} != {'best': ['b', 'c']}&#10;  {'total': 0} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 0, ... 'beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'tool_ids': []} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     {'best': []} != {'best': ['b', 'c']}
+E     {'total': 0} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_mixed_parent_routes[list-list-reverse-async]" time="0.010"><failure message="AssertionError: assert {'total': 0, ... 'beta'], ...} == {'total': 5, ... 'beta'], ...}&#10;  &#10;  Omitting 2 identical items, use -vv to show&#10;  Differing items:&#10;  {'tool_ids': []} != {'tool_ids': ['call-beta', 'call-alpha']}&#10;  {'best': []} != {'best': ['b', 'c']}&#10;  {'total': 0} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 0, ... 'beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'tool_ids': []} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     {'best': []} != {'best': ['b', 'c']}
+E     {'total': 0} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_mixed_parent_routes[list-single-forward-sync]" time="0.007"><failure message="AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}&#10;  &#10;  Omitting 2 identical items, use -vv to show&#10;  Differing items:&#10;  {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}&#10;  {'visited': ['beta']} != {'visited': ['alpha', 'beta']}&#10;  {'total': 3} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'total': 3} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_mixed_parent_routes[list-single-forward-async]" time="0.010"><failure message="AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}&#10;  &#10;  Omitting 2 identical items, use -vv to show&#10;  Differing items:&#10;  {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}&#10;  {'visited': ['beta']} != {'visited': ['alpha', 'beta']}&#10;  {'total': 3} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'total': 3} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_mixed_parent_routes[list-single-reverse-sync]" time="0.007"><failure message="AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}&#10;  &#10;  Omitting 1 identical items, use -vv to show&#10;  Differing items:&#10;  {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}&#10;  {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-beta', 'call-alpha']}&#10;  {'best': ['a']} != {'best': ['b', 'c']}&#10;  {'total': 2} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     {'total': 2} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_mixed_parent_routes[list-single-reverse-async]" time="0.009"><failure message="AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}&#10;  &#10;  Omitting 1 identical items, use -vv to show&#10;  Differing items:&#10;  {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}&#10;  {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-beta', 'call-alpha']}&#10;  {'best': ['a']} != {'best': ['b', 'c']}&#10;  {'total': 2} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     {'total': 2} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_mixed_parent_routes[single-list-forward-sync]" time="0.008"><failure message="AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}&#10;  &#10;  Omitting 1 identical items, use -vv to show&#10;  Differing items:&#10;  {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}&#10;  {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}&#10;  {'best': ['a']} != {'best': ['b', 'c']}&#10;  {'total': 2} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     {'total': 2} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_mixed_parent_routes[single-list-forward-async]" time="0.009"><failure message="AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}&#10;  &#10;  Omitting 1 identical items, use -vv to show&#10;  Differing items:&#10;  {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}&#10;  {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}&#10;  {'best': ['a']} != {'best': ['b', 'c']}&#10;  {'total': 2} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     {'total': 2} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_mixed_parent_routes[single-list-reverse-sync]" time="0.007"><failure message="AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}&#10;  &#10;  Omitting 2 identical items, use -vv to show&#10;  Differing items:&#10;  {'tool_ids': ['call-beta']} != {'tool_ids': ['call-beta', 'call-alpha']}&#10;  {'visited': ['beta']} != {'visited': ['alpha', 'beta']}&#10;  {'total': 3} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'total': 3} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_mixed_parent_routes[single-list-reverse-async]" time="0.009"><failure message="AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}&#10;  &#10;  Omitting 2 identical items, use -vv to show&#10;  Differing items:&#10;  {'tool_ids': ['call-beta']} != {'tool_ids': ['call-beta', 'call-alpha']}&#10;  {'visited': ['beta']} != {'visited': ['alpha', 'beta']}&#10;  {'total': 3} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'total': 3} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_mixed_parent_routes[list-tuple-forward-sync]" time="0.008"><failure message="AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}&#10;  &#10;  Omitting 2 identical items, use -vv to show&#10;  Differing items:&#10;  {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}&#10;  {'visited': ['beta']} != {'visited': ['alpha', 'beta']}&#10;  {'total': 3} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'total': 3} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_mixed_parent_routes[list-tuple-forward-async]" time="0.035"><failure message="AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}&#10;  &#10;  Omitting 2 identical items, use -vv to show&#10;  Differing items:&#10;  {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}&#10;  {'visited': ['beta']} != {'visited': ['alpha', 'beta']}&#10;  {'total': 3} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'total': 3} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_mixed_parent_routes[list-tuple-reverse-sync]" time="0.007"><failure message="AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}&#10;  &#10;  Omitting 1 identical items, use -vv to show&#10;  Differing items:&#10;  {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}&#10;  {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-beta', 'call-alpha']}&#10;  {'best': ['a']} != {'best': ['b', 'c']}&#10;  {'total': 2} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     {'total': 2} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_mixed_parent_routes[list-tuple-reverse-async]" time="0.009"><failure message="AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}&#10;  &#10;  Omitting 1 identical items, use -vv to show&#10;  Differing items:&#10;  {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}&#10;  {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-beta', 'call-alpha']}&#10;  {'best': ['a']} != {'best': ['b', 'c']}&#10;  {'total': 2} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     {'total': 2} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_mixed_parent_routes[tuple-list-forward-sync]" time="0.008"><failure message="AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}&#10;  &#10;  Omitting 1 identical items, use -vv to show&#10;  Differing items:&#10;  {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}&#10;  {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}&#10;  {'best': ['a']} != {'best': ['b', 'c']}&#10;  {'total': 2} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     {'total': 2} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_mixed_parent_routes[tuple-list-forward-async]" time="0.011"><failure message="AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}&#10;  &#10;  Omitting 1 identical items, use -vv to show&#10;  Differing items:&#10;  {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}&#10;  {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}&#10;  {'best': ['a']} != {'best': ['b', 'c']}&#10;  {'total': 2} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     {'total': 2} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_mixed_parent_routes[tuple-list-reverse-sync]" time="0.007"><failure message="AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}&#10;  &#10;  Omitting 2 identical items, use -vv to show&#10;  Differing items:&#10;  {'tool_ids': ['call-beta']} != {'tool_ids': ['call-beta', 'call-alpha']}&#10;  {'visited': ['beta']} != {'visited': ['alpha', 'beta']}&#10;  {'total': 3} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'total': 3} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_mixed_parent_routes[tuple-list-reverse-async]" time="0.010"><failure message="AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}&#10;  &#10;  Omitting 2 identical items, use -vv to show&#10;  Differing items:&#10;  {'tool_ids': ['call-beta']} != {'tool_ids': ['call-beta', 'call-alpha']}&#10;  {'visited': ['beta']} != {'visited': ['alpha', 'beta']}&#10;  {'total': 3} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'total': 3} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_mixed_parent_routes[list-string-forward-sync]" time="0.008"><failure message="AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}&#10;  &#10;  Omitting 2 identical items, use -vv to show&#10;  Differing items:&#10;  {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}&#10;  {'visited': ['beta']} != {'visited': ['alpha', 'beta']}&#10;  {'total': 3} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'total': 3} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_mixed_parent_routes[list-string-forward-async]" time="0.010"><failure message="AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}&#10;  &#10;  Omitting 2 identical items, use -vv to show&#10;  Differing items:&#10;  {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}&#10;  {'visited': ['beta']} != {'visited': ['alpha', 'beta']}&#10;  {'total': 3} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'total': 3} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_mixed_parent_routes[list-string-reverse-sync]" time="0.008"><failure message="AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}&#10;  &#10;  Omitting 1 identical items, use -vv to show&#10;  Differing items:&#10;  {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}&#10;  {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-beta', 'call-alpha']}&#10;  {'best': ['a']} != {'best': ['b', 'c']}&#10;  {'total': 2} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     {'total': 2} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_mixed_parent_routes[list-string-reverse-async]" time="0.009"><failure message="AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}&#10;  &#10;  Omitting 1 identical items, use -vv to show&#10;  Differing items:&#10;  {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}&#10;  {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-beta', 'call-alpha']}&#10;  {'best': ['a']} != {'best': ['b', 'c']}&#10;  {'total': 2} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     {'total': 2} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_mixed_parent_routes[string-list-forward-sync]" time="0.007"><failure message="AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}&#10;  &#10;  Omitting 1 identical items, use -vv to show&#10;  Differing items:&#10;  {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}&#10;  {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}&#10;  {'best': ['a']} != {'best': ['b', 'c']}&#10;  {'total': 2} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     {'total': 2} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_mixed_parent_routes[string-list-forward-async]" time="0.010"><failure message="AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}&#10;  &#10;  Omitting 1 identical items, use -vv to show&#10;  Differing items:&#10;  {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}&#10;  {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}&#10;  {'best': ['a']} != {'best': ['b', 'c']}&#10;  {'total': 2} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     {'total': 2} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_mixed_parent_routes[string-list-reverse-sync]" time="0.007"><failure message="AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}&#10;  &#10;  Omitting 2 identical items, use -vv to show&#10;  Differing items:&#10;  {'tool_ids': ['call-beta']} != {'tool_ids': ['call-beta', 'call-alpha']}&#10;  {'visited': ['beta']} != {'visited': ['alpha', 'beta']}&#10;  {'total': 3} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'total': 3} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_mixed_parent_routes[string-list-reverse-async]" time="0.009"><failure message="AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}&#10;  &#10;  Omitting 2 identical items, use -vv to show&#10;  Differing items:&#10;  {'tool_ids': ['call-beta']} != {'tool_ids': ['call-beta', 'call-alpha']}&#10;  {'visited': ['beta']} != {'visited': ['alpha', 'beta']}&#10;  {'total': 3} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'total': 3} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_mixed_parent_routes[tuple-single-forward-sync]" time="0.007"><failure message="AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}&#10;  &#10;  Omitting 1 identical items, use -vv to show&#10;  Differing items:&#10;  {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}&#10;  {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}&#10;  {'best': ['a']} != {'best': ['b', 'c']}&#10;  {'total': 2} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     {'total': 2} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_mixed_parent_routes[tuple-single-forward-async]" time="0.009"><failure message="AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}&#10;  &#10;  Omitting 1 identical items, use -vv to show&#10;  Differing items:&#10;  {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}&#10;  {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}&#10;  {'best': ['a']} != {'best': ['b', 'c']}&#10;  {'total': 2} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     {'total': 2} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_mixed_parent_routes[tuple-single-reverse-sync]" time="0.007"><failure message="AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}&#10;  &#10;  Omitting 2 identical items, use -vv to show&#10;  Differing items:&#10;  {'tool_ids': ['call-beta']} != {'tool_ids': ['call-beta', 'call-alpha']}&#10;  {'visited': ['beta']} != {'visited': ['alpha', 'beta']}&#10;  {'total': 3} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'total': 3} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_mixed_parent_routes[tuple-single-reverse-async]" time="0.010"><failure message="AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}&#10;  &#10;  Omitting 2 identical items, use -vv to show&#10;  Differing items:&#10;  {'tool_ids': ['call-beta']} != {'tool_ids': ['call-beta', 'call-alpha']}&#10;  {'visited': ['beta']} != {'visited': ['alpha', 'beta']}&#10;  {'total': 3} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'total': 3} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_mixed_parent_routes[list-empty-forward-sync]" time="0.008"><failure message="AssertionError: assert {'total': 0, ...'alpha'], ...} == {'total': 5, ...'alpha'], ...}&#10;  &#10;  Omitting 2 identical items, use -vv to show&#10;  Differing items:&#10;  {'tool_ids': []} != {'tool_ids': ['call-alpha', 'call-beta']}&#10;  {'best': []} != {'best': ['b', 'c']}&#10;  {'total': 0} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 0, ...'alpha'], ...} == {'total': 5, ...'alpha'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'tool_ids': []} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'best': []} != {'best': ['b', 'c']}
+E     {'total': 0} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_mixed_parent_routes[list-empty-forward-async]" time="0.010"><failure message="AssertionError: assert {'total': 0, ...'alpha'], ...} == {'total': 5, ...'alpha'], ...}&#10;  &#10;  Omitting 2 identical items, use -vv to show&#10;  Differing items:&#10;  {'tool_ids': []} != {'tool_ids': ['call-alpha', 'call-beta']}&#10;  {'best': []} != {'best': ['b', 'c']}&#10;  {'total': 0} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 0, ...'alpha'], ...} == {'total': 5, ...'alpha'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'tool_ids': []} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'best': []} != {'best': ['b', 'c']}
+E     {'total': 0} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_mixed_parent_routes[list-empty-reverse-sync]" time="0.007"><failure message="AssertionError: assert {'total': 0, ...['beta'], ...} == {'total': 5, ...['beta'], ...}&#10;  &#10;  Omitting 2 identical items, use -vv to show&#10;  Differing items:&#10;  {'tool_ids': []} != {'tool_ids': ['call-beta', 'call-alpha']}&#10;  {'best': []} != {'best': ['b', 'c']}&#10;  {'total': 0} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 0, ...['beta'], ...} == {'total': 5, ...['beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'tool_ids': []} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     {'best': []} != {'best': ['b', 'c']}
+E     {'total': 0} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_mixed_parent_routes[list-empty-reverse-async]" time="0.009"><failure message="AssertionError: assert {'total': 0, ...['beta'], ...} == {'total': 5, ...['beta'], ...}&#10;  &#10;  Omitting 2 identical items, use -vv to show&#10;  Differing items:&#10;  {'tool_ids': []} != {'tool_ids': ['call-beta', 'call-alpha']}&#10;  {'best': []} != {'best': ['b', 'c']}&#10;  {'total': 0} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 0, ...['beta'], ...} == {'total': 5, ...['beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'tool_ids': []} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     {'best': []} != {'best': ['b', 'c']}
+E     {'total': 0} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_root_reducer_receives_separate_updates[forward-sync]" time="0.006"><failure message="assert 0 == 5">tests\test_parent_handoff_durability.py:205: in test_root_reducer_receives_separate_updates
+    assert actual == 5
+E   assert 0 == 5</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_root_reducer_receives_separate_updates[forward-async]" time="0.007"><failure message="assert 0 == 5">tests\test_parent_handoff_durability.py:205: in test_root_reducer_receives_separate_updates
+    assert actual == 5
+E   assert 0 == 5</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_root_reducer_receives_separate_updates[reverse-sync]" time="0.007"><failure message="assert 0 == 5">tests\test_parent_handoff_durability.py:205: in test_root_reducer_receives_separate_updates
+    assert actual == 5
+E   assert 0 == 5</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_root_reducer_receives_separate_updates[reverse-async]" time="0.007"><failure message="assert 0 == 5">tests\test_parent_handoff_durability.py:205: in test_root_reducer_receives_separate_updates
+    assert actual == 5
+E   assert 0 == 5</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_checkpoint_resume_in_a_new_process[list-list-sync-sqlite]" time="3.664"><failure message="AssertionError: assert {'total': 0, ...pha', 'beta']} == {'total': 5, ...pha', 'beta']}&#10;  &#10;  Omitting 1 identical items, use -vv to show&#10;  Differing items:&#10;  {'tool_ids': []} != {'tool_ids': ['call-alpha', 'call-beta']}&#10;  {'best': []} != {'best': ['b', 'c']}&#10;  {'total': 0} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:284: in test_checkpoint_resume_in_a_new_process
+    assert {k: observation[k] for k in expected} == expected
+E   AssertionError: assert {'total': 0, ...pha', 'beta']} == {'total': 5, ...pha', 'beta']}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'tool_ids': []} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'best': []} != {'best': ['b', 'c']}
+E     {'total': 0} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_checkpoint_resume_in_a_new_process[list-list-async-sqlite]" time="3.543"><failure message="AssertionError: assert {'total': 0, ...pha', 'beta']} == {'total': 5, ...pha', 'beta']}&#10;  &#10;  Omitting 1 identical items, use -vv to show&#10;  Differing items:&#10;  {'tool_ids': []} != {'tool_ids': ['call-alpha', 'call-beta']}&#10;  {'best': []} != {'best': ['b', 'c']}&#10;  {'total': 0} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:284: in test_checkpoint_resume_in_a_new_process
+    assert {k: observation[k] for k in expected} == expected
+E   AssertionError: assert {'total': 0, ...pha', 'beta']} == {'total': 5, ...pha', 'beta']}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'tool_ids': []} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'best': []} != {'best': ['b', 'c']}
+E     {'total': 0} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_checkpoint_resume_in_a_new_process[list-single-sync-sqlite]" time="3.603"><failure message="AssertionError: assert {'total': 3, ...ed': ['beta']} == {'total': 5, ...pha', 'beta']}&#10;  &#10;  Omitting 1 identical items, use -vv to show&#10;  Differing items:&#10;  {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}&#10;  {'visited': ['beta']} != {'visited': ['alpha', 'beta']}&#10;  {'total': 3} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:284: in test_checkpoint_resume_in_a_new_process
+    assert {k: observation[k] for k in expected} == expected
+E   AssertionError: assert {'total': 3, ...ed': ['beta']} == {'total': 5, ...pha', 'beta']}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'total': 3} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_checkpoint_resume_in_a_new_process[list-single-async-sqlite]" time="3.660"><failure message="AssertionError: assert {'total': 3, ...ed': ['beta']} == {'total': 5, ...pha', 'beta']}&#10;  &#10;  Omitting 1 identical items, use -vv to show&#10;  Differing items:&#10;  {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}&#10;  {'visited': ['beta']} != {'visited': ['alpha', 'beta']}&#10;  {'total': 3} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:284: in test_checkpoint_resume_in_a_new_process
+    assert {k: observation[k] for k in expected} == expected
+E   AssertionError: assert {'total': 3, ...ed': ['beta']} == {'total': 5, ...pha', 'beta']}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'total': 3} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_checkpoint_resume_in_a_new_process[list-string-sync-sqlite]" time="3.515"><failure message="AssertionError: assert {'total': 3, ...ed': ['beta']} == {'total': 5, ...pha', 'beta']}&#10;  &#10;  Omitting 1 identical items, use -vv to show&#10;  Differing items:&#10;  {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}&#10;  {'visited': ['beta']} != {'visited': ['alpha', 'beta']}&#10;  {'total': 3} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:284: in test_checkpoint_resume_in_a_new_process
+    assert {k: observation[k] for k in expected} == expected
+E   AssertionError: assert {'total': 3, ...ed': ['beta']} == {'total': 5, ...pha', 'beta']}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'total': 3} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_checkpoint_resume_in_a_new_process[list-string-async-sqlite]" time="3.684"><failure message="AssertionError: assert {'total': 3, ...ed': ['beta']} == {'total': 5, ...pha', 'beta']}&#10;  &#10;  Omitting 1 identical items, use -vv to show&#10;  Differing items:&#10;  {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}&#10;  {'visited': ['beta']} != {'visited': ['alpha', 'beta']}&#10;  {'total': 3} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:284: in test_checkpoint_resume_in_a_new_process
+    assert {k: observation[k] for k in expected} == expected
+E   AssertionError: assert {'total': 3, ...ed': ['beta']} == {'total': 5, ...pha', 'beta']}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'total': 3} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_checkpoint_resume_in_a_new_process[string-list-sync-sqlite]" time="3.630"><failure message="AssertionError: assert {'total': 2, ...d': ['alpha']} == {'total': 5, ...pha', 'beta']}&#10;  &#10;  Differing items:&#10;  {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}&#10;  {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}&#10;  {'best': ['a']} != {'best': ['b', 'c']}&#10;  {'total': 2} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:284: in test_checkpoint_resume_in_a_new_process
+    assert {k: observation[k] for k in expected} == expected
+E   AssertionError: assert {'total': 2, ...d': ['alpha']} == {'total': 5, ...pha', 'beta']}
+E     
+E     Differing items:
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     {'total': 2} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_handoff_durability" name="test_checkpoint_resume_in_a_new_process[string-list-async-sqlite]" time="3.582"><failure message="AssertionError: assert {'total': 2, ...d': ['alpha']} == {'total': 5, ...pha', 'beta']}&#10;  &#10;  Differing items:&#10;  {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}&#10;  {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}&#10;  {'best': ['a']} != {'best': ['b', 'c']}&#10;  {'total': 2} != {'total': 5}&#10;  Use -v to get more diff">tests\test_parent_handoff_durability.py:284: in test_checkpoint_resume_in_a_new_process
+    assert {k: observation[k] for k in expected} == expected
+E   AssertionError: assert {'total': 2, ...d': ['alpha']} == {'total': 5, ...pha', 'beta']}
+E     
+E     Differing items:
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     {'total': 2} != {'total': 5}
+E     Use -v to get more diff</failure></testcase><testcase classname="tests.test_parent_command_handoff" name="test_parent_handoff_contract[single-send-sync]" time="0.007"><failure message="assert 0 == 2&#10; +  where 2 = sum(&lt;generator object test_parent_handoff_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x000001DBCF5B3D30&gt;)">tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 2
+E    +  where 2 = sum(&lt;generator object test_parent_handoff_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x000001DBCF5B3D30&gt;)</failure></testcase><testcase classname="tests.test_parent_command_handoff" name="test_parent_handoff_contract[single-send-async]" time="0.009"><failure message="assert 0 == 2&#10; +  where 2 = sum(&lt;generator object test_parent_handoff_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x000001DBCF0EA400&gt;)">tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 2
+E    +  where 2 = sum(&lt;generator object test_parent_handoff_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x000001DBCF0EA400&gt;)</failure></testcase><testcase classname="tests.test_parent_command_handoff" name="test_parent_handoff_contract[siblings-sync]" time="0.007"><failure message="assert 0 == 5&#10; +  where 5 = sum(&lt;generator object test_parent_handoff_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x000001DBCF0ECC70&gt;)">tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(&lt;generator object test_parent_handoff_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x000001DBCF0ECC70&gt;)</failure></testcase><testcase classname="tests.test_parent_command_handoff" name="test_parent_handoff_contract[siblings-async]" time="0.009"><failure message="assert 0 == 5&#10; +  where 5 = sum(&lt;generator object test_parent_handoff_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x000001DBCF718BA0&gt;)">tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(&lt;generator object test_parent_handoff_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x000001DBCF718BA0&gt;)</failure></testcase><testcase classname="tests.test_parent_command_handoff" name="test_parent_handoff_contract[reversed-sync]" time="0.008"><failure message="assert 0 == 5&#10; +  where 5 = sum(&lt;generator object test_parent_handoff_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x000001DBCF0EA4D0&gt;)">tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(&lt;generator object test_parent_handoff_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x000001DBCF0EA4D0&gt;)</failure></testcase><testcase classname="tests.test_parent_command_handoff" name="test_parent_handoff_contract[reversed-async]" time="0.013"><failure message="assert 0 == 5&#10; +  where 5 = sum(&lt;generator object test_parent_handoff_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x000001DBCDF17E00&gt;)">tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(&lt;generator object test_parent_handoff_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x000001DBCDF17E00&gt;)</failure></testcase><testcase classname="tests.test_parent_command_handoff" name="test_parent_handoff_contract[string-control-sync]" time="0.008" /><testcase classname="tests.test_parent_command_handoff" name="test_parent_handoff_contract[string-control-async]" time="0.012" /><testcase classname="tests.test_parent_command_handoff" name="test_parent_handoff_contract[dict-tuple-sync]" time="0.012"><failure message="assert 0 == 5&#10; +  where 5 = sum(&lt;generator object test_parent_handoff_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x000001DBCF5BC790&gt;)">tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(&lt;generator object test_parent_handoff_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x000001DBCF5BC790&gt;)</failure></testcase><testcase classname="tests.test_parent_command_handoff" name="test_parent_handoff_contract[dict-tuple-async]" time="0.010"><failure message="assert 0 == 5&#10; +  where 5 = sum(&lt;generator object test_parent_handoff_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x000001DBCF5AB850&gt;)">tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(&lt;generator object test_parent_handoff_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x000001DBCF5AB850&gt;)</failure></testcase><testcase classname="tests.test_parent_command_handoff" name="test_parent_handoff_contract[tuple-dict-sync]" time="0.010"><failure message="assert 0 == 5&#10; +  where 5 = sum(&lt;generator object test_parent_handoff_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x000001DBCDF14AD0&gt;)">tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(&lt;generator object test_parent_handoff_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x000001DBCDF14AD0&gt;)</failure></testcase><testcase classname="tests.test_parent_command_handoff" name="test_parent_handoff_contract[tuple-dict-async]" time="0.011"><failure message="assert 0 == 5&#10; +  where 5 = sum(&lt;generator object test_parent_handoff_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x000001DBCF5A9490&gt;)">tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(&lt;generator object test_parent_handoff_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x000001DBCF5A9490&gt;)</failure></testcase><testcase classname="tests.test_parent_command_handoff" name="test_parent_handoff_contract[tuple-tuple-sync]" time="0.008"><failure message="assert 0 == 5&#10; +  where 5 = sum(&lt;generator object test_parent_handoff_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x000001DBCF509630&gt;)">tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(&lt;generator object test_parent_handoff_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x000001DBCF509630&gt;)</failure></testcase><testcase classname="tests.test_parent_command_handoff" name="test_parent_handoff_contract[tuple-tuple-async]" time="0.010"><failure message="assert 0 == 5&#10; +  where 5 = sum(&lt;generator object test_parent_handoff_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x000001DBCF508E10&gt;)">tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(&lt;generator object test_parent_handoff_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x000001DBCF508E10&gt;)</failure></testcase><testcase classname="tests.test_parent_command_handoff" name="test_parent_handoff_contract[dataclass-tuple-sync]" time="0.010"><failure message="assert 0 == 5&#10; +  where 5 = sum(&lt;generator object test_parent_handoff_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x000001DBCF5CE190&gt;)">tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(&lt;generator object test_parent_handoff_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x000001DBCF5CE190&gt;)</failure></testcase><testcase classname="tests.test_parent_command_handoff" name="test_parent_handoff_contract[dataclass-tuple-async]" time="0.010"><failure message="assert 0 == 5&#10; +  where 5 = sum(&lt;generator object test_parent_handoff_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x000001DBCF0EA190&gt;)">tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(&lt;generator object test_parent_handoff_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x000001DBCF0EA190&gt;)</failure></testcase><testcase classname="tests.test_parent_command_handoff" name="test_parent_handoff_contract[tuple-pydantic-sync]" time="0.010"><failure message="assert 0 == 5&#10; +  where 5 = sum(&lt;generator object test_parent_handoff_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x000001DBCF5BE260&gt;)">tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(&lt;generator object test_parent_handoff_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x000001DBCF5BE260&gt;)</failure></testcase><testcase classname="tests.test_parent_command_handoff" name="test_parent_handoff_contract[tuple-pydantic-async]" time="0.010"><failure message="assert 0 == 5&#10; +  where 5 = sum(&lt;generator object test_parent_handoff_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x000001DBCF5CC520&gt;)">tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(&lt;generator object test_parent_handoff_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x000001DBCF5CC520&gt;)</failure></testcase><testcase classname="tests.test_parent_command_handoff" name="test_parent_handoff_contract[none-tuple-sync]" time="0.008"><failure message="assert 0 == 3&#10; +  where 3 = sum(&lt;generator object test_parent_handoff_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x000001DBCF0ECC70&gt;)">tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 3
+E    +  where 3 = sum(&lt;generator object test_parent_handoff_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x000001DBCF0ECC70&gt;)</failure></testcase><testcase classname="tests.test_parent_command_handoff" name="test_parent_handoff_contract[none-tuple-async]" time="0.010"><failure message="assert 0 == 3&#10; +  where 3 = sum(&lt;generator object test_parent_handoff_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x000001DBCF5CE260&gt;)">tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 3
+E    +  where 3 = sum(&lt;generator object test_parent_handoff_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x000001DBCF5CE260&gt;)</failure></testcase><testcase classname="tests.test_parent_command_handoff" name="test_parent_handoff_contract[tuple-none-sync]" time="0.007"><failure message="assert 0 == 2&#10; +  where 2 = sum(&lt;generator object test_parent_handoff_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x000001DBCF5BD490&gt;)">tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 2
+E    +  where 2 = sum(&lt;generator object test_parent_handoff_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x000001DBCF5BD490&gt;)</failure></testcase><testcase classname="tests.test_parent_command_handoff" name="test_parent_handoff_contract[tuple-none-async]" time="0.008"><failure message="assert 0 == 2&#10; +  where 2 = sum(&lt;generator object test_parent_handoff_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x000001DBCF5BDA40&gt;)">tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 2
+E    +  where 2 = sum(&lt;generator object test_parent_handoff_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x000001DBCF5BDA40&gt;)</failure></testcase><testcase classname="tests.test_parent_command_handoff" name="test_parent_handoff_contract[unreduced-conflict-sync]" time="0.007"><failure message="Failed: DID NOT RAISE InvalidUpdateError">tests\test_parent_command_handoff.py:119: in test_parent_handoff_contract
+    with pytest.raises(InvalidUpdateError, match="exclusive"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE InvalidUpdateError</failure></testcase><testcase classname="tests.test_parent_command_handoff" name="test_parent_handoff_contract[unreduced-conflict-async]" time="0.008"><failure message="Failed: DID NOT RAISE InvalidUpdateError">tests\test_parent_command_handoff.py:119: in test_parent_handoff_contract
+    with pytest.raises(InvalidUpdateError, match="exclusive"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE InvalidUpdateError</failure></testcase><testcase classname="tests.test_tool_node" name="test_tool_node" time="0.008" /><testcase classname="tests.test_tool_node" name="test_tool_node_tool_call_input" time="0.007" /><testcase classname="tests.test_tool_node" name="test_tool_node_error_handling_default_invocation" time="0.002" /><testcase classname="tests.test_tool_node" name="test_tool_node_error_handling_default_exception" time="0.002" /><testcase classname="tests.test_tool_node" name="test_tool_node_error_handling" time="0.019" /><testcase classname="tests.test_tool_node" name="test_tool_node_error_handling_callable" time="0.020" /><testcase classname="tests.test_tool_node" name="test_tool_node_handle_tool_errors_false" time="0.007" /><testcase classname="tests.test_tool_node" name="test_tool_node_individual_tool_error_handling" time="0.002" /><testcase classname="tests.test_tool_node" name="test_tool_node_incorrect_tool_name" time="0.003" /><testcase classname="tests.test_tool_node" name="test_tool_node_node_interrupt" time="0.010" /><testcase classname="tests.test_tool_node" name="test_tool_node_command[dict]" time="0.023" /><testcase classname="tests.test_tool_node" name="test_tool_node_command[tool_calls]" time="0.021" /><testcase classname="tests.test_tool_node" name="test_tool_node_command_list_input" time="0.022" /><testcase classname="tests.test_tool_node" name="test_tool_node_parent_command_with_send" time="0.004" /><testcase classname="tests.test_tool_node" name="test_tool_node_command_remove_all_messages" time="0.006" /><testcase classname="tests.test_tool_node" name="test_tool_node_inject_state[_InjectStateSchema]" time="0.019" /><testcase classname="tests.test_tool_node" name="test_tool_node_inject_state[_InjectedStatePydanticV2Schema]" time="0.013" /><testcase classname="tests.test_tool_node" name="test_tool_node_inject_state[_InjectedStateDataclassSchema]" time="0.015" /><testcase classname="tests.test_tool_node" name="test_tool_node_inject_state[_InjectedStatePydanticSchema]" time="0.016" /><testcase classname="tests.test_tool_node" name="test_tool_node_inject_store" time="0.015" /><testcase classname="tests.test_tool_node" name="test_tool_node_ensure_utf8" time="0.004" /><testcase classname="tests.test_tool_node" name="test_tool_node_messages_key" time="0.008" /><testcase classname="tests.test_tool_node" name="test_tool_node_stream_writer" time="0.009" /><testcase classname="tests.test_tool_node" name="test_tool_call_request_setattr_deprecation_warning" time="0.000" /><testcase classname="tests.test_tool_node" name="test_tool_node_inject_async_all_types_signature_only" time="0.012" /><testcase classname="tests.test_tool_node" name="test_tool_node_inject_async_all_types_with_decorator" time="0.009" /><testcase classname="tests.test_tool_node" name="test_tool_node_inject_async_all_types_with_schema" time="0.006" /><testcase classname="tests.test_tool_node" name="test_tool_node_tool_runtime_generic" time="0.010" /><testcase classname="tests.test_tool_node" name="test_tool_node_inject_runtime_dynamic_tool_via_wrap_tool_call" time="0.012" /><testcase classname="tests.test_tool_node" name="test_tool_node_inject_runtime_dynamic_tool_via_wrap_tool_call_async" time="0.009" /><testcase classname="tests.test_tool_node" name="test_tool_runtime_defaults_tools_to_empty_list" time="0.000" /><testcase classname="tests.test_tool_node" name="test_tool_runtime_forwards_execution_info_server_info_and_tools" time="0.008" /><testcase classname="tests.test_tool_node" name="test_tool_runtime_forwards_execution_info_server_info_and_tools_async" time="0.011" /><testcase classname="tests.test_tool_node" name="test_tool_node_strips_plain_injected_tool_arg" time="0.003" /><testcase classname="tests.test_tool_node" name="test_tool_node_strips_custom_injected_tool_arg_subclass" time="0.004" /><testcase classname="tests.test_tool_node" name="test_tool_node_injected_state_overwrites_llm_value" time="0.003" /><testcase classname="tests.test_tool_node" name="test_tool_node_list_return_command_and_tool_message" time="0.004" /><testcase classname="tests.test_tool_node" name="test_tool_node_list_return_nested_terminator" time="0.002" /><testcase classname="tests.test_tool_node" name="test_tool_node_list_return_parent_goto_with_terminator" time="0.002" /><testcase classname="tests.test_tool_node" name="test_tool_node_list_return_no_terminator_raises" time="0.002" /><testcase classname="tests.test_tool_node" name="test_tool_node_list_return_multiple_terminators_raises" time="0.002" /><testcase classname="tests.test_tool_node" name="test_tool_node_list_return_validation_error_handled" time="0.002" /><testcase classname="tests.test_tool_node" name="test_tool_node_list_return_async_smoke" time="0.004" /><testcase classname="tests.test_tool_node" name="test_tool_node_list_return_mixed_with_regular_tool" time="0.005" /></testsuite></testsuites>

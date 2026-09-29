@@ -1,0 +1,32 @@
+{
+  "python": "3.12.10",
+  "os": "Windows",
+  "imports": {
+    "ToolNode": {
+      "path": "libs/prebuilt/langgraph/prebuilt/tool_node.py",
+      "sha256": "51972b3a8b160841775ef0830c34254e4bf86b705afc1b32ef372a13d741acbe"
+    },
+    "StateGraph": {
+      "path": "libs/langgraph/langgraph/graph/state.py",
+      "sha256": "d8c8021a93a8fc895d62335a9482e50d51353343bf885901e6487611dcd0d212"
+    },
+    "SqliteSaver": {
+      "path": "libs/checkpoint-sqlite/langgraph/checkpoint/sqlite/__init__.py",
+      "sha256": "e8a986ba59e382181380ae72ae72e04951ff3594ea1d6b5a95a097396bbcbf1b"
+    },
+    "AsyncSqliteSaver": {
+      "path": "libs/checkpoint-sqlite/langgraph/checkpoint/sqlite/aio.py",
+      "sha256": "040adafd431be0394b023dd24acbaf36c58fc3f1ec50ea927304f6f4d1dee4ed"
+    }
+  },
+  "packages": {
+    "langgraph": "1.2.12",
+    "langgraph-prebuilt": "1.1.0",
+    "langgraph-checkpoint": "4.2.0",
+    "langgraph-checkpoint-sqlite": "3.1.1",
+    "langchain-core": "1.6.1",
+    "pytest": "9.1.1",
+    "pydantic": "2.13.4",
+    "aiosqlite": "0.22.1"
+  }
+}
