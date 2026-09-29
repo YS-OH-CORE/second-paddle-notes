@@ -1,0 +1,16 @@
+{
+  "files": {
+    "dependency-versions.json": "44399eaf70edb59bf5e780e26e7034cf5eddcc6effb2c0cb80f7dfb03ffd7e19",
+    "hatch-review.toml": "505962dfde5be21852d044c5e8c84eb134442191fffd0c7a52e36b9905feb2ee",
+    "inject_one_persistence_failure.py": "62a05c8b693c201aaa3f18c555d5c7236aa6768a820062415ee72d820b3053d9",
+    "public_path_review.py": "2f2a22c0efd89211402595694dea7d174af4cad72a256520a04b94eb95b9eb61",
+    "README.md": "a91a7b4c81ed53eeb13abceda6f7fdba1042a955f1bb3c7b54ae4cef4fb62240",
+    "receipts.zip": "93316a74df807d1be1c9fcfa0053c433b5fb2170fc7db7c92fc0b7c21c943c82",
+    "scenario-outcomes.json": "ce5726e57c10b51c7bd3f2dd251f0b0427dae22bf7432e43a72e4742c0e611eb",
+    "serialize_qdrant_delete_control.py": "d170b887f8ac5232699c25a872b977738115e9629d6a834eca38f4860ef502d6",
+    "source-analysis.json": "76d4aef7e181d68c445e4d0a329b051924a4926cc955f73a678f449da9c095fb",
+    "source-identities.json": "35d89fd3d2571fb0ba9ada82c1800e7673b24d1ff850252d51eb332566034ceb",
+    "summary.json": "af32d6f5cf5c011b281ff0670909f71b7dc5496c985bbbb0e4686dc94ae89109"
+  },
+  "manifest_excludes_itself": true
+}

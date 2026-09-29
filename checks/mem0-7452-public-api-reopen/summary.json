@@ -1,0 +1,94 @@
+{
+  "recorded_at_utc": "2026-09-29T15:38:10.791489+00:00",
+  "source_revisions": {
+    "earlier": "af93b81bc9573be1b78014b5005a0b0d950605bb",
+    "structured": "2bdfb63e5c0b594bcd339b9222f971d416b681fa"
+  },
+  "runtime": "Windows Python 3.12.10; actual SDK, file-backed SQLite and local file-backed Qdrant",
+  "unchanged_reviewer_sha256": "2f2a22c0efd89211402595694dea7d174af4cad72a256520a04b94eb95b9eb61",
+  "natural_comparison": [
+    {
+      "variant": "earlier",
+      "mode": "sync",
+      "scenarios": 10,
+      "full_passed": 3,
+      "full_failed": 7,
+      "next_prompt_passed": 3,
+      "reopen_state_mismatches": 0
+    },
+    {
+      "variant": "earlier",
+      "mode": "async",
+      "scenarios": 10,
+      "full_passed": 3,
+      "full_failed": 7,
+      "next_prompt_passed": 3,
+      "reopen_state_mismatches": 2
+    },
+    {
+      "variant": "structured",
+      "mode": "sync",
+      "scenarios": 10,
+      "full_passed": 10,
+      "full_failed": 0,
+      "next_prompt_passed": 10,
+      "reopen_state_mismatches": 0
+    },
+    {
+      "variant": "structured",
+      "mode": "async",
+      "scenarios": 10,
+      "full_passed": 8,
+      "full_failed": 2,
+      "next_prompt_passed": 10,
+      "reopen_state_mismatches": 2
+    }
+  ],
+  "source_identities": {
+    "earlier": {
+      "revision": "af93b81bc9573be1b78014b5005a0b0d950605bb",
+      "verified_source_files": 152,
+      "mismatches": []
+    },
+    "structured": {
+      "revision": "2bdfb63e5c0b594bcd339b9222f971d416b681fa",
+      "verified_source_files": 152,
+      "mismatches": []
+    }
+  },
+  "identical_installed_distribution_versions": 44,
+  "serial_control": {
+    "scope": "Only CollectionPersistence.delete serialized. Unchanged assertions; diagnostic wrapper, not production patch.",
+    "scenarios": 10,
+    "passed": 10
+  },
+  "injected_fault_control": {
+    "scope": "Deliberately injected one local disk-delete OperationalError; not a natural occurrence.",
+    "delete_reply": {
+      "message": "Memories deleted successfully!"
+    },
+    "facts_just_after_delete": [
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "facts_on_reopen": [
+      "synthetic_fact_2",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "stage_exit_codes": [
+      0,
+      1
+    ]
+  },
+  "limits": [
+    "Synthetic LLM/embedding providers; no external-provider calls.",
+    "Optional NLP/BM25 absent; original warnings retained.",
+    "No hosted Mem0, remote Qdrant, TypeScript, power-loss or crash tests.",
+    "No overlapping add/delete user requests tested.",
+    "Natural async failures are schedule-dependent observations, not a measured failure rate.",
+    "Serialization is a diagnostic control, not a complete thread-safety repair.",
+    "No independent human rerun or maintainer approval claimed."
+  ],
+  "packaging_note": "Initial report assembly had a REPL quoting error and then included the synthetic profile directory as a scenario. Corrected packaging selects the ten directories with actual seed receipts and omits temporary profile files. Tests and assertions were not changed or rerun."
+}

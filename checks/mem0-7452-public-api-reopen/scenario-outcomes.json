@@ -1,0 +1,1996 @@
+[
+  {
+    "variant": "earlier",
+    "mode": "sync",
+    "case": "agent",
+    "seed_checks": {
+      "vector_retention": true,
+      "raw_retention": false,
+      "empty_filter_rejected": true
+    },
+    "probe_checks": {
+      "new_process": true,
+      "durable_state_matches": true,
+      "prompt_scope_0": false,
+      "prompt_scope_1": false,
+      "prompt_scope_2": true,
+      "prompt_scope_3": false,
+      "prompt_scope_4": true,
+      "fresh_memories_stored": true
+    },
+    "complete_path_passed": false,
+    "next_prompt_checks_passed": false,
+    "facts_just_after_delete": [
+      "synthetic_fact_2",
+      "synthetic_fact_4"
+    ],
+    "facts_on_reopen": [
+      "synthetic_fact_2",
+      "synthetic_fact_4"
+    ],
+    "reply": {
+      "message": "Memories deleted successfully!"
+    },
+    "old_markers_per_next_prompt": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ]
+  },
+  {
+    "variant": "earlier",
+    "mode": "sync",
+    "case": "agent-run",
+    "seed_checks": {
+      "vector_retention": true,
+      "raw_retention": false,
+      "empty_filter_rejected": true
+    },
+    "probe_checks": {
+      "new_process": true,
+      "durable_state_matches": true,
+      "prompt_scope_0": false,
+      "prompt_scope_1": true,
+      "prompt_scope_2": true,
+      "prompt_scope_3": false,
+      "prompt_scope_4": true,
+      "fresh_memories_stored": true
+    },
+    "complete_path_passed": false,
+    "next_prompt_checks_passed": false,
+    "facts_just_after_delete": [
+      "synthetic_fact_1",
+      "synthetic_fact_2",
+      "synthetic_fact_4"
+    ],
+    "facts_on_reopen": [
+      "synthetic_fact_1",
+      "synthetic_fact_2",
+      "synthetic_fact_4"
+    ],
+    "reply": {
+      "message": "Memories deleted successfully!"
+    },
+    "old_markers_per_next_prompt": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ]
+  },
+  {
+    "variant": "earlier",
+    "mode": "sync",
+    "case": "empty-rejected",
+    "seed_checks": {
+      "vector_retention": true,
+      "raw_retention": true,
+      "empty_filter_rejected": true
+    },
+    "probe_checks": {
+      "new_process": true,
+      "durable_state_matches": true,
+      "prompt_scope_0": true,
+      "prompt_scope_1": true,
+      "prompt_scope_2": true,
+      "prompt_scope_3": true,
+      "prompt_scope_4": true,
+      "fresh_memories_stored": true
+    },
+    "complete_path_passed": true,
+    "next_prompt_checks_passed": true,
+    "facts_just_after_delete": [
+      "synthetic_fact_0",
+      "synthetic_fact_1",
+      "synthetic_fact_2",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "facts_on_reopen": [
+      "synthetic_fact_0",
+      "synthetic_fact_1",
+      "synthetic_fact_2",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "reply": {
+      "exception": "ValueError",
+      "message": "At least one filter is required to delete all memories. If you want to delete all memories, use the `reset()` method."
+    },
+    "old_markers_per_next_prompt": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ]
+  },
+  {
+    "variant": "earlier",
+    "mode": "sync",
+    "case": "exact",
+    "seed_checks": {
+      "vector_retention": true,
+      "raw_retention": true,
+      "empty_filter_rejected": true
+    },
+    "probe_checks": {
+      "new_process": true,
+      "durable_state_matches": true,
+      "prompt_scope_0": true,
+      "prompt_scope_1": true,
+      "prompt_scope_2": true,
+      "prompt_scope_3": true,
+      "prompt_scope_4": true,
+      "fresh_memories_stored": true
+    },
+    "complete_path_passed": true,
+    "next_prompt_checks_passed": true,
+    "facts_just_after_delete": [
+      "synthetic_fact_1",
+      "synthetic_fact_2",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "facts_on_reopen": [
+      "synthetic_fact_1",
+      "synthetic_fact_2",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "reply": {
+      "message": "Memories deleted successfully!"
+    },
+    "old_markers_per_next_prompt": [
+      [],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ]
+  },
+  {
+    "variant": "earlier",
+    "mode": "sync",
+    "case": "raw-only",
+    "seed_checks": {
+      "vector_retention": true,
+      "raw_retention": false,
+      "empty_filter_rejected": true
+    },
+    "probe_checks": {
+      "new_process": true,
+      "durable_state_matches": true,
+      "prompt_scope_0": false,
+      "prompt_scope_1": false,
+      "prompt_scope_2": false,
+      "prompt_scope_3": true,
+      "prompt_scope_4": true,
+      "fresh_memories_stored": true
+    },
+    "complete_path_passed": false,
+    "next_prompt_checks_passed": false,
+    "facts_just_after_delete": [],
+    "facts_on_reopen": [],
+    "reply": {
+      "message": "Memories deleted successfully!"
+    },
+    "old_markers_per_next_prompt": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ]
+  },
+  {
+    "variant": "earlier",
+    "mode": "sync",
+    "case": "run",
+    "seed_checks": {
+      "vector_retention": true,
+      "raw_retention": false,
+      "empty_filter_rejected": true
+    },
+    "probe_checks": {
+      "new_process": true,
+      "durable_state_matches": true,
+      "prompt_scope_0": false,
+      "prompt_scope_1": true,
+      "prompt_scope_2": false,
+      "prompt_scope_3": false,
+      "prompt_scope_4": true,
+      "fresh_memories_stored": true
+    },
+    "complete_path_passed": false,
+    "next_prompt_checks_passed": false,
+    "facts_just_after_delete": [
+      "synthetic_fact_1",
+      "synthetic_fact_4"
+    ],
+    "facts_on_reopen": [
+      "synthetic_fact_1",
+      "synthetic_fact_4"
+    ],
+    "reply": {
+      "message": "Memories deleted successfully!"
+    },
+    "old_markers_per_next_prompt": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ]
+  },
+  {
+    "variant": "earlier",
+    "mode": "sync",
+    "case": "unmatched",
+    "seed_checks": {
+      "vector_retention": true,
+      "raw_retention": true,
+      "empty_filter_rejected": true
+    },
+    "probe_checks": {
+      "new_process": true,
+      "durable_state_matches": true,
+      "prompt_scope_0": true,
+      "prompt_scope_1": true,
+      "prompt_scope_2": true,
+      "prompt_scope_3": true,
+      "prompt_scope_4": true,
+      "fresh_memories_stored": true
+    },
+    "complete_path_passed": true,
+    "next_prompt_checks_passed": true,
+    "facts_just_after_delete": [
+      "synthetic_fact_0",
+      "synthetic_fact_1",
+      "synthetic_fact_2",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "facts_on_reopen": [
+      "synthetic_fact_0",
+      "synthetic_fact_1",
+      "synthetic_fact_2",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "reply": {
+      "message": "Memories deleted successfully!"
+    },
+    "old_markers_per_next_prompt": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ]
+  },
+  {
+    "variant": "earlier",
+    "mode": "sync",
+    "case": "user",
+    "seed_checks": {
+      "vector_retention": true,
+      "raw_retention": false,
+      "empty_filter_rejected": true
+    },
+    "probe_checks": {
+      "new_process": true,
+      "durable_state_matches": true,
+      "prompt_scope_0": false,
+      "prompt_scope_1": false,
+      "prompt_scope_2": false,
+      "prompt_scope_3": true,
+      "prompt_scope_4": true,
+      "fresh_memories_stored": true
+    },
+    "complete_path_passed": false,
+    "next_prompt_checks_passed": false,
+    "facts_just_after_delete": [
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "facts_on_reopen": [
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "reply": {
+      "message": "Memories deleted successfully!"
+    },
+    "old_markers_per_next_prompt": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ]
+  },
+  {
+    "variant": "earlier",
+    "mode": "sync",
+    "case": "user-agent",
+    "seed_checks": {
+      "vector_retention": true,
+      "raw_retention": false,
+      "empty_filter_rejected": true
+    },
+    "probe_checks": {
+      "new_process": true,
+      "durable_state_matches": true,
+      "prompt_scope_0": false,
+      "prompt_scope_1": false,
+      "prompt_scope_2": true,
+      "prompt_scope_3": true,
+      "prompt_scope_4": true,
+      "fresh_memories_stored": true
+    },
+    "complete_path_passed": false,
+    "next_prompt_checks_passed": false,
+    "facts_just_after_delete": [
+      "synthetic_fact_2",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "facts_on_reopen": [
+      "synthetic_fact_2",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "reply": {
+      "message": "Memories deleted successfully!"
+    },
+    "old_markers_per_next_prompt": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ]
+  },
+  {
+    "variant": "earlier",
+    "mode": "sync",
+    "case": "user-run",
+    "seed_checks": {
+      "vector_retention": true,
+      "raw_retention": false,
+      "empty_filter_rejected": true
+    },
+    "probe_checks": {
+      "new_process": true,
+      "durable_state_matches": true,
+      "prompt_scope_0": false,
+      "prompt_scope_1": true,
+      "prompt_scope_2": false,
+      "prompt_scope_3": true,
+      "prompt_scope_4": true,
+      "fresh_memories_stored": true
+    },
+    "complete_path_passed": false,
+    "next_prompt_checks_passed": false,
+    "facts_just_after_delete": [
+      "synthetic_fact_1",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "facts_on_reopen": [
+      "synthetic_fact_1",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "reply": {
+      "message": "Memories deleted successfully!"
+    },
+    "old_markers_per_next_prompt": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ]
+  },
+  {
+    "variant": "earlier",
+    "mode": "async",
+    "case": "agent",
+    "seed_checks": {
+      "vector_retention": true,
+      "raw_retention": false,
+      "empty_filter_rejected": true
+    },
+    "probe_checks": {
+      "new_process": true,
+      "durable_state_matches": false,
+      "prompt_scope_0": false,
+      "prompt_scope_1": false,
+      "prompt_scope_2": true,
+      "prompt_scope_3": false,
+      "prompt_scope_4": true,
+      "fresh_memories_stored": true
+    },
+    "complete_path_passed": false,
+    "next_prompt_checks_passed": false,
+    "facts_just_after_delete": [
+      "synthetic_fact_2",
+      "synthetic_fact_4"
+    ],
+    "facts_on_reopen": [
+      "synthetic_fact_0",
+      "synthetic_fact_1",
+      "synthetic_fact_2",
+      "synthetic_fact_4"
+    ],
+    "reply": {
+      "message": "Memories deleted successfully!"
+    },
+    "old_markers_per_next_prompt": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ]
+  },
+  {
+    "variant": "earlier",
+    "mode": "async",
+    "case": "agent-run",
+    "seed_checks": {
+      "vector_retention": true,
+      "raw_retention": false,
+      "empty_filter_rejected": true
+    },
+    "probe_checks": {
+      "new_process": true,
+      "durable_state_matches": true,
+      "prompt_scope_0": false,
+      "prompt_scope_1": true,
+      "prompt_scope_2": true,
+      "prompt_scope_3": false,
+      "prompt_scope_4": true,
+      "fresh_memories_stored": true
+    },
+    "complete_path_passed": false,
+    "next_prompt_checks_passed": false,
+    "facts_just_after_delete": [
+      "synthetic_fact_1",
+      "synthetic_fact_2",
+      "synthetic_fact_4"
+    ],
+    "facts_on_reopen": [
+      "synthetic_fact_1",
+      "synthetic_fact_2",
+      "synthetic_fact_4"
+    ],
+    "reply": {
+      "message": "Memories deleted successfully!"
+    },
+    "old_markers_per_next_prompt": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ]
+  },
+  {
+    "variant": "earlier",
+    "mode": "async",
+    "case": "empty-rejected",
+    "seed_checks": {
+      "vector_retention": true,
+      "raw_retention": true,
+      "empty_filter_rejected": true
+    },
+    "probe_checks": {
+      "new_process": true,
+      "durable_state_matches": true,
+      "prompt_scope_0": true,
+      "prompt_scope_1": true,
+      "prompt_scope_2": true,
+      "prompt_scope_3": true,
+      "prompt_scope_4": true,
+      "fresh_memories_stored": true
+    },
+    "complete_path_passed": true,
+    "next_prompt_checks_passed": true,
+    "facts_just_after_delete": [
+      "synthetic_fact_0",
+      "synthetic_fact_1",
+      "synthetic_fact_2",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "facts_on_reopen": [
+      "synthetic_fact_0",
+      "synthetic_fact_1",
+      "synthetic_fact_2",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "reply": {
+      "exception": "ValueError",
+      "message": "At least one filter is required to delete all memories. If you want to delete all memories, use the `reset()` method."
+    },
+    "old_markers_per_next_prompt": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ]
+  },
+  {
+    "variant": "earlier",
+    "mode": "async",
+    "case": "exact",
+    "seed_checks": {
+      "vector_retention": true,
+      "raw_retention": true,
+      "empty_filter_rejected": true
+    },
+    "probe_checks": {
+      "new_process": true,
+      "durable_state_matches": true,
+      "prompt_scope_0": true,
+      "prompt_scope_1": true,
+      "prompt_scope_2": true,
+      "prompt_scope_3": true,
+      "prompt_scope_4": true,
+      "fresh_memories_stored": true
+    },
+    "complete_path_passed": true,
+    "next_prompt_checks_passed": true,
+    "facts_just_after_delete": [
+      "synthetic_fact_1",
+      "synthetic_fact_2",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "facts_on_reopen": [
+      "synthetic_fact_1",
+      "synthetic_fact_2",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "reply": {
+      "message": "Memories deleted successfully!"
+    },
+    "old_markers_per_next_prompt": [
+      [],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ]
+  },
+  {
+    "variant": "earlier",
+    "mode": "async",
+    "case": "raw-only",
+    "seed_checks": {
+      "vector_retention": true,
+      "raw_retention": false,
+      "empty_filter_rejected": true
+    },
+    "probe_checks": {
+      "new_process": true,
+      "durable_state_matches": true,
+      "prompt_scope_0": false,
+      "prompt_scope_1": false,
+      "prompt_scope_2": false,
+      "prompt_scope_3": true,
+      "prompt_scope_4": true,
+      "fresh_memories_stored": true
+    },
+    "complete_path_passed": false,
+    "next_prompt_checks_passed": false,
+    "facts_just_after_delete": [],
+    "facts_on_reopen": [],
+    "reply": {
+      "message": "Memories deleted successfully!"
+    },
+    "old_markers_per_next_prompt": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ]
+  },
+  {
+    "variant": "earlier",
+    "mode": "async",
+    "case": "run",
+    "seed_checks": {
+      "vector_retention": true,
+      "raw_retention": false,
+      "empty_filter_rejected": true
+    },
+    "probe_checks": {
+      "new_process": true,
+      "durable_state_matches": false,
+      "prompt_scope_0": false,
+      "prompt_scope_1": true,
+      "prompt_scope_2": false,
+      "prompt_scope_3": false,
+      "prompt_scope_4": true,
+      "fresh_memories_stored": true
+    },
+    "complete_path_passed": false,
+    "next_prompt_checks_passed": false,
+    "facts_just_after_delete": [
+      "synthetic_fact_1",
+      "synthetic_fact_4"
+    ],
+    "facts_on_reopen": [
+      "synthetic_fact_1",
+      "synthetic_fact_2",
+      "synthetic_fact_4"
+    ],
+    "reply": {
+      "message": "Memories deleted successfully!"
+    },
+    "old_markers_per_next_prompt": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ]
+  },
+  {
+    "variant": "earlier",
+    "mode": "async",
+    "case": "unmatched",
+    "seed_checks": {
+      "vector_retention": true,
+      "raw_retention": true,
+      "empty_filter_rejected": true
+    },
+    "probe_checks": {
+      "new_process": true,
+      "durable_state_matches": true,
+      "prompt_scope_0": true,
+      "prompt_scope_1": true,
+      "prompt_scope_2": true,
+      "prompt_scope_3": true,
+      "prompt_scope_4": true,
+      "fresh_memories_stored": true
+    },
+    "complete_path_passed": true,
+    "next_prompt_checks_passed": true,
+    "facts_just_after_delete": [
+      "synthetic_fact_0",
+      "synthetic_fact_1",
+      "synthetic_fact_2",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "facts_on_reopen": [
+      "synthetic_fact_0",
+      "synthetic_fact_1",
+      "synthetic_fact_2",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "reply": {
+      "message": "Memories deleted successfully!"
+    },
+    "old_markers_per_next_prompt": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ]
+  },
+  {
+    "variant": "earlier",
+    "mode": "async",
+    "case": "user",
+    "seed_checks": {
+      "vector_retention": true,
+      "raw_retention": false,
+      "empty_filter_rejected": true
+    },
+    "probe_checks": {
+      "new_process": true,
+      "durable_state_matches": true,
+      "prompt_scope_0": false,
+      "prompt_scope_1": false,
+      "prompt_scope_2": false,
+      "prompt_scope_3": true,
+      "prompt_scope_4": true,
+      "fresh_memories_stored": true
+    },
+    "complete_path_passed": false,
+    "next_prompt_checks_passed": false,
+    "facts_just_after_delete": [
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "facts_on_reopen": [
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "reply": {
+      "message": "Memories deleted successfully!"
+    },
+    "old_markers_per_next_prompt": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ]
+  },
+  {
+    "variant": "earlier",
+    "mode": "async",
+    "case": "user-agent",
+    "seed_checks": {
+      "vector_retention": true,
+      "raw_retention": false,
+      "empty_filter_rejected": true
+    },
+    "probe_checks": {
+      "new_process": true,
+      "durable_state_matches": true,
+      "prompt_scope_0": false,
+      "prompt_scope_1": false,
+      "prompt_scope_2": true,
+      "prompt_scope_3": true,
+      "prompt_scope_4": true,
+      "fresh_memories_stored": true
+    },
+    "complete_path_passed": false,
+    "next_prompt_checks_passed": false,
+    "facts_just_after_delete": [
+      "synthetic_fact_2",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "facts_on_reopen": [
+      "synthetic_fact_2",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "reply": {
+      "message": "Memories deleted successfully!"
+    },
+    "old_markers_per_next_prompt": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ]
+  },
+  {
+    "variant": "earlier",
+    "mode": "async",
+    "case": "user-run",
+    "seed_checks": {
+      "vector_retention": true,
+      "raw_retention": false,
+      "empty_filter_rejected": true
+    },
+    "probe_checks": {
+      "new_process": true,
+      "durable_state_matches": true,
+      "prompt_scope_0": false,
+      "prompt_scope_1": true,
+      "prompt_scope_2": false,
+      "prompt_scope_3": true,
+      "prompt_scope_4": true,
+      "fresh_memories_stored": true
+    },
+    "complete_path_passed": false,
+    "next_prompt_checks_passed": false,
+    "facts_just_after_delete": [
+      "synthetic_fact_1",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "facts_on_reopen": [
+      "synthetic_fact_1",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "reply": {
+      "message": "Memories deleted successfully!"
+    },
+    "old_markers_per_next_prompt": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ]
+  },
+  {
+    "variant": "structured",
+    "mode": "sync",
+    "case": "agent",
+    "seed_checks": {
+      "vector_retention": true,
+      "raw_retention": true,
+      "empty_filter_rejected": true
+    },
+    "probe_checks": {
+      "new_process": true,
+      "durable_state_matches": true,
+      "prompt_scope_0": true,
+      "prompt_scope_1": true,
+      "prompt_scope_2": true,
+      "prompt_scope_3": true,
+      "prompt_scope_4": true,
+      "fresh_memories_stored": true
+    },
+    "complete_path_passed": true,
+    "next_prompt_checks_passed": true,
+    "facts_just_after_delete": [
+      "synthetic_fact_2",
+      "synthetic_fact_4"
+    ],
+    "facts_on_reopen": [
+      "synthetic_fact_2",
+      "synthetic_fact_4"
+    ],
+    "reply": {
+      "message": "Memories deleted successfully!"
+    },
+    "old_markers_per_next_prompt": [
+      [],
+      [],
+      [
+        2
+      ],
+      [],
+      [
+        4
+      ]
+    ]
+  },
+  {
+    "variant": "structured",
+    "mode": "sync",
+    "case": "agent-run",
+    "seed_checks": {
+      "vector_retention": true,
+      "raw_retention": true,
+      "empty_filter_rejected": true
+    },
+    "probe_checks": {
+      "new_process": true,
+      "durable_state_matches": true,
+      "prompt_scope_0": true,
+      "prompt_scope_1": true,
+      "prompt_scope_2": true,
+      "prompt_scope_3": true,
+      "prompt_scope_4": true,
+      "fresh_memories_stored": true
+    },
+    "complete_path_passed": true,
+    "next_prompt_checks_passed": true,
+    "facts_just_after_delete": [
+      "synthetic_fact_1",
+      "synthetic_fact_2",
+      "synthetic_fact_4"
+    ],
+    "facts_on_reopen": [
+      "synthetic_fact_1",
+      "synthetic_fact_2",
+      "synthetic_fact_4"
+    ],
+    "reply": {
+      "message": "Memories deleted successfully!"
+    },
+    "old_markers_per_next_prompt": [
+      [],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [],
+      [
+        4
+      ]
+    ]
+  },
+  {
+    "variant": "structured",
+    "mode": "sync",
+    "case": "empty-rejected",
+    "seed_checks": {
+      "vector_retention": true,
+      "raw_retention": true,
+      "empty_filter_rejected": true
+    },
+    "probe_checks": {
+      "new_process": true,
+      "durable_state_matches": true,
+      "prompt_scope_0": true,
+      "prompt_scope_1": true,
+      "prompt_scope_2": true,
+      "prompt_scope_3": true,
+      "prompt_scope_4": true,
+      "fresh_memories_stored": true
+    },
+    "complete_path_passed": true,
+    "next_prompt_checks_passed": true,
+    "facts_just_after_delete": [
+      "synthetic_fact_0",
+      "synthetic_fact_1",
+      "synthetic_fact_2",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "facts_on_reopen": [
+      "synthetic_fact_0",
+      "synthetic_fact_1",
+      "synthetic_fact_2",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "reply": {
+      "exception": "ValueError",
+      "message": "At least one filter is required to delete all memories. If you want to delete all memories, use the `reset()` method."
+    },
+    "old_markers_per_next_prompt": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ]
+  },
+  {
+    "variant": "structured",
+    "mode": "sync",
+    "case": "exact",
+    "seed_checks": {
+      "vector_retention": true,
+      "raw_retention": true,
+      "empty_filter_rejected": true
+    },
+    "probe_checks": {
+      "new_process": true,
+      "durable_state_matches": true,
+      "prompt_scope_0": true,
+      "prompt_scope_1": true,
+      "prompt_scope_2": true,
+      "prompt_scope_3": true,
+      "prompt_scope_4": true,
+      "fresh_memories_stored": true
+    },
+    "complete_path_passed": true,
+    "next_prompt_checks_passed": true,
+    "facts_just_after_delete": [
+      "synthetic_fact_1",
+      "synthetic_fact_2",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "facts_on_reopen": [
+      "synthetic_fact_1",
+      "synthetic_fact_2",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "reply": {
+      "message": "Memories deleted successfully!"
+    },
+    "old_markers_per_next_prompt": [
+      [],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ]
+  },
+  {
+    "variant": "structured",
+    "mode": "sync",
+    "case": "raw-only",
+    "seed_checks": {
+      "vector_retention": true,
+      "raw_retention": true,
+      "empty_filter_rejected": true
+    },
+    "probe_checks": {
+      "new_process": true,
+      "durable_state_matches": true,
+      "prompt_scope_0": true,
+      "prompt_scope_1": true,
+      "prompt_scope_2": true,
+      "prompt_scope_3": true,
+      "prompt_scope_4": true,
+      "fresh_memories_stored": true
+    },
+    "complete_path_passed": true,
+    "next_prompt_checks_passed": true,
+    "facts_just_after_delete": [],
+    "facts_on_reopen": [],
+    "reply": {
+      "message": "Memories deleted successfully!"
+    },
+    "old_markers_per_next_prompt": [
+      [],
+      [],
+      [],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ]
+  },
+  {
+    "variant": "structured",
+    "mode": "sync",
+    "case": "run",
+    "seed_checks": {
+      "vector_retention": true,
+      "raw_retention": true,
+      "empty_filter_rejected": true
+    },
+    "probe_checks": {
+      "new_process": true,
+      "durable_state_matches": true,
+      "prompt_scope_0": true,
+      "prompt_scope_1": true,
+      "prompt_scope_2": true,
+      "prompt_scope_3": true,
+      "prompt_scope_4": true,
+      "fresh_memories_stored": true
+    },
+    "complete_path_passed": true,
+    "next_prompt_checks_passed": true,
+    "facts_just_after_delete": [
+      "synthetic_fact_1",
+      "synthetic_fact_4"
+    ],
+    "facts_on_reopen": [
+      "synthetic_fact_1",
+      "synthetic_fact_4"
+    ],
+    "reply": {
+      "message": "Memories deleted successfully!"
+    },
+    "old_markers_per_next_prompt": [
+      [],
+      [
+        1
+      ],
+      [],
+      [],
+      [
+        4
+      ]
+    ]
+  },
+  {
+    "variant": "structured",
+    "mode": "sync",
+    "case": "unmatched",
+    "seed_checks": {
+      "vector_retention": true,
+      "raw_retention": true,
+      "empty_filter_rejected": true
+    },
+    "probe_checks": {
+      "new_process": true,
+      "durable_state_matches": true,
+      "prompt_scope_0": true,
+      "prompt_scope_1": true,
+      "prompt_scope_2": true,
+      "prompt_scope_3": true,
+      "prompt_scope_4": true,
+      "fresh_memories_stored": true
+    },
+    "complete_path_passed": true,
+    "next_prompt_checks_passed": true,
+    "facts_just_after_delete": [
+      "synthetic_fact_0",
+      "synthetic_fact_1",
+      "synthetic_fact_2",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "facts_on_reopen": [
+      "synthetic_fact_0",
+      "synthetic_fact_1",
+      "synthetic_fact_2",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "reply": {
+      "message": "Memories deleted successfully!"
+    },
+    "old_markers_per_next_prompt": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ]
+  },
+  {
+    "variant": "structured",
+    "mode": "sync",
+    "case": "user",
+    "seed_checks": {
+      "vector_retention": true,
+      "raw_retention": true,
+      "empty_filter_rejected": true
+    },
+    "probe_checks": {
+      "new_process": true,
+      "durable_state_matches": true,
+      "prompt_scope_0": true,
+      "prompt_scope_1": true,
+      "prompt_scope_2": true,
+      "prompt_scope_3": true,
+      "prompt_scope_4": true,
+      "fresh_memories_stored": true
+    },
+    "complete_path_passed": true,
+    "next_prompt_checks_passed": true,
+    "facts_just_after_delete": [
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "facts_on_reopen": [
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "reply": {
+      "message": "Memories deleted successfully!"
+    },
+    "old_markers_per_next_prompt": [
+      [],
+      [],
+      [],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ]
+  },
+  {
+    "variant": "structured",
+    "mode": "sync",
+    "case": "user-agent",
+    "seed_checks": {
+      "vector_retention": true,
+      "raw_retention": true,
+      "empty_filter_rejected": true
+    },
+    "probe_checks": {
+      "new_process": true,
+      "durable_state_matches": true,
+      "prompt_scope_0": true,
+      "prompt_scope_1": true,
+      "prompt_scope_2": true,
+      "prompt_scope_3": true,
+      "prompt_scope_4": true,
+      "fresh_memories_stored": true
+    },
+    "complete_path_passed": true,
+    "next_prompt_checks_passed": true,
+    "facts_just_after_delete": [
+      "synthetic_fact_2",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "facts_on_reopen": [
+      "synthetic_fact_2",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "reply": {
+      "message": "Memories deleted successfully!"
+    },
+    "old_markers_per_next_prompt": [
+      [],
+      [],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ]
+  },
+  {
+    "variant": "structured",
+    "mode": "sync",
+    "case": "user-run",
+    "seed_checks": {
+      "vector_retention": true,
+      "raw_retention": true,
+      "empty_filter_rejected": true
+    },
+    "probe_checks": {
+      "new_process": true,
+      "durable_state_matches": true,
+      "prompt_scope_0": true,
+      "prompt_scope_1": true,
+      "prompt_scope_2": true,
+      "prompt_scope_3": true,
+      "prompt_scope_4": true,
+      "fresh_memories_stored": true
+    },
+    "complete_path_passed": true,
+    "next_prompt_checks_passed": true,
+    "facts_just_after_delete": [
+      "synthetic_fact_1",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "facts_on_reopen": [
+      "synthetic_fact_1",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "reply": {
+      "message": "Memories deleted successfully!"
+    },
+    "old_markers_per_next_prompt": [
+      [],
+      [
+        1
+      ],
+      [],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ]
+  },
+  {
+    "variant": "structured",
+    "mode": "async",
+    "case": "agent",
+    "seed_checks": {
+      "vector_retention": true,
+      "raw_retention": true,
+      "empty_filter_rejected": true
+    },
+    "probe_checks": {
+      "new_process": true,
+      "durable_state_matches": false,
+      "prompt_scope_0": true,
+      "prompt_scope_1": true,
+      "prompt_scope_2": true,
+      "prompt_scope_3": true,
+      "prompt_scope_4": true,
+      "fresh_memories_stored": true
+    },
+    "complete_path_passed": false,
+    "next_prompt_checks_passed": true,
+    "facts_just_after_delete": [
+      "synthetic_fact_2",
+      "synthetic_fact_4"
+    ],
+    "facts_on_reopen": [
+      "synthetic_fact_1",
+      "synthetic_fact_2",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "reply": {
+      "message": "Memories deleted successfully!"
+    },
+    "old_markers_per_next_prompt": [
+      [],
+      [],
+      [
+        2
+      ],
+      [],
+      [
+        4
+      ]
+    ]
+  },
+  {
+    "variant": "structured",
+    "mode": "async",
+    "case": "agent-run",
+    "seed_checks": {
+      "vector_retention": true,
+      "raw_retention": true,
+      "empty_filter_rejected": true
+    },
+    "probe_checks": {
+      "new_process": true,
+      "durable_state_matches": true,
+      "prompt_scope_0": true,
+      "prompt_scope_1": true,
+      "prompt_scope_2": true,
+      "prompt_scope_3": true,
+      "prompt_scope_4": true,
+      "fresh_memories_stored": true
+    },
+    "complete_path_passed": true,
+    "next_prompt_checks_passed": true,
+    "facts_just_after_delete": [
+      "synthetic_fact_1",
+      "synthetic_fact_2",
+      "synthetic_fact_4"
+    ],
+    "facts_on_reopen": [
+      "synthetic_fact_1",
+      "synthetic_fact_2",
+      "synthetic_fact_4"
+    ],
+    "reply": {
+      "message": "Memories deleted successfully!"
+    },
+    "old_markers_per_next_prompt": [
+      [],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [],
+      [
+        4
+      ]
+    ]
+  },
+  {
+    "variant": "structured",
+    "mode": "async",
+    "case": "empty-rejected",
+    "seed_checks": {
+      "vector_retention": true,
+      "raw_retention": true,
+      "empty_filter_rejected": true
+    },
+    "probe_checks": {
+      "new_process": true,
+      "durable_state_matches": true,
+      "prompt_scope_0": true,
+      "prompt_scope_1": true,
+      "prompt_scope_2": true,
+      "prompt_scope_3": true,
+      "prompt_scope_4": true,
+      "fresh_memories_stored": true
+    },
+    "complete_path_passed": true,
+    "next_prompt_checks_passed": true,
+    "facts_just_after_delete": [
+      "synthetic_fact_0",
+      "synthetic_fact_1",
+      "synthetic_fact_2",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "facts_on_reopen": [
+      "synthetic_fact_0",
+      "synthetic_fact_1",
+      "synthetic_fact_2",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "reply": {
+      "exception": "ValueError",
+      "message": "At least one filter is required to delete all memories. If you want to delete all memories, use the `reset()` method."
+    },
+    "old_markers_per_next_prompt": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ]
+  },
+  {
+    "variant": "structured",
+    "mode": "async",
+    "case": "exact",
+    "seed_checks": {
+      "vector_retention": true,
+      "raw_retention": true,
+      "empty_filter_rejected": true
+    },
+    "probe_checks": {
+      "new_process": true,
+      "durable_state_matches": true,
+      "prompt_scope_0": true,
+      "prompt_scope_1": true,
+      "prompt_scope_2": true,
+      "prompt_scope_3": true,
+      "prompt_scope_4": true,
+      "fresh_memories_stored": true
+    },
+    "complete_path_passed": true,
+    "next_prompt_checks_passed": true,
+    "facts_just_after_delete": [
+      "synthetic_fact_1",
+      "synthetic_fact_2",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "facts_on_reopen": [
+      "synthetic_fact_1",
+      "synthetic_fact_2",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "reply": {
+      "message": "Memories deleted successfully!"
+    },
+    "old_markers_per_next_prompt": [
+      [],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ]
+  },
+  {
+    "variant": "structured",
+    "mode": "async",
+    "case": "raw-only",
+    "seed_checks": {
+      "vector_retention": true,
+      "raw_retention": true,
+      "empty_filter_rejected": true
+    },
+    "probe_checks": {
+      "new_process": true,
+      "durable_state_matches": true,
+      "prompt_scope_0": true,
+      "prompt_scope_1": true,
+      "prompt_scope_2": true,
+      "prompt_scope_3": true,
+      "prompt_scope_4": true,
+      "fresh_memories_stored": true
+    },
+    "complete_path_passed": true,
+    "next_prompt_checks_passed": true,
+    "facts_just_after_delete": [],
+    "facts_on_reopen": [],
+    "reply": {
+      "message": "Memories deleted successfully!"
+    },
+    "old_markers_per_next_prompt": [
+      [],
+      [],
+      [],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ]
+  },
+  {
+    "variant": "structured",
+    "mode": "async",
+    "case": "run",
+    "seed_checks": {
+      "vector_retention": true,
+      "raw_retention": true,
+      "empty_filter_rejected": true
+    },
+    "probe_checks": {
+      "new_process": true,
+      "durable_state_matches": false,
+      "prompt_scope_0": true,
+      "prompt_scope_1": true,
+      "prompt_scope_2": true,
+      "prompt_scope_3": true,
+      "prompt_scope_4": true,
+      "fresh_memories_stored": true
+    },
+    "complete_path_passed": false,
+    "next_prompt_checks_passed": true,
+    "facts_just_after_delete": [
+      "synthetic_fact_1",
+      "synthetic_fact_4"
+    ],
+    "facts_on_reopen": [
+      "synthetic_fact_0",
+      "synthetic_fact_1",
+      "synthetic_fact_4"
+    ],
+    "reply": {
+      "message": "Memories deleted successfully!"
+    },
+    "old_markers_per_next_prompt": [
+      [],
+      [
+        1
+      ],
+      [],
+      [],
+      [
+        4
+      ]
+    ]
+  },
+  {
+    "variant": "structured",
+    "mode": "async",
+    "case": "unmatched",
+    "seed_checks": {
+      "vector_retention": true,
+      "raw_retention": true,
+      "empty_filter_rejected": true
+    },
+    "probe_checks": {
+      "new_process": true,
+      "durable_state_matches": true,
+      "prompt_scope_0": true,
+      "prompt_scope_1": true,
+      "prompt_scope_2": true,
+      "prompt_scope_3": true,
+      "prompt_scope_4": true,
+      "fresh_memories_stored": true
+    },
+    "complete_path_passed": true,
+    "next_prompt_checks_passed": true,
+    "facts_just_after_delete": [
+      "synthetic_fact_0",
+      "synthetic_fact_1",
+      "synthetic_fact_2",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "facts_on_reopen": [
+      "synthetic_fact_0",
+      "synthetic_fact_1",
+      "synthetic_fact_2",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "reply": {
+      "message": "Memories deleted successfully!"
+    },
+    "old_markers_per_next_prompt": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ]
+  },
+  {
+    "variant": "structured",
+    "mode": "async",
+    "case": "user",
+    "seed_checks": {
+      "vector_retention": true,
+      "raw_retention": true,
+      "empty_filter_rejected": true
+    },
+    "probe_checks": {
+      "new_process": true,
+      "durable_state_matches": true,
+      "prompt_scope_0": true,
+      "prompt_scope_1": true,
+      "prompt_scope_2": true,
+      "prompt_scope_3": true,
+      "prompt_scope_4": true,
+      "fresh_memories_stored": true
+    },
+    "complete_path_passed": true,
+    "next_prompt_checks_passed": true,
+    "facts_just_after_delete": [
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "facts_on_reopen": [
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "reply": {
+      "message": "Memories deleted successfully!"
+    },
+    "old_markers_per_next_prompt": [
+      [],
+      [],
+      [],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ]
+  },
+  {
+    "variant": "structured",
+    "mode": "async",
+    "case": "user-agent",
+    "seed_checks": {
+      "vector_retention": true,
+      "raw_retention": true,
+      "empty_filter_rejected": true
+    },
+    "probe_checks": {
+      "new_process": true,
+      "durable_state_matches": true,
+      "prompt_scope_0": true,
+      "prompt_scope_1": true,
+      "prompt_scope_2": true,
+      "prompt_scope_3": true,
+      "prompt_scope_4": true,
+      "fresh_memories_stored": true
+    },
+    "complete_path_passed": true,
+    "next_prompt_checks_passed": true,
+    "facts_just_after_delete": [
+      "synthetic_fact_2",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "facts_on_reopen": [
+      "synthetic_fact_2",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "reply": {
+      "message": "Memories deleted successfully!"
+    },
+    "old_markers_per_next_prompt": [
+      [],
+      [],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ]
+  },
+  {
+    "variant": "structured",
+    "mode": "async",
+    "case": "user-run",
+    "seed_checks": {
+      "vector_retention": true,
+      "raw_retention": true,
+      "empty_filter_rejected": true
+    },
+    "probe_checks": {
+      "new_process": true,
+      "durable_state_matches": true,
+      "prompt_scope_0": true,
+      "prompt_scope_1": true,
+      "prompt_scope_2": true,
+      "prompt_scope_3": true,
+      "prompt_scope_4": true,
+      "fresh_memories_stored": true
+    },
+    "complete_path_passed": true,
+    "next_prompt_checks_passed": true,
+    "facts_just_after_delete": [
+      "synthetic_fact_1",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "facts_on_reopen": [
+      "synthetic_fact_1",
+      "synthetic_fact_3",
+      "synthetic_fact_4"
+    ],
+    "reply": {
+      "message": "Memories deleted successfully!"
+    },
+    "old_markers_per_next_prompt": [
+      [],
+      [
+        1
+      ],
+      [],
+      [
+        3
+      ],
+      [
+        4
+      ]
+    ]
+  }
+]
