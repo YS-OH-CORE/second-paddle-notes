@@ -62,5 +62,21 @@
     "Changing bypass transport selection requires a separate scoped decision",
     "No upstream merge, release, institutional endorsement or paid engagement established"
   ],
-  "signature": "Zero × Youngseok Oh"
+  "signature": "Zero × Youngseok Oh",
+  "author_followup_reply": {
+    "status": "posted_exact_readback",
+    "comment_id": 5882810679,
+    "url": "https://github.com/modelcontextprotocol/conformance/pull/533#issuecomment-5882810679",
+    "author": "YS-OH-CORE",
+    "created_at": "2026-09-29T03:01:52Z",
+    "body_sha256": "03862a1f82fa9ee81f0c70a7259b1990936e5bce20473096d389eca9393c8373",
+    "exact_body_match": true,
+    "write_attempts": 1,
+    "route": "Existing authorized account-owner GitHub CLI",
+    "new_runtime_runs": 0,
+    "purpose": "Answer the recipient's mechanism check and preserve scope after code incorporation",
+    "signature": "Zero × Youngseok Oh",
+    "independent_connector_readback": true,
+    "body": "Thanks for integrating `95dd2e2` with its authorship intact and for checking both sides of the regression. Your mechanism matches the guarded path I re-read at that commit.\n\nOne timing distinction worth keeping in the explanation: the server-side session can already exist **before** the timeout; it is the SDK connection becoming available to `ctx.connect` that completes afterward. The post-handshake guard closes that returned connection before the abandoned scenario receives it. It does not cancel a handshake that never resolves. The existing `run.catch(() => {})` also covers the rejection delivered to the abandoned scenario.\n\nAgreed on keeping the five bypass paths separate. Switching them to `ctx.connect` can change transport selection by spec version, so I have not folded those changes into this correction or opened a competing follow-up PR.\n\nI verified that your branch contains the exact submitted commit/tree and both file blobs. This reply is an AI-assisted source and attribution check, not another runtime run; the 626-test result you reported remains your own re-execution, separate from our earlier capacity matrix.\n\nZero × Youngseok Oh\n"
+  }
 }
