@@ -1,0 +1,179 @@
+{
+  "python": "3.12.10",
+  "os": "Windows",
+  "versions": {
+    "starlette": "1.0.1",
+    "anyio": "4.14.2"
+  },
+  "scope": "Real Starlette response and whole unmodified vLLM keepalive module; synthetic ASGI callbacks; no HTTP listener or model",
+  "results": [
+    {
+      "mode": "direct-data",
+      "keepalive": true,
+      "owner_closes": false,
+      "opened": true,
+      "closed_on_return": true,
+      "pending_tasks_on_return": 0,
+      "advance_count": 1,
+      "frames": [
+        "data: synthetic-first\n\n"
+      ],
+      "outcome": "returned",
+      "fixture_teardown_clean": true
+    },
+    {
+      "mode": "direct-idle",
+      "keepalive": true,
+      "owner_closes": false,
+      "opened": true,
+      "closed_on_return": true,
+      "pending_tasks_on_return": 0,
+      "advance_count": 1,
+      "frames": [
+        ": keep-alive\n\n"
+      ],
+      "outcome": "returned",
+      "fixture_teardown_clean": true
+    },
+    {
+      "mode": "send-error-data",
+      "keepalive": false,
+      "owner_closes": false,
+      "opened": true,
+      "closed_on_return": false,
+      "pending_tasks_on_return": 0,
+      "advance_count": 1,
+      "frames": [
+        "data: synthetic-first\n\n"
+      ],
+      "outcome": "ClientDisconnect",
+      "fixture_teardown_clean": true
+    },
+    {
+      "mode": "send-error-data",
+      "keepalive": false,
+      "owner_closes": true,
+      "opened": true,
+      "closed_on_return": true,
+      "pending_tasks_on_return": 0,
+      "advance_count": 1,
+      "frames": [
+        "data: synthetic-first\n\n"
+      ],
+      "outcome": "ClientDisconnect",
+      "fixture_teardown_clean": true
+    },
+    {
+      "mode": "send-error-data",
+      "keepalive": true,
+      "owner_closes": false,
+      "opened": true,
+      "closed_on_return": false,
+      "pending_tasks_on_return": 0,
+      "advance_count": 1,
+      "frames": [
+        "data: synthetic-first\n\n"
+      ],
+      "outcome": "ClientDisconnect",
+      "fixture_teardown_clean": true
+    },
+    {
+      "mode": "send-error-data",
+      "keepalive": true,
+      "owner_closes": true,
+      "opened": true,
+      "closed_on_return": true,
+      "pending_tasks_on_return": 0,
+      "advance_count": 1,
+      "frames": [
+        "data: synthetic-first\n\n"
+      ],
+      "outcome": "ClientDisconnect",
+      "fixture_teardown_clean": true
+    },
+    {
+      "mode": "send-error-idle",
+      "keepalive": true,
+      "owner_closes": false,
+      "opened": true,
+      "closed_on_return": false,
+      "pending_tasks_on_return": 1,
+      "advance_count": 1,
+      "frames": [
+        ": keep-alive\n\n"
+      ],
+      "outcome": "ClientDisconnect",
+      "fixture_teardown_clean": true
+    },
+    {
+      "mode": "send-error-idle",
+      "keepalive": true,
+      "owner_closes": true,
+      "opened": true,
+      "closed_on_return": true,
+      "pending_tasks_on_return": 0,
+      "advance_count": 1,
+      "frames": [
+        ": keep-alive\n\n"
+      ],
+      "outcome": "ClientDisconnect",
+      "fixture_teardown_clean": true
+    },
+    {
+      "mode": "disconnect-data",
+      "keepalive": true,
+      "owner_closes": false,
+      "opened": true,
+      "closed_on_return": false,
+      "pending_tasks_on_return": 0,
+      "advance_count": 1,
+      "frames": [
+        "data: synthetic-first\n\n"
+      ],
+      "outcome": "returned",
+      "fixture_teardown_clean": true
+    },
+    {
+      "mode": "disconnect-data",
+      "keepalive": true,
+      "owner_closes": true,
+      "opened": true,
+      "closed_on_return": true,
+      "pending_tasks_on_return": 0,
+      "advance_count": 1,
+      "frames": [
+        "data: synthetic-first\n\n"
+      ],
+      "outcome": "returned",
+      "fixture_teardown_clean": true
+    },
+    {
+      "mode": "disconnect-idle",
+      "keepalive": true,
+      "owner_closes": false,
+      "opened": true,
+      "closed_on_return": false,
+      "pending_tasks_on_return": 1,
+      "advance_count": 1,
+      "frames": [
+        ": keep-alive\n\n"
+      ],
+      "outcome": "returned",
+      "fixture_teardown_clean": true
+    },
+    {
+      "mode": "disconnect-idle",
+      "keepalive": true,
+      "owner_closes": true,
+      "opened": true,
+      "closed_on_return": true,
+      "pending_tasks_on_return": 0,
+      "advance_count": 1,
+      "frames": [
+        ": keep-alive\n\n"
+      ],
+      "outcome": "returned",
+      "fixture_teardown_clean": true
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "[REVIEW_DIR]\probe.py", line 2, in <module>
+    import asyncio
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\asyncio\__init__.py", line 43, in <module>
+    from .windows_events import *
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\asyncio\windows_events.py", line 8, in <module>
+    import _overlapped
+OSError: [WinError 10106] 서비스 공급자를 로드하거나 초기화할 수 없습니다

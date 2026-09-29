@@ -1,0 +1,16 @@
+{
+  "files": {
+    "environment-first-attempt.stderr.txt": "89cbef15ab31e453df349320284014e2c371c69df5bd9072f2f9ab941649a500",
+    "exploratory.json": "98b388863cb20a77e779a06bffebc2114c76c078451ada2a239cc8b69441a5ec",
+    "observations.json": "08b122e72a241aac981fa5ba20fadb8a61d42703acf301c44cfca4f8881cffd7",
+    "prepare_source.py": "49915c074ab5c91453c81ecf9aafd3a1f114efe73d9333d212c89fba3520178e",
+    "probe.py": "b0ea70c237bfc15cf15014088851627380f37fbddadcea3e39f0453031b2af1b",
+    "README.md": "a5cc887732ee41c234e52e4561d638d819ea071a4f020351418bc0f20dcc2a79",
+    "run-1.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "run-1.stdout.txt": "e7fba489532c9ff970c52fc722e1a96402c94610e2aeb8e73643127bfee95bac",
+    "run-2.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "run-2.stdout.txt": "e7fba489532c9ff970c52fc722e1a96402c94610e2aeb8e73643127bfee95bac",
+    "run-manifest.json": "08e45caaf50f06f5bd987dd14c6a85484698ebb56a86d740d4e63714f92c7a92"
+  },
+  "manifest_excludes_itself": true
+}

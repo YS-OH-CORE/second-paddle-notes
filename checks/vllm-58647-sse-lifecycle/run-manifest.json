@@ -1,0 +1,13 @@
+{
+  "runs": 2,
+  "selected_observations_per_run": 16,
+  "same_report_contents": true,
+  "whole_upstream_module_sha256": "2b68ae72d9beac7aa9c1fd5f6b44a1f12a24d8f61206dce7724e7a67ec632d9f",
+  "probe_sha256": "b0ea70c237bfc15cf15014088851627380f37fbddadcea3e39f0453031b2af1b",
+  "cleanup_gaps_per_run": 5,
+  "pending_anext_cases_per_run": 2,
+  "after_fixture_teardown_pending": 0,
+  "unpublished_recipient_patch_tested": false,
+  "full_vllm_installed": false,
+  "setup_correction": "The initial case-sensitive environment allowlist omitted Windows SYSTEMROOT; the corrected allowlist compares key.upper(). Initial import failure retained, no test result claimed from it."
+}
