@@ -67,7 +67,7 @@ function fixture(mode: Mode) {
         return;
       }
       if (sid === 's2' && msg.method === 'prompts/list') {
-        respond(res, {jsonrpc: '2.0', id: msg.id, result: {prompts: [{name: 'p'}]}});
+        respond(res, {jsonrpc: '2.0', id: msg.id, result: {prompts: [{name: 'p', description: 'Healthy successor prompt'}]}});
         return;
       }
       if (mode === 'no-elicitation' && msg.method === 'tools/call') {

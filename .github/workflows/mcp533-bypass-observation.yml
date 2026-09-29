@@ -40,8 +40,10 @@ jobs:
           set -uo pipefail
           cp evidence/checks/mcp-533-bypass/probe.test.ts source/src/runner/server.bypass-observation.test.ts
           cd source
+          set +e
           npx --no-install vitest run src/runner/server.bypass-observation.test.ts --reporter=json --outputFile="$ZERO_RECEIPTS/vitest.json" > "$ZERO_RECEIPTS/test.stdout" 2> "$ZERO_RECEIPTS/test.stderr"
           code=$?
+          set -e
           printf '%s\n' "$code" > "$ZERO_RECEIPTS/test-exit-code.txt"
           git diff --exit-code > "$ZERO_RECEIPTS/tracked-diff.txt"
           clean=$?
