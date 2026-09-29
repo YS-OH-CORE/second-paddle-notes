@@ -1,0 +1,2142 @@
+{
+  "target": "2bdfb63e5c0b594bcd339b9222f971d416b681fa",
+  "baseline": "af93b81bc9573be1b78014b5005a0b0d950605bb",
+  "python": "3.12.10",
+  "sqlite": "3.49.1",
+  "platform": "Windows",
+  "scope_count": 147,
+  "filter_count": 72,
+  "matrix": {
+    "before": [
+      {
+        "filter": {
+          "user_id": "alice"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 138,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0001",
+          "SYNTHETIC_0002",
+          "SYNTHETIC_0003",
+          "SYNTHETIC_0004",
+          "SYNTHETIC_0005",
+          "SYNTHETIC_0006",
+          "SYNTHETIC_0007",
+          "SYNTHETIC_0008"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "alice",
+          "run_id": "r1"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 144,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0004",
+          "SYNTHETIC_0007"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "alice",
+          "agent_id": "agent-main"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 144,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0004",
+          "SYNTHETIC_0005"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "alice",
+          "agent_id": "a&b",
+          "run_id": "r+2"
+        },
+        "passed": true,
+        "retained_count": 146,
+        "expected_count": 146,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "bob"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 138,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0010",
+          "SYNTHETIC_0011",
+          "SYNTHETIC_0012",
+          "SYNTHETIC_0013",
+          "SYNTHETIC_0014",
+          "SYNTHETIC_0015",
+          "SYNTHETIC_0016",
+          "SYNTHETIC_0017"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "bob",
+          "run_id": "r1"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 144,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0013",
+          "SYNTHETIC_0016"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "bob",
+          "agent_id": "agent-main"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 144,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0013",
+          "SYNTHETIC_0014"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "bob",
+          "agent_id": "a&b",
+          "run_id": "r+2"
+        },
+        "passed": true,
+        "retained_count": 146,
+        "expected_count": 146,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "alice-extra"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 138,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0019",
+          "SYNTHETIC_0020",
+          "SYNTHETIC_0021",
+          "SYNTHETIC_0022",
+          "SYNTHETIC_0023",
+          "SYNTHETIC_0024",
+          "SYNTHETIC_0025",
+          "SYNTHETIC_0026"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "alice-extra",
+          "run_id": "r1"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 144,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0022",
+          "SYNTHETIC_0025"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "alice-extra",
+          "agent_id": "agent-main"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 144,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0022",
+          "SYNTHETIC_0023"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "alice-extra",
+          "agent_id": "a&b",
+          "run_id": "r+2"
+        },
+        "passed": true,
+        "retained_count": 146,
+        "expected_count": 146,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "ALICE"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 138,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0028",
+          "SYNTHETIC_0029",
+          "SYNTHETIC_0030",
+          "SYNTHETIC_0031",
+          "SYNTHETIC_0032",
+          "SYNTHETIC_0033",
+          "SYNTHETIC_0034",
+          "SYNTHETIC_0035"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "ALICE",
+          "run_id": "r1"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 144,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0031",
+          "SYNTHETIC_0034"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "ALICE",
+          "agent_id": "agent-main"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 144,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0031",
+          "SYNTHETIC_0032"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "ALICE",
+          "agent_id": "a&b",
+          "run_id": "r+2"
+        },
+        "passed": true,
+        "retained_count": 146,
+        "expected_count": 146,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "a+b"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 138,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0037",
+          "SYNTHETIC_0038",
+          "SYNTHETIC_0039",
+          "SYNTHETIC_0040",
+          "SYNTHETIC_0041",
+          "SYNTHETIC_0042",
+          "SYNTHETIC_0043",
+          "SYNTHETIC_0044"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "a+b",
+          "run_id": "r1"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 144,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0040",
+          "SYNTHETIC_0043"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "a+b",
+          "agent_id": "agent-main"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 144,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0040",
+          "SYNTHETIC_0041"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "a+b",
+          "agent_id": "a&b",
+          "run_id": "r+2"
+        },
+        "passed": true,
+        "retained_count": 146,
+        "expected_count": 146,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "a b"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 138,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0046",
+          "SYNTHETIC_0047",
+          "SYNTHETIC_0048",
+          "SYNTHETIC_0049",
+          "SYNTHETIC_0050",
+          "SYNTHETIC_0051",
+          "SYNTHETIC_0052",
+          "SYNTHETIC_0053"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "a b",
+          "run_id": "r1"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 144,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0049",
+          "SYNTHETIC_0052"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "a b",
+          "agent_id": "agent-main"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 144,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0049",
+          "SYNTHETIC_0050"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "a b",
+          "agent_id": "a&b",
+          "run_id": "r+2"
+        },
+        "passed": true,
+        "retained_count": 146,
+        "expected_count": 146,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "a%2Bb"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 138,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0055",
+          "SYNTHETIC_0056",
+          "SYNTHETIC_0057",
+          "SYNTHETIC_0058",
+          "SYNTHETIC_0059",
+          "SYNTHETIC_0060",
+          "SYNTHETIC_0061",
+          "SYNTHETIC_0062"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "a%2Bb",
+          "run_id": "r1"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 144,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0058",
+          "SYNTHETIC_0061"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "a%2Bb",
+          "agent_id": "agent-main"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 144,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0058",
+          "SYNTHETIC_0059"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "a%2Bb",
+          "agent_id": "a&b",
+          "run_id": "r+2"
+        },
+        "passed": true,
+        "retained_count": 146,
+        "expected_count": 146,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "a&run_id=r2"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 138,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0064",
+          "SYNTHETIC_0065",
+          "SYNTHETIC_0066",
+          "SYNTHETIC_0067",
+          "SYNTHETIC_0068",
+          "SYNTHETIC_0069",
+          "SYNTHETIC_0070",
+          "SYNTHETIC_0071"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "a&run_id=r2",
+          "run_id": "r1"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 144,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0067",
+          "SYNTHETIC_0070"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "a&run_id=r2",
+          "agent_id": "agent-main"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 144,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0067",
+          "SYNTHETIC_0068"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "a&run_id=r2",
+          "agent_id": "a&b",
+          "run_id": "r+2"
+        },
+        "passed": true,
+        "retained_count": 146,
+        "expected_count": 146,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "a=b"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 138,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0073",
+          "SYNTHETIC_0074",
+          "SYNTHETIC_0075",
+          "SYNTHETIC_0076",
+          "SYNTHETIC_0077",
+          "SYNTHETIC_0078",
+          "SYNTHETIC_0079",
+          "SYNTHETIC_0080"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "a=b",
+          "run_id": "r1"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 144,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0076",
+          "SYNTHETIC_0079"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "a=b",
+          "agent_id": "agent-main"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 144,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0076",
+          "SYNTHETIC_0077"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "a=b",
+          "agent_id": "a&b",
+          "run_id": "r+2"
+        },
+        "passed": true,
+        "retained_count": 146,
+        "expected_count": 146,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "100%"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 138,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0082",
+          "SYNTHETIC_0083",
+          "SYNTHETIC_0084",
+          "SYNTHETIC_0085",
+          "SYNTHETIC_0086",
+          "SYNTHETIC_0087",
+          "SYNTHETIC_0088",
+          "SYNTHETIC_0089"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "100%",
+          "run_id": "r1"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 144,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0085",
+          "SYNTHETIC_0088"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "100%",
+          "agent_id": "agent-main"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 144,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0085",
+          "SYNTHETIC_0086"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "100%",
+          "agent_id": "a&b",
+          "run_id": "r+2"
+        },
+        "passed": true,
+        "retained_count": 146,
+        "expected_count": 146,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "under_score"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 138,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0091",
+          "SYNTHETIC_0092",
+          "SYNTHETIC_0093",
+          "SYNTHETIC_0094",
+          "SYNTHETIC_0095",
+          "SYNTHETIC_0096",
+          "SYNTHETIC_0097",
+          "SYNTHETIC_0098"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "under_score",
+          "run_id": "r1"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 144,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0094",
+          "SYNTHETIC_0097"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "under_score",
+          "agent_id": "agent-main"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 144,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0094",
+          "SYNTHETIC_0095"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "under_score",
+          "agent_id": "a&b",
+          "run_id": "r+2"
+        },
+        "passed": true,
+        "retained_count": 146,
+        "expected_count": 146,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "back\\slash"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 138,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0100",
+          "SYNTHETIC_0101",
+          "SYNTHETIC_0102",
+          "SYNTHETIC_0103",
+          "SYNTHETIC_0104",
+          "SYNTHETIC_0105",
+          "SYNTHETIC_0106",
+          "SYNTHETIC_0107"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "back\\slash",
+          "run_id": "r1"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 144,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0103",
+          "SYNTHETIC_0106"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "back\\slash",
+          "agent_id": "agent-main"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 144,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0103",
+          "SYNTHETIC_0104"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "back\\slash",
+          "agent_id": "a&b",
+          "run_id": "r+2"
+        },
+        "passed": true,
+        "retained_count": 146,
+        "expected_count": 146,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "\ud55c\uae00-id"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 138,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0109",
+          "SYNTHETIC_0110",
+          "SYNTHETIC_0111",
+          "SYNTHETIC_0112",
+          "SYNTHETIC_0113",
+          "SYNTHETIC_0114",
+          "SYNTHETIC_0115",
+          "SYNTHETIC_0116"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "\ud55c\uae00-id",
+          "run_id": "r1"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 144,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0112",
+          "SYNTHETIC_0115"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "\ud55c\uae00-id",
+          "agent_id": "agent-main"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 144,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0112",
+          "SYNTHETIC_0113"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "\ud55c\uae00-id",
+          "agent_id": "a&b",
+          "run_id": "r+2"
+        },
+        "passed": true,
+        "retained_count": 146,
+        "expected_count": 146,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "\u96ea"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 138,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0118",
+          "SYNTHETIC_0119",
+          "SYNTHETIC_0120",
+          "SYNTHETIC_0121",
+          "SYNTHETIC_0122",
+          "SYNTHETIC_0123",
+          "SYNTHETIC_0124",
+          "SYNTHETIC_0125"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "\u96ea",
+          "run_id": "r1"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 144,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0121",
+          "SYNTHETIC_0124"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "\u96ea",
+          "agent_id": "agent-main"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 144,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0121",
+          "SYNTHETIC_0122"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "\u96ea",
+          "agent_id": "a&b",
+          "run_id": "r+2"
+        },
+        "passed": true,
+        "retained_count": 146,
+        "expected_count": 146,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "caf\u00e9"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 138,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0127",
+          "SYNTHETIC_0128",
+          "SYNTHETIC_0129",
+          "SYNTHETIC_0130",
+          "SYNTHETIC_0131",
+          "SYNTHETIC_0132",
+          "SYNTHETIC_0133",
+          "SYNTHETIC_0134"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "caf\u00e9",
+          "run_id": "r1"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 144,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0130",
+          "SYNTHETIC_0133"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "caf\u00e9",
+          "agent_id": "agent-main"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 144,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0130",
+          "SYNTHETIC_0131"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "caf\u00e9",
+          "agent_id": "a&b",
+          "run_id": "r+2"
+        },
+        "passed": true,
+        "retained_count": 146,
+        "expected_count": 146,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "cafe\u0301"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 138,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0136",
+          "SYNTHETIC_0137",
+          "SYNTHETIC_0138",
+          "SYNTHETIC_0139",
+          "SYNTHETIC_0140",
+          "SYNTHETIC_0141",
+          "SYNTHETIC_0142",
+          "SYNTHETIC_0143"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "cafe\u0301",
+          "run_id": "r1"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 144,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0139",
+          "SYNTHETIC_0142"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "cafe\u0301",
+          "agent_id": "agent-main"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 144,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0139",
+          "SYNTHETIC_0140"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "cafe\u0301",
+          "agent_id": "a&b",
+          "run_id": "r+2"
+        },
+        "passed": true,
+        "retained_count": 146,
+        "expected_count": 146,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "agent_id": "agent-main"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 97,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0003",
+          "SYNTHETIC_0004",
+          "SYNTHETIC_0005",
+          "SYNTHETIC_0012",
+          "SYNTHETIC_0013",
+          "SYNTHETIC_0014",
+          "SYNTHETIC_0021",
+          "SYNTHETIC_0022",
+          "SYNTHETIC_0023",
+          "SYNTHETIC_0030",
+          "SYNTHETIC_0031",
+          "SYNTHETIC_0032",
+          "SYNTHETIC_0039",
+          "SYNTHETIC_0040",
+          "SYNTHETIC_0041",
+          "SYNTHETIC_0048",
+          "SYNTHETIC_0049",
+          "SYNTHETIC_0050",
+          "SYNTHETIC_0057",
+          "SYNTHETIC_0058",
+          "SYNTHETIC_0059",
+          "SYNTHETIC_0066",
+          "SYNTHETIC_0067",
+          "SYNTHETIC_0068",
+          "SYNTHETIC_0075",
+          "SYNTHETIC_0076",
+          "SYNTHETIC_0077",
+          "SYNTHETIC_0084",
+          "SYNTHETIC_0085",
+          "SYNTHETIC_0086",
+          "SYNTHETIC_0093",
+          "SYNTHETIC_0094",
+          "SYNTHETIC_0095",
+          "SYNTHETIC_0102",
+          "SYNTHETIC_0103",
+          "SYNTHETIC_0104",
+          "SYNTHETIC_0111",
+          "SYNTHETIC_0112",
+          "SYNTHETIC_0113",
+          "SYNTHETIC_0120",
+          "SYNTHETIC_0121",
+          "SYNTHETIC_0122",
+          "SYNTHETIC_0129",
+          "SYNTHETIC_0130",
+          "SYNTHETIC_0131",
+          "SYNTHETIC_0138",
+          "SYNTHETIC_0139",
+          "SYNTHETIC_0140",
+          "SYNTHETIC_0146"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "agent_id": "a&b"
+        },
+        "passed": false,
+        "retained_count": 147,
+        "expected_count": 99,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0006",
+          "SYNTHETIC_0007",
+          "SYNTHETIC_0008",
+          "SYNTHETIC_0015",
+          "SYNTHETIC_0016",
+          "SYNTHETIC_0017",
+          "SYNTHETIC_0024",
+          "SYNTHETIC_0025",
+          "SYNTHETIC_0026",
+          "SYNTHETIC_0033",
+          "SYNTHETIC_0034",
+          "SYNTHETIC_0035",
+          "SYNTHETIC_0042",
+          "SYNTHETIC_0043",
+          "SYNTHETIC_0044",
+          "SYNTHETIC_0051",
+          "SYNTHETIC_0052",
+          "SYNTHETIC_0053",
+          "SYNTHETIC_0060",
+          "SYNTHETIC_0061",
+          "SYNTHETIC_0062",
+          "SYNTHETIC_0069",
+          "SYNTHETIC_0070",
+          "SYNTHETIC_0071",
+          "SYNTHETIC_0078",
+          "SYNTHETIC_0079",
+          "SYNTHETIC_0080",
+          "SYNTHETIC_0087",
+          "SYNTHETIC_0088",
+          "SYNTHETIC_0089",
+          "SYNTHETIC_0096",
+          "SYNTHETIC_0097",
+          "SYNTHETIC_0098",
+          "SYNTHETIC_0105",
+          "SYNTHETIC_0106",
+          "SYNTHETIC_0107",
+          "SYNTHETIC_0114",
+          "SYNTHETIC_0115",
+          "SYNTHETIC_0116",
+          "SYNTHETIC_0123",
+          "SYNTHETIC_0124",
+          "SYNTHETIC_0125",
+          "SYNTHETIC_0132",
+          "SYNTHETIC_0133",
+          "SYNTHETIC_0134",
+          "SYNTHETIC_0141",
+          "SYNTHETIC_0142",
+          "SYNTHETIC_0143"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "run_id": "r1"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 97,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0001",
+          "SYNTHETIC_0004",
+          "SYNTHETIC_0007",
+          "SYNTHETIC_0010",
+          "SYNTHETIC_0013",
+          "SYNTHETIC_0016",
+          "SYNTHETIC_0019",
+          "SYNTHETIC_0022",
+          "SYNTHETIC_0025",
+          "SYNTHETIC_0028",
+          "SYNTHETIC_0031",
+          "SYNTHETIC_0034",
+          "SYNTHETIC_0037",
+          "SYNTHETIC_0040",
+          "SYNTHETIC_0043",
+          "SYNTHETIC_0046",
+          "SYNTHETIC_0049",
+          "SYNTHETIC_0052",
+          "SYNTHETIC_0055",
+          "SYNTHETIC_0058",
+          "SYNTHETIC_0061",
+          "SYNTHETIC_0064",
+          "SYNTHETIC_0067",
+          "SYNTHETIC_0070",
+          "SYNTHETIC_0073",
+          "SYNTHETIC_0076",
+          "SYNTHETIC_0079",
+          "SYNTHETIC_0082",
+          "SYNTHETIC_0085",
+          "SYNTHETIC_0088",
+          "SYNTHETIC_0091",
+          "SYNTHETIC_0094",
+          "SYNTHETIC_0097",
+          "SYNTHETIC_0100",
+          "SYNTHETIC_0103",
+          "SYNTHETIC_0106",
+          "SYNTHETIC_0109",
+          "SYNTHETIC_0112",
+          "SYNTHETIC_0115",
+          "SYNTHETIC_0118",
+          "SYNTHETIC_0121",
+          "SYNTHETIC_0124",
+          "SYNTHETIC_0127",
+          "SYNTHETIC_0130",
+          "SYNTHETIC_0133",
+          "SYNTHETIC_0136",
+          "SYNTHETIC_0139",
+          "SYNTHETIC_0142",
+          "SYNTHETIC_0146"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "run_id": "r+2"
+        },
+        "passed": false,
+        "retained_count": 147,
+        "expected_count": 99,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0002",
+          "SYNTHETIC_0005",
+          "SYNTHETIC_0008",
+          "SYNTHETIC_0011",
+          "SYNTHETIC_0014",
+          "SYNTHETIC_0017",
+          "SYNTHETIC_0020",
+          "SYNTHETIC_0023",
+          "SYNTHETIC_0026",
+          "SYNTHETIC_0029",
+          "SYNTHETIC_0032",
+          "SYNTHETIC_0035",
+          "SYNTHETIC_0038",
+          "SYNTHETIC_0041",
+          "SYNTHETIC_0044",
+          "SYNTHETIC_0047",
+          "SYNTHETIC_0050",
+          "SYNTHETIC_0053",
+          "SYNTHETIC_0056",
+          "SYNTHETIC_0059",
+          "SYNTHETIC_0062",
+          "SYNTHETIC_0065",
+          "SYNTHETIC_0068",
+          "SYNTHETIC_0071",
+          "SYNTHETIC_0074",
+          "SYNTHETIC_0077",
+          "SYNTHETIC_0080",
+          "SYNTHETIC_0083",
+          "SYNTHETIC_0086",
+          "SYNTHETIC_0089",
+          "SYNTHETIC_0092",
+          "SYNTHETIC_0095",
+          "SYNTHETIC_0098",
+          "SYNTHETIC_0101",
+          "SYNTHETIC_0104",
+          "SYNTHETIC_0107",
+          "SYNTHETIC_0110",
+          "SYNTHETIC_0113",
+          "SYNTHETIC_0116",
+          "SYNTHETIC_0119",
+          "SYNTHETIC_0122",
+          "SYNTHETIC_0125",
+          "SYNTHETIC_0128",
+          "SYNTHETIC_0131",
+          "SYNTHETIC_0134",
+          "SYNTHETIC_0137",
+          "SYNTHETIC_0140",
+          "SYNTHETIC_0143"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "agent_id": "agent-main",
+          "run_id": "r1"
+        },
+        "passed": false,
+        "retained_count": 146,
+        "expected_count": 130,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0004",
+          "SYNTHETIC_0013",
+          "SYNTHETIC_0022",
+          "SYNTHETIC_0031",
+          "SYNTHETIC_0040",
+          "SYNTHETIC_0049",
+          "SYNTHETIC_0058",
+          "SYNTHETIC_0067",
+          "SYNTHETIC_0076",
+          "SYNTHETIC_0085",
+          "SYNTHETIC_0094",
+          "SYNTHETIC_0103",
+          "SYNTHETIC_0112",
+          "SYNTHETIC_0121",
+          "SYNTHETIC_0130",
+          "SYNTHETIC_0139"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "agent_id": "agent-main",
+          "run_id": "r+2"
+        },
+        "passed": false,
+        "retained_count": 147,
+        "expected_count": 131,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0005",
+          "SYNTHETIC_0014",
+          "SYNTHETIC_0023",
+          "SYNTHETIC_0032",
+          "SYNTHETIC_0041",
+          "SYNTHETIC_0050",
+          "SYNTHETIC_0059",
+          "SYNTHETIC_0068",
+          "SYNTHETIC_0077",
+          "SYNTHETIC_0086",
+          "SYNTHETIC_0095",
+          "SYNTHETIC_0104",
+          "SYNTHETIC_0113",
+          "SYNTHETIC_0122",
+          "SYNTHETIC_0131",
+          "SYNTHETIC_0140"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "agent_id": "a&b",
+          "run_id": "r1"
+        },
+        "passed": false,
+        "retained_count": 147,
+        "expected_count": 131,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0007",
+          "SYNTHETIC_0016",
+          "SYNTHETIC_0025",
+          "SYNTHETIC_0034",
+          "SYNTHETIC_0043",
+          "SYNTHETIC_0052",
+          "SYNTHETIC_0061",
+          "SYNTHETIC_0070",
+          "SYNTHETIC_0079",
+          "SYNTHETIC_0088",
+          "SYNTHETIC_0097",
+          "SYNTHETIC_0106",
+          "SYNTHETIC_0115",
+          "SYNTHETIC_0124",
+          "SYNTHETIC_0133",
+          "SYNTHETIC_0142"
+        ],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "agent_id": "a&b",
+          "run_id": "r+2"
+        },
+        "passed": false,
+        "retained_count": 147,
+        "expected_count": 131,
+        "unexpectedly_retained": [
+          "SYNTHETIC_0008",
+          "SYNTHETIC_0017",
+          "SYNTHETIC_0026",
+          "SYNTHETIC_0035",
+          "SYNTHETIC_0044",
+          "SYNTHETIC_0053",
+          "SYNTHETIC_0062",
+          "SYNTHETIC_0071",
+          "SYNTHETIC_0080",
+          "SYNTHETIC_0089",
+          "SYNTHETIC_0098",
+          "SYNTHETIC_0107",
+          "SYNTHETIC_0116",
+          "SYNTHETIC_0125",
+          "SYNTHETIC_0134",
+          "SYNTHETIC_0143"
+        ],
+        "unexpectedly_deleted": []
+      }
+    ],
+    "after": [
+      {
+        "filter": {
+          "user_id": "alice"
+        },
+        "passed": true,
+        "retained_count": 138,
+        "expected_count": 138,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "alice",
+          "run_id": "r1"
+        },
+        "passed": true,
+        "retained_count": 144,
+        "expected_count": 144,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "alice",
+          "agent_id": "agent-main"
+        },
+        "passed": true,
+        "retained_count": 144,
+        "expected_count": 144,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "alice",
+          "agent_id": "a&b",
+          "run_id": "r+2"
+        },
+        "passed": true,
+        "retained_count": 146,
+        "expected_count": 146,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "bob"
+        },
+        "passed": true,
+        "retained_count": 138,
+        "expected_count": 138,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "bob",
+          "run_id": "r1"
+        },
+        "passed": true,
+        "retained_count": 144,
+        "expected_count": 144,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "bob",
+          "agent_id": "agent-main"
+        },
+        "passed": true,
+        "retained_count": 144,
+        "expected_count": 144,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "bob",
+          "agent_id": "a&b",
+          "run_id": "r+2"
+        },
+        "passed": true,
+        "retained_count": 146,
+        "expected_count": 146,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "alice-extra"
+        },
+        "passed": true,
+        "retained_count": 138,
+        "expected_count": 138,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "alice-extra",
+          "run_id": "r1"
+        },
+        "passed": true,
+        "retained_count": 144,
+        "expected_count": 144,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "alice-extra",
+          "agent_id": "agent-main"
+        },
+        "passed": true,
+        "retained_count": 144,
+        "expected_count": 144,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "alice-extra",
+          "agent_id": "a&b",
+          "run_id": "r+2"
+        },
+        "passed": true,
+        "retained_count": 146,
+        "expected_count": 146,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "ALICE"
+        },
+        "passed": true,
+        "retained_count": 138,
+        "expected_count": 138,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "ALICE",
+          "run_id": "r1"
+        },
+        "passed": true,
+        "retained_count": 144,
+        "expected_count": 144,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "ALICE",
+          "agent_id": "agent-main"
+        },
+        "passed": true,
+        "retained_count": 144,
+        "expected_count": 144,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "ALICE",
+          "agent_id": "a&b",
+          "run_id": "r+2"
+        },
+        "passed": true,
+        "retained_count": 146,
+        "expected_count": 146,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "a+b"
+        },
+        "passed": true,
+        "retained_count": 138,
+        "expected_count": 138,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "a+b",
+          "run_id": "r1"
+        },
+        "passed": true,
+        "retained_count": 144,
+        "expected_count": 144,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "a+b",
+          "agent_id": "agent-main"
+        },
+        "passed": true,
+        "retained_count": 144,
+        "expected_count": 144,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "a+b",
+          "agent_id": "a&b",
+          "run_id": "r+2"
+        },
+        "passed": true,
+        "retained_count": 146,
+        "expected_count": 146,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "a b"
+        },
+        "passed": true,
+        "retained_count": 138,
+        "expected_count": 138,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "a b",
+          "run_id": "r1"
+        },
+        "passed": true,
+        "retained_count": 144,
+        "expected_count": 144,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "a b",
+          "agent_id": "agent-main"
+        },
+        "passed": true,
+        "retained_count": 144,
+        "expected_count": 144,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "a b",
+          "agent_id": "a&b",
+          "run_id": "r+2"
+        },
+        "passed": true,
+        "retained_count": 146,
+        "expected_count": 146,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "a%2Bb"
+        },
+        "passed": true,
+        "retained_count": 138,
+        "expected_count": 138,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "a%2Bb",
+          "run_id": "r1"
+        },
+        "passed": true,
+        "retained_count": 144,
+        "expected_count": 144,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "a%2Bb",
+          "agent_id": "agent-main"
+        },
+        "passed": true,
+        "retained_count": 144,
+        "expected_count": 144,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "a%2Bb",
+          "agent_id": "a&b",
+          "run_id": "r+2"
+        },
+        "passed": true,
+        "retained_count": 146,
+        "expected_count": 146,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "a&run_id=r2"
+        },
+        "passed": true,
+        "retained_count": 138,
+        "expected_count": 138,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "a&run_id=r2",
+          "run_id": "r1"
+        },
+        "passed": true,
+        "retained_count": 144,
+        "expected_count": 144,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "a&run_id=r2",
+          "agent_id": "agent-main"
+        },
+        "passed": true,
+        "retained_count": 144,
+        "expected_count": 144,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "a&run_id=r2",
+          "agent_id": "a&b",
+          "run_id": "r+2"
+        },
+        "passed": true,
+        "retained_count": 146,
+        "expected_count": 146,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "a=b"
+        },
+        "passed": true,
+        "retained_count": 138,
+        "expected_count": 138,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "a=b",
+          "run_id": "r1"
+        },
+        "passed": true,
+        "retained_count": 144,
+        "expected_count": 144,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "a=b",
+          "agent_id": "agent-main"
+        },
+        "passed": true,
+        "retained_count": 144,
+        "expected_count": 144,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "a=b",
+          "agent_id": "a&b",
+          "run_id": "r+2"
+        },
+        "passed": true,
+        "retained_count": 146,
+        "expected_count": 146,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "100%"
+        },
+        "passed": true,
+        "retained_count": 138,
+        "expected_count": 138,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "100%",
+          "run_id": "r1"
+        },
+        "passed": true,
+        "retained_count": 144,
+        "expected_count": 144,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "100%",
+          "agent_id": "agent-main"
+        },
+        "passed": true,
+        "retained_count": 144,
+        "expected_count": 144,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "100%",
+          "agent_id": "a&b",
+          "run_id": "r+2"
+        },
+        "passed": true,
+        "retained_count": 146,
+        "expected_count": 146,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "under_score"
+        },
+        "passed": true,
+        "retained_count": 138,
+        "expected_count": 138,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "under_score",
+          "run_id": "r1"
+        },
+        "passed": true,
+        "retained_count": 144,
+        "expected_count": 144,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "under_score",
+          "agent_id": "agent-main"
+        },
+        "passed": true,
+        "retained_count": 144,
+        "expected_count": 144,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "under_score",
+          "agent_id": "a&b",
+          "run_id": "r+2"
+        },
+        "passed": true,
+        "retained_count": 146,
+        "expected_count": 146,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "back\\slash"
+        },
+        "passed": true,
+        "retained_count": 138,
+        "expected_count": 138,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "back\\slash",
+          "run_id": "r1"
+        },
+        "passed": true,
+        "retained_count": 144,
+        "expected_count": 144,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "back\\slash",
+          "agent_id": "agent-main"
+        },
+        "passed": true,
+        "retained_count": 144,
+        "expected_count": 144,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "back\\slash",
+          "agent_id": "a&b",
+          "run_id": "r+2"
+        },
+        "passed": true,
+        "retained_count": 146,
+        "expected_count": 146,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "\ud55c\uae00-id"
+        },
+        "passed": true,
+        "retained_count": 138,
+        "expected_count": 138,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "\ud55c\uae00-id",
+          "run_id": "r1"
+        },
+        "passed": true,
+        "retained_count": 144,
+        "expected_count": 144,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "\ud55c\uae00-id",
+          "agent_id": "agent-main"
+        },
+        "passed": true,
+        "retained_count": 144,
+        "expected_count": 144,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "\ud55c\uae00-id",
+          "agent_id": "a&b",
+          "run_id": "r+2"
+        },
+        "passed": true,
+        "retained_count": 146,
+        "expected_count": 146,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "\u96ea"
+        },
+        "passed": true,
+        "retained_count": 138,
+        "expected_count": 138,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "\u96ea",
+          "run_id": "r1"
+        },
+        "passed": true,
+        "retained_count": 144,
+        "expected_count": 144,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "\u96ea",
+          "agent_id": "agent-main"
+        },
+        "passed": true,
+        "retained_count": 144,
+        "expected_count": 144,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "\u96ea",
+          "agent_id": "a&b",
+          "run_id": "r+2"
+        },
+        "passed": true,
+        "retained_count": 146,
+        "expected_count": 146,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "caf\u00e9"
+        },
+        "passed": true,
+        "retained_count": 138,
+        "expected_count": 138,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "caf\u00e9",
+          "run_id": "r1"
+        },
+        "passed": true,
+        "retained_count": 144,
+        "expected_count": 144,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "caf\u00e9",
+          "agent_id": "agent-main"
+        },
+        "passed": true,
+        "retained_count": 144,
+        "expected_count": 144,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "caf\u00e9",
+          "agent_id": "a&b",
+          "run_id": "r+2"
+        },
+        "passed": true,
+        "retained_count": 146,
+        "expected_count": 146,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "cafe\u0301"
+        },
+        "passed": true,
+        "retained_count": 138,
+        "expected_count": 138,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "cafe\u0301",
+          "run_id": "r1"
+        },
+        "passed": true,
+        "retained_count": 144,
+        "expected_count": 144,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "cafe\u0301",
+          "agent_id": "agent-main"
+        },
+        "passed": true,
+        "retained_count": 144,
+        "expected_count": 144,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "user_id": "cafe\u0301",
+          "agent_id": "a&b",
+          "run_id": "r+2"
+        },
+        "passed": true,
+        "retained_count": 146,
+        "expected_count": 146,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "agent_id": "agent-main"
+        },
+        "passed": true,
+        "retained_count": 97,
+        "expected_count": 97,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "agent_id": "a&b"
+        },
+        "passed": true,
+        "retained_count": 99,
+        "expected_count": 99,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "run_id": "r1"
+        },
+        "passed": true,
+        "retained_count": 97,
+        "expected_count": 97,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "run_id": "r+2"
+        },
+        "passed": true,
+        "retained_count": 99,
+        "expected_count": 99,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "agent_id": "agent-main",
+          "run_id": "r1"
+        },
+        "passed": true,
+        "retained_count": 130,
+        "expected_count": 130,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "agent_id": "agent-main",
+          "run_id": "r+2"
+        },
+        "passed": true,
+        "retained_count": 131,
+        "expected_count": 131,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "agent_id": "a&b",
+          "run_id": "r1"
+        },
+        "passed": true,
+        "retained_count": 131,
+        "expected_count": 131,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      },
+      {
+        "filter": {
+          "agent_id": "a&b",
+          "run_id": "r+2"
+        },
+        "passed": true,
+        "retained_count": 131,
+        "expected_count": 131,
+        "unexpectedly_retained": [],
+        "unexpectedly_deleted": []
+      }
+    ]
+  },
+  "controls": [
+    {
+      "name": "storage_empty_filter_is_noop",
+      "passed": true
+    },
+    {
+      "name": "storage_thread_dispatch",
+      "passed": true
+    },
+    {
+      "name": "failure_propagates_and_transaction_rolls_back",
+      "error_type": "IntegrityError",
+      "passed": true
+    },
+    {
+      "name": "retry_after_rollback",
+      "passed": true
+    },
+    {
+      "name": "1205_target_scopes_plus_unrelated_control",
+      "passed": true
+    }
+  ],
+  "source_hashes": {
+    "mem0/memory/storage.py": {
+      "sha256": "0ab9586af1c1d30c9c5fd4668154e146ca1c293fbc98d85ab5e44c389b1d2b2e",
+      "git_blob_sha1": "1e00b0f076ca44d1ac306250f3008c4ae48a4e52"
+    },
+    "mem0/memory/main.py": {
+      "sha256": "e631d57bb9d1a70102e9b0050eac5d535851dccc68b28016962b77ee1a6b200f",
+      "git_blob_sha1": "7a771592a31b86cb55931dc58a191d2b873892f8"
+    },
+    "baseline_storage.py": {
+      "sha256": "611f6f177cf99ef402e8ea3070e0f40720a75f7b013711e35da27c2e45f9bb5d",
+      "git_blob_sha1": "0b49c8e8be46779722a7827b2e98319930433d40"
+    }
+  },
+  "limits": [
+    "Complete unchanged SQLiteManager modules with real SQLite databases.",
+    "Only two original serializer helpers are AST-selected from main.py.",
+    "No installed Memory/AsyncMemory, vector store, LLM, hosted API or TypeScript execution.",
+    "The thread control is storage dispatch, not AsyncMemory integration.",
+    "All messages and IDs are synthetic; cases are not independent users or statistical estimates."
+  ],
+  "candidate_passed": true
+}

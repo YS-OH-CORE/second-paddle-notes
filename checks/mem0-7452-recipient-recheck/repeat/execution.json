@@ -1,0 +1,8 @@
+{
+  "started_at_utc": "2026-09-29T05:17:26.076912+00:00",
+  "completed_at_utc": "2026-09-29T05:17:26.943709+00:00",
+  "exit_code": 0,
+  "serializers_identical_to_baseline": true,
+  "baseline_main_sha256": "7e320ad2d4217331e51e9388cb46c56e91bb2c270f3c6ba9576b571fc7759680",
+  "review_sha256": "d800662e1697923762ecf14350cdc67a03fca571f78c8689c4d95113b4a3dd07"
+}

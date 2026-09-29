@@ -1,0 +1,5 @@
+before matrix 16 / 72
+after matrix 72 / 72
+CONTROLS [{"name": "storage_empty_filter_is_noop", "passed": true}, {"name": "storage_thread_dispatch", "passed": true}, {"name": "failure_propagates_and_transaction_rolls_back", "error_type": "IntegrityError", "passed": true}, {"name": "retry_after_rollback", "passed": true}, {"name": "1205_target_scopes_plus_unrelated_control", "passed": true}]
+SOURCE_HASHES {"mem0/memory/storage.py": {"sha256": "0ab9586af1c1d30c9c5fd4668154e146ca1c293fbc98d85ab5e44c389b1d2b2e", "git_blob_sha1": "1e00b0f076ca44d1ac306250f3008c4ae48a4e52"}, "mem0/memory/main.py": {"sha256": "e631d57bb9d1a70102e9b0050eac5d535851dccc68b28016962b77ee1a6b200f", "git_blob_sha1": "7a771592a31b86cb55931dc58a191d2b873892f8"}, "baseline_storage.py": {"sha256": "611f6f177cf99ef402e8ea3070e0f40720a75f7b013711e35da27c2e45f9bb5d", "git_blob_sha1": "0b49c8e8be46779722a7827b2e98319930433d40"}}
+CANDIDATE_PASSED True

@@ -1,0 +1,66 @@
+{
+  "target": "2bdfb63e5c0b594bcd339b9222f971d416b681fa",
+  "baseline": "af93b81bc9573be1b78014b5005a0b0d950605bb",
+  "python": "3.12.10",
+  "sqlite": "3.49.1",
+  "platform": "Windows",
+  "scope_count": 147,
+  "filter_count": 72,
+  "controls": [
+    {
+      "name": "storage_empty_filter_is_noop",
+      "passed": true
+    },
+    {
+      "name": "storage_thread_dispatch",
+      "passed": true
+    },
+    {
+      "name": "failure_propagates_and_transaction_rolls_back",
+      "error_type": "IntegrityError",
+      "passed": true
+    },
+    {
+      "name": "retry_after_rollback",
+      "passed": true
+    },
+    {
+      "name": "1205_target_scopes_plus_unrelated_control",
+      "passed": true
+    }
+  ],
+  "source_hashes": {
+    "mem0/memory/storage.py": {
+      "sha256": "0ab9586af1c1d30c9c5fd4668154e146ca1c293fbc98d85ab5e44c389b1d2b2e",
+      "git_blob_sha1": "1e00b0f076ca44d1ac306250f3008c4ae48a4e52"
+    },
+    "mem0/memory/main.py": {
+      "sha256": "e631d57bb9d1a70102e9b0050eac5d535851dccc68b28016962b77ee1a6b200f",
+      "git_blob_sha1": "7a771592a31b86cb55931dc58a191d2b873892f8"
+    },
+    "baseline_storage.py": {
+      "sha256": "611f6f177cf99ef402e8ea3070e0f40720a75f7b013711e35da27c2e45f9bb5d",
+      "git_blob_sha1": "0b49c8e8be46779722a7827b2e98319930433d40"
+    }
+  },
+  "limits": [
+    "Complete unchanged SQLiteManager modules with real SQLite databases.",
+    "Only two original serializer helpers are AST-selected from main.py.",
+    "No installed Memory/AsyncMemory, vector store, LLM, hosted API or TypeScript execution.",
+    "The thread control is storage dispatch, not AsyncMemory integration.",
+    "All messages and IDs are synthetic; cases are not independent users or statistical estimates."
+  ],
+  "matrix_counts": {
+    "before": {
+      "passed": 16,
+      "failed": 56,
+      "unexpected_deletions": 0
+    },
+    "after": {
+      "passed": 72,
+      "failed": 0,
+      "unexpected_deletions": 0
+    }
+  },
+  "review_sha256": "d800662e1697923762ecf14350cdc67a03fca571f78c8689c4d95113b4a3dd07"
+}
