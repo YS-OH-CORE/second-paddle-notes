@@ -1,0 +1,24 @@
+{
+  "mode": "write",
+  "source_commit": "7daa3ab49d678a5da75edb08baa87db4a2be52c3",
+  "started_utc": "2026-09-29T08:46:18.479626+00:00",
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "sqlite": "3.49.1",
+  "query_source_sha256": "7e1724b4442c0276738c6256c758ae575b89660972077f7e566f551bd3a1ec82",
+  "versions": {
+    "langgraph-checkpoint": "4.2.0",
+    "langgraph-checkpoint-sqlite": "3.1.1",
+    "langchain-core": "1.5.2",
+    "aiosqlite": "0.22.1"
+  },
+  "model_calls": 0,
+  "rows": [],
+  "success": true,
+  "checkpoints_per_database": 30,
+  "storage_sha256": {
+    "sync.sqlite": "8f9a90971bdbfab7dbd2f4e537298ffbe1b5748af7ba58f02ffa284bed71813c",
+    "async.sqlite": "4cea4b869d2e1816eeef11da62a021346a63ef31215c6fe2661f4286d4fc26bd"
+  },
+  "process_id": 74984,
+  "phase_label": "write"
+}

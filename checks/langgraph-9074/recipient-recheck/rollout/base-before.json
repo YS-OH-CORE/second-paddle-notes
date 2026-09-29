@@ -1,0 +1,394 @@
+{
+  "mode": "base",
+  "source_commit": "7daa3ab49d678a5da75edb08baa87db4a2be52c3",
+  "started_utc": "2026-09-29T08:46:19.556941+00:00",
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "sqlite": "3.49.1",
+  "query_source_sha256": "7e1724b4442c0276738c6256c758ae575b89660972077f7e566f551bd3a1ec82",
+  "versions": {
+    "langgraph-checkpoint": "4.2.0",
+    "langgraph-checkpoint-sqlite": "3.1.1",
+    "langchain-core": "1.5.2",
+    "aiosqlite": "0.22.1"
+  },
+  "model_calls": 0,
+  "rows": [
+    {
+      "case": "nested_accent",
+      "backend": "sync",
+      "hits": 0,
+      "expected": 0,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "nested_accent",
+      "backend": "memory",
+      "hits": 1,
+      "expected": 1,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "nested_hangul",
+      "backend": "sync",
+      "hits": 0,
+      "expected": 0,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "nested_hangul",
+      "backend": "memory",
+      "hits": 1,
+      "expected": 1,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "list_accent",
+      "backend": "sync",
+      "hits": 0,
+      "expected": 0,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "list_accent",
+      "backend": "memory",
+      "hits": 1,
+      "expected": 1,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "nested_nonbmp",
+      "backend": "sync",
+      "hits": 0,
+      "expected": 0,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "nested_nonbmp",
+      "backend": "memory",
+      "hits": 1,
+      "expected": 1,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "nested_unicode_key",
+      "backend": "sync",
+      "hits": 0,
+      "expected": 0,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "nested_unicode_key",
+      "backend": "memory",
+      "hits": 1,
+      "expected": 1,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "mixed_deep",
+      "backend": "sync",
+      "hits": 0,
+      "expected": 0,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "mixed_deep",
+      "backend": "memory",
+      "hits": 1,
+      "expected": 1,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "nested_ascii",
+      "backend": "sync",
+      "hits": 1,
+      "expected": 1,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "nested_ascii",
+      "backend": "memory",
+      "hits": 1,
+      "expected": 1,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "flat_hangul",
+      "backend": "sync",
+      "hits": 1,
+      "expected": 1,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "flat_hangul",
+      "backend": "memory",
+      "hits": 1,
+      "expected": 1,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "escaped_controls",
+      "backend": "sync",
+      "hits": 1,
+      "expected": 1,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "escaped_controls",
+      "backend": "memory",
+      "hits": 1,
+      "expected": 1,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "literal_escape",
+      "backend": "sync",
+      "hits": 1,
+      "expected": 1,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "literal_escape",
+      "backend": "memory",
+      "hits": 1,
+      "expected": 1,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "scalar_bool",
+      "backend": "sync",
+      "hits": 1,
+      "expected": 1,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "scalar_bool",
+      "backend": "memory",
+      "hits": 1,
+      "expected": 1,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "scalar_null",
+      "backend": "sync",
+      "hits": 1,
+      "expected": 1,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "scalar_null",
+      "backend": "memory",
+      "hits": 1,
+      "expected": 1,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "dict_order_residual",
+      "backend": "sync",
+      "hits": 0,
+      "expected": 0,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "dict_order_residual",
+      "backend": "memory",
+      "hits": 1,
+      "expected": 1,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "literal_is_not_codepoint",
+      "backend": "sync",
+      "hits": 0,
+      "expected": 0,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "literal_is_not_codepoint",
+      "backend": "memory",
+      "hits": 0,
+      "expected": 0,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "list_order_distinct",
+      "backend": "sync",
+      "hits": 0,
+      "expected": 0,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "list_order_distinct",
+      "backend": "memory",
+      "hits": 0,
+      "expected": 0,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "nested_accent",
+      "backend": "async",
+      "hits": 0,
+      "expected": 0,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "nested_hangul",
+      "backend": "async",
+      "hits": 0,
+      "expected": 0,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "list_accent",
+      "backend": "async",
+      "hits": 0,
+      "expected": 0,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "nested_nonbmp",
+      "backend": "async",
+      "hits": 0,
+      "expected": 0,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "nested_unicode_key",
+      "backend": "async",
+      "hits": 0,
+      "expected": 0,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "mixed_deep",
+      "backend": "async",
+      "hits": 0,
+      "expected": 0,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "nested_ascii",
+      "backend": "async",
+      "hits": 1,
+      "expected": 1,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "flat_hangul",
+      "backend": "async",
+      "hits": 1,
+      "expected": 1,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "escaped_controls",
+      "backend": "async",
+      "hits": 1,
+      "expected": 1,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "literal_escape",
+      "backend": "async",
+      "hits": 1,
+      "expected": 1,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "scalar_bool",
+      "backend": "async",
+      "hits": 1,
+      "expected": 1,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "scalar_null",
+      "backend": "async",
+      "hits": 1,
+      "expected": 1,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "dict_order_residual",
+      "backend": "async",
+      "hits": 0,
+      "expected": 0,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "literal_is_not_codepoint",
+      "backend": "async",
+      "hits": 0,
+      "expected": 0,
+      "unfiltered_hits": 2,
+      "target_only": true
+    },
+    {
+      "case": "list_order_distinct",
+      "backend": "async",
+      "hits": 0,
+      "expected": 0,
+      "unfiltered_hits": 2,
+      "target_only": true
+    }
+  ],
+  "success": true,
+  "sqlite_read_mode": "ro",
+  "storage_before": {
+    "sync.sqlite": "8f9a90971bdbfab7dbd2f4e537298ffbe1b5748af7ba58f02ffa284bed71813c",
+    "async.sqlite": "4cea4b869d2e1816eeef11da62a021346a63ef31215c6fe2661f4286d4fc26bd"
+  },
+  "storage_after": {
+    "sync.sqlite": "8f9a90971bdbfab7dbd2f4e537298ffbe1b5748af7ba58f02ffa284bed71813c",
+    "async.sqlite": "4cea4b869d2e1816eeef11da62a021346a63ef31215c6fe2661f4286d4fc26bd"
+  },
+  "stored_rows_unchanged": true,
+  "storage_sha256": {
+    "sync.sqlite": "8f9a90971bdbfab7dbd2f4e537298ffbe1b5748af7ba58f02ffa284bed71813c",
+    "async.sqlite": "4cea4b869d2e1816eeef11da62a021346a63ef31215c6fe2661f4286d4fc26bd"
+  },
+  "process_id": 74468,
+  "phase_label": "base-before"
+}

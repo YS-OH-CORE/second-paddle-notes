@@ -1,0 +1,233 @@
+{
+  "recorded_at_utc": "2026-09-29T08:47:15.473878+00:00",
+  "identities": {
+    "candidate_repo": "samintisar/langgraph",
+    "candidate_commit": "03fa470474d751f3071c318968ce35906d6d4fba",
+    "baseline_commit": "7daa3ab49d678a5da75edb08baa87db4a2be52c3",
+    "source_archive_sha256": "662f4c7c0c42764e9fe0ec703dff4d2de3701708289059caadf01fa52737818d",
+    "baseline_utils_sha256": "7e1724b4442c0276738c6256c758ae575b89660972077f7e566f551bd3a1ec82",
+    "candidate_utils_sha256": "9804356d2eddabc7b3a314304c8c42dc5e08ba2d1fd7e75e5c38801baa1891d3",
+    "lock_sha256": "4b9476cf738cf9c1d91d0073ba3c3e478b7a34b76cec38377c5be4906f32e6c2",
+    "recipient_test_files_unchanged_between_variants": {
+      "tests\\test_aiosqlite.py": "ea72da6a3a744c8c65ae04f488105530cbdffce480fa62ddc3f42b310ff84462",
+      "tests\\test_async_store.py": "8c9330e1d97481833e423671e57bb8bf537c33467fa527032d9e1a4743f7eaa6",
+      "tests\\test_conformance_delta.py": "262218a70876f3bebd8d30b01e0a15938932dedb770cf94b7cef39f6a953b691",
+      "tests\\test_delta_channel_migration.py": "1f3340304d519f4ce7e32b677ee130d27ee61efc401fefddc378cb002f3c201d",
+      "tests\\test_get_delta_channel_history.py": "a42dbe4a70489454a32eeffaeec2e57fd22c9a462a9b2430a41d6a0c00192818",
+      "tests\\test_sqlite.py": "2a45f6e16e6318cf8e89b7bc507c3e1130c43ee66b1b9a606cc87e72f6ad925d",
+      "tests\\test_store.py": "311cd065c22974fa48ea20fba94c2f8d69fcb96f968ccfbda17d1bd2ec96f7f3",
+      "tests\\test_ttl.py": "e1d3e309cceee33f40d5db4dc14a335d871d4b31b1f854930ff1c39868a784b1",
+      "tests\\__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "suite": [
+    {
+      "variant": "base-suite",
+      "exit_code": 1,
+      "counts": {
+        "skipped": 2,
+        "passed": 118,
+        "failure": 2
+      },
+      "exceptions": [
+        {
+          "test": ".tests.test_delta_channel_migration",
+          "kind": "skipped",
+          "message": "collection skipped"
+        },
+        {
+          "test": ".tests.test_get_delta_channel_history",
+          "kind": "skipped",
+          "message": "collection skipped"
+        },
+        {
+          "test": "tests.test_aiosqlite.TestAsyncSqliteSaver.test_metadata_filter_non_ascii_nested_values",
+          "kind": "failure",
+          "message": "assert 0 == 1\n +  where 0 = len([])"
+        },
+        {
+          "test": "tests.test_sqlite.TestSqliteSaver.test_metadata_filter_non_ascii_nested_values",
+          "kind": "failure",
+          "message": "assert 0 == 1\n +  where 0 = len([])"
+        }
+      ]
+    },
+    {
+      "variant": "recipient-suite",
+      "exit_code": 0,
+      "counts": {
+        "skipped": 2,
+        "passed": 120
+      },
+      "exceptions": [
+        {
+          "test": ".tests.test_delta_channel_migration",
+          "kind": "skipped",
+          "message": "collection skipped"
+        },
+        {
+          "test": ".tests.test_get_delta_channel_history",
+          "kind": "skipped",
+          "message": "collection skipped"
+        }
+      ]
+    }
+  ],
+  "same_test_ids": true,
+  "fresh_processes": [
+    "write",
+    "base-before",
+    "recipient-read",
+    "base-after"
+  ],
+  "rollout_process_ids": {
+    "write": 74984,
+    "base-before": 74468,
+    "recipient-read": 73308,
+    "base-after": 43704
+  },
+  "rollout_changes": [
+    {
+      "backend": "sync",
+      "case": "nested_accent",
+      "base_recipient_base_hits": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "backend": "sync",
+      "case": "nested_hangul",
+      "base_recipient_base_hits": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "backend": "sync",
+      "case": "list_accent",
+      "base_recipient_base_hits": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "backend": "sync",
+      "case": "nested_nonbmp",
+      "base_recipient_base_hits": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "backend": "sync",
+      "case": "nested_unicode_key",
+      "base_recipient_base_hits": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "backend": "sync",
+      "case": "mixed_deep",
+      "base_recipient_base_hits": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "backend": "async",
+      "case": "nested_accent",
+      "base_recipient_base_hits": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "backend": "async",
+      "case": "nested_hangul",
+      "base_recipient_base_hits": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "backend": "async",
+      "case": "list_accent",
+      "base_recipient_base_hits": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "backend": "async",
+      "case": "nested_nonbmp",
+      "base_recipient_base_hits": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "backend": "async",
+      "case": "nested_unicode_key",
+      "base_recipient_base_hits": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "backend": "async",
+      "case": "mixed_deep",
+      "base_recipient_base_hits": [
+        0,
+        1,
+        0
+      ]
+    }
+  ],
+  "rollout_scenarios": 15,
+  "sqlite_backends": 2,
+  "memory_control": true,
+  "stored_rows_unchanged_all_phases": true,
+  "logical_row_fingerprints": {
+    "sync.sqlite": "8f9a90971bdbfab7dbd2f4e537298ffbe1b5748af7ba58f02ffa284bed71813c",
+    "async.sqlite": "4cea4b869d2e1816eeef11da62a021346a63ef31215c6fe2661f4286d4fc26bd"
+  },
+  "quality": [
+    {
+      "check": "ruff",
+      "exit_code": 0
+    },
+    {
+      "check": "format",
+      "exit_code": 1
+    },
+    {
+      "check": "type",
+      "exit_code": 0
+    }
+  ],
+  "network_audited_processes": 6,
+  "nonloopback_attempts": 0,
+  "candidate_source_restored": true,
+  "no_new_product_patch": true,
+  "scope": "Full checkpoint-sqlite package test collection at recipient pin; existing synthetic fixture repeated on actual recipient code; not monorepo/production/crash or concurrency validation.",
+  "quality_note": {
+    "format_exit_1_file": "libs/checkpoint-sqlite/README.md",
+    "same_readme_bytes_as_parent": true,
+    "three_recipient_changed_python_files_format_pass": true,
+    "skipped_module_reason": "langgraph core not installed in the frozen standalone checkpoint-sqlite environment",
+    "skipped_is_modules_not_two_executed_tests": true
+  }
+}

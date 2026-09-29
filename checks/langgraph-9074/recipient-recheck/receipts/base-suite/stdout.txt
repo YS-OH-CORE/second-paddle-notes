@@ -1,0 +1,41 @@
+..F........................................F............................ [ 60%]
+................................................                         [100%]
+================================== FAILURES ===================================
+______ TestAsyncSqliteSaver.test_metadata_filter_non_ascii_nested_values ______
+tests\test_aiosqlite.py:152: in test_metadata_filter_non_ascii_nested_values
+    assert len(results) == 1
+E   assert 0 == 1
+E    +  where 0 = len([])
+________ TestSqliteSaver.test_metadata_filter_non_ascii_nested_values _________
+tests\test_sqlite.py:328: in test_metadata_filter_non_ascii_nested_values
+    assert len(results) == 1
+E   assert 0 == 1
+E    +  where 0 = len([])
+============================== warnings summary ===============================
+tests/test_ttl.py::test_ttl_basic
+tests/test_ttl.py::test_ttl_refresh
+tests/test_ttl.py::test_ttl_sweeper
+tests/test_ttl.py::test_ttl_custom_value
+tests/test_ttl.py::test_ttl_custom_value
+tests/test_ttl.py::test_ttl_override_default
+tests/test_ttl.py::test_ttl_override_default
+tests/test_ttl.py::test_search_with_ttl
+tests/test_ttl.py::test_search_with_ttl
+  [REVIEW_DIR]\langgraph-03fa470474d751f3071c318968ce35906d6d4fba\libs\checkpoint-sqlite\langgraph\store\sqlite\base.py:1364: DeprecationWarning: The default datetime adapter is deprecated as of Python 3.12; see the sqlite3 documentation for suggested replacement recipes
+    cur.execute(query, params)
+
+tests/test_ttl.py::test_async_ttl_basic
+tests/test_ttl.py::test_async_ttl_refresh
+tests/test_ttl.py::test_async_ttl_sweeper
+tests/test_ttl.py::test_async_search_with_ttl
+tests/test_ttl.py::test_async_search_with_ttl
+tests/test_ttl.py::test_async_asearch_refresh_ttl
+tests/test_ttl.py::test_async_asearch_refresh_ttl
+  [REVIEW_DIR]\venv\Lib\site-packages\aiosqlite\core.py:63: DeprecationWarning: The default datetime adapter is deprecated as of Python 3.12; see the sqlite3 documentation for suggested replacement recipes
+    result = function()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_aiosqlite.py::TestAsyncSqliteSaver::test_metadata_filter_non_ascii_nested_values
+FAILED tests/test_sqlite.py::TestSqliteSaver::test_metadata_filter_non_ascii_nested_values
+2 failed, 118 passed, 2 skipped, 16 warnings in 50.61s

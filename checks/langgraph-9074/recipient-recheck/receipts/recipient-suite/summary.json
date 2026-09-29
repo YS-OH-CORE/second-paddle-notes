@@ -1,0 +1,626 @@
+{
+  "phase": "recipient-suite",
+  "exit_code": 0,
+  "seconds": 60.02,
+  "utils_sha256": "9804356d2eddabc7b3a314304c8c42dc5e08ba2d1fd7e75e5c38801baa1891d3",
+  "counts": {
+    "skipped": 2,
+    "passed": 120
+  },
+  "outcomes": [
+    {
+      "classname": "",
+      "name": "tests.test_delta_channel_migration",
+      "status": "skipped"
+    },
+    {
+      "classname": "",
+      "name": "tests.test_get_delta_channel_history",
+      "status": "skipped"
+    },
+    {
+      "classname": "tests.test_aiosqlite.TestAsyncSqliteSaver",
+      "name": "test_combined_metadata",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_aiosqlite.TestAsyncSqliteSaver",
+      "name": "test_asearch",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_aiosqlite.TestAsyncSqliteSaver",
+      "name": "test_metadata_filter_non_ascii_nested_values",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_aiosqlite.TestAsyncSqliteSaver",
+      "name": "test_limit_parameter_sql_injection_prevention",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_async_store",
+      "name": "test_no_running_loop[memory]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_async_store",
+      "name": "test_no_running_loop[file]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_async_store",
+      "name": "test_large_batches_async[memory]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_async_store",
+      "name": "test_large_batches_async[file]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_async_store",
+      "name": "test_abatch_order[memory]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_async_store",
+      "name": "test_abatch_order[file]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_async_store",
+      "name": "test_batch_get_ops[memory]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_async_store",
+      "name": "test_batch_get_ops[file]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_async_store",
+      "name": "test_batch_put_ops[memory]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_async_store",
+      "name": "test_batch_put_ops[file]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_async_store",
+      "name": "test_batch_search_ops[memory]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_async_store",
+      "name": "test_batch_search_ops[file]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_async_store",
+      "name": "test_batch_list_namespaces_ops[memory]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_async_store",
+      "name": "test_batch_list_namespaces_ops[file]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_async_store",
+      "name": "test_vector_store_initialization",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_async_store",
+      "name": "test_vector_insert_with_auto_embedding[memory]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_async_store",
+      "name": "test_vector_insert_with_auto_embedding[file]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_async_store",
+      "name": "test_vector_update_with_embedding[memory]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_async_store",
+      "name": "test_vector_update_with_embedding[file]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_async_store",
+      "name": "test_vector_search_with_filters[memory]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_async_store",
+      "name": "test_vector_search_with_filters[file]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_async_store",
+      "name": "test_vector_search_pagination",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_async_store",
+      "name": "test_vector_search_edge_cases",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_async_store",
+      "name": "test_embed_with_path",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_async_store",
+      "name": "test_basic_store_ops",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_async_store",
+      "name": "test_list_namespaces",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_async_store",
+      "name": "test_search_items",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_async_store",
+      "name": "test_async_namespace_segment_boundary[memory]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_async_store",
+      "name": "test_async_namespace_segment_boundary[file]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_conformance_delta",
+      "name": "test_delta_channel_conformance",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_sqlite.TestSqliteSaver",
+      "name": "test_combined_metadata",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_sqlite.TestSqliteSaver",
+      "name": "test_search",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_sqlite.TestSqliteSaver",
+      "name": "test_search_where",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_sqlite.TestSqliteSaver",
+      "name": "test_metadata_predicate",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_sqlite.TestSqliteSaver",
+      "name": "test_informative_async_errors",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_sqlite.TestSqliteSaver",
+      "name": "test_metadata_predicate_sql_injection_prevention",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_sqlite.TestSqliteSaver",
+      "name": "test_checkpoint_search_sql_injection_prevention",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_sqlite.TestSqliteSaver",
+      "name": "test_limit_parameter_sql_injection_prevention",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_sqlite.TestSqliteSaver",
+      "name": "test_metadata_filter_keys_with_hyphens_and_digits",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_sqlite.TestSqliteSaver",
+      "name": "test_metadata_filter_non_ascii_nested_values",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_batch_order[memory]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_batch_order[file]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_batch_get_ops[memory]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_batch_get_ops[file]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_batch_put_ops[memory]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_batch_put_ops[file]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_batch_search_ops[memory]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_batch_search_ops[file]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_batch_list_namespaces_ops[memory]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_batch_list_namespaces_ops[file]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store.TestSqliteStore",
+      "name": "test_basic_store_ops",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store.TestSqliteStore",
+      "name": "test_list_namespaces",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store.TestSqliteStore",
+      "name": "test_search",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_vector_store_initialization",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_vector_insert_with_auto_embedding[memory-cosine]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_vector_insert_with_auto_embedding[file-cosine]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_vector_update_with_embedding[memory-cosine]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_vector_update_with_embedding[file-cosine]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_vector_search_with_filters[cosine]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_vector_search_pagination[cosine]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_vector_search_edge_cases[cosine]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_embed_with_path[cosine]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_embed_with_path_operation_config[cosine]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_scores[memory-aaa]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_scores[memory-bbb]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_scores[memory-ccc]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_scores[memory-abcd]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_scores[memory-poisson]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_scores[file-aaa]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_scores[file-bbb]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_scores[file-ccc]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_scores[file-abcd]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_scores[file-poisson]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_nonnull_migrations",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_basic_store_operations",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_list_namespaces_operations",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_search_items",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_sql_injection_vulnerability[memory]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_sql_injection_vulnerability[file]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_sql_injection_filter_values[memory]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_sql_injection_filter_values[file]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_numeric_filter_safety[memory]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_numeric_filter_safety[file]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_boolean_filter_safety[memory]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_boolean_filter_safety[file]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_filter_keys_with_hyphens_and_digits[memory]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_filter_keys_with_hyphens_and_digits[file]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_non_ascii[cosine]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_escape_glob_literal",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_namespace_match_pattern",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_search_namespace_segment_boundary[memory]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_search_namespace_segment_boundary[file]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_search_namespace_wildcard_chars_are_literal[memory]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_search_namespace_wildcard_chars_are_literal[file]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_search_namespace_is_case_sensitive[memory]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_search_namespace_is_case_sensitive[file]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_list_namespaces_segment_boundary[memory]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_list_namespaces_segment_boundary[file]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_search_empty_prefix_is_unconstrained[memory]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_search_empty_prefix_is_unconstrained[file]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_namespace_labels_with_trailing_newline[memory]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_namespace_labels_with_trailing_newline[file]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_list_namespaces_prefix_uses_indexable_condition",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_list_namespaces_metacharacter_labels[memory]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_store",
+      "name": "test_list_namespaces_metacharacter_labels[file]",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_ttl",
+      "name": "test_ttl_basic",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_ttl",
+      "name": "test_ttl_refresh",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_ttl",
+      "name": "test_ttl_sweeper",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_ttl",
+      "name": "test_ttl_custom_value",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_ttl",
+      "name": "test_ttl_override_default",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_ttl",
+      "name": "test_search_with_ttl",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_ttl",
+      "name": "test_async_ttl_basic",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_ttl",
+      "name": "test_async_ttl_refresh",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_ttl",
+      "name": "test_async_ttl_sweeper",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_ttl",
+      "name": "test_async_search_with_ttl",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_ttl",
+      "name": "test_async_asearch_refresh_ttl",
+      "status": "passed"
+    }
+  ],
+  "network": {
+    "pid": 76072,
+    "events": []
+  }
+}

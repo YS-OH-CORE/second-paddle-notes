@@ -1,0 +1,43 @@
+........................................................................ [ 60%]
+...............................................R.                        [100%]
+============================== warnings summary ===============================
+tests/test_ttl.py::test_ttl_basic
+tests/test_ttl.py::test_ttl_refresh
+tests/test_ttl.py::test_ttl_sweeper
+tests/test_ttl.py::test_ttl_custom_value
+tests/test_ttl.py::test_ttl_custom_value
+tests/test_ttl.py::test_ttl_override_default
+tests/test_ttl.py::test_ttl_override_default
+tests/test_ttl.py::test_search_with_ttl
+tests/test_ttl.py::test_search_with_ttl
+  [REVIEW_DIR]\langgraph-03fa470474d751f3071c318968ce35906d6d4fba\libs\checkpoint-sqlite\langgraph\store\sqlite\base.py:1364: DeprecationWarning: The default datetime adapter is deprecated as of Python 3.12; see the sqlite3 documentation for suggested replacement recipes
+    cur.execute(query, params)
+
+tests/test_ttl.py::test_async_ttl_basic
+tests/test_ttl.py::test_async_ttl_refresh
+tests/test_ttl.py::test_async_ttl_sweeper
+tests/test_ttl.py::test_async_search_with_ttl
+tests/test_ttl.py::test_async_search_with_ttl
+tests/test_ttl.py::test_async_asearch_refresh_ttl
+tests/test_ttl.py::test_async_asearch_refresh_ttl
+tests/test_ttl.py::test_async_asearch_refresh_ttl
+tests/test_ttl.py::test_async_asearch_refresh_ttl
+  [REVIEW_DIR]\venv\Lib\site-packages\aiosqlite\core.py:63: DeprecationWarning: The default datetime adapter is deprecated as of Python 3.12; see the sqlite3 documentation for suggested replacement recipes
+    result = function()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+
+====================== the following tests were retried =======================
+	test_async_asearch_refresh_ttl failed on attempt 1! Retrying!
+	Traceback (most recent call last):
+	  File "[REVIEW_DIR]\langgraph-03fa470474d751f3071c318968ce35906d6d4fba\libs\checkpoint-sqlite\tests\test_ttl.py", line 427, in test_async_asearch_refresh_ttl
+	    assert item1_final_check is None, (
+	AssertionError: Item1 should be gone after its refreshed TTL expired
+	assert Item(namespace=['docs', 'user1'], key='item1', value={'text': 'content1', 'id': 1}, created_at='2026-09-29T08:46:02', updated_at='2026-09-29T08:46:02') is None
+
+	test_async_asearch_refresh_ttl passed on attempt 2!
+	
+
+========================== end of test retry report ===========================
+
+120 passed, 2 skipped, 18 warnings, 1 retried in 58.54s
