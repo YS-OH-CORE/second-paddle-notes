@@ -1,0 +1,20 @@
+{
+  "status": "existing_comment_updated_exact_readback",
+  "comment_id": 5882370263,
+  "url": "https://github.com/huggingface/tokenizers/pull/2466#issuecomment-5882370263",
+  "author": "YS-OH-CORE",
+  "updated_at_utc": "2026-09-29T02:42:04Z",
+  "new_comment_created": false,
+  "update_attempts": 2,
+  "body_sha256": "b7c9c78f81902c07f4980b79b36b10fa106894595ac00be2e62671d2c4f0f7eb",
+  "exact_body_match": true,
+  "evidence_commit": "ff9bd3aecafd97c8c110020c038c5fdffd3823e6",
+  "run_id": 36512976120,
+  "signature": "Zero × Youngseok Oh",
+  "preflight_exit_code": 0,
+  "route": "Existing account-owner GitHub CLI authorization",
+  "acceptance": "not_established",
+  "formatting_correction": "One separator decoded by the local terminal was corrected to ASCII after public readback; technical content unchanged",
+  "independent_connector_readback": true,
+  "new_comments_created": 0
+}
