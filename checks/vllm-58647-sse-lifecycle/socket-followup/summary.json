@@ -1,0 +1,58 @@
+{
+  "recorded_at_utc": "2026-09-29T10:02:29.942395+00:00",
+  "question": "Does real loopback Uvicorn disconnection reproduce the prior yielded-body cleanup gap?",
+  "answer": "Not reproduced in this host experiment. Nominal disconnects clean up; the sustained-body-send target was not reached.",
+  "comparison": [
+    {
+      "variant": "default-1mib",
+      "observations": 12,
+      "nominal_disconnect_conditions_completed": 6,
+      "nominal_timely_finalization": 6,
+      "pressure_target_not_reached": 6,
+      "probe_exit_code": 1,
+      "all_fixture_teardown_clean": true,
+      "nonloopback_socket_events": 0
+    },
+    {
+      "variant": "default-8mib",
+      "observations": 12,
+      "nominal_disconnect_conditions_completed": 6,
+      "nominal_timely_finalization": 6,
+      "pressure_target_not_reached": 6,
+      "probe_exit_code": 1,
+      "all_fixture_teardown_clean": true,
+      "nonloopback_socket_events": 0
+    },
+    {
+      "variant": "selector-8mib",
+      "observations": 12,
+      "nominal_disconnect_conditions_completed": 6,
+      "nominal_timely_finalization": 6,
+      "pressure_target_not_reached": 6,
+      "probe_exit_code": 1,
+      "all_fixture_teardown_clean": true,
+      "nonloopback_socket_events": 0
+    }
+  ],
+  "total_observations": 36,
+  "nominal_conditions_completed": 18,
+  "pressure_conditions_inconclusive": 18,
+  "distinct_configurations": 6,
+  "repetitions_per_configuration": 3,
+  "new_product_fix": false,
+  "recipient_unpublished_patch_tested": false,
+  "full_vllm_engine_run": false,
+  "asgi_spec_observed": "2.3",
+  "artificial_asgi_events": false,
+  "original_module_git_blob": "ec9ef177b07bd3f7f906527ff68870601cb7784e",
+  "versions": {
+    "starlette": "1.0.1",
+    "anyio": "4.14.2",
+    "uvicorn": "0.52.4",
+    "h11": "0.16.0"
+  },
+  "python": "3.12.10",
+  "os": "Windows",
+  "previous_component_evidence_remains_scoped": true,
+  "next_step": "Keep real-server applicability unresolved; await published recipient code or a separately reviewed environment that actually reaches the body-send suspension."
+}

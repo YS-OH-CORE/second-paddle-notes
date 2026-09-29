@@ -1,0 +1,106 @@
+[
+  {
+    "event": "socket.bind",
+    "loopback": true
+  },
+  {
+    "event": "socket.connect",
+    "loopback": true
+  },
+  {
+    "event": "socket.bind",
+    "loopback": true
+  },
+  {
+    "event": "socket.connect",
+    "loopback": true
+  },
+  {
+    "event": "socket.bind",
+    "loopback": true
+  },
+  {
+    "event": "socket.connect",
+    "loopback": true
+  },
+  {
+    "event": "socket.bind",
+    "loopback": true
+  },
+  {
+    "event": "socket.connect",
+    "loopback": true
+  },
+  {
+    "event": "socket.bind",
+    "loopback": true
+  },
+  {
+    "event": "socket.connect",
+    "loopback": true
+  },
+  {
+    "event": "socket.bind",
+    "loopback": true
+  },
+  {
+    "event": "socket.connect",
+    "loopback": true
+  },
+  {
+    "event": "socket.bind",
+    "loopback": true
+  },
+  {
+    "event": "socket.connect",
+    "loopback": true
+  },
+  {
+    "event": "socket.bind",
+    "loopback": true
+  },
+  {
+    "event": "socket.connect",
+    "loopback": true
+  },
+  {
+    "event": "socket.bind",
+    "loopback": true
+  },
+  {
+    "event": "socket.connect",
+    "loopback": true
+  },
+  {
+    "event": "socket.bind",
+    "loopback": true
+  },
+  {
+    "event": "socket.connect",
+    "loopback": true
+  },
+  {
+    "event": "socket.bind",
+    "loopback": true
+  },
+  {
+    "event": "socket.connect",
+    "loopback": true
+  },
+  {
+    "event": "socket.bind",
+    "loopback": true
+  },
+  {
+    "event": "socket.connect",
+    "loopback": true
+  },
+  {
+    "event": "socket.bind",
+    "loopback": true
+  },
+  {
+    "event": "socket.connect",
+    "loopback": true
+  }
+]
