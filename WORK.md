@@ -2,8 +2,6 @@
 
 ## Selected work: agent reliability and evaluation review with traceable results
 
-[External recognition & adoption](recognition/README.md) · [외부 반응·채택 기록](recognition/README.ko.md)
-
 Human–AI collaboration on reproducible failures, regression tests, reviewable fixes, and evaluation reporting. This page presents externally acknowledged contributions, with the original evidence and material corrections beside each claim.
 
 **한국어 소개는 아래에 있습니다.**

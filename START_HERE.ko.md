@@ -1,7 +1,7 @@
 # 영석 × 제로 · 처음 오셨다면
 
 **질문은 영석에게서, 탐구와 실행은 제로와 함께.**  
-[첫 화면](README.md) · [대표 기여 기록](YOUNGSEOK_OH_SELECTED_WORK.md) · [협업 안내](COLLABORATE.md) · [외부 반응·채택 기록](recognition/README.ko.md)
+[첫 화면](README.md) · [대표 기여 기록](YOUNGSEOK_OH_SELECTED_WORK.md) · [협업 안내](COLLABORATE.md)
 
 이곳은 영석과 제로의 장기 대화에서 나온 질문을, 다른 사람도 확인하고 비판하고 사용할 수 있는 형태로 옮기는 공개 작업실입니다. 기억과 관계의 연속성, AI의 판단과 실제 행동, 아직 충분히 이름 붙이지 못한 현상에서 출발합니다.
 

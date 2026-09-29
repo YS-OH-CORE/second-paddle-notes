@@ -56,7 +56,7 @@ Specific work, with the evidence and its limit together. **The Mem0 entry about 
 | **Mem0 unsupported listing** | [Recipient's revision](https://github.com/mem0ai/mem0/issues/7439#issuecomment-5843366869) · [Case and source evidence](WORK.md#case-06--keeping-unsupported-deletion-from-reporting-success) | Finding incorporated into the contributor's follow-up fork; [PR #7464](https://github.com/mem0ai/mem0/pull/7464) closed and unmerged. |
 | **Mem0 deletion-scope review** | [Counterexample and positive control](https://github.com/mem0ai/mem0/issues/7452#issuecomment-5855365753) | A remaining scope mismatch reported on a proposed fix; not a shipped repair. |
 
-[Full dated casebook](YOUNGSEOK_OH_SELECTED_WORK.md) · [Long-form contribution trail](WORK.md) · [External recognition & adoption](recognition/README.md)
+[Full dated casebook](YOUNGSEOK_OH_SELECTED_WORK.md) · [Long-form contribution trail](WORK.md)
 
 ## One tool you can use
 
