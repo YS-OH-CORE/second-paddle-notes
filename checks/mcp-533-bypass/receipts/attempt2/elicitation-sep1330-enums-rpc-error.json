@@ -1,0 +1,125 @@
+{
+  "mode": "rpc-error",
+  "scenario": "elicitation-sep1330-enums",
+  "observation": {
+    "firstReportedFailure": true,
+    "firstDeletes": 0,
+    "healthyStatus": "FAILURE",
+    "healthyDeletes": 0,
+    "liveSessions": [
+      "s1"
+    ]
+  },
+  "beforeSuccessor": {
+    "live": [
+      "s1"
+    ],
+    "events": [
+      {
+        "method": "POST initialize",
+        "sid": "s1",
+        "protocol": "2025-11-25"
+      },
+      {
+        "method": "POST notifications/initialized",
+        "sid": "s1"
+      },
+      {
+        "method": "GET",
+        "sid": "s1"
+      },
+      {
+        "method": "POST tools/call",
+        "sid": "s1"
+      }
+    ]
+  },
+  "events": [
+    {
+      "method": "POST initialize",
+      "sid": "s1",
+      "protocol": "2025-11-25"
+    },
+    {
+      "method": "POST notifications/initialized",
+      "sid": "s1"
+    },
+    {
+      "method": "GET",
+      "sid": "s1"
+    },
+    {
+      "method": "POST tools/call",
+      "sid": "s1"
+    },
+    {
+      "method": "REJECT initialize"
+    }
+  ],
+  "firstChecks": [
+    {
+      "id": "elicitation-sep1330-general",
+      "name": "ElicitationSEP1330General",
+      "description": "Server requests elicitation with enum schemas",
+      "status": "FAILURE",
+      "timestamp": "2026-09-29T03:27:31.757Z",
+      "errorMessage": "Failed: MCP error -32601: Deliberate fixture method failure",
+      "specReferences": [
+        {
+          "id": "SEP-1330",
+          "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/issues/1330"
+        }
+      ]
+    },
+    {
+      "id": "wire-schema-valid",
+      "name": "WireSchemaValid",
+      "description": "Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version",
+      "status": "SUCCESS",
+      "timestamp": "2026-09-29T03:27:31.757Z",
+      "specReferences": [
+        {
+          "id": "MCP-Schema",
+          "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/schema/2025-11-25/schema.json"
+        }
+      ],
+      "details": {
+        "messagesValidated": 6,
+        "violations": []
+      }
+    }
+  ],
+  "successorChecks": [
+    {
+      "id": "prompts-list",
+      "name": "PromptsList",
+      "description": "Server lists available prompts with valid structure",
+      "status": "FAILURE",
+      "timestamp": "2026-09-29T03:27:31.758Z",
+      "errorMessage": "Failed: Streamable HTTP error: Error POSTing to endpoint: Synthetic one-session capacity exhausted",
+      "specReferences": [
+        {
+          "id": "MCP-Prompts-List",
+          "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/prompts#listing-prompts"
+        }
+      ]
+    },
+    {
+      "id": "wire-schema-valid",
+      "name": "WireSchemaValid",
+      "description": "Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version",
+      "status": "SUCCESS",
+      "timestamp": "2026-09-29T03:27:31.758Z",
+      "specReferences": [
+        {
+          "id": "MCP-Schema",
+          "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/schema/2025-11-25/schema.json"
+        }
+      ],
+      "details": {
+        "messagesValidated": 1,
+        "violations": []
+      }
+    }
+  ]
+}

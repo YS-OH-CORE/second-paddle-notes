@@ -1,0 +1,80 @@
+{
+  "source": "95dd2e2c64c7173e5f3ddfada7b03512f88eef89",
+  "verifier_commit": "d9e3eeafe18639c0440224c1e91fbde6985cb579",
+  "final_run": 36517193287,
+  "total_tests": 7,
+  "passed": 3,
+  "failed": 4,
+  "pending": 0,
+  "todo": 0,
+  "test_exit_code": 1,
+  "runtime_source_changed": false,
+  "observations": {
+    "elicitation-sep1034-defaults-late-ack": {
+      "abandonedToolCalls": 1
+    },
+    "elicitation-sep1034-defaults-no-elicitation": {
+      "firstReportedFailure": true,
+      "firstDeletes": 1,
+      "healthyStatus": "SUCCESS",
+      "healthyDeletes": 1,
+      "liveSessions": []
+    },
+    "elicitation-sep1034-defaults-rpc-error": {
+      "firstReportedFailure": true,
+      "firstDeletes": 0,
+      "healthyStatus": "FAILURE",
+      "healthyDeletes": 0,
+      "liveSessions": [
+        "s1"
+      ]
+    },
+    "elicitation-sep1330-enums-late-ack": {
+      "abandonedToolCalls": 1
+    },
+    "elicitation-sep1330-enums-no-elicitation": {
+      "firstReportedFailure": true,
+      "firstDeletes": 1,
+      "healthyStatus": "SUCCESS",
+      "healthyDeletes": 1,
+      "liveSessions": []
+    },
+    "elicitation-sep1330-enums-rpc-error": {
+      "firstReportedFailure": true,
+      "firstDeletes": 0,
+      "healthyStatus": "FAILURE",
+      "healthyDeletes": 0,
+      "liveSessions": [
+        "s1"
+      ]
+    },
+    "prompts-list-rpc-error": {
+      "firstReportedFailure": true,
+      "firstDeletes": 1,
+      "healthyStatus": "SUCCESS",
+      "healthyDeletes": 1,
+      "liveSessions": []
+    }
+  },
+  "archives": [
+    {
+      "lane": "attempt1",
+      "id": 11010624713,
+      "run": 36516966547,
+      "bytes": 9295,
+      "sha256": "47701c4ab3966e2d66ce7cfe11a68d446bbb4e6fdb8b4b6c966ae092ff0f7380",
+      "files": 15
+    },
+    {
+      "lane": "attempt2",
+      "id": 11010919583,
+      "run": 36517193287,
+      "bytes": 9531,
+      "sha256": "1b812ee5006a379bce002f799d32d29a52c7307ba1a94ca0b0325c87769b7497",
+      "files": 17
+    }
+  ],
+  "zip_hashes_and_crc_checked": true,
+  "attempt1_note": "All 7 failed: invalid healthy-prompt description broke the controls; inherited shell errexit omitted intended exit/diff files. Not seven product failures.",
+  "scope": "Two explicit SDK scenarios executed; three other excluded paths source-reviewed only. No fix implemented."
+}

@@ -1,0 +1,153 @@
+{
+  "mode": "no-elicitation",
+  "scenario": "elicitation-sep1034-defaults",
+  "observation": {
+    "firstReportedFailure": true,
+    "firstDeletes": 1,
+    "healthyStatus": "FAILURE",
+    "healthyDeletes": 1,
+    "liveSessions": []
+  },
+  "beforeSuccessor": {
+    "live": [],
+    "events": [
+      {
+        "method": "POST initialize",
+        "sid": "s1",
+        "protocol": "2025-11-25"
+      },
+      {
+        "method": "POST notifications/initialized",
+        "sid": "s1"
+      },
+      {
+        "method": "GET",
+        "sid": "s1"
+      },
+      {
+        "method": "POST tools/call",
+        "sid": "s1"
+      },
+      {
+        "method": "DELETE",
+        "sid": "s1"
+      }
+    ]
+  },
+  "events": [
+    {
+      "method": "POST initialize",
+      "sid": "s1",
+      "protocol": "2025-11-25"
+    },
+    {
+      "method": "POST notifications/initialized",
+      "sid": "s1"
+    },
+    {
+      "method": "GET",
+      "sid": "s1"
+    },
+    {
+      "method": "POST tools/call",
+      "sid": "s1"
+    },
+    {
+      "method": "DELETE",
+      "sid": "s1"
+    },
+    {
+      "method": "POST initialize",
+      "sid": "s2",
+      "protocol": "2025-11-25"
+    },
+    {
+      "method": "POST notifications/initialized",
+      "sid": "s2"
+    },
+    {
+      "method": "GET",
+      "sid": "s2"
+    },
+    {
+      "method": "POST prompts/list",
+      "sid": "s2"
+    },
+    {
+      "method": "DELETE",
+      "sid": "s2"
+    }
+  ],
+  "firstChecks": [
+    {
+      "id": "elicitation-sep1034-general",
+      "name": "ElicitationSEP1034General",
+      "description": "Server requests elicitation with default values",
+      "status": "FAILURE",
+      "timestamp": "2026-09-29T03:24:32.011Z",
+      "errorMessage": "Server did not request elicitation from client",
+      "specReferences": [
+        {
+          "id": "SEP-1034",
+          "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/issues/1034"
+        }
+      ]
+    },
+    {
+      "id": "wire-schema-valid",
+      "name": "WireSchemaValid",
+      "description": "Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version",
+      "status": "SUCCESS",
+      "timestamp": "2026-09-29T03:24:32.015Z",
+      "specReferences": [
+        {
+          "id": "MCP-Schema",
+          "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/schema/2025-11-25/schema.json"
+        }
+      ],
+      "details": {
+        "messagesValidated": 5,
+        "violations": []
+      }
+    }
+  ],
+  "successorChecks": [
+    {
+      "id": "prompts-list",
+      "name": "PromptsList",
+      "description": "Server lists available prompts with valid structure",
+      "status": "FAILURE",
+      "timestamp": "2026-09-29T03:24:32.031Z",
+      "errorMessage": "Prompt 0: missing description",
+      "specReferences": [
+        {
+          "id": "MCP-Prompts-List",
+          "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/prompts#listing-prompts"
+        }
+      ],
+      "details": {
+        "promptCount": 1,
+        "prompts": [
+          "p"
+        ]
+      }
+    },
+    {
+      "id": "wire-schema-valid",
+      "name": "WireSchemaValid",
+      "description": "Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version",
+      "status": "SUCCESS",
+      "timestamp": "2026-09-29T03:24:32.036Z",
+      "specReferences": [
+        {
+          "id": "MCP-Schema",
+          "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/schema/2025-11-25/schema.json"
+        }
+      ],
+      "details": {
+        "messagesValidated": 5,
+        "violations": []
+      }
+    }
+  ]
+}

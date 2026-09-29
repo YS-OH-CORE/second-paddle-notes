@@ -1,0 +1,209 @@
+{
+  "excludes": "manifest itself, preexisting verifier files and later delivery record",
+  "files": [
+    {
+      "path": "checks/mcp-533-bypass/README.md",
+      "bytes": 7409,
+      "sha256": "0dc601ae6fd51a052e58f35049fe0f32c4ba47cd7d8387bc955a2655ebae14b2",
+      "git_blob": "c18205acbe627b1cc33f44f08f5288d025f3a646"
+    },
+    {
+      "path": "checks/mcp-533-bypass/summary.json",
+      "bytes": 2297,
+      "sha256": "05bb336698d67a05590744cd78620d44d04968ce90dce3f9782294302c3d081b",
+      "git_blob": "dddd6af9342bc744f53ea0f64180b27bb318bfe4"
+    },
+    {
+      "path": "checks/mcp-533-bypass/receipts/attempt1/elicitation-sep1034-defaults-late-ack.json",
+      "bytes": 1706,
+      "sha256": "24a6de32943792578e7171052006d8cdd0b49132f04f615c92722f4249c45a9e",
+      "git_blob": "8683d99ff2fd13130fda93a3fe5cd1af454b289f"
+    },
+    {
+      "path": "checks/mcp-533-bypass/receipts/attempt1/elicitation-sep1034-defaults-no-elicitation.json",
+      "bytes": 3703,
+      "sha256": "80e51d61f909aa2ecf5b8a1f76fdd84fce25c88ebfc046e98dfca6eeaafb873e",
+      "git_blob": "e2b47bc74cb4fe1ce18b8d605d0708156c69338e"
+    },
+    {
+      "path": "checks/mcp-533-bypass/receipts/attempt1/elicitation-sep1034-defaults-rpc-error.json",
+      "bytes": 3282,
+      "sha256": "d930b3a483d895d83fd1db62cdba6526b7decd4d36d42833dc823b1a1dc8adf8",
+      "git_blob": "45a06c8afc8858e1ba78692b8597a47138ab2da3"
+    },
+    {
+      "path": "checks/mcp-533-bypass/receipts/attempt1/elicitation-sep1330-enums-late-ack.json",
+      "bytes": 1700,
+      "sha256": "069caef7532761a2121adacbdbdd08ed7f82e595c734c9f09080be8a050b7344",
+      "git_blob": "a10178bdc3f79859c8a113871e92389940c4e03a"
+    },
+    {
+      "path": "checks/mcp-533-bypass/receipts/attempt1/elicitation-sep1330-enums-no-elicitation.json",
+      "bytes": 3698,
+      "sha256": "d265bd34ee1760e5267776c2de45688ae3c49a54bb7155268074a48acbd6986b",
+      "git_blob": "ef6e64b974d902a3e8b59a000bdef4206d9b93bc"
+    },
+    {
+      "path": "checks/mcp-533-bypass/receipts/attempt1/elicitation-sep1330-enums-rpc-error.json",
+      "bytes": 3277,
+      "sha256": "1f433ba72d94182cff335e95500150f8dd563e7643f1abdb010b746fb493b7f9",
+      "git_blob": "98d4c0aa03ddb6b81079a8d5c4b63bd8bf33c30f"
+    },
+    {
+      "path": "checks/mcp-533-bypass/receipts/attempt1/install.log",
+      "bytes": 241,
+      "sha256": "0e74a95f85af72c413b482ba87b8d9a59df2b2ed5ed1a0aad1f6b27d5bcfa193",
+      "git_blob": "23c24a2c861cfb0e6367a6f793dd4df38b9c6494"
+    },
+    {
+      "path": "checks/mcp-533-bypass/receipts/attempt1/node.txt",
+      "bytes": 9,
+      "sha256": "5a64071862e0a30c10895711c2317a83576c2999e2d255bf9d95756c466bd4ce",
+      "git_blob": "a3745049aade2dfe5d154d7af54cbaca976d51e7"
+    },
+    {
+      "path": "checks/mcp-533-bypass/receipts/attempt1/npm.txt",
+      "bytes": 7,
+      "sha256": "35217e32d288f09fea0fe2b8124665225fc00ac7ea72c312bb523db9950a13c4",
+      "git_blob": "51b288c12f97178f5c3b5303af210e65d00e726d"
+    },
+    {
+      "path": "checks/mcp-533-bypass/receipts/attempt1/prompts-list-rpc-error.json",
+      "bytes": 3679,
+      "sha256": "a722458892b5657d0fd4db804a5479ac73f54d3c9127730a59eb552d3215d274",
+      "git_blob": "29f3ae3cd1872364b3a4889b722bded25df8b403"
+    },
+    {
+      "path": "checks/mcp-533-bypass/receipts/attempt1/source-hashes.txt",
+      "bytes": 480,
+      "sha256": "5967f4bc586b57e0a893b05781cc74159f95a54678faa5c5306df8b26af06bfd",
+      "git_blob": "8c79cb69619debcb8903c753f6def802ad2e9da0"
+    },
+    {
+      "path": "checks/mcp-533-bypass/receipts/attempt1/source.txt",
+      "bytes": 41,
+      "sha256": "262165e907f8f247a65ab6164365edcc0e1b23e99ffd42ea873133db4a523507",
+      "git_blob": "1d2824cc1e35d10445edae1e3aac1a6ea742b6b1"
+    },
+    {
+      "path": "checks/mcp-533-bypass/receipts/attempt1/test.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "checks/mcp-533-bypass/receipts/attempt1/test.stdout",
+      "bytes": 70,
+      "sha256": "9868b7a4c7191bb6d328dade41b22322e226c186870b2baed76c32f3a0579cf3",
+      "git_blob": "6aba435eb4080d43a58c370f962b3527efafdd4e"
+    },
+    {
+      "path": "checks/mcp-533-bypass/receipts/attempt1/vitest.json",
+      "bytes": 5783,
+      "sha256": "9f39684161c9bee432e4ac26ce18410478a74ade81a158ce2f098da993b2786a",
+      "git_blob": "08dd7faf17afc9370e5e5d0c84c1165734fccd09"
+    },
+    {
+      "path": "checks/mcp-533-bypass/receipts/attempt2/elicitation-sep1034-defaults-late-ack.json",
+      "bytes": 1706,
+      "sha256": "42111f91025fcb56488f9cde6d9f6354fa9fcdcb7316fdfdf69a05522c8abbb7",
+      "git_blob": "08e5a92e8faf5434b9bbc747c491ba2a681dfdc1"
+    },
+    {
+      "path": "checks/mcp-533-bypass/receipts/attempt2/elicitation-sep1034-defaults-no-elicitation.json",
+      "bytes": 3648,
+      "sha256": "f821bfa86470fdf6af85799c765bfbb39e2b7d4ff7c9183fd4fda83442794a60",
+      "git_blob": "d2a6a059532910199e2b8c884401ac6d89c3a37e"
+    },
+    {
+      "path": "checks/mcp-533-bypass/receipts/attempt2/elicitation-sep1034-defaults-rpc-error.json",
+      "bytes": 3282,
+      "sha256": "b446910c5646d95b92c37b3137c383ef2e7fe3485639479af4459cdae3f37e1e",
+      "git_blob": "203526f9a2aaec7689cecf778c973b957dcbcd39"
+    },
+    {
+      "path": "checks/mcp-533-bypass/receipts/attempt2/elicitation-sep1330-enums-late-ack.json",
+      "bytes": 1700,
+      "sha256": "72c848945f708a73fc027cff9555cda3fd4b51435b27136c1ab57e2ed7943376",
+      "git_blob": "59ca751a490d625e22855eb28737233aed9a11df"
+    },
+    {
+      "path": "checks/mcp-533-bypass/receipts/attempt2/elicitation-sep1330-enums-no-elicitation.json",
+      "bytes": 3643,
+      "sha256": "f6e135944fb545786da5f1d460cd4c574e63f7bdaeaf0e39a6e2ddd5d5ba94ed",
+      "git_blob": "cc5b417e60bcb39c75014b9dc1ffe225d2a4e8ac"
+    },
+    {
+      "path": "checks/mcp-533-bypass/receipts/attempt2/elicitation-sep1330-enums-rpc-error.json",
+      "bytes": 3277,
+      "sha256": "33bffb759f72b65f8a8fec9cc4fbf9872936f999b25b0411de525d30fcb2a15c",
+      "git_blob": "62b892bd6f4e1e7b3bac28bd45511f93627505ae"
+    },
+    {
+      "path": "checks/mcp-533-bypass/receipts/attempt2/install.log",
+      "bytes": 241,
+      "sha256": "0e74a95f85af72c413b482ba87b8d9a59df2b2ed5ed1a0aad1f6b27d5bcfa193",
+      "git_blob": "23c24a2c861cfb0e6367a6f793dd4df38b9c6494"
+    },
+    {
+      "path": "checks/mcp-533-bypass/receipts/attempt2/node.txt",
+      "bytes": 9,
+      "sha256": "5a64071862e0a30c10895711c2317a83576c2999e2d255bf9d95756c466bd4ce",
+      "git_blob": "a3745049aade2dfe5d154d7af54cbaca976d51e7"
+    },
+    {
+      "path": "checks/mcp-533-bypass/receipts/attempt2/npm.txt",
+      "bytes": 7,
+      "sha256": "35217e32d288f09fea0fe2b8124665225fc00ac7ea72c312bb523db9950a13c4",
+      "git_blob": "51b288c12f97178f5c3b5303af210e65d00e726d"
+    },
+    {
+      "path": "checks/mcp-533-bypass/receipts/attempt2/prompts-list-rpc-error.json",
+      "bytes": 3624,
+      "sha256": "2a1b0bead5da487c41098c82b6d5b81bb8be812fc313d040c7ba19de609a89b2",
+      "git_blob": "8e03a4a842ed71cb1d1dc17dae05e44b2031779c"
+    },
+    {
+      "path": "checks/mcp-533-bypass/receipts/attempt2/source-hashes.txt",
+      "bytes": 480,
+      "sha256": "5967f4bc586b57e0a893b05781cc74159f95a54678faa5c5306df8b26af06bfd",
+      "git_blob": "8c79cb69619debcb8903c753f6def802ad2e9da0"
+    },
+    {
+      "path": "checks/mcp-533-bypass/receipts/attempt2/source.txt",
+      "bytes": 41,
+      "sha256": "262165e907f8f247a65ab6164365edcc0e1b23e99ffd42ea873133db4a523507",
+      "git_blob": "1d2824cc1e35d10445edae1e3aac1a6ea742b6b1"
+    },
+    {
+      "path": "checks/mcp-533-bypass/receipts/attempt2/test-exit-code.txt",
+      "bytes": 2,
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "git_blob": "d00491fd7e5bb6fa28c517a0bb32b8b506539d4d"
+    },
+    {
+      "path": "checks/mcp-533-bypass/receipts/attempt2/test.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "checks/mcp-533-bypass/receipts/attempt2/test.stdout",
+      "bytes": 70,
+      "sha256": "9868b7a4c7191bb6d328dade41b22322e226c186870b2baed76c32f3a0579cf3",
+      "git_blob": "6aba435eb4080d43a58c370f962b3527efafdd4e"
+    },
+    {
+      "path": "checks/mcp-533-bypass/receipts/attempt2/tracked-diff.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "checks/mcp-533-bypass/receipts/attempt2/vitest.json",
+      "bytes": 4375,
+      "sha256": "9c3dbab8af26e1e47f771032287d9d6d5673b4f9c233c8687cb5698970a2a28a",
+      "git_blob": "67a50311b5af6afbc295aab7470e63c209f6bcf9"
+    }
+  ]
+}

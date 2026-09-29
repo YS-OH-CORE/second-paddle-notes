@@ -1,0 +1,57 @@
+{
+  "mode": "late-ack",
+  "scenario": "elicitation-sep1330-enums",
+  "observation": {
+    "abandonedToolCalls": 1
+  },
+  "events": [
+    {
+      "method": "POST initialize",
+      "sid": "s1",
+      "protocol": "2025-11-25"
+    },
+    {
+      "method": "POST notifications/initialized",
+      "sid": "s1"
+    },
+    {
+      "method": "runner returned scenario-timeout"
+    },
+    {
+      "method": "GET",
+      "sid": "s1"
+    },
+    {
+      "method": "POST tools/call",
+      "sid": "s1"
+    }
+  ],
+  "firstChecks": [
+    {
+      "id": "scenario-timeout",
+      "name": "Scenario completes within the timeout",
+      "description": "The scenario must finish within the configured timeout. A server that accepts the connection but never responds leaves it running forever.",
+      "status": "FAILURE",
+      "timestamp": "2026-09-29T03:27:32.776Z",
+      "errorMessage": "Scenario 'elicitation-sep1330-enums' did not complete within 1000ms. The server under test accepted the connection but did not finish the exchange."
+    },
+    {
+      "id": "wire-schema-valid",
+      "name": "WireSchemaValid",
+      "description": "Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version",
+      "status": "SUCCESS",
+      "timestamp": "2026-09-29T03:27:32.776Z",
+      "specReferences": [
+        {
+          "id": "MCP-Schema",
+          "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/schema/2025-11-25/schema.json"
+        }
+      ],
+      "details": {
+        "messagesValidated": 3,
+        "violations": []
+      }
+    }
+  ],
+  "scope": "Observation at first post-timeout activity, not an eventual-cleanup claim"
+}
