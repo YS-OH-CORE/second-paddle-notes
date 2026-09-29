@@ -37,7 +37,6 @@
   "total_observations": 36,
   "nominal_conditions_completed": 18,
   "pressure_conditions_inconclusive": 18,
-  "distinct_configurations": 6,
   "repetitions_per_configuration": 3,
   "new_product_fix": false,
   "recipient_unpublished_patch_tested": false,
@@ -54,5 +53,14 @@
   "python": "3.12.10",
   "os": "Windows",
   "previous_component_evidence_remains_scoped": true,
-  "next_step": "Keep real-server applicability unresolved; await published recipient code or a separately reviewed environment that actually reaches the body-send suspension."
+  "next_step": "Keep real-server applicability unresolved; await published recipient code or a separately reviewed environment that actually reaches the body-send suspension.",
+  "recorded_matrix_cells": 12,
+  "matrix_dimensions": {
+    "launcher_payload_configurations": 3,
+    "pressure_conditions": 2,
+    "ownership_variants": 2,
+    "repetitions_per_cell": 3
+  },
+  "counting_note": "12 recorded matrix cells x 3 repetitions = 36 observations. Nominal settings repeat across launch configurations; this is not 12 distinct production scenarios.",
+  "metadata_correction": "Initial distinct_configurations=6 omitted the ownership dimension. Outcomes, 18 completed nominal observations and 18 unreached targets are unchanged."
 }

@@ -1,6 +1,6 @@
 # SSE lifecycle: real loopback check did not reproduce the selected send boundary
 
-**Zero × Youngseok Oh | 29 September 2026**
+**Zero 횞 Youngseok Oh | 29 September 2026**
 
 Follow-up to [the component-level observation](https://github.com/YS-OH-CORE/second-paddle-notes/tree/9f29dd26adb19db01f88ec27bdf4a3d0f5bf71f8/checks/vllm-58647-sse-lifecycle). This result narrows what can be claimed. It is not another production defect or a validated repair.
 
@@ -14,7 +14,7 @@ A real Uvicorn 0.52.4/h11 0.16.0 HTTP listener and client ran on **127.0.0.1 onl
 | Default event loop, 8 MiB data frame, transport pause counters | 6 completed with timely cleanup | 6 did not reach the target |
 | Explicit selector event loop, 8 MiB, transport pause counters | 6 completed with timely cleanup | 6 did not reach the target |
 
-Each row contains three repeats with and without explicit response-owner closing. Thus these are **36 observations**, not 36 unique regressions. In the 18 completed nominal cases, an actual client transport abort led to a real `http.disconnect`, timely upstream finalization and no remaining advance task before fixture cleanup. These paths advertised ASGI 2.3.
+Each row contains three repeats with and without explicit response-owner closing. The accounting is 3 launch/payload configurations × 2 pressure conditions × 2 ownership variants × 3 repeats = 36 observations. The initial summary metadata omitted the ownership dimension; that label is corrected without changing any outcome. Nominal settings repeat across launch configurations, so these are not independent new failure scenarios. Thus these are **36 observations**, not 36 unique regressions. In the 18 completed nominal cases, an actual client transport abort led to a real `http.disconnect`, timely upstream finalization and no remaining advance task before fixture cleanup. These paths advertised ASGI 2.3.
 
 The other 18 cases tried to hold body `send` pending by using a slow reader, small per-socket buffers and a bounded data frame. They failed to produce the intended sustained heartbeat-send suspension on this host. The instrumented runs recorded zero Uvicorn `pause_writing` callbacks. These cases are **inconclusive for the targeted failure**, not successes, not proof of absence and not observed server bugs. All three probe runs correctly returned exit **1**, and the original failed-target records are retained.
 
@@ -57,4 +57,4 @@ Original helper and framework code belong to their respective contributors. The 
 
 **Status: completed bounded experiment; real-server reproduction of the selected gap remains unestablished.**
 
-**Zero × Youngseok Oh**
+**Zero 횞 Youngseok Oh**
