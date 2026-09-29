@@ -6,7 +6,7 @@ Human–AI collaboration on reproducible failures, regression tests, reviewable 
 
 **한국어 소개는 아래에 있습니다.**
 
-**Evidence at a glance:** [Case 01: request-bound approvals](#case-01--keeping-an-approval-attached-to-its-own-request) · [Case 02: explicit stop handling and an E2E correction](#case-02--explicit-stop-handling-and-an-end-to-end-correction) · [Case 03: adopted TAM evaluation-report review](#case-03--checking-the-numbers-and-narrowing-the-claim) · [Case 04: recipient-confirmed Signal source review](#case-04--keeping-personal-notes-separate-from-agent-prompts) · [Case 05: adopted real-HTTP regression](#case-05--proving-http-recovery-through-the-real-transport) · [Case 06: explicit deletion failure](#case-06--keeping-unsupported-deletion-from-reporting-success)
+**Evidence at a glance:** [Case 01: request-bound approvals](#case-01--keeping-an-approval-attached-to-its-own-request) · [Case 02: explicit stop handling and an E2E correction](#case-02--explicit-stop-handling-and-an-end-to-end-correction) · [Case 03: adopted TAM evaluation-report review](#case-03--checking-the-numbers-and-narrowing-the-claim) · [Case 04: recipient-confirmed Signal source review](#case-04--keeping-personal-notes-separate-from-agent-prompts) · [Case 05: adopted real-HTTP regression](#case-05--proving-http-recovery-through-the-real-transport) · [Case 06: explicit deletion failure](#case-06--keeping-unsupported-deletion-from-reporting-success) | [Case 07: adopted MCP timeout correction](#case-07--closing-a-connection-that-arrives-after-its-deadline)
 
 ## Case 01 | Keeping an approval attached to its own request
 
@@ -179,6 +179,32 @@ For this page, the original JUnit reports, logs, archive checksum and source blo
 
 **Roles:** **BlueX888** reported the original fall-through defect. **Souptik96** authored the revised implementation and tests. **Youngseok Oh** supplied the collaboration direction and public account; **Zero (ChatGPT)** supplied the counterexample, execution and review. The [project's requirement for an accepted issue][mem0-gate] remains outstanding; maintainer acceptance, merge and release are not established. Original code and test licensing stays with those files.
 
+## Case 07 | Closing a connection that arrives after its deadline
+
+**Project:** Model Context Protocol conformance, PR #533  
+**Contribution:** a late-handshake counterexample, a runner correction, and one real-HTTP regression  
+**Evidence checked:** 2026-09-29 (KST)
+
+**Outcome:** PR author **aton-of-data** [confirmed integrating our commit under its existing authorship][mcp533-ack]. The author's current PR branch points to [the exact submitted commit `95dd2e2`][mcp533-received], credited to **Youngseok Oh / @YS-OH-CORE**. At this check, the [official PR][mcp533-pr] remains open and unmerged. This is confirmed incorporation into the submitting author's branch, not an official project merge or release.
+
+### The missing boundary
+
+The original PR closes sessions left open when a conformance scenario fails or times out. Our addition covers a connection whose SDK setup finishes **after** that timeout. A session can already exist on the server while the client is still waiting for the `notifications/initialized` acknowledgment. The cleanup sweep then has no returned connection to close. Once setup completes, the abandoned scenario can receive that connection and leave a session occupying the server's capacity.
+
+The contributed change records that the scenario finished, checks this before and after connection setup, and closes a late returned connection before handing it to the abandoned scenario. It preserves the author's original tracking and three tests. The commit changes the runner by **15 added / 5 removed lines** and adds one **166-line** regression using the real runner and SDK with a synthetic capacity-one HTTP server. [Submitted correction][mcp533-submitted] · [Test at the recipient's commit][mcp533-test]
+
+### Recipient verification and source identity
+
+In the [public response][mcp533-ack], aton-of-data reports their own clean-checkout run with Node 22.22.2: `npm run check` passes and `npm test` records **626 passed across 48 files**. They also report that the identical contributed regression fails on their original `a95deff` head, with a leaked session, an abandoned probe and a failed healthy successor; it passes with `95dd2e2`. Their eight pre-existing runner tests still pass.
+
+These are **the recipient's reported re-executions**, not new runs performed for this case page or a claim that their machine's full logs were independently audited. The recipient explicitly did not rerun our separate 94-assertion TypeScript/Go capacity matrix or our fork CI. Those older executions remain linked in [the original handoff][mcp533-handoff] and [reproduction record][mcp533-evidence], rather than being counted as fresh recipient results.
+
+We verified the recipient branch's exact commit, parent, Git author and complete source-tree identity against our submitted commit. The adopted regression has Git blob `74943a4dcc926d702251abf1882f615087d9bf58`; the complete tree is `ebdb44df64e66dbf9b2060c8137e4ca360e560ee`. These are source-identity checks, not new test execution. [Machine-readable evidence](work/mcp-late-session-adoption.evidence.json)
+
+**Roles and limits:** Youngseok Oh sets the collaboration's direction and provides the public account; Zero supplies substantial technical analysis, implementation, testing and drafting. aton-of-data authored the initial cleanup and three tests, incorporated the follow-up and reported their separate checks. A bootstrap that never resolves is not cancelled by this correction. Five scenarios bypassing `ctx.connect` remain outside its scope; routing them through the factory can change transport selection by protocol version and is a separate decision. The official maintainers retain the merge decision.
+
+**Inspect the chain:** [Submitted code and tests][mcp533-submitted] → [Recipient's verification and credit][mcp533-ack] → [Identical commit on the recipient's branch][mcp533-received] → [Current official PR status][mcp533-pr].
+
 ## A useful starting point for collaboration
 
 A good first case is a public, reproducible agent behavior that differs from the user's actual request, or a published evaluation claim with question-level results that can be checked. Provide the exact revision, a small synthetic example or public result file, the expected behavior or claim, and the observed result. That makes it possible to choose a reproduction, regression test, narrow patch, or saved-result audit.
@@ -265,6 +291,18 @@ Keep credentials, private conversations, and personal records out of public issu
 
 [PR #7464][mem0-pr]는 이슈 수락 표시를 기다리는 절차에 따라 닫혀 있고, 기록된 head는 이전 `cec74a8e`입니다. 검증한 후속 코드는 상대의 개인 저장소에 있으며, 공식 병합·배포는 확인되지 않았습니다. 원래 결함 제보는 **BlueX888**, 수정 구현과 검사는 **Souptik96**의 기여입니다. **영석**은 협업 방향과 공개 계정을, **Zero**는 반례·실행·후속 검증을 맡았습니다.
 
+### 사례 07 | 제한시간 뒤에 연결이 끝나는 경우를 고쳐 원작성자 브랜치에 반영함
+
+**2026년 9월 29일 한국시간 기준으로 확인했습니다.** MCP 호환성 검증 도구의 PR #533 작성자 **aton-of-data**는 우리 수정 커밋을 자기 브랜치에 그대로 받아 넣고, **Youngseok Oh / @YS-OH-CORE의 저자 기록을 유지했다**고 [공개 답변했습니다][mcp533-ack]. 실제 [상대 브랜치의 커밋][mcp533-received]과 우리 제출본의 전체 소스 트리가 같은 것도 대조했습니다. [공식 PR][mcp533-pr]은 아직 열려 있고 미병합입니다.
+
+원래 수정안은 검사가 실패하거나 제한시간을 넘기면 남은 연결을 닫는 작업이었습니다. 우리가 보탠 것은 **서버에는 세션이 이미 생겼지만, 클라이언트의 연결 준비가 제한시간 뒤에 끝나는 경우**입니다. 정리 시점에는 아직 반환된 연결이 없어서 놓치고, 나중에 끝난 연결이 버려진 검사에 넘어갈 수 있었습니다. 세션 허용 수가 적은 서버에서는 그 연결이 자리를 차지해 정상적인 다음 검사까지 실패하게 만들었습니다.
+
+수정은 검사 종료 상태를 연결 준비 전후에 확인하고, 늦게 반환된 연결을 버려진 검사에 넘기기 전에 닫습니다. 원작성자의 기존 구현과 검사 세 개를 유지하면서 실행 코드 **15줄 추가·5줄 삭제**, 실제 실행기와 SDK를 사용하는 회귀 검사 한 개를 보탰습니다. [수정과 재현 코드][mcp533-submitted]
+
+작성자는 새 작업 폴더에서 **48개 파일의 검사 626개 통과**와 형식·타입 등의 검사 성공을 직접 확인했다고 보고했습니다. 또 우리 회귀 검사를 자기 수정 전 판본에 그대로 옮기면 세션 누수와 다음 정상 검사의 실패가 재현되고, 보완본에서는 통과한다고 설명했습니다. 이는 **상대가 공개한 재실행 결과**이며, 이 소개글을 작성하며 우리가 다시 실행한 숫자는 아닙니다. 상대는 별도의 94개 조건 실험과 우리 포크 CI는 재실행하지 않았다고 구분했습니다. [검증 범위와 기여 확인][mcp533-ack]
+
+이번에 확인한 성과는 **수정 코드·검사의 실제 반영, 기존 저자 기록 보존, 상대의 별도 검증 보고**입니다. 연결 준비가 영원히 끝나지 않는 경우와 공통 연결 함수를 거치지 않는 다섯 검사 경로는 남은 범위입니다. 영석의 방향·계정, Zero의 분석·구현·검사 지원, aton-of-data의 원래 구현·통합·재검증을 구분하고, 공식 프로젝트의 병합·배포나 기관의 보증으로 확대하지 않습니다. [기계가 읽을 수 있는 근거 기록](work/mcp-late-session-adoption.evidence.json)
+
 관련 협업을 제안할 때는 공개해도 되는 작은 재현 예시와 코드 버전, 기대한 결과와 실제 결과를 [이슈](https://github.com/YS-OH-CORE/second-paddle-notes/issues/new)에 남겨 주세요. 소개글의 설명보다 원문 답변, 코드, 검사 자료를 먼저 확인할 수 있도록 구성했습니다.
 
 *This case page was written with Zero (ChatGPT) for Youngseok Oh. It reuses public contribution evidence, not private correspondence. Original code and test licensing remain with their existing files; this page does not relicense them.*
@@ -314,3 +352,11 @@ Keep credentials, private conversations, and personal records out of public issu
 [mem0-pr]: https://github.com/mem0ai/mem0/pull/7464
 [mem0-gate]: https://github.com/mem0ai/mem0/pull/7464#issuecomment-5843251973
 [mem0-report]: https://github.com/YS-OH-CORE/second-paddle-notes/blob/5bf5a87d001dccae3a83293b11bdc417146fac3c/checks/mem0-7464-recipient-followup/README.md
+
+[mcp533-pr]: https://github.com/modelcontextprotocol/conformance/pull/533
+[mcp533-ack]: https://github.com/modelcontextprotocol/conformance/pull/533#issuecomment-5880560542
+[mcp533-received]: https://github.com/aton-of-data/conformance/commit/95dd2e2c64c7173e5f3ddfada7b03512f88eef89
+[mcp533-submitted]: https://github.com/YS-OH-CORE/conformance/commit/95dd2e2c64c7173e5f3ddfada7b03512f88eef89
+[mcp533-test]: https://github.com/aton-of-data/conformance/blob/95dd2e2c64c7173e5f3ddfada7b03512f88eef89/src/runner/server.session-lifetime.test.ts
+[mcp533-handoff]: https://github.com/modelcontextprotocol/conformance/pull/533#issuecomment-5865788690
+[mcp533-evidence]: https://github.com/YS-OH-CORE/second-paddle-notes/tree/48fb4e6da4567ba4f0594a753079cc111b5f1413/checks/mcp-533-session-lifetime

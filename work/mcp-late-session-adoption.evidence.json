@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "checked_at_utc": "2026-09-29T02:59:51.589301+00:00",
+  "case": "mcp-533-late-session-adoption",
+  "stage": "incorporated_in_recipient_pr_branch_not_upstream_merged",
+  "pr": {
+    "url": "https://github.com/modelcontextprotocol/conformance/pull/533",
+    "state": "open",
+    "merged": false,
+    "head_sha": "95dd2e2c64c7173e5f3ddfada7b03512f88eef89",
+    "head_repository": "aton-of-data/conformance"
+  },
+  "recipient_acknowledgment": {
+    "url": "https://github.com/modelcontextprotocol/conformance/pull/533#issuecomment-5880560542",
+    "author": "aton-of-data",
+    "created_at": "2026-09-28T23:24:05Z",
+    "updated_at": "2026-09-28T23:24:05Z"
+  },
+  "adopted_commit": {
+    "sha": "95dd2e2c64c7173e5f3ddfada7b03512f88eef89",
+    "author_name": "Youngseok Oh",
+    "author_login": "YS-OH-CORE",
+    "parent_sha": "a95deff303dc2221654fe4331daf657e0f2ac690",
+    "tree_sha": "ebdb44df64e66dbf9b2060c8137e4ca360e560ee",
+    "same_submitted_tree": true,
+    "files": [
+      {
+        "path": "src/runner/server.session-lifetime.test.ts",
+        "git_blob": "74943a4dcc926d702251abf1882f615087d9bf58",
+        "sha256": "ca7e920dd8b3c7a156dc35d5d41a62afe0ebca7050cc72c288a41dc8b1ce0a18",
+        "same_bytes_in_both_repositories": true,
+        "additions": 166,
+        "deletions": 0
+      },
+      {
+        "path": "src/runner/server.ts",
+        "git_blob": "dba5ecff2b0bcff39471b0d69af0310c58fee7fc",
+        "sha256": "604d0203639951868d7f7ecebb96de2d97a7b4e97a1fef452c59f68280ebbd54",
+        "same_bytes_in_both_repositories": true,
+        "additions": 15,
+        "deletions": 5
+      }
+    ]
+  },
+  "recipient_reported_checks": {
+    "provenance": "Public statement by aton-of-data; local logs not independently audited",
+    "node": "22.22.2",
+    "npm_run_check": "reported clean",
+    "npm_test_passed": 626,
+    "test_files": 48,
+    "same_regression_fails_on_parent": true,
+    "same_regression_passes_on_adopted_commit": true,
+    "separate_94_assertion_matrix_rerun_by_recipient": false,
+    "fork_ci_rerun_by_recipient": false
+  },
+  "new_runtime_execution_for_this_record": false,
+  "original_handoff": "https://github.com/modelcontextprotocol/conformance/pull/533#issuecomment-5865788690",
+  "original_evidence": "https://github.com/YS-OH-CORE/second-paddle-notes/tree/48fb4e6da4567ba4f0594a753079cc111b5f1413/checks/mcp-533-session-lifetime",
+  "limits": [
+    "A permanently unresolved bootstrap is not cancelled",
+    "Five scenario paths bypass ctx.connect",
+    "Changing bypass transport selection requires a separate scoped decision",
+    "No upstream merge, release, institutional endorsement or paid engagement established"
+  ],
+  "signature": "Zero × Youngseok Oh"
+}
