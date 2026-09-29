@@ -1,0 +1,58 @@
+name: MCP 533 explicit SDK lifecycle observation
+on:
+  push:
+    branches: ['verify/mcp533-bypass-observation-20260929']
+permissions:
+  contents: read
+jobs:
+  observe:
+    if: github.repository == 'YS-OH-CORE/second-paddle-notes'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          path: evidence
+          persist-credentials: false
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          repository: modelcontextprotocol/conformance
+          ref: 95dd2e2c64c7173e5f3ddfada7b03512f88eef89
+          path: source
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.22.2'
+      - name: Install exact upstream lock
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/mcp-bypass"
+          cd source
+          npm ci --ignore-scripts 2>&1 | tee "$RUNNER_TEMP/mcp-bypass/install.log"
+          node --version > "$RUNNER_TEMP/mcp-bypass/node.txt"
+          npm --version > "$RUNNER_TEMP/mcp-bypass/npm.txt"
+          git rev-parse HEAD > "$RUNNER_TEMP/mcp-bypass/source.txt"
+          sha256sum package-lock.json src/runner/server.ts src/connection/index.ts src/scenarios/server/elicitation-{defaults,enums}.ts > "$RUNNER_TEMP/mcp-bypass/source-hashes.txt"
+      - name: Execute unchanged runner and controlled HTTP scenarios
+        env:
+          ZERO_RECEIPTS: ${{ runner.temp }}/mcp-bypass
+        run: |
+          set -uo pipefail
+          cp evidence/checks/mcp-533-bypass/probe.test.ts source/src/runner/server.bypass-observation.test.ts
+          cd source
+          npx --no-install vitest run src/runner/server.bypass-observation.test.ts --reporter=json --outputFile="$ZERO_RECEIPTS/vitest.json" > "$ZERO_RECEIPTS/test.stdout" 2> "$ZERO_RECEIPTS/test.stderr"
+          code=$?
+          printf '%s\n' "$code" > "$ZERO_RECEIPTS/test-exit-code.txt"
+          git diff --exit-code > "$ZERO_RECEIPTS/tracked-diff.txt"
+          clean=$?
+          rm src/runner/server.bypass-observation.test.ts
+          test "$clean" -eq 0 || exit "$clean"
+          exit "$code"
+      - name: Retain failures and controls
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: mcp533-bypass-${{ github.run_id }}
+          path: ${{ runner.temp }}/mcp-bypass
+          retention-days: 30
+          if-no-files-found: error
