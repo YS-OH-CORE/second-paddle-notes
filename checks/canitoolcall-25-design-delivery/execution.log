@@ -1,0 +1,1517 @@
+## setup stdout
+
+## setup stderr
+Using CPython 3.12.10 interpreter at: [HOME]\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\python.exe
+Creating virtual environment at: [WORKDIR]\venv
+   Building canitoolcall @ file:///[WORKDIR]/canitoolcall-b5795bcbbecab56d3b7b9ea61de36232ede046a0
+Downloading pygments (1.2MiB)
+Downloading ast-serialize (1.1MiB)
+Downloading mypy (10.7MiB)
+Downloading ruff (10.1MiB)
+ Downloaded ast-serialize
+ Downloaded pygments
+      Built canitoolcall @ file:///[WORKDIR]/canitoolcall-b5795bcbbecab56d3b7b9ea61de36232ede046a0
+ Downloaded ruff
+ Downloaded mypy
+Prepared 22 packages in 2.82s
+Installed 22 packages in 1.34s
+ + ast-serialize==0.11.2
+ + attrs==26.1.0
+ + canitoolcall==0.2.0.dev0 (from file:///[WORKDIR]/canitoolcall-b5795bcbbecab56d3b7b9ea61de36232ede046a0)
+ + colorama==0.4.6
+ + iniconfig==2.3.0
+ + jinja2==3.1.6
+ + jsonschema==4.26.0
+ + jsonschema-specifications==2025.9.1
+ + librt==0.15.0
+ + markupsafe==3.0.3
+ + mypy==2.3.1
+ + mypy-extensions==1.1.0
+ + packaging==26.3
+ + pathspec==1.1.1
+ + pluggy==1.6.0
+ + pygments==2.21.0
+ + pytest==9.1.1
+ + referencing==0.37.0
+ + rpds-py==2026.6.3
+ + ruff==0.16.9
+ + types-jsonschema==4.26.0.20260518
+ + typing-extensions==4.16.0
+
+## lint stdout
+All checks passed!
+
+## lint stderr
+
+## format stdout
+68 files already formatted
+
+## format stderr
+
+## types stdout
+Success: no issues found in 19 source files
+
+## types stderr
+
+## tests stdout
+......FFFF.sssssssssssss..............................ssssssssssssssssss [  8%]
+ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss [ 17%]
+ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss [ 25%]
+ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss [ 34%]
+sssssssssssssssssssssssssssssssssssss.................................ss [ 42%]
+ssssssssssssssssssssssssssssssssssssssssssssssssssssssss...............s [ 51%]
+sssss........................................ssssssssssssssssss......... [ 60%]
+.s...................................................................... [ 68%]
+........................................................................ [ 77%]
+................................................................F....... [ 85%]
+....................F................................................... [ 94%]
+...............................................                          [100%]
+================================== FAILURES ===================================
+____________________________ test_harness_process _____________________________
+
+tmp_path = WindowsPath('[HOME]/AppData/Local/Temp/pytest-of-unknown/pytest-1/test_harness_process0')
+
+    def test_harness_process(tmp_path: Path) -> None:
+        script, _ = _fake_harness(tmp_path, {"hello": HELLO})
+        h = Harness(script)
+>       assert h.request({"op": "hello"})["commit"] == "a25c986"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\adapters\test_llamacpp.py:173: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\canitoolcall\adapters\llamacpp.py:199: in request
+    proc = self._start()
+           ^^^^^^^^^^^^^
+src\canitoolcall\adapters\llamacpp.py:186: in _start
+    self._proc = subprocess.Popen(
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\subprocess.py:1026: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <Popen: returncode: None args: ['[HOME]\\AppData\\Local\\Temp\\pyt...>
+args = '[HOME]\\AppData\\Local\\Temp\\pytest-of-unknown\\pytest-1\\test_harness_process0\\fake-harness'
+executable = None, preexec_fn = None, close_fds = False, pass_fds = ()
+cwd = None, env = None
+startupinfo = <subprocess.STARTUPINFO object at 0x000001FF5D20CE30>
+creationflags = 0, shell = False, p2cread = Handle(1268), p2cwrite = 12
+c2pread = 13, c2pwrite = Handle(1236), errread = -1, errwrite = Handle(1264)
+unused_restore_signals = True, unused_gid = None, unused_gids = None
+unused_uid = None, unused_umask = -1, unused_start_new_session = False
+unused_process_group = -1
+
+    def _execute_child(self, args, executable, preexec_fn, close_fds,
+                       pass_fds, cwd, env,
+                       startupinfo, creationflags, shell,
+                       p2cread, p2cwrite,
+                       c2pread, c2pwrite,
+                       errread, errwrite,
+                       unused_restore_signals,
+                       unused_gid, unused_gids, unused_uid,
+                       unused_umask,
+                       unused_start_new_session, unused_process_group):
+        """Execute program (MS Windows version)"""
+    
+        assert not pass_fds, "pass_fds not supported on Windows."
+    
+        if isinstance(args, str):
+            pass
+        elif isinstance(args, bytes):
+            if shell:
+                raise TypeError('bytes args is not allowed on Windows')
+            args = list2cmdline([args])
+        elif isinstance(args, os.PathLike):
+            if shell:
+                raise TypeError('path-like args is not allowed when '
+                                'shell is true')
+            args = list2cmdline([args])
+        else:
+            args = list2cmdline(args)
+    
+        if executable is not None:
+            executable = os.fsdecode(executable)
+    
+        # Process startup details
+        if startupinfo is None:
+            startupinfo = STARTUPINFO()
+        else:
+            # bpo-34044: Copy STARTUPINFO since it is modified above,
+            # so the caller can reuse it multiple times.
+            startupinfo = startupinfo.copy()
+    
+        use_std_handles = -1 not in (p2cread, c2pwrite, errwrite)
+        if use_std_handles:
+            startupinfo.dwFlags |= _winapi.STARTF_USESTDHANDLES
+            startupinfo.hStdInput = p2cread
+            startupinfo.hStdOutput = c2pwrite
+            startupinfo.hStdError = errwrite
+    
+        attribute_list = startupinfo.lpAttributeList
+        have_handle_list = bool(attribute_list and
+                                "handle_list" in attribute_list and
+                                attribute_list["handle_list"])
+    
+        # If we were given an handle_list or need to create one
+        if have_handle_list or (use_std_handles and close_fds):
+            if attribute_list is None:
+                attribute_list = startupinfo.lpAttributeList = {}
+            handle_list = attribute_list["handle_list"] = \
+                list(attribute_list.get("handle_list", []))
+    
+            if use_std_handles:
+                handle_list += [int(p2cread), int(c2pwrite), int(errwrite)]
+    
+            handle_list[:] = self._filter_handle_list(handle_list)
+    
+            if handle_list:
+                if not close_fds:
+                    warnings.warn("startupinfo.lpAttributeList['handle_list'] "
+                                  "overriding close_fds", RuntimeWarning)
+    
+                # When using the handle_list we always request to inherit
+                # handles but the only handles that will be inherited are
+                # the ones in the handle_list
+                close_fds = False
+    
+        if shell:
+            startupinfo.dwFlags |= _winapi.STARTF_USESHOWWINDOW
+            startupinfo.wShowWindow = _winapi.SW_HIDE
+            if not executable:
+                # gh-101283: without a fully-qualified path, before Windows
+                # checks the system directories, it first looks in the
+                # application directory, and also the current directory if
+                # NeedCurrentDirectoryForExePathW(ExeName) is true, so try
+                # to avoid executing unqualified "cmd.exe".
+                comspec = os.environ.get('ComSpec')
+                if not comspec:
+                    system_root = os.environ.get('SystemRoot', '')
+                    comspec = os.path.join(system_root, 'System32', 'cmd.exe')
+                    if not os.path.isabs(comspec):
+                        raise FileNotFoundError('shell not found: neither %ComSpec% nor %SystemRoot% is set')
+                if os.path.isabs(comspec):
+                    executable = comspec
+            else:
+                comspec = executable
+    
+            args = '{} /c "{}"'.format (comspec, args)
+    
+        if cwd is not None:
+            cwd = os.fsdecode(cwd)
+    
+        sys.audit("subprocess.Popen", executable, args, cwd, env)
+    
+        # Start the process
+        try:
+>           hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                                     # no special security
+                                     None, None,
+                                     int(not close_fds),
+                                     creationflags,
+                                     env,
+                                     cwd,
+                                     startupinfo)
+E                                    OSError: [WinError 193] %1은(는) 올바른 Win32 응용 프로그램이 아닙니다
+
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\subprocess.py:1538: OSError
+___________________ test_version_is_checked_against_the_pin ___________________
+
+tmp_path = WindowsPath('[HOME]/AppData/Local/Temp/pytest-of-unknown/pytest-1/test_version_is_checked_agains0')
+
+    def test_version_is_checked_against_the_pin(tmp_path: Path) -> None:
+        script, _ = _fake_harness(tmp_path, {"hello": HELLO})
+        a = LlamaCppAdapter(harness=script, gguf_dir=tmp_path)
+>       assert a.version() == PIN[:8]
+               ^^^^^^^^^^^
+
+tests\adapters\test_llamacpp.py:187: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\canitoolcall\adapters\llamacpp.py:319: in version
+    commit = str(self._hello_reply().get("commit", ""))
+                 ^^^^^^^^^^^^^^^^^^^
+src\canitoolcall\adapters\llamacpp.py:308: in _hello_reply
+    reply = self._h().request({"op": "hello"})
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\canitoolcall\adapters\llamacpp.py:199: in request
+    proc = self._start()
+           ^^^^^^^^^^^^^
+src\canitoolcall\adapters\llamacpp.py:186: in _start
+    self._proc = subprocess.Popen(
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\subprocess.py:1026: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <Popen: returncode: None args: ['[HOME]\\AppData\\Local\\Temp\\pyt...>
+args = '[HOME]\\AppData\\Local\\Temp\\pytest-of-unknown\\pytest-1\\test_version_is_checked_agains0\\fake-harness'
+executable = None, preexec_fn = None, close_fds = False, pass_fds = ()
+cwd = None, env = None
+startupinfo = <subprocess.STARTUPINFO object at 0x000001FF5D20EED0>
+creationflags = 0, shell = False, p2cread = Handle(1236), p2cwrite = 12
+c2pread = 13, c2pwrite = Handle(1424), errread = -1, errwrite = Handle(1500)
+unused_restore_signals = True, unused_gid = None, unused_gids = None
+unused_uid = None, unused_umask = -1, unused_start_new_session = False
+unused_process_group = -1
+
+    def _execute_child(self, args, executable, preexec_fn, close_fds,
+                       pass_fds, cwd, env,
+                       startupinfo, creationflags, shell,
+                       p2cread, p2cwrite,
+                       c2pread, c2pwrite,
+                       errread, errwrite,
+                       unused_restore_signals,
+                       unused_gid, unused_gids, unused_uid,
+                       unused_umask,
+                       unused_start_new_session, unused_process_group):
+        """Execute program (MS Windows version)"""
+    
+        assert not pass_fds, "pass_fds not supported on Windows."
+    
+        if isinstance(args, str):
+            pass
+        elif isinstance(args, bytes):
+            if shell:
+                raise TypeError('bytes args is not allowed on Windows')
+            args = list2cmdline([args])
+        elif isinstance(args, os.PathLike):
+            if shell:
+                raise TypeError('path-like args is not allowed when '
+                                'shell is true')
+            args = list2cmdline([args])
+        else:
+            args = list2cmdline(args)
+    
+        if executable is not None:
+            executable = os.fsdecode(executable)
+    
+        # Process startup details
+        if startupinfo is None:
+            startupinfo = STARTUPINFO()
+        else:
+            # bpo-34044: Copy STARTUPINFO since it is modified above,
+            # so the caller can reuse it multiple times.
+            startupinfo = startupinfo.copy()
+    
+        use_std_handles = -1 not in (p2cread, c2pwrite, errwrite)
+        if use_std_handles:
+            startupinfo.dwFlags |= _winapi.STARTF_USESTDHANDLES
+            startupinfo.hStdInput = p2cread
+            startupinfo.hStdOutput = c2pwrite
+            startupinfo.hStdError = errwrite
+    
+        attribute_list = startupinfo.lpAttributeList
+        have_handle_list = bool(attribute_list and
+                                "handle_list" in attribute_list and
+                                attribute_list["handle_list"])
+    
+        # If we were given an handle_list or need to create one
+        if have_handle_list or (use_std_handles and close_fds):
+            if attribute_list is None:
+                attribute_list = startupinfo.lpAttributeList = {}
+            handle_list = attribute_list["handle_list"] = \
+                list(attribute_list.get("handle_list", []))
+    
+            if use_std_handles:
+                handle_list += [int(p2cread), int(c2pwrite), int(errwrite)]
+    
+            handle_list[:] = self._filter_handle_list(handle_list)
+    
+            if handle_list:
+                if not close_fds:
+                    warnings.warn("startupinfo.lpAttributeList['handle_list'] "
+                                  "overriding close_fds", RuntimeWarning)
+    
+                # When using the handle_list we always request to inherit
+                # handles but the only handles that will be inherited are
+                # the ones in the handle_list
+                close_fds = False
+    
+        if shell:
+            startupinfo.dwFlags |= _winapi.STARTF_USESHOWWINDOW
+            startupinfo.wShowWindow = _winapi.SW_HIDE
+            if not executable:
+                # gh-101283: without a fully-qualified path, before Windows
+                # checks the system directories, it first looks in the
+                # application directory, and also the current directory if
+                # NeedCurrentDirectoryForExePathW(ExeName) is true, so try
+                # to avoid executing unqualified "cmd.exe".
+                comspec = os.environ.get('ComSpec')
+                if not comspec:
+                    system_root = os.environ.get('SystemRoot', '')
+                    comspec = os.path.join(system_root, 'System32', 'cmd.exe')
+                    if not os.path.isabs(comspec):
+                        raise FileNotFoundError('shell not found: neither %ComSpec% nor %SystemRoot% is set')
+                if os.path.isabs(comspec):
+                    executable = comspec
+            else:
+                comspec = executable
+    
+            args = '{} /c "{}"'.format (comspec, args)
+    
+        if cwd is not None:
+            cwd = os.fsdecode(cwd)
+    
+        sys.audit("subprocess.Popen", executable, args, cwd, env)
+    
+        # Start the process
+        try:
+>           hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                                     # no special security
+                                     None, None,
+                                     int(not close_fds),
+                                     creationflags,
+                                     env,
+                                     cwd,
+                                     startupinfo)
+E                                    OSError: [WinError 193] %1은(는) 올바른 Win32 응용 프로그램이 아닙니다
+
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\subprocess.py:1538: OSError
+___________________ test_parse_mapping_and_template_choice ____________________
+
+tmp_path = WindowsPath('[HOME]/AppData/Local/Temp/pytest-of-unknown/pytest-1/test_parse_mapping_and_templat0')
+
+    def test_parse_mapping_and_template_choice(tmp_path: Path) -> None:
+        gguf_dir, src = _setup_engine_dirs(tmp_path)
+        script, log = _fake_harness(
+            tmp_path,
+            {
+                "hello": HELLO,
+                "replay": REPLAY_OK,
+                "template_probe": {"ok": True, "config": {"gguf_has_template": False, "template_source": "chatml"}},
+            },
+        )
+        a = LlamaCppAdapter(harness=script, gguf_dir=gguf_dir, source_dir=src)
+        raw = ReplayInput(
+            "fam/x",
+            "qwen3-hermes",
+            "org/m",
+            "raw",
+            token_ids=(1, 2, 3),
+            tokenizer=TokenizerPin("org/m", "r1"),
+            thinking=True,
+            stop_tokens=("</s>",),
+        )
+        tools = [{"type": "function", "function": {"name": "f", "parameters": {}}}]
+    
+        assert a.units(raw) == [1, 2, 3]
+>       stream = a.parse_stream(raw, [[1], [2, 3]], tools)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\adapters\test_llamacpp.py:243: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\canitoolcall\adapters\llamacpp.py:618: in parse_stream
+    template=self._choose(raw, self._vocab(raw)),
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\canitoolcall\adapters\llamacpp.py:441: in _choose
+    cands = self._candidates(raw, vocab)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\canitoolcall\adapters\llamacpp.py:406: in _candidates
+    has_template, sha = self._gguf_template(vocab)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\canitoolcall\adapters\llamacpp.py:382: in _gguf_template
+    reply = self._h().request(
+src\canitoolcall\adapters\llamacpp.py:199: in request
+    proc = self._start()
+           ^^^^^^^^^^^^^
+src\canitoolcall\adapters\llamacpp.py:186: in _start
+    self._proc = subprocess.Popen(
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\subprocess.py:1026: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <Popen: returncode: None args: ['[HOME]\\AppData\\Local\\Temp\\pyt...>
+args = '[HOME]\\AppData\\Local\\Temp\\pytest-of-unknown\\pytest-1\\test_parse_mapping_and_templat0\\fake-harness'
+executable = None, preexec_fn = None, close_fds = False, pass_fds = ()
+cwd = None, env = None
+startupinfo = <subprocess.STARTUPINFO object at 0x000001FF5D20CF20>
+creationflags = 0, shell = False, p2cread = Handle(1480), p2cwrite = 12
+c2pread = 13, c2pwrite = Handle(1424), errread = -1, errwrite = Handle(1500)
+unused_restore_signals = True, unused_gid = None, unused_gids = None
+unused_uid = None, unused_umask = -1, unused_start_new_session = False
+unused_process_group = -1
+
+    def _execute_child(self, args, executable, preexec_fn, close_fds,
+                       pass_fds, cwd, env,
+                       startupinfo, creationflags, shell,
+                       p2cread, p2cwrite,
+                       c2pread, c2pwrite,
+                       errread, errwrite,
+                       unused_restore_signals,
+                       unused_gid, unused_gids, unused_uid,
+                       unused_umask,
+                       unused_start_new_session, unused_process_group):
+        """Execute program (MS Windows version)"""
+    
+        assert not pass_fds, "pass_fds not supported on Windows."
+    
+        if isinstance(args, str):
+            pass
+        elif isinstance(args, bytes):
+            if shell:
+                raise TypeError('bytes args is not allowed on Windows')
+            args = list2cmdline([args])
+        elif isinstance(args, os.PathLike):
+            if shell:
+                raise TypeError('path-like args is not allowed when '
+                                'shell is true')
+            args = list2cmdline([args])
+        else:
+            args = list2cmdline(args)
+    
+        if executable is not None:
+            executable = os.fsdecode(executable)
+    
+        # Process startup details
+        if startupinfo is None:
+            startupinfo = STARTUPINFO()
+        else:
+            # bpo-34044: Copy STARTUPINFO since it is modified above,
+            # so the caller can reuse it multiple times.
+            startupinfo = startupinfo.copy()
+    
+        use_std_handles = -1 not in (p2cread, c2pwrite, errwrite)
+        if use_std_handles:
+            startupinfo.dwFlags |= _winapi.STARTF_USESTDHANDLES
+            startupinfo.hStdInput = p2cread
+            startupinfo.hStdOutput = c2pwrite
+            startupinfo.hStdError = errwrite
+    
+        attribute_list = startupinfo.lpAttributeList
+        have_handle_list = bool(attribute_list and
+                                "handle_list" in attribute_list and
+                                attribute_list["handle_list"])
+    
+        # If we were given an handle_list or need to create one
+        if have_handle_list or (use_std_handles and close_fds):
+            if attribute_list is None:
+                attribute_list = startupinfo.lpAttributeList = {}
+            handle_list = attribute_list["handle_list"] = \
+                list(attribute_list.get("handle_list", []))
+    
+            if use_std_handles:
+                handle_list += [int(p2cread), int(c2pwrite), int(errwrite)]
+    
+            handle_list[:] = self._filter_handle_list(handle_list)
+    
+            if handle_list:
+                if not close_fds:
+                    warnings.warn("startupinfo.lpAttributeList['handle_list'] "
+                                  "overriding close_fds", RuntimeWarning)
+    
+                # When using the handle_list we always request to inherit
+                # handles but the only handles that will be inherited are
+                # the ones in the handle_list
+                close_fds = False
+    
+        if shell:
+            startupinfo.dwFlags |= _winapi.STARTF_USESHOWWINDOW
+            startupinfo.wShowWindow = _winapi.SW_HIDE
+            if not executable:
+                # gh-101283: without a fully-qualified path, before Windows
+                # checks the system directories, it first looks in the
+                # application directory, and also the current directory if
+                # NeedCurrentDirectoryForExePathW(ExeName) is true, so try
+                # to avoid executing unqualified "cmd.exe".
+                comspec = os.environ.get('ComSpec')
+                if not comspec:
+                    system_root = os.environ.get('SystemRoot', '')
+                    comspec = os.path.join(system_root, 'System32', 'cmd.exe')
+                    if not os.path.isabs(comspec):
+                        raise FileNotFoundError('shell not found: neither %ComSpec% nor %SystemRoot% is set')
+                if os.path.isabs(comspec):
+                    executable = comspec
+            else:
+                comspec = executable
+    
+            args = '{} /c "{}"'.format (comspec, args)
+    
+        if cwd is not None:
+            cwd = os.fsdecode(cwd)
+    
+        sys.audit("subprocess.Popen", executable, args, cwd, env)
+    
+        # Start the process
+        try:
+>           hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                                     # no special security
+                                     None, None,
+                                     int(not close_fds),
+                                     creationflags,
+                                     env,
+                                     cwd,
+                                     startupinfo)
+E                                    OSError: [WinError 193] %1은(는) 올바른 Win32 응용 프로그램이 아닙니다
+
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\subprocess.py:1538: OSError
+_______________________ test_engine_errors_are_outcomes _______________________
+
+tmp_path = WindowsPath('[HOME]/AppData/Local/Temp/pytest-of-unknown/pytest-1/test_engine_errors_are_outcome0')
+
+    def test_engine_errors_are_outcomes(tmp_path: Path) -> None:
+        gguf_dir, src = _setup_engine_dirs(tmp_path)
+        script, log = _fake_harness(
+            tmp_path,
+            {
+                "hello": HELLO,
+                "replay": {"ok": True, "config": {"format": "peg-native"}, "engine_error": "chat template: boom"},
+                "template_probe": {"ok": True, "config": {"gguf_has_template": True, "template_source": "{{ hf }}"}},
+            },
+        )
+        a = LlamaCppAdapter(harness=script, gguf_dir=gguf_dir, source_dir=src)
+        raw = ReplayInput("fam/y", "glm", "org/m", "raw", token_ids=(5,))
+>       assert a.parse(raw, []).exception == "LlamaCppError: chat template: boom"
+               ^^^^^^^^^^^^^^^^
+
+tests\adapters\test_llamacpp.py:291: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\canitoolcall\adapters\llamacpp.py:609: in parse
+    reply = self._request(raw, tools, template=self._choose(raw, self._vocab(raw)), nonstream=True)
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\canitoolcall\adapters\llamacpp.py:441: in _choose
+    cands = self._candidates(raw, vocab)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\canitoolcall\adapters\llamacpp.py:406: in _candidates
+    has_template, sha = self._gguf_template(vocab)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\canitoolcall\adapters\llamacpp.py:382: in _gguf_template
+    reply = self._h().request(
+src\canitoolcall\adapters\llamacpp.py:199: in request
+    proc = self._start()
+           ^^^^^^^^^^^^^
+src\canitoolcall\adapters\llamacpp.py:186: in _start
+    self._proc = subprocess.Popen(
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\subprocess.py:1026: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <Popen: returncode: None args: ['[HOME]\\AppData\\Local\\Temp\\pyt...>
+args = '[HOME]\\AppData\\Local\\Temp\\pytest-of-unknown\\pytest-1\\test_engine_errors_are_outcome0\\fake-harness'
+executable = None, preexec_fn = None, close_fds = False, pass_fds = ()
+cwd = None, env = None
+startupinfo = <subprocess.STARTUPINFO object at 0x000001FF5D206300>
+creationflags = 0, shell = False, p2cread = Handle(1060), p2cwrite = 12
+c2pread = 13, c2pwrite = Handle(1296), errread = -1, errwrite = Handle(1056)
+unused_restore_signals = True, unused_gid = None, unused_gids = None
+unused_uid = None, unused_umask = -1, unused_start_new_session = False
+unused_process_group = -1
+
+    def _execute_child(self, args, executable, preexec_fn, close_fds,
+                       pass_fds, cwd, env,
+                       startupinfo, creationflags, shell,
+                       p2cread, p2cwrite,
+                       c2pread, c2pwrite,
+                       errread, errwrite,
+                       unused_restore_signals,
+                       unused_gid, unused_gids, unused_uid,
+                       unused_umask,
+                       unused_start_new_session, unused_process_group):
+        """Execute program (MS Windows version)"""
+    
+        assert not pass_fds, "pass_fds not supported on Windows."
+    
+        if isinstance(args, str):
+            pass
+        elif isinstance(args, bytes):
+            if shell:
+                raise TypeError('bytes args is not allowed on Windows')
+            args = list2cmdline([args])
+        elif isinstance(args, os.PathLike):
+            if shell:
+                raise TypeError('path-like args is not allowed when '
+                                'shell is true')
+            args = list2cmdline([args])
+        else:
+            args = list2cmdline(args)
+    
+        if executable is not None:
+            executable = os.fsdecode(executable)
+    
+        # Process startup details
+        if startupinfo is None:
+            startupinfo = STARTUPINFO()
+        else:
+            # bpo-34044: Copy STARTUPINFO since it is modified above,
+            # so the caller can reuse it multiple times.
+            startupinfo = startupinfo.copy()
+    
+        use_std_handles = -1 not in (p2cread, c2pwrite, errwrite)
+        if use_std_handles:
+            startupinfo.dwFlags |= _winapi.STARTF_USESTDHANDLES
+            startupinfo.hStdInput = p2cread
+            startupinfo.hStdOutput = c2pwrite
+            startupinfo.hStdError = errwrite
+    
+        attribute_list = startupinfo.lpAttributeList
+        have_handle_list = bool(attribute_list and
+                                "handle_list" in attribute_list and
+                                attribute_list["handle_list"])
+    
+        # If we were given an handle_list or need to create one
+        if have_handle_list or (use_std_handles and close_fds):
+            if attribute_list is None:
+                attribute_list = startupinfo.lpAttributeList = {}
+            handle_list = attribute_list["handle_list"] = \
+                list(attribute_list.get("handle_list", []))
+    
+            if use_std_handles:
+                handle_list += [int(p2cread), int(c2pwrite), int(errwrite)]
+    
+            handle_list[:] = self._filter_handle_list(handle_list)
+    
+            if handle_list:
+                if not close_fds:
+                    warnings.warn("startupinfo.lpAttributeList['handle_list'] "
+                                  "overriding close_fds", RuntimeWarning)
+    
+                # When using the handle_list we always request to inherit
+                # handles but the only handles that will be inherited are
+                # the ones in the handle_list
+                close_fds = False
+    
+        if shell:
+            startupinfo.dwFlags |= _winapi.STARTF_USESHOWWINDOW
+            startupinfo.wShowWindow = _winapi.SW_HIDE
+            if not executable:
+                # gh-101283: without a fully-qualified path, before Windows
+                # checks the system directories, it first looks in the
+                # application directory, and also the current directory if
+                # NeedCurrentDirectoryForExePathW(ExeName) is true, so try
+                # to avoid executing unqualified "cmd.exe".
+                comspec = os.environ.get('ComSpec')
+                if not comspec:
+                    system_root = os.environ.get('SystemRoot', '')
+                    comspec = os.path.join(system_root, 'System32', 'cmd.exe')
+                    if not os.path.isabs(comspec):
+                        raise FileNotFoundError('shell not found: neither %ComSpec% nor %SystemRoot% is set')
+                if os.path.isabs(comspec):
+                    executable = comspec
+            else:
+                comspec = executable
+    
+            args = '{} /c "{}"'.format (comspec, args)
+    
+        if cwd is not None:
+            cwd = os.fsdecode(cwd)
+    
+        sys.audit("subprocess.Popen", executable, args, cwd, env)
+    
+        # Start the process
+        try:
+>           hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                                     # no special security
+                                     None, None,
+                                     int(not close_fds),
+                                     creationflags,
+                                     env,
+                                     cwd,
+                                     startupinfo)
+E                                    OSError: [WinError 193] %1은(는) 올바른 Win32 응용 프로그램이 아닙니다
+
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\subprocess.py:1538: OSError
+___________________ test_results_file_is_readable_by_others ___________________
+
+tmp_path = WindowsPath('[HOME]/AppData/Local/Temp/pytest-of-unknown/pytest-1/test_results_file_is_readable_0')
+
+    def test_results_file_is_readable_by_others(tmp_path: Path) -> None:
+        import os
+    
+        mask = os.umask(0o022)
+        try:
+            path = _run().write(tmp_path / "out.json")
+        finally:
+            os.umask(mask)
+>       assert path.stat().st_mode & 0o777 == 0o644
+E       AssertionError: assert (33206 & 511) == 420
+E        +  where 33206 = os.stat_result(st_mode=33206, st_ino=562949956628730, st_dev=15435666451859553869, st_nlink=1, st_uid=0, st_gid=0, st_size=2925, st_atime=1790680657, st_mtime=1790680657, st_ctime=1790680657).st_mode
+E        +    where os.stat_result(st_mode=33206, st_ino=562949956628730, st_dev=15435666451859553869, st_nlink=1, st_uid=0, st_gid=0, st_size=2925, st_atime=1790680657, st_mtime=1790680657, st_ctime=1790680657) = stat()
+E        +      where stat = WindowsPath('[HOME]/AppData/Local/Temp/pytest-of-unknown/pytest-1/test_results_file_is_readable_0/out.json').stat
+
+tests\core\test_results.py:138: AssertionError
+_______________________________ test_worker_env _______________________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001FF5E001B20>
+
+    def test_worker_env(monkeypatch: pytest.MonkeyPatch) -> None:
+        monkeypatch.setenv("PYTHONPATH", "/should/not/leak")
+        monkeypatch.setenv("VIRTUAL_ENV", "/main/venv")
+        env = worker_env({"PYTHONPATH": "/extra", "HF_HUB_OFFLINE": "1"})
+>       assert env["PYTHONPATH"].split(":") == [str(core_pythonpath()), "/extra"]
+E       AssertionError: assert ['C', '\\User...\\src;/extra'] == ['C:\\Users\\...rc', '/extra']
+E         
+E         At index 0 diff: 'C' != '[WORKDIR]\\canitoolcall-b5795bcbbecab56d3b7b9ea61de36232ede046a0\\src'
+E         Use -v to get more diff
+
+tests\core\test_runner.py:355: AssertionError
+=========================== short test summary info ===========================
+SKIPPED [1] tests\adapters\test_llamacpp.py:344: llama.cpp harness not built (run scripts/engines/llamacpp.sh)
+SKIPPED [9] tests\adapters\test_llamacpp.py:396: llama.cpp harness not built (run scripts/engines/llamacpp.sh)
+SKIPPED [1] tests\adapters\test_llamacpp.py:434: llama.cpp harness not built (run scripts/engines/llamacpp.sh)
+SKIPPED [1] tests\adapters\test_llamacpp.py:455: llama.cpp harness not built (run scripts/engines/llamacpp.sh)
+SKIPPED [1] tests\adapters\test_llamacpp.py:486: llama.cpp harness not built (run scripts/engines/llamacpp.sh)
+SKIPPED [1] tests\adapters\test_ollama.py:276: ollama env not set up (run scripts/engines/ollama.sh)
+SKIPPED [1] tests\adapters\test_ollama.py:291: ollama env not set up (run scripts/engines/ollama.sh)
+SKIPPED [1] tests\adapters\test_ollama.py:313: ollama env not set up (run scripts/engines/ollama.sh)
+SKIPPED [6] tests\adapters\test_ollama.py:429: ollama env not set up (run scripts/engines/ollama.sh)
+SKIPPED [261] tests\adapters\test_ollama.py:473: ollama env not set up (run scripts/engines/ollama.sh)
+SKIPPED [1] tests\adapters\test_ollama.py:486: ollama env not set up (run scripts/engines/ollama.sh)
+SKIPPED [1] tests\adapters\test_sglang.py:250: sglang env not set up (run scripts/engines/sglang.sh)
+SKIPPED [1] tests\adapters\test_sglang.py:258: sglang env not set up (run scripts/engines/sglang.sh)
+SKIPPED [1] tests\adapters\test_sglang.py:288: sglang env not set up (run scripts/engines/sglang.sh)
+SKIPPED [6] tests\adapters\test_sglang.py:397: sglang env not set up (run scripts/engines/sglang.sh)
+SKIPPED [1] tests\adapters\test_sglang.py:494: sglang env not set up (run scripts/engines/sglang.sh)
+SKIPPED [1] tests\adapters\test_sglang.py:507: sglang env not set up (run scripts/engines/sglang.sh)
+SKIPPED [1] tests\adapters\test_sglang.py:525: sglang env not set up (run scripts/engines/sglang.sh)
+SKIPPED [1] tests\adapters\test_sglang.py:537: sglang env not set up (run scripts/engines/sglang.sh)
+SKIPPED [45] tests\adapters\test_sglang.py:552: sglang env not set up (run scripts/engines/sglang.sh)
+SKIPPED [1] tests\adapters\test_transformers.py:283: transformers env not set up (run scripts/engines/transformers.sh)
+SKIPPED [1] tests\adapters\test_transformers.py:296: transformers env not set up (run scripts/engines/transformers.sh)
+SKIPPED [1] tests\adapters\test_transformers.py:310: transformers env not set up (run scripts/engines/transformers.sh)
+SKIPPED [1] tests\adapters\test_transformers.py:338: transformers env not set up (run scripts/engines/transformers.sh)
+SKIPPED [1] tests\adapters\test_transformers.py:354: transformers env not set up (run scripts/engines/transformers.sh)
+SKIPPED [1] tests\adapters\test_transformers.py:380: transformers env not set up (run scripts/engines/transformers.sh)
+SKIPPED [1] tests\adapters\test_vllm.py:299: vllm env not set up (run scripts/engines/vllm.sh)
+SKIPPED [1] tests\adapters\test_vllm.py:307: vllm env not set up (run scripts/engines/vllm.sh)
+SKIPPED [1] tests\adapters\test_vllm.py:334: vllm env not set up (run scripts/engines/vllm.sh)
+SKIPPED [9] tests\adapters\test_vllm.py:350: vllm env not set up (run scripts/engines/vllm.sh)
+SKIPPED [6] tests\adapters\test_vllm.py:491: vllm env not set up (run scripts/engines/vllm.sh)
+SKIPPED [1] tests\core\test_adapters_registry.py:109: vllm env not set up (run scripts/engines/vllm.sh)
+FAILED tests/adapters/test_llamacpp.py::test_harness_process - OSError: [WinE...
+FAILED tests/adapters/test_llamacpp.py::test_version_is_checked_against_the_pin
+FAILED tests/adapters/test_llamacpp.py::test_parse_mapping_and_template_choice
+FAILED tests/adapters/test_llamacpp.py::test_engine_errors_are_outcomes - OSE...
+FAILED tests/core/test_results.py::test_results_file_is_readable_by_others - ...
+FAILED tests/core/test_runner.py::test_worker_env - AssertionError: assert ['...
+6 failed, 466 passed, 367 skipped in 23.51s
+
+## tests stderr
+
+## fixtures stdout
+45 file(s) checked, 0 issue(s)
+
+## fixtures stderr
+
+## baseline-tests stdout
+......FFFF.sssssssssssss..............................ssssssssssssssssss [  8%]
+ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss [ 17%]
+ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss [ 25%]
+ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss [ 34%]
+sssssssssssssssssssssssssssssssssssss.................................ss [ 42%]
+ssssssssssssssssssssssssssssssssssssssssssssssssssssssss...............s [ 51%]
+sssss........................................ssssssssssssssssss......... [ 60%]
+.s...................................................................... [ 68%]
+........................................................................ [ 77%]
+................................................................F....... [ 85%]
+....................F................................................... [ 94%]
+...............................................                          [100%]
+================================== FAILURES ===================================
+____________________________ test_harness_process _____________________________
+
+tmp_path = WindowsPath('[HOME]/AppData/Local/Temp/pytest-of-unknown/pytest-2/test_harness_process0')
+
+    def test_harness_process(tmp_path: Path) -> None:
+        script, _ = _fake_harness(tmp_path, {"hello": HELLO})
+        h = Harness(script)
+>       assert h.request({"op": "hello"})["commit"] == "a25c986"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\adapters\test_llamacpp.py:173: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\canitoolcall\adapters\llamacpp.py:199: in request
+    proc = self._start()
+           ^^^^^^^^^^^^^
+src\canitoolcall\adapters\llamacpp.py:186: in _start
+    self._proc = subprocess.Popen(
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\subprocess.py:1026: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <Popen: returncode: None args: ['[HOME]\\AppData\\Local\\Temp\\pyt...>
+args = '[HOME]\\AppData\\Local\\Temp\\pytest-of-unknown\\pytest-2\\test_harness_process0\\fake-harness'
+executable = None, preexec_fn = None, close_fds = False, pass_fds = ()
+cwd = None, env = None
+startupinfo = <subprocess.STARTUPINFO object at 0x000001ACBE9FB0E0>
+creationflags = 0, shell = False, p2cread = Handle(1484), p2cwrite = 12
+c2pread = 13, c2pwrite = Handle(1476), errread = -1, errwrite = Handle(1496)
+unused_restore_signals = True, unused_gid = None, unused_gids = None
+unused_uid = None, unused_umask = -1, unused_start_new_session = False
+unused_process_group = -1
+
+    def _execute_child(self, args, executable, preexec_fn, close_fds,
+                       pass_fds, cwd, env,
+                       startupinfo, creationflags, shell,
+                       p2cread, p2cwrite,
+                       c2pread, c2pwrite,
+                       errread, errwrite,
+                       unused_restore_signals,
+                       unused_gid, unused_gids, unused_uid,
+                       unused_umask,
+                       unused_start_new_session, unused_process_group):
+        """Execute program (MS Windows version)"""
+    
+        assert not pass_fds, "pass_fds not supported on Windows."
+    
+        if isinstance(args, str):
+            pass
+        elif isinstance(args, bytes):
+            if shell:
+                raise TypeError('bytes args is not allowed on Windows')
+            args = list2cmdline([args])
+        elif isinstance(args, os.PathLike):
+            if shell:
+                raise TypeError('path-like args is not allowed when '
+                                'shell is true')
+            args = list2cmdline([args])
+        else:
+            args = list2cmdline(args)
+    
+        if executable is not None:
+            executable = os.fsdecode(executable)
+    
+        # Process startup details
+        if startupinfo is None:
+            startupinfo = STARTUPINFO()
+        else:
+            # bpo-34044: Copy STARTUPINFO since it is modified above,
+            # so the caller can reuse it multiple times.
+            startupinfo = startupinfo.copy()
+    
+        use_std_handles = -1 not in (p2cread, c2pwrite, errwrite)
+        if use_std_handles:
+            startupinfo.dwFlags |= _winapi.STARTF_USESTDHANDLES
+            startupinfo.hStdInput = p2cread
+            startupinfo.hStdOutput = c2pwrite
+            startupinfo.hStdError = errwrite
+    
+        attribute_list = startupinfo.lpAttributeList
+        have_handle_list = bool(attribute_list and
+                                "handle_list" in attribute_list and
+                                attribute_list["handle_list"])
+    
+        # If we were given an handle_list or need to create one
+        if have_handle_list or (use_std_handles and close_fds):
+            if attribute_list is None:
+                attribute_list = startupinfo.lpAttributeList = {}
+            handle_list = attribute_list["handle_list"] = \
+                list(attribute_list.get("handle_list", []))
+    
+            if use_std_handles:
+                handle_list += [int(p2cread), int(c2pwrite), int(errwrite)]
+    
+            handle_list[:] = self._filter_handle_list(handle_list)
+    
+            if handle_list:
+                if not close_fds:
+                    warnings.warn("startupinfo.lpAttributeList['handle_list'] "
+                                  "overriding close_fds", RuntimeWarning)
+    
+                # When using the handle_list we always request to inherit
+                # handles but the only handles that will be inherited are
+                # the ones in the handle_list
+                close_fds = False
+    
+        if shell:
+            startupinfo.dwFlags |= _winapi.STARTF_USESHOWWINDOW
+            startupinfo.wShowWindow = _winapi.SW_HIDE
+            if not executable:
+                # gh-101283: without a fully-qualified path, before Windows
+                # checks the system directories, it first looks in the
+                # application directory, and also the current directory if
+                # NeedCurrentDirectoryForExePathW(ExeName) is true, so try
+                # to avoid executing unqualified "cmd.exe".
+                comspec = os.environ.get('ComSpec')
+                if not comspec:
+                    system_root = os.environ.get('SystemRoot', '')
+                    comspec = os.path.join(system_root, 'System32', 'cmd.exe')
+                    if not os.path.isabs(comspec):
+                        raise FileNotFoundError('shell not found: neither %ComSpec% nor %SystemRoot% is set')
+                if os.path.isabs(comspec):
+                    executable = comspec
+            else:
+                comspec = executable
+    
+            args = '{} /c "{}"'.format (comspec, args)
+    
+        if cwd is not None:
+            cwd = os.fsdecode(cwd)
+    
+        sys.audit("subprocess.Popen", executable, args, cwd, env)
+    
+        # Start the process
+        try:
+>           hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                                     # no special security
+                                     None, None,
+                                     int(not close_fds),
+                                     creationflags,
+                                     env,
+                                     cwd,
+                                     startupinfo)
+E                                    OSError: [WinError 193] %1은(는) 올바른 Win32 응용 프로그램이 아닙니다
+
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\subprocess.py:1538: OSError
+___________________ test_version_is_checked_against_the_pin ___________________
+
+tmp_path = WindowsPath('[HOME]/AppData/Local/Temp/pytest-of-unknown/pytest-2/test_version_is_checked_agains0')
+
+    def test_version_is_checked_against_the_pin(tmp_path: Path) -> None:
+        script, _ = _fake_harness(tmp_path, {"hello": HELLO})
+        a = LlamaCppAdapter(harness=script, gguf_dir=tmp_path)
+>       assert a.version() == PIN[:8]
+               ^^^^^^^^^^^
+
+tests\adapters\test_llamacpp.py:187: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\canitoolcall\adapters\llamacpp.py:319: in version
+    commit = str(self._hello_reply().get("commit", ""))
+                 ^^^^^^^^^^^^^^^^^^^
+src\canitoolcall\adapters\llamacpp.py:308: in _hello_reply
+    reply = self._h().request({"op": "hello"})
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\canitoolcall\adapters\llamacpp.py:199: in request
+    proc = self._start()
+           ^^^^^^^^^^^^^
+src\canitoolcall\adapters\llamacpp.py:186: in _start
+    self._proc = subprocess.Popen(
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\subprocess.py:1026: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <Popen: returncode: None args: ['[HOME]\\AppData\\Local\\Temp\\pyt...>
+args = '[HOME]\\AppData\\Local\\Temp\\pytest-of-unknown\\pytest-2\\test_version_is_checked_agains0\\fake-harness'
+executable = None, preexec_fn = None, close_fds = False, pass_fds = ()
+cwd = None, env = None
+startupinfo = <subprocess.STARTUPINFO object at 0x000001ACBE985130>
+creationflags = 0, shell = False, p2cread = Handle(1260), p2cwrite = 12
+c2pread = 13, c2pwrite = Handle(1272), errread = -1, errwrite = Handle(1436)
+unused_restore_signals = True, unused_gid = None, unused_gids = None
+unused_uid = None, unused_umask = -1, unused_start_new_session = False
+unused_process_group = -1
+
+    def _execute_child(self, args, executable, preexec_fn, close_fds,
+                       pass_fds, cwd, env,
+                       startupinfo, creationflags, shell,
+                       p2cread, p2cwrite,
+                       c2pread, c2pwrite,
+                       errread, errwrite,
+                       unused_restore_signals,
+                       unused_gid, unused_gids, unused_uid,
+                       unused_umask,
+                       unused_start_new_session, unused_process_group):
+        """Execute program (MS Windows version)"""
+    
+        assert not pass_fds, "pass_fds not supported on Windows."
+    
+        if isinstance(args, str):
+            pass
+        elif isinstance(args, bytes):
+            if shell:
+                raise TypeError('bytes args is not allowed on Windows')
+            args = list2cmdline([args])
+        elif isinstance(args, os.PathLike):
+            if shell:
+                raise TypeError('path-like args is not allowed when '
+                                'shell is true')
+            args = list2cmdline([args])
+        else:
+            args = list2cmdline(args)
+    
+        if executable is not None:
+            executable = os.fsdecode(executable)
+    
+        # Process startup details
+        if startupinfo is None:
+            startupinfo = STARTUPINFO()
+        else:
+            # bpo-34044: Copy STARTUPINFO since it is modified above,
+            # so the caller can reuse it multiple times.
+            startupinfo = startupinfo.copy()
+    
+        use_std_handles = -1 not in (p2cread, c2pwrite, errwrite)
+        if use_std_handles:
+            startupinfo.dwFlags |= _winapi.STARTF_USESTDHANDLES
+            startupinfo.hStdInput = p2cread
+            startupinfo.hStdOutput = c2pwrite
+            startupinfo.hStdError = errwrite
+    
+        attribute_list = startupinfo.lpAttributeList
+        have_handle_list = bool(attribute_list and
+                                "handle_list" in attribute_list and
+                                attribute_list["handle_list"])
+    
+        # If we were given an handle_list or need to create one
+        if have_handle_list or (use_std_handles and close_fds):
+            if attribute_list is None:
+                attribute_list = startupinfo.lpAttributeList = {}
+            handle_list = attribute_list["handle_list"] = \
+                list(attribute_list.get("handle_list", []))
+    
+            if use_std_handles:
+                handle_list += [int(p2cread), int(c2pwrite), int(errwrite)]
+    
+            handle_list[:] = self._filter_handle_list(handle_list)
+    
+            if handle_list:
+                if not close_fds:
+                    warnings.warn("startupinfo.lpAttributeList['handle_list'] "
+                                  "overriding close_fds", RuntimeWarning)
+    
+                # When using the handle_list we always request to inherit
+                # handles but the only handles that will be inherited are
+                # the ones in the handle_list
+                close_fds = False
+    
+        if shell:
+            startupinfo.dwFlags |= _winapi.STARTF_USESHOWWINDOW
+            startupinfo.wShowWindow = _winapi.SW_HIDE
+            if not executable:
+                # gh-101283: without a fully-qualified path, before Windows
+                # checks the system directories, it first looks in the
+                # application directory, and also the current directory if
+                # NeedCurrentDirectoryForExePathW(ExeName) is true, so try
+                # to avoid executing unqualified "cmd.exe".
+                comspec = os.environ.get('ComSpec')
+                if not comspec:
+                    system_root = os.environ.get('SystemRoot', '')
+                    comspec = os.path.join(system_root, 'System32', 'cmd.exe')
+                    if not os.path.isabs(comspec):
+                        raise FileNotFoundError('shell not found: neither %ComSpec% nor %SystemRoot% is set')
+                if os.path.isabs(comspec):
+                    executable = comspec
+            else:
+                comspec = executable
+    
+            args = '{} /c "{}"'.format (comspec, args)
+    
+        if cwd is not None:
+            cwd = os.fsdecode(cwd)
+    
+        sys.audit("subprocess.Popen", executable, args, cwd, env)
+    
+        # Start the process
+        try:
+>           hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                                     # no special security
+                                     None, None,
+                                     int(not close_fds),
+                                     creationflags,
+                                     env,
+                                     cwd,
+                                     startupinfo)
+E                                    OSError: [WinError 193] %1은(는) 올바른 Win32 응용 프로그램이 아닙니다
+
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\subprocess.py:1538: OSError
+___________________ test_parse_mapping_and_template_choice ____________________
+
+tmp_path = WindowsPath('[HOME]/AppData/Local/Temp/pytest-of-unknown/pytest-2/test_parse_mapping_and_templat0')
+
+    def test_parse_mapping_and_template_choice(tmp_path: Path) -> None:
+        gguf_dir, src = _setup_engine_dirs(tmp_path)
+        script, log = _fake_harness(
+            tmp_path,
+            {
+                "hello": HELLO,
+                "replay": REPLAY_OK,
+                "template_probe": {"ok": True, "config": {"gguf_has_template": False, "template_source": "chatml"}},
+            },
+        )
+        a = LlamaCppAdapter(harness=script, gguf_dir=gguf_dir, source_dir=src)
+        raw = ReplayInput(
+            "fam/x",
+            "qwen3-hermes",
+            "org/m",
+            "raw",
+            token_ids=(1, 2, 3),
+            tokenizer=TokenizerPin("org/m", "r1"),
+            thinking=True,
+            stop_tokens=("</s>",),
+        )
+        tools = [{"type": "function", "function": {"name": "f", "parameters": {}}}]
+    
+        assert a.units(raw) == [1, 2, 3]
+>       stream = a.parse_stream(raw, [[1], [2, 3]], tools)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\adapters\test_llamacpp.py:243: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\canitoolcall\adapters\llamacpp.py:618: in parse_stream
+    template=self._choose(raw, self._vocab(raw)),
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\canitoolcall\adapters\llamacpp.py:441: in _choose
+    cands = self._candidates(raw, vocab)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\canitoolcall\adapters\llamacpp.py:406: in _candidates
+    has_template, sha = self._gguf_template(vocab)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\canitoolcall\adapters\llamacpp.py:382: in _gguf_template
+    reply = self._h().request(
+src\canitoolcall\adapters\llamacpp.py:199: in request
+    proc = self._start()
+           ^^^^^^^^^^^^^
+src\canitoolcall\adapters\llamacpp.py:186: in _start
+    self._proc = subprocess.Popen(
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\subprocess.py:1026: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <Popen: returncode: None args: ['[HOME]\\AppData\\Local\\Temp\\pyt...>
+args = '[HOME]\\AppData\\Local\\Temp\\pytest-of-unknown\\pytest-2\\test_parse_mapping_and_templat0\\fake-harness'
+executable = None, preexec_fn = None, close_fds = False, pass_fds = ()
+cwd = None, env = None
+startupinfo = <subprocess.STARTUPINFO object at 0x000001ACBE986E70>
+creationflags = 0, shell = False, p2cread = Handle(1460), p2cwrite = 12
+c2pread = 13, c2pwrite = Handle(1496), errread = -1, errwrite = Handle(1584)
+unused_restore_signals = True, unused_gid = None, unused_gids = None
+unused_uid = None, unused_umask = -1, unused_start_new_session = False
+unused_process_group = -1
+
+    def _execute_child(self, args, executable, preexec_fn, close_fds,
+                       pass_fds, cwd, env,
+                       startupinfo, creationflags, shell,
+                       p2cread, p2cwrite,
+                       c2pread, c2pwrite,
+                       errread, errwrite,
+                       unused_restore_signals,
+                       unused_gid, unused_gids, unused_uid,
+                       unused_umask,
+                       unused_start_new_session, unused_process_group):
+        """Execute program (MS Windows version)"""
+    
+        assert not pass_fds, "pass_fds not supported on Windows."
+    
+        if isinstance(args, str):
+            pass
+        elif isinstance(args, bytes):
+            if shell:
+                raise TypeError('bytes args is not allowed on Windows')
+            args = list2cmdline([args])
+        elif isinstance(args, os.PathLike):
+            if shell:
+                raise TypeError('path-like args is not allowed when '
+                                'shell is true')
+            args = list2cmdline([args])
+        else:
+            args = list2cmdline(args)
+    
+        if executable is not None:
+            executable = os.fsdecode(executable)
+    
+        # Process startup details
+        if startupinfo is None:
+            startupinfo = STARTUPINFO()
+        else:
+            # bpo-34044: Copy STARTUPINFO since it is modified above,
+            # so the caller can reuse it multiple times.
+            startupinfo = startupinfo.copy()
+    
+        use_std_handles = -1 not in (p2cread, c2pwrite, errwrite)
+        if use_std_handles:
+            startupinfo.dwFlags |= _winapi.STARTF_USESTDHANDLES
+            startupinfo.hStdInput = p2cread
+            startupinfo.hStdOutput = c2pwrite
+            startupinfo.hStdError = errwrite
+    
+        attribute_list = startupinfo.lpAttributeList
+        have_handle_list = bool(attribute_list and
+                                "handle_list" in attribute_list and
+                                attribute_list["handle_list"])
+    
+        # If we were given an handle_list or need to create one
+        if have_handle_list or (use_std_handles and close_fds):
+            if attribute_list is None:
+                attribute_list = startupinfo.lpAttributeList = {}
+            handle_list = attribute_list["handle_list"] = \
+                list(attribute_list.get("handle_list", []))
+    
+            if use_std_handles:
+                handle_list += [int(p2cread), int(c2pwrite), int(errwrite)]
+    
+            handle_list[:] = self._filter_handle_list(handle_list)
+    
+            if handle_list:
+                if not close_fds:
+                    warnings.warn("startupinfo.lpAttributeList['handle_list'] "
+                                  "overriding close_fds", RuntimeWarning)
+    
+                # When using the handle_list we always request to inherit
+                # handles but the only handles that will be inherited are
+                # the ones in the handle_list
+                close_fds = False
+    
+        if shell:
+            startupinfo.dwFlags |= _winapi.STARTF_USESHOWWINDOW
+            startupinfo.wShowWindow = _winapi.SW_HIDE
+            if not executable:
+                # gh-101283: without a fully-qualified path, before Windows
+                # checks the system directories, it first looks in the
+                # application directory, and also the current directory if
+                # NeedCurrentDirectoryForExePathW(ExeName) is true, so try
+                # to avoid executing unqualified "cmd.exe".
+                comspec = os.environ.get('ComSpec')
+                if not comspec:
+                    system_root = os.environ.get('SystemRoot', '')
+                    comspec = os.path.join(system_root, 'System32', 'cmd.exe')
+                    if not os.path.isabs(comspec):
+                        raise FileNotFoundError('shell not found: neither %ComSpec% nor %SystemRoot% is set')
+                if os.path.isabs(comspec):
+                    executable = comspec
+            else:
+                comspec = executable
+    
+            args = '{} /c "{}"'.format (comspec, args)
+    
+        if cwd is not None:
+            cwd = os.fsdecode(cwd)
+    
+        sys.audit("subprocess.Popen", executable, args, cwd, env)
+    
+        # Start the process
+        try:
+>           hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                                     # no special security
+                                     None, None,
+                                     int(not close_fds),
+                                     creationflags,
+                                     env,
+                                     cwd,
+                                     startupinfo)
+E                                    OSError: [WinError 193] %1은(는) 올바른 Win32 응용 프로그램이 아닙니다
+
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\subprocess.py:1538: OSError
+_______________________ test_engine_errors_are_outcomes _______________________
+
+tmp_path = WindowsPath('[HOME]/AppData/Local/Temp/pytest-of-unknown/pytest-2/test_engine_errors_are_outcome0')
+
+    def test_engine_errors_are_outcomes(tmp_path: Path) -> None:
+        gguf_dir, src = _setup_engine_dirs(tmp_path)
+        script, log = _fake_harness(
+            tmp_path,
+            {
+                "hello": HELLO,
+                "replay": {"ok": True, "config": {"format": "peg-native"}, "engine_error": "chat template: boom"},
+                "template_probe": {"ok": True, "config": {"gguf_has_template": True, "template_source": "{{ hf }}"}},
+            },
+        )
+        a = LlamaCppAdapter(harness=script, gguf_dir=gguf_dir, source_dir=src)
+        raw = ReplayInput("fam/y", "glm", "org/m", "raw", token_ids=(5,))
+>       assert a.parse(raw, []).exception == "LlamaCppError: chat template: boom"
+               ^^^^^^^^^^^^^^^^
+
+tests\adapters\test_llamacpp.py:291: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\canitoolcall\adapters\llamacpp.py:609: in parse
+    reply = self._request(raw, tools, template=self._choose(raw, self._vocab(raw)), nonstream=True)
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\canitoolcall\adapters\llamacpp.py:441: in _choose
+    cands = self._candidates(raw, vocab)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\canitoolcall\adapters\llamacpp.py:406: in _candidates
+    has_template, sha = self._gguf_template(vocab)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\canitoolcall\adapters\llamacpp.py:382: in _gguf_template
+    reply = self._h().request(
+src\canitoolcall\adapters\llamacpp.py:199: in request
+    proc = self._start()
+           ^^^^^^^^^^^^^
+src\canitoolcall\adapters\llamacpp.py:186: in _start
+    self._proc = subprocess.Popen(
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\subprocess.py:1026: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <Popen: returncode: None args: ['[HOME]\\AppData\\Local\\Temp\\pyt...>
+args = '[HOME]\\AppData\\Local\\Temp\\pytest-of-unknown\\pytest-2\\test_engine_errors_are_outcome0\\fake-harness'
+executable = None, preexec_fn = None, close_fds = False, pass_fds = ()
+cwd = None, env = None
+startupinfo = <subprocess.STARTUPINFO object at 0x000001ACBE986A50>
+creationflags = 0, shell = False, p2cread = Handle(1644), p2cwrite = 12
+c2pread = 13, c2pwrite = Handle(1656), errread = -1, errwrite = Handle(1660)
+unused_restore_signals = True, unused_gid = None, unused_gids = None
+unused_uid = None, unused_umask = -1, unused_start_new_session = False
+unused_process_group = -1
+
+    def _execute_child(self, args, executable, preexec_fn, close_fds,
+                       pass_fds, cwd, env,
+                       startupinfo, creationflags, shell,
+                       p2cread, p2cwrite,
+                       c2pread, c2pwrite,
+                       errread, errwrite,
+                       unused_restore_signals,
+                       unused_gid, unused_gids, unused_uid,
+                       unused_umask,
+                       unused_start_new_session, unused_process_group):
+        """Execute program (MS Windows version)"""
+    
+        assert not pass_fds, "pass_fds not supported on Windows."
+    
+        if isinstance(args, str):
+            pass
+        elif isinstance(args, bytes):
+            if shell:
+                raise TypeError('bytes args is not allowed on Windows')
+            args = list2cmdline([args])
+        elif isinstance(args, os.PathLike):
+            if shell:
+                raise TypeError('path-like args is not allowed when '
+                                'shell is true')
+            args = list2cmdline([args])
+        else:
+            args = list2cmdline(args)
+    
+        if executable is not None:
+            executable = os.fsdecode(executable)
+    
+        # Process startup details
+        if startupinfo is None:
+            startupinfo = STARTUPINFO()
+        else:
+            # bpo-34044: Copy STARTUPINFO since it is modified above,
+            # so the caller can reuse it multiple times.
+            startupinfo = startupinfo.copy()
+    
+        use_std_handles = -1 not in (p2cread, c2pwrite, errwrite)
+        if use_std_handles:
+            startupinfo.dwFlags |= _winapi.STARTF_USESTDHANDLES
+            startupinfo.hStdInput = p2cread
+            startupinfo.hStdOutput = c2pwrite
+            startupinfo.hStdError = errwrite
+    
+        attribute_list = startupinfo.lpAttributeList
+        have_handle_list = bool(attribute_list and
+                                "handle_list" in attribute_list and
+                                attribute_list["handle_list"])
+    
+        # If we were given an handle_list or need to create one
+        if have_handle_list or (use_std_handles and close_fds):
+            if attribute_list is None:
+                attribute_list = startupinfo.lpAttributeList = {}
+            handle_list = attribute_list["handle_list"] = \
+                list(attribute_list.get("handle_list", []))
+    
+            if use_std_handles:
+                handle_list += [int(p2cread), int(c2pwrite), int(errwrite)]
+    
+            handle_list[:] = self._filter_handle_list(handle_list)
+    
+            if handle_list:
+                if not close_fds:
+                    warnings.warn("startupinfo.lpAttributeList['handle_list'] "
+                                  "overriding close_fds", RuntimeWarning)
+    
+                # When using the handle_list we always request to inherit
+                # handles but the only handles that will be inherited are
+                # the ones in the handle_list
+                close_fds = False
+    
+        if shell:
+            startupinfo.dwFlags |= _winapi.STARTF_USESHOWWINDOW
+            startupinfo.wShowWindow = _winapi.SW_HIDE
+            if not executable:
+                # gh-101283: without a fully-qualified path, before Windows
+                # checks the system directories, it first looks in the
+                # application directory, and also the current directory if
+                # NeedCurrentDirectoryForExePathW(ExeName) is true, so try
+                # to avoid executing unqualified "cmd.exe".
+                comspec = os.environ.get('ComSpec')
+                if not comspec:
+                    system_root = os.environ.get('SystemRoot', '')
+                    comspec = os.path.join(system_root, 'System32', 'cmd.exe')
+                    if not os.path.isabs(comspec):
+                        raise FileNotFoundError('shell not found: neither %ComSpec% nor %SystemRoot% is set')
+                if os.path.isabs(comspec):
+                    executable = comspec
+            else:
+                comspec = executable
+    
+            args = '{} /c "{}"'.format (comspec, args)
+    
+        if cwd is not None:
+            cwd = os.fsdecode(cwd)
+    
+        sys.audit("subprocess.Popen", executable, args, cwd, env)
+    
+        # Start the process
+        try:
+>           hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                                     # no special security
+                                     None, None,
+                                     int(not close_fds),
+                                     creationflags,
+                                     env,
+                                     cwd,
+                                     startupinfo)
+E                                    OSError: [WinError 193] %1은(는) 올바른 Win32 응용 프로그램이 아닙니다
+
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\subprocess.py:1538: OSError
+___________________ test_results_file_is_readable_by_others ___________________
+
+tmp_path = WindowsPath('[HOME]/AppData/Local/Temp/pytest-of-unknown/pytest-2/test_results_file_is_readable_0')
+
+    def test_results_file_is_readable_by_others(tmp_path: Path) -> None:
+        import os
+    
+        mask = os.umask(0o022)
+        try:
+            path = _run().write(tmp_path / "out.json")
+        finally:
+            os.umask(mask)
+>       assert path.stat().st_mode & 0o777 == 0o644
+E       AssertionError: assert (33206 & 511) == 420
+E        +  where 33206 = os.stat_result(st_mode=33206, st_ino=562949956630306, st_dev=15435666451859553869, st_nlink=1, st_uid=0, st_gid=0, st_size=2925, st_atime=1790680731, st_mtime=1790680731, st_ctime=1790680731).st_mode
+E        +    where os.stat_result(st_mode=33206, st_ino=562949956630306, st_dev=15435666451859553869, st_nlink=1, st_uid=0, st_gid=0, st_size=2925, st_atime=1790680731, st_mtime=1790680731, st_ctime=1790680731) = stat()
+E        +      where stat = WindowsPath('[HOME]/AppData/Local/Temp/pytest-of-unknown/pytest-2/test_results_file_is_readable_0/out.json').stat
+
+tests\core\test_results.py:138: AssertionError
+_______________________________ test_worker_env _______________________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001ACC2AB8470>
+
+    def test_worker_env(monkeypatch: pytest.MonkeyPatch) -> None:
+        monkeypatch.setenv("PYTHONPATH", "/should/not/leak")
+        monkeypatch.setenv("VIRTUAL_ENV", "/main/venv")
+        env = worker_env({"PYTHONPATH": "/extra", "HF_HUB_OFFLINE": "1"})
+>       assert env["PYTHONPATH"].split(":") == [str(core_pythonpath()), "/extra"]
+E       AssertionError: assert ['C', '\\User...\\src;/extra'] == ['C:\\Users\\...rc', '/extra']
+E         
+E         At index 0 diff: 'C' != '[WORKDIR]\\canitoolcall-bdade62a9513ccd8657b5e153a9f7ff2421c832d\\src'
+E         Use -v to get more diff
+
+tests\core\test_runner.py:355: AssertionError
+=========================== short test summary info ===========================
+SKIPPED [1] tests\adapters\test_llamacpp.py:344: llama.cpp harness not built (run scripts/engines/llamacpp.sh)
+SKIPPED [9] tests\adapters\test_llamacpp.py:396: llama.cpp harness not built (run scripts/engines/llamacpp.sh)
+SKIPPED [1] tests\adapters\test_llamacpp.py:434: llama.cpp harness not built (run scripts/engines/llamacpp.sh)
+SKIPPED [1] tests\adapters\test_llamacpp.py:455: llama.cpp harness not built (run scripts/engines/llamacpp.sh)
+SKIPPED [1] tests\adapters\test_llamacpp.py:486: llama.cpp harness not built (run scripts/engines/llamacpp.sh)
+SKIPPED [1] tests\adapters\test_ollama.py:276: ollama env not set up (run scripts/engines/ollama.sh)
+SKIPPED [1] tests\adapters\test_ollama.py:291: ollama env not set up (run scripts/engines/ollama.sh)
+SKIPPED [1] tests\adapters\test_ollama.py:313: ollama env not set up (run scripts/engines/ollama.sh)
+SKIPPED [6] tests\adapters\test_ollama.py:429: ollama env not set up (run scripts/engines/ollama.sh)
+SKIPPED [261] tests\adapters\test_ollama.py:473: ollama env not set up (run scripts/engines/ollama.sh)
+SKIPPED [1] tests\adapters\test_ollama.py:486: ollama env not set up (run scripts/engines/ollama.sh)
+SKIPPED [1] tests\adapters\test_sglang.py:250: sglang env not set up (run scripts/engines/sglang.sh)
+SKIPPED [1] tests\adapters\test_sglang.py:258: sglang env not set up (run scripts/engines/sglang.sh)
+SKIPPED [1] tests\adapters\test_sglang.py:288: sglang env not set up (run scripts/engines/sglang.sh)
+SKIPPED [6] tests\adapters\test_sglang.py:397: sglang env not set up (run scripts/engines/sglang.sh)
+SKIPPED [1] tests\adapters\test_sglang.py:494: sglang env not set up (run scripts/engines/sglang.sh)
+SKIPPED [1] tests\adapters\test_sglang.py:507: sglang env not set up (run scripts/engines/sglang.sh)
+SKIPPED [1] tests\adapters\test_sglang.py:525: sglang env not set up (run scripts/engines/sglang.sh)
+SKIPPED [1] tests\adapters\test_sglang.py:537: sglang env not set up (run scripts/engines/sglang.sh)
+SKIPPED [45] tests\adapters\test_sglang.py:552: sglang env not set up (run scripts/engines/sglang.sh)
+SKIPPED [1] tests\adapters\test_transformers.py:283: transformers env not set up (run scripts/engines/transformers.sh)
+SKIPPED [1] tests\adapters\test_transformers.py:296: transformers env not set up (run scripts/engines/transformers.sh)
+SKIPPED [1] tests\adapters\test_transformers.py:310: transformers env not set up (run scripts/engines/transformers.sh)
+SKIPPED [1] tests\adapters\test_transformers.py:338: transformers env not set up (run scripts/engines/transformers.sh)
+SKIPPED [1] tests\adapters\test_transformers.py:354: transformers env not set up (run scripts/engines/transformers.sh)
+SKIPPED [1] tests\adapters\test_transformers.py:380: transformers env not set up (run scripts/engines/transformers.sh)
+SKIPPED [1] tests\adapters\test_vllm.py:299: vllm env not set up (run scripts/engines/vllm.sh)
+SKIPPED [1] tests\adapters\test_vllm.py:307: vllm env not set up (run scripts/engines/vllm.sh)
+SKIPPED [1] tests\adapters\test_vllm.py:334: vllm env not set up (run scripts/engines/vllm.sh)
+SKIPPED [9] tests\adapters\test_vllm.py:350: vllm env not set up (run scripts/engines/vllm.sh)
+SKIPPED [6] tests\adapters\test_vllm.py:491: vllm env not set up (run scripts/engines/vllm.sh)
+SKIPPED [1] tests\core\test_adapters_registry.py:109: vllm env not set up (run scripts/engines/vllm.sh)
+FAILED tests/adapters/test_llamacpp.py::test_harness_process - OSError: [WinE...
+FAILED tests/adapters/test_llamacpp.py::test_version_is_checked_against_the_pin
+FAILED tests/adapters/test_llamacpp.py::test_parse_mapping_and_template_choice
+FAILED tests/adapters/test_llamacpp.py::test_engine_errors_are_outcomes - OSE...
+FAILED tests/core/test_results.py::test_results_file_is_readable_by_others - ...
+FAILED tests/core/test_runner.py::test_worker_env - AssertionError: assert ['...
+6 failed, 466 passed, 367 skipped in 23.03s
+
+## baseline-tests stderr

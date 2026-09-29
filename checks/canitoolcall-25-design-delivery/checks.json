@@ -1,0 +1,104 @@
+{
+  "commit": "b5795bcbbecab56d3b7b9ea61de36232ede046a0",
+  "checked_at_utc": "2026-09-29T11:17:59.480534+00:00",
+  "checks": [
+    {
+      "check": "setup",
+      "exit_code": 0,
+      "elapsed_seconds": 4.64,
+      "command": [
+        "uv",
+        "sync",
+        "--frozen",
+        "--python",
+        "[HOME]\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\python.exe"
+      ]
+    },
+    {
+      "check": "lint",
+      "exit_code": 0,
+      "elapsed_seconds": 0.907,
+      "command": [
+        "uv",
+        "run",
+        "--frozen",
+        "ruff",
+        "check",
+        "src",
+        "tests",
+        "scripts"
+      ]
+    },
+    {
+      "check": "format",
+      "exit_code": 0,
+      "elapsed_seconds": 0.187,
+      "command": [
+        "uv",
+        "run",
+        "--frozen",
+        "ruff",
+        "format",
+        "--check",
+        "src",
+        "tests",
+        "scripts"
+      ]
+    },
+    {
+      "check": "types",
+      "exit_code": 0,
+      "elapsed_seconds": 2.781,
+      "command": [
+        "uv",
+        "run",
+        "--frozen",
+        "mypy"
+      ]
+    },
+    {
+      "check": "tests",
+      "exit_code": 1,
+      "elapsed_seconds": 24.547,
+      "command": [
+        "uv",
+        "run",
+        "--frozen",
+        "pytest",
+        "-q",
+        "--junitxml=[WORKDIR]\\checks\\junit.xml"
+      ],
+      "counts": {
+        "collected": 839,
+        "failures": 6,
+        "errors": 0,
+        "skipped": 367,
+        "passed": 466
+      }
+    },
+    {
+      "check": "fixtures",
+      "exit_code": 0,
+      "elapsed_seconds": 1.828,
+      "command": [
+        "uv",
+        "run",
+        "--frozen",
+        "canitoolcall",
+        "validate"
+      ]
+    }
+  ],
+  "original_files_changed": [],
+  "original_file_count": 210,
+  "new_engine_runs": 0,
+  "scheduled_workflow_enabled": false,
+  "minimal_process_environment": true,
+  "documentation_checks": {
+    "unchanged_two_document_blobs_verified": true,
+    "timing_arithmetic_rechecked": true,
+    "github_public_standard_runner_policy_rechecked": true,
+    "vllm_revision_wheel_documentation_rechecked": true
+  },
+  "scope": "Existing repository tests only; no new engine replay, main-branch build, benchmark, workflow activation, or model call. Windows failures are also present in the exact upstream baseline."
+}

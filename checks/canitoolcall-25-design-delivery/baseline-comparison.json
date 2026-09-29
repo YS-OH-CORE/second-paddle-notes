@@ -1,0 +1,25 @@
+{
+  "base": "bdade62a9513ccd8657b5e153a9f7ff2421c832d",
+  "head": "b5795bcbbecab56d3b7b9ea61de36232ede046a0",
+  "base_exit": 1,
+  "head_exit": 1,
+  "identical_existing_file_bytes": true,
+  "existing_files_compared": 208,
+  "test_inventory_equal": true,
+  "case_count": 839,
+  "outcome_changes": [],
+  "failure_ids": [
+    "tests.adapters.test_llamacpp::test_harness_process",
+    "tests.adapters.test_llamacpp::test_version_is_checked_against_the_pin",
+    "tests.adapters.test_llamacpp::test_parse_mapping_and_template_choice",
+    "tests.adapters.test_llamacpp::test_engine_errors_are_outcomes",
+    "tests.core.test_results::test_results_file_is_readable_by_others",
+    "tests.core.test_runner::test_worker_env"
+  ],
+  "baseline_counts": {
+    "passed": 466,
+    "failed": 6,
+    "error": 0,
+    "skipped": 367
+  }
+}
