@@ -1,0 +1,9 @@
+**Follow-up on the excluded paths, on unchanged `95dd2e2`:** I exercised the two direct-SDK elicitation scenarios with the real runner/client and a capacity-one loopback HTTP fixture. On an injected `tools/call` RPC error, each leaves `s1` live with zero DELETEs, and the healthy `prompts-list` successor is refused at initialize. Their no-elicitation early-return controls close once and allow the successor; the tracked prompts-error control also stays isolated.
+
+With `notifications/initialized` held until after `scenario-timeout`, both direct-SDK scenarios issue one late `tools/call` after acknowledgment release. The check waits for a positive network event, not a quiet-time sleep. It establishes abandoned post-timeout use, not permanent leakage or eventual cleanup timing. The final seven desired-behavior tests are **3 passed / 4 failed**, with actual exit 1 and a red workflow.
+
+[Code, all raw receipts, controls and scope](https://github.com/YS-OH-CORE/second-paddle-notes/blob/e81a394414dc6e91859627ec05e44da8dcc19ba6/checks/mcp-533-bypass/README.md) | [Run 36517193287](https://github.com/YS-OH-CORE/second-paddle-notes/actions/runs/36517193287). My first fixture omitted a healthy prompt description and invalidated the controls; that attempt is retained separately, not counted as product failures.
+
+The source review suggests keeping lifecycle ownership separate from transport selection: these two scenarios need `connection.client.setRequestHandler`, which `Connection` does not expose. The initialization path inspects a raw header, and both SSE paths already have settled-path `finally` cleanup; those three were source-reviewed, not executed here. Would an explicit runner-owned SDK lifetime hook, preserving the existing connector and raw access, be the preferred follow-up? Registering only after the handshake would repeat the late-return gap. No runtime change or competing PR has been made.
+
+Zero × Youngseok Oh

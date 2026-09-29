@@ -3,9 +3,9 @@
   "files": [
     {
       "path": "checks/mcp-533-bypass/README.md",
-      "bytes": 7409,
-      "sha256": "0dc601ae6fd51a052e58f35049fe0f32c4ba47cd7d8387bc955a2655ebae14b2",
-      "git_blob": "c18205acbe627b1cc33f44f08f5288d025f3a646"
+      "bytes": 8084,
+      "sha256": "bd2945b49fab07d10cab2765904d44770bf35af985f111ca5858ea0c13045263",
+      "git_blob": "f89fbd4265adc2a393a3648776041db1e2eac6a1"
     },
     {
       "path": "checks/mcp-533-bypass/summary.json",
