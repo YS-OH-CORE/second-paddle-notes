@@ -1,0 +1,140 @@
+{
+  "recorded_at_utc": "2026-09-29T10:30:41.764212+00:00",
+  "work_item": "mcp-3494-published-sse-350-recheck",
+  "original_mcp_issue": "https://github.com/modelcontextprotocol/python-sdk/issues/3494",
+  "dependency_issue": "https://github.com/sysid/sse-starlette/issues/211",
+  "released_repair": "https://github.com/sysid/sse-starlette/releases/tag/v3.5.0",
+  "release_author": "sysid",
+  "original_dependency_reporter": "vobornik",
+  "prior_restart_diagnosis": "skulitom",
+  "mcp_version": "2.2.0",
+  "scenarios_per_version": 2,
+  "fresh_processes": 4,
+  "server_lifetimes": 8,
+  "scenario_observations": {
+    "old-plain-restart": {
+      "first_server": {
+        "server": 1,
+        "initialize": true,
+        "tools_list": true,
+        "echo": true,
+        "failure": null
+      },
+      "second_server": {
+        "server": 2,
+        "initialize": false,
+        "tools_list": false,
+        "echo": false,
+        "failure": {
+          "type": "RemoteProtocolError",
+          "message": "peer closed connection without sending complete message body (incomplete chunked read)"
+        }
+      },
+      "process_exit_flag_after_first": true,
+      "drain_control": null,
+      "exit_code": 1
+    },
+    "old-graceful-restart": {
+      "first_server": {
+        "server": 1,
+        "initialize": true,
+        "tools_list": true,
+        "echo": true,
+        "failure": null
+      },
+      "second_server": {
+        "server": 2,
+        "initialize": false,
+        "tools_list": false,
+        "echo": false,
+        "failure": {
+          "type": "RemoteProtocolError",
+          "message": "peer closed connection without sending complete message body (incomplete chunked read)"
+        }
+      },
+      "process_exit_flag_after_first": true,
+      "drain_control": {
+        "clean_http_eof": true,
+        "seconds": 0.438,
+        "finalized": true,
+        "shutdown_event_observed": true
+      },
+      "exit_code": 1
+    },
+    "new-plain-restart": {
+      "first_server": {
+        "server": 1,
+        "initialize": true,
+        "tools_list": true,
+        "echo": true,
+        "failure": null
+      },
+      "second_server": {
+        "server": 2,
+        "initialize": true,
+        "tools_list": true,
+        "echo": true,
+        "failure": null
+      },
+      "process_exit_flag_after_first": false,
+      "drain_control": null,
+      "exit_code": 0
+    },
+    "new-graceful-restart": {
+      "first_server": {
+        "server": 1,
+        "initialize": true,
+        "tools_list": true,
+        "echo": true,
+        "failure": null
+      },
+      "second_server": {
+        "server": 2,
+        "initialize": true,
+        "tools_list": true,
+        "echo": true,
+        "failure": null
+      },
+      "process_exit_flag_after_first": false,
+      "drain_control": {
+        "clean_http_eof": true,
+        "seconds": 0.485,
+        "finalized": true,
+        "shutdown_event_observed": true
+      },
+      "exit_code": 0
+    }
+  },
+  "other_observed_package_versions_unchanged": true,
+  "only_locked_package_version_changed": {
+    "sse-starlette": [
+      "3.4.11",
+      "3.5.0"
+    ]
+  },
+  "source_identities": {
+    "3.4.11": {
+      "source_url": "https://raw.githubusercontent.com/sysid/sse-starlette/v3.4.11/sse_starlette/sse.py",
+      "git_blob_sha1": "c096b665e9857f9df86a01c81be3093c786cc353",
+      "sha256": "33bab3673aee1de2502e82e80934387fba095eee7f5da0384536b06b22386d5d",
+      "matches_installed_source": true
+    },
+    "3.5.0": {
+      "source_url": "https://raw.githubusercontent.com/sysid/sse-starlette/v3.5.0/sse_starlette/sse.py",
+      "git_blob_sha1": "15a2bac320c8c4f676f79cc60ff1a8ae4211a8ae",
+      "sha256": "bcb117af6263ce80428de5dac454a32c8ec9c7b5d066312a9eb2ca01300d53f4",
+      "matches_installed_source": true
+    }
+  },
+  "probe_sha256": "7c893de8f3d41ef21f3099f2a1956228eb69afeceb1e5f31e9409c953fdcbd71",
+  "manual_exit_flag_reset": false,
+  "automatic_drain_disabled": false,
+  "synthetic_asgi_disconnects_or_sends": false,
+  "network": "real HTTP loopback only; process-local Python audit, not OS-wide monitoring",
+  "new_product_patch": false,
+  "cpu_contention_or_final_send_race_tested": false,
+  "mcp_v1_or_fastmcp_wrapper_tested": false,
+  "full_suite_run": false,
+  "upstream_comment_sent": false,
+  "signature": "Zero × Youngseok Oh"
+}

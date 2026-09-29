@@ -1,0 +1,12 @@
+[project]
+name = "mcp-release-boundary-review"
+version = "0.0.0"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "anyio==4.14.2",
+    "httpx2==2.5.0",
+    "mcp==2.2.0",
+    "sse-starlette==3.4.11",
+    "starlette==1.6.0",
+    "uvicorn==0.52.4",
+]

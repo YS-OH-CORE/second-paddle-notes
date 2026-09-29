@@ -1,0 +1,60 @@
+{
+  "scenario": "plain-restart",
+  "pid": 81140,
+  "python": "3.12.10",
+  "os": "Windows",
+  "versions": {
+    "mcp": "2.2.0",
+    "mcp-types": "2.2.0",
+    "sse-starlette": "3.4.11",
+    "starlette": "1.6.0",
+    "uvicorn": "0.52.4",
+    "anyio": "4.14.2",
+    "httpx2": "2.5.0",
+    "httpcore2": "2.5.0"
+  },
+  "source_sha256": "33bab3673aee1de2502e82e80934387fba095eee7f5da0384536b06b22386d5d",
+  "automatic_drain_enabled": true,
+  "global_state_manually_reset": false,
+  "requests": [
+    {
+      "server": 1,
+      "initialize": true,
+      "tools_list": true,
+      "echo": true,
+      "failure": null
+    },
+    {
+      "server": 2,
+      "initialize": false,
+      "tools_list": false,
+      "echo": false,
+      "failure": {
+        "type": "RemoteProtocolError",
+        "message": "peer closed connection without sending complete message body (incomplete chunked read)"
+      }
+    }
+  ],
+  "drain": null,
+  "completed": true,
+  "watcher_detected_live_server": true,
+  "process_exit_flag_after_server1": true,
+  "echo_invocations": [
+    [
+      "synthetic-echo-3494"
+    ],
+    []
+  ],
+  "network_events": [
+    {
+      "event": "socket.bind",
+      "loopback": true
+    },
+    {
+      "event": "socket.bind",
+      "loopback": true
+    }
+  ],
+  "external_socket_attempts": 0,
+  "exit_code": 1
+}

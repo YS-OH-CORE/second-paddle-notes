@@ -1,0 +1,33 @@
+{
+  "files": {
+    "dependency-comparison.json": "ca21c67e8f940865a80882c940e79007cecccc928a36c589836b5d42127475dc",
+    "new-pyproject.toml": "9aabe66953cef8169a3d4310a1cef83d9c4cfb47c620c98969fda8df85515a25",
+    "new-uv.lock": "d5702b1a52f28d1cdb98c9a65cebfdacacf6cdccbed822ebc86d2e6642ce8f0b",
+    "old-pyproject.toml": "978b814b71b3974e4ba4d1fa883fd3ffbd52134ef28740d43ddf4236ecf61276",
+    "old-uv.lock": "dd639a25bd5e01c7a90e9dab0e05c95bb16dcd9f5f3745fc7f82d346d4a913ad",
+    "README.md": "35cd37a2b2023a25e1710d693c97ee2353c8f98b5c6070e385413cac87868464",
+    "receipts/new-graceful-restart/exit.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "receipts/new-graceful-restart/result.json": "a41664af44fc637641dab029606346c5dd42b8f6a0374c15120d8b591e87db07",
+    "receipts/new-graceful-restart/stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "receipts/new-graceful-restart/stdout.txt": "cd8905a9c1f4d37c45bf3d7c1a3e1c117599f2cad451e435a818156798722e6d",
+    "receipts/new-plain-restart/exit.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "receipts/new-plain-restart/result.json": "764066bd7b0cea3db8d812fcaf1dbdd2a89528d8bf23935ffa4aa5c3eca908df",
+    "receipts/new-plain-restart/stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "receipts/new-plain-restart/stdout.txt": "dc563c0a794fecb7bb27998dc274f9bbe395b78a97a0997d12c229fb643b102f",
+    "receipts/old-graceful-restart/exit.txt": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "receipts/old-graceful-restart/result.json": "6b3b63e22f14d3a52de4428aafbb68afcc5b6704293955df08f40dda80e58de2",
+    "receipts/old-graceful-restart/stderr.txt": "c723aaef274c3a0794c80ec9624744ba27f330b990c0dc957f85360ef6c4148e",
+    "receipts/old-graceful-restart/stdout.txt": "884c9c9f2f39810246c58c90497f642a35908b50d48bd4ea9186ce0acf45310c",
+    "receipts/old-plain-restart/exit.txt": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "receipts/old-plain-restart/result.json": "e635310fefc22f7020de0a0d0c212e946c31ca50888fd5c93dc4b6062fbf0260",
+    "receipts/old-plain-restart/stderr.txt": "c723aaef274c3a0794c80ec9624744ba27f330b990c0dc957f85360ef6c4148e",
+    "receipts/old-plain-restart/stdout.txt": "c2f03789b4563dc92bf8a09df5373cd43b4f8a22c3d3d73fb3be524506cb4c2c",
+    "receipts/setup.stderr.txt": "c044353de76782ed789568ff261d33f4569b56b23b920e498ee804c1dcd96874",
+    "receipts/setup.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "receipts/upgrade.stderr.txt": "4b950687af157ab23df459938b42433d0b88c88e92e50decd34c56ef820260cb",
+    "receipts/upgrade.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "release_probe.py": "7c893de8f3d41ef21f3099f2a1956228eb69afeceb1e5f31e9409c953fdcbd71",
+    "summary.json": "e2624d4401e692ad87dd5fdd3429f8317603b8b03c6cbdf0bea746a0ed387546"
+  },
+  "excludes_itself": true
+}
