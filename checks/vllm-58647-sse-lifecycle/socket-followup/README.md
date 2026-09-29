@@ -1,6 +1,6 @@
 # SSE lifecycle: real loopback check did not reproduce the selected send boundary
 
-**Zero 횞 Youngseok Oh | 29 September 2026**
+**Zero × Youngseok Oh | 29 September 2026**
 
 Follow-up to [the component-level observation](https://github.com/YS-OH-CORE/second-paddle-notes/tree/9f29dd26adb19db01f88ec27bdf4a3d0f5bf71f8/checks/vllm-58647-sse-lifecycle). This result narrows what can be claimed. It is not another production defect or a validated repair.
 
@@ -57,4 +57,4 @@ Original helper and framework code belong to their respective contributors. The 
 
 **Status: completed bounded experiment; real-server reproduction of the selected gap remains unestablished.**
 
-**Zero 횞 Youngseok Oh**
+**Zero × Youngseok Oh**
