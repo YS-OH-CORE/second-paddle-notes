@@ -1,0 +1,13 @@
+{
+  "run_id": 36512976120,
+  "artifact_id": 11009343315,
+  "bytes": 6735726,
+  "sha256": "b1dc36f46f36d73dcc8baa87434e7f307630ea0b59711f19d9de72b904802dde",
+  "archive_crc_verified": true,
+  "expanded_log_hashes_verified": true,
+  "original_files": 26,
+  "public_mirrors_full_archive": false,
+  "expiration_date": "2026-10-29",
+  "verifier_commit": "a9c2ee0abb0a19cbc4689b27b3a8764c3cb6f53c",
+  "scope": "Archive integrity and local record checks are not independent runtime replications"
+}

@@ -1,0 +1,57 @@
+{
+  "all_selected_nfc_checks_pass": true,
+  "assigned9_scalars": 265705,
+  "newer_unicode_version": [
+    17,
+    0,
+    0
+  ],
+  "nfc_checks": [
+    {
+      "excluded_rows": 0,
+      "first_mismatches": [],
+      "label": "Unicode9 expectations / legacy NFC",
+      "mismatches": 0,
+      "nfc_column_comparisons": 93610,
+      "rows": 18722
+    },
+    {
+      "excluded_rows": 0,
+      "first_mismatches": [],
+      "label": "Unicode9 assigned-in-both expectations / newer NFC",
+      "mismatches": 0,
+      "nfc_column_comparisons": 93610,
+      "rows": 18722
+    },
+    {
+      "excluded_rows": 0,
+      "first_mismatches": [],
+      "label": "Unicode17 expectations / newer NFC",
+      "mismatches": 0,
+      "nfc_column_comparisons": 100170,
+      "rows": 20034
+    },
+    {
+      "excluded_rows": 999,
+      "first_mismatches": [],
+      "label": "Unicode17 expectations restricted to assigned9 / legacy NFC",
+      "mismatches": 0,
+      "nfc_column_comparisons": 95175,
+      "rows": 19035
+    },
+    {
+      "excluded_rows": 999,
+      "first_mismatches": [],
+      "label": "Unicode17 expectations restricted to assigned9 / newer NFC",
+      "mismatches": 0,
+      "nfc_column_comparisons": 95175,
+      "rows": 19035
+    }
+  ],
+  "older_unicode_version": [
+    9,
+    0,
+    0
+  ],
+  "scope": "Five NFC column identities per included official data row, not NFD/NFKC/NFKD conformance or all strings"
+}

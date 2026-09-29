@@ -1,0 +1,62 @@
+{
+  "excluded": [
+    "file-manifest.json itself",
+    "later delivery records"
+  ],
+  "files": [
+    {
+      "path": "checks/tokenizers-2466-assigned/README.md",
+      "bytes": 7402,
+      "sha256": "f87bebd4cbb23027529b07c353b56ed575972da77d725d4cfcc0bf7c76cac5c8",
+      "git_blob": "76a19c078bbaa72dc98b1f6516c31e9f5a3d2dfb"
+    },
+    {
+      "path": "checks/tokenizers-2466-assigned/SUMMARY.json",
+      "bytes": 5354,
+      "sha256": "970f55581098c9312506a48e3e3e44c504be4fb8642eb8bd2defe89aab658a6e",
+      "git_blob": "e6c26674cfcbb7bfe4b56421fff2ab6ccb23bdea"
+    },
+    {
+      "path": "checks/tokenizers-2466-assigned/archive-provenance.json",
+      "bytes": 491,
+      "sha256": "ce49dada4073d3be64b333d6bd2c12c7c3103b2a3ac91b6fd864ad900fb90beb",
+      "git_blob": "241c7c6a41ae9eed50e93aea80dd5c834d215ea9"
+    },
+    {
+      "path": "checks/tokenizers-2466-assigned/assignment-audit.json",
+      "bytes": 4771,
+      "sha256": "aa752e1e64167513c968a9af435b8913c3ade52a44c42c3d9cd6a6a18bb25007",
+      "git_blob": "beab9e6750d74fefecc8d35ea9e7eb57ac32f745"
+    },
+    {
+      "path": "checks/tokenizers-2466-assigned/gpt2.json",
+      "bytes": 369,
+      "sha256": "c234b658f47b2c9297cbcbcbb8e55c537fde16e0fdde172b6b210f4b8671e1a0",
+      "git_blob": "eeb415af563ad563a701b854cf704af8229446b1"
+    },
+    {
+      "path": "checks/tokenizers-2466-assigned/modernbert.json",
+      "bytes": 375,
+      "sha256": "b4edd5e9288605866cefb7cc1e2454679f454138a4e7ed9cc6ae08aa3410d2e7",
+      "git_blob": "402a2e41d7d49cb1a14ace3a8f3f50d4888e649b"
+    },
+    {
+      "path": "checks/tokenizers-2466-assigned/normalization-result.json",
+      "bytes": 1413,
+      "sha256": "16d12d5c5e3cd4f23a4d3574a1e5db1414a424d4a9b0f4f11246fd2d92ad12e6",
+      "git_blob": "daff3efc1b6f65449648415f49a9d23a336f7828"
+    },
+    {
+      "path": "checks/tokenizers-2466-assigned/normalizer-Cargo.lock",
+      "bytes": 3590,
+      "sha256": "f95108c4d710e951bee4ff600ec79fd6e3cc529f82344c145e24c561a69da73c",
+      "git_blob": "0851a451d695bdb375c0f8130c44f4b2de8026a8"
+    },
+    {
+      "path": "checks/tokenizers-2466-assigned/tokenizer-Cargo.lock",
+      "bytes": 106788,
+      "sha256": "6e88cdacd6e237d80bf99f8d28ad6d57d8974410c9aeef346431f9891a81fe6e",
+      "git_blob": "e3a4ba03730602fec07554bbdf1acd0fe40aa6d7"
+    }
+  ]
+}

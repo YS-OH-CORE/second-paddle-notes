@@ -1,0 +1,12 @@
+{
+  "assigned9_scalars": 265705,
+  "blocks": 65,
+  "decode_comparisons": 328,
+  "encode_comparisons": 164,
+  "extra_inputs": 17,
+  "fixture": "gpt2",
+  "input_strings": 82,
+  "mismatch_count": 0,
+  "mismatches": [],
+  "scope": "Assigned Unicode9 scalars in blocks plus 17 controls; not all Unicode9 strings or proof that tokenizer semantics are universally unchanged"
+}

@@ -1,0 +1,167 @@
+{
+  "source_ref": "cde465c9580a0b3f6831318539e3ff2360c7fb09",
+  "source_tree": "64358789032bf4463341929c422b56b696c17c8f",
+  "rustc": "rustc 1.93.1 (01f6ddf75 2026-02-11)\nbinary: rustc\ncommit-hash: 01f6ddf7588f42ae2d7eb0a2f21d44e8e96674cf\ncommit-date: 2026-02-11\nhost: x86_64-unknown-linux-gnu\nrelease: 1.93.1\nLLVM version: 21.1.8\n",
+  "sources": [
+    {
+      "name": "9.0.0-UnicodeData.txt",
+      "url": "https://www.unicode.org/Public/9.0.0/ucd/UnicodeData.txt",
+      "bytes": 1686443,
+      "sha256": "68dfc414d28257b9b5d6ddbb8b466c768c00ebdf6cbf7784364a9b6cad55ee8f"
+    },
+    {
+      "name": "17.0.0-UnicodeData.txt",
+      "url": "https://www.unicode.org/Public/17.0.0/ucd/UnicodeData.txt",
+      "bytes": 2198209,
+      "sha256": "2e1efc1dcb59c575eedf5ccae60f95229f706ee6d031835247d843c11d96470c"
+    },
+    {
+      "name": "17.0.0-DerivedAge.txt",
+      "url": "https://www.unicode.org/Public/17.0.0/ucd/DerivedAge.txt",
+      "bytes": 138286,
+      "sha256": "f8ecdf768bdc210f201abd271d9bc587825618a86a7046a8146cc816393f1998"
+    },
+    {
+      "name": "9.0.0-NormalizationTest.txt",
+      "url": "https://www.unicode.org/Public/9.0.0/ucd/NormalizationTest.txt",
+      "bytes": 2517385,
+      "sha256": "2d48d848656b3cf889df59980ab13551988950c4ca8c5190a17c691a17f8b9bb"
+    },
+    {
+      "name": "17.0.0-NormalizationTest.txt",
+      "url": "https://www.unicode.org/Public/17.0.0/ucd/NormalizationTest.txt",
+      "bytes": 2827429,
+      "sha256": "5019ffd530751a741900c849c0e010332f142a3612234639bd200b82138a87db"
+    },
+    {
+      "name": "gpt2.json",
+      "url": "https://huggingface.co/datasets/hf-internal-testing/tokenizers-test-data/resolve/5f5c6524084c42a35c28c0184bea37ec2530fd7c/gpt2.json",
+      "bytes": 1355256,
+      "sha256": "8414cab924d8b9b33013f0d221c5862f365ee9be39c5c2bfae8a5a9e970478a6"
+    },
+    {
+      "name": "fixtures/models/modernbert-base.json",
+      "url": "https://huggingface.co/datasets/hf-internal-testing/tokenizers-test-data/resolve/5f5c6524084c42a35c28c0184bea37ec2530fd7c/fixtures/models/modernbert-base.json",
+      "bytes": 2132967,
+      "sha256": "9fd55248d51d33976b324fc11592e28071da7d41e0e9401dfb7082e30574b7b1"
+    }
+  ],
+  "gates": {
+    "nfc": 0,
+    "tokenizer": 0
+  },
+  "commands": [
+    {
+      "label": "normalization",
+      "command": [
+        "cargo",
+        "+1.93.1",
+        "run",
+        "--quiet"
+      ],
+      "exit_code": 0
+    },
+    {
+      "label": "tokenizer",
+      "command": [
+        "cargo",
+        "+1.93.1",
+        "test",
+        "-p",
+        "tk-convert",
+        "--features",
+        "bench-baseline",
+        "--test",
+        "zero_assigned9_probe",
+        "--",
+        "--test-threads=1",
+        "--nocapture"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "production_files_restored": true,
+  "results": {
+    "modernbert": {
+      "assigned9_scalars": 265705,
+      "blocks": 65,
+      "decode_comparisons": 328,
+      "encode_comparisons": 164,
+      "extra_inputs": 17,
+      "fixture": "modernbert",
+      "input_strings": 82,
+      "mismatch_count": 0,
+      "mismatches": [],
+      "scope": "Assigned Unicode9 scalars in blocks plus 17 controls; not all Unicode9 strings or proof that tokenizer semantics are universally unchanged"
+    },
+    "gpt2": {
+      "assigned9_scalars": 265705,
+      "blocks": 65,
+      "decode_comparisons": 328,
+      "encode_comparisons": 164,
+      "extra_inputs": 17,
+      "fixture": "gpt2",
+      "input_strings": 82,
+      "mismatch_count": 0,
+      "mismatches": [],
+      "scope": "Assigned Unicode9 scalars in blocks plus 17 controls; not all Unicode9 strings or proof that tokenizer semantics are universally unchanged"
+    },
+    "normalization-result": {
+      "all_selected_nfc_checks_pass": true,
+      "assigned9_scalars": 265705,
+      "newer_unicode_version": [
+        17,
+        0,
+        0
+      ],
+      "nfc_checks": [
+        {
+          "excluded_rows": 0,
+          "first_mismatches": [],
+          "label": "Unicode9 expectations / legacy NFC",
+          "mismatches": 0,
+          "nfc_column_comparisons": 93610,
+          "rows": 18722
+        },
+        {
+          "excluded_rows": 0,
+          "first_mismatches": [],
+          "label": "Unicode9 assigned-in-both expectations / newer NFC",
+          "mismatches": 0,
+          "nfc_column_comparisons": 93610,
+          "rows": 18722
+        },
+        {
+          "excluded_rows": 0,
+          "first_mismatches": [],
+          "label": "Unicode17 expectations / newer NFC",
+          "mismatches": 0,
+          "nfc_column_comparisons": 100170,
+          "rows": 20034
+        },
+        {
+          "excluded_rows": 999,
+          "first_mismatches": [],
+          "label": "Unicode17 expectations restricted to assigned9 / legacy NFC",
+          "mismatches": 0,
+          "nfc_column_comparisons": 95175,
+          "rows": 19035
+        },
+        {
+          "excluded_rows": 999,
+          "first_mismatches": [],
+          "label": "Unicode17 expectations restricted to assigned9 / newer NFC",
+          "mismatches": 0,
+          "nfc_column_comparisons": 95175,
+          "rows": 19035
+        }
+      ],
+      "older_unicode_version": [
+        9,
+        0,
+        0
+      ],
+      "scope": "Five NFC column identities per included official data row, not NFD/NFKC/NFKD conformance or all strings"
+    }
+  }
+}

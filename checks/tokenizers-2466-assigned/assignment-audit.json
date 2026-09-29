@@ -1,0 +1,179 @@
+{
+  "pairs": [
+    [
+      {
+        "codepoint": "U+0EB9",
+        "name": "LAO VOWEL SIGN UU",
+        "first_unicode_version": "1.1",
+        "assigned9": true,
+        "ccc9": 118,
+        "ccc17": 118,
+        "decomposition17": ""
+      },
+      {
+        "codepoint": "U+0EBA",
+        "name": "LAO SIGN PALI VIRAMA",
+        "first_unicode_version": "12.0",
+        "assigned9": false,
+        "ccc9": 0,
+        "ccc17": 9,
+        "decomposition17": ""
+      }
+    ],
+    [
+      {
+        "codepoint": "U+1DF8",
+        "name": "COMBINING DOT ABOVE LEFT",
+        "first_unicode_version": "10.0",
+        "assigned9": false,
+        "ccc9": 0,
+        "ccc17": 228,
+        "decomposition17": ""
+      },
+      {
+        "codepoint": "U+1DF9",
+        "name": "COMBINING WIDE INVERTED BRIDGE BELOW",
+        "first_unicode_version": "10.0",
+        "assigned9": false,
+        "ccc9": 0,
+        "ccc17": 220,
+        "decomposition17": ""
+      }
+    ],
+    [
+      {
+        "codepoint": "U+10F84",
+        "name": "OLD UYGHUR COMBINING TWO DOTS ABOVE",
+        "first_unicode_version": "14.0",
+        "assigned9": false,
+        "ccc9": 0,
+        "ccc17": 230,
+        "decomposition17": ""
+      },
+      {
+        "codepoint": "U+10F85",
+        "name": "OLD UYGHUR COMBINING TWO DOTS BELOW",
+        "first_unicode_version": "14.0",
+        "assigned9": false,
+        "ccc9": 0,
+        "ccc17": 220,
+        "decomposition17": ""
+      }
+    ],
+    [
+      {
+        "codepoint": "U+11839",
+        "name": "DOGRA SIGN VIRAMA",
+        "first_unicode_version": "11.0",
+        "assigned9": false,
+        "ccc9": 0,
+        "ccc17": 9,
+        "decomposition17": ""
+      },
+      {
+        "codepoint": "U+1183A",
+        "name": "DOGRA SIGN NUKTA",
+        "first_unicode_version": "11.0",
+        "assigned9": false,
+        "ccc9": 0,
+        "ccc17": 7,
+        "decomposition17": ""
+      }
+    ],
+    [
+      {
+        "codepoint": "U+1611E",
+        "name": "GURUNG KHEMA VOWEL SIGN AA",
+        "first_unicode_version": "16.0",
+        "assigned9": false,
+        "ccc9": 0,
+        "ccc17": 0,
+        "decomposition17": ""
+      },
+      {
+        "codepoint": "U+1611F",
+        "name": "GURUNG KHEMA VOWEL SIGN I",
+        "first_unicode_version": "16.0",
+        "assigned9": false,
+        "ccc9": 0,
+        "ccc17": 0,
+        "decomposition17": ""
+      }
+    ],
+    [
+      {
+        "codepoint": "U+16D67",
+        "name": "KIRAT RAI VOWEL SIGN E",
+        "first_unicode_version": "16.0",
+        "assigned9": false,
+        "ccc9": 0,
+        "ccc17": 0,
+        "decomposition17": ""
+      },
+      {
+        "codepoint": "U+16D68",
+        "name": "KIRAT RAI VOWEL SIGN AI",
+        "first_unicode_version": "16.0",
+        "assigned9": false,
+        "ccc9": 0,
+        "ccc17": 0,
+        "decomposition17": "16D67 16D67"
+      }
+    ],
+    [
+      {
+        "codepoint": "U+1E5EE",
+        "name": "OL ONAL SIGN MU",
+        "first_unicode_version": "16.0",
+        "assigned9": false,
+        "ccc9": 0,
+        "ccc17": 230,
+        "decomposition17": ""
+      },
+      {
+        "codepoint": "U+1E5EF",
+        "name": "OL ONAL SIGN IKIR",
+        "first_unicode_version": "16.0",
+        "assigned9": false,
+        "ccc9": 0,
+        "ccc17": 220,
+        "decomposition17": ""
+      }
+    ]
+  ],
+  "all_seven_include_post9_assignment": true,
+  "assigned9_scalar_count": 265705,
+  "definition": "UnicodeData9 entries expanded including private-use and controls, excluding surrogates; not all valid codepoints",
+  "sources": [
+    {
+      "name": "9.0.0-UnicodeData.txt",
+      "url": "https://www.unicode.org/Public/9.0.0/ucd/UnicodeData.txt",
+      "bytes": 1686443,
+      "sha256": "68dfc414d28257b9b5d6ddbb8b466c768c00ebdf6cbf7784364a9b6cad55ee8f"
+    },
+    {
+      "name": "17.0.0-UnicodeData.txt",
+      "url": "https://www.unicode.org/Public/17.0.0/ucd/UnicodeData.txt",
+      "bytes": 2198209,
+      "sha256": "2e1efc1dcb59c575eedf5ccae60f95229f706ee6d031835247d843c11d96470c"
+    },
+    {
+      "name": "17.0.0-DerivedAge.txt",
+      "url": "https://www.unicode.org/Public/17.0.0/ucd/DerivedAge.txt",
+      "bytes": 138286,
+      "sha256": "f8ecdf768bdc210f201abd271d9bc587825618a86a7046a8146cc816393f1998"
+    },
+    {
+      "name": "9.0.0-NormalizationTest.txt",
+      "url": "https://www.unicode.org/Public/9.0.0/ucd/NormalizationTest.txt",
+      "bytes": 2517385,
+      "sha256": "2d48d848656b3cf889df59980ab13551988950c4ca8c5190a17c691a17f8b9bb"
+    },
+    {
+      "name": "17.0.0-NormalizationTest.txt",
+      "url": "https://www.unicode.org/Public/17.0.0/ucd/NormalizationTest.txt",
+      "bytes": 2827429,
+      "sha256": "5019ffd530751a741900c849c0e010332f142a3612234639bd200b82138a87db"
+    }
+  ]
+}
