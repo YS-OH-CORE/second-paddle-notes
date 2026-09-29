@@ -1,0 +1,38 @@
+[
+  {
+    "variant": "upstream",
+    "check": "ruff-library",
+    "exit_code": 0,
+    "source_sha256": "e13ea6317164c823eae8512f94eeaea28c43731cf0a7ed1d9de9fca4a95f1782"
+  },
+  {
+    "variant": "upstream",
+    "check": "format-library",
+    "exit_code": 0,
+    "source_sha256": "e13ea6317164c823eae8512f94eeaea28c43731cf0a7ed1d9de9fca4a95f1782"
+  },
+  {
+    "variant": "upstream",
+    "check": "type-library",
+    "exit_code": 0,
+    "source_sha256": "e13ea6317164c823eae8512f94eeaea28c43731cf0a7ed1d9de9fca4a95f1782"
+  },
+  {
+    "variant": "candidate",
+    "check": "ruff-library",
+    "exit_code": 0,
+    "source_sha256": "51972b3a8b160841775ef0830c34254e4bf86b705afc1b32ef372a13d741acbe"
+  },
+  {
+    "variant": "candidate",
+    "check": "format-library",
+    "exit_code": 0,
+    "source_sha256": "51972b3a8b160841775ef0830c34254e4bf86b705afc1b32ef372a13d741acbe"
+  },
+  {
+    "variant": "candidate",
+    "check": "type-library",
+    "exit_code": 0,
+    "source_sha256": "51972b3a8b160841775ef0830c34254e4bf86b705afc1b32ef372a13d741acbe"
+  }
+]

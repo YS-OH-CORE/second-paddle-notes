@@ -1,0 +1,90 @@
+{
+  "checked_at_utc": "2026-09-29T08:09:21.775834+00:00",
+  "project": "langchain-ai/langgraph",
+  "upstream_commit": "07b33185eab893be2ed031eedae52f09314bf77c",
+  "candidate_artifact_commit": "e0040ad37e20ae6edf15fc1b4fa3a45658202a2c",
+  "candidate_source_changed_this_run": false,
+  "scope": "Full libs/prebuilt pytest collection in existing LANGGRAPH_TEST_FAST=true mode, including the 72 previously authored cases. Not the monorepo or Docker-backed test mode.",
+  "collection": {
+    "total": 300,
+    "upstream_original_tests": 228,
+    "previously_authored_tests": 72,
+    "test_modules": 12,
+    "identical_node_ids": true,
+    "tests_skipped": 0,
+    "collection_errors": 0
+  },
+  "comparison": [
+    {
+      "variant": "upstream-fast",
+      "passed": 230,
+      "failed": 70,
+      "upstream_original_passed": 228,
+      "authored_passed": 2,
+      "exit_code": 1
+    },
+    {
+      "variant": "candidate-fast",
+      "passed": 300,
+      "failed": 0,
+      "upstream_original_passed": 228,
+      "authored_passed": 72,
+      "exit_code": 0
+    }
+  ],
+  "transitions": {
+    "pass_to_pass": 230,
+    "fail_to_pass": 70,
+    "pass_to_fail": 0
+  },
+  "snapshot_expectations_passed_per_variant": 16,
+  "warnings_per_variant": 135,
+  "quality_checks": [
+    {
+      "variant": "upstream",
+      "check": "ruff-library",
+      "exit_code": 0,
+      "source_sha256": "e13ea6317164c823eae8512f94eeaea28c43731cf0a7ed1d9de9fca4a95f1782"
+    },
+    {
+      "variant": "upstream",
+      "check": "format-library",
+      "exit_code": 0,
+      "source_sha256": "e13ea6317164c823eae8512f94eeaea28c43731cf0a7ed1d9de9fca4a95f1782"
+    },
+    {
+      "variant": "upstream",
+      "check": "type-library",
+      "exit_code": 0,
+      "source_sha256": "e13ea6317164c823eae8512f94eeaea28c43731cf0a7ed1d9de9fca4a95f1782"
+    },
+    {
+      "variant": "candidate",
+      "check": "ruff-library",
+      "exit_code": 0,
+      "source_sha256": "51972b3a8b160841775ef0830c34254e4bf86b705afc1b32ef372a13d741acbe"
+    },
+    {
+      "variant": "candidate",
+      "check": "format-library",
+      "exit_code": 0,
+      "source_sha256": "51972b3a8b160841775ef0830c34254e4bf86b705afc1b32ef372a13d741acbe"
+    },
+    {
+      "variant": "candidate",
+      "check": "type-library",
+      "exit_code": 0,
+      "source_sha256": "51972b3a8b160841775ef0830c34254e4bf86b705afc1b32ef372a13d741acbe"
+    }
+  ],
+  "network": {
+    "guard_selftest_passed": true,
+    "audited_processes_per_variant": 17,
+    "external_attempts_per_variant": 0,
+    "allows_explicit_loopback": true,
+    "scope": "Python audit-hook events in these recorded test processes, not an operating-system-wide network audit"
+  },
+  "upstream_source_test_files_byte_matched": 21,
+  "runtime_patch_same_as_previous_public_candidate": true,
+  "maintainer_approval_or_merge_claimed": false
+}

@@ -1,0 +1,1879 @@
+{
+  "variant": "candidate-fast",
+  "source_sha256": "51972b3a8b160841775ef0830c34254e4bf86b705afc1b32ef372a13d741acbe",
+  "test_file_sha256": {
+    "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests/__snapshots__/test_react_agent_graph.ambr": "a0ca1c0e0c1160b8ca218a5620d081b4d766cf76cb4283029186c5ada98eab8b",
+    "tests/any_str.py": "346b2f3a43e54d03c89fa767e9e3ba6fa69079c2ec585c9130f87d4e13b1fe1f",
+    "tests/compose-postgres.yml": "8fdaf315b1e7f96cf9379788979362366d2b64ebaf7464e568a27b7515798e4c",
+    "tests/compose-redis.yml": "9d4e8d42ede25e5ee25f87c0346bc1c48c4ca38c01e4215ca27726c2607bd16e",
+    "tests/conftest.py": "e9e205b7843099fbc7542aa1caaf6dad3f466ef4485e3461b13d33ea92945b6b",
+    "tests/conftest_checkpointer.py": "5116383fcc99ba81af2a102d2b8a6b7b549b9bb90e2db72a030430269aab1721",
+    "tests/conftest_store.py": "3cdd4f62c7f73b55e23ae87cb58d41658502d872aca10c3273e5e79c6eb8000a",
+    "tests/memory_assert.py": "dc68580887fba09f1c946c10fcc7e8cb46ce3305e8c47b907213c2df0917d656",
+    "tests/messages.py": "e37954db24713746fbe9d45c1a10638ab2165915a68865418d7573e01f121641",
+    "tests/model.py": "b040414208b5ba7a609d1680ee247f649675730acd7bd6f2db542d67015a0d9d",
+    "tests/test_deprecation.py": "9bfd613d4e6ce4f62d33a48da3772d86945c68ebc3a172c836b0c073ed4cc173",
+    "tests/test_injected_state_not_required.py": "a5d1582ba517caf7ec629f9641167828b41865693a1b7a359271816c0cce4a42",
+    "tests/test_on_tool_call.py": "451c40ec13bf26d60a3323f9b9c914f2f8745cfef8ebb2be3501b9344ce95d74",
+    "tests/test_parent_command_handoff.py": "b4960c257562bf78928f7f328ab84b278f4355f9764a8b44959e981eacf319e4",
+    "tests/test_parent_handoff_durability.py": "b3e949dc8c17e37c8b5c8b4aca94db11418ae599678481016c4c46185c753f61",
+    "tests/test_react_agent.py": "6e8b7856f2c11d1d9f59eedefb5381701e6db1ced5f3ad4daf19f70c72ee0b87",
+    "tests/test_react_agent_graph.py": "bd23f175f6c17c446d78afb5be36fa8e3c9f4a98b890d883425b31b856ef5169",
+    "tests/test_tool_call_transformer.py": "ca3faf7fe70df7d49fcd12d76eb3ae5b7a107569aab8a04a4a49bd8e29ff7db0",
+    "tests/test_tool_node.py": "5ff4e2bc5565368aedbb5347b802d3fd1d74ff6bdaf7d8134b68997a7e50bb5e",
+    "tests/test_tool_node_interceptor_unregistered.py": "0675a28d9010afb3e6a52cb264d75b599b4da5147b016804200ea6726cb2bf19",
+    "tests/test_tool_node_validation_error_filtering.py": "f45a38f3ccd46c48e2a598b63bb315df43b61c29c0b71c6fb0c22d4f36371034",
+    "tests/test_validation_node.py": "c386a7505fdb5e5c1c57b4d94ebfcc6a41910cadbb544dbc389b81a0ca47d747"
+  },
+  "exit_code": 0,
+  "elapsed_seconds": 21.47,
+  "counts": {
+    "passed": 300
+  },
+  "groups": {
+    "tests.test_deprecation": {
+      "passed": 2
+    },
+    "tests.test_injected_state_not_required": {
+      "passed": 6
+    },
+    "tests.test_on_tool_call": {
+      "passed": 33
+    },
+    "tests.test_parent_command_handoff": {
+      "passed": 24
+    },
+    "tests.test_parent_handoff_durability": {
+      "passed": 48
+    },
+    "tests.test_react_agent": {
+      "passed": 81
+    },
+    "tests.test_react_agent_graph": {
+      "passed": 16
+    },
+    "tests.test_tool_call_transformer.TestToolCallTransformerUnit": {
+      "passed": 11
+    },
+    "tests.test_tool_call_transformer.TestToolCallTransformerEndToEnd": {
+      "passed": 4
+    },
+    "tests.test_tool_node": {
+      "passed": 44
+    },
+    "tests.test_tool_node_interceptor_unregistered": {
+      "passed": 15
+    },
+    "tests.test_tool_node_validation_error_filtering": {
+      "passed": 8
+    },
+    "tests.test_validation_node": {
+      "passed": 8
+    }
+  },
+  "outcomes": [
+    {
+      "class": "tests.test_deprecation",
+      "test": "test_config_schema_deprecation",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_deprecation",
+      "test": "test_extra_kwargs_deprecation",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_injected_state_not_required",
+      "test": "test_injected_state_not_required_field_missing_injects_none",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_injected_state_not_required",
+      "test": "test_injected_state_not_required_field_present_works",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_injected_state_not_required",
+      "test": "test_create_react_agent_injected_state_not_required_field_missing",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_injected_state_not_required",
+      "test": "test_create_react_agent_injected_state_not_required_field_present",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_injected_state_not_required",
+      "test": "test_pydantic_state_with_default_field_missing_works",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_injected_state_not_required",
+      "test": "test_pydantic_state_with_default_field_present_works",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_on_tool_call",
+      "test": "test_passthrough_handler",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_on_tool_call",
+      "test": "test_passthrough_handler_async",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_on_tool_call",
+      "test": "test_modify_arguments",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_on_tool_call",
+      "test": "test_handler_validation_no_return",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_on_tool_call",
+      "test": "test_handler_validation_no_yield",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_on_tool_call",
+      "test": "test_handler_with_handle_tool_errors_true",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_on_tool_call",
+      "test": "test_multiple_tool_calls_with_handler",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_on_tool_call",
+      "test": "test_tool_call_request_dataclass",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_on_tool_call",
+      "test": "test_handler_with_async_execution",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_on_tool_call",
+      "test": "test_short_circuit_with_tool_message",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_on_tool_call",
+      "test": "test_short_circuit_with_tool_message_async",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_on_tool_call",
+      "test": "test_conditional_short_circuit",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_on_tool_call",
+      "test": "test_direct_return_tool_message",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_on_tool_call",
+      "test": "test_direct_return_tool_message_async",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_on_tool_call",
+      "test": "test_conditional_direct_return",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_on_tool_call",
+      "test": "test_handler_can_throw_exception",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_on_tool_call",
+      "test": "test_handler_throw_without_handle_errors",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_on_tool_call",
+      "test": "test_retry_middleware_with_exception",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_on_tool_call",
+      "test": "test_async_handler_can_throw_exception",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_on_tool_call",
+      "test": "test_handler_cannot_yield_multiple_tool_messages",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_on_tool_call",
+      "test": "test_handler_cannot_yield_request_after_tool_message",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_on_tool_call",
+      "test": "test_handler_can_short_circuit_with_command",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_on_tool_call",
+      "test": "test_handler_cannot_yield_multiple_commands",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_on_tool_call",
+      "test": "test_handler_cannot_yield_request_after_command",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_on_tool_call",
+      "test": "test_tool_returning_command_sent_to_handler",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_on_tool_call",
+      "test": "test_handler_can_modify_command_from_tool",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_on_tool_call",
+      "test": "test_state_extraction_with_dict_input",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_on_tool_call",
+      "test": "test_state_extraction_with_list_input",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_on_tool_call",
+      "test": "test_state_extraction_with_tool_call_with_context",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_on_tool_call",
+      "test": "test_state_extraction_with_tool_call_with_context_async",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_on_tool_call",
+      "test": "test_list_form_send_hydrates_state_from_channel_read",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_on_tool_call",
+      "test": "test_list_form_send_hydrates_state_async",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_on_tool_call",
+      "test": "test_tool_call_request_is_frozen",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_command_handoff",
+      "test": "test_parent_handoff_contract[single-send-sync]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_command_handoff",
+      "test": "test_parent_handoff_contract[single-send-async]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_command_handoff",
+      "test": "test_parent_handoff_contract[siblings-sync]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_command_handoff",
+      "test": "test_parent_handoff_contract[siblings-async]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_command_handoff",
+      "test": "test_parent_handoff_contract[reversed-sync]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_command_handoff",
+      "test": "test_parent_handoff_contract[reversed-async]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_command_handoff",
+      "test": "test_parent_handoff_contract[string-control-sync]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_command_handoff",
+      "test": "test_parent_handoff_contract[string-control-async]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_command_handoff",
+      "test": "test_parent_handoff_contract[dict-tuple-sync]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_command_handoff",
+      "test": "test_parent_handoff_contract[dict-tuple-async]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_command_handoff",
+      "test": "test_parent_handoff_contract[tuple-dict-sync]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_command_handoff",
+      "test": "test_parent_handoff_contract[tuple-dict-async]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_command_handoff",
+      "test": "test_parent_handoff_contract[tuple-tuple-sync]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_command_handoff",
+      "test": "test_parent_handoff_contract[tuple-tuple-async]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_command_handoff",
+      "test": "test_parent_handoff_contract[dataclass-tuple-sync]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_command_handoff",
+      "test": "test_parent_handoff_contract[dataclass-tuple-async]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_command_handoff",
+      "test": "test_parent_handoff_contract[tuple-pydantic-sync]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_command_handoff",
+      "test": "test_parent_handoff_contract[tuple-pydantic-async]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_command_handoff",
+      "test": "test_parent_handoff_contract[none-tuple-sync]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_command_handoff",
+      "test": "test_parent_handoff_contract[none-tuple-async]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_command_handoff",
+      "test": "test_parent_handoff_contract[tuple-none-sync]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_command_handoff",
+      "test": "test_parent_handoff_contract[tuple-none-async]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_command_handoff",
+      "test": "test_parent_handoff_contract[unreduced-conflict-sync]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_command_handoff",
+      "test": "test_parent_handoff_contract[unreduced-conflict-async]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_mixed_parent_routes[list-list-forward-sync]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_mixed_parent_routes[list-list-forward-async]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_mixed_parent_routes[list-list-reverse-sync]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_mixed_parent_routes[list-list-reverse-async]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_mixed_parent_routes[list-single-forward-sync]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_mixed_parent_routes[list-single-forward-async]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_mixed_parent_routes[list-single-reverse-sync]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_mixed_parent_routes[list-single-reverse-async]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_mixed_parent_routes[single-list-forward-sync]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_mixed_parent_routes[single-list-forward-async]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_mixed_parent_routes[single-list-reverse-sync]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_mixed_parent_routes[single-list-reverse-async]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_mixed_parent_routes[list-tuple-forward-sync]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_mixed_parent_routes[list-tuple-forward-async]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_mixed_parent_routes[list-tuple-reverse-sync]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_mixed_parent_routes[list-tuple-reverse-async]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_mixed_parent_routes[tuple-list-forward-sync]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_mixed_parent_routes[tuple-list-forward-async]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_mixed_parent_routes[tuple-list-reverse-sync]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_mixed_parent_routes[tuple-list-reverse-async]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_mixed_parent_routes[list-string-forward-sync]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_mixed_parent_routes[list-string-forward-async]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_mixed_parent_routes[list-string-reverse-sync]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_mixed_parent_routes[list-string-reverse-async]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_mixed_parent_routes[string-list-forward-sync]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_mixed_parent_routes[string-list-forward-async]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_mixed_parent_routes[string-list-reverse-sync]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_mixed_parent_routes[string-list-reverse-async]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_mixed_parent_routes[tuple-single-forward-sync]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_mixed_parent_routes[tuple-single-forward-async]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_mixed_parent_routes[tuple-single-reverse-sync]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_mixed_parent_routes[tuple-single-reverse-async]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_mixed_parent_routes[list-empty-forward-sync]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_mixed_parent_routes[list-empty-forward-async]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_mixed_parent_routes[list-empty-reverse-sync]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_mixed_parent_routes[list-empty-reverse-async]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_root_reducer_receives_separate_updates[forward-sync]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_root_reducer_receives_separate_updates[forward-async]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_root_reducer_receives_separate_updates[reverse-sync]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_root_reducer_receives_separate_updates[reverse-async]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_checkpoint_resume_in_a_new_process[list-list-sync-sqlite]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_checkpoint_resume_in_a_new_process[list-list-async-sqlite]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_checkpoint_resume_in_a_new_process[list-single-sync-sqlite]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_checkpoint_resume_in_a_new_process[list-single-async-sqlite]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_checkpoint_resume_in_a_new_process[list-string-sync-sqlite]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_checkpoint_resume_in_a_new_process[list-string-async-sqlite]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_checkpoint_resume_in_a_new_process[string-list-sync-sqlite]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_parent_handoff_durability",
+      "test": "test_checkpoint_resume_in_a_new_process[string-list-async-sqlite]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_no_prompt[memory-v1]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_no_prompt[memory-v2]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_no_prompt_async[memory]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_system_message_prompt",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_string_prompt",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_callable_prompt",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_callable_prompt_async",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_runnable_prompt",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_prompt_with_store[v1]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_prompt_with_store[v2]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_prompt_with_store_async",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_model_with_tools[True-v1-openai]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_model_with_tools[True-v1-anthropic]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_model_with_tools[True-v2-openai]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_model_with_tools[True-v2-anthropic]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_model_with_tools[False-v1-openai]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_model_with_tools[False-v1-anthropic]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_model_with_tools[False-v2-openai]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_model_with_tools[False-v2-anthropic]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test__validate_messages",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test__infer_handled_types",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_react_agent_with_structured_response[v1]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_react_agent_with_structured_response[v2]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_react_agent_update_state[memory-CustomState-v1]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_react_agent_update_state[memory-CustomState-v2]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_react_agent_update_state[memory-CustomStatePydantic-v1]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_react_agent_update_state[memory-CustomStatePydantic-v2]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_react_agent_parallel_tool_calls[memory-v1]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_react_agent_parallel_tool_calls[memory-v2]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_tool_node_inject_state[_InjectStateSchema]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_tool_node_inject_state[_InjectedStatePydanticSchema]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_tool_node_inject_state[_InjectedStatePydanticV2Schema]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_tool_node_inject_state[_InjectedStateDataclassSchema]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_create_react_agent_inject_vars[AgentStateExtraKey-v1]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_create_react_agent_inject_vars[AgentStateExtraKey-v2]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_create_react_agent_inject_vars[AgentStateExtraKeyPydantic-v1]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_create_react_agent_inject_vars[AgentStateExtraKeyPydantic-v2]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_tool_node_inject_store",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_tool_node_ensure_utf8",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_tool_node_messages_key",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_return_direct[v1]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_return_direct[v2]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_inspect_react",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_react_with_subgraph_tools[memory-v1]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_react_with_subgraph_tools[memory-v2]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_tool_node_stream_writer",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_react_agent_subgraph_streaming_sync[v1]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_react_agent_subgraph_streaming_sync[v2]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_react_agent_subgraph_streaming[v1]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_react_agent_subgraph_streaming[v2]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_tool_node_node_interrupt[memory-v1]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_tool_node_node_interrupt[memory-v2]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_should_bind_tools[openai]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_should_bind_tools[anthropic]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_get_model",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_dynamic_model_basic[v1]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_dynamic_model_basic[v2]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_dynamic_model_with_tools[v1]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_dynamic_model_with_tools[v2]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_dynamic_model_with_context[v1]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_dynamic_model_with_context[v2]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_dynamic_model_with_state_schema[v1]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_dynamic_model_with_state_schema[v2]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_dynamic_model_with_prompt[v1]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_dynamic_model_with_prompt[v2]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_dynamic_model_async",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_dynamic_model_with_structured_response[v1]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_dynamic_model_with_structured_response[v2]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_dynamic_model_with_checkpointer[memory]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_dynamic_model_state_dependent_tools[v1]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_dynamic_model_state_dependent_tools[v2]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_dynamic_model_error_handling[v1]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_dynamic_model_error_handling[v2]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_dynamic_model_vs_static_model_behavior",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_dynamic_model_receives_correct_state",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_dynamic_model_receives_correct_state_async",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_pre_model_hook",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_post_model_hook",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_post_model_hook_with_structured_output",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_create_react_agent_inject_vars_with_post_model_hook[AgentStateExtraKey]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent",
+      "test": "test_create_react_agent_inject_vars_with_post_model_hook[AgentStateExtraKeyPydantic]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent_graph",
+      "test": "test_react_agent_graph_structure[None-None-None-tools0]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent_graph",
+      "test": "test_react_agent_graph_structure[None-None-None-tools1]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent_graph",
+      "test": "test_react_agent_graph_structure[None-None-pre_model_hook-tools0]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent_graph",
+      "test": "test_react_agent_graph_structure[None-None-pre_model_hook-tools1]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent_graph",
+      "test": "test_react_agent_graph_structure[None-post_model_hook-None-tools0]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent_graph",
+      "test": "test_react_agent_graph_structure[None-post_model_hook-None-tools1]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent_graph",
+      "test": "test_react_agent_graph_structure[None-post_model_hook-pre_model_hook-tools0]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent_graph",
+      "test": "test_react_agent_graph_structure[None-post_model_hook-pre_model_hook-tools1]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent_graph",
+      "test": "test_react_agent_graph_structure[ResponseFormat-None-None-tools0]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent_graph",
+      "test": "test_react_agent_graph_structure[ResponseFormat-None-None-tools1]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent_graph",
+      "test": "test_react_agent_graph_structure[ResponseFormat-None-pre_model_hook-tools0]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent_graph",
+      "test": "test_react_agent_graph_structure[ResponseFormat-None-pre_model_hook-tools1]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent_graph",
+      "test": "test_react_agent_graph_structure[ResponseFormat-post_model_hook-None-tools0]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent_graph",
+      "test": "test_react_agent_graph_structure[ResponseFormat-post_model_hook-None-tools1]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent_graph",
+      "test": "test_react_agent_graph_structure[ResponseFormat-post_model_hook-pre_model_hook-tools0]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_react_agent_graph",
+      "test": "test_react_agent_graph_structure[ResponseFormat-post_model_hook-pre_model_hook-tools1]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_call_transformer.TestToolCallTransformerUnit",
+      "test": "test_required_stream_modes_declares_tools",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_call_transformer.TestToolCallTransformerUnit",
+      "test": "test_tool_started_yields_handle",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_call_transformer.TestToolCallTransformerUnit",
+      "test": "test_delta_accumulates_on_active_stream",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_call_transformer.TestToolCallTransformerUnit",
+      "test": "test_finish_closes_stream",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_call_transformer.TestToolCallTransformerUnit",
+      "test": "test_finish_unwraps_tool_message_output",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_call_transformer.TestToolCallTransformerUnit",
+      "test": "test_finish_unwraps_serialized_tool_message_output",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_call_transformer.TestToolCallTransformerUnit",
+      "test": "test_error_closes_stream",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_call_transformer.TestToolCallTransformerUnit",
+      "test": "test_concurrent_tool_calls_do_not_bleed",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_call_transformer.TestToolCallTransformerUnit",
+      "test": "test_tools_event_passes_through_main_log",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_call_transformer.TestToolCallTransformerUnit",
+      "test": "test_out_of_scope_event_skipped",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_call_transformer.TestToolCallTransformerUnit",
+      "test": "test_in_scope_event_projected_when_scope_set",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_call_transformer.TestToolCallTransformerEndToEnd",
+      "test": "test_sync_streaming_tool_populates_tool_calls",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_call_transformer.TestToolCallTransformerEndToEnd",
+      "test": "test_stream_modes_union_includes_tools",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_call_transformer.TestToolCallTransformerEndToEnd",
+      "test": "test_async_streaming_tool_populates_tool_calls",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_call_transformer.TestToolCallTransformerEndToEnd",
+      "test": "test_tool_error_populates_error_field",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_node",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_node_tool_call_input",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_node_error_handling_default_invocation",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_node_error_handling_default_exception",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_node_error_handling",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_node_error_handling_callable",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_node_handle_tool_errors_false",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_node_individual_tool_error_handling",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_node_incorrect_tool_name",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_node_node_interrupt",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_node_command[dict]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_node_command[tool_calls]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_node_command_list_input",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_node_parent_command_with_send",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_node_command_remove_all_messages",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_node_inject_state[_InjectStateSchema]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_node_inject_state[_InjectedStatePydanticV2Schema]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_node_inject_state[_InjectedStateDataclassSchema]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_node_inject_state[_InjectedStatePydanticSchema]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_node_inject_store",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_node_ensure_utf8",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_node_messages_key",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_node_stream_writer",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_call_request_setattr_deprecation_warning",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_node_inject_async_all_types_signature_only",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_node_inject_async_all_types_with_decorator",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_node_inject_async_all_types_with_schema",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_node_tool_runtime_generic",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_node_inject_runtime_dynamic_tool_via_wrap_tool_call",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_node_inject_runtime_dynamic_tool_via_wrap_tool_call_async",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_runtime_defaults_tools_to_empty_list",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_runtime_forwards_execution_info_server_info_and_tools",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_runtime_forwards_execution_info_server_info_and_tools_async",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_node_strips_plain_injected_tool_arg",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_node_strips_custom_injected_tool_arg_subclass",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_node_injected_state_overwrites_llm_value",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_node_list_return_command_and_tool_message",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_node_list_return_nested_terminator",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_node_list_return_parent_goto_with_terminator",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_node_list_return_no_terminator_raises",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_node_list_return_multiple_terminators_raises",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_node_list_return_validation_error_handled",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_node_list_return_async_smoke",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node",
+      "test": "test_tool_node_list_return_mixed_with_regular_tool",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node_interceptor_unregistered",
+      "test": "test_interceptor_can_handle_unregistered_tool_sync",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node_interceptor_unregistered",
+      "test": "test_interceptor_can_handle_unregistered_tool_async",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node_interceptor_unregistered",
+      "test": "test_unregistered_tool_error_when_interceptor_calls_execute",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node_interceptor_unregistered",
+      "test": "test_interceptor_handles_mix_of_registered_and_unregistered",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node_interceptor_unregistered",
+      "test": "test_interceptor_command_for_unregistered_tool",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node_interceptor_unregistered",
+      "test": "test_interceptor_exception_with_unregistered_tool",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node_interceptor_unregistered",
+      "test": "test_async_interceptor_exception_with_unregistered_tool",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node_interceptor_unregistered",
+      "test": "test_interceptor_with_dict_input_format",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node_interceptor_unregistered",
+      "test": "test_interceptor_verifies_tool_is_none_for_unregistered",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node_interceptor_unregistered",
+      "test": "test_wrap_tool_call_override_unregistered_tool_with_custom_impl",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node_interceptor_unregistered",
+      "test": "test_awrap_tool_call_override_unregistered_tool_with_custom_impl",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node_interceptor_unregistered",
+      "test": "test_graceful_failure_when_hook_does_not_override_unregistered_tool_sync",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node_interceptor_unregistered",
+      "test": "test_graceful_failure_even_when_handle_errors_disabled_sync",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node_interceptor_unregistered",
+      "test": "test_graceful_failure_when_hook_does_not_override_unregistered_tool_async",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node_interceptor_unregistered",
+      "test": "test_graceful_failure_even_when_handle_errors_disabled_async",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node_validation_error_filtering",
+      "test": "test_filter_injected_state_validation_errors",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node_validation_error_filtering",
+      "test": "test_filter_injected_store_validation_errors",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node_validation_error_filtering",
+      "test": "test_filter_tool_runtime_validation_errors",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node_validation_error_filtering",
+      "test": "test_filter_multiple_injected_args",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node_validation_error_filtering",
+      "test": "test_no_filtering_when_all_errors_are_model_args",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node_validation_error_filtering",
+      "test": "test_validation_error_with_no_injected_args",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node_validation_error_filtering",
+      "test": "test_tool_invocation_error_without_handle_errors",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_tool_node_validation_error_filtering",
+      "test": "test_sync_tool_validation_error_filtering",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_validation_node",
+      "test": "test_validation_node[True-my_function]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_validation_node",
+      "test": "test_validation_node[True-MyModel]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_validation_node",
+      "test": "test_validation_node[True-MyModelV1]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_validation_node",
+      "test": "test_validation_node[True-tool_schema3]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_validation_node",
+      "test": "test_validation_node[False-my_function]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_validation_node",
+      "test": "test_validation_node[False-MyModel]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_validation_node",
+      "test": "test_validation_node[False-MyModelV1]",
+      "status": "passed",
+      "message": null
+    },
+    {
+      "class": "tests.test_validation_node",
+      "test": "test_validation_node[False-tool_schema3]",
+      "status": "passed",
+      "message": null
+    }
+  ],
+  "audited_processes": 17,
+  "blocked_external_attempts": 0
+}

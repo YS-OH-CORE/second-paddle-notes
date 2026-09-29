@@ -1,0 +1,118 @@
+{
+  "upstream_commit": "07b33185eab893be2ed031eedae52f09314bf77c",
+  "upstream_test_tree_files_matched": 21,
+  "upstream_original_files": [
+    {
+      "path": "libs/prebuilt/tests/__init__.py",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "libs/prebuilt/tests/__snapshots__/test_react_agent_graph.ambr",
+      "git_blob_sha1": "dca7fc751604aa4296b4f6a9758bb977849aaeb4"
+    },
+    {
+      "path": "libs/prebuilt/tests/any_str.py",
+      "git_blob_sha1": "ccc69eada9acfbb5c9af6b96e4a5df6c70801c8e"
+    },
+    {
+      "path": "libs/prebuilt/tests/compose-postgres.yml",
+      "git_blob_sha1": "221b35dafe48b4e1fa1cb714f5571dd3d8b6230f"
+    },
+    {
+      "path": "libs/prebuilt/tests/compose-redis.yml",
+      "git_blob_sha1": "18862fd28dddc6af1b30acbb3184bbcf6da671ae"
+    },
+    {
+      "path": "libs/prebuilt/tests/conftest.py",
+      "git_blob_sha1": "72ee4ad97232487a5057c434cb7019b13245dae2"
+    },
+    {
+      "path": "libs/prebuilt/tests/conftest_checkpointer.py",
+      "git_blob_sha1": "c71e46c4a756f39d81a507238d17cbb5f438ac48"
+    },
+    {
+      "path": "libs/prebuilt/tests/conftest_store.py",
+      "git_blob_sha1": "4ae8c2445e161fd29349dbbf59d16cbafc63d88a"
+    },
+    {
+      "path": "libs/prebuilt/tests/memory_assert.py",
+      "git_blob_sha1": "3c602c4137f37441134ec39e00a71967ef71d2e5"
+    },
+    {
+      "path": "libs/prebuilt/tests/messages.py",
+      "git_blob_sha1": "06f64bc7d1275fe4a6097c7c098649f40323b0c0"
+    },
+    {
+      "path": "libs/prebuilt/tests/model.py",
+      "git_blob_sha1": "54518b3bad9212060330e78fe462b3bf0f79da83"
+    },
+    {
+      "path": "libs/prebuilt/tests/test_deprecation.py",
+      "git_blob_sha1": "72fc1eede6c703c75cba775c4079ac348a2875b1"
+    },
+    {
+      "path": "libs/prebuilt/tests/test_injected_state_not_required.py",
+      "git_blob_sha1": "58b77eaeb8026c1e0678c93b4e02a06e97496b74"
+    },
+    {
+      "path": "libs/prebuilt/tests/test_on_tool_call.py",
+      "git_blob_sha1": "f2af11b46f24962dfa147b72e34a0e2cf2f9ba8c"
+    },
+    {
+      "path": "libs/prebuilt/tests/test_react_agent.py",
+      "git_blob_sha1": "c801a96dcd77af5d98d8f440d4775ee9b8ebb20c"
+    },
+    {
+      "path": "libs/prebuilt/tests/test_react_agent_graph.py",
+      "git_blob_sha1": "8b45962763eef021b623fff4c08ac29a209e78de"
+    },
+    {
+      "path": "libs/prebuilt/tests/test_tool_call_transformer.py",
+      "git_blob_sha1": "ae8fedd67ea608e0e83176891edead2727c01d41"
+    },
+    {
+      "path": "libs/prebuilt/tests/test_tool_node.py",
+      "git_blob_sha1": "47ebdcae0d936167649c0d33103650388d290a9a"
+    },
+    {
+      "path": "libs/prebuilt/tests/test_tool_node_interceptor_unregistered.py",
+      "git_blob_sha1": "dadf36ad1dbb7a0dc7cced39134db098bba2e5a1"
+    },
+    {
+      "path": "libs/prebuilt/tests/test_tool_node_validation_error_filtering.py",
+      "git_blob_sha1": "af2fd00e3e28712d830ddbc044b4ced16b87cbee"
+    },
+    {
+      "path": "libs/prebuilt/tests/test_validation_node.py",
+      "git_blob_sha1": "674c96f76b3d0f677d53dd8354ffe8031f3cb9bf"
+    }
+  ],
+  "all_test_directory_sha256": {
+    "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests/__snapshots__/test_react_agent_graph.ambr": "a0ca1c0e0c1160b8ca218a5620d081b4d766cf76cb4283029186c5ada98eab8b",
+    "tests/any_str.py": "346b2f3a43e54d03c89fa767e9e3ba6fa69079c2ec585c9130f87d4e13b1fe1f",
+    "tests/compose-postgres.yml": "8fdaf315b1e7f96cf9379788979362366d2b64ebaf7464e568a27b7515798e4c",
+    "tests/compose-redis.yml": "9d4e8d42ede25e5ee25f87c0346bc1c48c4ca38c01e4215ca27726c2607bd16e",
+    "tests/conftest.py": "e9e205b7843099fbc7542aa1caaf6dad3f466ef4485e3461b13d33ea92945b6b",
+    "tests/conftest_checkpointer.py": "5116383fcc99ba81af2a102d2b8a6b7b549b9bb90e2db72a030430269aab1721",
+    "tests/conftest_store.py": "3cdd4f62c7f73b55e23ae87cb58d41658502d872aca10c3273e5e79c6eb8000a",
+    "tests/memory_assert.py": "dc68580887fba09f1c946c10fcc7e8cb46ce3305e8c47b907213c2df0917d656",
+    "tests/messages.py": "e37954db24713746fbe9d45c1a10638ab2165915a68865418d7573e01f121641",
+    "tests/model.py": "b040414208b5ba7a609d1680ee247f649675730acd7bd6f2db542d67015a0d9d",
+    "tests/test_deprecation.py": "9bfd613d4e6ce4f62d33a48da3772d86945c68ebc3a172c836b0c073ed4cc173",
+    "tests/test_injected_state_not_required.py": "a5d1582ba517caf7ec629f9641167828b41865693a1b7a359271816c0cce4a42",
+    "tests/test_on_tool_call.py": "451c40ec13bf26d60a3323f9b9c914f2f8745cfef8ebb2be3501b9344ce95d74",
+    "tests/test_parent_command_handoff.py": "b4960c257562bf78928f7f328ab84b278f4355f9764a8b44959e981eacf319e4",
+    "tests/test_parent_handoff_durability.py": "b3e949dc8c17e37c8b5c8b4aca94db11418ae599678481016c4c46185c753f61",
+    "tests/test_react_agent.py": "6e8b7856f2c11d1d9f59eedefb5381701e6db1ced5f3ad4daf19f70c72ee0b87",
+    "tests/test_react_agent_graph.py": "bd23f175f6c17c446d78afb5be36fa8e3c9f4a98b890d883425b31b856ef5169",
+    "tests/test_tool_call_transformer.py": "ca3faf7fe70df7d49fcd12d76eb3ae5b7a107569aab8a04a4a49bd8e29ff7db0",
+    "tests/test_tool_node.py": "5ff4e2bc5565368aedbb5347b802d3fd1d74ff6bdaf7d8134b68997a7e50bb5e",
+    "tests/test_tool_node_interceptor_unregistered.py": "0675a28d9010afb3e6a52cb264d75b599b4da5147b016804200ea6726cb2bf19",
+    "tests/test_tool_node_validation_error_filtering.py": "f45a38f3ccd46c48e2a598b63bb315df43b61c29c0b71c6fb0c22d4f36371034",
+    "tests/test_validation_node.py": "c386a7505fdb5e5c1c57b4d94ebfcc6a41910cadbb544dbc389b81a0ca47d747"
+  },
+  "candidate_sha256": "51972b3a8b160841775ef0830c34254e4bf86b705afc1b32ef372a13d741acbe",
+  "candidate_matches_previous_public_result": true,
+  "uv_lock_sha256": "41e25e4a220b7ef9d7d28b9e26aa57025df2986fe7f9ce3f8f3cf72c70732bf8"
+}

@@ -1,0 +1,1008 @@
+.........................................FFFFFF..FFFFFFFFFFFFFFFFFFFFFFF [ 24%]
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF............................... [ 48%]
+........................................................................ [ 72%]
+........................................................................ [ 96%]
+............                                                             [100%]
+================================== FAILURES ===================================
+_______________ test_parent_handoff_contract[single-send-sync] ________________
+tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 2
+E    +  where 2 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E7147E9490>)
+_______________ test_parent_handoff_contract[single-send-async] _______________
+tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 2
+E    +  where 2 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E71475CE10>)
+_________________ test_parent_handoff_contract[siblings-sync] _________________
+tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E714479970>)
+________________ test_parent_handoff_contract[siblings-async] _________________
+tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E7147EB780>)
+_________________ test_parent_handoff_contract[reversed-sync] _________________
+tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E71465BB90>)
+________________ test_parent_handoff_contract[reversed-async] _________________
+tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E7147FB370>)
+________________ test_parent_handoff_contract[dict-tuple-sync] ________________
+tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E714658EE0>)
+_______________ test_parent_handoff_contract[dict-tuple-async] ________________
+tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E7147F8930>)
+________________ test_parent_handoff_contract[tuple-dict-sync] ________________
+tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E714729970>)
+_______________ test_parent_handoff_contract[tuple-dict-async] ________________
+tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E714729150>)
+_______________ test_parent_handoff_contract[tuple-tuple-sync] ________________
+tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E7147F9B10>)
+_______________ test_parent_handoff_contract[tuple-tuple-async] _______________
+tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E714254110>)
+_____________ test_parent_handoff_contract[dataclass-tuple-sync] ______________
+tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E714255BE0>)
+_____________ test_parent_handoff_contract[dataclass-tuple-async] _____________
+tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E7147EBC60>)
+______________ test_parent_handoff_contract[tuple-pydantic-sync] ______________
+tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E714245080>)
+_____________ test_parent_handoff_contract[tuple-pydantic-async] ______________
+tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 5
+E    +  where 5 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E714247100>)
+________________ test_parent_handoff_contract[none-tuple-sync] ________________
+tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 3
+E    +  where 3 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E714492F60>)
+_______________ test_parent_handoff_contract[none-tuple-async] ________________
+tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 3
+E    +  where 3 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E71424E9B0>)
+________________ test_parent_handoff_contract[tuple-none-sync] ________________
+tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 2
+E    +  where 2 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E714478930>)
+_______________ test_parent_handoff_contract[tuple-none-async] ________________
+tests\test_parent_command_handoff.py:125: in test_parent_handoff_contract
+    assert result["total"] == sum(VALUES[n][0] for n in live)
+E   assert 0 == 2
+E    +  where 2 = sum(<generator object test_parent_handoff_contract.<locals>.<genexpr> at 0x000001E714478380>)
+____________ test_parent_handoff_contract[unreduced-conflict-sync] ____________
+tests\test_parent_command_handoff.py:119: in test_parent_handoff_contract
+    with pytest.raises(InvalidUpdateError, match="exclusive"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE InvalidUpdateError
+___________ test_parent_handoff_contract[unreduced-conflict-async] ____________
+tests\test_parent_command_handoff.py:119: in test_parent_handoff_contract
+    with pytest.raises(InvalidUpdateError, match="exclusive"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE InvalidUpdateError
+______________ test_mixed_parent_routes[list-list-forward-sync] _______________
+tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 0, ... 'beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 0} != {'total': 5}
+E     {'best': []} != {'best': ['b', 'c']}
+E     {'tool_ids': []} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     Use -v to get more diff
+______________ test_mixed_parent_routes[list-list-forward-async] ______________
+tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 0, ... 'beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 0} != {'total': 5}
+E     {'best': []} != {'best': ['b', 'c']}
+E     {'tool_ids': []} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     Use -v to get more diff
+______________ test_mixed_parent_routes[list-list-reverse-sync] _______________
+tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 0, ... 'beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 0} != {'total': 5}
+E     {'best': []} != {'best': ['b', 'c']}
+E     {'tool_ids': []} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     Use -v to get more diff
+______________ test_mixed_parent_routes[list-list-reverse-async] ______________
+tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 0, ... 'beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 0} != {'total': 5}
+E     {'best': []} != {'best': ['b', 'c']}
+E     {'tool_ids': []} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[list-single-forward-sync] ______________
+tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 3} != {'total': 5}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[list-single-forward-async] _____________
+tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 3} != {'total': 5}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[list-single-reverse-sync] ______________
+tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     {'total': 2} != {'total': 5}
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[list-single-reverse-async] _____________
+tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     {'total': 2} != {'total': 5}
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[single-list-forward-sync] ______________
+tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     {'total': 2} != {'total': 5}
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[single-list-forward-async] _____________
+tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     {'total': 2} != {'total': 5}
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[single-list-reverse-sync] ______________
+tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 3} != {'total': 5}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[single-list-reverse-async] _____________
+tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 3} != {'total': 5}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     Use -v to get more diff
+______________ test_mixed_parent_routes[list-tuple-forward-sync] ______________
+tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 3} != {'total': 5}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[list-tuple-forward-async] ______________
+tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 3} != {'total': 5}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     Use -v to get more diff
+______________ test_mixed_parent_routes[list-tuple-reverse-sync] ______________
+tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     {'total': 2} != {'total': 5}
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[list-tuple-reverse-async] ______________
+tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     {'total': 2} != {'total': 5}
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     Use -v to get more diff
+______________ test_mixed_parent_routes[tuple-list-forward-sync] ______________
+tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     {'total': 2} != {'total': 5}
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[tuple-list-forward-async] ______________
+tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     {'total': 2} != {'total': 5}
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     Use -v to get more diff
+______________ test_mixed_parent_routes[tuple-list-reverse-sync] ______________
+tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 3} != {'total': 5}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[tuple-list-reverse-async] ______________
+tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 3} != {'total': 5}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[list-string-forward-sync] ______________
+tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 3} != {'total': 5}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[list-string-forward-async] _____________
+tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 3} != {'total': 5}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[list-string-reverse-sync] ______________
+tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     {'total': 2} != {'total': 5}
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[list-string-reverse-async] _____________
+tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     {'total': 2} != {'total': 5}
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[string-list-forward-sync] ______________
+tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     {'total': 2} != {'total': 5}
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[string-list-forward-async] _____________
+tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     {'total': 2} != {'total': 5}
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[string-list-reverse-sync] ______________
+tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 3} != {'total': 5}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[string-list-reverse-async] _____________
+tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 3} != {'total': 5}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[tuple-single-forward-sync] _____________
+tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     {'total': 2} != {'total': 5}
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     Use -v to get more diff
+____________ test_mixed_parent_routes[tuple-single-forward-async] _____________
+tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 2, ...'alpha'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     {'total': 2} != {'total': 5}
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[tuple-single-reverse-sync] _____________
+tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 3} != {'total': 5}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     Use -v to get more diff
+____________ test_mixed_parent_routes[tuple-single-reverse-async] _____________
+tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 3, ...['beta'], ...} == {'total': 5, ... 'beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 3} != {'total': 5}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     Use -v to get more diff
+______________ test_mixed_parent_routes[list-empty-forward-sync] ______________
+tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 0, ...'alpha'], ...} == {'total': 5, ...'alpha'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 0} != {'total': 5}
+E     {'best': []} != {'best': ['b', 'c']}
+E     {'tool_ids': []} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[list-empty-forward-async] ______________
+tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 0, ...'alpha'], ...} == {'total': 5, ...'alpha'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 0} != {'total': 5}
+E     {'best': []} != {'best': ['b', 'c']}
+E     {'tool_ids': []} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     Use -v to get more diff
+______________ test_mixed_parent_routes[list-empty-reverse-sync] ______________
+tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 0, ...['beta'], ...} == {'total': 5, ...['beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 0} != {'total': 5}
+E     {'best': []} != {'best': ['b', 'c']}
+E     {'tool_ids': []} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     Use -v to get more diff
+_____________ test_mixed_parent_routes[list-empty-reverse-async] ______________
+tests\test_parent_handoff_durability.py:166: in test_mixed_parent_routes
+    assert actual == {
+E   AssertionError: assert {'total': 0, ...['beta'], ...} == {'total': 5, ...['beta'], ...}
+E     
+E     Omitting 2 identical items, use -vv to show
+E     Differing items:
+E     {'total': 0} != {'total': 5}
+E     {'best': []} != {'best': ['b', 'c']}
+E     {'tool_ids': []} != {'tool_ids': ['call-beta', 'call-alpha']}
+E     Use -v to get more diff
+__________ test_root_reducer_receives_separate_updates[forward-sync] __________
+tests\test_parent_handoff_durability.py:205: in test_root_reducer_receives_separate_updates
+    assert actual == 5
+E   assert 0 == 5
+_________ test_root_reducer_receives_separate_updates[forward-async] __________
+tests\test_parent_handoff_durability.py:205: in test_root_reducer_receives_separate_updates
+    assert actual == 5
+E   assert 0 == 5
+__________ test_root_reducer_receives_separate_updates[reverse-sync] __________
+tests\test_parent_handoff_durability.py:205: in test_root_reducer_receives_separate_updates
+    assert actual == 5
+E   assert 0 == 5
+_________ test_root_reducer_receives_separate_updates[reverse-async] __________
+tests\test_parent_handoff_durability.py:205: in test_root_reducer_receives_separate_updates
+    assert actual == 5
+E   assert 0 == 5
+_______ test_checkpoint_resume_in_a_new_process[list-list-sync-sqlite] ________
+tests\test_parent_handoff_durability.py:284: in test_checkpoint_resume_in_a_new_process
+    assert {k: observation[k] for k in expected} == expected
+E   AssertionError: assert {'total': 0, ...pha', 'beta']} == {'total': 5, ...pha', 'beta']}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'total': 0} != {'total': 5}
+E     {'best': []} != {'best': ['b', 'c']}
+E     {'tool_ids': []} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     Use -v to get more diff
+_______ test_checkpoint_resume_in_a_new_process[list-list-async-sqlite] _______
+tests\test_parent_handoff_durability.py:284: in test_checkpoint_resume_in_a_new_process
+    assert {k: observation[k] for k in expected} == expected
+E   AssertionError: assert {'total': 0, ...pha', 'beta']} == {'total': 5, ...pha', 'beta']}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'total': 0} != {'total': 5}
+E     {'best': []} != {'best': ['b', 'c']}
+E     {'tool_ids': []} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     Use -v to get more diff
+______ test_checkpoint_resume_in_a_new_process[list-single-sync-sqlite] _______
+tests\test_parent_handoff_durability.py:284: in test_checkpoint_resume_in_a_new_process
+    assert {k: observation[k] for k in expected} == expected
+E   AssertionError: assert {'total': 3, ...ed': ['beta']} == {'total': 5, ...pha', 'beta']}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'total': 3} != {'total': 5}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     Use -v to get more diff
+______ test_checkpoint_resume_in_a_new_process[list-single-async-sqlite] ______
+tests\test_parent_handoff_durability.py:284: in test_checkpoint_resume_in_a_new_process
+    assert {k: observation[k] for k in expected} == expected
+E   AssertionError: assert {'total': 3, ...ed': ['beta']} == {'total': 5, ...pha', 'beta']}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'total': 3} != {'total': 5}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     Use -v to get more diff
+______ test_checkpoint_resume_in_a_new_process[list-string-sync-sqlite] _______
+tests\test_parent_handoff_durability.py:284: in test_checkpoint_resume_in_a_new_process
+    assert {k: observation[k] for k in expected} == expected
+E   AssertionError: assert {'total': 3, ...ed': ['beta']} == {'total': 5, ...pha', 'beta']}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'total': 3} != {'total': 5}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     Use -v to get more diff
+______ test_checkpoint_resume_in_a_new_process[list-string-async-sqlite] ______
+tests\test_parent_handoff_durability.py:284: in test_checkpoint_resume_in_a_new_process
+    assert {k: observation[k] for k in expected} == expected
+E   AssertionError: assert {'total': 3, ...ed': ['beta']} == {'total': 5, ...pha', 'beta']}
+E     
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'total': 3} != {'total': 5}
+E     {'visited': ['beta']} != {'visited': ['alpha', 'beta']}
+E     {'tool_ids': ['call-beta']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     Use -v to get more diff
+______ test_checkpoint_resume_in_a_new_process[string-list-sync-sqlite] _______
+tests\test_parent_handoff_durability.py:284: in test_checkpoint_resume_in_a_new_process
+    assert {k: observation[k] for k in expected} == expected
+E   AssertionError: assert {'total': 2, ...d': ['alpha']} == {'total': 5, ...pha', 'beta']}
+E     
+E     Differing items:
+E     {'total': 2} != {'total': 5}
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     Use -v to get more diff
+______ test_checkpoint_resume_in_a_new_process[string-list-async-sqlite] ______
+tests\test_parent_handoff_durability.py:284: in test_checkpoint_resume_in_a_new_process
+    assert {k: observation[k] for k in expected} == expected
+E   AssertionError: assert {'total': 2, ...d': ['alpha']} == {'total': 5, ...pha', 'beta']}
+E     
+E     Differing items:
+E     {'total': 2} != {'total': 5}
+E     {'best': ['a']} != {'best': ['b', 'c']}
+E     {'tool_ids': ['call-alpha']} != {'tool_ids': ['call-alpha', 'call-beta']}
+E     {'visited': ['alpha']} != {'visited': ['alpha', 'beta']}
+E     Use -v to get more diff
+============================== warnings summary ===============================
+tests\conftest.py:31
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\conftest.py:31: PytestAssertRewriteWarning: Module already imported so cannot be rewritten; tests.memory_assert
+    pytest.register_assert_rewrite("tests.memory_assert")
+
+tests\test_deprecation.py:39
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_deprecation.py:39: SyntaxWarning: invalid escape sequence '\('
+    match="create_react_agent\(\) got unexpected keyword arguments: \{'extra': 'extra'\}",
+
+<frozen abc>:106
+<frozen abc>:106
+  <frozen abc>:106: LangGraphDeprecatedSinceV10: AgentStatePydantic has been deprecated in favor of AgentState in `langchain.agents`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+
+tests/test_deprecation.py::test_config_schema_deprecation
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_deprecation.py:20: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(FakeToolCallingModel(), [], config_schema=Config)
+
+tests/test_deprecation.py::test_extra_kwargs_deprecation
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_deprecation.py:41: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    create_react_agent(FakeToolCallingModel(), [], extra="extra")
+
+tests/test_injected_state_not_required.py::test_create_react_agent_injected_state_not_required_field_missing
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_injected_state_not_required.py:166: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(
+
+tests/test_injected_state_not_required.py::test_create_react_agent_injected_state_not_required_field_present
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_injected_state_not_required.py:197: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(
+
+tests/test_injected_state_not_required.py::test_pydantic_state_with_default_field_missing_works
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_injected_state_not_required.py:239: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(
+
+tests/test_injected_state_not_required.py::test_pydantic_state_with_default_field_present_works
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_injected_state_not_required.py:266: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(
+
+tests/test_react_agent.py::test_no_prompt[memory-v1]
+tests/test_react_agent.py::test_no_prompt[memory-v2]
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:94: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(
+
+tests/test_react_agent.py::test_no_prompt_async[memory]
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:125: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(model, [], checkpointer=async_checkpointer)
+
+tests/test_react_agent.py::test_system_message_prompt
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:150: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(FakeToolCallingModel(), [], prompt=prompt)
+
+tests/test_react_agent.py::test_string_prompt
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:161: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(FakeToolCallingModel(), [], prompt=prompt)
+
+tests/test_react_agent.py::test_callable_prompt
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:175: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(FakeToolCallingModel(), [], prompt=prompt)
+
+tests/test_react_agent.py::test_callable_prompt_async
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:187: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(FakeToolCallingModel(), [], prompt=prompt)
+
+tests/test_react_agent.py::test_runnable_prompt
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:199: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(FakeToolCallingModel(), [], prompt=prompt)
+
+tests/test_react_agent.py::test_prompt_with_store[v1]
+tests/test_react_agent.py::test_prompt_with_store[v2]
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:227: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(
+
+tests/test_react_agent.py::test_prompt_with_store[v1]
+tests/test_react_agent.py::test_prompt_with_store[v2]
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:240: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(
+
+tests/test_react_agent.py::test_prompt_with_store_async
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:279: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(model, [add], prompt=prompt, store=in_memory_store)
+
+tests/test_react_agent.py::test_prompt_with_store_async
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:286: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(
+
+tests/test_react_agent.py::test_model_with_tools[True-v1-openai]
+tests/test_react_agent.py::test_model_with_tools[True-v1-anthropic]
+tests/test_react_agent.py::test_model_with_tools[True-v2-openai]
+tests/test_react_agent.py::test_model_with_tools[True-v2-anthropic]
+tests/test_react_agent.py::test_model_with_tools[False-v1-openai]
+tests/test_react_agent.py::test_model_with_tools[False-v1-anthropic]
+tests/test_react_agent.py::test_model_with_tools[False-v2-openai]
+tests/test_react_agent.py::test_model_with_tools[False-v2-anthropic]
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:329: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(
+
+tests/test_react_agent.py::test_model_with_tools[True-v1-openai]
+tests/test_react_agent.py::test_model_with_tools[True-v1-anthropic]
+tests/test_react_agent.py::test_model_with_tools[True-v2-openai]
+tests/test_react_agent.py::test_model_with_tools[True-v2-anthropic]
+tests/test_react_agent.py::test_model_with_tools[False-v1-openai]
+tests/test_react_agent.py::test_model_with_tools[False-v1-anthropic]
+tests/test_react_agent.py::test_model_with_tools[False-v2-openai]
+tests/test_react_agent.py::test_model_with_tools[False-v2-anthropic]
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:364: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    create_react_agent(model.bind_tools([tool1]), [tool1, tool2])
+
+tests/test_react_agent.py::test_model_with_tools[True-v1-openai]
+tests/test_react_agent.py::test_model_with_tools[True-v1-anthropic]
+tests/test_react_agent.py::test_model_with_tools[True-v2-openai]
+tests/test_react_agent.py::test_model_with_tools[True-v2-anthropic]
+tests/test_react_agent.py::test_model_with_tools[False-v1-openai]
+tests/test_react_agent.py::test_model_with_tools[False-v1-anthropic]
+tests/test_react_agent.py::test_model_with_tools[False-v2-openai]
+tests/test_react_agent.py::test_model_with_tools[False-v2-anthropic]
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:368: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    create_react_agent(model.bind_tools([tool1]), [tool2])
+
+tests/test_react_agent.py::test_react_agent_with_structured_response[v1]
+tests/test_react_agent.py::test_react_agent_with_structured_response[v1]
+tests/test_react_agent.py::test_react_agent_with_structured_response[v2]
+tests/test_react_agent.py::test_react_agent_with_structured_response[v2]
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:513: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(
+
+tests/test_react_agent.py::test_react_agent_update_state[memory-CustomState-v1]
+tests/test_react_agent.py::test_react_agent_update_state[memory-CustomState-v2]
+tests/test_react_agent.py::test_react_agent_update_state[memory-CustomStatePydantic-v1]
+tests/test_react_agent.py::test_react_agent_update_state[memory-CustomStatePydantic-v2]
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:576: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(
+
+tests/test_react_agent.py::test_react_agent_parallel_tool_calls[memory-v1]
+tests/test_react_agent.py::test_react_agent_parallel_tool_calls[memory-v2]
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:629: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(
+
+tests/test_react_agent.py::test_create_react_agent_inject_vars[AgentStateExtraKey-v1]
+tests/test_react_agent.py::test_create_react_agent_inject_vars[AgentStateExtraKey-v2]
+tests/test_react_agent.py::test_create_react_agent_inject_vars[AgentStateExtraKeyPydantic-v1]
+tests/test_react_agent.py::test_create_react_agent_inject_vars[AgentStateExtraKeyPydantic-v2]
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:829: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(
+
+tests/test_react_agent.py::test_return_direct[v1]
+tests/test_react_agent.py::test_return_direct[v2]
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:1006: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(
+
+tests/test_react_agent.py::test_return_direct[v1]
+tests/test_react_agent.py::test_return_direct[v2]
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:1034: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(
+
+tests/test_react_agent.py::test_return_direct[v1]
+tests/test_react_agent.py::test_return_direct[v2]
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:1065: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(
+
+tests/test_react_agent.py::test_inspect_react
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:1089: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(model, [])
+
+tests/test_react_agent.py::test_react_with_subgraph_tools[memory-v1]
+tests/test_react_agent.py::test_react_with_subgraph_tools[memory-v2]
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:1147: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(
+
+tests/test_react_agent.py::test_react_agent_subgraph_streaming_sync[v1]
+tests/test_react_agent.py::test_react_agent_subgraph_streaming_sync[v2]
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:1253: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(
+
+tests/test_react_agent.py::test_react_agent_subgraph_streaming[v1]
+tests/test_react_agent.py::test_react_agent_subgraph_streaming[v2]
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:1344: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(
+
+tests/test_react_agent.py::test_tool_node_node_interrupt[memory-v1]
+tests/test_react_agent.py::test_tool_node_node_interrupt[memory-v2]
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:1444: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(
+
+tests/test_react_agent.py::test_dynamic_model_basic[v1]
+tests/test_react_agent.py::test_dynamic_model_basic[v2]
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:1565: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(dynamic_model, [], version=version)
+
+tests/test_react_agent.py::test_dynamic_model_with_tools[v1]
+tests/test_react_agent.py::test_dynamic_model_with_tools[v2]
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:1604: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(
+
+tests/test_react_agent.py::test_dynamic_model_with_context[v1]
+tests/test_react_agent.py::test_dynamic_model_with_context[v2]
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:1640: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(
+
+tests/test_react_agent.py::test_dynamic_model_with_state_schema[v1]
+tests/test_react_agent.py::test_dynamic_model_with_state_schema[v2]
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:1673: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(
+
+tests/test_react_agent.py::test_dynamic_model_with_prompt[v1]
+tests/test_react_agent.py::test_dynamic_model_with_prompt[v2]
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:1692: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(dynamic_model, [], prompt="system_msg", version=version)
+
+tests/test_react_agent.py::test_dynamic_model_with_prompt[v1]
+tests/test_react_agent.py::test_dynamic_model_with_prompt[v2]
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:1701: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(
+
+tests/test_react_agent.py::test_dynamic_model_async
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:1714: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(dynamic_model, [])
+
+tests/test_react_agent.py::test_dynamic_model_with_structured_response[v1]
+tests/test_react_agent.py::test_dynamic_model_with_structured_response[v2]
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:1735: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(
+
+tests/test_react_agent.py::test_dynamic_model_with_checkpointer[memory]
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:1761: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(dynamic_model, [], checkpointer=sync_checkpointer)
+
+tests/test_react_agent.py::test_dynamic_model_state_dependent_tools[v1]
+tests/test_react_agent.py::test_dynamic_model_state_dependent_tools[v2]
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:1801: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(dynamic_model, [tool_a, tool_b], version=version)
+
+tests/test_react_agent.py::test_dynamic_model_error_handling[v1]
+tests/test_react_agent.py::test_dynamic_model_error_handling[v2]
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:1825: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(failing_dynamic_model, [], version=version)
+
+tests/test_react_agent.py::test_dynamic_model_vs_static_model_behavior
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:1840: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    static_agent = create_react_agent(static_model, [])
+
+tests/test_react_agent.py::test_dynamic_model_vs_static_model_behavior
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:1846: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    dynamic_agent = create_react_agent(dynamic_model, [])
+
+tests/test_react_agent.py::test_dynamic_model_receives_correct_state
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:1871: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(dynamic_model, [], state_schema=CustomAgentState)
+
+tests/test_react_agent.py::test_dynamic_model_receives_correct_state_async
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:1902: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(dynamic_model, [], state_schema=CustomAgentStateAsync)
+
+tests/test_react_agent.py::test_pre_model_hook
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:1931: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(model, [], pre_model_hook=pre_model_hook)
+
+tests/test_react_agent.py::test_pre_model_hook
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:1947: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(model, [], pre_model_hook=pre_model_hook)
+
+tests/test_react_agent.py::test_post_model_hook
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:1966: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    pmh_agent = create_react_agent(
+
+tests/test_react_agent.py::test_post_model_hook_with_structured_output
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:2015: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(
+
+tests/test_react_agent.py::test_create_react_agent_inject_vars_with_post_model_hook[AgentStateExtraKey]
+tests/test_react_agent.py::test_create_react_agent_inject_vars_with_post_model_hook[AgentStateExtraKeyPydantic]
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent.py:2141: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(
+
+tests/test_react_agent_graph.py: 16 warnings
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_react_agent_graph.py:45: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    agent = create_react_agent(
+
+tests/test_tool_call_transformer.py::TestToolCallTransformerEndToEnd::test_sync_streaming_tool_populates_tool_calls
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\langgraph\langgraph\pregel\main.py:3708: LangChainBetaWarning: The v3 streaming protocol on Pregel is experimental.
+    return self._pregel_stream_v3(
+
+tests/test_tool_call_transformer.py::TestToolCallTransformerEndToEnd::test_sync_streaming_tool_populates_tool_calls
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\langgraph\langgraph\pregel\main.py:3558: LangChainBetaWarning: The v3 streaming protocol on Pregel is experimental.
+    return GraphRunStream(graph_iter, mux)
+
+tests/test_tool_call_transformer.py::TestToolCallTransformerEndToEnd::test_async_streaming_tool_populates_tool_calls
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_tool_call_transformer.py:382: LangChainBetaWarning: The v3 streaming protocol on Pregel is experimental.
+    run = await graph.astream_events(
+
+tests/test_tool_call_transformer.py::TestToolCallTransformerEndToEnd::test_async_streaming_tool_populates_tool_calls
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\langgraph\langgraph\pregel\main.py:3612: LangChainBetaWarning: The v3 streaming protocol on Pregel is experimental.
+    return AsyncGraphRunStream(graph_aiter, mux)
+
+tests/test_validation_node.py::test_validation_node[True-my_function]
+tests/test_validation_node.py::test_validation_node[True-MyModel]
+tests/test_validation_node.py::test_validation_node[True-MyModelV1]
+tests/test_validation_node.py::test_validation_node[True-tool_schema3]
+tests/test_validation_node.py::test_validation_node[False-my_function]
+tests/test_validation_node.py::test_validation_node[False-MyModel]
+tests/test_validation_node.py::test_validation_node[False-MyModelV1]
+tests/test_validation_node.py::test_validation_node[False-tool_schema3]
+  [PRIOR_REVIEW_DIR]\langgraph-07b33185eab893be2ed031eedae52f09314bf77c\libs\prebuilt\tests\test_validation_node.py:52: LangGraphDeprecatedSinceV10: ValidationNode is deprecated. Please use `create_agent` from `langchain.agents` with custom tool error handling. Deprecated in LangGraph V1.0 to be removed in V2.0.
+    validation_node = ValidationNode([tool_schema])
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+--------------------------- snapshot report summary ---------------------------
+16 snapshots passed.
+=========================== short test summary info ===========================
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[single-send-sync]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[single-send-async]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[siblings-sync]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[siblings-async]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[reversed-sync]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[reversed-async]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[dict-tuple-sync]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[dict-tuple-async]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[tuple-dict-sync]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[tuple-dict-async]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[tuple-tuple-sync]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[tuple-tuple-async]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[dataclass-tuple-sync]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[dataclass-tuple-async]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[tuple-pydantic-sync]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[tuple-pydantic-async]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[none-tuple-sync]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[none-tuple-async]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[tuple-none-sync]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[tuple-none-async]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[unreduced-conflict-sync]
+FAILED tests/test_parent_command_handoff.py::test_parent_handoff_contract[unreduced-conflict-async]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[list-list-forward-sync]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[list-list-forward-async]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[list-list-reverse-sync]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[list-list-reverse-async]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[list-single-forward-sync]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[list-single-forward-async]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[list-single-reverse-sync]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[list-single-reverse-async]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[single-list-forward-sync]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[single-list-forward-async]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[single-list-reverse-sync]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[single-list-reverse-async]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[list-tuple-forward-sync]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[list-tuple-forward-async]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[list-tuple-reverse-sync]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[list-tuple-reverse-async]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[tuple-list-forward-sync]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[tuple-list-forward-async]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[tuple-list-reverse-sync]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[tuple-list-reverse-async]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[list-string-forward-sync]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[list-string-forward-async]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[list-string-reverse-sync]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[list-string-reverse-async]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[string-list-forward-sync]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[string-list-forward-async]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[string-list-reverse-sync]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[string-list-reverse-async]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[tuple-single-forward-sync]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[tuple-single-forward-async]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[tuple-single-reverse-sync]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[tuple-single-reverse-async]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[list-empty-forward-sync]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[list-empty-forward-async]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[list-empty-reverse-sync]
+FAILED tests/test_parent_handoff_durability.py::test_mixed_parent_routes[list-empty-reverse-async]
+FAILED tests/test_parent_handoff_durability.py::test_root_reducer_receives_separate_updates[forward-sync]
+FAILED tests/test_parent_handoff_durability.py::test_root_reducer_receives_separate_updates[forward-async]
+FAILED tests/test_parent_handoff_durability.py::test_root_reducer_receives_separate_updates[reverse-sync]
+FAILED tests/test_parent_handoff_durability.py::test_root_reducer_receives_separate_updates[reverse-async]
+FAILED tests/test_parent_handoff_durability.py::test_checkpoint_resume_in_a_new_process[list-list-sync-sqlite]
+FAILED tests/test_parent_handoff_durability.py::test_checkpoint_resume_in_a_new_process[list-list-async-sqlite]
+FAILED tests/test_parent_handoff_durability.py::test_checkpoint_resume_in_a_new_process[list-single-sync-sqlite]
+FAILED tests/test_parent_handoff_durability.py::test_checkpoint_resume_in_a_new_process[list-single-async-sqlite]
+FAILED tests/test_parent_handoff_durability.py::test_checkpoint_resume_in_a_new_process[list-string-sync-sqlite]
+FAILED tests/test_parent_handoff_durability.py::test_checkpoint_resume_in_a_new_process[list-string-async-sqlite]
+FAILED tests/test_parent_handoff_durability.py::test_checkpoint_resume_in_a_new_process[string-list-sync-sqlite]
+FAILED tests/test_parent_handoff_durability.py::test_checkpoint_resume_in_a_new_process[string-list-async-sqlite]
+70 failed, 230 passed, 135 warnings in 20.74s

@@ -1,0 +1,472 @@
+[
+  {
+    "pid": 27516,
+    "guard_loaded": true,
+    "events": [
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      }
+    ]
+  },
+  {
+    "pid": 54456,
+    "guard_loaded": true,
+    "events": []
+  },
+  {
+    "pid": 55500,
+    "guard_loaded": true,
+    "events": [
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      }
+    ]
+  },
+  {
+    "pid": 65288,
+    "guard_loaded": true,
+    "events": []
+  },
+  {
+    "pid": 66388,
+    "guard_loaded": true,
+    "events": [
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      }
+    ]
+  },
+  {
+    "pid": 66456,
+    "guard_loaded": true,
+    "events": [
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      },
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      }
+    ]
+  },
+  {
+    "pid": 71072,
+    "guard_loaded": true,
+    "events": []
+  },
+  {
+    "pid": 71284,
+    "guard_loaded": true,
+    "events": []
+  },
+  {
+    "pid": 72044,
+    "guard_loaded": true,
+    "events": []
+  },
+  {
+    "pid": 75260,
+    "guard_loaded": true,
+    "events": [
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      }
+    ]
+  },
+  {
+    "pid": 76180,
+    "guard_loaded": true,
+    "events": [
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      }
+    ]
+  },
+  {
+    "pid": 78780,
+    "guard_loaded": true,
+    "events": [
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      }
+    ]
+  },
+  {
+    "pid": 79540,
+    "guard_loaded": true,
+    "events": [
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      }
+    ]
+  },
+  {
+    "pid": 82288,
+    "guard_loaded": true,
+    "events": []
+  },
+  {
+    "pid": 82992,
+    "guard_loaded": true,
+    "events": [
+      {
+        "event": "socket.connect",
+        "allowed_loopback": true
+      }
+    ]
+  },
+  {
+    "pid": 84148,
+    "guard_loaded": true,
+    "events": []
+  },
+  {
+    "pid": 85276,
+    "guard_loaded": true,
+    "events": []
+  }
+]
