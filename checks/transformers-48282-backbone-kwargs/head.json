@@ -1,0 +1,312 @@
+{
+  "transformers_version": "5.18.0.dev0",
+  "cases": [
+    {
+      "config": "DetrConfig",
+      "input_form": "dict",
+      "legacy_by_phase": {
+        "constructed": {
+          "backbone": "synthetic-unused-name",
+          "use_timm_backbone": false,
+          "use_pretrained_backbone": false,
+          "backbone_kwargs": {}
+        },
+        "from_dict": {
+          "backbone": "synthetic-unused-name",
+          "use_timm_backbone": false,
+          "use_pretrained_backbone": false,
+          "backbone_kwargs": {}
+        },
+        "saved_json": {
+          "backbone": "synthetic-unused-name",
+          "use_timm_backbone": false,
+          "use_pretrained_backbone": false,
+          "backbone_kwargs": {}
+        },
+        "from_pretrained": {
+          "backbone": "synthetic-unused-name",
+          "use_timm_backbone": false,
+          "use_pretrained_backbone": false,
+          "backbone_kwargs": {}
+        }
+      },
+      "checks": {
+        "legacy_options_consumed": false,
+        "unrelated_parent_metadata_preserved": true,
+        "backbone_preserved": true,
+        "caller_input_unchanged": true
+      },
+      "passed": false
+    },
+    {
+      "config": "DetrConfig",
+      "input_form": "object",
+      "legacy_by_phase": {
+        "constructed": {
+          "backbone": "synthetic-unused-name",
+          "use_timm_backbone": false,
+          "use_pretrained_backbone": false,
+          "backbone_kwargs": {}
+        },
+        "from_dict": {
+          "backbone": "synthetic-unused-name",
+          "use_timm_backbone": false,
+          "use_pretrained_backbone": false,
+          "backbone_kwargs": {}
+        },
+        "saved_json": {
+          "backbone": "synthetic-unused-name",
+          "use_timm_backbone": false,
+          "use_pretrained_backbone": false,
+          "backbone_kwargs": {}
+        },
+        "from_pretrained": {
+          "backbone": "synthetic-unused-name",
+          "use_timm_backbone": false,
+          "use_pretrained_backbone": false,
+          "backbone_kwargs": {}
+        }
+      },
+      "checks": {
+        "legacy_options_consumed": false,
+        "unrelated_parent_metadata_preserved": true,
+        "backbone_preserved": true,
+        "caller_input_unchanged": true
+      },
+      "passed": false
+    },
+    {
+      "config": "RTDetrConfig",
+      "input_form": "dict",
+      "legacy_by_phase": {
+        "constructed": {
+          "backbone": "synthetic-unused-name",
+          "use_timm_backbone": false,
+          "use_pretrained_backbone": false,
+          "backbone_kwargs": {}
+        },
+        "from_dict": {
+          "backbone": "synthetic-unused-name",
+          "use_timm_backbone": false,
+          "use_pretrained_backbone": false,
+          "backbone_kwargs": {}
+        },
+        "saved_json": {
+          "backbone": "synthetic-unused-name",
+          "use_timm_backbone": false,
+          "use_pretrained_backbone": false,
+          "backbone_kwargs": {}
+        },
+        "from_pretrained": {
+          "backbone": "synthetic-unused-name",
+          "use_timm_backbone": false,
+          "use_pretrained_backbone": false,
+          "backbone_kwargs": {}
+        }
+      },
+      "checks": {
+        "legacy_options_consumed": false,
+        "unrelated_parent_metadata_preserved": true,
+        "backbone_preserved": true,
+        "caller_input_unchanged": true
+      },
+      "passed": false
+    },
+    {
+      "config": "RTDetrConfig",
+      "input_form": "object",
+      "legacy_by_phase": {
+        "constructed": {
+          "backbone": "synthetic-unused-name",
+          "use_timm_backbone": false,
+          "use_pretrained_backbone": false,
+          "backbone_kwargs": {}
+        },
+        "from_dict": {
+          "backbone": "synthetic-unused-name",
+          "use_timm_backbone": false,
+          "use_pretrained_backbone": false,
+          "backbone_kwargs": {}
+        },
+        "saved_json": {
+          "backbone": "synthetic-unused-name",
+          "use_timm_backbone": false,
+          "use_pretrained_backbone": false,
+          "backbone_kwargs": {}
+        },
+        "from_pretrained": {
+          "backbone": "synthetic-unused-name",
+          "use_timm_backbone": false,
+          "use_pretrained_backbone": false,
+          "backbone_kwargs": {}
+        }
+      },
+      "checks": {
+        "legacy_options_consumed": false,
+        "unrelated_parent_metadata_preserved": true,
+        "backbone_preserved": true,
+        "caller_input_unchanged": true
+      },
+      "passed": false
+    },
+    {
+      "config": "MaskFormerConfig",
+      "input_form": "dict",
+      "legacy_by_phase": {
+        "constructed": {
+          "backbone": "synthetic-unused-name",
+          "use_timm_backbone": false,
+          "use_pretrained_backbone": false,
+          "backbone_kwargs": {}
+        },
+        "from_dict": {
+          "backbone": "synthetic-unused-name",
+          "use_timm_backbone": false,
+          "use_pretrained_backbone": false,
+          "backbone_kwargs": {}
+        },
+        "saved_json": {
+          "backbone": "synthetic-unused-name",
+          "use_timm_backbone": false,
+          "use_pretrained_backbone": false,
+          "backbone_kwargs": {}
+        },
+        "from_pretrained": {
+          "backbone": "synthetic-unused-name",
+          "use_timm_backbone": false,
+          "use_pretrained_backbone": false,
+          "backbone_kwargs": {}
+        }
+      },
+      "checks": {
+        "legacy_options_consumed": false,
+        "unrelated_parent_metadata_preserved": true,
+        "backbone_preserved": true,
+        "caller_input_unchanged": true
+      },
+      "passed": false
+    },
+    {
+      "config": "MaskFormerConfig",
+      "input_form": "object",
+      "legacy_by_phase": {
+        "constructed": {
+          "backbone": "synthetic-unused-name",
+          "use_timm_backbone": false,
+          "use_pretrained_backbone": false,
+          "backbone_kwargs": {}
+        },
+        "from_dict": {
+          "backbone": "synthetic-unused-name",
+          "use_timm_backbone": false,
+          "use_pretrained_backbone": false,
+          "backbone_kwargs": {}
+        },
+        "saved_json": {
+          "backbone": "synthetic-unused-name",
+          "use_timm_backbone": false,
+          "use_pretrained_backbone": false,
+          "backbone_kwargs": {}
+        },
+        "from_pretrained": {
+          "backbone": "synthetic-unused-name",
+          "use_timm_backbone": false,
+          "use_pretrained_backbone": false,
+          "backbone_kwargs": {}
+        }
+      },
+      "checks": {
+        "legacy_options_consumed": false,
+        "unrelated_parent_metadata_preserved": true,
+        "backbone_preserved": true,
+        "caller_input_unchanged": true
+      },
+      "passed": false
+    },
+    {
+      "config": "DPTConfig",
+      "input_form": "dict",
+      "legacy_by_phase": {
+        "constructed": {
+          "backbone": "synthetic-unused-name",
+          "use_timm_backbone": false,
+          "use_pretrained_backbone": false,
+          "backbone_kwargs": {}
+        },
+        "from_dict": {
+          "backbone": "synthetic-unused-name",
+          "use_timm_backbone": false,
+          "use_pretrained_backbone": false,
+          "backbone_kwargs": {}
+        },
+        "saved_json": {
+          "backbone": "synthetic-unused-name",
+          "use_timm_backbone": false,
+          "use_pretrained_backbone": false,
+          "backbone_kwargs": {}
+        },
+        "from_pretrained": {
+          "backbone": "synthetic-unused-name",
+          "use_timm_backbone": false,
+          "use_pretrained_backbone": false,
+          "backbone_kwargs": {}
+        }
+      },
+      "checks": {
+        "legacy_options_consumed": false,
+        "unrelated_parent_metadata_preserved": true,
+        "backbone_preserved": true,
+        "caller_input_unchanged": true
+      },
+      "passed": false
+    },
+    {
+      "config": "DPTConfig",
+      "input_form": "object",
+      "legacy_by_phase": {
+        "constructed": {
+          "backbone": "synthetic-unused-name",
+          "use_timm_backbone": false,
+          "use_pretrained_backbone": false,
+          "backbone_kwargs": {}
+        },
+        "from_dict": {
+          "backbone": "synthetic-unused-name",
+          "use_timm_backbone": false,
+          "use_pretrained_backbone": false,
+          "backbone_kwargs": {}
+        },
+        "saved_json": {
+          "backbone": "synthetic-unused-name",
+          "use_timm_backbone": false,
+          "use_pretrained_backbone": false,
+          "backbone_kwargs": {}
+        },
+        "from_pretrained": {
+          "backbone": "synthetic-unused-name",
+          "use_timm_backbone": false,
+          "use_pretrained_backbone": false,
+          "backbone_kwargs": {}
+        }
+      },
+      "checks": {
+        "legacy_options_consumed": false,
+        "unrelated_parent_metadata_preserved": true,
+        "backbone_preserved": true,
+        "caller_input_unchanged": true
+      },
+      "passed": false
+    }
+  ],
+  "passed": 0,
+  "failed": 8,
+  "network_attempts": [],
+  "scope": "configuration construction, dict reconstruction, local save/reload only",
+  "packages": {
+    "huggingface-hub": "1.33.0",
+    "numpy": "2.5.3",
+    "tokenizers": "0.23.2"
+  },
+  "source_ref": "f3e3ad778c38990d38100c44c74f2054b9b2aae6",
+  "path_redaction": "Absolute source directory omitted; remaining observations unchanged."
+}

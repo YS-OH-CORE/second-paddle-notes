@@ -1,0 +1,66 @@
+{
+  "source_identity": {
+    "baseline": {
+      "ref": "2e703d6c7e81ec584c25edc39e8bd2f5a45b04bd",
+      "files": [
+        {
+          "file": "src/transformers/configuration_utils.py",
+          "git_blob": "23534549c957829cb19418f08ed0440ad28b336d",
+          "sha256": "d2a79a113f041bdb58b4cb1c4b95442dcfd943851e21be69209f2b3f0f105138"
+        },
+        {
+          "file": "src/transformers/backbone_utils.py",
+          "git_blob": "7b5622fdbda08e4628cf9bfd81a5e27d4e4b6600",
+          "sha256": "30c5bab3388cdc82f6dcc9e49e027d95f209ddb6a40b461584e09a8646252a30"
+        }
+      ]
+    },
+    "head": {
+      "ref": "f3e3ad778c38990d38100c44c74f2054b9b2aae6",
+      "files": [
+        {
+          "file": "src/transformers/configuration_utils.py",
+          "git_blob": "87b9cd73c1a584bf47ff24c4d487dcae14546c49",
+          "sha256": "e0ccbaae4deced5792d692c3cc8c893399eb92f9b1b9829c12b4e56c92dbb0a9"
+        },
+        {
+          "file": "src/transformers/backbone_utils.py",
+          "git_blob": "7b5622fdbda08e4628cf9bfd81a5e27d4e4b6600",
+          "sha256": "30c5bab3388cdc82f6dcc9e49e027d95f209ddb6a40b461584e09a8646252a30"
+        }
+      ]
+    }
+  },
+  "review_sha256": "46a67023d8fa03b62ec747721c64fd59e4f990803b15fc32931b847acc0ee022",
+  "results": {
+    "baseline": {
+      "passed": 8,
+      "failed": 0,
+      "network_attempts": []
+    },
+    "head": {
+      "passed": 0,
+      "failed": 8,
+      "network_attempts": []
+    },
+    "diagnostic": {
+      "passed": 8,
+      "failed": 0,
+      "network_attempts": []
+    }
+  },
+  "scope": "8 scenarios, each follows construction, from_dict, save_pretrained, from_pretrained. Not 32 independent bugs. No model or weights.",
+  "baseline_not_immediate_parent": true,
+  "runtime_versions": {
+    "huggingface-hub": "1.33.0",
+    "numpy": "2.5.3",
+    "tokenizers": "0.23.2"
+  },
+  "only_diagnostic_runtime_change": "three added lines in common __post_init__; existing source not modified",
+  "upstream_review_question": "https://github.com/huggingface/transformers/pull/48282#discussion_r4131792526",
+  "reviewer": "molbap",
+  "author_acknowledgment": "https://github.com/huggingface/transformers/pull/48282#discussion_r4131920023",
+  "new_discovery_claimed": false,
+  "production_patch_proposed": false,
+  "signature": "Zero × Youngseok Oh"
+}

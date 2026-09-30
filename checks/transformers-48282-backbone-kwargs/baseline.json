@@ -1,0 +1,152 @@
+{
+  "transformers_version": "5.18.0.dev0",
+  "cases": [
+    {
+      "config": "DetrConfig",
+      "input_form": "dict",
+      "legacy_by_phase": {
+        "constructed": {},
+        "from_dict": {},
+        "saved_json": {},
+        "from_pretrained": {}
+      },
+      "checks": {
+        "legacy_options_consumed": true,
+        "unrelated_parent_metadata_preserved": true,
+        "backbone_preserved": true,
+        "caller_input_unchanged": true
+      },
+      "passed": true
+    },
+    {
+      "config": "DetrConfig",
+      "input_form": "object",
+      "legacy_by_phase": {
+        "constructed": {},
+        "from_dict": {},
+        "saved_json": {},
+        "from_pretrained": {}
+      },
+      "checks": {
+        "legacy_options_consumed": true,
+        "unrelated_parent_metadata_preserved": true,
+        "backbone_preserved": true,
+        "caller_input_unchanged": true
+      },
+      "passed": true
+    },
+    {
+      "config": "RTDetrConfig",
+      "input_form": "dict",
+      "legacy_by_phase": {
+        "constructed": {},
+        "from_dict": {},
+        "saved_json": {},
+        "from_pretrained": {}
+      },
+      "checks": {
+        "legacy_options_consumed": true,
+        "unrelated_parent_metadata_preserved": true,
+        "backbone_preserved": true,
+        "caller_input_unchanged": true
+      },
+      "passed": true
+    },
+    {
+      "config": "RTDetrConfig",
+      "input_form": "object",
+      "legacy_by_phase": {
+        "constructed": {},
+        "from_dict": {},
+        "saved_json": {},
+        "from_pretrained": {}
+      },
+      "checks": {
+        "legacy_options_consumed": true,
+        "unrelated_parent_metadata_preserved": true,
+        "backbone_preserved": true,
+        "caller_input_unchanged": true
+      },
+      "passed": true
+    },
+    {
+      "config": "MaskFormerConfig",
+      "input_form": "dict",
+      "legacy_by_phase": {
+        "constructed": {},
+        "from_dict": {},
+        "saved_json": {},
+        "from_pretrained": {}
+      },
+      "checks": {
+        "legacy_options_consumed": true,
+        "unrelated_parent_metadata_preserved": true,
+        "backbone_preserved": true,
+        "caller_input_unchanged": true
+      },
+      "passed": true
+    },
+    {
+      "config": "MaskFormerConfig",
+      "input_form": "object",
+      "legacy_by_phase": {
+        "constructed": {},
+        "from_dict": {},
+        "saved_json": {},
+        "from_pretrained": {}
+      },
+      "checks": {
+        "legacy_options_consumed": true,
+        "unrelated_parent_metadata_preserved": true,
+        "backbone_preserved": true,
+        "caller_input_unchanged": true
+      },
+      "passed": true
+    },
+    {
+      "config": "DPTConfig",
+      "input_form": "dict",
+      "legacy_by_phase": {
+        "constructed": {},
+        "from_dict": {},
+        "saved_json": {},
+        "from_pretrained": {}
+      },
+      "checks": {
+        "legacy_options_consumed": true,
+        "unrelated_parent_metadata_preserved": true,
+        "backbone_preserved": true,
+        "caller_input_unchanged": true
+      },
+      "passed": true
+    },
+    {
+      "config": "DPTConfig",
+      "input_form": "object",
+      "legacy_by_phase": {
+        "constructed": {},
+        "from_dict": {},
+        "saved_json": {},
+        "from_pretrained": {}
+      },
+      "checks": {
+        "legacy_options_consumed": true,
+        "unrelated_parent_metadata_preserved": true,
+        "backbone_preserved": true,
+        "caller_input_unchanged": true
+      },
+      "passed": true
+    }
+  ],
+  "passed": 8,
+  "failed": 0,
+  "network_attempts": [],
+  "scope": "configuration construction, dict reconstruction, local save/reload only",
+  "packages": {
+    "huggingface-hub": "1.33.0",
+    "numpy": "2.5.3",
+    "tokenizers": "0.23.2"
+  },
+  "source_ref": "2e703d6c7e81ec584c25edc39e8bd2f5a45b04bd",
+  "path_redaction": "Absolute source directory omitted; remaining observations unchanged."
+}
