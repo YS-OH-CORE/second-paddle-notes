@@ -1,0 +1,37 @@
+{
+  "case": "after-commit-middle",
+  "injected": [{"point": 2, "boundary": "after-commit-middle"}],
+  "pid": 76948,
+  "first": {"kind": "error", "type": "OperationalError", "message": "SYNTHETIC_after-commit-middle"},
+  "durable_after_first": {"pid": 13720, "ids": [3, 9]},
+  "reconciliation_read_count": 0,
+  "live_after_first": {
+    "ids": [9],
+    "idf": {"1": 1, "4": 1},
+    "scores": {"d": {"9": 0.9938837289810181}, "s": {"9": 0.5753641724586487}}
+  },
+  "retry": {"kind": "success"},
+  "durable_after_retry": {"pid": 87876, "ids": [3, 9]},
+  "live_after_retry": {
+    "ids": [9],
+    "idf": {"1": 1, "4": 1},
+    "scores": {"d": {"9": 0.9938837289810181}, "s": {"9": 0.5753641724586487}}
+  },
+  "live_after_reopen": {
+    "ids": [3, 9],
+    "idf": {"2": 1, "3": 1, "1": 1, "4": 1},
+    "scores": {"d": {"9": 0.9938837346736188, "3": 0.9486832980505138}, "s": {"9": 1.3862943649291992, "3": 1.3862943649291992}}
+  },
+  "checks": {
+    "first_signal": true,
+    "fault_exercised": true,
+    "unrelated_point_on_disk": true,
+    "state_and_search_match_disk": false,
+    "other_collection_still_usable": true,
+    "retry_completed": false,
+    "retry_search_and_idf": false,
+    "reopen_state_and_search": true,
+    "reopened_recovery": true
+  },
+  "passed": false
+}
