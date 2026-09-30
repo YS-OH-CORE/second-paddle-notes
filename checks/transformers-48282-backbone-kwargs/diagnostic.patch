@@ -1,0 +1,12 @@
+--- a/src/transformers/configuration_utils.py
++++ b/src/transformers/configuration_utils.py
+@@ -399,6 +399,9 @@
+                     continue
+                 subconfig = specs.create_subconfig(key, subconfig, **kwargs)
+                 setattr(self, key, subconfig)
++                if key == "backbone_config":
++                    for consumed_key in ("backbone", "backbone_kwargs", "use_timm_backbone", "use_pretrained_backbone"):
++                        kwargs.pop(consumed_key, None)
+ 
+         # BC for the `torch_dtype` argument instead of the simpler `dtype`
+         # Do not warn, as it would otherwise always be triggered since most configs on the hub have `torch_dtype`
