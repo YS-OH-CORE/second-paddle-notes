@@ -1,0 +1,25 @@
+{
+  "engine": "llamacpp",
+  "repo": "ggml-org/llama.cpp",
+  "pr": 29161,
+  "work": "<HOME>/.cache/zero-research/exact-pr33-lktgygvs/tmp/verify-llamacpp-29161-0pndesb3",
+  "base": "e613ef2c81bae98d59850d061ac29e6e3e88cb00",
+  "head": "2959e3ae2706e031eac52ea6c7e44a9e0211c56a",
+  "binary_sha256": {
+    "base": {
+      "canitoolcall-llamacpp": "9141241ebc7ffea6a38dfc1762caea8a5307e852522693a9009285267716f878"
+    },
+    "head": {
+      "canitoolcall-llamacpp": "7f52ccba28e18b11898b621ff0b9d8e449a6ca3f25ee3725c4a23e552c194632"
+    }
+  },
+  "fixtures": 51,
+  "changed": [],
+  "fixed": 0,
+  "regressed": 0,
+  "status": "compared",
+  "pinned_binaries_before": {},
+  "pinned_binaries_after": {},
+  "pinned_unchanged": true,
+  "exit_code": 0
+}

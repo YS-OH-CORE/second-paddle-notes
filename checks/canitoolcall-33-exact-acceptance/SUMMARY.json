@@ -1,0 +1,113 @@
+{
+  "tested_commit": "6111e5b96465ca672205e830ff3bdf1ef28d1df7",
+  "tracked_checkout_clean": true,
+  "engines": {
+    "ollama": {
+      "report": {
+        "engine": "ollama",
+        "repo": "ollama/ollama",
+        "pr": 18663,
+        "work": "<HOME>/.cache/zero-research/exact-pr33-lktgygvs/tmp/verify-ollama-18663-1e4fswnv",
+        "base": "7af393188defd52d370464de0d2064649cab9b41",
+        "head": "42c45aed5f4ed442e442c1ec295338acf24ec6a2",
+        "binary_sha256": {
+          "base": {
+            "ctcreplay": "e09c53d2309a47a9bb4c9b47a4721c9d30cb9e0345db98d9582f01aa3d0d7f72",
+            "ctc-detok": "2b2756a5fb714413da69c9b677de3cfac590dd4d3d88baf571e8d36c543d8306"
+          },
+          "head": {
+            "ctcreplay": "a3832ab0f2afba883b1afb525e9bb132e097597166f026268ded9646d261fc78",
+            "ctc-detok": "84ffea502cfba477bf10e4c7f36463286ba76ce5b16ed7557d0d162096aa464e"
+          }
+        },
+        "fixtures": 51,
+        "changed": [
+          [
+            "glm/glm47-marker-in-arguments",
+            "fail",
+            "pass"
+          ],
+          [
+            "glm/glm47-missing-last-close-arg-value",
+            "pass",
+            "fail"
+          ],
+          [
+            "glm/glm47-significant-whitespace",
+            "fail",
+            "pass"
+          ]
+        ],
+        "fixed": 2,
+        "regressed": 1,
+        "status": "compared",
+        "pinned_binaries_before": {
+          "bin/ctcreplay": "e09c53d2309a47a9bb4c9b47a4721c9d30cb9e0345db98d9582f01aa3d0d7f72",
+          "bin/ctc-detok": "676b1b9a57a94f78ac9c61a0068b6550f403e58a3e416d5aebb908df43724c42"
+        },
+        "pinned_binaries_after": {
+          "bin/ctcreplay": "e09c53d2309a47a9bb4c9b47a4721c9d30cb9e0345db98d9582f01aa3d0d7f72",
+          "bin/ctc-detok": "676b1b9a57a94f78ac9c61a0068b6550f403e58a3e416d5aebb908df43724c42"
+        },
+        "pinned_unchanged": true,
+        "exit_code": 1
+      },
+      "inventory": {
+        "base": {
+          "unsupported": 19,
+          "pass": 29,
+          "fail": 3
+        },
+        "head": {
+          "unsupported": 19,
+          "pass": 30,
+          "fail": 2
+        }
+      },
+      "observed_process_exit": 1
+    },
+    "llamacpp": {
+      "report": {
+        "engine": "llamacpp",
+        "repo": "ggml-org/llama.cpp",
+        "pr": 29161,
+        "work": "<HOME>/.cache/zero-research/exact-pr33-lktgygvs/tmp/verify-llamacpp-29161-0pndesb3",
+        "base": "e613ef2c81bae98d59850d061ac29e6e3e88cb00",
+        "head": "2959e3ae2706e031eac52ea6c7e44a9e0211c56a",
+        "binary_sha256": {
+          "base": {
+            "canitoolcall-llamacpp": "9141241ebc7ffea6a38dfc1762caea8a5307e852522693a9009285267716f878"
+          },
+          "head": {
+            "canitoolcall-llamacpp": "7f52ccba28e18b11898b621ff0b9d8e449a6ca3f25ee3725c4a23e552c194632"
+          }
+        },
+        "fixtures": 51,
+        "changed": [],
+        "fixed": 0,
+        "regressed": 0,
+        "status": "compared",
+        "pinned_binaries_before": {},
+        "pinned_binaries_after": {},
+        "pinned_unchanged": true,
+        "exit_code": 0
+      },
+      "inventory": {
+        "base": {
+          "pass": 41,
+          "soft_pass": 2,
+          "fail": 8
+        },
+        "head": {
+          "pass": 41,
+          "soft_pass": 2,
+          "fail": 8
+        }
+      },
+      "observed_process_exit": 0
+    }
+  },
+  "recorded_at_utc": "2026-09-30T15:50:26.476540+00:00",
+  "new_process_cleanup_code_used": false,
+  "new_test_expectations": false
+}

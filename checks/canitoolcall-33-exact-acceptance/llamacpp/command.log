@@ -1,0 +1,4 @@
+verification logs: <HOME>/.cache/zero-research/exact-pr33-lktgygvs/tmp/verify-llamacpp-29161-0pndesb3
+ggml-org/llama.cpp#29161  base e613ef2c8 -> head 2959e3ae2
+(two isolated full-source builds; pinned harness unchanged)
+fixtures replayed: 51   fixed: 0   regressed: 0

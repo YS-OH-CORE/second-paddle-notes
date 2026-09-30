@@ -1,0 +1,49 @@
+{
+  "engine": "ollama",
+  "repo": "ollama/ollama",
+  "pr": 18663,
+  "work": "<HOME>/.cache/zero-research/exact-pr33-lktgygvs/tmp/verify-ollama-18663-1e4fswnv",
+  "base": "7af393188defd52d370464de0d2064649cab9b41",
+  "head": "42c45aed5f4ed442e442c1ec295338acf24ec6a2",
+  "binary_sha256": {
+    "base": {
+      "ctcreplay": "e09c53d2309a47a9bb4c9b47a4721c9d30cb9e0345db98d9582f01aa3d0d7f72",
+      "ctc-detok": "2b2756a5fb714413da69c9b677de3cfac590dd4d3d88baf571e8d36c543d8306"
+    },
+    "head": {
+      "ctcreplay": "a3832ab0f2afba883b1afb525e9bb132e097597166f026268ded9646d261fc78",
+      "ctc-detok": "84ffea502cfba477bf10e4c7f36463286ba76ce5b16ed7557d0d162096aa464e"
+    }
+  },
+  "fixtures": 51,
+  "changed": [
+    [
+      "glm/glm47-marker-in-arguments",
+      "fail",
+      "pass"
+    ],
+    [
+      "glm/glm47-missing-last-close-arg-value",
+      "pass",
+      "fail"
+    ],
+    [
+      "glm/glm47-significant-whitespace",
+      "fail",
+      "pass"
+    ]
+  ],
+  "fixed": 2,
+  "regressed": 1,
+  "status": "compared",
+  "pinned_binaries_before": {
+    "bin/ctcreplay": "e09c53d2309a47a9bb4c9b47a4721c9d30cb9e0345db98d9582f01aa3d0d7f72",
+    "bin/ctc-detok": "676b1b9a57a94f78ac9c61a0068b6550f403e58a3e416d5aebb908df43724c42"
+  },
+  "pinned_binaries_after": {
+    "bin/ctcreplay": "e09c53d2309a47a9bb4c9b47a4721c9d30cb9e0345db98d9582f01aa3d0d7f72",
+    "bin/ctc-detok": "676b1b9a57a94f78ac9c61a0068b6550f403e58a3e416d5aebb908df43724c42"
+  },
+  "pinned_unchanged": true,
+  "exit_code": 1
+}

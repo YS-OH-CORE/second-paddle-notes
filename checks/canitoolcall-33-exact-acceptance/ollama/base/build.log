@@ -1,0 +1,10 @@
+== Ollama @ 7af393188defd52d370464de0d2064649cab9b41
+== Go harness (cmd/ctcreplay)
+== llama.cpp @ b11081 (Ollama's LLAMA_CPP_VERSION)
+== detokenizer (ctc-detok)
+CMAKE_BUILD_TYPE=Release
+== worker venv (.venvs/ollama)
+== smoke test
+{"has_thinking_support":false,"has_tool_support":true,"known":true,"ok":true,"preserved_tokens":["<tool_call>","</tool_call>"]}
+{"ok":true,"llama_cpp_commit":"161755f","llama_cpp_build":11081}
+built <HOME>/.cache/zero-research/exact-pr33-lktgygvs/tmp/verify-ollama-18663-1e4fswnv/base/project/.engines/ollama/bin/ctcreplay and <HOME>/.cache/zero-research/exact-pr33-lktgygvs/tmp/verify-ollama-18663-1e4fswnv/base/project/.engines/ollama/bin/ctc-detok
