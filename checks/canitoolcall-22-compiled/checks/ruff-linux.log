@@ -1,0 +1,10 @@
+RUF002 Docstring contains ambiguous `×` (MULTIPLICATION SIGN). Did you mean `x` (LATIN SMALL LETTER X)?
+ --> scripts/verify_compiled_pr.py:4:6
+  |
+3 | The ordinary pinned engine, worker environment and adapter pin stay unchanged.
+4 | Zero × Youngseok Oh.
+  |      ^
+5 | """
+  |
+
+Found 1 error.

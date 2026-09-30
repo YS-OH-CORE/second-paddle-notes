@@ -1,0 +1,47 @@
+...........sssssssssssss..............................ssssssssssssssssss [  8%]
+ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss [ 16%]
+ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss [ 24%]
+ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss [ 33%]
+sssssssssssssssssssssssssssssssssssss.................................ss [ 41%]
+ssssssssssssssssssssssssssssssssssssssssssssssssssssssss...............s [ 49%]
+sssss........................................ssssssssssssssssss......... [ 58%]
+.s...................................................................... [ 66%]
+........................................................................ [ 74%]
+........................................................................ [ 83%]
+........................................................................ [ 91%]
+........................................................................ [ 99%]
+.                                                                        [100%]
+=========================== short test summary info ============================
+SKIPPED [1] tests/adapters/test_llamacpp.py:344: llama.cpp harness not built (run scripts/engines/llamacpp.sh)
+SKIPPED [9] tests/adapters/test_llamacpp.py:396: llama.cpp harness not built (run scripts/engines/llamacpp.sh)
+SKIPPED [1] tests/adapters/test_llamacpp.py:434: llama.cpp harness not built (run scripts/engines/llamacpp.sh)
+SKIPPED [1] tests/adapters/test_llamacpp.py:455: llama.cpp harness not built (run scripts/engines/llamacpp.sh)
+SKIPPED [1] tests/adapters/test_llamacpp.py:486: llama.cpp harness not built (run scripts/engines/llamacpp.sh)
+SKIPPED [1] tests/adapters/test_ollama.py:276: ollama env not set up (run scripts/engines/ollama.sh)
+SKIPPED [1] tests/adapters/test_ollama.py:291: ollama env not set up (run scripts/engines/ollama.sh)
+SKIPPED [1] tests/adapters/test_ollama.py:313: ollama env not set up (run scripts/engines/ollama.sh)
+SKIPPED [6] tests/adapters/test_ollama.py:429: ollama env not set up (run scripts/engines/ollama.sh)
+SKIPPED [261] tests/adapters/test_ollama.py:473: ollama env not set up (run scripts/engines/ollama.sh)
+SKIPPED [1] tests/adapters/test_ollama.py:486: ollama env not set up (run scripts/engines/ollama.sh)
+SKIPPED [1] tests/adapters/test_sglang.py:250: sglang env not set up (run scripts/engines/sglang.sh)
+SKIPPED [1] tests/adapters/test_sglang.py:258: sglang env not set up (run scripts/engines/sglang.sh)
+SKIPPED [1] tests/adapters/test_sglang.py:288: sglang env not set up (run scripts/engines/sglang.sh)
+SKIPPED [6] tests/adapters/test_sglang.py:397: sglang env not set up (run scripts/engines/sglang.sh)
+SKIPPED [1] tests/adapters/test_sglang.py:494: sglang env not set up (run scripts/engines/sglang.sh)
+SKIPPED [1] tests/adapters/test_sglang.py:507: sglang env not set up (run scripts/engines/sglang.sh)
+SKIPPED [1] tests/adapters/test_sglang.py:525: sglang env not set up (run scripts/engines/sglang.sh)
+SKIPPED [1] tests/adapters/test_sglang.py:537: sglang env not set up (run scripts/engines/sglang.sh)
+SKIPPED [45] tests/adapters/test_sglang.py:552: sglang env not set up (run scripts/engines/sglang.sh)
+SKIPPED [1] tests/adapters/test_transformers.py:283: transformers env not set up (run scripts/engines/transformers.sh)
+SKIPPED [1] tests/adapters/test_transformers.py:296: transformers env not set up (run scripts/engines/transformers.sh)
+SKIPPED [1] tests/adapters/test_transformers.py:310: transformers env not set up (run scripts/engines/transformers.sh)
+SKIPPED [1] tests/adapters/test_transformers.py:338: transformers env not set up (run scripts/engines/transformers.sh)
+SKIPPED [1] tests/adapters/test_transformers.py:354: transformers env not set up (run scripts/engines/transformers.sh)
+SKIPPED [1] tests/adapters/test_transformers.py:380: transformers env not set up (run scripts/engines/transformers.sh)
+SKIPPED [1] tests/adapters/test_vllm.py:299: vllm env not set up (run scripts/engines/vllm.sh)
+SKIPPED [1] tests/adapters/test_vllm.py:307: vllm env not set up (run scripts/engines/vllm.sh)
+SKIPPED [1] tests/adapters/test_vllm.py:334: vllm env not set up (run scripts/engines/vllm.sh)
+SKIPPED [9] tests/adapters/test_vllm.py:350: vllm env not set up (run scripts/engines/vllm.sh)
+SKIPPED [6] tests/adapters/test_vllm.py:491: vllm env not set up (run scripts/engines/vllm.sh)
+SKIPPED [1] tests/core/test_adapters_registry.py:109: vllm env not set up (run scripts/engines/vllm.sh)
+498 passed, 367 skipped in 10.15s

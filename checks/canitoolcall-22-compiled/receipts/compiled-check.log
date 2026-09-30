@@ -1,0 +1,7 @@
+verification logs: <HOME>/.cache/zero-research/canitoolcall-22-t84xkmsu/tmp/verify-ollama-18663-09ohgvep
+ollama/ollama#18663  base 7af393188 -> head 42c45aed5
+(two isolated full-source builds; pinned harness unchanged)
+fixtures replayed: 51   fixed: 2   regressed: 1
+  glm/glm47-marker-in-arguments: fail -> pass
+  glm/glm47-missing-last-close-arg-value: pass -> fail
+  glm/glm47-significant-whitespace: fail -> pass

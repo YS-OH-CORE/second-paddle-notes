@@ -1,0 +1,509 @@
+--- /dev/null
++++ b/scripts/verify_compiled_pr.py
+@@ -0,0 +1,196 @@
++"""Isolated complete-source builds for compiled parser PR verification.
++
++The ordinary pinned engine, worker environment and adapter pin stay unchanged.
++Zero × Youngseok Oh.
++"""
++
++from __future__ import annotations
++
++import hashlib
++import json
++import os
++import re
++import shutil
++import subprocess
++import sys
++import tempfile
++from pathlib import Path
++
++REPOSITORIES = {"ollama": "ollama/ollama", "llamacpp": "ggml-org/llama.cpp"}
++ADAPTERS = {"ollama": "ollama:OllamaAdapter", "llamacpp": "llamacpp:LlamaCppAdapter"}
++STATUSES = {"pass", "soft_pass", "fail", "error", "unsupported"}
++GOOD = {"pass", "soft_pass"}
++BAD = {"fail", "error"}
++
++
++def commit_sha(value: object) -> str:
++    if not isinstance(value, str) or not re.fullmatch(r"[0-9a-f]{40}", value):
++        raise RuntimeError(f"expected a complete lowercase commit SHA, got {value!r}")
++    return value
++
++
++def file_digest(path: Path) -> str:
++    with path.open("rb") as stream:
++        digest = hashlib.sha256()
++        for chunk in iter(lambda: stream.read(1048576), b""):
++            digest.update(chunk)
++        return digest.hexdigest()
++
++
++def pinned_binaries(root: Path, engine: str) -> dict[str, str]:
++    directory = root / ".engines" / engine
++    names = ["bin/ctcreplay", "bin/ctc-detok"] if engine == "ollama" else ["build/canitoolcall-llamacpp"]
++    return {name: file_digest(directory / name) for name in names if (directory / name).is_file()}
++
++
++def build(root: Path, engine: str, sha: str, destination: Path, jobs: int) -> tuple[dict[str, str], dict[str, str]]:
++    """Copy trusted build recipes, not the pinned engine, into a fresh workspace."""
++    commit_sha(sha)
++    project = destination / "project"
++    project.mkdir(parents=True, exist_ok=False)
++    shutil.copytree(root / "scripts" / "engines", project / "scripts" / "engines")
++    shutil.copytree(root / "harnesses" / engine, project / "harnesses" / engine)
++    env = os.environ.copy()
++    env.update({f"{engine.upper()}_REF": sha, "JOBS": str(jobs)})
++    if engine == "llamacpp":
++        env["LLAMACPP_REPO"] = "https://github.com/ggml-org/llama.cpp"
++    command = ["bash", str(project / "scripts" / "engines" / f"{engine}.sh"), "--no-venv"]
++    if engine == "llamacpp":
++        command.append("--no-vocab")
++    with (destination / "build.log").open("w", encoding="utf-8") as log:
++        result = subprocess.run(command, cwd=project, env=env, stdout=log, stderr=subprocess.STDOUT, timeout=900)
++    if result.returncode:
++        raise RuntimeError(f"{engine} build exited {result.returncode}; see {destination / 'build.log'}")
++    engine_root = project / ".engines" / engine
++    checkout = engine_root / ("ollama" if engine == "ollama" else "llama.cpp")
++    actual = subprocess.run(
++        ["git", "-C", str(checkout), "rev-parse", "HEAD"], check=True, capture_output=True, text=True
++    ).stdout.strip()
++    if actual != sha:
++        raise RuntimeError(f"built checkout is {actual!r}, expected {sha}")
++    if engine == "ollama":
++        binaries = {name: engine_root / "bin" / name for name in ("ctcreplay", "ctc-detok")}
++        overrides = {"CANITOOLCALL_OLLAMA_BIN_DIR": str(engine_root / "bin")}
++    else:
++        binaries = {"canitoolcall-llamacpp": engine_root / "build" / "canitoolcall-llamacpp"}
++        overrides = {
++            "CANITOOLCALL_LLAMACPP_HARNESS": str(binaries["canitoolcall-llamacpp"]),
++            "CANITOOLCALL_LLAMACPP_SRC": str(checkout),
++        }
++    hashes = {name: file_digest(path) for name, path in binaries.items()}
++    # An explicitly selected adapter checks the built commit. Never weaken the
++    # normal adapter's pin or overwrite its source to accommodate a PR build.
++    module, cls = ADAPTERS[engine].split(":")
++    (destination / "ctc_revision_adapter.py").write_text(
++        f"from canitoolcall.adapters.{module} import {cls}\n\n"
++        f"class RevisionAdapter({cls}):\n    pinned_version = {sha!r}\n",
++        encoding="utf-8",
++    )
++    overrides["PYTHONPATH"] = str(destination)
++    overrides["CANITOOLCALL_GGUF_DIR"] = os.environ.get("CANITOOLCALL_GGUF_DIR", str(root / ".engines" / "gguf"))
++    return overrides, hashes
++
++
++def read_cases(out: Path, exit_code: int) -> dict[str, str]:
++    if exit_code not in (0, 1):
++        raise RuntimeError(f"replay exited {exit_code}; see replay.log")
++    found = sorted(out.glob("*.json"))
++    if len(found) != 1:
++        raise RuntimeError(f"expected one results file, found {len(found)}")
++    value = json.loads(found[0].read_text(encoding="utf-8"))
++    if not isinstance(value, dict) or not isinstance(value.get("cases"), list) or not value["cases"]:
++        raise RuntimeError("replay needs a nonempty cases list")
++    cases: dict[str, str] = {}
++    for case in value["cases"]:
++        if not isinstance(case, dict):
++            raise RuntimeError("invalid case object")
++        key, status = case.get("fixture_id"), case.get("status")
++        if not isinstance(key, str) or not key.strip() or key in cases:
++            raise RuntimeError("missing or duplicate fixture ID")
++        if not isinstance(status, str) or status not in STATUSES:
++            raise RuntimeError(f"invalid status for {key!r}")
++        if status == "error" or case.get("harness_error"):
++            raise RuntimeError(f"harness failed for {key!r}; see the per-fixture result")
++        cases[key] = status
++    if all(status == "unsupported" for status in cases.values()):
++        raise RuntimeError("no supported fixtures were replayed")
++    return cases
++
++
++def replay(root: Path, families: list[str], destination: Path, env: dict[str, str]) -> dict[str, str]:
++    out = destination / "results"
++    out.mkdir()
++    command = [sys.executable, "-m", "canitoolcall", "run", "--engine", "ctc_revision_adapter:RevisionAdapter"]
++    command += ["--out", str(out), "--env", "HF_HUB_OFFLINE=1"]
++    for key, value in env.items():
++        command += ["--env", f"{key}={value}"]
++    for family in families:
++        command += ["--family", family]
++    process_env = os.environ.copy()
++    process_env.update(env)
++    process_env["PYTHONPATH"] = os.pathsep.join([str(root / "src"), env["PYTHONPATH"]])
++    with (destination / "replay.log").open("w", encoding="utf-8") as log:
++        result = subprocess.run(command, cwd=root, env=process_env, stdout=log, stderr=subprocess.STDOUT, timeout=900)
++    return read_cases(out, result.returncode)
++
++
++def compare(base: dict[str, str], head: dict[str, str]) -> dict[str, object]:
++    if base.keys() != head.keys():
++        raise RuntimeError("base and head fixture inventories differ; comparison is incomplete")
++    if any((base[key] == "unsupported") != (head[key] == "unsupported") for key in base):
++        raise RuntimeError("support coverage changed; comparison is incomplete")
++    changed = sorted((key, base[key], head[key]) for key in base if base[key] != head[key])
++    fixed = sum(old in BAD and new in GOOD for _, old, new in changed)
++    regressed = sum(old in GOOD and new in BAD for _, old, new in changed)
++    return {"fixtures": len(base), "changed": changed, "fixed": fixed, "regressed": regressed}
++
++
++def verify(root: Path, engine: str, pr_number: int, families: list[str], output: Path | None, jobs: int) -> int:
++    if engine not in REPOSITORIES or pr_number <= 0 or jobs <= 0:
++        raise ValueError("expected a compiled engine, positive PR number and positive build job count")
++    repo = REPOSITORIES[engine]
++    work = Path(tempfile.mkdtemp(prefix=f"verify-{engine}-{pr_number}-"))
++    report: dict[str, object] = {"engine": engine, "repo": repo, "pr": pr_number, "work": str(work)}
++    before = pinned_binaries(root, engine)
++    code = 3
++    try:
++        proc = subprocess.run(
++            ["gh", "api", f"repos/{repo}/pulls/{pr_number}"], check=True, capture_output=True, text=True, timeout=60
++        )
++        pr = json.loads(proc.stdout)
++        base, head = commit_sha(pr["base"]["sha"]), commit_sha(pr["head"]["sha"])
++        report.update(base=base, head=head)
++        results: dict[str, dict[str, str]] = {}
++        builds: dict[str, dict[str, str]] = {}
++        for side, sha in (("base", base), ("head", head)):
++            destination = work / side
++            overrides, builds[side] = build(root, engine, sha, destination, jobs)
++            results[side] = replay(root, families, destination, overrides)
++        report["binary_sha256"] = builds
++        report.update(compare(results["base"], results["head"]))
++        report["status"] = "compared"
++        code = 1 if report["regressed"] else 0
++    except (OSError, ValueError, KeyError, TypeError, RuntimeError, subprocess.SubprocessError) as exc:
++        report.update(status="unreplayable", error=str(exc))
++    finally:
++        after = pinned_binaries(root, engine)
++        report.update(pinned_binaries_before=before, pinned_binaries_after=after, pinned_unchanged=before == after)
++        if before != after:
++            report.update(status="unreplayable", error="pinned harness changed while verification was running")
++            code = 3
++    report["exit_code"] = code
++    encoded = json.dumps(report, indent=2) + "\n"
++    (work / "verification.json").write_text(encoded, encoding="utf-8")
++    if output is not None:
++        output.parent.mkdir(parents=True, exist_ok=True)
++        output.write_text(encoded, encoding="utf-8")
++    if code == 3:
++        print(f"{repo}#{pr_number} cannot be replayed: {report.get('error')}", file=sys.stderr)
++    else:
++        print(f"{repo}#{pr_number}  base {base[:9]} -> head {head[:9]}")
++        print("(two isolated full-source builds; pinned harness unchanged)")
++        print(f"fixtures replayed: {report['fixtures']}   fixed: {report['fixed']}   regressed: {report['regressed']}")
++        for key, old, new in report["changed"]:  # type: ignore[union-attr]
++            print(f"  {key}: {old} -> {new}")
++    print(f"verification logs: {work}", file=sys.stderr)
++    return code
+--- a/scripts/verify_upstream_pr.py
++++ b/scripts/verify_upstream_pr.py
+@@ -6,9 +6,10 @@
+ base commit and at its head commit), restores the pinned files, and prints
+ the per-fixture difference.
+ 
+-Only Python engines are supported so far: vllm, sglang and transformers. For
+-Ollama (Go) and llama.cpp (C++), see "Verify an upstream fix PR" in
+-AGENTS.md.
++Python engines use changed-file overlays. Ollama (Go) and llama.cpp (C++)
++build complete base/head sources in separate temporary directories. Their
++normal pinned builds are untouched; existing vocab-only GGUFs are reused.
++Compiled builds require bash, git, Go/CMake/C++ as documented in AGENTS.md.
+ 
+ Usage (from the repo root, after `bash scripts/engines/<engine>.sh`):
+ 
+@@ -30,6 +31,8 @@
+ import sys
+ import tempfile
+ from pathlib import Path
++
++import verify_compiled_pr
+ 
+ ROOT = Path(__file__).resolve().parent.parent
+ ENGINES = {
+@@ -77,11 +80,16 @@
+ 
+ def main() -> int:
+     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+-    ap.add_argument("--engine", required=True, choices=sorted(ENGINES))
++    ap.add_argument("--engine", required=True, choices=sorted(set(ENGINES) | set(verify_compiled_pr.REPOSITORIES)))
+     ap.add_argument("--pr", required=True, type=int, help="upstream pull request number")
+     ap.add_argument("--family", action="append", default=[], help="fixture family to replay (repeatable; default: all)")
+     ap.add_argument("--json", type=Path, help="also write the report as JSON")
++    ap.add_argument("--build-jobs", type=int, default=2, help="parallel compiled build jobs (default: 2)")
+     a = ap.parse_args()
++    if a.pr <= 0 or a.build_jobs <= 0:
++        ap.error("--pr and --build-jobs must be positive")
++    if a.engine in verify_compiled_pr.REPOSITORIES:
++        return verify_compiled_pr.verify(ROOT, a.engine, a.pr, a.family, a.json, a.build_jobs)
+ 
+     repo, package, prefix = ENGINES[a.engine]
+     pr = gh_json(f"repos/{repo}/pulls/{a.pr}")
+--- a/scripts/engines/ollama.sh
++++ b/scripts/engines/ollama.sh
+@@ -17,12 +17,22 @@
+ # C++17 compiler, uv.
+ set -euo pipefail
+ 
++REQUESTED_OLLAMA_REF="${OLLAMA_REF:-}"
+ OLLAMA_REF=7af393188defd52d370464de0d2064649cab9b41   # keep in sync with OllamaAdapter.pinned_version
++OLLAMA_REF="${REQUESTED_OLLAMA_REF:-$OLLAMA_REF}"
+ ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
+ ENG="$ROOT/.engines/ollama"
+ SRC="$ENG/ollama"
+ BIN="$ENG/bin"
+-JOBS="$(sysctl -n hw.ncpu 2>/dev/null || nproc 2>/dev/null || echo 4)"
++JOBS="${JOBS:-$(sysctl -n hw.ncpu 2>/dev/null || nproc 2>/dev/null || echo 4)}"
++venv=1
++for arg in "$@"; do
++  case "$arg" in
++    --no-venv) venv=0 ;;
++    *) echo "unknown argument: $arg" >&2; exit 2 ;;
++  esac
++done
++[[ "$OLLAMA_REF" =~ ^[0-9a-f]{40}$ ]] || { echo "OLLAMA_REF must be a full commit SHA" >&2; exit 2; }
+ mkdir -p "$ENG" "$BIN"
+ 
+ fetch() {  # $1=repo url  $2=dir  $3=ref (commit or tag)
+@@ -64,7 +74,9 @@
+ cp "$ENG/detok-build/ctc-detok" "$BIN/ctc-detok"
+ 
+ echo "== worker venv (.venvs/ollama)"
+-uv venv -q --allow-existing -p 3.12 "$ROOT/.venvs/ollama"
++if [[ $venv == 1 ]]; then
++  uv venv -q --allow-existing -p 3.12 "$ROOT/.venvs/ollama"
++fi
+ 
+ echo "== smoke test"
+ echo '{"op":"describe","parser":"qwen3-coder"}' | "$BIN/ctcreplay"
+--- a/scripts/engines/llamacpp.sh
++++ b/scripts/engines/llamacpp.sh
+@@ -23,7 +23,7 @@
+ # interpreter with $CANITOOLCALL_LLAMACPP_PYTHON.
+ set -euo pipefail
+ 
+-LLAMACPP_REF="a25c9865fe03c954c93fd755b5d79ae86ba99750"  # keep in sync with LlamaCppAdapter.pinned_version
++LLAMACPP_REF="${LLAMACPP_REF:-a25c9865fe03c954c93fd755b5d79ae86ba99750}"  # keep in sync with LlamaCppAdapter.pinned_version
+ 
+ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+ ENGINE="$ROOT/.engines/llamacpp"
+@@ -48,6 +48,8 @@
+ 
+ command -v git >/dev/null || { echo "git is required" >&2; exit 1; }
+ [[ $harness == 0 ]] || command -v cmake >/dev/null || { echo "cmake is required (e.g. brew install cmake)" >&2; exit 1; }
++
++[[ "$LLAMACPP_REF" =~ ^[0-9a-f]{40}$ ]] || { echo "LLAMACPP_REF must be a full commit SHA" >&2; exit 2; }
+ 
+ # 1. Source at the pin (shallow fetch of exactly one commit).
+ mkdir -p "$ENGINE"
+--- /dev/null
++++ b/tests/core/test_compiled_verifier.py
+@@ -0,0 +1,125 @@
++"""Compiled PR isolation, pin validation, argument and report controls."""
++
++from __future__ import annotations
++
++import json
++import sys
++from pathlib import Path
++from types import SimpleNamespace
++
++import pytest
++
++SCRIPTS = Path(__file__).resolve().parents[2] / "scripts"
++sys.path.insert(0, str(SCRIPTS))
++import verify_compiled_pr as compiled  # noqa: E402
++
++SHA = "a" * 40
++OTHER = "b" * 40
++
++
++@pytest.mark.parametrize("bad", [None, "", "HEAD", "../x", "a" * 39, "A" * 40, "g" * 40, 123])
++def test_commit_rejects_nonimmutable_inputs(bad):
++    with pytest.raises(RuntimeError, match="commit SHA"):
++        compiled.commit_sha(bad)
++
++
++def test_commit_accepts_full_sha():
++    assert compiled.commit_sha(SHA) == SHA
++
++
++@pytest.mark.parametrize(
++    "value",
++    [
++        None,
++        {},
++        {"cases": []},
++        {"cases": [None]},
++        {"cases": [{"fixture_id": "", "status": "pass"}]},
++        {"cases": [{"fixture_id": "a", "status": "unknown"}]},
++        {"cases": [{"fixture_id": "a", "status": "unsupported"}]},
++        {"cases": [{"fixture_id": "a", "status": "pass"}] * 2},
++    ],
++)
++def test_invalid_reports_are_not_success(tmp_path, value):
++    (tmp_path / "result.json").write_text(json.dumps(value))
++    with pytest.raises(RuntimeError):
++        compiled.read_cases(tmp_path, 0)
++
++
++def test_replay_failure_does_not_hide_behind_valid_json(tmp_path):
++    (tmp_path / "result.json").write_text(json.dumps({"cases": [{"fixture_id": "a", "status": "pass"}]}))
++    with pytest.raises(RuntimeError, match="exited 3"):
++        compiled.read_cases(tmp_path, 3)
++    assert compiled.read_cases(tmp_path, 0) == {"a": "pass"}
++
++
++@pytest.mark.parametrize("head", [{}, {"other": "pass"}, {"a": "unsupported"}])
++def test_dropped_or_unsupported_cases_do_not_count_as_improvements(head):
++    with pytest.raises(RuntimeError):
++        compiled.compare({"a": "pass"}, head)
++
++
++def test_comparison_counts_real_regressions_and_fixes():
++    value = compiled.compare({"a": "pass", "b": "fail"}, {"a": "error", "b": "soft_pass"})
++    assert value == {
++        "fixtures": 2,
++        "changed": [("a", "pass", "error"), ("b", "fail", "soft_pass")],
++        "fixed": 1,
++        "regressed": 1,
++    }
++
++
++@pytest.mark.parametrize("engine", ["ollama", "llamacpp"])
++def test_build_uses_fresh_workspace_and_separate_adapter_pin(tmp_path, monkeypatch, engine):
++    root, destination = tmp_path / "repo", tmp_path / "work"
++    (root / "scripts/engines").mkdir(parents=True)
++    (root / "scripts/engines" / f"{engine}.sh").write_text("echo stub")
++    (root / "harnesses" / engine).mkdir(parents=True)
++    pinned = root / ".engines" / engine / "bin/ctcreplay"
++    pinned.parent.mkdir(parents=True)
++    pinned.write_bytes(b"original pinned bytes")
++    monkeypatch.setenv("JOBS", "99")
++    calls = []
++
++    def run(command, **kwargs):
++        calls.append((command, kwargs))
++        if command[0] == "git":
++            return SimpleNamespace(stdout=SHA, returncode=0)
++        project = destination / "project"
++        eng = project / ".engines" / engine
++        names = ["bin/ctcreplay", "bin/ctc-detok"] if engine == "ollama" else ["build/canitoolcall-llamacpp"]
++        for name in names:
++            path = eng / name
++            path.parent.mkdir(parents=True, exist_ok=True)
++            path.write_bytes(b"new isolated build")
++        return SimpleNamespace(returncode=0)
++
++    monkeypatch.setattr(compiled.subprocess, "run", run)
++    env, hashes = compiled.build(root, engine, SHA, destination, 2)
++    assert pinned.read_bytes() == b"original pinned bytes"
++    assert hashes and all(len(value) == 64 for value in hashes.values())
++    assert calls[0][1]["cwd"] == destination / "project"
++    assert calls[0][1]["env"][f"{engine.upper()}_REF"] == SHA
++    assert calls[0][1]["env"]["JOBS"] == "2"
++    assert "--no-venv" in calls[0][0]
++    assert ("--no-vocab" in calls[0][0]) == (engine == "llamacpp")
++    assert env["PYTHONPATH"] == str(destination)
++    assert SHA in (destination / "ctc_revision_adapter.py").read_text()
++    assert not (root / ".venvs").exists()
++    assert not (root / "ctc_revision_adapter.py").exists()
++
++
++@pytest.mark.parametrize("engine", ["ollama", "llamacpp"])
++def test_build_failure_keeps_pinned_binaries(tmp_path, monkeypatch, engine):
++    root = tmp_path / "repo"
++    (root / "scripts/engines").mkdir(parents=True)
++    (root / "harnesses" / engine).mkdir(parents=True)
++    name = "bin/ctcreplay" if engine == "ollama" else "build/canitoolcall-llamacpp"
++    path = root / ".engines" / engine / name
++    path.parent.mkdir(parents=True)
++    path.write_bytes(b"do not alter")
++    before = compiled.pinned_binaries(root, engine)
++    monkeypatch.setattr(compiled.subprocess, "run", lambda *a, **kw: SimpleNamespace(returncode=1))
++    with pytest.raises(RuntimeError, match="build exited"):
++        compiled.build(root, engine, SHA, tmp_path / "work", 2)
++    assert compiled.pinned_binaries(root, engine) == before
+--- /dev/null
++++ b/docs/compiled-verification.md
+@@ -0,0 +1,57 @@
++# Verify compiled engine fixes
++
++The compiled route of `scripts/verify_upstream_pr.py` builds Ollama or llama.cpp
++from the complete, immutable base/head SHAs returned for the selected pull
++request. The Python-engine overlay route is unchanged.
++
++```sh
++uv sync
++uv run python scripts/verify_upstream_pr.py --engine ollama --pr 18663 --family glm --build-jobs 2 --json report.json
++```
++
++A POSIX build environment with GitHub CLI, git, bash, Go (for Ollama), CMake
++and a C++ compiler is needed. Build the normal vocabulary-only GGUF assets
++for the selected families first, as described by `scripts/engines/gguf_vocab.sh`.
++No weights, inference server or live probe is required. Missing assets or an
++incompatible build do not establish an improvement.
++
++## Isolation and source identity
++
++Each side receives a new temporary project containing the trusted build
++recipes and harness source from this checkout. Its `.engines` tree lives
++inside that project. Engine source files are fetched by full SHA, and the
++resolved checkout is checked before replay. Base and head are not overlays
++onto the normal pinned engine.
++
++A small, temporary adapter subclass declares that side's expected commit.
++The existing adapter's version check still runs. This avoids relaxing the
++normal adapter's pin, modifying its installed source, or changing the default
++engine for other work. Parser provenance uses the side's declared revision.
++
++The usual vocabulary directory is read by both sides, or use the existing
++`CANITOOLCALL_GGUF_DIR` override. No worker venv is created by either isolated
++build. Compilation defaults to two parallel jobs; `--build-jobs` is explicit.
++The builders accept full SHA overrides through `OLLAMA_REF` and `LLAMACPP_REF`,
++while their defaults stay at the original pins.
++
++## Results and failure handling
++
++The command prints the per-fixture differences and writes source SHAs,
++binary SHA-256 values and the work directory to its JSON report. Build and
++replay logs are retained in that directory, even after a failed build.
++The normal pinned harness files are hashed before and after the operation.
++The hashes distinguish an absent pre-existing build from a preserved one.
++
++Exit 0 means no regression in a complete, comparable replay; exit 1 means a
++previously passing fixture failed; exit 3 means no reliable comparison was
++obtained. Missing, malformed or duplicate case records, changed coverage,
++harness errors and build failures return 3 instead of a misleading success.
++The same statuses and changed-fixture shape as the existing verifier are used.
++
++This compares the chosen fixture families, not every model, tokenizer, server
++configuration or arbitrary inference behavior. A compiling harness and a
++successful parser comparison are separate milestones. Do not describe
++mocked orchestration tests as real upstream compilation or fixture replay.
++
++The Windows host should run compilation inside its Linux/WSL environment;
++only the Python orchestration tests are intended to be host-independent.
+--- a/AGENTS.md
++++ b/AGENTS.md
+@@ -56,7 +56,7 @@
+ 
+ The exit code is 0 when nothing regressed, 1 on a regression, and 3 if the PR can't be replayed on the pinned engine (it depends on other unreleased changes).
+ 
+-**Report in the tracking issue here**, not only upstream. Paste the output and the base and head SHAs. Ollama (Go) and llama.cpp (C++) need their harness rebuilt at the PR commit. That isn't scripted yet; it's an open `agent-task` if you want to build it.
++**Report in the tracking issue here**, not only upstream. Paste the output and the base and head SHAs. Ollama (Go) and llama.cpp (C++) rebuild complete sources into separate temporary workspaces. Use `--engine ollama --pr 18663 --family glm` and `--build-jobs 2`. Existing vocab-only GGUFs are required. See [compiled verification](docs/compiled-verification.md).
+ 
+ ## Rules (please follow them; they protect the project's credibility)
+ 
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -7,6 +7,8 @@
+ ## [Unreleased]
+ 
+ ### Added
++
++- Compiled upstream-PR verification for Ollama and llama.cpp: isolated full base/head builds, revision-checked adapters, retained logs and fail-closed report validation.
+ 
+ - `AGENTS.md` and `llms.txt` for AI coding agents, an "Agent check-in" issue form for sharing goals and needs, and an AI-assistance field in the PR template.
+ - The Pages site now also serves `llms.txt` and `AGENTS.md` at its root.
