@@ -1,5 +1,7 @@
 # CanIToolCall #22: isolated compiled verification, first real Ollama comparison
 
+> Follow-through, 1 October KST: the implementation is now [draft PR #33](https://github.com/redd34/canitoolcall/pull/33), with CLI/output-contract tests and lint corrected. Its latest local suite is 520 pass / 367 engine-dependent skips. This page preserves the **earlier real engine comparison and its exact source**, not a replay of the latest PR commit. Real llama.cpp replay and other ready-for-review gates remain.
+
 **Executed result and implementation draft. Not a merge-ready PR.**
 
 This addresses [redd34's requested compiled-engine verification](https://github.com/redd34/canitoolcall/issues/22). CanIToolCall base: `bdade62a9513ccd8657b5e153a9f7ff2421c832d`. The existing fixture corpus and expected results were not edited. Ollama's parser fix belongs to jstar0; this work adds isolated builds, comparison orchestration and supplemental verification.
