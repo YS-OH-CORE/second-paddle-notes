@@ -1,0 +1,145 @@
+{
+  "schema": "generation-feedback-observation-excerpt/1",
+  "provenance": "Selected fields transcribed from the GitHub connector-fetched job log. Not a byte-for-byte copy of the full log. Raw response strings are retained verbatim, including Markdown fences.",
+  "full_log": "https://github.com/YS-OH-CORE/second-paddle-notes/actions/runs/36330674416/job/108651861049",
+  "source_commit": "30ed301628bdfbbba4a4e3046b6f9931709115df",
+  "job_conclusion": "success",
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "model_safetensors_sha256": "fdf756fa7fcbe7404d5c60e26bff1a0c8b8aa1f72ced49e7dd0210fe288fb7fe",
+  "model_and_tokenizer_bytes": 999586347,
+  "packages": {
+    "python": "3.12.14",
+    "torch": "2.10.0+cpu",
+    "transformers": "4.57.1",
+    "tokenizers": "0.22.1",
+    "huggingface-hub": "0.36.0",
+    "safetensors": "0.6.2",
+    "numpy": "2.2.6"
+  },
+  "device": "cpu",
+  "dtype": "torch.float32",
+  "threads": 2,
+  "rows": [
+    {
+      "case": "G1",
+      "stage": "initial",
+      "raw_response": "```json\n{\n  \"assignment\": [0, 1, 2, 3, 4, 5]\n}\n```",
+      "started_utc": "2026-09-27T15:45:37.114304+00:00",
+      "finished_utc": "2026-09-27T15:45:39.750977+00:00",
+      "seconds": 2.6367,
+      "output_token_count": 29,
+      "token_ceiling_reached": false
+    },
+    {
+      "case": "G1",
+      "stage": "neutral",
+      "raw_response": "```json\n{\n  \"assignment\": [0, 1, 2, 3, 4, 5]\n}\n```",
+      "started_utc": "2026-09-27T15:45:39.752569+00:00",
+      "finished_utc": "2026-09-27T15:45:42.723609+00:00",
+      "seconds": 2.9711,
+      "output_token_count": 29,
+      "token_ceiling_reached": false
+    },
+    {
+      "case": "G1",
+      "stage": "feedback",
+      "raw_response": "```json\n{\n  \"assignment\": [0, 1, 2, 3, 4, 5]\n}\n```",
+      "started_utc": "2026-09-27T15:45:42.725238+00:00",
+      "finished_utc": "2026-09-27T15:45:45.644890+00:00",
+      "seconds": 2.9197,
+      "output_token_count": 29,
+      "token_ceiling_reached": false
+    },
+    {
+      "case": "G2",
+      "stage": "initial",
+      "raw_response": "```json\n{\n  \"assignment\": [0, 1, 2, 3, 4, 5]\n}\n```",
+      "started_utc": "2026-09-27T15:45:45.646200+00:00",
+      "finished_utc": "2026-09-27T15:45:48.328498+00:00",
+      "seconds": 2.6823,
+      "output_token_count": 29,
+      "token_ceiling_reached": false
+    },
+    {
+      "case": "G2",
+      "stage": "feedback",
+      "raw_response": "```json\n{\n  \"assignment\": [0, 1, 2, 3, 4, 5]\n}\n```",
+      "started_utc": "2026-09-27T15:45:48.330079+00:00",
+      "finished_utc": "2026-09-27T15:45:51.216331+00:00",
+      "seconds": 2.8863,
+      "output_token_count": 29,
+      "token_ceiling_reached": false
+    },
+    {
+      "case": "G2",
+      "stage": "neutral",
+      "raw_response": "```json\n{\n  \"assignment\": [0, 1, 2, 3, 4, 5]\n}\n```",
+      "started_utc": "2026-09-27T15:45:51.217761+00:00",
+      "finished_utc": "2026-09-27T15:45:54.068797+00:00",
+      "seconds": 2.851,
+      "output_token_count": 29,
+      "token_ceiling_reached": false
+    },
+    {
+      "case": "G3",
+      "stage": "initial",
+      "raw_response": "```json\n{\n  \"assignment\": [0, 3, 1, 4, 2, 5]\n}\n```",
+      "started_utc": "2026-09-27T15:45:54.069870+00:00",
+      "finished_utc": "2026-09-27T15:45:56.724677+00:00",
+      "seconds": 2.6548,
+      "output_token_count": 29,
+      "token_ceiling_reached": false
+    },
+    {
+      "case": "G3",
+      "stage": "neutral",
+      "raw_response": "```json\n{\n  \"assignment\": [0, 3, 1, 4, 2, 5]\n}\n```",
+      "started_utc": "2026-09-27T15:45:56.725888+00:00",
+      "finished_utc": "2026-09-27T15:45:59.595356+00:00",
+      "seconds": 2.8695,
+      "output_token_count": 29,
+      "token_ceiling_reached": false
+    },
+    {
+      "case": "G3",
+      "stage": "feedback",
+      "raw_response": "```json\n{\n  \"assignment\": [0, 1, 2, 3, 4, 5]\n}\n```",
+      "started_utc": "2026-09-27T15:45:59.596677+00:00",
+      "finished_utc": "2026-09-27T15:46:02.497480+00:00",
+      "seconds": 2.9008,
+      "output_token_count": 29,
+      "token_ceiling_reached": false
+    },
+    {
+      "case": "G4",
+      "stage": "initial",
+      "raw_response": "```json\n{\n  \"assignment\": [0, 1, 2, 3, 4, 5]\n}\n```",
+      "started_utc": "2026-09-27T15:46:02.498768+00:00",
+      "finished_utc": "2026-09-27T15:46:05.146894+00:00",
+      "seconds": 2.6481,
+      "output_token_count": 29,
+      "token_ceiling_reached": false
+    },
+    {
+      "case": "G4",
+      "stage": "feedback",
+      "raw_response": "```json\n{\n  \"assignment\": [0, 1, 2, 3, 4, 5]\n}\n```",
+      "started_utc": "2026-09-27T15:46:05.148190+00:00",
+      "finished_utc": "2026-09-27T15:46:08.029517+00:00",
+      "seconds": 2.8813,
+      "output_token_count": 29,
+      "token_ceiling_reached": false
+    },
+    {
+      "case": "G4",
+      "stage": "neutral",
+      "raw_response": "```json\n{\n  \"assignment\": [0, 1, 2, 3, 4, 5]\n}\n```",
+      "started_utc": "2026-09-27T15:46:08.030766+00:00",
+      "finished_utc": "2026-09-27T15:46:10.905040+00:00",
+      "seconds": 2.8743,
+      "output_token_count": 29,
+      "token_ceiling_reached": false
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "schema": "generation-feedback-pilot/1",
+  "files": {
+    "task.py": "18954a7d51f2068f56e06aa9861b23d8495e9c8f9ae8bf4d81767a6635314f88",
+    "test_task.py": "db0eead795e41fc1a6961172a2c75399af06eb202df9ca922f9355244fa49edc",
+    "run_model.py": "6eab78b331cbc20f798bb668aa13f827c391922b81bf7ce4eb595f6490e4ba19",
+    "PLAN.md": "92df99e2ecd1da79e3294dcc01b09655c13d6df1b5aa1db9bc4cbd8ad63b82da"
+  }
+}

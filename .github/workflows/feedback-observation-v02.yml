@@ -1,0 +1,42 @@
+name: Observe feedback beyond formatting v0.2
+'on':
+  pull_request:
+    types: [synchronize]
+    paths:
+      - 'experiments/generation-feedback-pilot/v02/observe.py'
+      - 'experiments/generation-feedback-pilot/v02/test_observe.py'
+      - 'experiments/generation-feedback-pilot/v02/run.py'
+      - 'experiments/generation-feedback-pilot/v02/PLAN.md'
+      - 'experiments/generation-feedback-pilot/v02/MANIFEST.json'
+      - '.github/workflows/feedback-observation-v02.yml'
+permissions:
+  contents: read
+jobs:
+  bounded-continuations:
+    if: github.repository == 'YS-OH-CORE/second-paddle-notes' && github.event.repository.private == false && github.event.pull_request.number == 57 && github.event.before == '86a6e321257ec131a3d4fe942a59170965b7d259' && github.run_attempt == 1 && github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.head.ref == 'research/generation-feedback-pilot-20260928'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Verify separate diagnostics and unchanged acceptance
+        working-directory: experiments/generation-feedback-pilot/v02
+        run: python -B -m unittest -v test_observe
+      - name: Prepare bounded disposable CPU environment
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m venv "$RUNNER_TEMP/v02-venv"
+          "$RUNNER_TEMP/v02-venv/bin/pip" install --only-binary=:all: --index-url https://download.pytorch.org/whl/cpu 'torch==2.10.0'
+          "$RUNNER_TEMP/v02-venv/bin/pip" install --only-binary=:all: 'transformers==4.57.1' 'tokenizers==0.22.1' 'huggingface-hub==0.36.0' 'safetensors==0.6.2' 'numpy==2.2.6'
+      - name: Evaluate each fixed seed with three predeclared feedback cues
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
+          HF_HOME: ${{ runner.temp }}/v02-hf
+          HF_HUB_DISABLE_IMPLICIT_TOKEN: '1'
+        run: timeout 550s "$RUNNER_TEMP/v02-venv/bin/python" -u -B experiments/generation-feedback-pilot/v02/run.py
