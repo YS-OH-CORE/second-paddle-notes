@@ -1,0 +1,62 @@
+name: MCP 505 with official Go SDK transport
+'on':
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - 'contributions/mcp505-go-sdk/**'
+      - '.github/workflows/mcp505-go-sdk.yml'
+permissions:
+  contents: read
+jobs:
+  cross-sdk:
+    if: github.repository == 'YS-OH-CORE/second-paddle-notes' && github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.head.ref == 'zero/mcp-request-state-505-20260916'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      CI: 'true'
+      GOTOOLCHAIN: local
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          path: tools
+          persist-credentials: false
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          repository: modelcontextprotocol/conformance
+          ref: 7169291ec0b68eb370fddcd9947313ab0d5e4156
+          path: conformance
+          persist-credentials: false
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          repository: modelcontextprotocol/go-sdk
+          ref: fbd36cb7870176bfc3e8e423df697cf110d0f927
+          path: go-sdk
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22.16.0'
+      - uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff
+        with:
+          go-version: '1.25.0'
+          cache: false
+      - name: Original and patched CLI against native Go SDK HTTP
+        run: >-
+          python -B tools/contributions/mcp505-go-sdk/verify_go_sdk.py
+          --conformance "$GITHUB_WORKSPACE/conformance"
+          --go-sdk "$GITHUB_WORKSPACE/go-sdk"
+          --patch "$GITHUB_WORKSPACE/tools/contributions/mcp-request-state-505/request-state-505.patch"
+          --out "$RUNNER_TEMP/mcp505-go-evidence"
+      - name: Preserve exact authored verifier and source commit
+        if: ${{ always() }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/mcp505-go-evidence/authored"
+          cp tools/contributions/mcp505-go-sdk/verify_go_sdk.py "$RUNNER_TEMP/mcp505-go-evidence/authored/"
+          git -C tools rev-parse HEAD > "$RUNNER_TEMP/mcp505-go-evidence/verifier_commit.txt"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: ${{ always() }}
+        with:
+          name: mcp505-go-sdk-evidence
+          path: ${{ runner.temp }}/mcp505-go-evidence
+          retention-days: 1
+          if-no-files-found: error
