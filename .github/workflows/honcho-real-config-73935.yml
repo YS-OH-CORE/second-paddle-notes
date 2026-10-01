@@ -1,0 +1,26 @@
+name: Honcho PR73935 disk-config review check
+'on':
+  pull_request:
+    types: [synchronize]
+    paths: ['checks/honcho-real-config-73935/**', '.github/workflows/honcho-real-config-73935.yml']
+permissions:
+  contents: read
+jobs:
+  config-path:
+    if: github.repository == 'YS-OH-CORE/second-paddle-notes' && github.event.repository.private == false && github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.head.ref == 'review/honcho-real-config-73935-20260928' && github.event.before == '67a509409ab61f24b39b9f9e9bcc79bf34566ef9' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Prepare isolated test dependencies
+        run: |
+          python -m venv "$RUNNER_TEMP/config-path-venv"
+          "$RUNNER_TEMP/config-path-venv/bin/pip" install --only-binary=:all: 'honcho-ai==2.2.0' 'pytest==8.4.2' 'python-dotenv==1.1.1' 'PyYAML==6.0.2' 'rich==14.1.0' 'platformdirs==4.4.0'
+      - name: Test real config and startup path with synthetic remote SDK
+        run: timeout 220s "$RUNNER_TEMP/config-path-venv/bin/python" -u -B checks/honcho-real-config-73935/run_check.py
