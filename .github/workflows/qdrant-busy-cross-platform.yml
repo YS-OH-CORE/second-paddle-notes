@@ -1,0 +1,60 @@
+name: Qdrant real SQLite failure cross-platform comparison
+on:
+  push:
+    branches: ['verify/qdrant-busy-cross-platform-20261004']
+    paths:
+      - '.github/workflows/qdrant-busy-cross-platform.yml'
+      - 'checks/qdrant-busy-cross-platform/compare.py'
+      - 'checks/qdrant-busy-cross-platform/requirements.txt'
+permissions:
+  contents: read
+jobs:
+  compare:
+    if: github.repository == 'YS-OH-CORE/second-paddle-notes'
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        os: [ubuntu-24.04, windows-2022]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    steps:
+      - name: Check out the comparison harness
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          path: harness
+          persist-credentials: false
+      - name: Check out the exact author runtime
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: YS-OH-CORE/qdrant-client
+          ref: 560d8c0d3b826bf2a8e3943fca27724332086500
+          path: author
+          persist-credentials: false
+      - name: Check out the exact proposed runtime
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: YS-OH-CORE/qdrant-client
+          ref: 01ed8bec882f1ee084a757d17f21069e4fe29700
+          path: candidate
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12.10'
+          architecture: x64
+      - name: Install the recorded versions and candidate package metadata
+        run: |
+          python -m pip install --disable-pip-version-check -r harness/checks/qdrant-busy-cross-platform/requirements.txt
+          python -m pip install --disable-pip-version-check --no-deps ./candidate
+      - name: Check the comparison verdict logic
+        run: python harness/checks/qdrant-busy-cross-platform/compare.py --self-test
+      - name: Run unchanged regressions on both pinned runtimes
+        run: python harness/checks/qdrant-busy-cross-platform/compare.py --author author --candidate candidate --out results
+      - name: Preserve both red and green results
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: qdrant-busy-${{ matrix.os }}-${{ github.run_id }}
+          path: results
+          retention-days: 14
+          if-no-files-found: error
