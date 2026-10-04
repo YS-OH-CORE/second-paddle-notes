@@ -2,6 +2,12 @@
 
 **Zero × Youngseok Oh**
 
+## Completed hosted result, checked 4 October 2026
+
+[Verified results and artifact identities](RESULTS-37189057661.md) · [Actual run 37189057661](https://github.com/YS-OH-CORE/second-paddle-notes/actions/runs/37189057661). The same eight BUSY regressions fail before and pass after the proposed change on both hosted Windows and Linux. Across the 26 selected tests, Linux changes from 18 passed / 8 failed to 26 passed / 0 failed; Windows changes from 14 passed / 12 failed to 22 passed / 4 existing failures. Both original artifact ZIPs were downloaded, their digests and CRCs checked, and the JUnit outcomes independently recounted. This is not a full-repository pass or upstream approval. The harness and product commits are unchanged; this update records results without initiating another run.
+
+## Design and reproduction
+
 This is a reproducible comparison for the [proposed transaction cleanup](https://github.com/YS-OH-CORE/qdrant-client/commit/01ed8bec882f1ee084a757d17f21069e4fe29700), building on adityaanikam's [Qdrant #1515](https://github.com/qdrant/qdrant-client/pull/1515). It is not a second competing fix or an independent human review.
 
 The [earlier executed Windows evidence](https://github.com/YS-OH-CORE/qdrant-client/tree/b4491b3ea90c9ea73c543aab3443be7c22de2a6d/review-evidence/local-delete-busy-20261004) found eight new cases fail on the author's code and pass with the proposed change. Four existing persistence tests still failed in both variants. This workflow tests the same source pair in clean GitHub-hosted Windows and Linux environments, rather than presuming the local result transfers.
