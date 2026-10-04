@@ -1,0 +1,21 @@
+{
+  "schema": "zero-temporal-pool-boundary/1",
+  "source_commit": "01fcd26ac6ab29d761e4cc8896f3588e28cf6d32",
+  "source_git_blob": "e1f4df5e68eec57bc03e46de451c00016a3d3d5e",
+  "source_sha256": "a10926131b95656b065cafdcef5f413044bc199c48d89700b0269d5522047da1",
+  "as_of": "2026-10-05T00:00:00+00:00",
+  "illustrative_half_life_days": 180,
+  "control_test_count": 18,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "scope": "Actual unmodified candidate scoring function plus our discussion-only wrapper, with synthetic candidates. Not Memory.search, embeddings, LLM answers, end-to-end benchmark, main-branch bug, human review, or upstream adoption.",
+  "runtime": "Linux / CPython 3.13.5",
+  "matrix": {
+    "cases": 48,
+    "candidate_pair_reversed": 48,
+    "reference_pair_scores_unchanged": 48,
+    "archive_not_returned_in_either_top_two": 48
+  },
+  "raw_results_sha256": "87ed82787f2897a4a8f3b93fb616947f14b301c976430d81d559030727a7a88e"
+}

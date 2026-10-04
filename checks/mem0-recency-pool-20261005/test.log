@@ -1,0 +1,23 @@
+test_48_permutations_and_fixed_hybrid_signals (__main__.Controls.test_48_permutations_and_fixed_hybrid_signals) ... ok
+test_actual_candidate_reversal (__main__.Controls.test_actual_candidate_reversal) ... ok
+test_bad_reference_parameters_rejected (__main__.Controls.test_bad_reference_parameters_rejected) ... ok
+test_below_threshold_archive_does_not_shift_original (__main__.Controls.test_below_threshold_archive_does_not_shift_original) ... ok
+test_cannot_recover_missing_candidate (__main__.Controls.test_cannot_recover_missing_candidate) ... ok
+test_default_disable_exact_compatibility (__main__.Controls.test_default_disable_exact_compatibility) ... ok
+test_empty_and_zero_result_limit (__main__.Controls.test_empty_and_zero_result_limit) ... ok
+test_equal_dates_preserve_semantic_order (__main__.Controls.test_equal_dates_preserve_semantic_order) ... ok
+test_feature_off_negative_control (__main__.Controls.test_feature_off_negative_control) ... ok
+test_fixed_reference_pair_and_scores (__main__.Controls.test_fixed_reference_pair_and_scores) ... ok
+test_future_dates_bounded (__main__.Controls.test_future_dates_bounded) ... ok
+test_half_life_is_policy_not_tuned_accuracy (__main__.Controls.test_half_life_is_policy_not_tuned_accuracy) ... ok
+test_invalid_updated_at_uses_created_at (__main__.Controls.test_invalid_updated_at_uses_created_at) ... ok
+test_missing_dates_do_not_activate_signal (__main__.Controls.test_missing_dates_do_not_activate_signal) ... ok
+test_more_recent_is_not_always_winner (__main__.Controls.test_more_recent_is_not_always_winner) ... ok
+test_no_input_mutation (__main__.Controls.test_no_input_mutation) ... ok
+test_timezone_equivalence (__main__.Controls.test_timezone_equivalence) ... ok
+test_updated_at_precedence (__main__.Controls.test_updated_at_precedence) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.003s
+
+OK
