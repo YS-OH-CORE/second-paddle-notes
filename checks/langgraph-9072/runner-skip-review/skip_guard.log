@@ -1,0 +1,21 @@
+....................FF                                                   [100%]
+================================== FAILURES ===================================
+__________ test_real_nested_task_preserves_one_public_handoff[sync] ___________
+test_parent_boundary.py:224: in test_real_nested_task_preserves_one_public_handoff
+    assert result["events"] == ["a"]
+E   AssertionError: assert [] == ['a']
+E     
+E     Right contains one more item: 'a'
+E     Use -v to get more diff
+__________ test_real_nested_task_preserves_one_public_handoff[async] __________
+test_parent_boundary.py:224: in test_real_nested_task_preserves_one_public_handoff
+    assert result["events"] == ["a"]
+E   AssertionError: assert [] == ['a']
+E     
+E     Right contains one more item: 'a'
+E     Use -v to get more diff
+- generated xml file: <REVIEW_WORKSPACE>\skip_guard.xml -
+=========================== short test summary info ===========================
+FAILED test_parent_boundary.py::test_real_nested_task_preserves_one_public_handoff[sync]
+FAILED test_parent_boundary.py::test_real_nested_task_preserves_one_public_handoff[async]
+2 failed, 20 passed in 0.82s

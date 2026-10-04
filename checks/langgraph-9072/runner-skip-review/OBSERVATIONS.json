@@ -1,0 +1,56 @@
+{
+  "upstream_commit": "9a0394d88b2211f299dcd69df92db3480c69ee61",
+  "runner_sha256_raw": "437f4cdf1fa619055b4ea4ff5fcd9ec7c7ee6491725bf6aa36ba37f7db669b42",
+  "results": {
+    "baseline": {
+      "total": 22,
+      "passed": 14,
+      "failed": 8,
+      "failure_names": [
+        "test_boundary_two_independent_parents_are_explicit[sync]",
+        "test_boundary_two_independent_parents_are_explicit[async]",
+        "test_boundary_timeout_wins_over_completed_parent[sync]",
+        "test_boundary_timeout_wins_over_completed_parent[async]",
+        "test_compiled_parent_routing[two-sync]",
+        "test_compiled_parent_routing[two-async]",
+        "test_real_nested_task_preserves_one_public_handoff[sync]",
+        "test_real_nested_task_preserves_one_public_handoff[async]"
+      ]
+    },
+    "proposal": {
+      "total": 22,
+      "passed": 16,
+      "failed": 6,
+      "failure_names": [
+        "test_boundary_skipped_child_is_not_a_second_handoff[sync]",
+        "test_boundary_skipped_child_is_not_a_second_handoff[async]",
+        "test_boundary_skipped_child_alone_is_not_raised[sync]",
+        "test_boundary_skipped_child_alone_is_not_raised[async]",
+        "test_real_nested_task_preserves_one_public_handoff[sync]",
+        "test_real_nested_task_preserves_one_public_handoff[async]"
+      ]
+    },
+    "skip_guard": {
+      "total": 22,
+      "passed": 20,
+      "failed": 2,
+      "failure_names": [
+        "test_real_nested_task_preserves_one_public_handoff[sync]",
+        "test_real_nested_task_preserves_one_public_handoff[async]"
+      ]
+    }
+  },
+  "test_and_reference_sha256_lf": {
+    "candidate_boundary.py": "4b108e28934a9f0b9f2576ae7348e0bf918994bc0fc687d7759f08b8272e680c",
+    "test_parent_boundary.py": "a749a876649ce2f46f52eaf5b1aab9264ae36045d59a48ebfbe5cce917bb666f"
+  },
+  "pytest_variants": [
+    "baseline",
+    "proposal",
+    "skip_guard"
+  ],
+  "core_import_verified_from_checkout": true,
+  "model_calls": 0,
+  "source_was_modified": false,
+  "scope": "Discussion-only substitutions, 16 direct boundary + 4 compiled direct graphs + 2 unresolved exploratory nested graphs. Not a full suite or upstream acceptance."
+}

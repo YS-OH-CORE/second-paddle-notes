@@ -1,0 +1,61 @@
+..FF........FF....FFFF                                                   [100%]
+================================== FAILURES ===================================
+__________ test_boundary_two_independent_parents_are_explicit[sync] ___________
+test_parent_boundary.py:85: in test_boundary_two_independent_parents_are_explicit
+    _runner._panic_or_proceed({future_factory(parent("a")), future_factory(parent("b"))})
+source\libs\langgraph\langgraph\pregel\_runner.py:689: in _panic_or_proceed
+    raise exc
+E   langgraph.errors.ParentCommand: Command(graph='__parent__', update={'events': ['b']}, goto='target')
+__________ test_boundary_two_independent_parents_are_explicit[async] __________
+test_parent_boundary.py:85: in test_boundary_two_independent_parents_are_explicit
+    _runner._panic_or_proceed({future_factory(parent("a")), future_factory(parent("b"))})
+source\libs\langgraph\langgraph\pregel\_runner.py:689: in _panic_or_proceed
+    raise exc
+E   langgraph.errors.ParentCommand: Command(graph='__parent__', update={'events': ['b']}, goto='target')
+___________ test_boundary_timeout_wins_over_completed_parent[sync] ____________
+test_parent_boundary.py:119: in test_boundary_timeout_wins_over_completed_parent
+    _runner._panic_or_proceed({future_factory(parent()), pending})
+source\libs\langgraph\langgraph\pregel\_runner.py:689: in _panic_or_proceed
+    raise exc
+E   langgraph.errors.ParentCommand: Command(graph='__parent__', update={'events': ['a']}, goto='target')
+___________ test_boundary_timeout_wins_over_completed_parent[async] ___________
+test_parent_boundary.py:119: in test_boundary_timeout_wins_over_completed_parent
+    _runner._panic_or_proceed({future_factory(parent()), pending})
+source\libs\langgraph\langgraph\pregel\_runner.py:689: in _panic_or_proceed
+    raise exc
+E   langgraph.errors.ParentCommand: Command(graph='__parent__', update={'events': ['a']}, goto='target')
+___________________ test_compiled_parent_routing[two-sync] ____________________
+test_parent_boundary.py:170: in test_compiled_parent_routing
+    with pytest.raises(InvalidUpdateError, match="Multiple ParentCommand"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'langgraph.errors.InvalidUpdateError'>
+___________________ test_compiled_parent_routing[two-async] ___________________
+test_parent_boundary.py:170: in test_compiled_parent_routing
+    with pytest.raises(InvalidUpdateError, match="Multiple ParentCommand"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'langgraph.errors.InvalidUpdateError'>
+__________ test_real_nested_task_preserves_one_public_handoff[sync] ___________
+test_parent_boundary.py:224: in test_real_nested_task_preserves_one_public_handoff
+    assert result["events"] == ["a"]
+E   AssertionError: assert [] == ['a']
+E     
+E     Right contains one more item: 'a'
+E     Use -v to get more diff
+__________ test_real_nested_task_preserves_one_public_handoff[async] __________
+test_parent_boundary.py:224: in test_real_nested_task_preserves_one_public_handoff
+    assert result["events"] == ["a"]
+E   AssertionError: assert [] == ['a']
+E     
+E     Right contains one more item: 'a'
+E     Use -v to get more diff
+- generated xml file: <REVIEW_WORKSPACE>\baseline.xml -
+=========================== short test summary info ===========================
+FAILED test_parent_boundary.py::test_boundary_two_independent_parents_are_explicit[sync]
+FAILED test_parent_boundary.py::test_boundary_two_independent_parents_are_explicit[async]
+FAILED test_parent_boundary.py::test_boundary_timeout_wins_over_completed_parent[sync]
+FAILED test_parent_boundary.py::test_boundary_timeout_wins_over_completed_parent[async]
+FAILED test_parent_boundary.py::test_compiled_parent_routing[two-sync] - Fail...
+FAILED test_parent_boundary.py::test_compiled_parent_routing[two-async] - Fai...
+FAILED test_parent_boundary.py::test_real_nested_task_preserves_one_public_handoff[sync]
+FAILED test_parent_boundary.py::test_real_nested_task_preserves_one_public_handoff[async]
+8 failed, 14 passed in 0.88s

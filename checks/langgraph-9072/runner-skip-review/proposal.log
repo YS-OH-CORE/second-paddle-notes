@@ -1,0 +1,49 @@
+....FFFF............FF                                                   [100%]
+================================== FAILURES ===================================
+__________ test_boundary_skipped_child_is_not_a_second_handoff[sync] __________
+test_parent_boundary.py:93: in test_boundary_skipped_child_is_not_a_second_handoff
+    _runner._panic_or_proceed({child, enclosing})
+candidate_boundary.py:49: in reject_parent_batch
+    raise InvalidUpdateError(
+E   langgraph.errors.InvalidUpdateError: Multiple ParentCommand values were produced in one superstep; they cannot be ordered or merged safely
+_________ test_boundary_skipped_child_is_not_a_second_handoff[async] __________
+test_parent_boundary.py:93: in test_boundary_skipped_child_is_not_a_second_handoff
+    _runner._panic_or_proceed({child, enclosing})
+candidate_boundary.py:49: in reject_parent_batch
+    raise InvalidUpdateError(
+E   langgraph.errors.InvalidUpdateError: Multiple ParentCommand values were produced in one superstep; they cannot be ordered or merged safely
+____________ test_boundary_skipped_child_alone_is_not_raised[sync] ____________
+test_parent_boundary.py:100: in test_boundary_skipped_child_alone_is_not_raised
+    _runner._panic_or_proceed({child})
+candidate_boundary.py:47: in reject_parent_batch
+    raise parents[0]
+E   langgraph.errors.ParentCommand: Command(graph='__parent__', update={'events': ['a']}, goto='target')
+___________ test_boundary_skipped_child_alone_is_not_raised[async] ____________
+test_parent_boundary.py:100: in test_boundary_skipped_child_alone_is_not_raised
+    _runner._panic_or_proceed({child})
+candidate_boundary.py:47: in reject_parent_batch
+    raise parents[0]
+E   langgraph.errors.ParentCommand: Command(graph='__parent__', update={'events': ['a']}, goto='target')
+__________ test_real_nested_task_preserves_one_public_handoff[sync] ___________
+test_parent_boundary.py:224: in test_real_nested_task_preserves_one_public_handoff
+    assert result["events"] == ["a"]
+E   AssertionError: assert [] == ['a']
+E     
+E     Right contains one more item: 'a'
+E     Use -v to get more diff
+__________ test_real_nested_task_preserves_one_public_handoff[async] __________
+test_parent_boundary.py:224: in test_real_nested_task_preserves_one_public_handoff
+    assert result["events"] == ["a"]
+E   AssertionError: assert [] == ['a']
+E     
+E     Right contains one more item: 'a'
+E     Use -v to get more diff
+- generated xml file: <REVIEW_WORKSPACE>\proposal.xml -
+=========================== short test summary info ===========================
+FAILED test_parent_boundary.py::test_boundary_skipped_child_is_not_a_second_handoff[sync]
+FAILED test_parent_boundary.py::test_boundary_skipped_child_is_not_a_second_handoff[async]
+FAILED test_parent_boundary.py::test_boundary_skipped_child_alone_is_not_raised[sync]
+FAILED test_parent_boundary.py::test_boundary_skipped_child_alone_is_not_raised[async]
+FAILED test_parent_boundary.py::test_real_nested_task_preserves_one_public_handoff[sync]
+FAILED test_parent_boundary.py::test_real_nested_task_preserves_one_public_handoff[async]
+6 failed, 16 passed in 0.85s
