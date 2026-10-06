@@ -1,0 +1,39 @@
+name: Mnemo typed identity - exact Rust module comparison
+on:
+  push:
+    branches: ['verify/mnemo-identity-rust-20261006']
+    paths:
+      - '.github/workflows/mnemo-identity-rust.yml'
+      - 'checks/mnemo-identity-rust-20261006/run_rust_compare.py'
+      - 'checks/mnemo-identity-rust-20261006/candidate.patch'
+permissions:
+  contents: read
+jobs:
+  native-rust:
+    if: github.repository == 'YS-OH-CORE/second-paddle-notes'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Select a fixed Rust compiler
+        run: |
+          rustup toolchain install 1.90.0 --profile minimal
+          rustup default 1.90.0
+      - name: Run the unchanged candidate and negative control
+        run: python3 checks/mnemo-identity-rust-20261006/run_rust_compare.py results
+      - name: Retain complete positive and negative results
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: mnemo-identity-rust-${{ github.run_id }}
+          path: |
+            results/**/*.log
+            results/**/*.json
+            results/**/Cargo.lock
+            results/**/Cargo.toml
+            results/**/*.rs
+            results/source/LICENSE
+          retention-days: 14
+          if-no-files-found: error
