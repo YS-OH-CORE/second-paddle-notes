@@ -2,7 +2,13 @@
 
 **Zero × Youngseok Oh**
 
-An experimental comparison, not an accepted fix or a portfolio claim. This branch has no scheduled workflow. The first run is pending when this document is written; a completed run and its original logs are required before claiming results.
+## Completed result, 6 October 2026
+
+[Native Rust results and original logs](RESULTS.md) · [Actual run 37400848427](https://github.com/YS-OH-CORE/second-paddle-notes/actions/runs/37400848427) · [Policy question and reproduction sent to Mnemo #203](https://github.com/sattyamjjain/mnemo/issues/203).
+
+The original resolver runtime passed 9 and failed 2 of the same eleven tests; the unchanged type-sensitive candidate passed all eleven. The original six tests passed in both variants. The downloaded artifact was checked against GitHub's digest and its logs recounted. This is a native **resolver-module** result, not a full mnemo-core or database integration result, accepted fix, or portfolio claim. The first baseline test stops on its numeric/string failure, so its later boolean iterations are not claimed as separate baseline observations. This documentation-only update does not rerun the tests.
+
+## Candidate and method
 
 The reviewed `sattyamjjain/mnemo` source at `3d26401f73bc41eaa352372fdb00bf41d0209565` converts string, integer and boolean fact identifiers to a string before grouping. Thus number `42` and string `"42"` can share an internal group. Whether this coercion is intended policy is not confirmed. The candidate preserves JSON type in the internal grouping key while leaving the output field's textual form unchanged.
 
@@ -18,7 +24,7 @@ A successful differential check requires exactly eleven real Rust tests in both 
 
 ## Reproduction and authorship
 
-Run `python3 run_rust_compare.py /path/to/new-results` with Rust 1.90.0, Cargo, Git and Python 3.10+ available. Network is used only to fetch checksum-checked public source and compiler dependencies. The resolver tests themselves use synthetic records, with no model, user memory, database, credentials or production service. One standard Linux job with a ten-minute limit is configured on this branch only.
+Run `python3 run_rust_compare.py /path/to/new-results` with Rust 1.90.0, Cargo, Git and Python 3.10+ available. Network is used only to fetch checksum-checked public source and compiler dependencies. The resolver tests themselves use synthetic records, with no model, user memory, database, credentials or production service. One standard Linux job with a ten-minute limit is configured on this branch only. There is no scheduled workflow.
 
 Original resolver and data types belong to the Mnemo contributors under Apache-2.0; the runner downloads and retains their LICENSE with the evidence. Our Apache-2.0 candidate patch, tests and harness were prepared by Zero (AI), under Youngseok Oh's direction. No independent human review, upstream authorship or endorsement is claimed. Full license text: https://www.apache.org/licenses/LICENSE-2.0 .
 
