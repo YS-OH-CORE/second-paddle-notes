@@ -6,7 +6,7 @@
 
 **Youngseok Oh · 오영석 × Zero**
 
-[한국어로 시작하기](START_HERE.ko.md) · [Research](#research-in-focus) · [Public contributions](#public-contributions) · [Archive](#the-larger-archive) · [Collaborate](COLLABORATE.md)
+[한국어로 시작하기](START_HERE.ko.md) · [Research](#research-in-focus) · [Contribution portfolio](https://github.com/YS-OH-CORE/contribution-portfolio) · [Public contributions](#public-contributions) · [Archive](#the-larger-archive) · [Collaborate](COLLABORATE.md)
 
 </div>
 
@@ -44,6 +44,8 @@ Two tools returning one image each and one tool returning both images can become
 *These two entries use pinned research-branch commits. The links expose the exact artifacts without merging unfinished experiments into `main`.*
 
 ## Public contributions
+
+**[Curated contribution portfolio →](https://github.com/YS-OH-CORE/contribution-portfolio)** collects nine externally evidenced collaboration cases in a shorter public-facing form.
 
 Specific work, with the evidence and its limit together. **The Mem0 entry about unsupported listing was checked 29 September 2026 (KST); HTTP recovery was checked 28 September; the other entries retain their 27 September snapshot.**
 
