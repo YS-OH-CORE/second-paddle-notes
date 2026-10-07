@@ -45,7 +45,7 @@ Two tools returning one image each and one tool returning both images can become
 
 ## Public contributions
 
-**[Curated contribution portfolio →](https://github.com/YS-OH-CORE/contribution-portfolio)** collects nine externally evidenced collaboration cases in a shorter public-facing form.
+**[Curated contribution portfolio →](https://github.com/YS-OH-CORE/contribution-portfolio)** collects ten externally evidenced collaboration cases in a shorter public-facing form.
 
 Specific work, with the evidence and its limit together. **The Mem0 entry about unsupported listing was checked 29 September 2026 (KST); HTTP recovery was checked 28 September; the other entries retain their 27 September snapshot.**
 
