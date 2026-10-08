@@ -1,0 +1,252 @@
+{
+  "schema": "zero-profile-ledger-reproduction/1",
+  "commit": "a50406d9b7474b060450d2dcaff8743c977d296a",
+  "issue": 133922,
+  "scope": "Service-attribution function chain only; not original MEMORY/USER mixing cause or full-app end-to-end test.",
+  "cases": [
+    {
+      "kind": "dashboard",
+      "owner": "profile-a",
+      "ui_profile": "",
+      "expected": "profile-a",
+      "before": {
+        "ledger_profile": "",
+        "plan_profile": "default",
+        "matched": false,
+        "other_registration_fields_unchanged": true
+      },
+      "candidate": {
+        "ledger_profile": "profile-a",
+        "plan_profile": "profile-a",
+        "matched": true,
+        "other_registration_fields_unchanged": true
+      }
+    },
+    {
+      "kind": "dashboard",
+      "owner": "profile-a",
+      "ui_profile": "profile-b",
+      "expected": "profile-a",
+      "before": {
+        "ledger_profile": "profile-b",
+        "plan_profile": "profile-b",
+        "matched": false,
+        "other_registration_fields_unchanged": true
+      },
+      "candidate": {
+        "ledger_profile": "profile-a",
+        "plan_profile": "profile-a",
+        "matched": true,
+        "other_registration_fields_unchanged": true
+      }
+    },
+    {
+      "kind": "dashboard",
+      "owner": "profile-a",
+      "ui_profile": "profile-a",
+      "expected": "profile-a",
+      "before": {
+        "ledger_profile": "profile-a",
+        "plan_profile": "profile-a",
+        "matched": true,
+        "other_registration_fields_unchanged": true
+      },
+      "candidate": {
+        "ledger_profile": "profile-a",
+        "plan_profile": "profile-a",
+        "matched": true,
+        "other_registration_fields_unchanged": true
+      }
+    },
+    {
+      "kind": "dashboard",
+      "owner": "default",
+      "ui_profile": "profile-a",
+      "expected": "default",
+      "before": {
+        "ledger_profile": "profile-a",
+        "plan_profile": "profile-a",
+        "matched": false,
+        "other_registration_fields_unchanged": true
+      },
+      "candidate": {
+        "ledger_profile": "default",
+        "plan_profile": "default",
+        "matched": true,
+        "other_registration_fields_unchanged": true
+      }
+    },
+    {
+      "kind": "dashboard",
+      "owner": "default",
+      "ui_profile": "",
+      "expected": "default",
+      "before": {
+        "ledger_profile": "",
+        "plan_profile": "default",
+        "matched": true,
+        "other_registration_fields_unchanged": true
+      },
+      "candidate": {
+        "ledger_profile": "default",
+        "plan_profile": "default",
+        "matched": true,
+        "other_registration_fields_unchanged": true
+      }
+    },
+    {
+      "kind": "dashboard",
+      "owner": "profile-b",
+      "ui_profile": "profile-b",
+      "expected": "profile-b",
+      "before": {
+        "ledger_profile": "profile-b",
+        "plan_profile": "profile-b",
+        "matched": true,
+        "other_registration_fields_unchanged": true
+      },
+      "candidate": {
+        "ledger_profile": "profile-b",
+        "plan_profile": "profile-b",
+        "matched": true,
+        "other_registration_fields_unchanged": true
+      }
+    },
+    {
+      "kind": "serve",
+      "owner": "profile-a",
+      "ui_profile": "",
+      "expected": "profile-a",
+      "before": {
+        "ledger_profile": "",
+        "plan_profile": "default",
+        "matched": false,
+        "other_registration_fields_unchanged": true
+      },
+      "candidate": {
+        "ledger_profile": "profile-a",
+        "plan_profile": "profile-a",
+        "matched": true,
+        "other_registration_fields_unchanged": true
+      }
+    },
+    {
+      "kind": "serve",
+      "owner": "profile-a",
+      "ui_profile": "profile-b",
+      "expected": "profile-a",
+      "before": {
+        "ledger_profile": "profile-b",
+        "plan_profile": "profile-b",
+        "matched": false,
+        "other_registration_fields_unchanged": true
+      },
+      "candidate": {
+        "ledger_profile": "profile-a",
+        "plan_profile": "profile-a",
+        "matched": true,
+        "other_registration_fields_unchanged": true
+      }
+    },
+    {
+      "kind": "serve",
+      "owner": "profile-a",
+      "ui_profile": "profile-a",
+      "expected": "profile-a",
+      "before": {
+        "ledger_profile": "profile-a",
+        "plan_profile": "profile-a",
+        "matched": true,
+        "other_registration_fields_unchanged": true
+      },
+      "candidate": {
+        "ledger_profile": "profile-a",
+        "plan_profile": "profile-a",
+        "matched": true,
+        "other_registration_fields_unchanged": true
+      }
+    },
+    {
+      "kind": "serve",
+      "owner": "default",
+      "ui_profile": "profile-a",
+      "expected": "default",
+      "before": {
+        "ledger_profile": "profile-a",
+        "plan_profile": "profile-a",
+        "matched": false,
+        "other_registration_fields_unchanged": true
+      },
+      "candidate": {
+        "ledger_profile": "default",
+        "plan_profile": "default",
+        "matched": true,
+        "other_registration_fields_unchanged": true
+      }
+    },
+    {
+      "kind": "serve",
+      "owner": "default",
+      "ui_profile": "",
+      "expected": "default",
+      "before": {
+        "ledger_profile": "",
+        "plan_profile": "default",
+        "matched": true,
+        "other_registration_fields_unchanged": true
+      },
+      "candidate": {
+        "ledger_profile": "default",
+        "plan_profile": "default",
+        "matched": true,
+        "other_registration_fields_unchanged": true
+      }
+    },
+    {
+      "kind": "serve",
+      "owner": "profile-b",
+      "ui_profile": "profile-b",
+      "expected": "profile-b",
+      "before": {
+        "ledger_profile": "profile-b",
+        "plan_profile": "profile-b",
+        "matched": true,
+        "other_registration_fields_unchanged": true
+      },
+      "candidate": {
+        "ledger_profile": "profile-b",
+        "plan_profile": "profile-b",
+        "matched": true,
+        "other_registration_fields_unchanged": true
+      }
+    }
+  ],
+  "before_correct": 6,
+  "candidate_correct": 12,
+  "total": 12,
+  "full_modules_used": [
+    "hermes_constants.py",
+    "hermes_cli/process_identity.py",
+    "hermes_cli/update_inventory.py"
+  ],
+  "ast_extracted_callback": "hermes_cli/web_server.py:_register_identity",
+  "mocked_boundaries": [
+    "ledger I/O",
+    "process birth/spawner identity",
+    "OS job attachment",
+    "supervisor discovery"
+  ],
+  "real_model_calls": 0,
+  "server_started": false,
+  "private_memory_read": false,
+  "installed_hermes_changed": false,
+  "fixture_removed": true,
+  "candidate_sha256": "d8cf2c10506b87b3b9afbb7a26f32fca4244f5a06f045d15fbfded05c13fe227",
+  "source_sha256": {
+    "hermes_cli/web_server.py": "3557c4213f416eae814e893143e540fc4a82b7b0f0848bdc9f7fb1c412061a3b",
+    "hermes_cli/process_identity.py": "c833451067d5dca9cf93cb70c5e4b13d4035c8ecf787654b23c6b8db94b27093",
+    "hermes_cli/update_inventory.py": "66af456cf5cd07050032dcce9993d8550b7e6bb0718db17bd644df0fa528775d",
+    "hermes_constants.py": "5d43e6102c69748a2e64fc91623a49e1b0d76623416ce4ec37f23f216c3ce91f"
+  },
+  "completed_at": "2026-10-07T10:44:42.201306+00:00"
+}
