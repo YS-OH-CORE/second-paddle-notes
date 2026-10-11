@@ -1,0 +1,11 @@
+{
+  "schema": "feedback-observation-v02/1",
+  "files": {
+    "observe.py": "be268feaaace9e32d00d4f807adc4f6aff6a6e16bebad73e54980d21dc19a594",
+    "test_observe.py": "52a65a64126023b756d76691f00e368f22747cf7a644d717cb136115a9b52a85",
+    "run.py": "55fda66003ddc9a309133eb0d3930cdfea5dd95e157cf44477a06a8b31a1ae62",
+    "PLAN.md": "f61f1bee148e218a03b96626a30d41ba83deca89152717affda12059ac5151a4",
+    "../task.py": "18954a7d51f2068f56e06aa9861b23d8495e9c8f9ae8bf4d81767a6635314f88",
+    "../OBSERVED.json": "19e4d57529ec33882760991a11310dfa6ac77c5d8336735e27ee9ce877ff8cf3"
+  }
+}
