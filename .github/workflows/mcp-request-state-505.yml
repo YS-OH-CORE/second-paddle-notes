@@ -1,0 +1,39 @@
+name: Verify MCP request-state issue 505 through upstream CLI
+'on':
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - 'contributions/mcp-request-state-505/**'
+      - '.github/workflows/mcp-request-state-505.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    if: github.repository == 'YS-OH-CORE/second-paddle-notes' && github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.head.ref == 'zero/mcp-request-state-505-20260916'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          path: driver
+          persist-credentials: false
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          repository: modelcontextprotocol/conformance
+          ref: 7169291ec0b68eb370fddcd9947313ab0d5e4156
+          path: upstream
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22.16.0'
+      - name: Baseline, candidate, actual upstream imports and HTTP CLI
+        run: python -B driver/contributions/mcp-request-state-505/verify_upstream.py --repo upstream --out /tmp/zero-mcp505-evidence
+      - name: Retain execution evidence, not installed dependencies
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: mcp-request-state-505
+          path: /tmp/zero-mcp505-evidence
+          retention-days: 1
+          if-no-files-found: warn
