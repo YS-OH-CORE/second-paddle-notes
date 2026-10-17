@@ -1,0 +1,28 @@
+{
+  "status": "completed_real_config_test",
+  "provenance": "Analyst structured transcription of returned workflow log fields; not raw log-file bytes.",
+  "upstream_commit": "91b3b31dc91aec04abac8be5d240f2d0ad491054",
+  "test_source_commit": "bd62b97a953ca19a73186617f447ee3c5b4c4a3c",
+  "run": 36358747015,
+  "job": 108731565844,
+  "unique_config_cases": 4,
+  "cases": ["root-false", "host-false-over-root-true", "host-true-over-root-false", "legacy-default"],
+  "variants": [
+    {"name": "original_pr_head", "exit": 0, "outcomes": ["passed", "passed", "passed", "passed"], "pytest_seconds": 0.94},
+    {"name": "startup_guard_bypassed", "exit": 1, "outcomes": ["failure", "failure", "passed", "passed"], "failure_assertion": "uploads == []", "pytest_seconds": 0.57},
+    {"name": "disk_setting_ignored", "exit": 1, "outcomes": ["failure", "failure", "passed", "passed"], "failure_assertion": "provider._config.save_messages is expected", "pytest_seconds": 0.57}
+  ],
+  "source_files_restored": true,
+  "source_files": 826,
+  "source_bytes": 29245540,
+  "git_metadata_bytes": 9368625,
+  "earlier_setup_failures": [
+    {"run": 36358248219, "job": 108730150823, "reason": "whole archive exceeds 64 MiB", "pytest_executed": false},
+    {"run": 36358576690, "job": 108731086812, "reason": "broad selection exceeds 64 MiB", "pytest_executed": false}
+  ],
+  "test_file_unchanged_all_attempts": true,
+  "user_pc_calls": 0,
+  "model_calls": 0,
+  "live_honcho_calls": 0,
+  "upstream_contribution_posted": false
+}
