@@ -1,0 +1,476 @@
+{
+  "schema": "mem0-pr7647-real-chroma-delete-all/v1",
+  "label": "main-smoke",
+  "started_at": "2026-10-18T12:56:20.938175+00:00",
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "harness_sha256": "2642fbf55b6716ece47a44520e22277186ef2430341772574b5cb62136b58946",
+  "source_identity": {
+    "repo": "[EXPERIMENT_ROOT]/repo",
+    "git_head": {
+      "returncode": 0,
+      "stdout": "0724291bd864cf807e88ee8981c8226644e8fb42",
+      "stderr": ""
+    },
+    "git_status_tracked": {
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "file_sha256": {
+      "mem0/memory/main.py": "f329ca4a17af1fbefb32ac10d4cc7ae7ddbdb7435a87eb74c30915cff98b8b7c",
+      "mem0/memory/storage.py": "5f5ecdadd2b260fd14f36a0f338336eb760275465dd1056a99a47e1ef07702bd",
+      "mem0/vector_stores/chroma.py": "dce0932308fa20fab95c21ff72c50dea878713846f4ff7f6d2af03b4559a07be",
+      "mem0/vector_stores/langchain.py": "895944935d18ed68a99f0443b9c0591e27d7e7b6bcb2c609bd17ac02a383760d",
+      "mem0/configs/vector_stores/chroma.py": "bfeefb033ec7ba62b2ed606893ed10b04d2d775823d3722e418315220e391692",
+      "mem0/configs/vector_stores/langchain.py": "28765b90753841f5572992f33e2268e57a0890a0f62d95e819ea2eb7ed706da3",
+      "pyproject.toml": "d4bc078a05cc7b9d677bbf4d0b262cfc532495b5aadeded053ac84fd90b6e974"
+    }
+  },
+  "scope": {
+    "real": [
+      "Memory/AsyncMemory.from_config constructors",
+      "VectorStoreFactory",
+      "Mem0 native Chroma and Langchain adapters",
+      "embedded ephemeral Chroma",
+      "temporary SQLiteManager",
+      "get/get_all/delete_all methods"
+    ],
+    "test_doubles": [
+      "unused EmbedderFactory.create result",
+      "unused LlmFactory.create result"
+    ],
+    "disabled": [
+      "Mem0 telemetry and its notice path",
+      "Chroma anonymized telemetry",
+      "LangSmith tracing"
+    ],
+    "fixture_setup": "Direct Chroma collection.add with explicit IDs, document text, metadata and precomputed vectors; Memory.add and adapter insert are not tested",
+    "state_witness": "Chroma collection.get(ids=known_fixture_ids) plus collection.count; no list() fallback used for ground truth",
+    "not_tested": [
+      "model inference",
+      "ingestion/extraction",
+      "FAISS",
+      "Elasticsearch",
+      "entity store cleanup",
+      "batch boundary above 1000",
+      "full upstream suite",
+      "unsupported enumeration/None returns and backend listing failures"
+    ]
+  },
+  "cases": [
+    {
+      "adapter": "native-chroma",
+      "api": "sync",
+      "scenario": "populated",
+      "fixture_counts": {
+        "alice": 3,
+        "bob": 1
+      },
+      "collection_name": "pr7647-native-chroma-sync-c0753f071174",
+      "history_path": "[FIXTURE_ROOT]/native-chroma-sync-populated/history.sqlite3",
+      "started_at": "2026-10-18T12:56:23.343026+00:00",
+      "operations": {
+        "direct_chroma_before": {
+          "status": "returned",
+          "value": {
+            "collection_count": 4,
+            "records": {
+              "alice-0": {
+                "document": "Controlled fixture alice-0; owner alice.",
+                "metadata": {
+                  "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "fixture": "mem0-pr7647",
+                  "data": "Controlled fixture alice-0; owner alice.",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "user_id": "alice"
+                }
+              },
+              "alice-1": {
+                "document": "Controlled fixture alice-1; owner alice.",
+                "metadata": {
+                  "hash": "a9c6ac9f3564236923bd98f77d154963",
+                  "fixture": "mem0-pr7647",
+                  "data": "Controlled fixture alice-1; owner alice.",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "user_id": "alice"
+                }
+              },
+              "alice-2": {
+                "document": "Controlled fixture alice-2; owner alice.",
+                "metadata": {
+                  "fixture": "mem0-pr7647",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "hash": "c0fbca9364091c71131ad5fa181ef8f1",
+                  "user_id": "alice",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "data": "Controlled fixture alice-2; owner alice."
+                }
+              },
+              "bob-0": {
+                "document": "Controlled fixture bob-0; owner bob.",
+                "metadata": {
+                  "fixture": "mem0-pr7647",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "user_id": "bob",
+                  "hash": "576896b9ecd3db313b447c948bd9798f",
+                  "data": "Controlled fixture bob-0; owner bob."
+                }
+              }
+            },
+            "present_ids": [
+              "alice-0",
+              "alice-1",
+              "alice-2",
+              "bob-0"
+            ],
+            "absent_known_ids": [],
+            "alice_present": [
+              "alice-0",
+              "alice-1",
+              "alice-2"
+            ],
+            "bob_present": [
+              "bob-0"
+            ]
+          },
+          "elapsed_ms": 7.329
+        },
+        "adapter_list_before": {
+          "status": "returned",
+          "value": [
+            [
+              {
+                "id": "alice-0",
+                "score": null,
+                "payload": {
+                  "fixture": "mem0-pr7647",
+                  "data": "Controlled fixture alice-0; owner alice.",
+                  "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "user_id": "alice",
+                  "created_at": "2026-10-18T00:00:00+00:00"
+                }
+              },
+              {
+                "id": "alice-1",
+                "score": null,
+                "payload": {
+                  "hash": "a9c6ac9f3564236923bd98f77d154963",
+                  "data": "Controlled fixture alice-1; owner alice.",
+                  "user_id": "alice",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "fixture": "mem0-pr7647",
+                  "created_at": "2026-10-18T00:00:00+00:00"
+                }
+              },
+              {
+                "id": "alice-2",
+                "score": null,
+                "payload": {
+                  "hash": "c0fbca9364091c71131ad5fa181ef8f1",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "user_id": "alice",
+                  "fixture": "mem0-pr7647",
+                  "data": "Controlled fixture alice-2; owner alice.",
+                  "created_at": "2026-10-18T00:00:00+00:00"
+                }
+              }
+            ]
+          ],
+          "elapsed_ms": 1.076
+        },
+        "get_all_before": {
+          "status": "returned",
+          "value": {
+            "results": [
+              {
+                "id": "alice-0",
+                "memory": "Controlled fixture alice-0; owner alice.",
+                "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "alice"
+              },
+              {
+                "id": "alice-1",
+                "memory": "Controlled fixture alice-1; owner alice.",
+                "hash": "a9c6ac9f3564236923bd98f77d154963",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "alice"
+              },
+              {
+                "id": "alice-2",
+                "memory": "Controlled fixture alice-2; owner alice.",
+                "hash": "c0fbca9364091c71131ad5fa181ef8f1",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "alice"
+              }
+            ]
+          },
+          "elapsed_ms": 0.874
+        },
+        "get_known_ids_before": {
+          "alice-0": {
+            "status": "returned",
+            "value": {
+              "id": "alice-0",
+              "memory": "Controlled fixture alice-0; owner alice.",
+              "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "alice"
+            },
+            "elapsed_ms": 0.737
+          },
+          "alice-1": {
+            "status": "returned",
+            "value": {
+              "id": "alice-1",
+              "memory": "Controlled fixture alice-1; owner alice.",
+              "hash": "a9c6ac9f3564236923bd98f77d154963",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "alice"
+            },
+            "elapsed_ms": 0.596
+          },
+          "alice-2": {
+            "status": "returned",
+            "value": {
+              "id": "alice-2",
+              "memory": "Controlled fixture alice-2; owner alice.",
+              "hash": "c0fbca9364091c71131ad5fa181ef8f1",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "alice"
+            },
+            "elapsed_ms": 0.573
+          },
+          "bob-0": {
+            "status": "returned",
+            "value": {
+              "id": "bob-0",
+              "memory": "Controlled fixture bob-0; owner bob.",
+              "hash": "576896b9ecd3db313b447c948bd9798f",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "bob"
+            },
+            "elapsed_ms": 0.58
+          }
+        },
+        "delete_all": {
+          "status": "returned",
+          "value": {
+            "message": "Memories deleted successfully!"
+          },
+          "elapsed_ms": 57.144
+        },
+        "direct_chroma_after": {
+          "status": "returned",
+          "value": {
+            "collection_count": 1,
+            "records": {
+              "bob-0": {
+                "document": "Controlled fixture bob-0; owner bob.",
+                "metadata": {
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "hash": "576896b9ecd3db313b447c948bd9798f",
+                  "user_id": "bob",
+                  "fixture": "mem0-pr7647",
+                  "data": "Controlled fixture bob-0; owner bob.",
+                  "updated_at": "2026-10-18T00:00:00+00:00"
+                }
+              }
+            },
+            "present_ids": [
+              "bob-0"
+            ],
+            "absent_known_ids": [
+              "alice-0",
+              "alice-1",
+              "alice-2"
+            ],
+            "alice_present": [],
+            "bob_present": [
+              "bob-0"
+            ]
+          },
+          "elapsed_ms": 1.184
+        },
+        "get_known_ids_after": {
+          "alice-0": {
+            "status": "returned",
+            "value": null,
+            "elapsed_ms": 0.553
+          },
+          "alice-1": {
+            "status": "returned",
+            "value": null,
+            "elapsed_ms": 0.442
+          },
+          "alice-2": {
+            "status": "returned",
+            "value": null,
+            "elapsed_ms": 0.442
+          },
+          "bob-0": {
+            "status": "returned",
+            "value": {
+              "id": "bob-0",
+              "memory": "Controlled fixture bob-0; owner bob.",
+              "hash": "576896b9ecd3db313b447c948bd9798f",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "bob"
+            },
+            "elapsed_ms": 0.643
+          }
+        },
+        "get_all_after": {
+          "status": "returned",
+          "value": {
+            "results": []
+          },
+          "elapsed_ms": 0.501
+        },
+        "get_all_bob_after": {
+          "status": "returned",
+          "value": {
+            "results": [
+              {
+                "id": "bob-0",
+                "memory": "Controlled fixture bob-0; owner bob.",
+                "hash": "576896b9ecd3db313b447c948bd9798f",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "bob"
+              }
+            ]
+          },
+          "elapsed_ms": 0.662
+        },
+        "sqlite_history_after": {
+          "status": "returned",
+          "value": [
+            {
+              "memory_id": "alice-0",
+              "event": "DELETE",
+              "is_deleted": 1
+            },
+            {
+              "memory_id": "alice-1",
+              "event": "DELETE",
+              "is_deleted": 1
+            },
+            {
+              "memory_id": "alice-2",
+              "event": "DELETE",
+              "is_deleted": 1
+            }
+          ],
+          "elapsed_ms": 0.116
+        }
+      },
+      "constructor": {
+        "status": "returned",
+        "memory_class": "mem0.memory.main.Memory",
+        "adapter_class": "mem0.vector_stores.chroma.ChromaDB",
+        "history_class": "mem0.memory.storage.SQLiteManager",
+        "embedder_factory_calls": 1,
+        "llm_factory_calls": 1,
+        "history_file_created": true,
+        "chroma_is_persistent": false
+      },
+      "fixture_valid": true,
+      "checks": {
+        "real_sqlite_created": true,
+        "embedded_ephemeral_chroma": true,
+        "get_all_before_exact_alice": true,
+        "public_known_id_reads_before_exact": true,
+        "delete_all_returned_success": true,
+        "direct_state_after_exact_bob_only": true,
+        "public_known_id_reads_after_exact": true,
+        "get_all_after_empty_alice": true,
+        "get_all_after_exact_bob": true,
+        "real_delete_history_exact": true,
+        "no_model_calls": true
+      },
+      "outcome": "success_matches_stored_state",
+      "all_checks_passed": true,
+      "model_method_calls": [],
+      "close": {
+        "status": "returned",
+        "value": null,
+        "elapsed_ms": 0.043
+      },
+      "finished_at": "2026-10-18T12:56:23.612620+00:00"
+    }
+  ],
+  "imported_sources": {
+    "mem0.memory.main": "[EXPERIMENT_ROOT]/repo/mem0/memory/main.py",
+    "mem0.memory.storage": "[EXPERIMENT_ROOT]/repo/mem0/memory/storage.py",
+    "mem0.vector_stores.chroma": "[EXPERIMENT_ROOT]/repo/mem0/vector_stores/chroma.py",
+    "mem0.vector_stores.langchain": "[EXPERIMENT_ROOT]/repo/mem0/vector_stores/langchain.py"
+  },
+  "langchain_chroma_class": "langchain_chroma.vectorstores.Chroma",
+  "dependency_versions": {
+    "mem0ai": "2.2.1",
+    "chromadb": "1.5.9",
+    "langchain-chroma": "0.2.6",
+    "langchain-community": "0.3.31",
+    "langchain-core": "0.3.86",
+    "pydantic": "2.14.1",
+    "qdrant-client": "1.19.1",
+    "openai": "3.35.1",
+    "posthog": "7.71.0",
+    "numpy": "2.5.4",
+    "sqlalchemy": "2.1.5"
+  },
+  "delete_all_batch_size": 1000,
+  "finished_at": "2026-10-18T12:56:23.613104+00:00",
+  "summary": {
+    "case_count": 1,
+    "passed_cases": 1,
+    "failed_cases": 0,
+    "harness_error_cases": 0
+  }
+}

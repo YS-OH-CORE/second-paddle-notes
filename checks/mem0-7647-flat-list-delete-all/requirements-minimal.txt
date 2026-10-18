@@ -1,0 +1,9 @@
+# Additional runtime requirements beside the selected Mem0 source checkout's
+# core project dependencies. No pytest or model provider extras are needed.
+# These constraints select a LangChain 0.3 family compatible with Mem0's extras.
+# These ranges were resolved for this run; dependencies.json records installed versions.
+# This file is not a hash-locked environment.
+chromadb>=1.0.20,<2.0.0
+langchain-chroma==0.2.6
+langchain-community>=0.3.27,<0.4.0
+langchain-core>=0.3.85,<1.0.0

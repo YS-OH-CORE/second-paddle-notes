@@ -1,0 +1,98 @@
+{
+  "algorithm": "sha256",
+  "scope": "All public kit files except this manifest itself",
+  "files": {
+    "README.md": {
+      "sha256": "366cd9760d804c42c89c98ad3e7e3bf5923ba322a28310bb4c742a01a3a1e0b0",
+      "bytes": 11586
+    },
+    "check_delete_all.py": {
+      "sha256": "2642fbf55b6716ece47a44520e22277186ef2430341772574b5cb62136b58946",
+      "bytes": 23370
+    },
+    "consumer-control.patch": {
+      "sha256": "0cd87e7e146a4b53d95197c3a9c1b2b8bf2beb69b6ef1447a14df8015234a8e7",
+      "bytes": 1053
+    },
+    "dependencies.json": {
+      "sha256": "d7e3b38748cbd6c0f10a083ca385c44bf9821f923c570c866b244868aa6a9303",
+      "bytes": 7234
+    },
+    "hatch.toml": {
+      "sha256": "ae2c049ecaea1528c1ebf58b8bc552258e505e079f1460b6909231ce67b35956",
+      "bytes": 214
+    },
+    "logs/base.stderr.txt": {
+      "sha256": "8de9b738e611fdbd356421c1238c1e96339628f33765ed1494cee0280b434462",
+      "bytes": 6312
+    },
+    "logs/base.stdout.txt": {
+      "sha256": "48398f7ae977cf8224a5fecca0b0499c39d54821a80f12c4ccf311a8d38babf1",
+      "bytes": 122
+    },
+    "logs/control.stderr.txt": {
+      "sha256": "8de9b738e611fdbd356421c1238c1e96339628f33765ed1494cee0280b434462",
+      "bytes": 6312
+    },
+    "logs/control.stdout.txt": {
+      "sha256": "281522b41a4c5e4d8f558992ee7957eea51a7ccecaeaff1b2acfb01cb7d0d579",
+      "bytes": 125
+    },
+    "logs/pr7647.stderr.txt": {
+      "sha256": "232413f2ee008919c12e8a27d54354e477d1c8cb4285de9d0dc377406d4e560d",
+      "bytes": 6432
+    },
+    "logs/pr7647.stdout.txt": {
+      "sha256": "5f7f119380675d342e1fdb2c3045c05c8981a6b6e7350db7dc60adefebbdc095",
+      "bytes": 124
+    },
+    "receipts/RUNS.json": {
+      "sha256": "004de18610871a423b9224e0aef91ad1d4ad61e00dd391c89ca61d9743aeb3bb",
+      "bytes": 1409
+    },
+    "receipts/SETUP.json": {
+      "sha256": "f9c2bd07a2881f726eba67740a15c24df6928531b185a2e9f92e429981c04056",
+      "bytes": 5431
+    },
+    "receipts/SETUP_NOTES.md": {
+      "sha256": "f3b41fea8138dcb46f41b78ff27ac9aa721d5595380e3303dd56d5019bd8088a",
+      "bytes": 1527
+    },
+    "receipts/VALIDATION.json": {
+      "sha256": "cbe6a37ad8bcc2a630831610d8e43992e6a63cd146efeeb4660b42a9739ad962",
+      "bytes": 1263
+    },
+    "receipts/VALIDATION_CONTEXT.json": {
+      "sha256": "49022f4cf06b9c1af5d289e0047c050e3a400b1311d34d4316a710148d3b29aa",
+      "bytes": 976
+    },
+    "redactions.json": {
+      "sha256": "010699bb11f84793ed71751f063b5f87ebda4046523b85e0e21f3ecc320e303a",
+      "bytes": 4177
+    },
+    "requirements-minimal.txt": {
+      "sha256": "9349fdb46b6da79a14537caae457087016a12747e6fc7de279b093a4a9294864",
+      "bytes": 482
+    },
+    "results/base.json": {
+      "sha256": "8749eb0f321bb3c2203c4c0e2c18ecdbc4c3542176d89ab9d000147701b813c7",
+      "bytes": 126288
+    },
+    "results/control.json": {
+      "sha256": "56e3943988c152d0eab2be8adb98a0916ea9f6010e7d2cd31f0af3cf572f5466",
+      "bytes": 125515
+    },
+    "results/pr7647.json": {
+      "sha256": "0001502d131092070cacb53b6203f387fd97b152d0ce57fd7fe0ae621d625756",
+      "bytes": 155195
+    },
+    "results/smoke.json": {
+      "sha256": "2aa631ee0f5b3ba36e0bac8ecfecfb56f0cbad4c79c0ca47f0d40c4c4b8ffc92",
+      "bytes": 16495
+    },
+    "summary.json": {
+      "sha256": "1a2a0a2b28658a5a1cfe0841e5ffdad635d853267bba0e9d9a274afc7e41264d",
+      "bytes": 54856
+    }
+  }
+}

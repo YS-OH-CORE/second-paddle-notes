@@ -1,0 +1,1 @@
+{"output": "[ARTIFACT_DIR]/control.json", "case_count": 16, "passed_cases": 16, "failed_cases": 0, "harness_error_cases": 0}
