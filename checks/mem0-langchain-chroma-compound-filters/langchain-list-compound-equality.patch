@@ -1,0 +1,17 @@
+--- a/mem0/vector_stores/langchain.py
++++ b/mem0/vector_stores/langchain.py
+@@ -199,6 +199,14 @@
+                 if filters:
+                     # Handle all filters, not just user_id
+                     where_clause = filters
++                    # Chroma requires one field per predicate; combine plain equalities.
++                    if len(filters) > 1 and all(
++                        isinstance(key, str)
++                        and not key.startswith("$")
++                        and isinstance(value, (str, int, float, bool))
++                        for key, value in filters.items()
++                    ):
++                        where_clause = {"$and": [{key: value} for key, value in filters.items()]}
+ 
+                 result = self.client._collection.get(where=where_clause, limit=top_k)
+ 

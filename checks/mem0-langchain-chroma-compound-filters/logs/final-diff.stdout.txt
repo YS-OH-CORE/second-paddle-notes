@@ -1,0 +1,96 @@
+diff --git a/mem0/vector_stores/langchain.py b/mem0/vector_stores/langchain.py
+index e616a45..ae24eb9 100644
+--- a/mem0/vector_stores/langchain.py
++++ b/mem0/vector_stores/langchain.py
+@@ -199,6 +199,14 @@ class Langchain(VectorStoreBase):
+                 if filters:
+                     # Handle all filters, not just user_id
+                     where_clause = filters
++                    # Chroma requires one field per predicate; combine plain equalities.
++                    if len(filters) > 1 and all(
++                        isinstance(key, str)
++                        and not key.startswith("$")
++                        and isinstance(value, (str, int, float, bool))
++                        for key, value in filters.items()
++                    ):
++                        where_clause = {"$and": [{key: value} for key, value in filters.items()]}
+ 
+                 result = self.client._collection.get(where=where_clause, limit=top_k)
+ 
+diff --git a/tests/vector_stores/test_langchain_vector_store.py b/tests/vector_stores/test_langchain_vector_store.py
+index 8a1e7b9..83f3184 100644
+--- a/tests/vector_stores/test_langchain_vector_store.py
++++ b/tests/vector_stores/test_langchain_vector_store.py
+@@ -147,28 +147,56 @@ def test_get_vector(langchain_instance):
+ 
+ 
+ def test_list_with_filters(langchain_instance):
+-    """Test list with agent_id and run_id filters."""
+-    # Mock the _collection.get method
++    """Validate Chroma grammar and compound selection at the external SDK boundary."""
++    validate_where = pytest.importorskip("chromadb.api.types").validate_where
++    filters = {"user_id": "alice", "agent_id": "agent1", "run_id": "run1"}
++    fixture = [
++        ("id1", dict(filters)),
++        ("other-user", {**filters, "user_id": "bob"}),
++        ("other-agent", {**filters, "agent_id": "agent2"}),
++        ("other-run", {**filters, "run_id": "run2"}),
++    ]
++
++    def matches_predicate(predicate, metadata):
++        # A small reference evaluator for this equality-only fixture, independent
++        # of how the adapter encodes its conjunction. OR is included so an
++        # accidentally widened predicate returns the negative controls and fails.
++        if predicate is None:
++            return True
++        key, value = next(iter(predicate.items()))
++        if key == "$and":
++            return all(matches_predicate(child, metadata) for child in value)
++        if key == "$or":
++            return any(matches_predicate(child, metadata) for child in value)
++        if isinstance(value, dict):
++            if set(value) != {"$eq"}:
++                raise AssertionError("This fixture supports only equality field expressions")
++            value = value["$eq"]
++        return metadata.get(key) == value
++
++    def validated_get(*, where, limit):
++        if where is not None:
++            validate_where(where)
++        selected = [(memory_id, metadata) for memory_id, metadata in fixture if matches_predicate(where, metadata)]
++        selected = selected[:limit]
++        return {
++            "ids": [memory_id for memory_id, _ in selected],
++            "metadatas": [metadata for _, metadata in selected],
++            "documents": [f"fixture {memory_id}" for memory_id, _ in selected],
++        }
++
+     mock_collection = Mock()
+-    mock_collection.get.return_value = {
+-        "ids": [["id1"]],
+-        "metadatas": [[{"user_id": "alice", "agent_id": "agent1", "run_id": "run1"}]],
+-        "documents": [["test document"]]
+-    }
++    mock_collection.get.side_effect = validated_get
+     langchain_instance.client._collection = mock_collection
+ 
+-    filters = {"user_id": "alice", "agent_id": "agent1", "run_id": "run1"}
+     results = langchain_instance.list(filters=filters, top_k=10)
+ 
+-    # Verify that the collection.get method was called with the correct filters
+-    mock_collection.get.assert_called_once_with(where=filters, limit=10)
+-
+-    # Verify the results
++    mock_collection.get.assert_called_once()
++    assert mock_collection.get.call_args.kwargs["limit"] == 10
+     assert len(results) == 1
+-    assert len(results[0]) == 1
+-    assert results[0][0].payload["user_id"] == "alice"
+-    assert results[0][0].payload["agent_id"] == "agent1"
+-    assert results[0][0].payload["run_id"] == "run1"
++    assert [row.id for row in results[0]] == ["id1"]
++    assert results[0][0].payload == filters
++    assert filters == {"user_id": "alice", "agent_id": "agent1", "run_id": "run1"}
+ 
+ 
+ def test_list_with_single_filter(langchain_instance):

@@ -1,0 +1,242 @@
+[
+  {
+    "label": "control-apply-check",
+    "started_at": "2026-10-18T14:40:01.848961+00:00",
+    "command": [
+      "git",
+      "apply",
+      "--check",
+      "<OUTPUT_DIR>/langchain-list-compound-equality.patch"
+    ],
+    "cwd": "<CONTROL_CHECKOUT>",
+    "finished_at": "2026-10-18T14:40:01.860648+00:00",
+    "returncode": 0
+  },
+  {
+    "label": "control-apply",
+    "started_at": "2026-10-18T14:40:01.864184+00:00",
+    "command": [
+      "git",
+      "apply",
+      "<OUTPUT_DIR>/langchain-list-compound-equality.patch"
+    ],
+    "cwd": "<CONTROL_CHECKOUT>",
+    "finished_at": "2026-10-18T14:40:01.870068+00:00",
+    "returncode": 0
+  },
+  {
+    "label": "control-diff-check",
+    "started_at": "2026-10-18T14:40:06.716816+00:00",
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "cwd": "<CONTROL_CHECKOUT>",
+    "finished_at": "2026-10-18T14:40:06.723896+00:00",
+    "returncode": 0
+  },
+  {
+    "label": "control-diff",
+    "started_at": "2026-10-18T14:40:01.880794+00:00",
+    "command": [
+      "git",
+      "diff",
+      "--",
+      "mem0/vector_stores/langchain.py"
+    ],
+    "cwd": "<CONTROL_CHECKOUT>",
+    "finished_at": "2026-10-18T14:40:01.890953+00:00",
+    "returncode": 0
+  },
+  {
+    "label": "control",
+    "started_at": "2026-10-18T14:40:01.897359+00:00",
+    "command": [
+      "<ENV_PYTHON>",
+      "<OUTPUT_DIR>/check_compound_filters.py",
+      "--repo",
+      "<CONTROL_CHECKOUT>",
+      "--label",
+      "compound-equality-control",
+      "--output",
+      "<OUTPUT_DIR>/control.json",
+      "--expect",
+      "pass"
+    ],
+    "cwd": "<CONTROL_CHECKOUT>",
+    "finished_at": "2026-10-18T14:40:04.726354+00:00",
+    "returncode": 0
+  },
+  {
+    "label": "final-diff-check",
+    "started_at": "2026-10-18T15:17:06.353929+00:00",
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "cwd": "<CONTROL_CHECKOUT>",
+    "finished_at": "2026-10-18T15:17:06.403367+00:00",
+    "returncode": 0
+  },
+  {
+    "label": "final-diff",
+    "started_at": "2026-10-18T15:17:06.406196+00:00",
+    "command": [
+      "git",
+      "diff",
+      "--",
+      "mem0/vector_stores/langchain.py",
+      "tests/vector_stores/test_langchain_vector_store.py"
+    ],
+    "cwd": "<CONTROL_CHECKOUT>",
+    "finished_at": "2026-10-18T15:17:06.414103+00:00",
+    "returncode": 0
+  },
+  {
+    "label": "final-status",
+    "started_at": "2026-10-18T15:17:06.417785+00:00",
+    "command": [
+      "git",
+      "status",
+      "--short",
+      "--untracked-files=no"
+    ],
+    "cwd": "<CONTROL_CHECKOUT>",
+    "finished_at": "2026-10-18T15:17:06.426733+00:00",
+    "returncode": 0
+  },
+  {
+    "label": "focused-lint",
+    "started_at": "2026-10-18T14:40:06.593616+00:00",
+    "command": [
+      "<ENV_PYTHON>",
+      "-m",
+      "ruff",
+      "check",
+      "--select",
+      "E4,E7,E9,F",
+      "<OUTPUT_DIR>/check_compound_filters.py",
+      "<OUTPUT_DIR>/test_langchain_compound_filter_control.py",
+      "<CONTROL_CHECKOUT>/mem0/vector_stores/langchain.py"
+    ],
+    "cwd": "<CONTROL_CHECKOUT>",
+    "finished_at": "2026-10-18T14:40:06.711152+00:00",
+    "returncode": 0
+  },
+  {
+    "label": "grammar-control",
+    "started_at": "2026-10-18T14:40:04.740649+00:00",
+    "command": [
+      "<ENV_PYTHON>",
+      "-m",
+      "pytest",
+      "<OUTPUT_DIR>/test_langchain_compound_filter_control.py",
+      "-q"
+    ],
+    "cwd": "<CONTROL_CHECKOUT>",
+    "finished_at": "2026-10-18T14:40:06.588210+00:00",
+    "returncode": 0
+  },
+  {
+    "label": "grammar-main",
+    "started_at": "2026-10-18T14:39:59.085437+00:00",
+    "command": [
+      "<ENV_PYTHON>",
+      "-m",
+      "pytest",
+      "<OUTPUT_DIR>/test_langchain_compound_filter_control.py",
+      "-q"
+    ],
+    "cwd": "<MAIN_CHECKOUT>",
+    "finished_at": "2026-10-18T14:40:01.608451+00:00",
+    "returncode": 1
+  },
+  {
+    "label": "provider-lint-control",
+    "started_at": "2026-10-18T15:17:06.237906+00:00",
+    "command": [
+      "<ENV_PYTHON>",
+      "-m",
+      "ruff",
+      "check",
+      "--select",
+      "E4,E7,E9,F",
+      "mem0/vector_stores/langchain.py",
+      "tests/vector_stores/test_langchain_vector_store.py"
+    ],
+    "cwd": "<CONTROL_CHECKOUT>",
+    "finished_at": "2026-10-18T15:17:06.351740+00:00",
+    "returncode": 0
+  },
+  {
+    "label": "provider-tests-control",
+    "started_at": "2026-10-18T15:17:04.608773+00:00",
+    "command": [
+      "<ENV_PYTHON>",
+      "-m",
+      "pytest",
+      "tests/vector_stores/test_langchain_vector_store.py",
+      "tests/vector_stores/test_chroma.py",
+      "-q"
+    ],
+    "cwd": "<CONTROL_CHECKOUT>",
+    "finished_at": "2026-10-18T15:17:06.232929+00:00",
+    "returncode": 0
+  },
+  {
+    "label": "test-apply-check",
+    "started_at": "2026-10-18T15:17:01.912636+00:00",
+    "command": [
+      "git",
+      "apply",
+      "--check",
+      "<OUTPUT_DIR>/existing-langchain-test-only.patch"
+    ],
+    "cwd": "<CONTROL_CHECKOUT>",
+    "finished_at": "2026-10-18T15:17:01.929304+00:00",
+    "returncode": 0
+  },
+  {
+    "label": "test-apply",
+    "started_at": "2026-10-18T15:17:01.932470+00:00",
+    "command": [
+      "git",
+      "apply",
+      "<OUTPUT_DIR>/existing-langchain-test-only.patch"
+    ],
+    "cwd": "<CONTROL_CHECKOUT>",
+    "finished_at": "2026-10-18T15:17:01.940924+00:00",
+    "returncode": 0
+  },
+  {
+    "label": "validated-test-main",
+    "started_at": "2026-10-18T15:17:01.947491+00:00",
+    "command": [
+      "<ENV_PYTHON>",
+      "-m",
+      "pytest",
+      "<OUTPUT_DIR>/test_langchain_vector_store_validated.py::test_list_with_filters",
+      "-q"
+    ],
+    "cwd": "<MAIN_CHECKOUT>",
+    "finished_at": "2026-10-18T15:17:04.598354+00:00",
+    "returncode": 1
+  },
+  {
+    "label": "worktree-add",
+    "started_at": "2026-10-18T14:40:01.615362+00:00",
+    "command": [
+      "git",
+      "worktree",
+      "add",
+      "--detach",
+      "<CONTROL_CHECKOUT>",
+      "0724291bd864cf807e88ee8981c8226644e8fb42"
+    ],
+    "cwd": "<MAIN_CHECKOUT>",
+    "finished_at": "2026-10-18T14:40:01.844823+00:00",
+    "returncode": 0
+  }
+]

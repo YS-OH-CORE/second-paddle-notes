@@ -1,0 +1,63 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+____________________________ test_list_with_filters ____________________________
+
+langchain_instance = <mem0.vector_stores.langchain.Langchain object at 0x72eadebadac0>
+
+    def test_list_with_filters(langchain_instance):
+        """Validate Chroma grammar and compound selection at the external SDK boundary."""
+        validate_where = pytest.importorskip("chromadb.api.types").validate_where
+        filters = {"user_id": "alice", "agent_id": "agent1", "run_id": "run1"}
+        fixture = [
+            ("id1", dict(filters)),
+            ("other-user", {**filters, "user_id": "bob"}),
+            ("other-agent", {**filters, "agent_id": "agent2"}),
+            ("other-run", {**filters, "run_id": "run2"}),
+        ]
+    
+        def matches_predicate(predicate, metadata):
+            # A small reference evaluator for this equality-only fixture, independent
+            # of how the adapter encodes its conjunction. OR is included so an
+            # accidentally widened predicate returns the negative controls and fails.
+            if predicate is None:
+                return True
+            key, value = next(iter(predicate.items()))
+            if key == "$and":
+                return all(matches_predicate(child, metadata) for child in value)
+            if key == "$or":
+                return any(matches_predicate(child, metadata) for child in value)
+            if isinstance(value, dict):
+                if set(value) != {"$eq"}:
+                    raise AssertionError("This fixture supports only equality field expressions")
+                value = value["$eq"]
+            return metadata.get(key) == value
+    
+        def validated_get(*, where, limit):
+            if where is not None:
+                validate_where(where)
+            selected = [(memory_id, metadata) for memory_id, metadata in fixture if matches_predicate(where, metadata)]
+            selected = selected[:limit]
+            return {
+                "ids": [memory_id for memory_id, _ in selected],
+                "metadatas": [metadata for _, metadata in selected],
+                "documents": [f"fixture {memory_id}" for memory_id, _ in selected],
+            }
+    
+        mock_collection = Mock()
+        mock_collection.get.side_effect = validated_get
+        langchain_instance.client._collection = mock_collection
+    
+        results = langchain_instance.list(filters=filters, top_k=10)
+    
+        mock_collection.get.assert_called_once()
+        assert mock_collection.get.call_args.kwargs["limit"] == 10
+>       assert len(results) == 1
+E       assert 0 == 1
+E        +  where 0 = len([])
+
+<OUTPUT_DIR>/test_langchain_vector_store_validated.py:196: AssertionError
+------------------------------ Captured log call -------------------------------
+ERROR    mem0.vector_stores.langchain:langchain.py:210 Error listing vectors from Chroma: Expected where to have exactly one operator, got {'user_id': 'alice', 'agent_id': 'agent1', 'run_id': 'run1'}
+=========================== short test summary info ============================
+FAILED ../../../../..<OUTPUT_DIR>/test_langchain_vector_store_validated.py::test_list_with_filters
+1 failed in 1.56s

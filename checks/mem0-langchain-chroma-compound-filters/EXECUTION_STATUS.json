@@ -1,0 +1,178 @@
+{
+  "schema": "mem0-compound-filter-execution-evidence/v2",
+  "status": "completed_and_inspected",
+  "upstream_commit": "0724291bd864cf807e88ee8981c8226644e8fb42",
+  "harness_sha256": "8783d575f4d1b33a5003db580241e9a698b2ba09b99d3b717a15755366a6496a",
+  "integration": {
+    "matrix_executions": 2,
+    "case_count": 16,
+    "matrix_reruns": 0,
+    "excluded_cases": 0,
+    "main": {
+      "result": "results/main.json",
+      "launcher_receipt": "receipts/MAIN_RUN.json",
+      "summary": {
+        "case_count": 8,
+        "passed_cases": 4,
+        "failed_cases": 4,
+        "harness_error_cases": 0,
+        "false_empty_listing_cases": 4,
+        "false_success_deletion_cases": 2
+      },
+      "source_unchanged_during_run": true,
+      "source_tracked_status": "",
+      "native_chroma": {
+        "passed": 4,
+        "cases": 4
+      },
+      "langchain_sync": {
+        "cases": 2,
+        "false_empty_listings": 2,
+        "index_errors": 2,
+        "targets_remaining_per_case": 2,
+        "collection_count_after_per_case": 5,
+        "delete_history_rows_per_case": 0,
+        "observed_records_unchanged": true
+      },
+      "langchain_async": {
+        "cases": 2,
+        "false_empty_listings": 2,
+        "false_success_deletions": 2,
+        "targets_remaining_per_case": 2,
+        "collection_count_after_per_case": 5,
+        "delete_history_rows_per_case": 0,
+        "observed_records_unchanged": true
+      }
+    },
+    "control": {
+      "result": "results/control.json",
+      "command_receipt_label": "control",
+      "summary": {
+        "case_count": 8,
+        "passed_cases": 8,
+        "failed_cases": 0,
+        "harness_error_cases": 0,
+        "false_empty_listing_cases": 0,
+        "false_success_deletion_cases": 0
+      },
+      "source_unchanged_during_run": true,
+      "source_tracked_status": "M mem0/vector_stores/langchain.py",
+      "targets_remaining_per_case": 0,
+      "controls_retained_per_case": 3,
+      "collection_count_after_per_case": 3,
+      "delete_history_rows_per_case": 2
+    },
+    "all_cases": {
+      "fixture_valid": true,
+      "real_ephemeral_chroma_and_sqlite": true,
+      "model_calls": 0,
+      "control_records_missing": 0,
+      "close_returned": true
+    }
+  },
+  "causal_isolation": {
+    "control_source_patch": "langchain-list-compound-equality.patch",
+    "source_lines_added": 8,
+    "source_files_changed_for_control_matrix": [
+      "mem0/vector_stores/langchain.py"
+    ],
+    "main_langchain_sha256": "895944935d18ed68a99f0443b9c0591e27d7e7b6bcb2c609bd17ac02a383760d",
+    "control_langchain_sha256": "4f6fb1306ba5aee144d2b9c17836d1781f96f703f2fae9ba0cc868de014f1186",
+    "unchanged_memory_main_sha256": "f329ca4a17af1fbefb32ac10d4cc7ae7ddbdb7435a87eb74c30915cff98b8b7c",
+    "nested_list_contract_preserved": true,
+    "delete_all_consumers_unchanged": true,
+    "control_matrix_started_at": "2026-10-18T14:40:01.897359+00:00",
+    "control_matrix_finished_at": "2026-10-18T14:40:04.726354+00:00",
+    "test_patch_applied_at": "2026-10-18T15:17:01.932470+00:00",
+    "test_patch_applied_after_control_matrix": true
+  },
+  "focused_validation": {
+    "grammar_main": {
+      "passed": 2,
+      "failed": 2,
+      "skipped": 0,
+      "exit_code": 1,
+      "log": "logs/grammar-main.stdout.txt"
+    },
+    "grammar_control": {
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "exit_code": 0,
+      "log": "logs/grammar-control.stdout.txt"
+    },
+    "updated_provider_regression_main": {
+      "failed": 1,
+      "skipped": 0,
+      "exit_code": 1,
+      "log": "logs/validated-test-main.stdout.txt"
+    },
+    "provider_files_control": {
+      "passed": 45,
+      "failed": 0,
+      "skipped": 0,
+      "exit_code": 0,
+      "paths": [
+        "tests/vector_stores/test_langchain_vector_store.py",
+        "tests/vector_stores/test_chroma.py"
+      ],
+      "log": "logs/provider-tests-control.stdout.txt"
+    },
+    "ruff": {
+      "rules": [
+        "E4",
+        "E7",
+        "E9",
+        "F"
+      ],
+      "receipt_labels": [
+        "focused-lint",
+        "provider-lint-control"
+      ],
+      "exit_codes": [
+        0,
+        0
+      ]
+    },
+    "diff_check": {
+      "receipt_labels": [
+        "control-diff-check",
+        "final-diff-check"
+      ],
+      "exit_codes": [
+        0,
+        0
+      ]
+    },
+    "full_suite_run": false,
+    "ci_result_claimed": false
+  },
+  "environment": {
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "same_recorded_dependencies": true,
+    "dependency_record": "dependencies.json",
+    "runtime_origin": "Reused existing Hatch-managed regression environment; no installation in this experiment."
+  },
+  "evidence": {
+    "full_case_level_matrices_inspected": 2,
+    "imported_bundle_files": 43,
+    "payload_files_in_redaction_map": 42,
+    "redaction_map": "redactions.json",
+    "receipts": [
+      "receipts/MAIN_RUN.json",
+      "receipts/RUNS.json"
+    ],
+    "redaction_scope": "Private absolute path prefixes only; counts, errors, timestamps and synthetic values retained."
+  },
+  "limits": [
+    "String identity equality fixtures; the scalar-equality control is not a production-complete fix.",
+    "Stored-state witnesses cover IDs, count, documents and metadata, not bitwise embedding preservation.",
+    "No inference, ingestion, search, arbitrary metadata operators, other backends, entity cleanup, restart durability, concurrent external callers, 1000-item boundary or full-suite claim."
+  ],
+  "ai_assistance": {
+    "issue_form_choice": "AI found and wrote this, and I have not reproduced it myself",
+    "agent_executed": true,
+    "independent_human_rerun_claimed": false
+  }
+}

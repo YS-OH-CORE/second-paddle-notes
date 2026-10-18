@@ -1,0 +1,31 @@
+{
+  "started_at": "2026-10-18T14:35:58.605516+00:00",
+  "command": [
+    "<ENV_PYTHON>",
+    "<OUTPUT_DIR>/check_compound_filters.py",
+    "--repo",
+    "<MAIN_CHECKOUT>",
+    "--label",
+    "main-compound-filters",
+    "--output",
+    "<OUTPUT_DIR>/main.json",
+    "--expect",
+    "observe"
+  ],
+  "cwd": "<MAIN_CHECKOUT>",
+  "source_sha": "0724291bd864cf807e88ee8981c8226644e8fb42",
+  "harness_sha256": "8783d575f4d1b33a5003db580241e9a698b2ba09b99d3b717a15755366a6496a",
+  "runtime": "<ENV_PYTHON>",
+  "runtime_origin": "existing Hatch regression environment from previous mem0 task; no installation in this experiment",
+  "finished_at": "2026-10-18T14:36:01.922606+00:00",
+  "returncode": 0,
+  "summary": {
+    "case_count": 8,
+    "passed_cases": 4,
+    "failed_cases": 4,
+    "harness_error_cases": 0,
+    "false_empty_listing_cases": 4,
+    "false_success_deletion_cases": 2
+  },
+  "source_unchanged_during_run": true
+}
