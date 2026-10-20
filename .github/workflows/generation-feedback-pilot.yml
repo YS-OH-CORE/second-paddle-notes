@@ -1,0 +1,41 @@
+name: Bounded generation-feedback exploratory pilot
+'on':
+  pull_request:
+    types: [opened]
+    paths:
+      - 'experiments/generation-feedback-pilot/**'
+      - '.github/workflows/generation-feedback-pilot.yml'
+permissions:
+  contents: read
+jobs:
+  exploratory:
+    if: github.repository == 'YS-OH-CORE/second-paddle-notes' && github.event.repository.private == false && github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.head.ref == 'research/generation-feedback-pilot-20260928'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Exhaustively check the evaluator before model responses
+        working-directory: experiments/generation-feedback-pilot
+        run: python -B -m unittest -v test_task
+      - name: Prepare disposable CPU runtime without account keys
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m venv "$RUNNER_TEMP/pilot-venv"
+          "$RUNNER_TEMP/pilot-venv/bin/pip" install --only-binary=:all: --index-url https://download.pytorch.org/whl/cpu 'torch==2.10.0'
+          "$RUNNER_TEMP/pilot-venv/bin/pip" install --only-binary=:all: 'transformers==4.57.1' 'tokenizers==0.22.1' 'huggingface-hub==0.36.0' 'safetensors==0.6.2' 'numpy==2.2.6'
+      - name: Preserve every proposal and both feedback paths in the job log
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
+          HF_HOME: ${{ runner.temp }}/pilot-hf
+          HF_HUB_DISABLE_IMPLICIT_TOKEN: '1'
+        run: |
+          set -euo pipefail
+          timeout 550s "$RUNNER_TEMP/pilot-venv/bin/python" -u -B experiments/generation-feedback-pilot/run_model.py
