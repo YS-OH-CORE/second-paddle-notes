@@ -1,0 +1,52 @@
+name: Check the sequential audit core with Lean
+'on':
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - 'research/sequential-lean/**'
+      - '.github/workflows/sequential-lean.yml'
+permissions:
+  contents: read
+jobs:
+  kernel-check:
+    if: github.repository == 'YS-OH-CORE/second-paddle-notes' && github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.head.ref == 'zero/sequential-lean-20260916'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      LEAN_NUM_THREADS: '1'
+      ZERO_PROOF_OUTPUT: /tmp/zero-proof-results
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - uses: leanprover/lean-action@96e06131c0e9943c780388fd166f55d1e2fa0433
+        with:
+          lake-package-directory: research/sequential-lean
+          auto-config: 'false'
+          build: 'false'
+          test: 'false'
+          lint: 'false'
+          use-mathlib-cache: 'true'
+          use-github-cache: 'false'
+      - name: Build, inspect axioms, recheck kernel and reject false statements
+        run: python -B research/sequential-lean/check_run.py
+      - name: Collect only authored sources, local proof objects and logs
+        if: ${{ always() }}
+        shell: bash
+        run: |
+          mkdir -p "$ZERO_PROOF_OUTPUT/source/ZeroAudit" "$ZERO_PROOF_OUTPUT/proof_objects"
+          cp research/sequential-lean/ZeroAudit/*.lean "$ZERO_PROOF_OUTPUT/source/ZeroAudit/"
+          cp research/sequential-lean/{ZeroAudit.lean,lean-toolchain,lakefile.toml,check_run.py,README.md} "$ZERO_PROOF_OUTPUT/source/"
+          if [ -d research/sequential-lean/.lake/build/lib/lean/ZeroAudit ]; then
+            cp research/sequential-lean/.lake/build/lib/lean/ZeroAudit/*.olean "$ZERO_PROOF_OUTPUT/proof_objects/" || true
+          fi
+          git rev-parse HEAD > "$ZERO_PROOF_OUTPUT/source_commit.txt"
+      - name: Retain scoped formal evidence
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: sequential-lean-proof
+          path: /tmp/zero-proof-results
+          retention-days: 1
+          if-no-files-found: error
