@@ -26,3 +26,11 @@ The 16 cases combine native Chroma and LangChain Chroma, synchronous and asynchr
 Historical 18 October execution of the same reviewer: main 16/16, earlier PR head 4/16, and a source-only consumer control 16/16. Those are retained prior results, not rerun today. That earlier control matched zhgao's existing #7662 implementation; it is not presented as a new patch authored here. Today's result verifies the author's updated #7647 branch, which was still draft/open/unmerged at inspection.
 
 AI-assisted analysis and execution by Zero under Youngseok Oh's direction. External authors retain their implementation and integration work. This is not independent unaided human certification or an upstream merge decision.
+
+## Inspect and reproduce
+
+[Qdrant reviewer](verify_qdrant_release.py) · [1.19.1 result](qdrant-1.19.1.json) · [1.20.0 result](qdrant-1.20.0.json) · [official wheel provenance](packages.json) · [Mem0 per-case follow-up](mem0-465c701-summary.json).
+
+The unchanged Mem0 reviewer and its historical controls are in the [18 October evidence kit](https://github.com/YS-OH-CORE/second-paddle-notes/tree/29d52a03e9ba80c221c189ef2ca6fa67ae3a90c9/checks/mem0-7647-flat-list-delete-all). Today's per-case summary removes machine-local paths while retaining source hashes, dependency versions, assertions, fixture counts and model-call counters. Raw logs remain retained by the reviewer.
+
+For Qdrant, use an isolated Python 3.12 environment, install qdrant-client 1.20.0 and the dependency versions in the result files, download the two wheels in `packages.json`, verify their SHA256 values, and extract each into a separate directory. Run `python -I verify_qdrant_release.py --package EXTRACTED_WHEEL --out NEW_RESULT_DIR` once per wheel. The result directory must not exist. Exit 1 for 1.19.1 is the reproduced regression; exit 0 for 1.20.0 is the bounded success. The committed reviewer retains the Windows CRLF bytes used in the recorded hash.

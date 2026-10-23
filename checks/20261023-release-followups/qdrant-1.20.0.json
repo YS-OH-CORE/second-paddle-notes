@@ -1,0 +1,225 @@
+{
+  "scope": "six sequential local SQLite scenarios; async client front end, not concurrent persistence",
+  "version": "1.20.0",
+  "python": "3.12.14",
+  "os": "Windows",
+  "source_sha256": "3e58b78928049acf7e46f4961693babe8ab4f03e416a7274aed8e73ff1deccb3",
+  "harness_sha256": "1db01cd1a438e9fb4a42650984d316d470db65c10e9ab20855a9ae20b9f1e704",
+  "dependencies": {
+    "numpy": "2.5.4",
+    "pydantic": "2.14.1",
+    "portalocker": "4.4.1",
+    "grpcio": "1.84.1"
+  },
+  "cases": [
+    {
+      "frontend": "sync",
+      "injection": "normal",
+      "first_error": null,
+      "disk_after_error": [
+        9
+      ],
+      "visible_after_error": [
+        9
+      ],
+      "disk_after_retry": [
+        9
+      ],
+      "visible_after_retry": [
+        9
+      ],
+      "visible_after_reopen": [
+        9
+      ],
+      "checks": {
+        "expected_signal": true,
+        "fault_exercised": true,
+        "unrelated_preserved": true,
+        "unreached_still_visible": true,
+        "retry_removes_targets": true,
+        "live_matches_retry": true,
+        "d_query_after_retry": true,
+        "s_query_after_retry": true,
+        "reopen_stays_deleted": true
+      },
+      "passed": true
+    },
+    {
+      "frontend": "sync",
+      "injection": "before-delete",
+      "first_error": "SYNTHETIC_before-delete",
+      "disk_after_error": [
+        2,
+        3,
+        9
+      ],
+      "visible_after_error": [
+        2,
+        3,
+        9
+      ],
+      "disk_after_retry": [
+        9
+      ],
+      "visible_after_retry": [
+        9
+      ],
+      "visible_after_reopen": [
+        9
+      ],
+      "checks": {
+        "expected_signal": true,
+        "fault_exercised": true,
+        "unrelated_preserved": true,
+        "unreached_still_visible": true,
+        "retry_removes_targets": true,
+        "live_matches_retry": true,
+        "d_query_after_retry": true,
+        "s_query_after_retry": true,
+        "reopen_stays_deleted": true
+      },
+      "passed": true
+    },
+    {
+      "frontend": "sync",
+      "injection": "after-commit",
+      "first_error": "SYNTHETIC_after-commit",
+      "disk_after_error": [
+        3,
+        9
+      ],
+      "visible_after_error": [
+        2,
+        3,
+        9
+      ],
+      "disk_after_retry": [
+        9
+      ],
+      "visible_after_retry": [
+        9
+      ],
+      "visible_after_reopen": [
+        9
+      ],
+      "checks": {
+        "expected_signal": true,
+        "fault_exercised": true,
+        "unrelated_preserved": true,
+        "unreached_still_visible": true,
+        "retry_removes_targets": true,
+        "live_matches_retry": true,
+        "d_query_after_retry": true,
+        "s_query_after_retry": true,
+        "reopen_stays_deleted": true
+      },
+      "passed": true
+    },
+    {
+      "frontend": "async",
+      "injection": "normal",
+      "first_error": null,
+      "disk_after_error": [
+        9
+      ],
+      "visible_after_error": [
+        9
+      ],
+      "disk_after_retry": [
+        9
+      ],
+      "visible_after_retry": [
+        9
+      ],
+      "visible_after_reopen": [
+        9
+      ],
+      "checks": {
+        "expected_signal": true,
+        "fault_exercised": true,
+        "unrelated_preserved": true,
+        "unreached_still_visible": true,
+        "retry_removes_targets": true,
+        "live_matches_retry": true,
+        "d_query_after_retry": true,
+        "s_query_after_retry": true,
+        "reopen_stays_deleted": true
+      },
+      "passed": true
+    },
+    {
+      "frontend": "async",
+      "injection": "before-delete",
+      "first_error": "SYNTHETIC_before-delete",
+      "disk_after_error": [
+        2,
+        3,
+        9
+      ],
+      "visible_after_error": [
+        2,
+        3,
+        9
+      ],
+      "disk_after_retry": [
+        9
+      ],
+      "visible_after_retry": [
+        9
+      ],
+      "visible_after_reopen": [
+        9
+      ],
+      "checks": {
+        "expected_signal": true,
+        "fault_exercised": true,
+        "unrelated_preserved": true,
+        "unreached_still_visible": true,
+        "retry_removes_targets": true,
+        "live_matches_retry": true,
+        "d_query_after_retry": true,
+        "s_query_after_retry": true,
+        "reopen_stays_deleted": true
+      },
+      "passed": true
+    },
+    {
+      "frontend": "async",
+      "injection": "after-commit",
+      "first_error": "SYNTHETIC_after-commit",
+      "disk_after_error": [
+        3,
+        9
+      ],
+      "visible_after_error": [
+        2,
+        3,
+        9
+      ],
+      "disk_after_retry": [
+        9
+      ],
+      "visible_after_retry": [
+        9
+      ],
+      "visible_after_reopen": [
+        9
+      ],
+      "checks": {
+        "expected_signal": true,
+        "fault_exercised": true,
+        "unrelated_preserved": true,
+        "unreached_still_visible": true,
+        "retry_removes_targets": true,
+        "live_matches_retry": true,
+        "d_query_after_retry": true,
+        "s_query_after_retry": true,
+        "reopen_stays_deleted": true
+      },
+      "passed": true
+    }
+  ],
+  "passed": 6,
+  "failed": 0,
+  "network_attempts": []
+}

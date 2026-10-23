@@ -1,0 +1,486 @@
+{
+  "label": "followup-465c701-20261023",
+  "started_at": "2026-10-23T10:53:28.456991+00:00",
+  "finished_at": "2026-10-23T10:53:31.913117+00:00",
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "harness_sha256": "2642fbf55b6716ece47a44520e22277186ef2430341772574b5cb62136b58946",
+  "scope": {
+    "real": [
+      "Memory/AsyncMemory.from_config constructors",
+      "VectorStoreFactory",
+      "Mem0 native Chroma and Langchain adapters",
+      "embedded ephemeral Chroma",
+      "temporary SQLiteManager",
+      "get/get_all/delete_all methods"
+    ],
+    "test_doubles": [
+      "unused EmbedderFactory.create result",
+      "unused LlmFactory.create result"
+    ],
+    "disabled": [
+      "Mem0 telemetry and its notice path",
+      "Chroma anonymized telemetry",
+      "LangSmith tracing"
+    ],
+    "fixture_setup": "Direct Chroma collection.add with explicit IDs, document text, metadata and precomputed vectors; Memory.add and adapter insert are not tested",
+    "state_witness": "Chroma collection.get(ids=known_fixture_ids) plus collection.count; no list() fallback used for ground truth",
+    "not_tested": [
+      "model inference",
+      "ingestion/extraction",
+      "FAISS",
+      "Elasticsearch",
+      "entity store cleanup",
+      "batch boundary above 1000",
+      "full upstream suite",
+      "unsupported enumeration/None returns and backend listing failures"
+    ]
+  },
+  "dependency_versions": {
+    "mem0ai": "2.2.1",
+    "chromadb": "1.5.9",
+    "langchain-chroma": "0.2.6",
+    "langchain-community": "0.3.31",
+    "langchain-core": "0.3.86",
+    "pydantic": "2.14.1",
+    "qdrant-client": "1.19.1",
+    "openai": "3.35.1",
+    "posthog": "7.71.0",
+    "numpy": "2.5.4",
+    "sqlalchemy": "2.1.5"
+  },
+  "delete_all_batch_size": 1000,
+  "summary": {
+    "case_count": 16,
+    "passed_cases": 16,
+    "failed_cases": 0,
+    "harness_error_cases": 0
+  },
+  "source_commit": "465c701cf4322e7f60120207081ada213f829a59",
+  "source_sha256": {
+    "mem0/memory/main.py": "58446006e7fcdcf1cab23fa31c87d6ee4ace683ab41d0521b0f326d2b9e9d842",
+    "mem0/memory/storage.py": "5f5ecdadd2b260fd14f36a0f338336eb760275465dd1056a99a47e1ef07702bd",
+    "mem0/vector_stores/chroma.py": "6b5e49bb3c0d455c47b41adf01f962a36b219d42a23d4be43b2b3d7db141c0c6",
+    "mem0/vector_stores/langchain.py": "a584952d8accbc378eca3f204b84c5fa73e52a1297801bb0004e21f0895ccd2e",
+    "mem0/configs/vector_stores/chroma.py": "bfeefb033ec7ba62b2ed606893ed10b04d2d775823d3722e418315220e391692",
+    "mem0/configs/vector_stores/langchain.py": "28765b90753841f5572992f33e2268e57a0890a0f62d95e819ea2eb7ed706da3",
+    "pyproject.toml": "d4bc078a05cc7b9d677bbf4d0b262cfc532495b5aadeded053ac84fd90b6e974"
+  },
+  "cases": [
+    {
+      "adapter": "native-chroma",
+      "api": "sync",
+      "scenario": "empty_store",
+      "fixture_counts": {
+        "alice": 0,
+        "bob": 0
+      },
+      "checks": {
+        "real_sqlite_created": true,
+        "embedded_ephemeral_chroma": true,
+        "get_all_before_exact_alice": true,
+        "public_known_id_reads_before_exact": true,
+        "delete_all_returned_success": true,
+        "direct_state_after_exact_bob_only": true,
+        "public_known_id_reads_after_exact": true,
+        "get_all_after_empty_alice": true,
+        "get_all_after_exact_bob": true,
+        "real_delete_history_exact": true,
+        "no_model_calls": true
+      },
+      "outcome": "success_matches_stored_state",
+      "all_checks_passed": true,
+      "model_method_calls": []
+    },
+    {
+      "adapter": "native-chroma",
+      "api": "sync",
+      "scenario": "no_alice",
+      "fixture_counts": {
+        "alice": 0,
+        "bob": 1
+      },
+      "checks": {
+        "real_sqlite_created": true,
+        "embedded_ephemeral_chroma": true,
+        "get_all_before_exact_alice": true,
+        "public_known_id_reads_before_exact": true,
+        "delete_all_returned_success": true,
+        "direct_state_after_exact_bob_only": true,
+        "public_known_id_reads_after_exact": true,
+        "get_all_after_empty_alice": true,
+        "get_all_after_exact_bob": true,
+        "real_delete_history_exact": true,
+        "no_model_calls": true
+      },
+      "outcome": "success_matches_stored_state",
+      "all_checks_passed": true,
+      "model_method_calls": []
+    },
+    {
+      "adapter": "native-chroma",
+      "api": "sync",
+      "scenario": "single_alice",
+      "fixture_counts": {
+        "alice": 1,
+        "bob": 1
+      },
+      "checks": {
+        "real_sqlite_created": true,
+        "embedded_ephemeral_chroma": true,
+        "get_all_before_exact_alice": true,
+        "public_known_id_reads_before_exact": true,
+        "delete_all_returned_success": true,
+        "direct_state_after_exact_bob_only": true,
+        "public_known_id_reads_after_exact": true,
+        "get_all_after_empty_alice": true,
+        "get_all_after_exact_bob": true,
+        "real_delete_history_exact": true,
+        "no_model_calls": true
+      },
+      "outcome": "success_matches_stored_state",
+      "all_checks_passed": true,
+      "model_method_calls": []
+    },
+    {
+      "adapter": "native-chroma",
+      "api": "sync",
+      "scenario": "populated",
+      "fixture_counts": {
+        "alice": 3,
+        "bob": 1
+      },
+      "checks": {
+        "real_sqlite_created": true,
+        "embedded_ephemeral_chroma": true,
+        "get_all_before_exact_alice": true,
+        "public_known_id_reads_before_exact": true,
+        "delete_all_returned_success": true,
+        "direct_state_after_exact_bob_only": true,
+        "public_known_id_reads_after_exact": true,
+        "get_all_after_empty_alice": true,
+        "get_all_after_exact_bob": true,
+        "real_delete_history_exact": true,
+        "no_model_calls": true
+      },
+      "outcome": "success_matches_stored_state",
+      "all_checks_passed": true,
+      "model_method_calls": []
+    },
+    {
+      "adapter": "native-chroma",
+      "api": "async",
+      "scenario": "empty_store",
+      "fixture_counts": {
+        "alice": 0,
+        "bob": 0
+      },
+      "checks": {
+        "real_sqlite_created": true,
+        "embedded_ephemeral_chroma": true,
+        "get_all_before_exact_alice": true,
+        "public_known_id_reads_before_exact": true,
+        "delete_all_returned_success": true,
+        "direct_state_after_exact_bob_only": true,
+        "public_known_id_reads_after_exact": true,
+        "get_all_after_empty_alice": true,
+        "get_all_after_exact_bob": true,
+        "real_delete_history_exact": true,
+        "no_model_calls": true
+      },
+      "outcome": "success_matches_stored_state",
+      "all_checks_passed": true,
+      "model_method_calls": []
+    },
+    {
+      "adapter": "native-chroma",
+      "api": "async",
+      "scenario": "no_alice",
+      "fixture_counts": {
+        "alice": 0,
+        "bob": 1
+      },
+      "checks": {
+        "real_sqlite_created": true,
+        "embedded_ephemeral_chroma": true,
+        "get_all_before_exact_alice": true,
+        "public_known_id_reads_before_exact": true,
+        "delete_all_returned_success": true,
+        "direct_state_after_exact_bob_only": true,
+        "public_known_id_reads_after_exact": true,
+        "get_all_after_empty_alice": true,
+        "get_all_after_exact_bob": true,
+        "real_delete_history_exact": true,
+        "no_model_calls": true
+      },
+      "outcome": "success_matches_stored_state",
+      "all_checks_passed": true,
+      "model_method_calls": []
+    },
+    {
+      "adapter": "native-chroma",
+      "api": "async",
+      "scenario": "single_alice",
+      "fixture_counts": {
+        "alice": 1,
+        "bob": 1
+      },
+      "checks": {
+        "real_sqlite_created": true,
+        "embedded_ephemeral_chroma": true,
+        "get_all_before_exact_alice": true,
+        "public_known_id_reads_before_exact": true,
+        "delete_all_returned_success": true,
+        "direct_state_after_exact_bob_only": true,
+        "public_known_id_reads_after_exact": true,
+        "get_all_after_empty_alice": true,
+        "get_all_after_exact_bob": true,
+        "real_delete_history_exact": true,
+        "no_model_calls": true
+      },
+      "outcome": "success_matches_stored_state",
+      "all_checks_passed": true,
+      "model_method_calls": []
+    },
+    {
+      "adapter": "native-chroma",
+      "api": "async",
+      "scenario": "populated",
+      "fixture_counts": {
+        "alice": 3,
+        "bob": 1
+      },
+      "checks": {
+        "real_sqlite_created": true,
+        "embedded_ephemeral_chroma": true,
+        "get_all_before_exact_alice": true,
+        "public_known_id_reads_before_exact": true,
+        "delete_all_returned_success": true,
+        "direct_state_after_exact_bob_only": true,
+        "public_known_id_reads_after_exact": true,
+        "get_all_after_empty_alice": true,
+        "get_all_after_exact_bob": true,
+        "real_delete_history_exact": true,
+        "no_model_calls": true
+      },
+      "outcome": "success_matches_stored_state",
+      "all_checks_passed": true,
+      "model_method_calls": []
+    },
+    {
+      "adapter": "langchain-chroma",
+      "api": "sync",
+      "scenario": "empty_store",
+      "fixture_counts": {
+        "alice": 0,
+        "bob": 0
+      },
+      "checks": {
+        "real_sqlite_created": true,
+        "embedded_ephemeral_chroma": true,
+        "get_all_before_exact_alice": true,
+        "public_known_id_reads_before_exact": true,
+        "delete_all_returned_success": true,
+        "direct_state_after_exact_bob_only": true,
+        "public_known_id_reads_after_exact": true,
+        "get_all_after_empty_alice": true,
+        "get_all_after_exact_bob": true,
+        "real_delete_history_exact": true,
+        "no_model_calls": true
+      },
+      "outcome": "success_matches_stored_state",
+      "all_checks_passed": true,
+      "model_method_calls": []
+    },
+    {
+      "adapter": "langchain-chroma",
+      "api": "sync",
+      "scenario": "no_alice",
+      "fixture_counts": {
+        "alice": 0,
+        "bob": 1
+      },
+      "checks": {
+        "real_sqlite_created": true,
+        "embedded_ephemeral_chroma": true,
+        "get_all_before_exact_alice": true,
+        "public_known_id_reads_before_exact": true,
+        "delete_all_returned_success": true,
+        "direct_state_after_exact_bob_only": true,
+        "public_known_id_reads_after_exact": true,
+        "get_all_after_empty_alice": true,
+        "get_all_after_exact_bob": true,
+        "real_delete_history_exact": true,
+        "no_model_calls": true
+      },
+      "outcome": "success_matches_stored_state",
+      "all_checks_passed": true,
+      "model_method_calls": []
+    },
+    {
+      "adapter": "langchain-chroma",
+      "api": "sync",
+      "scenario": "single_alice",
+      "fixture_counts": {
+        "alice": 1,
+        "bob": 1
+      },
+      "checks": {
+        "real_sqlite_created": true,
+        "embedded_ephemeral_chroma": true,
+        "get_all_before_exact_alice": true,
+        "public_known_id_reads_before_exact": true,
+        "delete_all_returned_success": true,
+        "direct_state_after_exact_bob_only": true,
+        "public_known_id_reads_after_exact": true,
+        "get_all_after_empty_alice": true,
+        "get_all_after_exact_bob": true,
+        "real_delete_history_exact": true,
+        "no_model_calls": true
+      },
+      "outcome": "success_matches_stored_state",
+      "all_checks_passed": true,
+      "model_method_calls": []
+    },
+    {
+      "adapter": "langchain-chroma",
+      "api": "sync",
+      "scenario": "populated",
+      "fixture_counts": {
+        "alice": 3,
+        "bob": 1
+      },
+      "checks": {
+        "real_sqlite_created": true,
+        "embedded_ephemeral_chroma": true,
+        "get_all_before_exact_alice": true,
+        "public_known_id_reads_before_exact": true,
+        "delete_all_returned_success": true,
+        "direct_state_after_exact_bob_only": true,
+        "public_known_id_reads_after_exact": true,
+        "get_all_after_empty_alice": true,
+        "get_all_after_exact_bob": true,
+        "real_delete_history_exact": true,
+        "no_model_calls": true
+      },
+      "outcome": "success_matches_stored_state",
+      "all_checks_passed": true,
+      "model_method_calls": []
+    },
+    {
+      "adapter": "langchain-chroma",
+      "api": "async",
+      "scenario": "empty_store",
+      "fixture_counts": {
+        "alice": 0,
+        "bob": 0
+      },
+      "checks": {
+        "real_sqlite_created": true,
+        "embedded_ephemeral_chroma": true,
+        "get_all_before_exact_alice": true,
+        "public_known_id_reads_before_exact": true,
+        "delete_all_returned_success": true,
+        "direct_state_after_exact_bob_only": true,
+        "public_known_id_reads_after_exact": true,
+        "get_all_after_empty_alice": true,
+        "get_all_after_exact_bob": true,
+        "real_delete_history_exact": true,
+        "no_model_calls": true
+      },
+      "outcome": "success_matches_stored_state",
+      "all_checks_passed": true,
+      "model_method_calls": []
+    },
+    {
+      "adapter": "langchain-chroma",
+      "api": "async",
+      "scenario": "no_alice",
+      "fixture_counts": {
+        "alice": 0,
+        "bob": 1
+      },
+      "checks": {
+        "real_sqlite_created": true,
+        "embedded_ephemeral_chroma": true,
+        "get_all_before_exact_alice": true,
+        "public_known_id_reads_before_exact": true,
+        "delete_all_returned_success": true,
+        "direct_state_after_exact_bob_only": true,
+        "public_known_id_reads_after_exact": true,
+        "get_all_after_empty_alice": true,
+        "get_all_after_exact_bob": true,
+        "real_delete_history_exact": true,
+        "no_model_calls": true
+      },
+      "outcome": "success_matches_stored_state",
+      "all_checks_passed": true,
+      "model_method_calls": []
+    },
+    {
+      "adapter": "langchain-chroma",
+      "api": "async",
+      "scenario": "single_alice",
+      "fixture_counts": {
+        "alice": 1,
+        "bob": 1
+      },
+      "checks": {
+        "real_sqlite_created": true,
+        "embedded_ephemeral_chroma": true,
+        "get_all_before_exact_alice": true,
+        "public_known_id_reads_before_exact": true,
+        "delete_all_returned_success": true,
+        "direct_state_after_exact_bob_only": true,
+        "public_known_id_reads_after_exact": true,
+        "get_all_after_empty_alice": true,
+        "get_all_after_exact_bob": true,
+        "real_delete_history_exact": true,
+        "no_model_calls": true
+      },
+      "outcome": "success_matches_stored_state",
+      "all_checks_passed": true,
+      "model_method_calls": []
+    },
+    {
+      "adapter": "langchain-chroma",
+      "api": "async",
+      "scenario": "populated",
+      "fixture_counts": {
+        "alice": 3,
+        "bob": 1
+      },
+      "checks": {
+        "real_sqlite_created": true,
+        "embedded_ephemeral_chroma": true,
+        "get_all_before_exact_alice": true,
+        "public_known_id_reads_before_exact": true,
+        "delete_all_returned_success": true,
+        "direct_state_after_exact_bob_only": true,
+        "public_known_id_reads_after_exact": true,
+        "get_all_after_empty_alice": true,
+        "get_all_after_exact_bob": true,
+        "real_delete_history_exact": true,
+        "no_model_calls": true
+      },
+      "outcome": "success_matches_stored_state",
+      "all_checks_passed": true,
+      "model_method_calls": []
+    }
+  ],
+  "original_reviewer": "https://github.com/YS-OH-CORE/second-paddle-notes/tree/29d52a03e9ba80c221c189ef2ca6fa67ae3a90c9/checks/mem0-7647-flat-list-delete-all",
+  "historical_not_rerun_today": {
+    "main_0724291b": {
+      "passed": 16,
+      "failed": 0
+    },
+    "pr_039b3dd": {
+      "passed": 4,
+      "failed": 12
+    },
+    "two_consumer_control_credit_zhgao_7662": {
+      "passed": 16,
+      "failed": 0
+    }
+  }
+}

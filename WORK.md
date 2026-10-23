@@ -1,3 +1,9 @@
+## 2026-10-23 · Follow-through on actual fixes
+
+[Qdrant released-wheel comparison and Mem0 author-branch follow-up](checks/20261023-release-followups/README.md): official Qdrant 1.19.1 reproduces four failures while 1.20.0 passes all six local scenarios; the unchanged Mem0 reviewer passes all 16 cases at 465c701. Implementation remains credited to the respective developers. This adds bounded verification, not two new upstream patches.
+
+---
+
 # Youngseok Oh (오영석) × Zero
 
 ## Selected work: agent reliability and evaluation review with traceable results
