@@ -1,0 +1,60 @@
+FF..                                                                     [100%]
+=================================== FAILURES ===================================
+_______ test_compound_equalities_reach_valid_chroma_request[user-agent] ________
+
+filters = {'user_id': 'alice', 'agent_id': 'agent-a'}
+
+    @pytest.mark.parametrize(
+        "filters",
+        [
+            {"user_id": "alice", "agent_id": "agent-a"},
+            {"user_id": "alice", "agent_id": "agent-a", "run_id": "run-a"},
+        ],
+        ids=["user-agent", "user-agent-run"],
+    )
+    def test_compound_equalities_reach_valid_chroma_request(filters):
+        original = deepcopy(filters)
+        store, observed_where = validating_chroma_boundary()
+    
+        # On unchanged main Chroma's validator rejects the request, list() catches
+        # that exception, and the result is [] instead of the successful empty [[]].
+>       assert store.list(filters=filters, top_k=10) == [[]]
+E       assert [] == [[]]
+E         
+E         Right contains one more item: []
+E         Use -v to get more diff
+
+<OUTPUT_DIR>/test_langchain_compound_filter_control.py:45: AssertionError
+------------------------------ Captured log call -------------------------------
+ERROR    mem0.vector_stores.langchain:langchain.py:210 Error listing vectors from Chroma: Expected where to have exactly one operator, got {'user_id': 'alice', 'agent_id': 'agent-a'}
+_____ test_compound_equalities_reach_valid_chroma_request[user-agent-run] ______
+
+filters = {'user_id': 'alice', 'agent_id': 'agent-a', 'run_id': 'run-a'}
+
+    @pytest.mark.parametrize(
+        "filters",
+        [
+            {"user_id": "alice", "agent_id": "agent-a"},
+            {"user_id": "alice", "agent_id": "agent-a", "run_id": "run-a"},
+        ],
+        ids=["user-agent", "user-agent-run"],
+    )
+    def test_compound_equalities_reach_valid_chroma_request(filters):
+        original = deepcopy(filters)
+        store, observed_where = validating_chroma_boundary()
+    
+        # On unchanged main Chroma's validator rejects the request, list() catches
+        # that exception, and the result is [] instead of the successful empty [[]].
+>       assert store.list(filters=filters, top_k=10) == [[]]
+E       assert [] == [[]]
+E         
+E         Right contains one more item: []
+E         Use -v to get more diff
+
+<OUTPUT_DIR>/test_langchain_compound_filter_control.py:45: AssertionError
+------------------------------ Captured log call -------------------------------
+ERROR    mem0.vector_stores.langchain:langchain.py:210 Error listing vectors from Chroma: Expected where to have exactly one operator, got {'user_id': 'alice', 'agent_id': 'agent-a', 'run_id': 'run-a'}
+=========================== short test summary info ============================
+FAILED ../../../../..<OUTPUT_DIR>/test_langchain_compound_filter_control.py::test_compound_equalities_reach_valid_chroma_request[user-agent]
+FAILED ../../../../..<OUTPUT_DIR>/test_langchain_compound_filter_control.py::test_compound_equalities_reach_valid_chroma_request[user-agent-run]
+2 failed, 2 passed in 1.48s

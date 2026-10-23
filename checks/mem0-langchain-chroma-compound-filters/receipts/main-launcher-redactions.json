@@ -1,0 +1,11 @@
+{
+  "scope": "The inspected main launcher stdout only",
+  "changes": [
+    {"kind": "absolute local interpreter path", "replacement": "<ENV_PYTHON>"},
+    {"kind": "absolute local main checkout path", "replacement": "<MAIN_CHECKOUT>"},
+    {"kind": "absolute local experiment output directory", "replacement": "<OUTPUT_DIR>"}
+  ],
+  "unchanged": ["timestamps", "source SHA", "harness SHA256", "exit code", "aggregate result counts", "source-unchanged flag"],
+  "case_level_results": "This launcher receipt contains aggregate counts only. The complete case-level results were subsequently retrieved and are included in results/main.json and results/control.json; their path redactions and hashes are recorded in redactions.json at the kit root.",
+  "private_original": "Retained in the original experiment output location"
+}

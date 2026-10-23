@@ -1,0 +1,1 @@
+{"output": "<OUTPUT_DIR>/control.json", "case_count": 8, "passed_cases": 8, "failed_cases": 0, "harness_error_cases": 0, "false_empty_listing_cases": 0, "false_success_deletion_cases": 0}

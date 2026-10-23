@@ -1,0 +1,655 @@
+{
+  "main": {
+    "case_count": 8,
+    "passed_cases": 4,
+    "failed_cases": 4,
+    "harness_error_cases": 0,
+    "false_empty_listing_cases": 4,
+    "false_success_deletion_cases": 2
+  },
+  "control": {
+    "case_count": 8,
+    "passed_cases": 8,
+    "failed_cases": 0,
+    "harness_error_cases": 0,
+    "false_empty_listing_cases": 0,
+    "false_success_deletion_cases": 0
+  },
+  "dependencies": {
+    "mem0ai": "2.2.1",
+    "chromadb": "1.5.9",
+    "langchain-chroma": "0.2.6",
+    "langchain-community": "0.3.31",
+    "langchain-core": "0.3.86",
+    "pydantic": "2.14.1",
+    "qdrant-client": "1.19.1",
+    "openai": "3.35.1",
+    "posthog": "7.71.0",
+    "numpy": "2.5.4",
+    "sqlalchemy": "2.1.5"
+  },
+  "case_results": [
+    {
+      "variant": "main",
+      "adapter": "native-chroma",
+      "api": "sync",
+      "scope": "user-agent",
+      "passed": true,
+      "listing_outcome": "exact_targets",
+      "deletion_outcome": "success_matches_stored_state",
+      "target_ids_remaining": [],
+      "control_ids_missing": [],
+      "delete_response": {
+        "status": "returned",
+        "value": {
+          "message": "Memories deleted successfully!"
+        },
+        "elapsed_ms": 46.497,
+        "adapter_logs": []
+      },
+      "history_after": {
+        "status": "returned",
+        "value": [
+          {
+            "memory_id": "target-0",
+            "event": "DELETE",
+            "is_deleted": 1
+          },
+          {
+            "memory_id": "target-1",
+            "event": "DELETE",
+            "is_deleted": 1
+          }
+        ],
+        "elapsed_ms": 0.062,
+        "adapter_logs": []
+      },
+      "failed_checks": []
+    },
+    {
+      "variant": "main",
+      "adapter": "native-chroma",
+      "api": "sync",
+      "scope": "user-agent-run",
+      "passed": true,
+      "listing_outcome": "exact_targets",
+      "deletion_outcome": "success_matches_stored_state",
+      "target_ids_remaining": [],
+      "control_ids_missing": [],
+      "delete_response": {
+        "status": "returned",
+        "value": {
+          "message": "Memories deleted successfully!"
+        },
+        "elapsed_ms": 37.638,
+        "adapter_logs": []
+      },
+      "history_after": {
+        "status": "returned",
+        "value": [
+          {
+            "memory_id": "target-0",
+            "event": "DELETE",
+            "is_deleted": 1
+          },
+          {
+            "memory_id": "target-1",
+            "event": "DELETE",
+            "is_deleted": 1
+          }
+        ],
+        "elapsed_ms": 0.061,
+        "adapter_logs": []
+      },
+      "failed_checks": []
+    },
+    {
+      "variant": "main",
+      "adapter": "native-chroma",
+      "api": "async",
+      "scope": "user-agent",
+      "passed": true,
+      "listing_outcome": "exact_targets",
+      "deletion_outcome": "success_matches_stored_state",
+      "target_ids_remaining": [],
+      "control_ids_missing": [],
+      "delete_response": {
+        "status": "returned",
+        "value": {
+          "message": "Memories deleted successfully!"
+        },
+        "elapsed_ms": 40.954,
+        "adapter_logs": []
+      },
+      "history_after": {
+        "status": "returned",
+        "value": [
+          {
+            "memory_id": "target-0",
+            "event": "DELETE",
+            "is_deleted": 1
+          },
+          {
+            "memory_id": "target-1",
+            "event": "DELETE",
+            "is_deleted": 1
+          }
+        ],
+        "elapsed_ms": 0.053,
+        "adapter_logs": []
+      },
+      "failed_checks": []
+    },
+    {
+      "variant": "main",
+      "adapter": "native-chroma",
+      "api": "async",
+      "scope": "user-agent-run",
+      "passed": true,
+      "listing_outcome": "exact_targets",
+      "deletion_outcome": "success_matches_stored_state",
+      "target_ids_remaining": [],
+      "control_ids_missing": [],
+      "delete_response": {
+        "status": "returned",
+        "value": {
+          "message": "Memories deleted successfully!"
+        },
+        "elapsed_ms": 44.043,
+        "adapter_logs": []
+      },
+      "history_after": {
+        "status": "returned",
+        "value": [
+          {
+            "memory_id": "target-0",
+            "event": "DELETE",
+            "is_deleted": 1
+          },
+          {
+            "memory_id": "target-1",
+            "event": "DELETE",
+            "is_deleted": 1
+          }
+        ],
+        "elapsed_ms": 0.055,
+        "adapter_logs": []
+      },
+      "failed_checks": []
+    },
+    {
+      "variant": "main",
+      "adapter": "langchain-chroma",
+      "api": "sync",
+      "scope": "user-agent",
+      "passed": false,
+      "listing_outcome": "false_empty_target_records_present",
+      "deletion_outcome": "exception_with_observed_records_unchanged",
+      "target_ids_remaining": [
+        "target-0",
+        "target-1"
+      ],
+      "control_ids_missing": [],
+      "delete_response": {
+        "status": "raised",
+        "exception": {
+          "type": "builtins.IndexError",
+          "message": "list index out of range",
+          "traceback": "Traceback (most recent call last):\n  File \"<OUTPUT_DIR>/check_compound_filters.py\", line 96, in observe\n    result = function()\n             ^^^^^^^^^^\n  File \"<OUTPUT_DIR>/check_compound_filters.py\", line 432, in <lambda>\n    ops[\"delete_all\"] = await observe(lambda: memory.delete_all(**filters))\n                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<MAIN_CHECKOUT>/mem0/memory/main.py\", line 1937, in delete_all\n    memories = self.vector_store.list(\n               ^^^^^^^^^^^^^^^^^^^^^^^\nIndexError: list index out of range\n"
+        },
+        "elapsed_ms": 1.634,
+        "adapter_logs": [
+          {
+            "level": "ERROR",
+            "logger": "mem0.vector_stores.langchain",
+            "message": "Error listing vectors from Chroma: Expected where to have exactly one operator, got {'user_id': 'alice', 'agent_id': 'agent-a'} in get."
+          }
+        ]
+      },
+      "history_after": {
+        "status": "returned",
+        "value": [],
+        "elapsed_ms": 0.04,
+        "adapter_logs": []
+      },
+      "failed_checks": [
+        "adapter_compound_list_before_exact_nested_targets",
+        "get_all_compound_before_exact_targets",
+        "delete_all_returned_success",
+        "direct_state_after_exact_survivors",
+        "direct_canonical_scope_after_empty",
+        "public_known_id_reads_after_exact",
+        "get_all_single_user_after_exact",
+        "real_delete_history_exact"
+      ]
+    },
+    {
+      "variant": "main",
+      "adapter": "langchain-chroma",
+      "api": "sync",
+      "scope": "user-agent-run",
+      "passed": false,
+      "listing_outcome": "false_empty_target_records_present",
+      "deletion_outcome": "exception_with_observed_records_unchanged",
+      "target_ids_remaining": [
+        "target-0",
+        "target-1"
+      ],
+      "control_ids_missing": [],
+      "delete_response": {
+        "status": "raised",
+        "exception": {
+          "type": "builtins.IndexError",
+          "message": "list index out of range",
+          "traceback": "Traceback (most recent call last):\n  File \"<OUTPUT_DIR>/check_compound_filters.py\", line 96, in observe\n    result = function()\n             ^^^^^^^^^^\n  File \"<OUTPUT_DIR>/check_compound_filters.py\", line 432, in <lambda>\n    ops[\"delete_all\"] = await observe(lambda: memory.delete_all(**filters))\n                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<MAIN_CHECKOUT>/mem0/memory/main.py\", line 1937, in delete_all\n    memories = self.vector_store.list(\n               ^^^^^^^^^^^^^^^^^^^^^^^\nIndexError: list index out of range\n"
+        },
+        "elapsed_ms": 1.591,
+        "adapter_logs": [
+          {
+            "level": "ERROR",
+            "logger": "mem0.vector_stores.langchain",
+            "message": "Error listing vectors from Chroma: Expected where to have exactly one operator, got {'user_id': 'alice', 'agent_id': 'agent-a', 'run_id': 'run-a'} in get."
+          }
+        ]
+      },
+      "history_after": {
+        "status": "returned",
+        "value": [],
+        "elapsed_ms": 0.041,
+        "adapter_logs": []
+      },
+      "failed_checks": [
+        "adapter_compound_list_before_exact_nested_targets",
+        "get_all_compound_before_exact_targets",
+        "delete_all_returned_success",
+        "direct_state_after_exact_survivors",
+        "direct_canonical_scope_after_empty",
+        "public_known_id_reads_after_exact",
+        "get_all_single_user_after_exact",
+        "real_delete_history_exact"
+      ]
+    },
+    {
+      "variant": "main",
+      "adapter": "langchain-chroma",
+      "api": "async",
+      "scope": "user-agent",
+      "passed": false,
+      "listing_outcome": "false_empty_target_records_present",
+      "deletion_outcome": "false_success_target_records_remain",
+      "target_ids_remaining": [
+        "target-0",
+        "target-1"
+      ],
+      "control_ids_missing": [],
+      "delete_response": {
+        "status": "returned",
+        "value": {
+          "message": "Memories deleted successfully!"
+        },
+        "elapsed_ms": 0.169,
+        "adapter_logs": [
+          {
+            "level": "ERROR",
+            "logger": "mem0.vector_stores.langchain",
+            "message": "Error listing vectors from Chroma: Expected where to have exactly one operator, got {'user_id': 'alice', 'agent_id': 'agent-a'} in get."
+          }
+        ]
+      },
+      "history_after": {
+        "status": "returned",
+        "value": [],
+        "elapsed_ms": 0.06,
+        "adapter_logs": []
+      },
+      "failed_checks": [
+        "adapter_compound_list_before_exact_nested_targets",
+        "get_all_compound_before_exact_targets",
+        "direct_state_after_exact_survivors",
+        "direct_canonical_scope_after_empty",
+        "public_known_id_reads_after_exact",
+        "get_all_single_user_after_exact",
+        "real_delete_history_exact"
+      ]
+    },
+    {
+      "variant": "main",
+      "adapter": "langchain-chroma",
+      "api": "async",
+      "scope": "user-agent-run",
+      "passed": false,
+      "listing_outcome": "false_empty_target_records_present",
+      "deletion_outcome": "false_success_target_records_remain",
+      "target_ids_remaining": [
+        "target-0",
+        "target-1"
+      ],
+      "control_ids_missing": [],
+      "delete_response": {
+        "status": "returned",
+        "value": {
+          "message": "Memories deleted successfully!"
+        },
+        "elapsed_ms": 0.166,
+        "adapter_logs": [
+          {
+            "level": "ERROR",
+            "logger": "mem0.vector_stores.langchain",
+            "message": "Error listing vectors from Chroma: Expected where to have exactly one operator, got {'user_id': 'alice', 'agent_id': 'agent-a', 'run_id': 'run-a'} in get."
+          }
+        ]
+      },
+      "history_after": {
+        "status": "returned",
+        "value": [],
+        "elapsed_ms": 0.045,
+        "adapter_logs": []
+      },
+      "failed_checks": [
+        "adapter_compound_list_before_exact_nested_targets",
+        "get_all_compound_before_exact_targets",
+        "direct_state_after_exact_survivors",
+        "direct_canonical_scope_after_empty",
+        "public_known_id_reads_after_exact",
+        "get_all_single_user_after_exact",
+        "real_delete_history_exact"
+      ]
+    },
+    {
+      "variant": "control",
+      "adapter": "native-chroma",
+      "api": "sync",
+      "scope": "user-agent",
+      "passed": true,
+      "listing_outcome": "exact_targets",
+      "deletion_outcome": "success_matches_stored_state",
+      "target_ids_remaining": [],
+      "control_ids_missing": [],
+      "delete_response": {
+        "status": "returned",
+        "value": {
+          "message": "Memories deleted successfully!"
+        },
+        "elapsed_ms": 37.126,
+        "adapter_logs": []
+      },
+      "history_after": {
+        "status": "returned",
+        "value": [
+          {
+            "memory_id": "target-0",
+            "event": "DELETE",
+            "is_deleted": 1
+          },
+          {
+            "memory_id": "target-1",
+            "event": "DELETE",
+            "is_deleted": 1
+          }
+        ],
+        "elapsed_ms": 0.063,
+        "adapter_logs": []
+      },
+      "failed_checks": []
+    },
+    {
+      "variant": "control",
+      "adapter": "native-chroma",
+      "api": "sync",
+      "scope": "user-agent-run",
+      "passed": true,
+      "listing_outcome": "exact_targets",
+      "deletion_outcome": "success_matches_stored_state",
+      "target_ids_remaining": [],
+      "control_ids_missing": [],
+      "delete_response": {
+        "status": "returned",
+        "value": {
+          "message": "Memories deleted successfully!"
+        },
+        "elapsed_ms": 35.469,
+        "adapter_logs": []
+      },
+      "history_after": {
+        "status": "returned",
+        "value": [
+          {
+            "memory_id": "target-0",
+            "event": "DELETE",
+            "is_deleted": 1
+          },
+          {
+            "memory_id": "target-1",
+            "event": "DELETE",
+            "is_deleted": 1
+          }
+        ],
+        "elapsed_ms": 0.058,
+        "adapter_logs": []
+      },
+      "failed_checks": []
+    },
+    {
+      "variant": "control",
+      "adapter": "native-chroma",
+      "api": "async",
+      "scope": "user-agent",
+      "passed": true,
+      "listing_outcome": "exact_targets",
+      "deletion_outcome": "success_matches_stored_state",
+      "target_ids_remaining": [],
+      "control_ids_missing": [],
+      "delete_response": {
+        "status": "returned",
+        "value": {
+          "message": "Memories deleted successfully!"
+        },
+        "elapsed_ms": 37.598,
+        "adapter_logs": []
+      },
+      "history_after": {
+        "status": "returned",
+        "value": [
+          {
+            "memory_id": "target-0",
+            "event": "DELETE",
+            "is_deleted": 1
+          },
+          {
+            "memory_id": "target-1",
+            "event": "DELETE",
+            "is_deleted": 1
+          }
+        ],
+        "elapsed_ms": 0.06,
+        "adapter_logs": []
+      },
+      "failed_checks": []
+    },
+    {
+      "variant": "control",
+      "adapter": "native-chroma",
+      "api": "async",
+      "scope": "user-agent-run",
+      "passed": true,
+      "listing_outcome": "exact_targets",
+      "deletion_outcome": "success_matches_stored_state",
+      "target_ids_remaining": [],
+      "control_ids_missing": [],
+      "delete_response": {
+        "status": "returned",
+        "value": {
+          "message": "Memories deleted successfully!"
+        },
+        "elapsed_ms": 39.144,
+        "adapter_logs": []
+      },
+      "history_after": {
+        "status": "returned",
+        "value": [
+          {
+            "memory_id": "target-0",
+            "event": "DELETE",
+            "is_deleted": 1
+          },
+          {
+            "memory_id": "target-1",
+            "event": "DELETE",
+            "is_deleted": 1
+          }
+        ],
+        "elapsed_ms": 0.055,
+        "adapter_logs": []
+      },
+      "failed_checks": []
+    },
+    {
+      "variant": "control",
+      "adapter": "langchain-chroma",
+      "api": "sync",
+      "scope": "user-agent",
+      "passed": true,
+      "listing_outcome": "exact_targets",
+      "deletion_outcome": "success_matches_stored_state",
+      "target_ids_remaining": [],
+      "control_ids_missing": [],
+      "delete_response": {
+        "status": "returned",
+        "value": {
+          "message": "Memories deleted successfully!"
+        },
+        "elapsed_ms": 35.846,
+        "adapter_logs": []
+      },
+      "history_after": {
+        "status": "returned",
+        "value": [
+          {
+            "memory_id": "target-0",
+            "event": "DELETE",
+            "is_deleted": 1
+          },
+          {
+            "memory_id": "target-1",
+            "event": "DELETE",
+            "is_deleted": 1
+          }
+        ],
+        "elapsed_ms": 0.055,
+        "adapter_logs": []
+      },
+      "failed_checks": []
+    },
+    {
+      "variant": "control",
+      "adapter": "langchain-chroma",
+      "api": "sync",
+      "scope": "user-agent-run",
+      "passed": true,
+      "listing_outcome": "exact_targets",
+      "deletion_outcome": "success_matches_stored_state",
+      "target_ids_remaining": [],
+      "control_ids_missing": [],
+      "delete_response": {
+        "status": "returned",
+        "value": {
+          "message": "Memories deleted successfully!"
+        },
+        "elapsed_ms": 35.183,
+        "adapter_logs": []
+      },
+      "history_after": {
+        "status": "returned",
+        "value": [
+          {
+            "memory_id": "target-0",
+            "event": "DELETE",
+            "is_deleted": 1
+          },
+          {
+            "memory_id": "target-1",
+            "event": "DELETE",
+            "is_deleted": 1
+          }
+        ],
+        "elapsed_ms": 0.061,
+        "adapter_logs": []
+      },
+      "failed_checks": []
+    },
+    {
+      "variant": "control",
+      "adapter": "langchain-chroma",
+      "api": "async",
+      "scope": "user-agent",
+      "passed": true,
+      "listing_outcome": "exact_targets",
+      "deletion_outcome": "success_matches_stored_state",
+      "target_ids_remaining": [],
+      "control_ids_missing": [],
+      "delete_response": {
+        "status": "returned",
+        "value": {
+          "message": "Memories deleted successfully!"
+        },
+        "elapsed_ms": 64.807,
+        "adapter_logs": []
+      },
+      "history_after": {
+        "status": "returned",
+        "value": [
+          {
+            "memory_id": "target-0",
+            "event": "DELETE",
+            "is_deleted": 1
+          },
+          {
+            "memory_id": "target-1",
+            "event": "DELETE",
+            "is_deleted": 1
+          }
+        ],
+        "elapsed_ms": 0.066,
+        "adapter_logs": []
+      },
+      "failed_checks": []
+    },
+    {
+      "variant": "control",
+      "adapter": "langchain-chroma",
+      "api": "async",
+      "scope": "user-agent-run",
+      "passed": true,
+      "listing_outcome": "exact_targets",
+      "deletion_outcome": "success_matches_stored_state",
+      "target_ids_remaining": [],
+      "control_ids_missing": [],
+      "delete_response": {
+        "status": "returned",
+        "value": {
+          "message": "Memories deleted successfully!"
+        },
+        "elapsed_ms": 39.677,
+        "adapter_logs": []
+      },
+      "history_after": {
+        "status": "returned",
+        "value": [
+          {
+            "memory_id": "target-0",
+            "event": "DELETE",
+            "is_deleted": 1
+          },
+          {
+            "memory_id": "target-1",
+            "event": "DELETE",
+            "is_deleted": 1
+          }
+        ],
+        "elapsed_ms": 0.066,
+        "adapter_logs": []
+      },
+      "failed_checks": []
+    }
+  ]
+}

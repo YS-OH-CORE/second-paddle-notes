@@ -1,0 +1,319 @@
+{
+  "policy": "Absolute private environment paths only; timestamps, synthetic fixture data, counts and errors retained. Untouched originals remain in the original output directory.",
+  "files": {
+    "dependencies.json": {
+      "original_sha256": "814c3322611db4d4c2310b85be8f986413d2b0da8c27246ded1ec7b9db9eade5",
+      "public_sha256": "814c3322611db4d4c2310b85be8f986413d2b0da8c27246ded1ec7b9db9eade5",
+      "changes": []
+    },
+    "logs/control-apply-check.stderr.txt": {
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "changes": []
+    },
+    "logs/control-apply-check.stdout.txt": {
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "changes": []
+    },
+    "logs/control-apply.stderr.txt": {
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "changes": []
+    },
+    "logs/control-apply.stdout.txt": {
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "changes": []
+    },
+    "logs/control-diff-check.stderr.txt": {
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "changes": []
+    },
+    "logs/control-diff-check.stdout.txt": {
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "changes": []
+    },
+    "logs/control-diff.stderr.txt": {
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "changes": []
+    },
+    "logs/control-diff.stdout.txt": {
+      "original_sha256": "4259a13d8f1eee2a9f8108122ea5afa17523d9f6c425f70c54abc15d0cee9774",
+      "public_sha256": "4259a13d8f1eee2a9f8108122ea5afa17523d9f6c425f70c54abc15d0cee9774",
+      "changes": []
+    },
+    "logs/control.stderr.txt": {
+      "original_sha256": "9df40d64f16466cd8b46885117659a42f081b1a549beb9abf97c21f1d49b607a",
+      "public_sha256": "9df40d64f16466cd8b46885117659a42f081b1a549beb9abf97c21f1d49b607a",
+      "changes": []
+    },
+    "logs/control.stdout.txt": {
+      "original_sha256": "90096846784d7de1cf783f5314cd92b24510e3913e8dd1d3c84c8c37974c6595",
+      "public_sha256": "f5f403e9fd00d064fe6cc5ff6862ff645c90916a7107a52c521e2af07bdff354",
+      "changes": [
+        {
+          "kind": "experiment output",
+          "replacement": "<OUTPUT_DIR>",
+          "count": 1
+        }
+      ]
+    },
+    "logs/final-diff-check.stderr.txt": {
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "changes": []
+    },
+    "logs/final-diff-check.stdout.txt": {
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "changes": []
+    },
+    "logs/final-diff.stderr.txt": {
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "changes": []
+    },
+    "logs/final-diff.stdout.txt": {
+      "original_sha256": "859d7f3cdfc456e918a8ee7e2701ba5ba25863704a7141cce2bd52b9020ad9b2",
+      "public_sha256": "859d7f3cdfc456e918a8ee7e2701ba5ba25863704a7141cce2bd52b9020ad9b2",
+      "changes": []
+    },
+    "logs/final-status.stderr.txt": {
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "changes": []
+    },
+    "logs/final-status.stdout.txt": {
+      "original_sha256": "64eb432614f045b0d557b7cfbd6b2cfca7b67fbe502d99c5df43ce0e65d2aced",
+      "public_sha256": "64eb432614f045b0d557b7cfbd6b2cfca7b67fbe502d99c5df43ce0e65d2aced",
+      "changes": []
+    },
+    "logs/focused-lint.stderr.txt": {
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "changes": []
+    },
+    "logs/focused-lint.stdout.txt": {
+      "original_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "public_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "changes": []
+    },
+    "logs/grammar-control.stderr.txt": {
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "changes": []
+    },
+    "logs/grammar-control.stdout.txt": {
+      "original_sha256": "3efc219b4a7c964f30786f5ddd9f61369bfa66d6d5ac4533e92fcd62ee7366e2",
+      "public_sha256": "3efc219b4a7c964f30786f5ddd9f61369bfa66d6d5ac4533e92fcd62ee7366e2",
+      "changes": []
+    },
+    "logs/grammar-main.stderr.txt": {
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "changes": []
+    },
+    "logs/grammar-main.stdout.txt": {
+      "original_sha256": "6a976dd663e7c52e72a26bd7efff0f5671cef887989ee0dd335f2544a48edfba",
+      "public_sha256": "ebde12a4b3af8343117791465f58d6c99c200ee9dc90a33d625e6fb2259abf69",
+      "changes": [
+        {
+          "kind": "experiment output",
+          "replacement": "<OUTPUT_DIR>",
+          "count": 4
+        }
+      ]
+    },
+    "logs/main.stderr.txt": {
+      "original_sha256": "6fcfe51aef700e266b01a56bad75b407ba876c8498805cdeb523e9bdc85eacea",
+      "public_sha256": "6fcfe51aef700e266b01a56bad75b407ba876c8498805cdeb523e9bdc85eacea",
+      "changes": []
+    },
+    "logs/main.stdout.txt": {
+      "original_sha256": "b6a67b7ef87a14be15804e5d92582a9087c1431b5f8514f44f643b1c0ba977f7",
+      "public_sha256": "0896316d3b00129129a13a0c19f592bd64a8e6d7f2c8f8a5c960f98b8d81a43f",
+      "changes": [
+        {
+          "kind": "experiment output",
+          "replacement": "<OUTPUT_DIR>",
+          "count": 1
+        }
+      ]
+    },
+    "logs/provider-lint-control.stderr.txt": {
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "changes": []
+    },
+    "logs/provider-lint-control.stdout.txt": {
+      "original_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "public_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "changes": []
+    },
+    "logs/provider-tests-control.stderr.txt": {
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "changes": []
+    },
+    "logs/provider-tests-control.stdout.txt": {
+      "original_sha256": "e5e989e98bce8d9abfab39bcd6065e18f10b97d18b5201bf4936a73233df8a21",
+      "public_sha256": "e5e989e98bce8d9abfab39bcd6065e18f10b97d18b5201bf4936a73233df8a21",
+      "changes": []
+    },
+    "logs/test-apply-check.stderr.txt": {
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "changes": []
+    },
+    "logs/test-apply-check.stdout.txt": {
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "changes": []
+    },
+    "logs/test-apply.stderr.txt": {
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "changes": []
+    },
+    "logs/test-apply.stdout.txt": {
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "changes": []
+    },
+    "logs/validated-test-main.stderr.txt": {
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "changes": []
+    },
+    "logs/validated-test-main.stdout.txt": {
+      "original_sha256": "72ce04ee0e02b7298977dfbf6c26bf9e4b91c9b9a243086b94a79933f2cef6bf",
+      "public_sha256": "4bfc5c5ce90ff8f0154d80d13762e4a7fbc5eb1b6887d5910c1ab78784a50010",
+      "changes": [
+        {
+          "kind": "experiment output",
+          "replacement": "<OUTPUT_DIR>",
+          "count": 2
+        }
+      ]
+    },
+    "logs/worktree-add.stderr.txt": {
+      "original_sha256": "9db443b9be5a386e74f93a5acfa1b4e0c974b9fd3a38a8b6aff6dccdb9a54f8e",
+      "public_sha256": "9db443b9be5a386e74f93a5acfa1b4e0c974b9fd3a38a8b6aff6dccdb9a54f8e",
+      "changes": []
+    },
+    "logs/worktree-add.stdout.txt": {
+      "original_sha256": "ac8cbc327f4999da56ddb38a6d253dfbb598e6371f7de12d0d00172f63876086",
+      "public_sha256": "ac8cbc327f4999da56ddb38a6d253dfbb598e6371f7de12d0d00172f63876086",
+      "changes": []
+    },
+    "receipts/MAIN_RUN.json": {
+      "original_sha256": "67c42043ef8187f256bc19c9d379695bb4d3da2c13a285f6b964e633c6c4c2f6",
+      "public_sha256": "3d57ea370ea3c7f234d36e68542db491853784cc6bb96bb840e084178230bb28",
+      "changes": [
+        {
+          "kind": "Hatch interpreter",
+          "replacement": "<ENV_PYTHON>",
+          "count": 2
+        },
+        {
+          "kind": "main checkout",
+          "replacement": "<MAIN_CHECKOUT>",
+          "count": 2
+        },
+        {
+          "kind": "experiment output",
+          "replacement": "<OUTPUT_DIR>",
+          "count": 2
+        }
+      ]
+    },
+    "receipts/RUNS.json": {
+      "original_sha256": "a8ea18710f1f43eec2e93d5b94f6be7e4778350cd28868e9a3f64eeda9fefa5a",
+      "public_sha256": "8a62f278bbb87e61df031095b2583a34628414ac00c9e2f7b4860fb66d86dce5",
+      "changes": [
+        {
+          "kind": "Hatch interpreter",
+          "replacement": "<ENV_PYTHON>",
+          "count": 7
+        },
+        {
+          "kind": "main checkout",
+          "replacement": "<MAIN_CHECKOUT>",
+          "count": 3
+        },
+        {
+          "kind": "control checkout",
+          "replacement": "<CONTROL_CHECKOUT>",
+          "count": 17
+        },
+        {
+          "kind": "experiment output",
+          "replacement": "<OUTPUT_DIR>",
+          "count": 11
+        }
+      ]
+    },
+    "results/control.json": {
+      "original_sha256": "c33456da62b78aafc3a80781566b0d6004b98be96fd29d2dc3471d54b146ed4d",
+      "public_sha256": "632ca1c3763fabf08993464ed7ff8cb1622cad705224f5c5b166fb045fc8f8d9",
+      "changes": [
+        {
+          "kind": "control checkout",
+          "replacement": "<CONTROL_CHECKOUT>",
+          "count": 6
+        },
+        {
+          "kind": "experiment output",
+          "replacement": "<OUTPUT_DIR>",
+          "count": 24
+        },
+        {
+          "kind": "parent work directory",
+          "replacement": "<WORK_ROOT>",
+          "count": 40
+        }
+      ]
+    },
+    "results/main.json": {
+      "original_sha256": "1bc0ea2a1b5163bbf939c7e21fc51667ca1f2802c906b0efab8c647985b73547",
+      "public_sha256": "823387f9ad279f4e0b213d9b43ab07e6b57b1147abe1f6873cfb6ac4b46c86c4",
+      "changes": [
+        {
+          "kind": "main checkout",
+          "replacement": "<MAIN_CHECKOUT>",
+          "count": 8
+        },
+        {
+          "kind": "experiment output",
+          "replacement": "<OUTPUT_DIR>",
+          "count": 28
+        },
+        {
+          "kind": "parent work directory",
+          "replacement": "<WORK_ROOT>",
+          "count": 40
+        }
+      ]
+    },
+    "summary.json": {
+      "original_sha256": "55c6bfcbd026ec2829edbe93aa9dc10ee7d4b827c92f0c4b851326a012f94979",
+      "public_sha256": "89ee7dfbe5dad685a500848f430f4806ae2aa220c2de4cad235e99bb0cad0d77",
+      "changes": [
+        {
+          "kind": "main checkout",
+          "replacement": "<MAIN_CHECKOUT>",
+          "count": 2
+        },
+        {
+          "kind": "experiment output",
+          "replacement": "<OUTPUT_DIR>",
+          "count": 4
+        }
+      ]
+    }
+  }
+}
