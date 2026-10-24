@@ -1,0 +1,1 @@
+{"output": "[ARTIFACT_DIR]/pr7647.json", "case_count": 16, "passed_cases": 4, "failed_cases": 12, "harness_error_cases": 0}

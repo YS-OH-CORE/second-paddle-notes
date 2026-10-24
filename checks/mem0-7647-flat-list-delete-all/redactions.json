@@ -1,0 +1,85 @@
+{
+  "scope": "Machine-local checkout, artifact and temporary fixture directory prefixes only. Numeric outcomes, IDs, timestamps, source/harness hashes, exception types/messages and test outputs are retained. Original files preserved separately.",
+  "files": {
+    "smoke.json": {
+      "original_sha256": "dd8bfd62e510d0da149ed2634030fe67d9a4e0421ad64ea3571a3322e98d0f32",
+      "original_bytes": 16645,
+      "public_sha256": "2aa631ee0f5b3ba36e0bac8ecfecfb56f0cbad4c79c0ca47f0d40c4c4b8ffc92"
+    },
+    "base.json": {
+      "original_sha256": "9234d8b7a982edfcb80a9a9b9e5f7eee7f0be37c49bcd67ec3ad466ddbc839a4",
+      "original_bytes": 126738,
+      "public_sha256": "8749eb0f321bb3c2203c4c0e2c18ecdbc4c3542176d89ab9d000147701b813c7"
+    },
+    "pr7647.json": {
+      "original_sha256": "4a6ce1b00154c9ee0388cf2e079e39cfdb7fe4c339cc27e2f9672acaab776036",
+      "original_bytes": 156893,
+      "public_sha256": "0001502d131092070cacb53b6203f387fd97b152d0ce57fd7fe0ae621d625756"
+    },
+    "control.json": {
+      "original_sha256": "a537b0a66bc1bc5af039026dfebe033eb44c4f5dd6ae44cef150d71d1ef6974f",
+      "original_bytes": 125965,
+      "public_sha256": "56e3943988c152d0eab2be8adb98a0916ea9f6010e7d2cd31f0af3cf572f5466"
+    },
+    "consumer-control.patch": {
+      "original_sha256": "0cd87e7e146a4b53d95197c3a9c1b2b8bf2beb69b6ef1447a14df8015234a8e7",
+      "original_bytes": 1053,
+      "public_sha256": "0cd87e7e146a4b53d95197c3a9c1b2b8bf2beb69b6ef1447a14df8015234a8e7"
+    },
+    "RUNS.json": {
+      "original_sha256": "0e9f57734f034a86c17a6ed2150b71d3b4d96656f012a7ddfe1c23149128f109",
+      "original_bytes": 1793,
+      "public_sha256": "004de18610871a423b9224e0aef91ad1d4ad61e00dd391c89ca61d9743aeb3bb"
+    },
+    "VALIDATION.json": {
+      "original_sha256": "1d93697548d4606410c10419aa1201e2916f9ed6f030d6d9861b6237c986c650",
+      "original_bytes": 1379,
+      "public_sha256": "cbe6a37ad8bcc2a630831610d8e43992e6a63cd146efeeb4660b42a9739ad962"
+    },
+    "dependencies.json": {
+      "original_sha256": "d7e3b38748cbd6c0f10a083ca385c44bf9821f923c570c866b244868aa6a9303",
+      "original_bytes": 7234,
+      "public_sha256": "d7e3b38748cbd6c0f10a083ca385c44bf9821f923c570c866b244868aa6a9303"
+    },
+    "summary.json": {
+      "original_sha256": "9a3460dd187de505d905af500c5fb3c76517e9c66b321ae7370a806e6fe2662c",
+      "original_bytes": 56240,
+      "public_sha256": "1a2a0a2b28658a5a1cfe0841e5ffdad635d853267bba0e9d9a274afc7e41264d"
+    },
+    "SETUP.json": {
+      "original_sha256": "98edb09b11968b9ac5c9184ba4a37fa8613c139f9d8f44c3da6968b14953e897",
+      "original_bytes": 5821,
+      "public_sha256": "f9c2bd07a2881f726eba67740a15c24df6928531b185a2e9f92e429981c04056"
+    },
+    "base.stdout.txt": {
+      "original_sha256": "bd92f34e7e15b7d955197bf6a467fe1884da1fc54c5a3432c05e686e4326bdf6",
+      "original_bytes": 160,
+      "public_sha256": "48398f7ae977cf8224a5fecca0b0499c39d54821a80f12c4ccf311a8d38babf1"
+    },
+    "base.stderr.txt": {
+      "original_sha256": "8de9b738e611fdbd356421c1238c1e96339628f33765ed1494cee0280b434462",
+      "original_bytes": 6312,
+      "public_sha256": "8de9b738e611fdbd356421c1238c1e96339628f33765ed1494cee0280b434462"
+    },
+    "pr7647.stdout.txt": {
+      "original_sha256": "e2fb47c35f95c3d2834d16e6dc453dc475454ea9ca81ab31c2568c5da31a6447",
+      "original_bytes": 162,
+      "public_sha256": "5f7f119380675d342e1fdb2c3045c05c8981a6b6e7350db7dc60adefebbdc095"
+    },
+    "pr7647.stderr.txt": {
+      "original_sha256": "232413f2ee008919c12e8a27d54354e477d1c8cb4285de9d0dc377406d4e560d",
+      "original_bytes": 6432,
+      "public_sha256": "232413f2ee008919c12e8a27d54354e477d1c8cb4285de9d0dc377406d4e560d"
+    },
+    "control.stdout.txt": {
+      "original_sha256": "6f9d58f70d74162b9dcd49b81b990b7b1b7136c9b64767e412c45b7a6028503d",
+      "original_bytes": 163,
+      "public_sha256": "281522b41a4c5e4d8f558992ee7957eea51a7ccecaeaff1b2acfb01cb7d0d579"
+    },
+    "control.stderr.txt": {
+      "original_sha256": "8de9b738e611fdbd356421c1238c1e96339628f33765ed1494cee0280b434462",
+      "original_bytes": 6312,
+      "public_sha256": "8de9b738e611fdbd356421c1238c1e96339628f33765ed1494cee0280b434462"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+[envs.regression]
+python = "3.12"
+features = ["test"]
+dependencies = [
+  "chromadb>=1.0.20,<2",
+  "langchain-chroma==0.2.6",
+  "langchain-core>=0.3.85,<1",
+  "langchain-community>=0.3.27,<0.4",
+  "ruff==0.16.0",
+]

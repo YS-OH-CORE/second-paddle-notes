@@ -1,0 +1,56 @@
+[
+  {
+    "name": "delete-unit",
+    "argv": [
+      "[EXPERIMENT_ROOT]/hatch-regression/bin/python",
+      "-m",
+      "pytest",
+      "tests/test_memory.py",
+      "-k",
+      "delete_all",
+      "-q"
+    ],
+    "exit_code": 0,
+    "stdout": "..                                                                       [100%]\n2 passed, 60 deselected in 0.96s\n",
+    "stderr": ""
+  },
+  {
+    "name": "provider-unit",
+    "argv": [
+      "[EXPERIMENT_ROOT]/hatch-regression/bin/python",
+      "-m",
+      "pytest",
+      "tests/vector_stores/test_chroma.py",
+      "tests/vector_stores/test_langchain_vector_store.py",
+      "-q"
+    ],
+    "exit_code": 0,
+    "stdout": ".............................................                            [100%]\n45 passed in 1.02s\n",
+    "stderr": ""
+  },
+  {
+    "name": "harness-lint",
+    "argv": [
+      "[EXPERIMENT_ROOT]/hatch-regression/bin/ruff",
+      "check",
+      "--isolated",
+      "--select",
+      "E4,E7,E9,F",
+      "[ARTIFACT_DIR]/check_delete_all.py"
+    ],
+    "exit_code": 0,
+    "stdout": "All checks passed!\n",
+    "stderr": ""
+  },
+  {
+    "name": "control-whitespace",
+    "argv": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  }
+]

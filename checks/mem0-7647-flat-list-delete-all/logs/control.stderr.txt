@@ -1,0 +1,32 @@
+The 'chroma' vector store does not support keyword search. Hybrid (BM25) scoring will be disabled and search will use semantic similarity only. To enable hybrid search, switch to a store with keyword_search support (e.g. qdrant, elasticsearch, pgvector).
+{"adapter": "native-chroma", "api": "sync", "scenario": "empty_store", "outcome": "success_matches_stored_state", "checks_passed": true}
+The 'chroma' vector store does not support keyword search. Hybrid (BM25) scoring will be disabled and search will use semantic similarity only. To enable hybrid search, switch to a store with keyword_search support (e.g. qdrant, elasticsearch, pgvector).
+{"adapter": "native-chroma", "api": "sync", "scenario": "no_alice", "outcome": "success_matches_stored_state", "checks_passed": true}
+The 'chroma' vector store does not support keyword search. Hybrid (BM25) scoring will be disabled and search will use semantic similarity only. To enable hybrid search, switch to a store with keyword_search support (e.g. qdrant, elasticsearch, pgvector).
+{"adapter": "native-chroma", "api": "sync", "scenario": "single_alice", "outcome": "success_matches_stored_state", "checks_passed": true}
+The 'chroma' vector store does not support keyword search. Hybrid (BM25) scoring will be disabled and search will use semantic similarity only. To enable hybrid search, switch to a store with keyword_search support (e.g. qdrant, elasticsearch, pgvector).
+{"adapter": "native-chroma", "api": "sync", "scenario": "populated", "outcome": "success_matches_stored_state", "checks_passed": true}
+The 'chroma' vector store does not support keyword search. Hybrid (BM25) scoring will be disabled and search will use semantic similarity only. To enable hybrid search, switch to a store with keyword_search support (e.g. qdrant, elasticsearch, pgvector).
+{"adapter": "native-chroma", "api": "async", "scenario": "empty_store", "outcome": "success_matches_stored_state", "checks_passed": true}
+The 'chroma' vector store does not support keyword search. Hybrid (BM25) scoring will be disabled and search will use semantic similarity only. To enable hybrid search, switch to a store with keyword_search support (e.g. qdrant, elasticsearch, pgvector).
+{"adapter": "native-chroma", "api": "async", "scenario": "no_alice", "outcome": "success_matches_stored_state", "checks_passed": true}
+The 'chroma' vector store does not support keyword search. Hybrid (BM25) scoring will be disabled and search will use semantic similarity only. To enable hybrid search, switch to a store with keyword_search support (e.g. qdrant, elasticsearch, pgvector).
+{"adapter": "native-chroma", "api": "async", "scenario": "single_alice", "outcome": "success_matches_stored_state", "checks_passed": true}
+The 'chroma' vector store does not support keyword search. Hybrid (BM25) scoring will be disabled and search will use semantic similarity only. To enable hybrid search, switch to a store with keyword_search support (e.g. qdrant, elasticsearch, pgvector).
+{"adapter": "native-chroma", "api": "async", "scenario": "populated", "outcome": "success_matches_stored_state", "checks_passed": true}
+The 'langchain' vector store does not support keyword search. Hybrid (BM25) scoring will be disabled and search will use semantic similarity only. To enable hybrid search, switch to a store with keyword_search support (e.g. qdrant, elasticsearch, pgvector).
+{"adapter": "langchain-chroma", "api": "sync", "scenario": "empty_store", "outcome": "success_matches_stored_state", "checks_passed": true}
+The 'langchain' vector store does not support keyword search. Hybrid (BM25) scoring will be disabled and search will use semantic similarity only. To enable hybrid search, switch to a store with keyword_search support (e.g. qdrant, elasticsearch, pgvector).
+{"adapter": "langchain-chroma", "api": "sync", "scenario": "no_alice", "outcome": "success_matches_stored_state", "checks_passed": true}
+The 'langchain' vector store does not support keyword search. Hybrid (BM25) scoring will be disabled and search will use semantic similarity only. To enable hybrid search, switch to a store with keyword_search support (e.g. qdrant, elasticsearch, pgvector).
+{"adapter": "langchain-chroma", "api": "sync", "scenario": "single_alice", "outcome": "success_matches_stored_state", "checks_passed": true}
+The 'langchain' vector store does not support keyword search. Hybrid (BM25) scoring will be disabled and search will use semantic similarity only. To enable hybrid search, switch to a store with keyword_search support (e.g. qdrant, elasticsearch, pgvector).
+{"adapter": "langchain-chroma", "api": "sync", "scenario": "populated", "outcome": "success_matches_stored_state", "checks_passed": true}
+The 'langchain' vector store does not support keyword search. Hybrid (BM25) scoring will be disabled and search will use semantic similarity only. To enable hybrid search, switch to a store with keyword_search support (e.g. qdrant, elasticsearch, pgvector).
+{"adapter": "langchain-chroma", "api": "async", "scenario": "empty_store", "outcome": "success_matches_stored_state", "checks_passed": true}
+The 'langchain' vector store does not support keyword search. Hybrid (BM25) scoring will be disabled and search will use semantic similarity only. To enable hybrid search, switch to a store with keyword_search support (e.g. qdrant, elasticsearch, pgvector).
+{"adapter": "langchain-chroma", "api": "async", "scenario": "no_alice", "outcome": "success_matches_stored_state", "checks_passed": true}
+The 'langchain' vector store does not support keyword search. Hybrid (BM25) scoring will be disabled and search will use semantic similarity only. To enable hybrid search, switch to a store with keyword_search support (e.g. qdrant, elasticsearch, pgvector).
+{"adapter": "langchain-chroma", "api": "async", "scenario": "single_alice", "outcome": "success_matches_stored_state", "checks_passed": true}
+The 'langchain' vector store does not support keyword search. Hybrid (BM25) scoring will be disabled and search will use semantic similarity only. To enable hybrid search, switch to a store with keyword_search support (e.g. qdrant, elasticsearch, pgvector).
+{"adapter": "langchain-chroma", "api": "async", "scenario": "populated", "outcome": "success_matches_stored_state", "checks_passed": true}

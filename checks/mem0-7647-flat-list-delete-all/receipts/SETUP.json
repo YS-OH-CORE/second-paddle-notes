@@ -1,0 +1,137 @@
+{
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "steps": [
+    {
+      "argv": [
+        "[EXPERIMENT_ROOT]/tools/uv",
+        "--version"
+      ],
+      "returncode": 0,
+      "output": "uv 0.13.1 (x86_64-unknown-linux-gnu)\n"
+    },
+    {
+      "argv": [
+        "[EXPERIMENT_ROOT]/tools/uv",
+        "venv",
+        "--python",
+        "/usr/bin/python3",
+        "[EXPERIMENT_ROOT]/hatch-tool"
+      ],
+      "returncode": 0,
+      "output": "Using CPython 3.12.3 interpreter at: /usr/bin/python3\nCreating virtual environment at: [EXPERIMENT_ROOT]/hatch-tool\nActivate with: source [EXPERIMENT_ROOT]/hatch-tool/bin/activate\n"
+    },
+    {
+      "argv": [
+        "[EXPERIMENT_ROOT]/tools/uv",
+        "pip",
+        "install",
+        "--python",
+        "[EXPERIMENT_ROOT]/hatch-tool/bin/python",
+        "hatch"
+      ],
+      "returncode": 0,
+      "output": "Using Python 3.12.3 environment at: [EXPERIMENT_ROOT]/hatch-tool\nResolved 44 packages in 577ms\nDownloading cryptography (4.5MiB)\nDownloading uv (16.5MiB)\nDownloading pygments (1.2MiB)\nDownloading virtualenv (5.2MiB)\n Downloaded pygments\n Downloaded cryptography\n Downloaded virtualenv\n Downloaded uv\nPrepared 44 packages in 3.18s\nInstalled 44 packages in 25ms\n + anyio==4.15.1\n + backports-zstd==1.8.0\n + cffi==2.1.1\n + click==8.5.0\n + cryptography==50.0.2\n + distlib==0.4.4\n + distro==1.9.0\n + filelock==4.2.2\n + h11==0.16.0\n + hatch==1.18.1\n + hatchling==1.32.4\n + httpcore2==2.13.1\n + httpx2==2.13.1\n + hyperlink==21.0.0\n + idna==3.20\n + jaraco-classes==3.4.0\n + jaraco-context==6.1.2\n + jaraco-functools==4.6.0\n + jeepney==0.9.0\n + keyring==25.7.0\n + markdown-it-py==4.2.0\n + mdurl==0.1.2\n + more-itertools==11.2.1\n + packaging==26.3\n + pathspec==1.1.1\n + pexpect==4.9.0\n + platformdirs==4.13.4\n + pluggy==1.7.0\n + ptyprocess==0.7.0\n + pycparser==3.11\n + pygments==2.21.0\n + pyproject-hooks==1.3.3\n + python-discovery==1.6.3\n + rich==15.0.0\n + secretstorage==3.5.0\n + shellingham==1.5.4\n + tomli-w==1.2.0\n + tomlkit==0.15.2\n + trove-classifiers==2026.9.21.13\n + truststore==0.10.5\n + typing-extensions==4.16.0\n + userpath==1.9.2\n + uv==0.13.1\n + virtualenv==21.14.11\n"
+    },
+    {
+      "argv": [
+        "[EXPERIMENT_ROOT]/hatch-tool/bin/hatch",
+        "--version"
+      ],
+      "returncode": 0,
+      "output": "Hatch, version 1.18.1\n"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "returncode": 0,
+      "output": "0724291bd864cf807e88ee8981c8226644e8fb42\n"
+    },
+    {
+      "argv": [
+        "[EXPERIMENT_ROOT]/hatch-tool/bin/hatch",
+        "env",
+        "create",
+        "regression"
+      ],
+      "returncode": 0,
+      "output": "Creating environment: regression\nInstalling project in development mode\nChecking dependencies\nSyncing dependencies\n"
+    },
+    {
+      "argv": [
+        "[EXPERIMENT_ROOT]/hatch-tool/bin/hatch",
+        "run",
+        "regression:python",
+        "--version"
+      ],
+      "returncode": 0,
+      "output": "Python 3.12.3\n"
+    },
+    {
+      "argv": [
+        "git",
+        "fetch",
+        "--depth=1",
+        "origin",
+        "pull/7647/head:refs/heads/review-pr7647",
+        "pull/7662/head:refs/heads/review-pr7662"
+      ],
+      "returncode": 0,
+      "output": "From https://github.com/mem0ai/mem0\n * [new ref]         refs/pull/7647/head -> review-pr7647\n * [new ref]         refs/pull/7662/head -> review-pr7662\n"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "review-pr7647"
+      ],
+      "returncode": 0,
+      "output": "039b3dd23eca2ba46fc4457c6c1ba18537d849b5\n"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "review-pr7662"
+      ],
+      "returncode": 0,
+      "output": "4c89a5a04439bd98c4f518bd1a0d27ea1a342f11\n"
+    },
+    {
+      "argv": [
+        "git",
+        "worktree",
+        "add",
+        "--detach",
+        "[EXPERIMENT_ROOT]/pr7647",
+        "review-pr7647"
+      ],
+      "returncode": 0,
+      "output": "Preparing worktree (detached HEAD 039b3dd)\nHEAD is now at 039b3dd fix(vector-store): return flat list from Chroma/Langchain/Elasticsearch list\n"
+    },
+    {
+      "argv": [
+        "git",
+        "worktree",
+        "add",
+        "--detach",
+        "[EXPERIMENT_ROOT]/control",
+        "review-pr7647"
+      ],
+      "returncode": 0,
+      "output": "Preparing worktree (detached HEAD 039b3dd)\nHEAD is now at 039b3dd fix(vector-store): return flat list from Chroma/Langchain/Elasticsearch list\n"
+    }
+  ],
+  "uv_artifact": {
+    "version": "0.13.1",
+    "url": "https://files.pythonhosted.org/packages/14/0b/6602a613533602e7a083e908c4375f9b0e78a94ba2e21c29b21c41a0a611/uv-0.13.1-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+    "wheel_sha256": "696dcf6d807d85da978f4db8472da81dccc1254b18b52cbd1367c4d923c421e0",
+    "binary_sha256": "db919fb9428cc8ad04377ba3c898e0ec5fbee83700da5b982b1c9539f1e1b34f"
+  },
+  "uv_path": "[EXPERIMENT_ROOT]/tools/uv",
+  "hatch_config": "[envs.regression]\npython = \"3.12\"\npath = \"[EXPERIMENT_ROOT]/hatch-regression\"\nfeatures = [\"test\"]\ndependencies = [\n  \"chromadb>=1.0.20,<2\",\n  \"langchain-chroma==0.2.6\",\n  \"langchain-core>=0.3.85,<1\",\n  \"langchain-community>=0.3.27,<0.4\",\n  \"ruff==0.16.0\",\n]\n",
+  "complete": true
+}

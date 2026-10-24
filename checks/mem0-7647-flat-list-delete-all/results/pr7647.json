@@ -1,0 +1,4339 @@
+{
+  "schema": "mem0-pr7647-real-chroma-delete-all/v1",
+  "label": "pr7647",
+  "started_at": "2026-10-18T12:59:04.908434+00:00",
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "harness_sha256": "2642fbf55b6716ece47a44520e22277186ef2430341772574b5cb62136b58946",
+  "source_identity": {
+    "repo": "[EXPERIMENT_ROOT]/pr7647",
+    "git_head": {
+      "returncode": 0,
+      "stdout": "039b3dd23eca2ba46fc4457c6c1ba18537d849b5",
+      "stderr": ""
+    },
+    "git_status_tracked": {
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "file_sha256": {
+      "mem0/memory/main.py": "f329ca4a17af1fbefb32ac10d4cc7ae7ddbdb7435a87eb74c30915cff98b8b7c",
+      "mem0/memory/storage.py": "5f5ecdadd2b260fd14f36a0f338336eb760275465dd1056a99a47e1ef07702bd",
+      "mem0/vector_stores/chroma.py": "6b5e49bb3c0d455c47b41adf01f962a36b219d42a23d4be43b2b3d7db141c0c6",
+      "mem0/vector_stores/langchain.py": "a584952d8accbc378eca3f204b84c5fa73e52a1297801bb0004e21f0895ccd2e",
+      "mem0/configs/vector_stores/chroma.py": "bfeefb033ec7ba62b2ed606893ed10b04d2d775823d3722e418315220e391692",
+      "mem0/configs/vector_stores/langchain.py": "28765b90753841f5572992f33e2268e57a0890a0f62d95e819ea2eb7ed706da3",
+      "pyproject.toml": "d4bc078a05cc7b9d677bbf4d0b262cfc532495b5aadeded053ac84fd90b6e974"
+    }
+  },
+  "scope": {
+    "real": [
+      "Memory/AsyncMemory.from_config constructors",
+      "VectorStoreFactory",
+      "Mem0 native Chroma and Langchain adapters",
+      "embedded ephemeral Chroma",
+      "temporary SQLiteManager",
+      "get/get_all/delete_all methods"
+    ],
+    "test_doubles": [
+      "unused EmbedderFactory.create result",
+      "unused LlmFactory.create result"
+    ],
+    "disabled": [
+      "Mem0 telemetry and its notice path",
+      "Chroma anonymized telemetry",
+      "LangSmith tracing"
+    ],
+    "fixture_setup": "Direct Chroma collection.add with explicit IDs, document text, metadata and precomputed vectors; Memory.add and adapter insert are not tested",
+    "state_witness": "Chroma collection.get(ids=known_fixture_ids) plus collection.count; no list() fallback used for ground truth",
+    "not_tested": [
+      "model inference",
+      "ingestion/extraction",
+      "FAISS",
+      "Elasticsearch",
+      "entity store cleanup",
+      "batch boundary above 1000",
+      "full upstream suite",
+      "unsupported enumeration/None returns and backend listing failures"
+    ]
+  },
+  "cases": [
+    {
+      "adapter": "native-chroma",
+      "api": "sync",
+      "scenario": "empty_store",
+      "fixture_counts": {
+        "alice": 0,
+        "bob": 0
+      },
+      "collection_name": "pr7647-native-chroma-sync-a88be47581a4",
+      "history_path": "[FIXTURE_ROOT]s2/native-chroma-sync-empty_store/history.sqlite3",
+      "started_at": "2026-10-18T12:59:06.219898+00:00",
+      "operations": {
+        "direct_chroma_before": {
+          "status": "returned",
+          "value": {
+            "collection_count": 0,
+            "records": {},
+            "present_ids": [],
+            "absent_known_ids": [],
+            "alice_present": [],
+            "bob_present": []
+          },
+          "elapsed_ms": 1.988
+        },
+        "adapter_list_before": {
+          "status": "returned",
+          "value": [],
+          "elapsed_ms": 0.554
+        },
+        "get_all_before": {
+          "status": "returned",
+          "value": {
+            "results": []
+          },
+          "elapsed_ms": 0.51
+        },
+        "get_known_ids_before": {},
+        "delete_all": {
+          "status": "raised",
+          "exception": {
+            "type": "builtins.IndexError",
+            "message": "list index out of range",
+            "traceback": "Traceback (most recent call last):\n  File \"[ARTIFACT_DIR]/check_delete_all.py\", line 77, in observe\n    result = function()\n             ^^^^^^^^^^\n  File \"[ARTIFACT_DIR]/check_delete_all.py\", line 368, in <lambda>\n    ops[\"delete_all\"] = await observe(lambda: memory.delete_all(user_id=\"alice\"))\n                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"[EXPERIMENT_ROOT]/pr7647/mem0/memory/main.py\", line 1937, in delete_all\n    memories = self.vector_store.list(\n               ^^^^^^^^^^^^^^^^^^^^^^^\nIndexError: list index out of range\n"
+          },
+          "elapsed_ms": 5.442
+        },
+        "direct_chroma_after": {
+          "status": "returned",
+          "value": {
+            "collection_count": 0,
+            "records": {},
+            "present_ids": [],
+            "absent_known_ids": [],
+            "alice_present": [],
+            "bob_present": []
+          },
+          "elapsed_ms": 0.968
+        },
+        "get_known_ids_after": {},
+        "get_all_after": {
+          "status": "returned",
+          "value": {
+            "results": []
+          },
+          "elapsed_ms": 0.462
+        },
+        "get_all_bob_after": {
+          "status": "returned",
+          "value": {
+            "results": []
+          },
+          "elapsed_ms": 0.434
+        },
+        "sqlite_history_after": {
+          "status": "returned",
+          "value": [],
+          "elapsed_ms": 0.084
+        }
+      },
+      "constructor": {
+        "status": "returned",
+        "memory_class": "mem0.memory.main.Memory",
+        "adapter_class": "mem0.vector_stores.chroma.ChromaDB",
+        "history_class": "mem0.memory.storage.SQLiteManager",
+        "embedder_factory_calls": 1,
+        "llm_factory_calls": 1,
+        "history_file_created": true,
+        "chroma_is_persistent": false
+      },
+      "fixture_valid": true,
+      "checks": {
+        "real_sqlite_created": true,
+        "embedded_ephemeral_chroma": true,
+        "get_all_before_exact_alice": true,
+        "public_known_id_reads_before_exact": true,
+        "delete_all_returned_success": false,
+        "direct_state_after_exact_bob_only": true,
+        "public_known_id_reads_after_exact": true,
+        "get_all_after_empty_alice": true,
+        "get_all_after_exact_bob": true,
+        "real_delete_history_exact": true,
+        "no_model_calls": true
+      },
+      "outcome": "exception_with_vector_state_unchanged",
+      "all_checks_passed": false,
+      "model_method_calls": [],
+      "close": {
+        "status": "returned",
+        "value": null,
+        "elapsed_ms": 0.037
+      },
+      "finished_at": "2026-10-18T12:59:06.352549+00:00"
+    },
+    {
+      "adapter": "native-chroma",
+      "api": "sync",
+      "scenario": "no_alice",
+      "fixture_counts": {
+        "alice": 0,
+        "bob": 1
+      },
+      "collection_name": "pr7647-native-chroma-sync-eddb23a50a34",
+      "history_path": "[FIXTURE_ROOT]s2/native-chroma-sync-no_alice/history.sqlite3",
+      "started_at": "2026-10-18T12:59:06.352837+00:00",
+      "operations": {
+        "direct_chroma_before": {
+          "status": "returned",
+          "value": {
+            "collection_count": 1,
+            "records": {
+              "bob-0": {
+                "document": "Controlled fixture bob-0; owner bob.",
+                "metadata": {
+                  "hash": "576896b9ecd3db313b447c948bd9798f",
+                  "fixture": "mem0-pr7647",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "user_id": "bob",
+                  "data": "Controlled fixture bob-0; owner bob."
+                }
+              }
+            },
+            "present_ids": [
+              "bob-0"
+            ],
+            "absent_known_ids": [],
+            "alice_present": [],
+            "bob_present": [
+              "bob-0"
+            ]
+          },
+          "elapsed_ms": 2.999
+        },
+        "adapter_list_before": {
+          "status": "returned",
+          "value": [],
+          "elapsed_ms": 1.076
+        },
+        "get_all_before": {
+          "status": "returned",
+          "value": {
+            "results": []
+          },
+          "elapsed_ms": 0.83
+        },
+        "get_known_ids_before": {
+          "bob-0": {
+            "status": "returned",
+            "value": {
+              "id": "bob-0",
+              "memory": "Controlled fixture bob-0; owner bob.",
+              "hash": "576896b9ecd3db313b447c948bd9798f",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "bob"
+            },
+            "elapsed_ms": 0.663
+          }
+        },
+        "delete_all": {
+          "status": "raised",
+          "exception": {
+            "type": "builtins.IndexError",
+            "message": "list index out of range",
+            "traceback": "Traceback (most recent call last):\n  File \"[ARTIFACT_DIR]/check_delete_all.py\", line 77, in observe\n    result = function()\n             ^^^^^^^^^^\n  File \"[ARTIFACT_DIR]/check_delete_all.py\", line 368, in <lambda>\n    ops[\"delete_all\"] = await observe(lambda: memory.delete_all(user_id=\"alice\"))\n                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"[EXPERIMENT_ROOT]/pr7647/mem0/memory/main.py\", line 1937, in delete_all\n    memories = self.vector_store.list(\n               ^^^^^^^^^^^^^^^^^^^^^^^\nIndexError: list index out of range\n"
+          },
+          "elapsed_ms": 8.276
+        },
+        "direct_chroma_after": {
+          "status": "returned",
+          "value": {
+            "collection_count": 1,
+            "records": {
+              "bob-0": {
+                "document": "Controlled fixture bob-0; owner bob.",
+                "metadata": {
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "user_id": "bob",
+                  "fixture": "mem0-pr7647",
+                  "data": "Controlled fixture bob-0; owner bob.",
+                  "hash": "576896b9ecd3db313b447c948bd9798f"
+                }
+              }
+            },
+            "present_ids": [
+              "bob-0"
+            ],
+            "absent_known_ids": [],
+            "alice_present": [],
+            "bob_present": [
+              "bob-0"
+            ]
+          },
+          "elapsed_ms": 1.447
+        },
+        "get_known_ids_after": {
+          "bob-0": {
+            "status": "returned",
+            "value": {
+              "id": "bob-0",
+              "memory": "Controlled fixture bob-0; owner bob.",
+              "hash": "576896b9ecd3db313b447c948bd9798f",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "bob"
+            },
+            "elapsed_ms": 0.893
+          }
+        },
+        "get_all_after": {
+          "status": "returned",
+          "value": {
+            "results": []
+          },
+          "elapsed_ms": 0.641
+        },
+        "get_all_bob_after": {
+          "status": "returned",
+          "value": {
+            "results": [
+              {
+                "id": "bob-0",
+                "memory": "Controlled fixture bob-0; owner bob.",
+                "hash": "576896b9ecd3db313b447c948bd9798f",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "bob"
+              }
+            ]
+          },
+          "elapsed_ms": 0.924
+        },
+        "sqlite_history_after": {
+          "status": "returned",
+          "value": [],
+          "elapsed_ms": 0.081
+        }
+      },
+      "constructor": {
+        "status": "returned",
+        "memory_class": "mem0.memory.main.Memory",
+        "adapter_class": "mem0.vector_stores.chroma.ChromaDB",
+        "history_class": "mem0.memory.storage.SQLiteManager",
+        "embedder_factory_calls": 1,
+        "llm_factory_calls": 1,
+        "history_file_created": true,
+        "chroma_is_persistent": false
+      },
+      "fixture_valid": true,
+      "checks": {
+        "real_sqlite_created": true,
+        "embedded_ephemeral_chroma": true,
+        "get_all_before_exact_alice": true,
+        "public_known_id_reads_before_exact": true,
+        "delete_all_returned_success": false,
+        "direct_state_after_exact_bob_only": true,
+        "public_known_id_reads_after_exact": true,
+        "get_all_after_empty_alice": true,
+        "get_all_after_exact_bob": true,
+        "real_delete_history_exact": true,
+        "no_model_calls": true
+      },
+      "outcome": "exception_with_vector_state_unchanged",
+      "all_checks_passed": false,
+      "model_method_calls": [],
+      "close": {
+        "status": "returned",
+        "value": null,
+        "elapsed_ms": 0.027
+      },
+      "finished_at": "2026-10-18T12:59:06.420601+00:00"
+    },
+    {
+      "adapter": "native-chroma",
+      "api": "sync",
+      "scenario": "single_alice",
+      "fixture_counts": {
+        "alice": 1,
+        "bob": 1
+      },
+      "collection_name": "pr7647-native-chroma-sync-7a4e4198214d",
+      "history_path": "[FIXTURE_ROOT]s2/native-chroma-sync-single_alice/history.sqlite3",
+      "started_at": "2026-10-18T12:59:06.420886+00:00",
+      "operations": {
+        "direct_chroma_before": {
+          "status": "returned",
+          "value": {
+            "collection_count": 2,
+            "records": {
+              "alice-0": {
+                "document": "Controlled fixture alice-0; owner alice.",
+                "metadata": {
+                  "user_id": "alice",
+                  "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "fixture": "mem0-pr7647",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "data": "Controlled fixture alice-0; owner alice."
+                }
+              },
+              "bob-0": {
+                "document": "Controlled fixture bob-0; owner bob.",
+                "metadata": {
+                  "hash": "576896b9ecd3db313b447c948bd9798f",
+                  "data": "Controlled fixture bob-0; owner bob.",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "user_id": "bob",
+                  "fixture": "mem0-pr7647"
+                }
+              }
+            },
+            "present_ids": [
+              "alice-0",
+              "bob-0"
+            ],
+            "absent_known_ids": [],
+            "alice_present": [
+              "alice-0"
+            ],
+            "bob_present": [
+              "bob-0"
+            ]
+          },
+          "elapsed_ms": 2.895
+        },
+        "adapter_list_before": {
+          "status": "returned",
+          "value": [
+            {
+              "id": "alice-0",
+              "score": null,
+              "payload": {
+                "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+                "data": "Controlled fixture alice-0; owner alice.",
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "alice",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "fixture": "mem0-pr7647"
+              }
+            }
+          ],
+          "elapsed_ms": 0.636
+        },
+        "get_all_before": {
+          "status": "returned",
+          "value": {
+            "results": [
+              {
+                "id": "alice-0",
+                "memory": "Controlled fixture alice-0; owner alice.",
+                "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "alice"
+              }
+            ]
+          },
+          "elapsed_ms": 0.643
+        },
+        "get_known_ids_before": {
+          "alice-0": {
+            "status": "returned",
+            "value": {
+              "id": "alice-0",
+              "memory": "Controlled fixture alice-0; owner alice.",
+              "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "alice"
+            },
+            "elapsed_ms": 0.599
+          },
+          "bob-0": {
+            "status": "returned",
+            "value": {
+              "id": "bob-0",
+              "memory": "Controlled fixture bob-0; owner bob.",
+              "hash": "576896b9ecd3db313b447c948bd9798f",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "bob"
+            },
+            "elapsed_ms": 0.577
+          }
+        },
+        "delete_all": {
+          "status": "raised",
+          "exception": {
+            "type": "builtins.AttributeError",
+            "message": "'tuple' object has no attribute 'id'",
+            "traceback": "Traceback (most recent call last):\n  File \"[ARTIFACT_DIR]/check_delete_all.py\", line 77, in observe\n    result = function()\n             ^^^^^^^^^^\n  File \"[ARTIFACT_DIR]/check_delete_all.py\", line 368, in <lambda>\n    ops[\"delete_all\"] = await observe(lambda: memory.delete_all(user_id=\"alice\"))\n                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"[EXPERIMENT_ROOT]/pr7647/mem0/memory/main.py\", line 1942, in delete_all\n    batch_ids = tuple(sorted(str(memory.id) for memory in memories))\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"[EXPERIMENT_ROOT]/pr7647/mem0/memory/main.py\", line 1942, in <genexpr>\n    batch_ids = tuple(sorted(str(memory.id) for memory in memories))\n                                 ^^^^^^^^^\nAttributeError: 'tuple' object has no attribute 'id'\n"
+          },
+          "elapsed_ms": 2.416
+        },
+        "direct_chroma_after": {
+          "status": "returned",
+          "value": {
+            "collection_count": 2,
+            "records": {
+              "alice-0": {
+                "document": "Controlled fixture alice-0; owner alice.",
+                "metadata": {
+                  "fixture": "mem0-pr7647",
+                  "user_id": "alice",
+                  "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "data": "Controlled fixture alice-0; owner alice."
+                }
+              },
+              "bob-0": {
+                "document": "Controlled fixture bob-0; owner bob.",
+                "metadata": {
+                  "data": "Controlled fixture bob-0; owner bob.",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "hash": "576896b9ecd3db313b447c948bd9798f",
+                  "fixture": "mem0-pr7647",
+                  "user_id": "bob",
+                  "updated_at": "2026-10-18T00:00:00+00:00"
+                }
+              }
+            },
+            "present_ids": [
+              "alice-0",
+              "bob-0"
+            ],
+            "absent_known_ids": [],
+            "alice_present": [
+              "alice-0"
+            ],
+            "bob_present": [
+              "bob-0"
+            ]
+          },
+          "elapsed_ms": 1.053
+        },
+        "get_known_ids_after": {
+          "alice-0": {
+            "status": "returned",
+            "value": {
+              "id": "alice-0",
+              "memory": "Controlled fixture alice-0; owner alice.",
+              "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "alice"
+            },
+            "elapsed_ms": 0.938
+          },
+          "bob-0": {
+            "status": "returned",
+            "value": {
+              "id": "bob-0",
+              "memory": "Controlled fixture bob-0; owner bob.",
+              "hash": "576896b9ecd3db313b447c948bd9798f",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "bob"
+            },
+            "elapsed_ms": 0.662
+          }
+        },
+        "get_all_after": {
+          "status": "returned",
+          "value": {
+            "results": [
+              {
+                "id": "alice-0",
+                "memory": "Controlled fixture alice-0; owner alice.",
+                "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "alice"
+              }
+            ]
+          },
+          "elapsed_ms": 0.783
+        },
+        "get_all_bob_after": {
+          "status": "returned",
+          "value": {
+            "results": [
+              {
+                "id": "bob-0",
+                "memory": "Controlled fixture bob-0; owner bob.",
+                "hash": "576896b9ecd3db313b447c948bd9798f",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "bob"
+              }
+            ]
+          },
+          "elapsed_ms": 0.722
+        },
+        "sqlite_history_after": {
+          "status": "returned",
+          "value": [],
+          "elapsed_ms": 0.093
+        }
+      },
+      "constructor": {
+        "status": "returned",
+        "memory_class": "mem0.memory.main.Memory",
+        "adapter_class": "mem0.vector_stores.chroma.ChromaDB",
+        "history_class": "mem0.memory.storage.SQLiteManager",
+        "embedder_factory_calls": 1,
+        "llm_factory_calls": 1,
+        "history_file_created": true,
+        "chroma_is_persistent": false
+      },
+      "fixture_valid": true,
+      "checks": {
+        "real_sqlite_created": true,
+        "embedded_ephemeral_chroma": true,
+        "get_all_before_exact_alice": true,
+        "public_known_id_reads_before_exact": true,
+        "delete_all_returned_success": false,
+        "direct_state_after_exact_bob_only": false,
+        "public_known_id_reads_after_exact": false,
+        "get_all_after_empty_alice": false,
+        "get_all_after_exact_bob": true,
+        "real_delete_history_exact": false,
+        "no_model_calls": true
+      },
+      "outcome": "exception_with_vector_state_unchanged",
+      "all_checks_passed": false,
+      "model_method_calls": [],
+      "close": {
+        "status": "returned",
+        "value": null,
+        "elapsed_ms": 0.038
+      },
+      "finished_at": "2026-10-18T12:59:06.481835+00:00"
+    },
+    {
+      "adapter": "native-chroma",
+      "api": "sync",
+      "scenario": "populated",
+      "fixture_counts": {
+        "alice": 3,
+        "bob": 1
+      },
+      "collection_name": "pr7647-native-chroma-sync-7bccddb266f9",
+      "history_path": "[FIXTURE_ROOT]s2/native-chroma-sync-populated/history.sqlite3",
+      "started_at": "2026-10-18T12:59:06.482153+00:00",
+      "operations": {
+        "direct_chroma_before": {
+          "status": "returned",
+          "value": {
+            "collection_count": 4,
+            "records": {
+              "alice-0": {
+                "document": "Controlled fixture alice-0; owner alice.",
+                "metadata": {
+                  "user_id": "alice",
+                  "fixture": "mem0-pr7647",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+                  "data": "Controlled fixture alice-0; owner alice."
+                }
+              },
+              "alice-1": {
+                "document": "Controlled fixture alice-1; owner alice.",
+                "metadata": {
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "data": "Controlled fixture alice-1; owner alice.",
+                  "fixture": "mem0-pr7647",
+                  "user_id": "alice",
+                  "hash": "a9c6ac9f3564236923bd98f77d154963"
+                }
+              },
+              "alice-2": {
+                "document": "Controlled fixture alice-2; owner alice.",
+                "metadata": {
+                  "user_id": "alice",
+                  "fixture": "mem0-pr7647",
+                  "hash": "c0fbca9364091c71131ad5fa181ef8f1",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "data": "Controlled fixture alice-2; owner alice.",
+                  "created_at": "2026-10-18T00:00:00+00:00"
+                }
+              },
+              "bob-0": {
+                "document": "Controlled fixture bob-0; owner bob.",
+                "metadata": {
+                  "data": "Controlled fixture bob-0; owner bob.",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "user_id": "bob",
+                  "hash": "576896b9ecd3db313b447c948bd9798f",
+                  "fixture": "mem0-pr7647"
+                }
+              }
+            },
+            "present_ids": [
+              "alice-0",
+              "alice-1",
+              "alice-2",
+              "bob-0"
+            ],
+            "absent_known_ids": [],
+            "alice_present": [
+              "alice-0",
+              "alice-1",
+              "alice-2"
+            ],
+            "bob_present": [
+              "bob-0"
+            ]
+          },
+          "elapsed_ms": 2.825
+        },
+        "adapter_list_before": {
+          "status": "returned",
+          "value": [
+            {
+              "id": "alice-0",
+              "score": null,
+              "payload": {
+                "data": "Controlled fixture alice-0; owner alice.",
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "fixture": "mem0-pr7647",
+                "user_id": "alice",
+                "hash": "038845b1e74acc7fb555a04a2dc0cd20"
+              }
+            },
+            {
+              "id": "alice-1",
+              "score": null,
+              "payload": {
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "fixture": "mem0-pr7647",
+                "user_id": "alice",
+                "data": "Controlled fixture alice-1; owner alice.",
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "hash": "a9c6ac9f3564236923bd98f77d154963"
+              }
+            },
+            {
+              "id": "alice-2",
+              "score": null,
+              "payload": {
+                "fixture": "mem0-pr7647",
+                "hash": "c0fbca9364091c71131ad5fa181ef8f1",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "data": "Controlled fixture alice-2; owner alice.",
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "alice"
+              }
+            }
+          ],
+          "elapsed_ms": 0.706
+        },
+        "get_all_before": {
+          "status": "returned",
+          "value": {
+            "results": [
+              {
+                "id": "alice-0",
+                "memory": "Controlled fixture alice-0; owner alice.",
+                "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "alice"
+              },
+              {
+                "id": "alice-1",
+                "memory": "Controlled fixture alice-1; owner alice.",
+                "hash": "a9c6ac9f3564236923bd98f77d154963",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "alice"
+              },
+              {
+                "id": "alice-2",
+                "memory": "Controlled fixture alice-2; owner alice.",
+                "hash": "c0fbca9364091c71131ad5fa181ef8f1",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "alice"
+              }
+            ]
+          },
+          "elapsed_ms": 0.704
+        },
+        "get_known_ids_before": {
+          "alice-0": {
+            "status": "returned",
+            "value": {
+              "id": "alice-0",
+              "memory": "Controlled fixture alice-0; owner alice.",
+              "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "alice"
+            },
+            "elapsed_ms": 0.555
+          },
+          "alice-1": {
+            "status": "returned",
+            "value": {
+              "id": "alice-1",
+              "memory": "Controlled fixture alice-1; owner alice.",
+              "hash": "a9c6ac9f3564236923bd98f77d154963",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "alice"
+            },
+            "elapsed_ms": 0.692
+          },
+          "alice-2": {
+            "status": "returned",
+            "value": {
+              "id": "alice-2",
+              "memory": "Controlled fixture alice-2; owner alice.",
+              "hash": "c0fbca9364091c71131ad5fa181ef8f1",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "alice"
+            },
+            "elapsed_ms": 0.591
+          },
+          "bob-0": {
+            "status": "returned",
+            "value": {
+              "id": "bob-0",
+              "memory": "Controlled fixture bob-0; owner bob.",
+              "hash": "576896b9ecd3db313b447c948bd9798f",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "bob"
+            },
+            "elapsed_ms": 0.665
+          }
+        },
+        "delete_all": {
+          "status": "raised",
+          "exception": {
+            "type": "builtins.AttributeError",
+            "message": "'tuple' object has no attribute 'id'",
+            "traceback": "Traceback (most recent call last):\n  File \"[ARTIFACT_DIR]/check_delete_all.py\", line 77, in observe\n    result = function()\n             ^^^^^^^^^^\n  File \"[ARTIFACT_DIR]/check_delete_all.py\", line 368, in <lambda>\n    ops[\"delete_all\"] = await observe(lambda: memory.delete_all(user_id=\"alice\"))\n                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"[EXPERIMENT_ROOT]/pr7647/mem0/memory/main.py\", line 1942, in delete_all\n    batch_ids = tuple(sorted(str(memory.id) for memory in memories))\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"[EXPERIMENT_ROOT]/pr7647/mem0/memory/main.py\", line 1942, in <genexpr>\n    batch_ids = tuple(sorted(str(memory.id) for memory in memories))\n                                 ^^^^^^^^^\nAttributeError: 'tuple' object has no attribute 'id'\n"
+          },
+          "elapsed_ms": 2.681
+        },
+        "direct_chroma_after": {
+          "status": "returned",
+          "value": {
+            "collection_count": 4,
+            "records": {
+              "alice-0": {
+                "document": "Controlled fixture alice-0; owner alice.",
+                "metadata": {
+                  "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+                  "user_id": "alice",
+                  "fixture": "mem0-pr7647",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "data": "Controlled fixture alice-0; owner alice."
+                }
+              },
+              "alice-1": {
+                "document": "Controlled fixture alice-1; owner alice.",
+                "metadata": {
+                  "fixture": "mem0-pr7647",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "hash": "a9c6ac9f3564236923bd98f77d154963",
+                  "data": "Controlled fixture alice-1; owner alice.",
+                  "user_id": "alice",
+                  "updated_at": "2026-10-18T00:00:00+00:00"
+                }
+              },
+              "alice-2": {
+                "document": "Controlled fixture alice-2; owner alice.",
+                "metadata": {
+                  "hash": "c0fbca9364091c71131ad5fa181ef8f1",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "user_id": "alice",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "fixture": "mem0-pr7647",
+                  "data": "Controlled fixture alice-2; owner alice."
+                }
+              },
+              "bob-0": {
+                "document": "Controlled fixture bob-0; owner bob.",
+                "metadata": {
+                  "user_id": "bob",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "hash": "576896b9ecd3db313b447c948bd9798f",
+                  "fixture": "mem0-pr7647",
+                  "data": "Controlled fixture bob-0; owner bob."
+                }
+              }
+            },
+            "present_ids": [
+              "alice-0",
+              "alice-1",
+              "alice-2",
+              "bob-0"
+            ],
+            "absent_known_ids": [],
+            "alice_present": [
+              "alice-0",
+              "alice-1",
+              "alice-2"
+            ],
+            "bob_present": [
+              "bob-0"
+            ]
+          },
+          "elapsed_ms": 1.19
+        },
+        "get_known_ids_after": {
+          "alice-0": {
+            "status": "returned",
+            "value": {
+              "id": "alice-0",
+              "memory": "Controlled fixture alice-0; owner alice.",
+              "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "alice"
+            },
+            "elapsed_ms": 0.651
+          },
+          "alice-1": {
+            "status": "returned",
+            "value": {
+              "id": "alice-1",
+              "memory": "Controlled fixture alice-1; owner alice.",
+              "hash": "a9c6ac9f3564236923bd98f77d154963",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "alice"
+            },
+            "elapsed_ms": 0.615
+          },
+          "alice-2": {
+            "status": "returned",
+            "value": {
+              "id": "alice-2",
+              "memory": "Controlled fixture alice-2; owner alice.",
+              "hash": "c0fbca9364091c71131ad5fa181ef8f1",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "alice"
+            },
+            "elapsed_ms": 0.586
+          },
+          "bob-0": {
+            "status": "returned",
+            "value": {
+              "id": "bob-0",
+              "memory": "Controlled fixture bob-0; owner bob.",
+              "hash": "576896b9ecd3db313b447c948bd9798f",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "bob"
+            },
+            "elapsed_ms": 0.554
+          }
+        },
+        "get_all_after": {
+          "status": "returned",
+          "value": {
+            "results": [
+              {
+                "id": "alice-0",
+                "memory": "Controlled fixture alice-0; owner alice.",
+                "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "alice"
+              },
+              {
+                "id": "alice-1",
+                "memory": "Controlled fixture alice-1; owner alice.",
+                "hash": "a9c6ac9f3564236923bd98f77d154963",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "alice"
+              },
+              {
+                "id": "alice-2",
+                "memory": "Controlled fixture alice-2; owner alice.",
+                "hash": "c0fbca9364091c71131ad5fa181ef8f1",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "alice"
+              }
+            ]
+          },
+          "elapsed_ms": 0.653
+        },
+        "get_all_bob_after": {
+          "status": "returned",
+          "value": {
+            "results": [
+              {
+                "id": "bob-0",
+                "memory": "Controlled fixture bob-0; owner bob.",
+                "hash": "576896b9ecd3db313b447c948bd9798f",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "bob"
+              }
+            ]
+          },
+          "elapsed_ms": 0.575
+        },
+        "sqlite_history_after": {
+          "status": "returned",
+          "value": [],
+          "elapsed_ms": 0.067
+        }
+      },
+      "constructor": {
+        "status": "returned",
+        "memory_class": "mem0.memory.main.Memory",
+        "adapter_class": "mem0.vector_stores.chroma.ChromaDB",
+        "history_class": "mem0.memory.storage.SQLiteManager",
+        "embedder_factory_calls": 1,
+        "llm_factory_calls": 1,
+        "history_file_created": true,
+        "chroma_is_persistent": false
+      },
+      "fixture_valid": true,
+      "checks": {
+        "real_sqlite_created": true,
+        "embedded_ephemeral_chroma": true,
+        "get_all_before_exact_alice": true,
+        "public_known_id_reads_before_exact": true,
+        "delete_all_returned_success": false,
+        "direct_state_after_exact_bob_only": false,
+        "public_known_id_reads_after_exact": false,
+        "get_all_after_empty_alice": false,
+        "get_all_after_exact_bob": true,
+        "real_delete_history_exact": false,
+        "no_model_calls": true
+      },
+      "outcome": "exception_with_vector_state_unchanged",
+      "all_checks_passed": false,
+      "model_method_calls": [],
+      "close": {
+        "status": "returned",
+        "value": null,
+        "elapsed_ms": 0.026
+      },
+      "finished_at": "2026-10-18T12:59:06.548350+00:00"
+    },
+    {
+      "adapter": "native-chroma",
+      "api": "async",
+      "scenario": "empty_store",
+      "fixture_counts": {
+        "alice": 0,
+        "bob": 0
+      },
+      "collection_name": "pr7647-native-chroma-async-ff124239916d",
+      "history_path": "[FIXTURE_ROOT]s2/native-chroma-async-empty_store/history.sqlite3",
+      "started_at": "2026-10-18T12:59:06.548603+00:00",
+      "operations": {
+        "direct_chroma_before": {
+          "status": "returned",
+          "value": {
+            "collection_count": 0,
+            "records": {},
+            "present_ids": [],
+            "absent_known_ids": [],
+            "alice_present": [],
+            "bob_present": []
+          },
+          "elapsed_ms": 1.622
+        },
+        "adapter_list_before": {
+          "status": "returned",
+          "value": [],
+          "elapsed_ms": 0.439
+        },
+        "get_all_before": {
+          "status": "returned",
+          "value": {
+            "results": []
+          },
+          "elapsed_ms": 0.784
+        },
+        "get_known_ids_before": {},
+        "delete_all": {
+          "status": "returned",
+          "value": {
+            "message": "Memories deleted successfully!"
+          },
+          "elapsed_ms": 0.512
+        },
+        "direct_chroma_after": {
+          "status": "returned",
+          "value": {
+            "collection_count": 0,
+            "records": {},
+            "present_ids": [],
+            "absent_known_ids": [],
+            "alice_present": [],
+            "bob_present": []
+          },
+          "elapsed_ms": 0.759
+        },
+        "get_known_ids_after": {},
+        "get_all_after": {
+          "status": "returned",
+          "value": {
+            "results": []
+          },
+          "elapsed_ms": 0.498
+        },
+        "get_all_bob_after": {
+          "status": "returned",
+          "value": {
+            "results": []
+          },
+          "elapsed_ms": 0.462
+        },
+        "sqlite_history_after": {
+          "status": "returned",
+          "value": [],
+          "elapsed_ms": 0.062
+        }
+      },
+      "constructor": {
+        "status": "returned",
+        "memory_class": "mem0.memory.main.AsyncMemory",
+        "adapter_class": "mem0.vector_stores.chroma.ChromaDB",
+        "history_class": "mem0.memory.storage.SQLiteManager",
+        "embedder_factory_calls": 1,
+        "llm_factory_calls": 1,
+        "history_file_created": true,
+        "chroma_is_persistent": false
+      },
+      "fixture_valid": true,
+      "checks": {
+        "real_sqlite_created": true,
+        "embedded_ephemeral_chroma": true,
+        "get_all_before_exact_alice": true,
+        "public_known_id_reads_before_exact": true,
+        "delete_all_returned_success": true,
+        "direct_state_after_exact_bob_only": true,
+        "public_known_id_reads_after_exact": true,
+        "get_all_after_empty_alice": true,
+        "get_all_after_exact_bob": true,
+        "real_delete_history_exact": true,
+        "no_model_calls": true
+      },
+      "outcome": "success_matches_stored_state",
+      "all_checks_passed": true,
+      "model_method_calls": [],
+      "close": {
+        "status": "returned",
+        "value": null,
+        "elapsed_ms": 0.025
+      },
+      "finished_at": "2026-10-18T12:59:06.596821+00:00"
+    },
+    {
+      "adapter": "native-chroma",
+      "api": "async",
+      "scenario": "no_alice",
+      "fixture_counts": {
+        "alice": 0,
+        "bob": 1
+      },
+      "collection_name": "pr7647-native-chroma-async-7f46de3ab986",
+      "history_path": "[FIXTURE_ROOT]s2/native-chroma-async-no_alice/history.sqlite3",
+      "started_at": "2026-10-18T12:59:06.597055+00:00",
+      "operations": {
+        "direct_chroma_before": {
+          "status": "returned",
+          "value": {
+            "collection_count": 1,
+            "records": {
+              "bob-0": {
+                "document": "Controlled fixture bob-0; owner bob.",
+                "metadata": {
+                  "user_id": "bob",
+                  "fixture": "mem0-pr7647",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "hash": "576896b9ecd3db313b447c948bd9798f",
+                  "data": "Controlled fixture bob-0; owner bob."
+                }
+              }
+            },
+            "present_ids": [
+              "bob-0"
+            ],
+            "absent_known_ids": [],
+            "alice_present": [],
+            "bob_present": [
+              "bob-0"
+            ]
+          },
+          "elapsed_ms": 2.422
+        },
+        "adapter_list_before": {
+          "status": "returned",
+          "value": [],
+          "elapsed_ms": 0.434
+        },
+        "get_all_before": {
+          "status": "returned",
+          "value": {
+            "results": []
+          },
+          "elapsed_ms": 0.621
+        },
+        "get_known_ids_before": {
+          "bob-0": {
+            "status": "returned",
+            "value": {
+              "id": "bob-0",
+              "memory": "Controlled fixture bob-0; owner bob.",
+              "hash": "576896b9ecd3db313b447c948bd9798f",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "bob"
+            },
+            "elapsed_ms": 0.673
+          }
+        },
+        "delete_all": {
+          "status": "returned",
+          "value": {
+            "message": "Memories deleted successfully!"
+          },
+          "elapsed_ms": 0.508
+        },
+        "direct_chroma_after": {
+          "status": "returned",
+          "value": {
+            "collection_count": 1,
+            "records": {
+              "bob-0": {
+                "document": "Controlled fixture bob-0; owner bob.",
+                "metadata": {
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "hash": "576896b9ecd3db313b447c948bd9798f",
+                  "user_id": "bob",
+                  "data": "Controlled fixture bob-0; owner bob.",
+                  "fixture": "mem0-pr7647"
+                }
+              }
+            },
+            "present_ids": [
+              "bob-0"
+            ],
+            "absent_known_ids": [],
+            "alice_present": [],
+            "bob_present": [
+              "bob-0"
+            ]
+          },
+          "elapsed_ms": 0.858
+        },
+        "get_known_ids_after": {
+          "bob-0": {
+            "status": "returned",
+            "value": {
+              "id": "bob-0",
+              "memory": "Controlled fixture bob-0; owner bob.",
+              "hash": "576896b9ecd3db313b447c948bd9798f",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "bob"
+            },
+            "elapsed_ms": 0.679
+          }
+        },
+        "get_all_after": {
+          "status": "returned",
+          "value": {
+            "results": []
+          },
+          "elapsed_ms": 0.519
+        },
+        "get_all_bob_after": {
+          "status": "returned",
+          "value": {
+            "results": [
+              {
+                "id": "bob-0",
+                "memory": "Controlled fixture bob-0; owner bob.",
+                "hash": "576896b9ecd3db313b447c948bd9798f",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "bob"
+              }
+            ]
+          },
+          "elapsed_ms": 0.868
+        },
+        "sqlite_history_after": {
+          "status": "returned",
+          "value": [],
+          "elapsed_ms": 0.076
+        }
+      },
+      "constructor": {
+        "status": "returned",
+        "memory_class": "mem0.memory.main.AsyncMemory",
+        "adapter_class": "mem0.vector_stores.chroma.ChromaDB",
+        "history_class": "mem0.memory.storage.SQLiteManager",
+        "embedder_factory_calls": 1,
+        "llm_factory_calls": 1,
+        "history_file_created": true,
+        "chroma_is_persistent": false
+      },
+      "fixture_valid": true,
+      "checks": {
+        "real_sqlite_created": true,
+        "embedded_ephemeral_chroma": true,
+        "get_all_before_exact_alice": true,
+        "public_known_id_reads_before_exact": true,
+        "delete_all_returned_success": true,
+        "direct_state_after_exact_bob_only": true,
+        "public_known_id_reads_after_exact": true,
+        "get_all_after_empty_alice": true,
+        "get_all_after_exact_bob": true,
+        "real_delete_history_exact": true,
+        "no_model_calls": true
+      },
+      "outcome": "success_matches_stored_state",
+      "all_checks_passed": true,
+      "model_method_calls": [],
+      "close": {
+        "status": "returned",
+        "value": null,
+        "elapsed_ms": 0.026
+      },
+      "finished_at": "2026-10-18T12:59:06.659269+00:00"
+    },
+    {
+      "adapter": "native-chroma",
+      "api": "async",
+      "scenario": "single_alice",
+      "fixture_counts": {
+        "alice": 1,
+        "bob": 1
+      },
+      "collection_name": "pr7647-native-chroma-async-c813539660ba",
+      "history_path": "[FIXTURE_ROOT]s2/native-chroma-async-single_alice/history.sqlite3",
+      "started_at": "2026-10-18T12:59:06.659560+00:00",
+      "operations": {
+        "direct_chroma_before": {
+          "status": "returned",
+          "value": {
+            "collection_count": 2,
+            "records": {
+              "alice-0": {
+                "document": "Controlled fixture alice-0; owner alice.",
+                "metadata": {
+                  "fixture": "mem0-pr7647",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "user_id": "alice",
+                  "data": "Controlled fixture alice-0; owner alice."
+                }
+              },
+              "bob-0": {
+                "document": "Controlled fixture bob-0; owner bob.",
+                "metadata": {
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "hash": "576896b9ecd3db313b447c948bd9798f",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "fixture": "mem0-pr7647",
+                  "user_id": "bob",
+                  "data": "Controlled fixture bob-0; owner bob."
+                }
+              }
+            },
+            "present_ids": [
+              "alice-0",
+              "bob-0"
+            ],
+            "absent_known_ids": [],
+            "alice_present": [
+              "alice-0"
+            ],
+            "bob_present": [
+              "bob-0"
+            ]
+          },
+          "elapsed_ms": 2.343
+        },
+        "adapter_list_before": {
+          "status": "returned",
+          "value": [
+            {
+              "id": "alice-0",
+              "score": null,
+              "payload": {
+                "fixture": "mem0-pr7647",
+                "data": "Controlled fixture alice-0; owner alice.",
+                "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+                "user_id": "alice",
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00"
+              }
+            }
+          ],
+          "elapsed_ms": 0.604
+        },
+        "get_all_before": {
+          "status": "returned",
+          "value": {
+            "results": [
+              {
+                "id": "alice-0",
+                "memory": "Controlled fixture alice-0; owner alice.",
+                "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "alice"
+              }
+            ]
+          },
+          "elapsed_ms": 0.768
+        },
+        "get_known_ids_before": {
+          "alice-0": {
+            "status": "returned",
+            "value": {
+              "id": "alice-0",
+              "memory": "Controlled fixture alice-0; owner alice.",
+              "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "alice"
+            },
+            "elapsed_ms": 0.726
+          },
+          "bob-0": {
+            "status": "returned",
+            "value": {
+              "id": "bob-0",
+              "memory": "Controlled fixture bob-0; owner bob.",
+              "hash": "576896b9ecd3db313b447c948bd9798f",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "bob"
+            },
+            "elapsed_ms": 0.617
+          }
+        },
+        "delete_all": {
+          "status": "raised",
+          "exception": {
+            "type": "builtins.AttributeError",
+            "message": "'tuple' object has no attribute 'id'",
+            "traceback": "Traceback (most recent call last):\n  File \"[ARTIFACT_DIR]/check_delete_all.py\", line 79, in observe\n    result = await result\n             ^^^^^^^^^^^^\n  File \"[EXPERIMENT_ROOT]/pr7647/mem0/memory/main.py\", line 3623, in delete_all\n    batch_ids = tuple(sorted(str(memory.id) for memory in batch))\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"[EXPERIMENT_ROOT]/pr7647/mem0/memory/main.py\", line 3623, in <genexpr>\n    batch_ids = tuple(sorted(str(memory.id) for memory in batch))\n                                 ^^^^^^^^^\nAttributeError: 'tuple' object has no attribute 'id'\n"
+          },
+          "elapsed_ms": 2.093
+        },
+        "direct_chroma_after": {
+          "status": "returned",
+          "value": {
+            "collection_count": 2,
+            "records": {
+              "alice-0": {
+                "document": "Controlled fixture alice-0; owner alice.",
+                "metadata": {
+                  "user_id": "alice",
+                  "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+                  "fixture": "mem0-pr7647",
+                  "data": "Controlled fixture alice-0; owner alice.",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "updated_at": "2026-10-18T00:00:00+00:00"
+                }
+              },
+              "bob-0": {
+                "document": "Controlled fixture bob-0; owner bob.",
+                "metadata": {
+                  "user_id": "bob",
+                  "data": "Controlled fixture bob-0; owner bob.",
+                  "hash": "576896b9ecd3db313b447c948bd9798f",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "fixture": "mem0-pr7647"
+                }
+              }
+            },
+            "present_ids": [
+              "alice-0",
+              "bob-0"
+            ],
+            "absent_known_ids": [],
+            "alice_present": [
+              "alice-0"
+            ],
+            "bob_present": [
+              "bob-0"
+            ]
+          },
+          "elapsed_ms": 0.979
+        },
+        "get_known_ids_after": {
+          "alice-0": {
+            "status": "returned",
+            "value": {
+              "id": "alice-0",
+              "memory": "Controlled fixture alice-0; owner alice.",
+              "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "alice"
+            },
+            "elapsed_ms": 0.658
+          },
+          "bob-0": {
+            "status": "returned",
+            "value": {
+              "id": "bob-0",
+              "memory": "Controlled fixture bob-0; owner bob.",
+              "hash": "576896b9ecd3db313b447c948bd9798f",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "bob"
+            },
+            "elapsed_ms": 0.691
+          }
+        },
+        "get_all_after": {
+          "status": "returned",
+          "value": {
+            "results": [
+              {
+                "id": "alice-0",
+                "memory": "Controlled fixture alice-0; owner alice.",
+                "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "alice"
+              }
+            ]
+          },
+          "elapsed_ms": 0.718
+        },
+        "get_all_bob_after": {
+          "status": "returned",
+          "value": {
+            "results": [
+              {
+                "id": "bob-0",
+                "memory": "Controlled fixture bob-0; owner bob.",
+                "hash": "576896b9ecd3db313b447c948bd9798f",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "bob"
+              }
+            ]
+          },
+          "elapsed_ms": 0.737
+        },
+        "sqlite_history_after": {
+          "status": "returned",
+          "value": [],
+          "elapsed_ms": 0.069
+        }
+      },
+      "constructor": {
+        "status": "returned",
+        "memory_class": "mem0.memory.main.AsyncMemory",
+        "adapter_class": "mem0.vector_stores.chroma.ChromaDB",
+        "history_class": "mem0.memory.storage.SQLiteManager",
+        "embedder_factory_calls": 1,
+        "llm_factory_calls": 1,
+        "history_file_created": true,
+        "chroma_is_persistent": false
+      },
+      "fixture_valid": true,
+      "checks": {
+        "real_sqlite_created": true,
+        "embedded_ephemeral_chroma": true,
+        "get_all_before_exact_alice": true,
+        "public_known_id_reads_before_exact": true,
+        "delete_all_returned_success": false,
+        "direct_state_after_exact_bob_only": false,
+        "public_known_id_reads_after_exact": false,
+        "get_all_after_empty_alice": false,
+        "get_all_after_exact_bob": true,
+        "real_delete_history_exact": false,
+        "no_model_calls": true
+      },
+      "outcome": "exception_with_vector_state_unchanged",
+      "all_checks_passed": false,
+      "model_method_calls": [],
+      "close": {
+        "status": "returned",
+        "value": null,
+        "elapsed_ms": 0.023
+      },
+      "finished_at": "2026-10-18T12:59:06.716919+00:00"
+    },
+    {
+      "adapter": "native-chroma",
+      "api": "async",
+      "scenario": "populated",
+      "fixture_counts": {
+        "alice": 3,
+        "bob": 1
+      },
+      "collection_name": "pr7647-native-chroma-async-a05b270c6628",
+      "history_path": "[FIXTURE_ROOT]s2/native-chroma-async-populated/history.sqlite3",
+      "started_at": "2026-10-18T12:59:06.717206+00:00",
+      "operations": {
+        "direct_chroma_before": {
+          "status": "returned",
+          "value": {
+            "collection_count": 4,
+            "records": {
+              "alice-0": {
+                "document": "Controlled fixture alice-0; owner alice.",
+                "metadata": {
+                  "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "data": "Controlled fixture alice-0; owner alice.",
+                  "fixture": "mem0-pr7647",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "user_id": "alice"
+                }
+              },
+              "alice-1": {
+                "document": "Controlled fixture alice-1; owner alice.",
+                "metadata": {
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "data": "Controlled fixture alice-1; owner alice.",
+                  "fixture": "mem0-pr7647",
+                  "hash": "a9c6ac9f3564236923bd98f77d154963",
+                  "user_id": "alice"
+                }
+              },
+              "alice-2": {
+                "document": "Controlled fixture alice-2; owner alice.",
+                "metadata": {
+                  "fixture": "mem0-pr7647",
+                  "hash": "c0fbca9364091c71131ad5fa181ef8f1",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "user_id": "alice",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "data": "Controlled fixture alice-2; owner alice."
+                }
+              },
+              "bob-0": {
+                "document": "Controlled fixture bob-0; owner bob.",
+                "metadata": {
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "user_id": "bob",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "data": "Controlled fixture bob-0; owner bob.",
+                  "fixture": "mem0-pr7647",
+                  "hash": "576896b9ecd3db313b447c948bd9798f"
+                }
+              }
+            },
+            "present_ids": [
+              "alice-0",
+              "alice-1",
+              "alice-2",
+              "bob-0"
+            ],
+            "absent_known_ids": [],
+            "alice_present": [
+              "alice-0",
+              "alice-1",
+              "alice-2"
+            ],
+            "bob_present": [
+              "bob-0"
+            ]
+          },
+          "elapsed_ms": 3.349
+        },
+        "adapter_list_before": {
+          "status": "returned",
+          "value": [
+            {
+              "id": "alice-0",
+              "score": null,
+              "payload": {
+                "fixture": "mem0-pr7647",
+                "data": "Controlled fixture alice-0; owner alice.",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+                "user_id": "alice",
+                "created_at": "2026-10-18T00:00:00+00:00"
+              }
+            },
+            {
+              "id": "alice-1",
+              "score": null,
+              "payload": {
+                "data": "Controlled fixture alice-1; owner alice.",
+                "fixture": "mem0-pr7647",
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "alice",
+                "hash": "a9c6ac9f3564236923bd98f77d154963"
+              }
+            },
+            {
+              "id": "alice-2",
+              "score": null,
+              "payload": {
+                "fixture": "mem0-pr7647",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "hash": "c0fbca9364091c71131ad5fa181ef8f1",
+                "user_id": "alice",
+                "data": "Controlled fixture alice-2; owner alice."
+              }
+            }
+          ],
+          "elapsed_ms": 0.832
+        },
+        "get_all_before": {
+          "status": "returned",
+          "value": {
+            "results": [
+              {
+                "id": "alice-0",
+                "memory": "Controlled fixture alice-0; owner alice.",
+                "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "alice"
+              },
+              {
+                "id": "alice-1",
+                "memory": "Controlled fixture alice-1; owner alice.",
+                "hash": "a9c6ac9f3564236923bd98f77d154963",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "alice"
+              },
+              {
+                "id": "alice-2",
+                "memory": "Controlled fixture alice-2; owner alice.",
+                "hash": "c0fbca9364091c71131ad5fa181ef8f1",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "alice"
+              }
+            ]
+          },
+          "elapsed_ms": 2.077
+        },
+        "get_known_ids_before": {
+          "alice-0": {
+            "status": "returned",
+            "value": {
+              "id": "alice-0",
+              "memory": "Controlled fixture alice-0; owner alice.",
+              "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "alice"
+            },
+            "elapsed_ms": 0.727
+          },
+          "alice-1": {
+            "status": "returned",
+            "value": {
+              "id": "alice-1",
+              "memory": "Controlled fixture alice-1; owner alice.",
+              "hash": "a9c6ac9f3564236923bd98f77d154963",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "alice"
+            },
+            "elapsed_ms": 0.615
+          },
+          "alice-2": {
+            "status": "returned",
+            "value": {
+              "id": "alice-2",
+              "memory": "Controlled fixture alice-2; owner alice.",
+              "hash": "c0fbca9364091c71131ad5fa181ef8f1",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "alice"
+            },
+            "elapsed_ms": 0.622
+          },
+          "bob-0": {
+            "status": "returned",
+            "value": {
+              "id": "bob-0",
+              "memory": "Controlled fixture bob-0; owner bob.",
+              "hash": "576896b9ecd3db313b447c948bd9798f",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "bob"
+            },
+            "elapsed_ms": 0.893
+          }
+        },
+        "delete_all": {
+          "status": "raised",
+          "exception": {
+            "type": "builtins.AttributeError",
+            "message": "'tuple' object has no attribute 'id'",
+            "traceback": "Traceback (most recent call last):\n  File \"[ARTIFACT_DIR]/check_delete_all.py\", line 79, in observe\n    result = await result\n             ^^^^^^^^^^^^\n  File \"[EXPERIMENT_ROOT]/pr7647/mem0/memory/main.py\", line 3623, in delete_all\n    batch_ids = tuple(sorted(str(memory.id) for memory in batch))\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"[EXPERIMENT_ROOT]/pr7647/mem0/memory/main.py\", line 3623, in <genexpr>\n    batch_ids = tuple(sorted(str(memory.id) for memory in batch))\n                                 ^^^^^^^^^\nAttributeError: 'tuple' object has no attribute 'id'\n"
+          },
+          "elapsed_ms": 2.247
+        },
+        "direct_chroma_after": {
+          "status": "returned",
+          "value": {
+            "collection_count": 4,
+            "records": {
+              "alice-0": {
+                "document": "Controlled fixture alice-0; owner alice.",
+                "metadata": {
+                  "fixture": "mem0-pr7647",
+                  "user_id": "alice",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "data": "Controlled fixture alice-0; owner alice.",
+                  "hash": "038845b1e74acc7fb555a04a2dc0cd20"
+                }
+              },
+              "alice-1": {
+                "document": "Controlled fixture alice-1; owner alice.",
+                "metadata": {
+                  "data": "Controlled fixture alice-1; owner alice.",
+                  "user_id": "alice",
+                  "fixture": "mem0-pr7647",
+                  "hash": "a9c6ac9f3564236923bd98f77d154963",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "updated_at": "2026-10-18T00:00:00+00:00"
+                }
+              },
+              "alice-2": {
+                "document": "Controlled fixture alice-2; owner alice.",
+                "metadata": {
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "data": "Controlled fixture alice-2; owner alice.",
+                  "hash": "c0fbca9364091c71131ad5fa181ef8f1",
+                  "fixture": "mem0-pr7647",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "user_id": "alice"
+                }
+              },
+              "bob-0": {
+                "document": "Controlled fixture bob-0; owner bob.",
+                "metadata": {
+                  "user_id": "bob",
+                  "data": "Controlled fixture bob-0; owner bob.",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "fixture": "mem0-pr7647",
+                  "hash": "576896b9ecd3db313b447c948bd9798f",
+                  "updated_at": "2026-10-18T00:00:00+00:00"
+                }
+              }
+            },
+            "present_ids": [
+              "alice-0",
+              "alice-1",
+              "alice-2",
+              "bob-0"
+            ],
+            "absent_known_ids": [],
+            "alice_present": [
+              "alice-0",
+              "alice-1",
+              "alice-2"
+            ],
+            "bob_present": [
+              "bob-0"
+            ]
+          },
+          "elapsed_ms": 1.116
+        },
+        "get_known_ids_after": {
+          "alice-0": {
+            "status": "returned",
+            "value": {
+              "id": "alice-0",
+              "memory": "Controlled fixture alice-0; owner alice.",
+              "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "alice"
+            },
+            "elapsed_ms": 0.655
+          },
+          "alice-1": {
+            "status": "returned",
+            "value": {
+              "id": "alice-1",
+              "memory": "Controlled fixture alice-1; owner alice.",
+              "hash": "a9c6ac9f3564236923bd98f77d154963",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "alice"
+            },
+            "elapsed_ms": 0.603
+          },
+          "alice-2": {
+            "status": "returned",
+            "value": {
+              "id": "alice-2",
+              "memory": "Controlled fixture alice-2; owner alice.",
+              "hash": "c0fbca9364091c71131ad5fa181ef8f1",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "alice"
+            },
+            "elapsed_ms": 0.734
+          },
+          "bob-0": {
+            "status": "returned",
+            "value": {
+              "id": "bob-0",
+              "memory": "Controlled fixture bob-0; owner bob.",
+              "hash": "576896b9ecd3db313b447c948bd9798f",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "bob"
+            },
+            "elapsed_ms": 0.654
+          }
+        },
+        "get_all_after": {
+          "status": "returned",
+          "value": {
+            "results": [
+              {
+                "id": "alice-0",
+                "memory": "Controlled fixture alice-0; owner alice.",
+                "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "alice"
+              },
+              {
+                "id": "alice-1",
+                "memory": "Controlled fixture alice-1; owner alice.",
+                "hash": "a9c6ac9f3564236923bd98f77d154963",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "alice"
+              },
+              {
+                "id": "alice-2",
+                "memory": "Controlled fixture alice-2; owner alice.",
+                "hash": "c0fbca9364091c71131ad5fa181ef8f1",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "alice"
+              }
+            ]
+          },
+          "elapsed_ms": 0.728
+        },
+        "get_all_bob_after": {
+          "status": "returned",
+          "value": {
+            "results": [
+              {
+                "id": "bob-0",
+                "memory": "Controlled fixture bob-0; owner bob.",
+                "hash": "576896b9ecd3db313b447c948bd9798f",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "bob"
+              }
+            ]
+          },
+          "elapsed_ms": 0.719
+        },
+        "sqlite_history_after": {
+          "status": "returned",
+          "value": [],
+          "elapsed_ms": 0.065
+        }
+      },
+      "constructor": {
+        "status": "returned",
+        "memory_class": "mem0.memory.main.AsyncMemory",
+        "adapter_class": "mem0.vector_stores.chroma.ChromaDB",
+        "history_class": "mem0.memory.storage.SQLiteManager",
+        "embedder_factory_calls": 1,
+        "llm_factory_calls": 1,
+        "history_file_created": true,
+        "chroma_is_persistent": false
+      },
+      "fixture_valid": true,
+      "checks": {
+        "real_sqlite_created": true,
+        "embedded_ephemeral_chroma": true,
+        "get_all_before_exact_alice": true,
+        "public_known_id_reads_before_exact": true,
+        "delete_all_returned_success": false,
+        "direct_state_after_exact_bob_only": false,
+        "public_known_id_reads_after_exact": false,
+        "get_all_after_empty_alice": false,
+        "get_all_after_exact_bob": true,
+        "real_delete_history_exact": false,
+        "no_model_calls": true
+      },
+      "outcome": "exception_with_vector_state_unchanged",
+      "all_checks_passed": false,
+      "model_method_calls": [],
+      "close": {
+        "status": "returned",
+        "value": null,
+        "elapsed_ms": 0.024
+      },
+      "finished_at": "2026-10-18T12:59:06.783672+00:00"
+    },
+    {
+      "adapter": "langchain-chroma",
+      "api": "sync",
+      "scenario": "empty_store",
+      "fixture_counts": {
+        "alice": 0,
+        "bob": 0
+      },
+      "collection_name": "pr7647-langchain-chroma-sync-aed0df9d841b",
+      "history_path": "[FIXTURE_ROOT]s2/langchain-chroma-sync-empty_store/history.sqlite3",
+      "started_at": "2026-10-18T12:59:06.783920+00:00",
+      "operations": {
+        "direct_chroma_before": {
+          "status": "returned",
+          "value": {
+            "collection_count": 0,
+            "records": {},
+            "present_ids": [],
+            "absent_known_ids": [],
+            "alice_present": [],
+            "bob_present": []
+          },
+          "elapsed_ms": 1.633
+        },
+        "adapter_list_before": {
+          "status": "returned",
+          "value": [],
+          "elapsed_ms": 0.427
+        },
+        "get_all_before": {
+          "status": "returned",
+          "value": {
+            "results": []
+          },
+          "elapsed_ms": 0.426
+        },
+        "get_known_ids_before": {},
+        "delete_all": {
+          "status": "raised",
+          "exception": {
+            "type": "builtins.IndexError",
+            "message": "list index out of range",
+            "traceback": "Traceback (most recent call last):\n  File \"[ARTIFACT_DIR]/check_delete_all.py\", line 77, in observe\n    result = function()\n             ^^^^^^^^^^\n  File \"[ARTIFACT_DIR]/check_delete_all.py\", line 368, in <lambda>\n    ops[\"delete_all\"] = await observe(lambda: memory.delete_all(user_id=\"alice\"))\n                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"[EXPERIMENT_ROOT]/pr7647/mem0/memory/main.py\", line 1937, in delete_all\n    memories = self.vector_store.list(\n               ^^^^^^^^^^^^^^^^^^^^^^^\nIndexError: list index out of range\n"
+          },
+          "elapsed_ms": 2.303
+        },
+        "direct_chroma_after": {
+          "status": "returned",
+          "value": {
+            "collection_count": 0,
+            "records": {},
+            "present_ids": [],
+            "absent_known_ids": [],
+            "alice_present": [],
+            "bob_present": []
+          },
+          "elapsed_ms": 0.845
+        },
+        "get_known_ids_after": {},
+        "get_all_after": {
+          "status": "returned",
+          "value": {
+            "results": []
+          },
+          "elapsed_ms": 0.674
+        },
+        "get_all_bob_after": {
+          "status": "returned",
+          "value": {
+            "results": []
+          },
+          "elapsed_ms": 0.512
+        },
+        "sqlite_history_after": {
+          "status": "returned",
+          "value": [],
+          "elapsed_ms": 0.08
+        }
+      },
+      "constructor": {
+        "status": "returned",
+        "memory_class": "mem0.memory.main.Memory",
+        "adapter_class": "mem0.vector_stores.langchain.Langchain",
+        "history_class": "mem0.memory.storage.SQLiteManager",
+        "embedder_factory_calls": 1,
+        "llm_factory_calls": 1,
+        "history_file_created": true,
+        "chroma_is_persistent": false
+      },
+      "fixture_valid": true,
+      "checks": {
+        "real_sqlite_created": true,
+        "embedded_ephemeral_chroma": true,
+        "get_all_before_exact_alice": true,
+        "public_known_id_reads_before_exact": true,
+        "delete_all_returned_success": false,
+        "direct_state_after_exact_bob_only": true,
+        "public_known_id_reads_after_exact": true,
+        "get_all_after_empty_alice": true,
+        "get_all_after_exact_bob": true,
+        "real_delete_history_exact": true,
+        "no_model_calls": true
+      },
+      "outcome": "exception_with_vector_state_unchanged",
+      "all_checks_passed": false,
+      "model_method_calls": [],
+      "close": {
+        "status": "returned",
+        "value": null,
+        "elapsed_ms": 0.028
+      },
+      "finished_at": "2026-10-18T12:59:06.834736+00:00"
+    },
+    {
+      "adapter": "langchain-chroma",
+      "api": "sync",
+      "scenario": "no_alice",
+      "fixture_counts": {
+        "alice": 0,
+        "bob": 1
+      },
+      "collection_name": "pr7647-langchain-chroma-sync-b8664d1b74b2",
+      "history_path": "[FIXTURE_ROOT]s2/langchain-chroma-sync-no_alice/history.sqlite3",
+      "started_at": "2026-10-18T12:59:06.835041+00:00",
+      "operations": {
+        "direct_chroma_before": {
+          "status": "returned",
+          "value": {
+            "collection_count": 1,
+            "records": {
+              "bob-0": {
+                "document": "Controlled fixture bob-0; owner bob.",
+                "metadata": {
+                  "fixture": "mem0-pr7647",
+                  "data": "Controlled fixture bob-0; owner bob.",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "user_id": "bob",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "hash": "576896b9ecd3db313b447c948bd9798f"
+                }
+              }
+            },
+            "present_ids": [
+              "bob-0"
+            ],
+            "absent_known_ids": [],
+            "alice_present": [],
+            "bob_present": [
+              "bob-0"
+            ]
+          },
+          "elapsed_ms": 2.588
+        },
+        "adapter_list_before": {
+          "status": "returned",
+          "value": [],
+          "elapsed_ms": 0.41
+        },
+        "get_all_before": {
+          "status": "returned",
+          "value": {
+            "results": []
+          },
+          "elapsed_ms": 1.044
+        },
+        "get_known_ids_before": {
+          "bob-0": {
+            "status": "returned",
+            "value": {
+              "id": "bob-0",
+              "memory": "Controlled fixture bob-0; owner bob.",
+              "hash": "576896b9ecd3db313b447c948bd9798f",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "bob"
+            },
+            "elapsed_ms": 0.779
+          }
+        },
+        "delete_all": {
+          "status": "raised",
+          "exception": {
+            "type": "builtins.IndexError",
+            "message": "list index out of range",
+            "traceback": "Traceback (most recent call last):\n  File \"[ARTIFACT_DIR]/check_delete_all.py\", line 77, in observe\n    result = function()\n             ^^^^^^^^^^\n  File \"[ARTIFACT_DIR]/check_delete_all.py\", line 368, in <lambda>\n    ops[\"delete_all\"] = await observe(lambda: memory.delete_all(user_id=\"alice\"))\n                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"[EXPERIMENT_ROOT]/pr7647/mem0/memory/main.py\", line 1937, in delete_all\n    memories = self.vector_store.list(\n               ^^^^^^^^^^^^^^^^^^^^^^^\nIndexError: list index out of range\n"
+          },
+          "elapsed_ms": 1.807
+        },
+        "direct_chroma_after": {
+          "status": "returned",
+          "value": {
+            "collection_count": 1,
+            "records": {
+              "bob-0": {
+                "document": "Controlled fixture bob-0; owner bob.",
+                "metadata": {
+                  "data": "Controlled fixture bob-0; owner bob.",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "fixture": "mem0-pr7647",
+                  "user_id": "bob",
+                  "hash": "576896b9ecd3db313b447c948bd9798f"
+                }
+              }
+            },
+            "present_ids": [
+              "bob-0"
+            ],
+            "absent_known_ids": [],
+            "alice_present": [],
+            "bob_present": [
+              "bob-0"
+            ]
+          },
+          "elapsed_ms": 0.943
+        },
+        "get_known_ids_after": {
+          "bob-0": {
+            "status": "returned",
+            "value": {
+              "id": "bob-0",
+              "memory": "Controlled fixture bob-0; owner bob.",
+              "hash": "576896b9ecd3db313b447c948bd9798f",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "bob"
+            },
+            "elapsed_ms": 0.616
+          }
+        },
+        "get_all_after": {
+          "status": "returned",
+          "value": {
+            "results": []
+          },
+          "elapsed_ms": 0.427
+        },
+        "get_all_bob_after": {
+          "status": "returned",
+          "value": {
+            "results": [
+              {
+                "id": "bob-0",
+                "memory": "Controlled fixture bob-0; owner bob.",
+                "hash": "576896b9ecd3db313b447c948bd9798f",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "bob"
+              }
+            ]
+          },
+          "elapsed_ms": 0.585
+        },
+        "sqlite_history_after": {
+          "status": "returned",
+          "value": [],
+          "elapsed_ms": 0.072
+        }
+      },
+      "constructor": {
+        "status": "returned",
+        "memory_class": "mem0.memory.main.Memory",
+        "adapter_class": "mem0.vector_stores.langchain.Langchain",
+        "history_class": "mem0.memory.storage.SQLiteManager",
+        "embedder_factory_calls": 1,
+        "llm_factory_calls": 1,
+        "history_file_created": true,
+        "chroma_is_persistent": false
+      },
+      "fixture_valid": true,
+      "checks": {
+        "real_sqlite_created": true,
+        "embedded_ephemeral_chroma": true,
+        "get_all_before_exact_alice": true,
+        "public_known_id_reads_before_exact": true,
+        "delete_all_returned_success": false,
+        "direct_state_after_exact_bob_only": true,
+        "public_known_id_reads_after_exact": true,
+        "get_all_after_empty_alice": true,
+        "get_all_after_exact_bob": true,
+        "real_delete_history_exact": true,
+        "no_model_calls": true
+      },
+      "outcome": "exception_with_vector_state_unchanged",
+      "all_checks_passed": false,
+      "model_method_calls": [],
+      "close": {
+        "status": "returned",
+        "value": null,
+        "elapsed_ms": 0.025
+      },
+      "finished_at": "2026-10-18T12:59:06.892306+00:00"
+    },
+    {
+      "adapter": "langchain-chroma",
+      "api": "sync",
+      "scenario": "single_alice",
+      "fixture_counts": {
+        "alice": 1,
+        "bob": 1
+      },
+      "collection_name": "pr7647-langchain-chroma-sync-674fdebd9114",
+      "history_path": "[FIXTURE_ROOT]s2/langchain-chroma-sync-single_alice/history.sqlite3",
+      "started_at": "2026-10-18T12:59:06.892569+00:00",
+      "operations": {
+        "direct_chroma_before": {
+          "status": "returned",
+          "value": {
+            "collection_count": 2,
+            "records": {
+              "alice-0": {
+                "document": "Controlled fixture alice-0; owner alice.",
+                "metadata": {
+                  "data": "Controlled fixture alice-0; owner alice.",
+                  "fixture": "mem0-pr7647",
+                  "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "user_id": "alice"
+                }
+              },
+              "bob-0": {
+                "document": "Controlled fixture bob-0; owner bob.",
+                "metadata": {
+                  "data": "Controlled fixture bob-0; owner bob.",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "user_id": "bob",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "fixture": "mem0-pr7647",
+                  "hash": "576896b9ecd3db313b447c948bd9798f"
+                }
+              }
+            },
+            "present_ids": [
+              "alice-0",
+              "bob-0"
+            ],
+            "absent_known_ids": [],
+            "alice_present": [
+              "alice-0"
+            ],
+            "bob_present": [
+              "bob-0"
+            ]
+          },
+          "elapsed_ms": 2.545
+        },
+        "adapter_list_before": {
+          "status": "returned",
+          "value": [
+            {
+              "id": "alice-0",
+              "score": null,
+              "payload": {
+                "data": "Controlled fixture alice-0; owner alice.",
+                "fixture": "mem0-pr7647",
+                "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+                "user_id": "alice",
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00"
+              }
+            }
+          ],
+          "elapsed_ms": 0.67
+        },
+        "get_all_before": {
+          "status": "returned",
+          "value": {
+            "results": [
+              {
+                "id": "alice-0",
+                "memory": "Controlled fixture alice-0; owner alice.",
+                "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "alice"
+              }
+            ]
+          },
+          "elapsed_ms": 0.623
+        },
+        "get_known_ids_before": {
+          "alice-0": {
+            "status": "returned",
+            "value": {
+              "id": "alice-0",
+              "memory": "Controlled fixture alice-0; owner alice.",
+              "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "alice"
+            },
+            "elapsed_ms": 0.548
+          },
+          "bob-0": {
+            "status": "returned",
+            "value": {
+              "id": "bob-0",
+              "memory": "Controlled fixture bob-0; owner bob.",
+              "hash": "576896b9ecd3db313b447c948bd9798f",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "bob"
+            },
+            "elapsed_ms": 0.561
+          }
+        },
+        "delete_all": {
+          "status": "raised",
+          "exception": {
+            "type": "builtins.AttributeError",
+            "message": "'tuple' object has no attribute 'id'",
+            "traceback": "Traceback (most recent call last):\n  File \"[ARTIFACT_DIR]/check_delete_all.py\", line 77, in observe\n    result = function()\n             ^^^^^^^^^^\n  File \"[ARTIFACT_DIR]/check_delete_all.py\", line 368, in <lambda>\n    ops[\"delete_all\"] = await observe(lambda: memory.delete_all(user_id=\"alice\"))\n                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"[EXPERIMENT_ROOT]/pr7647/mem0/memory/main.py\", line 1942, in delete_all\n    batch_ids = tuple(sorted(str(memory.id) for memory in memories))\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"[EXPERIMENT_ROOT]/pr7647/mem0/memory/main.py\", line 1942, in <genexpr>\n    batch_ids = tuple(sorted(str(memory.id) for memory in memories))\n                                 ^^^^^^^^^\nAttributeError: 'tuple' object has no attribute 'id'\n"
+          },
+          "elapsed_ms": 1.995
+        },
+        "direct_chroma_after": {
+          "status": "returned",
+          "value": {
+            "collection_count": 2,
+            "records": {
+              "alice-0": {
+                "document": "Controlled fixture alice-0; owner alice.",
+                "metadata": {
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "user_id": "alice",
+                  "fixture": "mem0-pr7647",
+                  "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "data": "Controlled fixture alice-0; owner alice."
+                }
+              },
+              "bob-0": {
+                "document": "Controlled fixture bob-0; owner bob.",
+                "metadata": {
+                  "hash": "576896b9ecd3db313b447c948bd9798f",
+                  "data": "Controlled fixture bob-0; owner bob.",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "user_id": "bob",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "fixture": "mem0-pr7647"
+                }
+              }
+            },
+            "present_ids": [
+              "alice-0",
+              "bob-0"
+            ],
+            "absent_known_ids": [],
+            "alice_present": [
+              "alice-0"
+            ],
+            "bob_present": [
+              "bob-0"
+            ]
+          },
+          "elapsed_ms": 1.15
+        },
+        "get_known_ids_after": {
+          "alice-0": {
+            "status": "returned",
+            "value": {
+              "id": "alice-0",
+              "memory": "Controlled fixture alice-0; owner alice.",
+              "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "alice"
+            },
+            "elapsed_ms": 0.589
+          },
+          "bob-0": {
+            "status": "returned",
+            "value": {
+              "id": "bob-0",
+              "memory": "Controlled fixture bob-0; owner bob.",
+              "hash": "576896b9ecd3db313b447c948bd9798f",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "bob"
+            },
+            "elapsed_ms": 0.571
+          }
+        },
+        "get_all_after": {
+          "status": "returned",
+          "value": {
+            "results": [
+              {
+                "id": "alice-0",
+                "memory": "Controlled fixture alice-0; owner alice.",
+                "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "alice"
+              }
+            ]
+          },
+          "elapsed_ms": 0.848
+        },
+        "get_all_bob_after": {
+          "status": "returned",
+          "value": {
+            "results": [
+              {
+                "id": "bob-0",
+                "memory": "Controlled fixture bob-0; owner bob.",
+                "hash": "576896b9ecd3db313b447c948bd9798f",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "bob"
+              }
+            ]
+          },
+          "elapsed_ms": 0.831
+        },
+        "sqlite_history_after": {
+          "status": "returned",
+          "value": [],
+          "elapsed_ms": 0.071
+        }
+      },
+      "constructor": {
+        "status": "returned",
+        "memory_class": "mem0.memory.main.Memory",
+        "adapter_class": "mem0.vector_stores.langchain.Langchain",
+        "history_class": "mem0.memory.storage.SQLiteManager",
+        "embedder_factory_calls": 1,
+        "llm_factory_calls": 1,
+        "history_file_created": true,
+        "chroma_is_persistent": false
+      },
+      "fixture_valid": true,
+      "checks": {
+        "real_sqlite_created": true,
+        "embedded_ephemeral_chroma": true,
+        "get_all_before_exact_alice": true,
+        "public_known_id_reads_before_exact": true,
+        "delete_all_returned_success": false,
+        "direct_state_after_exact_bob_only": false,
+        "public_known_id_reads_after_exact": false,
+        "get_all_after_empty_alice": false,
+        "get_all_after_exact_bob": true,
+        "real_delete_history_exact": false,
+        "no_model_calls": true
+      },
+      "outcome": "exception_with_vector_state_unchanged",
+      "all_checks_passed": false,
+      "model_method_calls": [],
+      "close": {
+        "status": "returned",
+        "value": null,
+        "elapsed_ms": 0.026
+      },
+      "finished_at": "2026-10-18T12:59:06.960052+00:00"
+    },
+    {
+      "adapter": "langchain-chroma",
+      "api": "sync",
+      "scenario": "populated",
+      "fixture_counts": {
+        "alice": 3,
+        "bob": 1
+      },
+      "collection_name": "pr7647-langchain-chroma-sync-43fd13104153",
+      "history_path": "[FIXTURE_ROOT]s2/langchain-chroma-sync-populated/history.sqlite3",
+      "started_at": "2026-10-18T12:59:06.960311+00:00",
+      "operations": {
+        "direct_chroma_before": {
+          "status": "returned",
+          "value": {
+            "collection_count": 4,
+            "records": {
+              "alice-0": {
+                "document": "Controlled fixture alice-0; owner alice.",
+                "metadata": {
+                  "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+                  "user_id": "alice",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "fixture": "mem0-pr7647",
+                  "data": "Controlled fixture alice-0; owner alice.",
+                  "updated_at": "2026-10-18T00:00:00+00:00"
+                }
+              },
+              "alice-1": {
+                "document": "Controlled fixture alice-1; owner alice.",
+                "metadata": {
+                  "data": "Controlled fixture alice-1; owner alice.",
+                  "user_id": "alice",
+                  "hash": "a9c6ac9f3564236923bd98f77d154963",
+                  "fixture": "mem0-pr7647",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "created_at": "2026-10-18T00:00:00+00:00"
+                }
+              },
+              "alice-2": {
+                "document": "Controlled fixture alice-2; owner alice.",
+                "metadata": {
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "fixture": "mem0-pr7647",
+                  "hash": "c0fbca9364091c71131ad5fa181ef8f1",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "user_id": "alice",
+                  "data": "Controlled fixture alice-2; owner alice."
+                }
+              },
+              "bob-0": {
+                "document": "Controlled fixture bob-0; owner bob.",
+                "metadata": {
+                  "fixture": "mem0-pr7647",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "data": "Controlled fixture bob-0; owner bob.",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "user_id": "bob",
+                  "hash": "576896b9ecd3db313b447c948bd9798f"
+                }
+              }
+            },
+            "present_ids": [
+              "alice-0",
+              "alice-1",
+              "alice-2",
+              "bob-0"
+            ],
+            "absent_known_ids": [],
+            "alice_present": [
+              "alice-0",
+              "alice-1",
+              "alice-2"
+            ],
+            "bob_present": [
+              "bob-0"
+            ]
+          },
+          "elapsed_ms": 2.738
+        },
+        "adapter_list_before": {
+          "status": "returned",
+          "value": [
+            {
+              "id": "alice-0",
+              "score": null,
+              "payload": {
+                "user_id": "alice",
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "fixture": "mem0-pr7647",
+                "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "data": "Controlled fixture alice-0; owner alice."
+              }
+            },
+            {
+              "id": "alice-1",
+              "score": null,
+              "payload": {
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "hash": "a9c6ac9f3564236923bd98f77d154963",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "alice",
+                "data": "Controlled fixture alice-1; owner alice.",
+                "fixture": "mem0-pr7647"
+              }
+            },
+            {
+              "id": "alice-2",
+              "score": null,
+              "payload": {
+                "user_id": "alice",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "fixture": "mem0-pr7647",
+                "data": "Controlled fixture alice-2; owner alice.",
+                "hash": "c0fbca9364091c71131ad5fa181ef8f1"
+              }
+            }
+          ],
+          "elapsed_ms": 0.728
+        },
+        "get_all_before": {
+          "status": "returned",
+          "value": {
+            "results": [
+              {
+                "id": "alice-0",
+                "memory": "Controlled fixture alice-0; owner alice.",
+                "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "alice"
+              },
+              {
+                "id": "alice-1",
+                "memory": "Controlled fixture alice-1; owner alice.",
+                "hash": "a9c6ac9f3564236923bd98f77d154963",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "alice"
+              },
+              {
+                "id": "alice-2",
+                "memory": "Controlled fixture alice-2; owner alice.",
+                "hash": "c0fbca9364091c71131ad5fa181ef8f1",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "alice"
+              }
+            ]
+          },
+          "elapsed_ms": 0.688
+        },
+        "get_known_ids_before": {
+          "alice-0": {
+            "status": "returned",
+            "value": {
+              "id": "alice-0",
+              "memory": "Controlled fixture alice-0; owner alice.",
+              "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "alice"
+            },
+            "elapsed_ms": 0.568
+          },
+          "alice-1": {
+            "status": "returned",
+            "value": {
+              "id": "alice-1",
+              "memory": "Controlled fixture alice-1; owner alice.",
+              "hash": "a9c6ac9f3564236923bd98f77d154963",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "alice"
+            },
+            "elapsed_ms": 0.528
+          },
+          "alice-2": {
+            "status": "returned",
+            "value": {
+              "id": "alice-2",
+              "memory": "Controlled fixture alice-2; owner alice.",
+              "hash": "c0fbca9364091c71131ad5fa181ef8f1",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "alice"
+            },
+            "elapsed_ms": 0.519
+          },
+          "bob-0": {
+            "status": "returned",
+            "value": {
+              "id": "bob-0",
+              "memory": "Controlled fixture bob-0; owner bob.",
+              "hash": "576896b9ecd3db313b447c948bd9798f",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "bob"
+            },
+            "elapsed_ms": 0.528
+          }
+        },
+        "delete_all": {
+          "status": "raised",
+          "exception": {
+            "type": "builtins.AttributeError",
+            "message": "'tuple' object has no attribute 'id'",
+            "traceback": "Traceback (most recent call last):\n  File \"[ARTIFACT_DIR]/check_delete_all.py\", line 77, in observe\n    result = function()\n             ^^^^^^^^^^\n  File \"[ARTIFACT_DIR]/check_delete_all.py\", line 368, in <lambda>\n    ops[\"delete_all\"] = await observe(lambda: memory.delete_all(user_id=\"alice\"))\n                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"[EXPERIMENT_ROOT]/pr7647/mem0/memory/main.py\", line 1942, in delete_all\n    batch_ids = tuple(sorted(str(memory.id) for memory in memories))\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"[EXPERIMENT_ROOT]/pr7647/mem0/memory/main.py\", line 1942, in <genexpr>\n    batch_ids = tuple(sorted(str(memory.id) for memory in memories))\n                                 ^^^^^^^^^\nAttributeError: 'tuple' object has no attribute 'id'\n"
+          },
+          "elapsed_ms": 2.522
+        },
+        "direct_chroma_after": {
+          "status": "returned",
+          "value": {
+            "collection_count": 4,
+            "records": {
+              "alice-0": {
+                "document": "Controlled fixture alice-0; owner alice.",
+                "metadata": {
+                  "user_id": "alice",
+                  "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+                  "data": "Controlled fixture alice-0; owner alice.",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "fixture": "mem0-pr7647",
+                  "updated_at": "2026-10-18T00:00:00+00:00"
+                }
+              },
+              "alice-1": {
+                "document": "Controlled fixture alice-1; owner alice.",
+                "metadata": {
+                  "user_id": "alice",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "fixture": "mem0-pr7647",
+                  "data": "Controlled fixture alice-1; owner alice.",
+                  "hash": "a9c6ac9f3564236923bd98f77d154963",
+                  "created_at": "2026-10-18T00:00:00+00:00"
+                }
+              },
+              "alice-2": {
+                "document": "Controlled fixture alice-2; owner alice.",
+                "metadata": {
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "user_id": "alice",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "fixture": "mem0-pr7647",
+                  "hash": "c0fbca9364091c71131ad5fa181ef8f1",
+                  "data": "Controlled fixture alice-2; owner alice."
+                }
+              },
+              "bob-0": {
+                "document": "Controlled fixture bob-0; owner bob.",
+                "metadata": {
+                  "hash": "576896b9ecd3db313b447c948bd9798f",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "user_id": "bob",
+                  "fixture": "mem0-pr7647",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "data": "Controlled fixture bob-0; owner bob."
+                }
+              }
+            },
+            "present_ids": [
+              "alice-0",
+              "alice-1",
+              "alice-2",
+              "bob-0"
+            ],
+            "absent_known_ids": [],
+            "alice_present": [
+              "alice-0",
+              "alice-1",
+              "alice-2"
+            ],
+            "bob_present": [
+              "bob-0"
+            ]
+          },
+          "elapsed_ms": 1.079
+        },
+        "get_known_ids_after": {
+          "alice-0": {
+            "status": "returned",
+            "value": {
+              "id": "alice-0",
+              "memory": "Controlled fixture alice-0; owner alice.",
+              "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "alice"
+            },
+            "elapsed_ms": 0.563
+          },
+          "alice-1": {
+            "status": "returned",
+            "value": {
+              "id": "alice-1",
+              "memory": "Controlled fixture alice-1; owner alice.",
+              "hash": "a9c6ac9f3564236923bd98f77d154963",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "alice"
+            },
+            "elapsed_ms": 0.568
+          },
+          "alice-2": {
+            "status": "returned",
+            "value": {
+              "id": "alice-2",
+              "memory": "Controlled fixture alice-2; owner alice.",
+              "hash": "c0fbca9364091c71131ad5fa181ef8f1",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "alice"
+            },
+            "elapsed_ms": 0.565
+          },
+          "bob-0": {
+            "status": "returned",
+            "value": {
+              "id": "bob-0",
+              "memory": "Controlled fixture bob-0; owner bob.",
+              "hash": "576896b9ecd3db313b447c948bd9798f",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "bob"
+            },
+            "elapsed_ms": 0.554
+          }
+        },
+        "get_all_after": {
+          "status": "returned",
+          "value": {
+            "results": [
+              {
+                "id": "alice-0",
+                "memory": "Controlled fixture alice-0; owner alice.",
+                "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "alice"
+              },
+              {
+                "id": "alice-1",
+                "memory": "Controlled fixture alice-1; owner alice.",
+                "hash": "a9c6ac9f3564236923bd98f77d154963",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "alice"
+              },
+              {
+                "id": "alice-2",
+                "memory": "Controlled fixture alice-2; owner alice.",
+                "hash": "c0fbca9364091c71131ad5fa181ef8f1",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "alice"
+              }
+            ]
+          },
+          "elapsed_ms": 0.648
+        },
+        "get_all_bob_after": {
+          "status": "returned",
+          "value": {
+            "results": [
+              {
+                "id": "bob-0",
+                "memory": "Controlled fixture bob-0; owner bob.",
+                "hash": "576896b9ecd3db313b447c948bd9798f",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "bob"
+              }
+            ]
+          },
+          "elapsed_ms": 0.721
+        },
+        "sqlite_history_after": {
+          "status": "returned",
+          "value": [],
+          "elapsed_ms": 0.075
+        }
+      },
+      "constructor": {
+        "status": "returned",
+        "memory_class": "mem0.memory.main.Memory",
+        "adapter_class": "mem0.vector_stores.langchain.Langchain",
+        "history_class": "mem0.memory.storage.SQLiteManager",
+        "embedder_factory_calls": 1,
+        "llm_factory_calls": 1,
+        "history_file_created": true,
+        "chroma_is_persistent": false
+      },
+      "fixture_valid": true,
+      "checks": {
+        "real_sqlite_created": true,
+        "embedded_ephemeral_chroma": true,
+        "get_all_before_exact_alice": true,
+        "public_known_id_reads_before_exact": true,
+        "delete_all_returned_success": false,
+        "direct_state_after_exact_bob_only": false,
+        "public_known_id_reads_after_exact": false,
+        "get_all_after_empty_alice": false,
+        "get_all_after_exact_bob": true,
+        "real_delete_history_exact": false,
+        "no_model_calls": true
+      },
+      "outcome": "exception_with_vector_state_unchanged",
+      "all_checks_passed": false,
+      "model_method_calls": [],
+      "close": {
+        "status": "returned",
+        "value": null,
+        "elapsed_ms": 0.03
+      },
+      "finished_at": "2026-10-18T12:59:07.025211+00:00"
+    },
+    {
+      "adapter": "langchain-chroma",
+      "api": "async",
+      "scenario": "empty_store",
+      "fixture_counts": {
+        "alice": 0,
+        "bob": 0
+      },
+      "collection_name": "pr7647-langchain-chroma-async-17cfe9d65b36",
+      "history_path": "[FIXTURE_ROOT]s2/langchain-chroma-async-empty_store/history.sqlite3",
+      "started_at": "2026-10-18T12:59:07.025492+00:00",
+      "operations": {
+        "direct_chroma_before": {
+          "status": "returned",
+          "value": {
+            "collection_count": 0,
+            "records": {},
+            "present_ids": [],
+            "absent_known_ids": [],
+            "alice_present": [],
+            "bob_present": []
+          },
+          "elapsed_ms": 1.616
+        },
+        "adapter_list_before": {
+          "status": "returned",
+          "value": [],
+          "elapsed_ms": 0.428
+        },
+        "get_all_before": {
+          "status": "returned",
+          "value": {
+            "results": []
+          },
+          "elapsed_ms": 0.978
+        },
+        "get_known_ids_before": {},
+        "delete_all": {
+          "status": "returned",
+          "value": {
+            "message": "Memories deleted successfully!"
+          },
+          "elapsed_ms": 1.066
+        },
+        "direct_chroma_after": {
+          "status": "returned",
+          "value": {
+            "collection_count": 0,
+            "records": {},
+            "present_ids": [],
+            "absent_known_ids": [],
+            "alice_present": [],
+            "bob_present": []
+          },
+          "elapsed_ms": 0.825
+        },
+        "get_known_ids_after": {},
+        "get_all_after": {
+          "status": "returned",
+          "value": {
+            "results": []
+          },
+          "elapsed_ms": 0.554
+        },
+        "get_all_bob_after": {
+          "status": "returned",
+          "value": {
+            "results": []
+          },
+          "elapsed_ms": 0.536
+        },
+        "sqlite_history_after": {
+          "status": "returned",
+          "value": [],
+          "elapsed_ms": 0.069
+        }
+      },
+      "constructor": {
+        "status": "returned",
+        "memory_class": "mem0.memory.main.AsyncMemory",
+        "adapter_class": "mem0.vector_stores.langchain.Langchain",
+        "history_class": "mem0.memory.storage.SQLiteManager",
+        "embedder_factory_calls": 1,
+        "llm_factory_calls": 1,
+        "history_file_created": true,
+        "chroma_is_persistent": false
+      },
+      "fixture_valid": true,
+      "checks": {
+        "real_sqlite_created": true,
+        "embedded_ephemeral_chroma": true,
+        "get_all_before_exact_alice": true,
+        "public_known_id_reads_before_exact": true,
+        "delete_all_returned_success": true,
+        "direct_state_after_exact_bob_only": true,
+        "public_known_id_reads_after_exact": true,
+        "get_all_after_empty_alice": true,
+        "get_all_after_exact_bob": true,
+        "real_delete_history_exact": true,
+        "no_model_calls": true
+      },
+      "outcome": "success_matches_stored_state",
+      "all_checks_passed": true,
+      "model_method_calls": [],
+      "close": {
+        "status": "returned",
+        "value": null,
+        "elapsed_ms": 0.026
+      },
+      "finished_at": "2026-10-18T12:59:07.076059+00:00"
+    },
+    {
+      "adapter": "langchain-chroma",
+      "api": "async",
+      "scenario": "no_alice",
+      "fixture_counts": {
+        "alice": 0,
+        "bob": 1
+      },
+      "collection_name": "pr7647-langchain-chroma-async-3ff5867f9e5f",
+      "history_path": "[FIXTURE_ROOT]s2/langchain-chroma-async-no_alice/history.sqlite3",
+      "started_at": "2026-10-18T12:59:07.076330+00:00",
+      "operations": {
+        "direct_chroma_before": {
+          "status": "returned",
+          "value": {
+            "collection_count": 1,
+            "records": {
+              "bob-0": {
+                "document": "Controlled fixture bob-0; owner bob.",
+                "metadata": {
+                  "fixture": "mem0-pr7647",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "user_id": "bob",
+                  "hash": "576896b9ecd3db313b447c948bd9798f",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "data": "Controlled fixture bob-0; owner bob."
+                }
+              }
+            },
+            "present_ids": [
+              "bob-0"
+            ],
+            "absent_known_ids": [],
+            "alice_present": [],
+            "bob_present": [
+              "bob-0"
+            ]
+          },
+          "elapsed_ms": 2.583
+        },
+        "adapter_list_before": {
+          "status": "returned",
+          "value": [],
+          "elapsed_ms": 0.41
+        },
+        "get_all_before": {
+          "status": "returned",
+          "value": {
+            "results": []
+          },
+          "elapsed_ms": 0.58
+        },
+        "get_known_ids_before": {
+          "bob-0": {
+            "status": "returned",
+            "value": {
+              "id": "bob-0",
+              "memory": "Controlled fixture bob-0; owner bob.",
+              "hash": "576896b9ecd3db313b447c948bd9798f",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "bob"
+            },
+            "elapsed_ms": 0.652
+          }
+        },
+        "delete_all": {
+          "status": "returned",
+          "value": {
+            "message": "Memories deleted successfully!"
+          },
+          "elapsed_ms": 0.495
+        },
+        "direct_chroma_after": {
+          "status": "returned",
+          "value": {
+            "collection_count": 1,
+            "records": {
+              "bob-0": {
+                "document": "Controlled fixture bob-0; owner bob.",
+                "metadata": {
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "hash": "576896b9ecd3db313b447c948bd9798f",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "data": "Controlled fixture bob-0; owner bob.",
+                  "user_id": "bob",
+                  "fixture": "mem0-pr7647"
+                }
+              }
+            },
+            "present_ids": [
+              "bob-0"
+            ],
+            "absent_known_ids": [],
+            "alice_present": [],
+            "bob_present": [
+              "bob-0"
+            ]
+          },
+          "elapsed_ms": 0.9
+        },
+        "get_known_ids_after": {
+          "bob-0": {
+            "status": "returned",
+            "value": {
+              "id": "bob-0",
+              "memory": "Controlled fixture bob-0; owner bob.",
+              "hash": "576896b9ecd3db313b447c948bd9798f",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "bob"
+            },
+            "elapsed_ms": 0.676
+          }
+        },
+        "get_all_after": {
+          "status": "returned",
+          "value": {
+            "results": []
+          },
+          "elapsed_ms": 0.547
+        },
+        "get_all_bob_after": {
+          "status": "returned",
+          "value": {
+            "results": [
+              {
+                "id": "bob-0",
+                "memory": "Controlled fixture bob-0; owner bob.",
+                "hash": "576896b9ecd3db313b447c948bd9798f",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "bob"
+              }
+            ]
+          },
+          "elapsed_ms": 0.678
+        },
+        "sqlite_history_after": {
+          "status": "returned",
+          "value": [],
+          "elapsed_ms": 0.069
+        }
+      },
+      "constructor": {
+        "status": "returned",
+        "memory_class": "mem0.memory.main.AsyncMemory",
+        "adapter_class": "mem0.vector_stores.langchain.Langchain",
+        "history_class": "mem0.memory.storage.SQLiteManager",
+        "embedder_factory_calls": 1,
+        "llm_factory_calls": 1,
+        "history_file_created": true,
+        "chroma_is_persistent": false
+      },
+      "fixture_valid": true,
+      "checks": {
+        "real_sqlite_created": true,
+        "embedded_ephemeral_chroma": true,
+        "get_all_before_exact_alice": true,
+        "public_known_id_reads_before_exact": true,
+        "delete_all_returned_success": true,
+        "direct_state_after_exact_bob_only": true,
+        "public_known_id_reads_after_exact": true,
+        "get_all_after_empty_alice": true,
+        "get_all_after_exact_bob": true,
+        "real_delete_history_exact": true,
+        "no_model_calls": true
+      },
+      "outcome": "success_matches_stored_state",
+      "all_checks_passed": true,
+      "model_method_calls": [],
+      "close": {
+        "status": "returned",
+        "value": null,
+        "elapsed_ms": 0.025
+      },
+      "finished_at": "2026-10-18T12:59:07.134325+00:00"
+    },
+    {
+      "adapter": "langchain-chroma",
+      "api": "async",
+      "scenario": "single_alice",
+      "fixture_counts": {
+        "alice": 1,
+        "bob": 1
+      },
+      "collection_name": "pr7647-langchain-chroma-async-ede0146d4532",
+      "history_path": "[FIXTURE_ROOT]s2/langchain-chroma-async-single_alice/history.sqlite3",
+      "started_at": "2026-10-18T12:59:07.134574+00:00",
+      "operations": {
+        "direct_chroma_before": {
+          "status": "returned",
+          "value": {
+            "collection_count": 2,
+            "records": {
+              "alice-0": {
+                "document": "Controlled fixture alice-0; owner alice.",
+                "metadata": {
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "data": "Controlled fixture alice-0; owner alice.",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+                  "fixture": "mem0-pr7647",
+                  "user_id": "alice"
+                }
+              },
+              "bob-0": {
+                "document": "Controlled fixture bob-0; owner bob.",
+                "metadata": {
+                  "hash": "576896b9ecd3db313b447c948bd9798f",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "data": "Controlled fixture bob-0; owner bob.",
+                  "fixture": "mem0-pr7647",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "user_id": "bob"
+                }
+              }
+            },
+            "present_ids": [
+              "alice-0",
+              "bob-0"
+            ],
+            "absent_known_ids": [],
+            "alice_present": [
+              "alice-0"
+            ],
+            "bob_present": [
+              "bob-0"
+            ]
+          },
+          "elapsed_ms": 2.524
+        },
+        "adapter_list_before": {
+          "status": "returned",
+          "value": [
+            {
+              "id": "alice-0",
+              "score": null,
+              "payload": {
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "fixture": "mem0-pr7647",
+                "user_id": "alice",
+                "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "data": "Controlled fixture alice-0; owner alice."
+              }
+            }
+          ],
+          "elapsed_ms": 0.611
+        },
+        "get_all_before": {
+          "status": "returned",
+          "value": {
+            "results": [
+              {
+                "id": "alice-0",
+                "memory": "Controlled fixture alice-0; owner alice.",
+                "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "alice"
+              }
+            ]
+          },
+          "elapsed_ms": 0.807
+        },
+        "get_known_ids_before": {
+          "alice-0": {
+            "status": "returned",
+            "value": {
+              "id": "alice-0",
+              "memory": "Controlled fixture alice-0; owner alice.",
+              "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "alice"
+            },
+            "elapsed_ms": 0.647
+          },
+          "bob-0": {
+            "status": "returned",
+            "value": {
+              "id": "bob-0",
+              "memory": "Controlled fixture bob-0; owner bob.",
+              "hash": "576896b9ecd3db313b447c948bd9798f",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "bob"
+            },
+            "elapsed_ms": 0.623
+          }
+        },
+        "delete_all": {
+          "status": "raised",
+          "exception": {
+            "type": "builtins.AttributeError",
+            "message": "'tuple' object has no attribute 'id'",
+            "traceback": "Traceback (most recent call last):\n  File \"[ARTIFACT_DIR]/check_delete_all.py\", line 79, in observe\n    result = await result\n             ^^^^^^^^^^^^\n  File \"[EXPERIMENT_ROOT]/pr7647/mem0/memory/main.py\", line 3623, in delete_all\n    batch_ids = tuple(sorted(str(memory.id) for memory in batch))\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"[EXPERIMENT_ROOT]/pr7647/mem0/memory/main.py\", line 3623, in <genexpr>\n    batch_ids = tuple(sorted(str(memory.id) for memory in batch))\n                                 ^^^^^^^^^\nAttributeError: 'tuple' object has no attribute 'id'\n"
+          },
+          "elapsed_ms": 2.58
+        },
+        "direct_chroma_after": {
+          "status": "returned",
+          "value": {
+            "collection_count": 2,
+            "records": {
+              "alice-0": {
+                "document": "Controlled fixture alice-0; owner alice.",
+                "metadata": {
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "fixture": "mem0-pr7647",
+                  "user_id": "alice",
+                  "data": "Controlled fixture alice-0; owner alice.",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "hash": "038845b1e74acc7fb555a04a2dc0cd20"
+                }
+              },
+              "bob-0": {
+                "document": "Controlled fixture bob-0; owner bob.",
+                "metadata": {
+                  "user_id": "bob",
+                  "data": "Controlled fixture bob-0; owner bob.",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "fixture": "mem0-pr7647",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "hash": "576896b9ecd3db313b447c948bd9798f"
+                }
+              }
+            },
+            "present_ids": [
+              "alice-0",
+              "bob-0"
+            ],
+            "absent_known_ids": [],
+            "alice_present": [
+              "alice-0"
+            ],
+            "bob_present": [
+              "bob-0"
+            ]
+          },
+          "elapsed_ms": 1.233
+        },
+        "get_known_ids_after": {
+          "alice-0": {
+            "status": "returned",
+            "value": {
+              "id": "alice-0",
+              "memory": "Controlled fixture alice-0; owner alice.",
+              "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "alice"
+            },
+            "elapsed_ms": 1.012
+          },
+          "bob-0": {
+            "status": "returned",
+            "value": {
+              "id": "bob-0",
+              "memory": "Controlled fixture bob-0; owner bob.",
+              "hash": "576896b9ecd3db313b447c948bd9798f",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "bob"
+            },
+            "elapsed_ms": 0.665
+          }
+        },
+        "get_all_after": {
+          "status": "returned",
+          "value": {
+            "results": [
+              {
+                "id": "alice-0",
+                "memory": "Controlled fixture alice-0; owner alice.",
+                "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "alice"
+              }
+            ]
+          },
+          "elapsed_ms": 0.701
+        },
+        "get_all_bob_after": {
+          "status": "returned",
+          "value": {
+            "results": [
+              {
+                "id": "bob-0",
+                "memory": "Controlled fixture bob-0; owner bob.",
+                "hash": "576896b9ecd3db313b447c948bd9798f",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "bob"
+              }
+            ]
+          },
+          "elapsed_ms": 0.652
+        },
+        "sqlite_history_after": {
+          "status": "returned",
+          "value": [],
+          "elapsed_ms": 0.07
+        }
+      },
+      "constructor": {
+        "status": "returned",
+        "memory_class": "mem0.memory.main.AsyncMemory",
+        "adapter_class": "mem0.vector_stores.langchain.Langchain",
+        "history_class": "mem0.memory.storage.SQLiteManager",
+        "embedder_factory_calls": 1,
+        "llm_factory_calls": 1,
+        "history_file_created": true,
+        "chroma_is_persistent": false
+      },
+      "fixture_valid": true,
+      "checks": {
+        "real_sqlite_created": true,
+        "embedded_ephemeral_chroma": true,
+        "get_all_before_exact_alice": true,
+        "public_known_id_reads_before_exact": true,
+        "delete_all_returned_success": false,
+        "direct_state_after_exact_bob_only": false,
+        "public_known_id_reads_after_exact": false,
+        "get_all_after_empty_alice": false,
+        "get_all_after_exact_bob": true,
+        "real_delete_history_exact": false,
+        "no_model_calls": true
+      },
+      "outcome": "exception_with_vector_state_unchanged",
+      "all_checks_passed": false,
+      "model_method_calls": [],
+      "close": {
+        "status": "returned",
+        "value": null,
+        "elapsed_ms": 0.049
+      },
+      "finished_at": "2026-10-18T12:59:07.197170+00:00"
+    },
+    {
+      "adapter": "langchain-chroma",
+      "api": "async",
+      "scenario": "populated",
+      "fixture_counts": {
+        "alice": 3,
+        "bob": 1
+      },
+      "collection_name": "pr7647-langchain-chroma-async-03115011af5c",
+      "history_path": "[FIXTURE_ROOT]s2/langchain-chroma-async-populated/history.sqlite3",
+      "started_at": "2026-10-18T12:59:07.197426+00:00",
+      "operations": {
+        "direct_chroma_before": {
+          "status": "returned",
+          "value": {
+            "collection_count": 4,
+            "records": {
+              "alice-0": {
+                "document": "Controlled fixture alice-0; owner alice.",
+                "metadata": {
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "fixture": "mem0-pr7647",
+                  "data": "Controlled fixture alice-0; owner alice.",
+                  "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "user_id": "alice"
+                }
+              },
+              "alice-1": {
+                "document": "Controlled fixture alice-1; owner alice.",
+                "metadata": {
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "user_id": "alice",
+                  "hash": "a9c6ac9f3564236923bd98f77d154963",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "fixture": "mem0-pr7647",
+                  "data": "Controlled fixture alice-1; owner alice."
+                }
+              },
+              "alice-2": {
+                "document": "Controlled fixture alice-2; owner alice.",
+                "metadata": {
+                  "data": "Controlled fixture alice-2; owner alice.",
+                  "fixture": "mem0-pr7647",
+                  "user_id": "alice",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "hash": "c0fbca9364091c71131ad5fa181ef8f1",
+                  "updated_at": "2026-10-18T00:00:00+00:00"
+                }
+              },
+              "bob-0": {
+                "document": "Controlled fixture bob-0; owner bob.",
+                "metadata": {
+                  "hash": "576896b9ecd3db313b447c948bd9798f",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "fixture": "mem0-pr7647",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "user_id": "bob",
+                  "data": "Controlled fixture bob-0; owner bob."
+                }
+              }
+            },
+            "present_ids": [
+              "alice-0",
+              "alice-1",
+              "alice-2",
+              "bob-0"
+            ],
+            "absent_known_ids": [],
+            "alice_present": [
+              "alice-0",
+              "alice-1",
+              "alice-2"
+            ],
+            "bob_present": [
+              "bob-0"
+            ]
+          },
+          "elapsed_ms": 2.556
+        },
+        "adapter_list_before": {
+          "status": "returned",
+          "value": [
+            {
+              "id": "alice-0",
+              "score": null,
+              "payload": {
+                "user_id": "alice",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+                "fixture": "mem0-pr7647",
+                "data": "Controlled fixture alice-0; owner alice."
+              }
+            },
+            {
+              "id": "alice-1",
+              "score": null,
+              "payload": {
+                "data": "Controlled fixture alice-1; owner alice.",
+                "hash": "a9c6ac9f3564236923bd98f77d154963",
+                "fixture": "mem0-pr7647",
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "alice"
+              }
+            },
+            {
+              "id": "alice-2",
+              "score": null,
+              "payload": {
+                "hash": "c0fbca9364091c71131ad5fa181ef8f1",
+                "data": "Controlled fixture alice-2; owner alice.",
+                "fixture": "mem0-pr7647",
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "alice",
+                "updated_at": "2026-10-18T00:00:00+00:00"
+              }
+            }
+          ],
+          "elapsed_ms": 0.653
+        },
+        "get_all_before": {
+          "status": "returned",
+          "value": {
+            "results": [
+              {
+                "id": "alice-0",
+                "memory": "Controlled fixture alice-0; owner alice.",
+                "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "alice"
+              },
+              {
+                "id": "alice-1",
+                "memory": "Controlled fixture alice-1; owner alice.",
+                "hash": "a9c6ac9f3564236923bd98f77d154963",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "alice"
+              },
+              {
+                "id": "alice-2",
+                "memory": "Controlled fixture alice-2; owner alice.",
+                "hash": "c0fbca9364091c71131ad5fa181ef8f1",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "alice"
+              }
+            ]
+          },
+          "elapsed_ms": 0.968
+        },
+        "get_known_ids_before": {
+          "alice-0": {
+            "status": "returned",
+            "value": {
+              "id": "alice-0",
+              "memory": "Controlled fixture alice-0; owner alice.",
+              "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "alice"
+            },
+            "elapsed_ms": 0.667
+          },
+          "alice-1": {
+            "status": "returned",
+            "value": {
+              "id": "alice-1",
+              "memory": "Controlled fixture alice-1; owner alice.",
+              "hash": "a9c6ac9f3564236923bd98f77d154963",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "alice"
+            },
+            "elapsed_ms": 0.618
+          },
+          "alice-2": {
+            "status": "returned",
+            "value": {
+              "id": "alice-2",
+              "memory": "Controlled fixture alice-2; owner alice.",
+              "hash": "c0fbca9364091c71131ad5fa181ef8f1",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "alice"
+            },
+            "elapsed_ms": 0.672
+          },
+          "bob-0": {
+            "status": "returned",
+            "value": {
+              "id": "bob-0",
+              "memory": "Controlled fixture bob-0; owner bob.",
+              "hash": "576896b9ecd3db313b447c948bd9798f",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "bob"
+            },
+            "elapsed_ms": 0.651
+          }
+        },
+        "delete_all": {
+          "status": "raised",
+          "exception": {
+            "type": "builtins.AttributeError",
+            "message": "'tuple' object has no attribute 'id'",
+            "traceback": "Traceback (most recent call last):\n  File \"[ARTIFACT_DIR]/check_delete_all.py\", line 79, in observe\n    result = await result\n             ^^^^^^^^^^^^\n  File \"[EXPERIMENT_ROOT]/pr7647/mem0/memory/main.py\", line 3623, in delete_all\n    batch_ids = tuple(sorted(str(memory.id) for memory in batch))\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"[EXPERIMENT_ROOT]/pr7647/mem0/memory/main.py\", line 3623, in <genexpr>\n    batch_ids = tuple(sorted(str(memory.id) for memory in batch))\n                                 ^^^^^^^^^\nAttributeError: 'tuple' object has no attribute 'id'\n"
+          },
+          "elapsed_ms": 2.491
+        },
+        "direct_chroma_after": {
+          "status": "returned",
+          "value": {
+            "collection_count": 4,
+            "records": {
+              "alice-0": {
+                "document": "Controlled fixture alice-0; owner alice.",
+                "metadata": {
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+                  "data": "Controlled fixture alice-0; owner alice.",
+                  "user_id": "alice",
+                  "fixture": "mem0-pr7647",
+                  "updated_at": "2026-10-18T00:00:00+00:00"
+                }
+              },
+              "alice-1": {
+                "document": "Controlled fixture alice-1; owner alice.",
+                "metadata": {
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "user_id": "alice",
+                  "data": "Controlled fixture alice-1; owner alice.",
+                  "hash": "a9c6ac9f3564236923bd98f77d154963",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "fixture": "mem0-pr7647"
+                }
+              },
+              "alice-2": {
+                "document": "Controlled fixture alice-2; owner alice.",
+                "metadata": {
+                  "fixture": "mem0-pr7647",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "user_id": "alice",
+                  "hash": "c0fbca9364091c71131ad5fa181ef8f1",
+                  "data": "Controlled fixture alice-2; owner alice.",
+                  "created_at": "2026-10-18T00:00:00+00:00"
+                }
+              },
+              "bob-0": {
+                "document": "Controlled fixture bob-0; owner bob.",
+                "metadata": {
+                  "fixture": "mem0-pr7647",
+                  "created_at": "2026-10-18T00:00:00+00:00",
+                  "updated_at": "2026-10-18T00:00:00+00:00",
+                  "hash": "576896b9ecd3db313b447c948bd9798f",
+                  "data": "Controlled fixture bob-0; owner bob.",
+                  "user_id": "bob"
+                }
+              }
+            },
+            "present_ids": [
+              "alice-0",
+              "alice-1",
+              "alice-2",
+              "bob-0"
+            ],
+            "absent_known_ids": [],
+            "alice_present": [
+              "alice-0",
+              "alice-1",
+              "alice-2"
+            ],
+            "bob_present": [
+              "bob-0"
+            ]
+          },
+          "elapsed_ms": 1.003
+        },
+        "get_known_ids_after": {
+          "alice-0": {
+            "status": "returned",
+            "value": {
+              "id": "alice-0",
+              "memory": "Controlled fixture alice-0; owner alice.",
+              "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "alice"
+            },
+            "elapsed_ms": 1.083
+          },
+          "alice-1": {
+            "status": "returned",
+            "value": {
+              "id": "alice-1",
+              "memory": "Controlled fixture alice-1; owner alice.",
+              "hash": "a9c6ac9f3564236923bd98f77d154963",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "alice"
+            },
+            "elapsed_ms": 0.964
+          },
+          "alice-2": {
+            "status": "returned",
+            "value": {
+              "id": "alice-2",
+              "memory": "Controlled fixture alice-2; owner alice.",
+              "hash": "c0fbca9364091c71131ad5fa181ef8f1",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "alice"
+            },
+            "elapsed_ms": 0.729
+          },
+          "bob-0": {
+            "status": "returned",
+            "value": {
+              "id": "bob-0",
+              "memory": "Controlled fixture bob-0; owner bob.",
+              "hash": "576896b9ecd3db313b447c948bd9798f",
+              "metadata": {
+                "fixture": "mem0-pr7647"
+              },
+              "score": null,
+              "created_at": "2026-10-18T00:00:00+00:00",
+              "updated_at": "2026-10-18T00:00:00+00:00",
+              "user_id": "bob"
+            },
+            "elapsed_ms": 0.718
+          }
+        },
+        "get_all_after": {
+          "status": "returned",
+          "value": {
+            "results": [
+              {
+                "id": "alice-0",
+                "memory": "Controlled fixture alice-0; owner alice.",
+                "hash": "038845b1e74acc7fb555a04a2dc0cd20",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "alice"
+              },
+              {
+                "id": "alice-1",
+                "memory": "Controlled fixture alice-1; owner alice.",
+                "hash": "a9c6ac9f3564236923bd98f77d154963",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "alice"
+              },
+              {
+                "id": "alice-2",
+                "memory": "Controlled fixture alice-2; owner alice.",
+                "hash": "c0fbca9364091c71131ad5fa181ef8f1",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "alice"
+              }
+            ]
+          },
+          "elapsed_ms": 0.775
+        },
+        "get_all_bob_after": {
+          "status": "returned",
+          "value": {
+            "results": [
+              {
+                "id": "bob-0",
+                "memory": "Controlled fixture bob-0; owner bob.",
+                "hash": "576896b9ecd3db313b447c948bd9798f",
+                "metadata": {
+                  "fixture": "mem0-pr7647"
+                },
+                "created_at": "2026-10-18T00:00:00+00:00",
+                "updated_at": "2026-10-18T00:00:00+00:00",
+                "user_id": "bob"
+              }
+            ]
+          },
+          "elapsed_ms": 1.026
+        },
+        "sqlite_history_after": {
+          "status": "returned",
+          "value": [],
+          "elapsed_ms": 0.154
+        }
+      },
+      "constructor": {
+        "status": "returned",
+        "memory_class": "mem0.memory.main.AsyncMemory",
+        "adapter_class": "mem0.vector_stores.langchain.Langchain",
+        "history_class": "mem0.memory.storage.SQLiteManager",
+        "embedder_factory_calls": 1,
+        "llm_factory_calls": 1,
+        "history_file_created": true,
+        "chroma_is_persistent": false
+      },
+      "fixture_valid": true,
+      "checks": {
+        "real_sqlite_created": true,
+        "embedded_ephemeral_chroma": true,
+        "get_all_before_exact_alice": true,
+        "public_known_id_reads_before_exact": true,
+        "delete_all_returned_success": false,
+        "direct_state_after_exact_bob_only": false,
+        "public_known_id_reads_after_exact": false,
+        "get_all_after_empty_alice": false,
+        "get_all_after_exact_bob": true,
+        "real_delete_history_exact": false,
+        "no_model_calls": true
+      },
+      "outcome": "exception_with_vector_state_unchanged",
+      "all_checks_passed": false,
+      "model_method_calls": [],
+      "close": {
+        "status": "returned",
+        "value": null,
+        "elapsed_ms": 0.034
+      },
+      "finished_at": "2026-10-18T12:59:07.261912+00:00"
+    }
+  ],
+  "imported_sources": {
+    "mem0.memory.main": "[EXPERIMENT_ROOT]/pr7647/mem0/memory/main.py",
+    "mem0.memory.storage": "[EXPERIMENT_ROOT]/pr7647/mem0/memory/storage.py",
+    "mem0.vector_stores.chroma": "[EXPERIMENT_ROOT]/pr7647/mem0/vector_stores/chroma.py",
+    "mem0.vector_stores.langchain": "[EXPERIMENT_ROOT]/pr7647/mem0/vector_stores/langchain.py"
+  },
+  "langchain_chroma_class": "langchain_chroma.vectorstores.Chroma",
+  "dependency_versions": {
+    "mem0ai": "2.2.1",
+    "chromadb": "1.5.9",
+    "langchain-chroma": "0.2.6",
+    "langchain-community": "0.3.31",
+    "langchain-core": "0.3.86",
+    "pydantic": "2.14.1",
+    "qdrant-client": "1.19.1",
+    "openai": "3.35.1",
+    "posthog": "7.71.0",
+    "numpy": "2.5.4",
+    "sqlalchemy": "2.1.5"
+  },
+  "delete_all_batch_size": 1000,
+  "finished_at": "2026-10-18T12:59:07.263184+00:00",
+  "summary": {
+    "case_count": 16,
+    "passed_cases": 4,
+    "failed_cases": 12,
+    "harness_error_cases": 0
+  }
+}

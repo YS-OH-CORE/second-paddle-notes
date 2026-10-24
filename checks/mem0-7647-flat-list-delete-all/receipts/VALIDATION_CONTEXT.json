@@ -1,0 +1,17 @@
+{
+  "recorded_at": "2026-10-18T13:07:07.103676+00:00",
+  "stage": "Post-validation source check; actual unit commands ran earlier through the saved driver.",
+  "validation_receipt": "receipts/VALIDATION.json",
+  "driver_original_sha256": "3d25626c6aa5fb4ce8bb4fd1d3facc5135b21374d66413f1b1e0ed141745b2b3",
+  "driver_sets_cwd_to": "[EXPERIMENT_ROOT]/control",
+  "driver_sets_PYTHONPATH_to": "[EXPERIMENT_ROOT]/control",
+  "git_head": "039b3dd23eca2ba46fc4457c6c1ba18537d849b5",
+  "tracked_status": "M mem0/memory/main.py",
+  "source_sha256": {
+    "mem0/memory/main.py": "4d72728532f3e6e40db51f680ff49904cbe54db225006d05b41fda215a0fad2e",
+    "tests/test_memory.py": "dde62e6277c23a7f0f0f9c1eab93bd6f36c7ee788ac2c520f11b6e2bc756eb44",
+    "tests/vector_stores/test_chroma.py": "36c3dafde589aa5b04ad8096a72f48eee854eb540e7394f860e4c0decc503f06",
+    "tests/vector_stores/test_langchain_vector_store.py": "1b89d8466ec1278c71f1b66f40916a429147822e09118b125a0ed91a8be68d19"
+  }
+}
+
